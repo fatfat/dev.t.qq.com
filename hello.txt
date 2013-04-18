@@ -1,6 +1,4 @@
 hello1
-<<<<<<< HEAD
 hello2
-=======
 hello3
->>>>>>> test3
+hello4
