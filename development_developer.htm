@@ -6,7 +6,7 @@
 	//document.domain = "qq.com";
 	
 	//---需要后台吐出来的信息------------
-	var data = {
+	/*var data = {
 		//--------------导航栏信息开始------------
 		userInfo :{
 			hdlogin:false,
@@ -36,6 +36,44 @@
 			user_city:1
 		}
 	}
+	*/
+	var userInfo={};
+	var appnav={};
+	var userInfo={};
+	var developer={};
+
+	this.data = {
+	appnav:appnav,
+	userInfo:userInfo,
+	developer:developer,
+	userInfo : userInfo
+	}
+	data.navPos=1;
+	userInfo.hdlogin=false;
+	userInfo.reg_wb=0;
+	userInfo.hdlogin=2490936080;
+	userInfo.reg_wb=1;
+	userInfo.name='vvtest';
+	userInfo.nick='张';
+	userInfo.uin=2490936080;
+	userInfo.sign='no use';
+	data.displaytype='';
+	developer.user_uin=2490936080;
+	developer.head='';
+	developer.user_app_numbers=13;
+	developer.user_app_limit=50;
+	developer.user_check_status=0;
+	developer.user_certif_status=1;
+	developer.user_check_msg='';
+	developer.user_type=1;
+	developer.user_idcard_pic='http://openmat.gtimg.com/opentzz/5152313_sf_5f69aa979396bf80bb94b1071a225bb5.png';
+	developer.user_certif_pic='http://openmat.gtimg.com/opentzz/5152313_zz_8665b9fb0e8aa2c55c36b061e4db5c58.png';
+	developer.user_tmp_name='';
+	developer.appMax=50;
+	developer.user_hosting='127.0.0.1';
+	developer.user_province=21;
+	developer.user_city=1;
+
 	
 	//页面相关结束--------------
 	
@@ -56,10 +94,10 @@
 </head>
 <body>
 <div id="main"></div>
-<script type="text/javascript" src="../public.js"></script>
+<script type="text/javascript" src="js/public.js"></script>
 
 <!--以下是各个界面需要添加的JS文件-->
-<script type="text/javascript" src="development_developer.js"></script>
+<script type="text/javascript" src="js/development_developer.js"></script>
 <!--以下是各个界面需要添加的JS文件-->
 
 <!--登录态相关的JS文件，start-->
