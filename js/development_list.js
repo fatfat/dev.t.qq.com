@@ -1,4 +1,9 @@
 ;(function(){
+	this.util = this.util || {};
+	var str = [
+		'.dotted{display:block;float:left;color:#346496;line-height:18px;}',
+	].join("");
+	this.util.createStyle(str);
 	this.tpl = this.tpl || {};
 	this.tpl.development_list_comps = [
 		'<div  id="applist" class="applist">',
@@ -27,7 +32,7 @@
 				'</ul>',
 			'<%}%>', 
 		'</div>'
-	].join("\r");
+	].join("");
 	
 	this.tpl.development_list_app = [
 		//<!------------------------------------已创建的应用----------------------------------------->
@@ -106,7 +111,7 @@
 				'<div id="pagebar1"><%=pagelist1%></div>',
 			'</div>',  
 		'</div>'
-	].join("\r");
+	].join("");
 	this.tpl.development_list_iweibo = [
 		//<!------------------------------------iweibo----------------------------------------->  
 		'<div class="applist2" id="applist">',
@@ -128,9 +133,9 @@
 				'<li style="height:auto;">你还没有使用过iWeibo，<a href="/apps/add/5/" style="display:inline;line-height:1;">马上使用</a></li>',
 		'<%}%>',
 			'</ul>',
-		'<div id="pagebar"><%=pagelist%></div>',
+	//	'<div id="pagebar"><%=pagelist%></div>',
 		'</div> '
-	].join("\r");
+	].join("");
 	
 	//根据不同的类型渲染页面
 	if(data.displaytype == "comps"){
@@ -139,8 +144,81 @@
 		var rightListTmpl = this.tpl.development_list_app
 	}else if(data.displaytype == "iweibo"){
 		var rightListTmpl = this.tpl.development_list_iweibo
-	}
-	
+	};
+
+	this.tpl.pageBar = [//翻页按钮
+		'<div id="pagebar">',
+			'<div class="pagebar">',
+				'<em title="共<%=data.app_count%>条">共<%=page_count%>条</em>',
+				'<%if(page_no != 1){%>',
+					'<a href="#1" onclick="pageList(<%=parseInt(page_no) - 1%>);" class="page_prev">上一页</a>',
+				'<%}else{%>',
+					'<span class = "page_prev">上一页</span>',
+				'<%}%>',
+
+				'<%if(page_no <= 5 ){%>',//page_no之前的页全部显示
+					'<%if(page_no >= page_count - 4){%>',
+						//显示所有页码
+						'<%for(var i = 1; i <= page_count; i++){%>',
+							'<%if (i != page_no) {%>',
+								'<a href="#<%=i%>" onclick = pageList(<%=i%>)><%=i%></a>',
+							'<%}else{%>',
+								'<span><%=i%></span>',
+							'<%}%>',
+						'<%}%>',
+					'<%}else{%>',
+						//显示  1到curr curr+1 curr+2 curr+3... total
+						'<%for(var i = 1; i <= page_no + 3; i++){%>',
+							'<%if (i != page_no) {%>',
+								'<a href="#<%=i%>" onclick = pageList(<%=i%>)><%=i%></a>',
+							'<%}else{%>',
+								'<span><%=i%></span>',
+							'<%}%>',
+						'<%}%>',
+						//'<span>...<span>',
+						'<em class="dotted">...</em>',
+						'<a href="#<%=page_count%>" onclick = pageList(<%=page_count%>)><%=page_count%></a>',
+					'<%}%>',
+				'<%}else{%>', 
+					'<%if(page_no >= page_count - 4){%>',
+						//显示1...curr-3到total
+						'<a href="#1" onclick = pageList(1)>1</a>',
+						//'<span>...</span>',
+						'<em class="dotted">...</em>',
+						'<%for(var i = page_no - 3; i <= page_count; i++){%>',
+							'<%if (i != page_no) {%>',
+								'<a href="#<%=i%>" onclick = pageList(<%=i%>)><%=i%></a>',
+							'<%}else{%>',
+								'<span><%=i%></span>',
+							'<%}%>',
+						'<%}%>',
+					'<%}else{%>',
+						//显示1...curr-3到curr+3...total
+						'<a href="#1>" onclick = pageList(1)>1</a>',
+					//	'<span>...</span>',
+						'<em class="dotted">...</em>',
+						'<%for(var i = page_no - 3; i <= page_no - 1; i++){%>',
+							'<a href="#<%=i%>" onclick = pageList(<%=i%>)><%=i%></a>',
+						'<%}%>',
+						'<span><%=page_no%></span>',
+						'<%for(var i = page_no + 1; i <= page_no + 3; i++){%>',
+							'<a href="#<%=i%>" onclick = pageList(<%=i%>)><%=i%></a>',
+						'<%}%>',						
+					//	'<span>...<span>',
+						'<em class="dotted">...</em>',
+						'<a href="#<%=page_count%>" onclick = pageList(<%=page_count%>)><%=page_count%></a>',
+					'<%}%>',
+				'<%}%>',
+
+				'<%if(page_no != page_count){%>',
+					'<a href="#<%=page_count%>" onclick="pageList(<%=parseInt(page_no)+ 1%> );" class="page_next">下一页</a>',
+				'<%}else{%>',
+					'<span class = "page_next">下一页</span>',
+				'<%}%>',
+			'</div>',
+		'</div>',
+	].join("");
+
 	this.tpl.development_list = [
 		this.tpl.header,
 		'<link href="http://mat1.gtimg.com/app/opent/css/development/index_selectapp.css?201205251" rel="stylesheet" type="text/css" />',
@@ -169,19 +247,24 @@
 							'<%if(displaytype == "iweibo"){%>',
 								'iWeibo',
 							'<%}else if(displaytype == "comps"){%>',
-							   '我的组件' ,
+							   '我的组件',
 							'<%}%>',
 						 '</h1>',
 					'<%}%>',
 					rightListTmpl,
+					this.tpl.pageBar,
 				'</div>',
 			'</div>',
 		'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_appadd.js"></script>',
-		this.tpl.footer
-	].join("\r");
+		this.tpl.footer,
+	].join("");
 	
 	$("#main").html(this.tmpl(this.tpl.development_list,data));
+
+
+
 	var insiteAppAble=true;
+	var developer = data.developer;
 	var siteAppDisplayType = insiteAppAble?  16 : 0; 
 	var displayAppType = 45;//+siteAppDisplayType;
 	$(function(){
@@ -234,6 +317,7 @@
 		 * AJAX翻页
 		 */
 		function pageList(page){ 
+			alert(1);
 			if(comps){
 				var ajaxpageListUrl ="/development/indexajaxcomplist/"+page+"?d="+(new Date().getTime());
 			}else if(iweibo){
