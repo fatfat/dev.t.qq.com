@@ -1,4 +1,3 @@
-;(function(){
 	this.util = this.util || {};
 	var str = [
 		'.dotted{display:block;float:left;color:#346496;line-height:18px;}',
@@ -151,7 +150,7 @@
 			'<div class="pagebar">',
 				'<em title="共<%=data.app_count%>条">共<%=page_count%>条</em>',
 				'<%if(page_no != 1){%>',
-					'<a href="#1" onclick="pageList(<%=parseInt(page_no) - 1%>);" class="page_prev">上一页</a>',
+					'<a href="#<%=parseInt(page_no)-1%>" onclick="pageList(<%=parseInt(page_no) - 1%>);" class="page_prev">上一页</a>',
 				'<%}else{%>',
 					'<span class = "page_prev">上一页</span>',
 				'<%}%>',
@@ -211,7 +210,7 @@
 				'<%}%>',
 
 				'<%if(page_no != page_count){%>',
-					'<a href="#<%=page_count%>" onclick="pageList(<%=parseInt(page_no)+ 1%> );" class="page_next">下一页</a>',
+					'<a href="#<%=parseInt(page_no)+1%>" onclick="pageList(<%=parseInt(page_no)+ 1%> );" class="page_next">下一页</a>',
 				'<%}else{%>',
 					'<span class = "page_next">下一页</span>',
 				'<%}%>',
@@ -267,91 +266,89 @@
 	var developer = data.developer;
 	var siteAppDisplayType = insiteAppAble?  16 : 0; 
 	var displayAppType = 45;//+siteAppDisplayType;
+
+	//检查开发这信息,看是不是开发这,或者创建应用达到上限
+	$("#newapp").click(function(){
+		popAppWin(developer.user_app_numbers,developer.user_app_limit); 
+	});	
 	$(function(){
-		//检查开发这信息,看是不是开发这,或者创建应用达到上限
-		$("#newapp").click(function(){
-			popAppWin(developer.user_app_numbers,developer.user_app_limit); 
-		});	
-		$(function(){
-			$('input#apptype1').click(function(){
-				if($(this).attr('checked')==true) displayAppType = displayAppType|0x1;
-				else displayAppType = displayAppType&0xFE;
-				var apptypeUrl = "/development/indexajaxapplist/1/"+displayAppType+'/';
-				AjaxPageList(apptypeUrl);
-			}) 
-			 
-			$('input#apptype2').click(function(){
-				if($(this).attr('checked')==true) displayAppType = displayAppType|0x4;
-				else displayAppType = displayAppType&0xFB;
-				var apptypeUrl = "/development/indexajaxapplist/1/"+displayAppType+'/';
-				AjaxPageList(apptypeUrl);
-			})
-			 
-			$('input#apptype3').click(function(){
-				if($(this).attr('checked')==true) displayAppType = displayAppType|0x8;
-				else displayAppType= displayAppType&0xF7;
-				var apptypeUrl = "/development/indexajaxapplist/1/"+displayAppType+'/';
-				AjaxPageList(apptypeUrl);
-			})
-			
-			$('input#apptype4').click(function(){
-				if($(this).attr('checked')==true) displayAppType = displayAppType|0x20;
-				else displayAppType= displayAppType&0xDF;
-				var apptypeUrl = "/development/indexajaxapplist/1/"+displayAppType+'/';
-				AjaxPageList(apptypeUrl);
-			})
-			
-			// TAB
-			var $content = $("#appContent").children("div.applist2");
-			$("#appTab a").click(function () {
-				var $this = $(this);
-				var $li = $this.parent("li");
-				var index = $li.index();
-				$li.addClass("currentTab").siblings().removeClass("currentTab");
-				$content.eq(index).removeClass("hidden").siblings().addClass("hidden");
-				$this.blur();
-			});
+		$('input#apptype1').click(function(){
+			if($(this).attr('checked')==true) displayAppType = displayAppType|0x1;
+			else displayAppType = displayAppType&0xFE;
+			var apptypeUrl = "/development/indexajaxapplist/1/"+displayAppType+'/';
+			AjaxPageList(apptypeUrl);
+		}) 
+		 
+		$('input#apptype2').click(function(){
+			if($(this).attr('checked')==true) displayAppType = displayAppType|0x4;
+			else displayAppType = displayAppType&0xFB;
+			var apptypeUrl = "/development/indexajaxapplist/1/"+displayAppType+'/';
+			AjaxPageList(apptypeUrl);
+		})
+		 
+		$('input#apptype3').click(function(){
+			if($(this).attr('checked')==true) displayAppType = displayAppType|0x8;
+			else displayAppType= displayAppType&0xF7;
+			var apptypeUrl = "/development/indexajaxapplist/1/"+displayAppType+'/';
+			AjaxPageList(apptypeUrl);
 		})
 		
-		/**
-		 * AJAX翻页
-		 */
-		function pageList(page){ 
-			alert(1);
-			if(comps){
-				var ajaxpageListUrl ="/development/indexajaxcomplist/"+page+"?d="+(new Date().getTime());
-			}else if(iweibo){
-				var ajaxpageListUrl ="/development/indexajaxiweibolist/"+page+"?d="+(new Date().getTime());
-			}else{
-				var ajaxpageListUrl ="/development/indexajaxapplist/"+page+'/'+displayAppType+'/'+"?d="+(new Date().getTime());
-			}
-			AjaxPageList(ajaxpageListUrl);
-		} 
-		/**
-		 * AJAX翻页
-		 */
-		function pageList1(page){ 
-			var ajaxpageListUrl ="/development/indexajaxkpapplist/"+page+'/'+displayAppType+'/'+"?d="+(new Date().getTime());
-			AjaxPageList(ajaxpageListUrl);
-		} 
-			
-		function AjaxPageList(ajaxpageListUrl){ 
-			$.ajax({
-				  url: ajaxpageListUrl,
-				  dataType: "json",
-				  cache: false,
-				  success: function(ResposeData){ 
-					  if(ResposeData.uin == hdlogin){
-						$('#applistul').html(ResposeData.html);
-						$('#pagebar').html(ResposeData.pagestr);
-						$('#applistul1').html(ResposeData.html1);
-						$('#pagebar1').html(ResposeData.pagestr1);
-					  }else{
-						location.href="/development/";
-					  }
-				  }
-			})
-		}
+		$('input#apptype4').click(function(){
+			if($(this).attr('checked')==true) displayAppType = displayAppType|0x20;
+			else displayAppType= displayAppType&0xDF;
+			var apptypeUrl = "/development/indexajaxapplist/1/"+displayAppType+'/';
+			AjaxPageList(apptypeUrl);
+		})
 		
-	});
-})();
+		// TAB
+		var $content = $("#appContent").children("div.applist2");
+		$("#appTab a").click(function () {
+			var $this = $(this);
+			var $li = $this.parent("li");
+			var index = $li.index();
+			$li.addClass("currentTab").siblings().removeClass("currentTab");
+			$content.eq(index).removeClass("hidden").siblings().addClass("hidden");
+			$this.blur();
+		});
+	})
+	
+	/**
+	 * AJAX翻页
+	 */
+	function pageList(page){ 
+		if(comps){
+			var ajaxpageListUrl ="/development/indexajaxcomplist/"+page+"?d="+(new Date().getTime());
+		}else if(iweibo){
+			var ajaxpageListUrl ="/development/indexajaxiweibolist/"+page+"?d="+(new Date().getTime());
+		}else{
+			var ajaxpageListUrl ="/development/indexajaxapplist/"+page+'/'+displayAppType+'/'+"?d="+(new Date().getTime());
+		}
+		AjaxPageList(ajaxpageListUrl);
+	} 
+	/**
+	 * AJAX翻页
+	 */
+	function pageList1(page){ 
+		var ajaxpageListUrl ="/development/indexajaxkpapplist/"+page+'/'+displayAppType+'/'+"?d="+(new Date().getTime());
+		AjaxPageList(ajaxpageListUrl);
+	} 
+		
+	function AjaxPageList(ajaxpageListUrl){ 
+		$.ajax({
+			  url: ajaxpageListUrl,
+			  dataType: "json",
+			  cache: false,
+			  success: function(ResposeData){ 
+				  if(ResposeData.uin == hdlogin){
+					$('#applistul').html(ResposeData.html);
+					$('#pagebar').html(ResposeData.pagestr);
+					$('#applistul1').html(ResposeData.html1);
+					$('#pagebar1').html(ResposeData.pagestr1);
+				  }else{
+					location.href="/development/";
+				  }
+			  }
+		})
+	}
+	
+
