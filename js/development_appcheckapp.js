@@ -7,7 +7,7 @@ util.createStyle(str);
 
 this.tpl = this.tpl || {};
 tpl.development_appcheckapp = [
-'<!--{ include file="header.tpl" }-->',
+	this.tpl.header,
 	'<div id="content" class="controlCon main main_app">',
 		'<div class="approate">',
 			'<a href="/development/">我的应用</a> &gt; <span><%=app.app_name%></span>',
@@ -59,10 +59,13 @@ tpl.development_appcheckapp = [
 		'</div>',
 	'</div>',
 '<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_checkapp.js?20130328"></script>',
-'<!--{ include file="footer.tpl" }-->'
+	this.tpl.footer
 ].join('');
 
 var ex_appname = app.app_name
+//ajax 链接网页应用 http://dev.t.qq.com/apps/checkname/abc?random=1366881099913
+//无线应用 http://dev.t.qq.com/apps/checkname/accddd2013s?random=1366881352328 
+
 $(function(){ 
 	$('input#app_name').change(function(){ 
 		if(ex_appname != $('input#app_name').val()){

@@ -134,7 +134,11 @@
 	'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_checkdeveloper.js?20130328"></script>',
 	this.tpl.footer
 	].join("\r");
+	
+	
+	
 	$("#main").append(this.tmpl(this.tpl.development_appcheckdeveloper,data));
+	
 	$(function(){
 		var app = window.data.app;
 		var developer = window.data.developer

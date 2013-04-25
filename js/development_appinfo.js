@@ -391,17 +391,24 @@
 			'</div>',
 			'</li>',
 		'</ul>',
-	
 		'</div>',
 	  '</div>',
 	  this.tpl.footer
 	].join("");
-	$('#main').html(tmpl(this.tpl.developer_appinfo,data));
-	var app = data.app;
-	var insiteAppAble=true;
-	var appid=app.app_id;
-	var showalert=showalert?showalert:"0";
-	var app_status=app.app_status?app.app_status:"2";
+	
+	//----------------
+		data.data.userInfo  = userInfo;
+		data.data.navPos = 1;
+		data.data.appnav = 1;
+		
+		
+	//----------------
+	$('#main').html(tmpl(this.tpl.developer_appinfo, data.data));
+	var app = data.data.app;
+	var insiteAppAble = true;
+	var appid = app.app_id;
+	var showalert = showalert ? showalert: "0";
+	var app_status = app.app_status ? app.app_status: "2";
 		
 	(function ($) {
 		$.fn.moduleBox = function (op) {
