@@ -259,9 +259,6 @@
 	].join("");
 	
 	$("#main").html(this.tmpl(this.tpl.development_list,data));
-
-
-
 	var insiteAppAble=true;
 	var developer = data.developer;
 	var siteAppDisplayType = insiteAppAble?  16 : 0; 

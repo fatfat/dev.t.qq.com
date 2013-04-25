@@ -117,6 +117,12 @@
 	//导航栏 用户登录相关信息需要用到的数据 (login_01.js里面)
 	window.hdlogin = data.userInfo.hdlogin;
 	
+	//取得URL参数
+	util.getUrlParam = function (name) {
+		var re = new RegExp('(?:\\?|#|&)' + name + '=([^&]*)(?:$|&|#)', 'i');
+		var m = re.exec(window.location.href);
+		return m ? m[1] : '';
+	};
 	//--------------add by cbyi ---------------------
 	var cache = {};
 	this.tmpl = function tmpl(str, data){
