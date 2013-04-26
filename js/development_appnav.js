@@ -53,7 +53,7 @@
 	
 	var user_certif_status= developer.user_certif_status
 	var user_check_status= developer.user_check_status;//资质证明审核状态
-	var app_binbond= app.app_binbond;//保证金
+	var app_binbond= global_obj.data.app.app_binbond;//保证金
 	$(function(){
 		$("#apphost_btn").click(function(event){ 
 			if(app_binbond ===0){//未分配保证金

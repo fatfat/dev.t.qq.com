@@ -10,7 +10,7 @@ tpl.development_app_material = [
                     '<tr>',
                         '<td valign="bottom" align="left" height="75">',
                             '<label class="nullimg">',
-                                '<img src="<%=app.app_icon_16 || \'http://mat1.gtimg.com/app/opent/images/websites/0.gif\'%>" width="16" height="16" _width="16" _height="16"/>',
+                                '<img src="<%=(app.app_icon_16 || "http://mat1.gtimg.com/app/opent/images/websites/0.gif")%>" width="16" height="16" _width="16" _height="16"/>',
                             '</label>',
                             '<br>',
                             '<label>',
@@ -25,7 +25,7 @@ tpl.development_app_material = [
                         '</td>',
                         '<td valign="bottom" align="left">',
                             '<label class="nullimg">',
-                                '<img src="<%=app.app_icon_50 || \'http://mat1.gtimg.com/app/opent/images/websites/0.gif\'%>" width="50" height="50" _width="50" _height="50"/>',
+                                '<img src="<%=(app.app_icon_50 || "http://mat1.gtimg.com/app/opent/images/websites/0.gif")%>" width="50" height="50" _width="50" _height="50"/>',
                             '</label>',
                             '<br>',
                             '<label>',
@@ -39,7 +39,7 @@ tpl.development_app_material = [
                         '</td>',
                         '<td valign="bottom" align="left">',
                             '<label class="nullimg">',
-                                '<img src="<%=app.app_icon_64 || \'http://mat1.gtimg.com/app/opent/images/websites/0.gif\'%>" width="64" height="64" _width="64" _height="64" />',
+                                '<img src="<%=(app.app_icon_64 || "http://mat1.gtimg.com/app/opent/images/websites/0.gif")%>" width="64" height="64" _width="64" _height="64" />',
                             '</label>',
                             '<br>',
                             '<label>',
@@ -53,7 +53,7 @@ tpl.development_app_material = [
                         '</td>',
                         '<td valign="bottom" align="left">',
                             '<label class="nullimg">',
-                                '<img src="<%=app.app_icon_75 || \'http://mat1.gtimg.com/app/opent/images/websites/0.gif\'%>" width="75" height="75" _width="75" _height="75"/>',
+                                '<img src="<%=(app.app_icon_75 || "http://mat1.gtimg.com/app/opent/images/websites/0.gif")%>" width="75" height="75" _width="75" _height="75"/>',
                             '</label>',
                             '<br>',
                             '<label>',
@@ -68,7 +68,7 @@ tpl.development_app_material = [
                         '<%if (app.app_type ==6 ) {%>',
                         	'<td valign="bottom" align="left">',
                             '<label class="nullimg">',
-                                '<img src="<%=app.app_icon_114 || \'http://mat1.gtimg.com/app/opent/images/websites/0.gif\'%>" width="114" height="114" _width="114" _height="114"/>',
+                                '<img src="<%=(app.app_icon_114 || "http://mat1.gtimg.com/app/opent/images/websites/0.gif")%>" width="114" height="114" _width="114" _height="114"/>',
                             '</label>',
                             '<br>',
                             '<label>',
@@ -83,7 +83,7 @@ tpl.development_app_material = [
                         '<%}%>',
                     '</tr>',
                     '<tr>',
-                        '<td colspan="<%if (app.app_type eq 6) {%>5<%} else {%>4<%}%>" >',
+                        '<td colspan="<%if (app.app_type == 6) {%>5<%} else {%>4<%}%>" >',
                             '<label class="gray">',
                                 '*图片格式为png &nbsp; &nbsp; *每张图片最大不超过10K',
                             '</label>',
@@ -110,7 +110,7 @@ tpl.development_app_material = [
             '<tr>',
                 '<td>',
                     '<label class="nullimg">',
-                        '<img src="<%=app.app_icon_p1 || \'http://mat1.gtimg.com/app/opent/images/websites/0.gif\'%>" width="200" height="150" _width="330" _height="247">',
+                        '<img src="<%=(app.app_icon_p1 || "http://mat1.gtimg.com/app/opent/images/websites/0.gif")%>" width="200" height="150" _width="330" _height="247">',
                     '</label>',
                     '<br>',
                     '<label>',
@@ -123,7 +123,7 @@ tpl.development_app_material = [
                 '</td>',
  				'<td>',
                     '<label class="nullimg">',
-                        '<img src="<%=app.app_icon_p2 || \'http://mat1.gtimg.com/app/opent/images/websites/0.gif\'%>" width="200" height="150" _width="330" _height="247">',
+                        '<img src="<%=(app.app_icon_p2 || "http://mat1.gtimg.com/app/opent/images/websites/0.gif")%>" width="200" height="150" _width="330" _height="247">',
                     '</label>',
                     '<br>',
                     '<label>',
@@ -162,7 +162,7 @@ tpl.development_app_material = [
 				'<tr>',
 					'<td  colspan="2">',
 						'<label class="nullimg">',
-							'<img src="<%=app.app_icon_p3 || \'http://mat1.gtimg.com/app/opent/images/websites/0.gif\'%>" width="350"',
+							'<img src="<%=(app.app_icon_p3 || "http://mat1.gtimg.com/app/opent/images/websites/0.gif")%>" width="350"',
 							'height="247" _width="760" _height="580">',
 						'</label>',
 						'<br>',
@@ -190,7 +190,10 @@ tpl.development_app_material = [
 	'</li>',
 	'<%}%>',
 '<%}%>'
+
 ].join('');
+
+var app = global_obj.data.app;
 
 if (app.app_type ==6) {
 	$(function(){

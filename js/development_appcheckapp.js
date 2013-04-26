@@ -18,7 +18,7 @@ tpl.development_appcheckapp = [
 					'<img src="<%=app.app_icon_75 || \'http://mat1.gtimg.com/app/opent/images/index/icon.jpg\'%>" height="75" width="75"/><br/>',
 					'<p><%=app.app_name%></p>',
 				'</div>',
-				'<!--{ include file="./development/appnav.tpl" }-->',
+				this.tpl.appnav,
 			'</div>',
 		'</div>',
 		'<div class="deverRight">',
@@ -33,8 +33,8 @@ tpl.development_appcheckapp = [
 			'<iframe id="appform_post_aec" name="appform_post_aec" width="100" height="100" src="about:blank" style="display: none;"></iframe>',
 			'<form action="/development/savecheckwapp/<%=app.app_id%>/" method="post" class="appform wirelessappform" enctype="multipart/form-data" id="appform" target="appform_post_aec" onsubmit="return false">',
 				'<ul>',
-				'<!--{ include file="./development/development_app_info.tpl" }-->',
-				'<!--{ include file="./development/development_app_material.tpl" }-->',
+				this.tpl.development_app_info,
+				this.tpl.development_app_material,
 				'<li>',
 				    '<label class="form_label">&nbsp;</label>',
 				    '<span class="form_element">',
@@ -46,7 +46,7 @@ tpl.development_appcheckapp = [
 			'<%} else {%>',
 			'<form action=" " method="post" class="appform" id="appform_app" onsubmit="return false;">',
 				'<ul>',
-				'<!--{ include file="./development/development_app_info.tpl" }-->',
+				this.tpl.development_app_info,
 				'<li>',
 				    '<label class="form_label">&nbsp;</label>',
 				    '<span class="form_element">',
@@ -62,9 +62,12 @@ tpl.development_appcheckapp = [
 	this.tpl.footer
 ].join('');
 
-var ex_appname = app.app_name
+var app = global_obj.data.app;
+var ex_appname = app.app_name;
 //ajax 链接网页应用 http://dev.t.qq.com/apps/checkname/abc?random=1366881099913
 //无线应用 http://dev.t.qq.com/apps/checkname/accddd2013s?random=1366881352328 
+
+$("#main").append(tmpl(this.tpl.development_appcheckapp,global_obj.data))
 
 $(function(){ 
 	$('input#app_name').change(function(){ 
