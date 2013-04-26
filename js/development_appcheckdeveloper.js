@@ -134,14 +134,10 @@
 	'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_checkdeveloper.js?20130328"></script>',
 	this.tpl.footer
 	].join("\r");
-	
-	
-	
-	$("#main").append(this.tmpl(this.tpl.development_appcheckdeveloper,data));
-	
+	$("#main").append(this.tmpl(this.tpl.development_appcheckdeveloper,global_obj.data));
 	$(function(){
-		var app = window.data.app;
-		var developer = window.data.developer
+		var app = global_obj.data.app;
+		var developer = global_obj.data.developer;
 		var NextUrl = "/development/appcheckapp/"+app.app_id+"/";
 		var PostUrl = "/development/ajaxsavecheckdeverloper/"+app.app_id+"/";
 		var user_province=developer.user_province;

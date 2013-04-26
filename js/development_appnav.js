@@ -1,8 +1,8 @@
 ;(function(){// JavaScript Document
 	//需要的数据
 	this.tpl = this.tpl || {};	
-	var appnav = "info";
-	var whitename = "1231";
+	/*window.appnav = "info";
+	window.whitename = "1231";
 	if(!window.app){
 		window.app = {};
 	};
@@ -13,12 +13,9 @@
 	app.app_status = 1,
 	app.app_pay = 1;
 	app.app_binbond = 2;
-	if(!window.developer){
-		window.developer = {};
-	};
 	developer.user_certif_status = 1;
-	developer.user_check_status = 1;
-	
+	developer.user_check_status = 1;*/
+	var developer = this.developer||global_obj.data.developer;
 	this.tpl.appnav = [
 	'<ul class="appsnav">',
 		'<li <%if(appnav =="info"){%> class="active"<%}%>><a href="/development/appinfo/<%=app.app_id%>">应用汇总</a></li>',
@@ -56,7 +53,7 @@
 	
 	var user_certif_status= developer.user_certif_status
 	var user_check_status= developer.user_check_status;//资质证明审核状态
-	var app_binbond=app.app_binbond;//保证金
+	var app_binbond= app.app_binbond;//保证金
 	$(function(){
 		$("#apphost_btn").click(function(event){ 
 			if(app_binbond ===0){//未分配保证金

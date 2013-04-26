@@ -2,7 +2,7 @@
 	
 var developer_addone = 
 [
-	headerTmpl, 
+	this.tpl.header, 
 	'<div id="content" class="deverCon wrapper">',
 		'<h3 class="formtitle">',
 			'<%if(developer){%>',
@@ -44,7 +44,7 @@ var developer_addone =
 					'</li>',
 					'<li><label class="form_label">网站地址：</label><span class="form_input"><input type="text" class="txt" name="user_website" id="user_website" value="<%=developer && developer.user_website ? developer.user_website : ""%>" data-rule="applink" data-error="网站地址"></span>',
 					'</li>',
-					agreementTmpl,
+					this.tpl.agreement,
 					'<li>',
 						'<label class="form_label">&nbsp;</label>',
 						'<span class="form_element">',
@@ -58,11 +58,12 @@ var developer_addone =
 	'</div>',
 	'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/location.js?20130328"></script>',
 	'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/validater.js?20130328"></script>',
-	footerTmpl
+	this.tpl.footer
 ].join("");
 
-$(function(){
-	$(document.body).append(tmpl(developer_addone, data));
+$(document.body).append(tmpl(developer_addone, global_obj.data));
+
+$(function(){	
 	$('#reset').click(function() {
 		 location.href="developer_bedever.html";
 	});
