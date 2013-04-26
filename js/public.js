@@ -115,8 +115,7 @@
 	var wapperStyle = ".deverCon.wrapper{margin-top:45px;}";
 	util.createStyle(wapperStyle)
 	//导航栏 用户登录相关信息需要用到的数据 (login_01.js里面)
-	alert(data.data)
-	window.hdlogin = data.userInfo.hdlogin;
+	window.hdlogin = global_obj?global_obj.userInfo.hdlogin:data.userInfo.hdlogin;
 	
 	//取得URL参数
 	util.getUrlParam = function (name) {
