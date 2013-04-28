@@ -2,16 +2,16 @@
 	this.tpl = this.tpl || {};
 	tpl.appnav = [
 		'<ul class="appsnav">',
-			'<li <%if (appnav ==\'info\') {%> class="active"<%}%>><a href="/development/appinfo/<%=app.app_id%>">应用汇总</a></li>',
-			'<li <%if (appnav ==\'edit\') {%> class="active"<%}%>><a href="/development/appedit/<%=app.app_id%>">基本信息</a></li>',
+			'<li <%if (appnav ==\'info\') {%> class="active"<%}%>><a href="/development/appinfo?appid=<%=app.app_id%>">应用汇总</a></li>',
+			'<li <%if (appnav ==\'edit\') {%> class="active"<%}%>><a href="/development/appedit?appid=<%=app.app_id%>">基本信息</a></li>',
 			'<%if (app.app_type ==\'6\') {%>',
-				'<li <%if (appnav ==\'platform\') {%> class="active"<%}%>><a href="/development/platforminfo/<%=app.app_id%>">平台信息</a></li>',
+				'<li <%if (appnav ==\'platform\') {%> class="active"<%}%>><a href="/development/platforminfo?appid=<%=app.app_id%>">平台信息</a></li>',
 			'<%}%>',
-			'<li <%if (appnav ==\'compass\') {%> class="active"<%}%>><a href="/development/appcompass/<%=app.app_id%>/">业务数据</a></li>',
+			'<li <%if (appnav ==\'compass\') {%> class="active"<%}%>><a href="/development/appcompass?appid=<%=app.app_id%>/">业务数据</a></li>',
 			'<%if (app.app_type ==\'4\' && app.app_type_check !=\'1\') {%>',
 				'<%if (app.app_hosting==1) {%>',
 					'<%if (developer.user_certif_status==1 || app.app_binbond==1) {%>',
-						'<li <%if (appnav ==\'appedit\') {%> class="active"<%}%>><a href="/development/apphost/<%=app.app_id%>" id="apphost_btn" data-default="1">应用托管</a></li>',
+						'<li <%if (appnav ==\'appedit\') {%> class="active"<%}%>><a href="/development/apphost?appid=<%=app.app_id%>" id="apphost_btn" data-default="1">应用托管</a></li>',
 					'<%} else {%>',
 						'<li><a href="javascript:;" id="apphost_btn" data-default="0">应用托管</a></li>',
 					'<%}%>',
@@ -25,9 +25,9 @@
 						'<li><a href="javascript:;" id="apppay_unpay">支付结算</a></li>',
 					'<%}%>',
 				'<%}%>',
-				'<li <%if (appnav =="whitename") {%> class="active"  <%}%>><a href="/development/appwhitename/<%=app.app_id%>">权限控制</a></li>',
+				'<li <%if (appnav =="whitename") {%> class="active"  <%}%>><a href="/development/appwhitename?appid=<%=app.app_id%>">权限控制</a></li>',
 				'<%if (app.app_status ==3) {%>',
-					'<li <%if (appnav =="notice") {%> class="active"  <%}%>><a href="/development/notice/<%=app.app_id%>">更多服务</a></li>',
+					'<li <%if (appnav =="notice") {%> class="active"  <%}%>><a href="/development/notice?appid=<%=app.app_id%>">更多服务</a></li>',
 				'<%} else {%>',
 					'<li <%if (appnav =="notice") {%> class="active"  <%}%>><a href="javascript:;" id="apppay_unOnline">更多服务</a></li>',
 				'<%}%>',
@@ -96,6 +96,20 @@
 			'Copyright &copy; 1998-2013 Tencent.All Rights Reserved',
 		'</div>'
 	].join("");
+
+	this.tpl.login = [
+		tpl.header,
+		'<div class="actioninfo">',
+			'<img src="http://mat1.gtimg.com/app/opent/images/index/transparent.gif" class="alert"/>对不起，在没有登录微博的情况下，您无法使用该功能。 请先 <a href="javascript:void(0)" id="loginBtn2" class="links">登录</a>',
+		'</div>',
+		'<script>',
+			'$(document).ready(function(){',
+				'setTimeout(function(){showLoginWin(encodeURIComponent(location.href))},100);',
+		'	});',
+		'</script>',
+		tpl.footer,
+	].join("");
+
 	this.util = this.util || {};
 	util.createStyle = function (str) {
 		var style = document.createElement('style');

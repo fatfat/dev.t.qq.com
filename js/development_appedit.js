@@ -34,8 +34,6 @@
 	].join('');
 	util.createStyle(str);
 
-	this.tpl = this.tpl || {};
-
 	tpl.development_app_info = [
 		'<input type="hidden" name="app_id" value="<%=app.app_id%>">',
 		'<input type="hidden" name="app_type" value="<%=app.app_type%>">',
@@ -216,8 +214,8 @@
 			'<li>',
 				'<label class="form_label"><em>*</em>应用平台： </label>',
 				'<span class="form_element form_element2 form_checkplatform">',
-					'<input type="checkbox" class="appplatform" name="appplatform" id="iphone_pf" <%if (app.app_platform==3 || $app.app_platform==1) {%>checked<% } %> <%if (iphoneinfo.app_plat_status ==2) {%>disabled<% } %>/><label for="iphone_pf" class="checkbox_label">iPhone</label>',
-					'<input type="checkbox" class="appplatform" name="appplatform" id="android_pf" <%if (app.app_platform==3 || $app.app_platform==2) {%>checked<% } %> <%if (androidinfo.app_plat_status ==2) {%>disabled<% } %>/><label for="android_pf" class="checkbox_label">Android</label>',
+					'<input type="checkbox" class="appplatform" name="appplatform" id="iphone_pf" <%if (app.app_platform==3 || app.app_platform==1) {%>checked<% } %> <%if (iphoneinfo.app_plat_status ==2) {%>disabled<% } %>/><label for="iphone_pf" class="checkbox_label">iPhone</label>',
+					'<input type="checkbox" class="appplatform" name="appplatform" id="android_pf" <%if (app.app_platform==3 || app.app_platform==2) {%>checked<% } %> <%if (androidinfo.app_plat_status ==2) {%>disabled<% } %>/><label for="android_pf" class="checkbox_label">Android</label>',
 					'<input type="hidden" name="app_platform" id="app_platform" value="<%=app.app_platform%>"/>',
 					'<input type="hidden" id="wapp_platform" value="0"/><!--用在app_edit.js中，用于判断无线应用审核通过、上架拒绝、下架后，修改应用网址和75X75图标后需要重新审核-->',
 				'</span>',
@@ -648,7 +646,7 @@
 		'<div class="deverRight">',
 		'<h1 class="comp_tit">应用基本信息</h1>',
 			'<iframe id="appform_post_aec" name="appform_post_aec" width="100" height="100" src="about:blank" style="display: none;"></iframe>',
-			'<form action="/development/saveappinfo/<%=app.app_id%>/" method="post" class="appform <%if (app.app_type==6) {%>wirelessappform<%}%>" enctype="multipart/form-data" id="appform" target="appform_post_aec" onsubmit="return false">',
+			'<form action="/development/saveappinfo?appid=<%=app.app_id%>" method="post" class="appform <%if (app.app_type==6) {%>wirelessappform<%}%>" enctype="multipart/form-data" id="appform" target="appform_post_aec" onsubmit="return false">',
 			'<ul>',
 				'<%if (app.app_status==2) {%>',
 					'<li class="alert alert_warn" beclose="true">',
@@ -692,11 +690,17 @@
 	tpl.footer,
 	].join('');
 
-	$('#main').html(tmpl(tpl.appedit, data));
+	global_obj.data.app = global_obj.data.app || {};
+	global_obj.data.iphoneinfo = global_obj.data.iphoneinfo || {};
+	var iphoneinfo = global_obj.data.iphoneinfo;
+	global_obj.data.androidinfo = global_obj.data.androidinfo || {};
+	var androidinfo = global_obj.data.androidinfo;
+	var app = global_obj.data.app;
+	$('#main').html(tmpl(tpl.appedit, global_obj.data));
 	//appnav js begin
-	var user_certif_status=+'developer.user_certif_status';
-	var user_check_status=+'developer.user_check_status';//资质证明审核状态
-	var app_binbond=+'app.app_binbond';//保证金
+	var user_certif_status= global_obj.data.developer.user_certif_status;
+	var user_check_status= global_obj.data.developer.user_check_status;//资质证明审核状态
+	var app_binbond= global_obj.data.app.app_binbond;//保证金
 
 	$(function(){
 		$("#apphost_btn").click(function(event){ 
@@ -712,7 +716,7 @@
 			}*/
 			if(app_binbond ===0){//未分配保证金
 				if( user_certif_status ===0 && ( user_check_status===0 || user_check_status===1 || user_check_status===2 )){
-					var str="<center>开发者资质证明通过审核后，才能申请服务器和托管地址<br/><br/><a href=\"/development/certification/\">现在去上传资质证明</a><br/><br/></center>";
+					var str="<center>开发者资质证明通过审核后，才能申请服务器和托管地址<br/><br/><a href=\"/development/certification\">现在去上传资质证明</a><br/><br/></center>";
 					loginWin.alert({"text":str,"height":215,"ok_text":"我知道了"});
 					return false;	
 				}
@@ -847,7 +851,7 @@
 					+ '&app_hosting='+$('#app_hosting1 input:checked').val();
 					$.ajax({
 						type: "POST",
-						url: "/development/saveappinfo/"+app_id+'/',
+						url: "/development/saveappinfo?appid="+app_id,
 						dataType: "json",
 						data: postData,
 						success: function(msg){
@@ -1008,7 +1012,7 @@
 		var t=$(this),p=t.parent(),c=p.find(".alert_content");
 			if (p.attr("beclose")){
 			p.hide();
-			$.get("/development/clearappsitemsg/" + app.app_id + "?t="+new Date().getTime());
+			$.get("/development/clearappsitemsg?appid=" + app.app_id + "&st="+new Date().getTime());
 			return;
 			}
 		}); 

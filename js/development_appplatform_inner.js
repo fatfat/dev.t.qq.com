@@ -1,5 +1,4 @@
 ﻿;(function(){
-	this.tpl = this.tpl || {};
 	tpl.development_appplatform_inner = 
 	[       
 		'<ul>',
