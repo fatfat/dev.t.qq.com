@@ -322,7 +322,7 @@ OPEN_VALIDATOR = {
 			,url    = {
 				// "appname"  : "/apps/checkname/"+encodeURIComponent(value),
 				 "compname" : "/apps/checkcompname",
-				 "appname":"/pipes/interfaceserver?action=common_query&business_type=checkname&appname="+encodeURIComponent(value)
+				 "appname":"/pipes/interfaceserver?action=common_query&business_type=ajax_checkname&appname="+encodeURIComponent(value)
 			}
 			,para   = {
 				 "appname"  : {}
@@ -340,7 +340,7 @@ OPEN_VALIDATOR = {
 				"data"     : para[rule],
 				"success"  : function(d){
 					var w = selector.attr("data-working")|0; //转化为自然数
-					if(d.error == 0){
+					if(d.code == 0){
 						selector.attr("data-only",true);
 						showmsg(true,selector,'');
 						if (w == 2){
