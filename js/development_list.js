@@ -8,8 +8,13 @@ if(!hdlogin)
 }
 else
 {
-	var page_count = Math.ceil(global_obj.data.app_count/global_obj.data.page_size);  //页数
+	var page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
 	if(page_count < global_obj.data.page_no){    //当前页码不能超过总页数
+		alert("warning:The page_no excceeds the total page counts");
+	}  
+
+	var kpage_count = Math.ceil(global_obj.data.app_count/global_obj.data.page_size);  //页数
+	if(kpage_count < global_obj.data.kpage_no){    //当前页码不能超过总页数
 		alert("warning:The page_no excceeds the total page counts");
 	}              
 
@@ -294,37 +299,48 @@ else
 		$('input#apptype1').click(function(){
 			if($(this).attr('checked')==true) displayAppType = displayAppType|0x1;
 			else displayAppType = displayAppType&0xFE;
-			var apptypeUrl = "/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType;
+			var apptypeUrl = "/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType;
 			AjaxPageList(apptypeUrl);
+			//checkPageNum(page_count);
 		}) 
 		 
 		$('input#apptype2').click(function(){
 			if($(this).attr('checked')==true) displayAppType = displayAppType|0x4;
 			else displayAppType = displayAppType&0xFB;
-			var apptypeUrl = "/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType;
+			var apptypeUrl = "/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType;
 			AjaxPageList(apptypeUrl);
+			//checkPageNum(page_count);
 		})
 		 
 		$('input#apptype3').click(function(){
 			if($(this).attr('checked')==true) displayAppType = displayAppType|0x8;
 			else displayAppType= displayAppType&0xF7;
-			var apptypeUrl = "/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType;
+			var apptypeUrl = "/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType;
 			AjaxPageList(apptypeUrl);
+			//checkPageNum(page_count);
 		})
 		
 		$('input#apptype4').click(function(){
 			if($(this).attr('checked')==true) displayAppType = displayAppType|0x20;
 			else displayAppType= displayAppType&0xDF;
-			var apptypeUrl = "/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType;
+			var apptypeUrl = "/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType;
 			AjaxPageList(apptypeUrl);
+			//checkPageNum(page_count);
 		})
 
 		//pageBar
-		if(page_count == 1){
-			$('#pagebar').css('display','none');
+		
+		// if(page_count == 1){
+		// 	$('#pagebar').css('display','none');
+		// }
+		// else{
+		// 	$('#pagebar').css('display','block');
+		// } 
+		if(kpage_count == 1){
+			$('#pagebar1').css('display','none');
 		}
 		else{
-			$('#pagebar').css('display','block');
+			$('#pagebar1').css('display','block');
 		}    
 		
 		// TAB
@@ -337,6 +353,16 @@ else
 			this.blur();
 		});
 	})
+
+
+	function checkPageNum(page_count){
+		if(page_count == 1){
+			$('#pagebar').css('display','none');
+		}
+		else{
+			$('#pagebar').css('display','block');
+		} 
+	}
 	
 	/**
 	 * AJAX翻页
@@ -350,8 +376,7 @@ else
 			var ajaxpageListUrl ="/development/indexajaxapplist/"+page+'/'+displayAppType+'/'+"?d="+(new Date().getTime());
 		}*/
 		global_obj.data.page_no = page;
-	//	var action = "common_query", business_type="ajax_applist", cookie_uin="1935849399";
-		ajaxpageListUrl = "http://open_test.t.qq.com/pipes/interfaceserver"+"?action="+action+"&business_type="+business_type+"&cookie_uin="+cookie_uin+"&page="+page;
+		ajaxpageListUrl = "http://open_test.t.qq.com/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType+"&page="+page;
 		AjaxPageList(ajaxpageListUrl);
 	} 
 	/**
@@ -359,7 +384,7 @@ else
 	 */
 	function pageList1(page){ 
 		global_obj.data.kpage_no = page;
-		var ajaxpageListUrl ="http://open_test.t.qq.com/pipes/interfaceserver"+"?action="+action+"&business_type="+business_type+"&cookie_uin="+cookie_uin+"&page="+page;
+		var ajaxpageListUrl ="http://open_test.t.qq.com/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType+"&page="+page;
 		AjaxPageList(ajaxpageListUrl);
 	} 
 		
@@ -369,21 +394,16 @@ else
 			  dataType: "json",
 			  cache: false,
 			  success: function(ResposeData){ 
-//				  if(ResposeData.uin == hdlogin){
-				  console.log(ResposeData);			
-				  console.log(ResposeData.data);
-				  console.log(ResposeData.uin);
 				  ResposeData.data.kapps = ResposeData.data.kapps || {};
 				  ResposeData.data.apps = ResposeData.data.apps || {};
-				  if(ResposeData.data.uin == hdlogin){
-				/*	$('#applistul').html(ResposeData.html);
-					$('#pagebar').html(ResposeData.pagestr); 
-					$('#applistul1').html(ResposeData.html1);
-					$('#pagebar1').html(ResposeData.pagestr1);*/
+				  if (parseInt(ResposeData.data.uin) == parseInt(hdlogin) ){
+				  	global_obj.data.app_count = ResposeData.data.app_count;
+				  	page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
+					checkPageNum(page_count);
 					$('#applistul').html(tmpl(tpl.applistul, ResposeData.data));
 					$('#pagebar').html(tmpl(tpl.pageBar, ResposeData.data));
 				  }else{
-				//	location.href="/development/";
+					location.href="/development/";
 				  }
 			  }
 		})
