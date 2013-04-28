@@ -125,8 +125,8 @@ OPEN_VALIDATOR = {
 			var label  = selector.attr("data-error") 	//字段名
 			,dvalue = selector.attr("data-default") //默认值
 			,rule   = selector.attr("data-rule")    //验证规则
-			,url    = "/developer/checkuserid/"+encodeURIComponent(value);
-	
+			//,url    = "/developer/checkuserid/"+encodeURIComponent(value);
+			,url = "/pipes/interfaceserver?action=common_query&business_type=ajax_checkuserid&userid="+encodeURIComponent(value);
 		if (dvalue != value){
 			showmsg(1,selector,"正在验证"+label);
 			$.ajax({
@@ -134,7 +134,7 @@ OPEN_VALIDATOR = {
 					"dataType":"json",
 					"url":url,
 					"success":function(d){
-						var w = selector.attr("data-working")|0,ret = +d.ret,err = common.getMsgByRet(ret); //转化为自然数
+						var w = selector.attr("data-working")|0,ret = +d.code,err = common.getMsgByRet(ret); //转化为自然数
 						if (err){
 							selector.attr("data-only",false);
 							showmsg(false,selector,err);
@@ -446,7 +446,8 @@ OPEN_VALIDATOR = {
 					"dataType":"json",
 					"url":url,
 					"success":function(d){
-						var w = selector.attr("data-working")|0,ret = +d.ret,err = common.getMsgByRet(ret); //转化为自然数
+						//var w = selector.attr("data-working")|0,ret = +d.ret,err = common.getMsgByRet(ret); //转化为自然数
+						var w = selector.attr("data-working")|0,ret = +d.code,err = common.getMsgByRet(ret); //转化为自然数
 						if (err){
 							selector.attr("data-only",false);
 							showmsg(false,selector,err);
@@ -863,7 +864,8 @@ $("#app_class_main").change(function(){
 				,"success":function(d){
 
 				if(d!=null){
-				var ret = +d.ret , msg = common.getMsgByRet(ret);
+					//var ret = +d.ret , msg = common.getMsgByRet(ret);
+				var ret = +d.code , msg = common.getMsgByRet(ret);
 				if (msg){
 				loginWin.alert("<center>"+msg+"</center>");
 				return;
