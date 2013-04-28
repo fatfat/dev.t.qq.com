@@ -203,7 +203,9 @@ $(function() {
 			"app_type": appType,
 			"app_name": $("#app_name").val(),
 			"app_description": appType == 6 ? "": $("#app_description").val(),
-			"app_class_main": $("#app_class_main").val()
+			"app_class_main": $("#app_class_main").val(),
+			action:"common_query",
+			business_type:"wirelessdoadd"
 		},
 		f = $(this);
 		if (appType == 4) {
@@ -220,13 +222,25 @@ $(function() {
 				postData["app_url"] = $("#app_url").val();
 			}
 		}
+		
+		/*http://open_test.t.qq.com/pipes/interfaceserver?
+		action=common_query
+		&business_type=wirelessdoadd
+		&app_url=http://www.qq.com
+		&app_name=macowutestdoaddaa1
+		&app_type=1
+		&app_class_main=5001
+		&app_description=aaabbb*/
+		
 		$.ajax({
 			type: "POST",
-			url: "/apps/doadd?t=" + new Date().getTime(),
+			//url: "/apps/doadd?t=" + new Date().getTime(),
+			url:"/pipes/interfaceserver?t=" + new Date().getTime(),
 			dataType: "json",
 			data: postData,
 			success: function(d) {
-				var ret = +(d.ret || d.error),
+				//var ret = +(d.ret || d.error),
+				var ret = +(d.code ),
 				msg = common.getMsgByRet(ret);
 				if (msg) {
 					loginWin.alert("<center>" + msg + "</center>");
@@ -235,7 +249,8 @@ $(function() {
 				if (ret === 0) {
 					loginWin.alert("<center>创建成功</center>",
 					function() {
-						location.href = '/apps/getappkey/' + d.data.appId + '/' + d.data.appKey + '-' + appType;
+						location.href = '/apps/getappkey?appid=' + d.data.appId;
+						//location.href = '/apps/getappkey/' + d.data.appId + '/' + d.data.appKey + '-' + appType;
 					});
 				} else {
 					f.removeAttr("commmiting");
