@@ -152,7 +152,6 @@ $((function() {
 	})(jQuery);
 
 	var init = function() {
-		alert(132)
 		$('#logoutBtn').bind("click",common.loginOut);
 		$('#loginBtn,#loginBtn2').click(function() {
 			common.showLoginWin();

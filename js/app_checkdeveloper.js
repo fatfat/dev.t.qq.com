@@ -775,7 +775,6 @@ $(function(){
 			   success: function(d){
 			   	  // var ret = +(d.ret || d.error),msg = common.getMsgByRet(ret);
 				    var ret = +(d.code),msg = common.getMsgByRet(ret);
-					alert(d.code)
 			   	   if (msg){
 			   	   		loginWin.alert('<center>'+ msg +'</center>');
 			   	   		return;
