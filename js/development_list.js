@@ -292,7 +292,7 @@ else
 
 	//检查开发这信息,看是不是开发这,或者创建应用达到上限
 	$("#newapp").click(function(){
-		popAppWin(developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
+		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 	});	
 	$(function(){
 
