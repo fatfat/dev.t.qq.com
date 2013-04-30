@@ -23,7 +23,7 @@ tpl.development_appcheckapp = [
 		'</div>',
 		'<div class="deverRight">',
 			'<h1 class="comp_tit">应用提交审核</h1>',
-			'<%if (app.app_checkapi == 0 && $app.app_type == 4 ) {%>',
+			'<%if (app.app_checkapi == 0 && app.app_type == 4 ) {%>',
 			'<font color="gray">你的应用从未调用过微博接口，请测试应用是否可正常调用接口， 测试成功后再提交申请！ </font>',
 			'<%}%>',
 			'<div class="app_check">',
@@ -58,7 +58,7 @@ tpl.development_appcheckapp = [
 			'<%}%>',
 		'</div>',
 	'</div>',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_checkapp.js?20130328"></script>',
+'<script type="text/javascript" src="/js/app_checkapp.js?20130328"></script>',
 	this.tpl.footer
 ].join('');
 
@@ -67,7 +67,7 @@ var ex_appname = app.app_name;
 //ajax 链接网页应用 http://dev.t.qq.com/apps/checkname/abc?random=1366881099913
 //无线应用 http://dev.t.qq.com/apps/checkname/accddd2013s?random=1366881352328 
 
-$("#main").html(tmpl(this.tpl.development_appcheckapp,global_obj.data))
+$("#main").html(tmpl(this.tpl.development_appcheckapp,global_obj.data));
 
 $(function(){ 
 	$('input#app_name').change(function(){ 
