@@ -1,11 +1,12 @@
 ;(function(){
 <!--{ include file="header.tpl" }--> 
-	var str = []
+	var str = [
 		'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
 		'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
 		'div a#yunJPGClick{display:none}'
 	].join(""); 
-	uitl.createStyle(str);
+	util.createStyle(str);
+
 	tpl.whitename = [
 	tpl.header,
 	'<div id="content" class="controlCon main main_app">',
@@ -31,14 +32,15 @@
 			'<%if (app.whitename_count>0) {%>',
 			'<dl class="whitenamelist">',
 				'<dt>目前有<span id="whitenum"><%=app.whitename_count%></span>个白名单号码：</dt>',
-				'<%for(var item in whitename){%>',
-					'<dd> <em><%=item%></em><cite class="close" id="<%=item%>" title="删除"></cite></dd>',
-				'<%}%>'
+				'<%for(var item in app.app_whitename){%>',
+					'<dd> <em><%=app.app_whitename[item]%></em><cite class="close" id="<%=app.app_whitename[item]%>" title="删除"></cite></dd>',
+				'<%}%>',
 			/*'<!--{foreach from=$app.app_whitename item=whitename}-->	
 				'<dd> <em><!--{$whitename}--></em><cite class="close" id='<%=whitename%>' title="删除"></cite></dd>','
 		//	'<!--{/foreach}-->*/
 			'</dl>',
 			//'<!--{/if}-->',
+				'<%}%>',
 			'<ul class="wikiinfo">',
 				'<li><em>*</em>应用上线前，您可以为应用添加白名单来进行产品体验、功能测试，非白名单用户不可访问该应用</li>',
 				'<li><em>*</em>每个应用最多可添加50个白名单号码</li>',
@@ -62,6 +64,8 @@
 	'</div>',
 	tpl.footer,
 ].join("");
+
+//console.log(tpl.whitename);
 
 $('#main').html(tmpl(tpl.whitename,global_obj.data));
 var appid =global_obj.data.app.app_id;
@@ -89,7 +93,8 @@ $(function(){
 	 * 删除白名单
 	 */
 	$("cite[id]").click(function(){
-		 var postData = 'app_id='+appid+'&uin='+this.id,t=$(this);
+		console.log(this.id);
+		 var postData = 'app_id='+global_obj.data.app.app_id+'&whitenames='+this.id,t=$(this);
 		 $.ajax({ 
 			   type: "POST", 
 			   dataType: "json", 
@@ -150,7 +155,8 @@ $(function(){
 		 	return false;
 		 }
 		 qqnums=qqnums.replace(/[^0-9\n]/g,"");
-		 var postData = 'app_id='+appid+'&whitenames='+encodeURIComponent(qqnums)
+		 var postData = 'appid='+appid+'&whitenames='+encodeURIComponent(qqnums);
+		 console.log(postData);
 		 $.ajax({ 
 			   type: "POST", 
 			   dataType: "json", 
