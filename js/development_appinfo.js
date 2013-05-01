@@ -770,12 +770,12 @@
 	                var postData = {
 	                	 "app_type":4
 	                	,"action":1
-	                	,"app_id":appid
+	                	,"appid":appid
 	                	,"app_hosting":$('#app_hosting_container').find(":checked").val()
 	                };
 	                $.ajax({
 	                    type: "POST",
-	                    url: "/development/saveappinfo?appid="+appid,
+	                    url: "/development/saveappinfo",
 	                    dataType: "json",
 	                    data: postData,
 	                    success: function(msg){

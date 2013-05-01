@@ -23,7 +23,7 @@
 		'<div class="deverRight">',
 		'<h3 class="comp_tit" id="platformTitle">平台信息</h3>',
 		'<iframe id="appform_post_aec" name="appform_post_aec" width="100" height="100" src="about:blank" style="display: none;"></iframe>',
-		'<form action="/development/saveplatforminfo?appid=<%=app.app_id%>" method="post" class="appform wirelessappform" enctype="multipart/form-data" id="appform" target="appform_post_aec" onsubmit="return false">',
+		'<form action="/pipes/interfaceserver?action=common_query&business_type=saveplatform&appid=<%=app.app_id%>" method="post" class="appform wirelessappform" enctype="multipart/form-data" id="appform" target="appform_post_aec" onsubmit="return false">',
 			'<input type="hidden" name="app_type" value="<%=app.app_type%>">',
 			'<!--{ include file="./development/development_appplatform_inner.tpl" }-->',
 			tpl.development_appplatform_inner,
@@ -44,9 +44,9 @@
 	].join('');
 
 	$('#main').html(tmpl(tpl.app_platform, global_obj.data));
-	var app = global_obj.data.app,
-		iphoneinfo = global_obj.data.iphoneinfo,
-		androidinfo = global_obj.data.androidinfo;
+	var app = global_obj.data.app || {},
+	iphoneinfo = global_obj.data.iphoneinfo || {},
+	androidinfo = global_obj.data.androidinfo || {};
 	var app_status=global_obj.data.app.app_status,
 		iphone_plat_status =  iphoneinfo.app_plat_status || {},
 		android_plat_status = androidinfo.app_plat_status || {};

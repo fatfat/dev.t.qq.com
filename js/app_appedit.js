@@ -813,6 +813,7 @@ $("form input[type='submit']").click(function(){//表单提交验证
 
 function checkStatus(form){
 	var app_type= +$("input[name='app_type']").val(),
+		app_status = global_obj.data.app.app_status;
 		link = $("input[name='app_url']"),
 		icon4 = $("input[name='icon4']"),
 		checkflag = false,
