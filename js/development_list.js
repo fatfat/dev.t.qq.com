@@ -487,9 +487,8 @@ else
 		}else{
 			var ajaxpageListUrl ="/development/indexajaxapplist/"+page+'/'+displayAppType+'/'+"?d="+(new Date().getTime());
 		}*/
-		console.log("page="+page);
 		global_obj.data.page_no = page;
-		ajaxpageListUrl = "http://open_test.t.qq.com/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType+"&page="+page;
+		ajaxpageListUrl = "/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType+"&page="+page;
 		AjaxPageList(ajaxpageListUrl);
 	} 
 	/**
@@ -497,7 +496,7 @@ else
 	 */
 	function pageList1(page){ 
 		global_obj.data.kpage_no = page;
-		var ajaxpageListUrl ="http://open_test.t.qq.com/pipes/interfaceserver?action=common_query&business_type=ajax_kapplist"+"&page="+page;
+		var ajaxpageListUrl ="/pipes/interfaceserver?action=common_query&business_type=ajax_kapplist"+"&page="+page;
 		AjaxPageList(ajaxpageListUrl);
 	} 
 		
