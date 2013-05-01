@@ -9,12 +9,12 @@ if(!hdlogin)
 else
 {
 	var page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
-	if(page_count < global_obj.data.page_no){    //当前页码不能超过总页数
+	if (page_count < global_obj.data.page_no){    //当前页码不能超过总页数
 		alert("warning:The page_no excceeds the total page counts");
 	}  
 
-	var kpage_count = Math.ceil(global_obj.data.app_count/global_obj.data.page_size);  //页数
-	if(kpage_count < global_obj.data.kpage_no){    //当前页码不能超过总页数
+	var kpage_count = Math.ceil(global_obj.data.kapp_count/global_obj.data.page_size);  //页数
+	if (kpage_count < global_obj.data.kpage_no){    //当前页码不能超过总页数
 		alert("warning:The page_no excceeds the total page counts");
 	}              
 
@@ -402,6 +402,9 @@ else
 		// TAB
 		var content = $("#appContent").children("div.applist2");
 		$("#appTab a").click(function () {
+			console.log('welcome!');
+			console.log(toggleWeibo);
+			console.log(kpage_count);
 			var	 li = $(this).parent("li");
 			var index = li.index();
 			toggleWeibo = !toggleWeibo;
