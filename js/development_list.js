@@ -510,7 +510,7 @@ else
 			  dataType: "json",
 			  cache: false,
 			  success: function(ResponseData){ 
-				  if (parseInt(ResponseData.data.uin) == parseInt(hdlogin) ){
+				  if (parseInt(ResponseData.data.uin) == parseInt(userInfo.hdlogin) ){
 				  	  ResponseData.data.apps = ResponseData.data.apps || {};
 				      ResponseData.data.kapps = ResponseData.data.kapps || {};
 				  	  if($('#otherapplist').hasClass('hidden')){
