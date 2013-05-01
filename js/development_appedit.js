@@ -275,7 +275,7 @@
 				//'<!--{ include file="./development/development_app_info.tpl" }-->',
 				tpl.development_app_info,
 				//'<!--{ include file="./development/development_app_material.tpl" }-->',
-//				tpl.development_app_material,
+				//tpl.development_app_material,
 				'<li style="height:39px;"><label class="form_label">&nbsp;</label> <span class="form_element">',
 					'<input type="submit" class="devSubmit" id="devSubmit" value="<%if (app.app_type==3 || app.app_type==6) {%>保存设置<%} else {%>保存<%}%>" data-rule="formauto">',
 					'<input type="reset" class="devCancel" value="取消" onclick="history.go(-1)"> </span>',

@@ -308,8 +308,8 @@ tpl.apptype4 = [
 			'<span class="form_element form_selectclass">',
 				'<select name="app_class_main" id="app_class_main" data-rule="app_class_main" data-error="请选择分类"  class="app_class_main">',
 					'<option value="-1">请选择</option>',
-					'<% for (var i = 0, type; type = typelist[2][i]; i++) {%>',
-						'<%if (app.app_class_main== typelist.cid) {%>',
+					'<% for (var i = 0, type; type = typelist[i]; i++) {%>',
+						'<%if (app.app_class_main== type.cid) {%>',
 						'<option value="<%=type.cid%>" selected="selected"><%=type.cname%></option>',
 						'<% } else { %>',
 						'<option value="<%=type.cid%>"><%=type.cname%></option>',
@@ -323,7 +323,7 @@ tpl.apptype4 = [
 						'<!--若站内应用二级分类为空-->',
 						'<option value="-1">请选择</option>',
 					'<% } %>',
-					'<% for (var i = 0, type; type = typelist_1[1]; i++) {%>',
+					'<% for (var i = 0, type; type = typelist_1[i]; i++) {%>',
 						'<%if (app.app_class_child == type.cid) {%>',
 							'<option value="<%=type.cid%>" selected="selected"><%=type.cname%></option>',
 						'<% } else { %>',
@@ -363,7 +363,7 @@ tpl.apptype4 = [
 			'<span class="form_input"><input type="text" name="app_weibo" id="app_weibo" data-rule="appweibo" data-error="应用微博帐号" maxlength="20" value="<%=app.app_weibo%>" data-default="<%=app.app_weibo%>" ></span>',
 			'<label class="gray inputdes">请填写该应用的官方微博帐号</label><div class="appweiboIntro"><a id="appweiboLink" href="javascript:;">填写示例</a><div class="appweiboDetail">如你画我猜应用，填写蓝框所示内容：<br/>http://t.qq.com/<span class="appweiboExample">nihuawocai</span></div></div>',
 		'</li>',
-		'<!--站内应用-->',
+		'<!--站内应用-->'
 ].join("");
 
 tpl.apptype45 = [
