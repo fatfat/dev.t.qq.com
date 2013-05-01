@@ -293,8 +293,8 @@ OPEN_VALIDATOR = {
 		var label  = selector.attr("data-error") 	//字段名
 			,dvalue = selector.attr("data-default") //默认值
 			,rule   = selector.attr("data-rule")    //验证规则
-			,url    = "/development/checkwb"
-			,para   = {"name":value};
+			,url    = "/pipes/interfaceserver"
+	,para   = {"name":value,"action":"common_query","business_type":"ajax_checkwb"};
 		
 		if (dvalue != value){
 			showmsg(1,selector,"正在验证"+label);

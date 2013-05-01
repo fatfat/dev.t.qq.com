@@ -1,8 +1,4 @@
 ;(function(){
-//	global_obj.data.page_no = 11;
-//	data.data.navPos = '7';
-//	global_obj.data.app_count = 194;
-//	var page_no = global_obj.data.page_no + 1; //页码
 if(!userInfo.hdlogin)
 {
 	$('#main').html(tmpl(this.tpl.login,global_obj.data));
