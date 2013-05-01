@@ -244,7 +244,7 @@
 		'<div class="deverRight">',
 		'<h1 class="comp_tit">应用基本信息</h1>',
 			'<iframe id="appform_post_aec" name="appform_post_aec" width="100" height="100" src="about:blank" style="display: none;"></iframe>',
-			'<form action="/pipes/interfaceserver?action=common_query&business_type=savappinfo&appid=<%=app.app_id%>" method="post" class="appform <%if (app.app_type==6) {%>wirelessappform<%}%>" enctype="multipart/form-data" id="appform" target="appform_post_aec" onsubmit="return false">',
+			'<form action="/pipes/interfaceserver?action=common_query&business_type=saveappinfo&appid=<%=app.app_id%>" method="post" class="appform <%if (app.app_type==6) {%>wirelessappform<%}%>" enctype="multipart/form-data" id="appform" target="appform_post_aec" onsubmit="return false">',
 			'<ul>',
 				'<%if (app.app_status==2) {%>',
 					'<li class="alert alert_warn" beclose="true">',

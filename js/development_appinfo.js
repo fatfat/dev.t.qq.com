@@ -768,14 +768,16 @@
 	            	if ($(this).attr("commmiting")){return false;}
 	            	$(this).attr("commmiting","commmiting");//表单正在提交当中
 	                var postData = {
-	                	 "app_type":4
-	                	,"action":1
+	                	"action":"common_query"
+	                	,"business_type":"saveappinfo"
+	                	 ,"app_type":4
+	                	,"actiontype":1
 	                	,"appid":appid
 	                	,"app_hosting":$('#app_hosting_container').find(":checked").val()
 	                };
 	                $.ajax({
 	                    type: "POST",
-	                    url: "/development/saveappinfo",
+	                    url: "/pipes/interfaceserver",
 	                    dataType: "json",
 	                    data: postData,
 	                    success: function(msg){
