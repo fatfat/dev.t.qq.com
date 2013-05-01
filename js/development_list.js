@@ -1,23 +1,21 @@
-//	global_obj.data.page_no = 11;
-//	data.data.navPos = '7';
-//	global_obj.data.app_count = 194;
-//	var page_no = global_obj.data.page_no + 1; //页码
+;(function(){
 if(!hdlogin)
 {
 	$('#main').html(tmpl(this.tpl.login,global_obj.data));
 }
 else
 {
-	var page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
-	if (page_count < global_obj.data.page_no){    //当前页码不能超过总页数
-		alert("warning:The page_no excceeds the total page counts");
+	global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
+//	global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count/global_obj.data.page_size);  //页数
+	global_obj.data.kpage_count = 0;
+	if ( (global_obj.data.page_count ? global_obj.data.page_count:1) < global_obj.data.page_no) {    //当前页码不能超过总页数
+		console.log("warning:The page_no excceeds the total page counts");
 	}  
-
-	var kpage_count = Math.ceil(global_obj.data.kapp_count/global_obj.data.page_size);  //页数
-	if (kpage_count < global_obj.data.kpage_no){    //当前页码不能超过总页数
-		alert("warning:The page_no excceeds the total page counts");
-	}              
-
+/*
+	if ( (global_obj.data.kpage_count ? global_obj.data.kpage_count:1) < global_obj.data.page_no) {    //当前页码不能超过总页数
+		console.log("warning:The page_no excceeds the total page counts");
+	}            
+*/
 	var str = [
 		'.dotted{display:block;float:left;color:#346496;line-height:18px;}',
 	].join("");
@@ -174,7 +172,7 @@ else
 			'<div class="pagebar">',
 				'<em title="共<%=app_count%>条">共<%=app_count%>条</em>',
 				'<%if(page_no > 1){%>',
-					'<a href="#<%=page_no-1%>" onclick="pageList(<%=page_no - 1%>);" class="page_prev">上一页</a>',
+					'<a href="javascript:;" id="prev") class="page_prev">上一页</a>',
 				'<%}else{%>',
 					'<span class = "page_prev">上一页</span>',
 				'<%}%>',
@@ -184,7 +182,7 @@ else
 						//显示所有页码
 						'<%for(var i = 1; i <= page_count; i++){%>',
 							'<%if (i != page_no) {%>',
-								'<a href="#<%=i%>" onclick = pageList(<%=i%>)><%=i%></a>',
+								'<a href="javascript:;" id="page<%=i%>"><%=i%></a>',
 							'<%}else{%>',
 								'<span><%=i%></span>',
 							'<%}%>',
@@ -193,51 +191,51 @@ else
 						//显示  1到curr curr+1 curr+2 curr+3... total
 						'<%for(var i = 1; i <= page_no + 3; i++){%>',
 							'<%if (i != page_no) {%>',
-								'<a href="#<%=i%>" onclick = pageList(<%=i%>)><%=i%></a>',
+								'<a href="javascript:;" id="page<%=i%>"><%=i%></a>',
 							'<%}else{%>',
 								'<span><%=i%></span>',
 							'<%}%>',
 						'<%}%>',
 						//'<span>...<span>',
 						'<em class="dotted">...</em>',
-						'<a href="#<%=page_count%>" onclick = pageList(<%=page_count%>)><%=page_count%></a>',
+						'<a href="javascript:;" id="page<%=page_count%>"><%=page_count%></a>',
 					'<%}%>',
 				'<%}else{%>', 
 					'<%if(page_no > page_count - 5){%>',
 						//显示1...curr-3到total
-						'<a href="#1" onclick = pageList(1)>1</a>',
+						'<a href="javascript:;" id="page1">1</a>',
 						//'<span>...</span>',
 						'<em class="dotted">...</em>',
 						'<%for(var i = page_no - 3; i <= page_count; i++){%>',
 							'<%if (i != page_no) {%>',
-								'<a href="#<%=i%>" onclick = pageList(<%=i%>)><%=i%></a>',
+								'<a href="javascript:;" id="page<%=i%>"><%=i%></a>',
 							'<%}else{%>',
 								'<span><%=i%></span>',
 							'<%}%>',
 						'<%}%>',
 					'<%}else{%>',
 						//显示1...curr-3到curr+3...total
-						'<a href="#1" onclick = pageList(1)>1</a>',
+						'<a href="javascript:;" id = "page1">1</a>',
 					//	'<span>...</span>',
 						'<em class="dotted">...</em>',
 						'<%for(var i = page_no - 3; i <= page_no + 3; i++){%>',
 							'<%if (i != page_no) {%>',
-								'<a href="#<%=i%>" onclick = pageList(<%=i%>)><%=i%></a>',
+								'<a href="javascript:;" id = "page<%=i%>"><%=i%></a>',
 							'<%}else{%>',
 								'<span><%=i%></span>',
 							'<%}%>',
 						'<%}%>',						
 					//	'<span>...<span>',
 						'<em class="dotted">...</em>',
-						'<a href="#<%=page_count%>" onclick = pageList(<%=page_count%>)><%=page_count%></a>',
+						'<a href="javascript:;" id = "page<%=page_count%>"><%=page_count%></a>',
 					'<%}%>',
 				'<%}%>',
 
-				'<%if(page_no < page_count){%>',
-					'<a href="#<%=page_no+1%>" onclick="pageList(<%=page_no+1%> );" class="page_next">下一页</a>',
-				'<%}else{%>',
+				'<%if (page_no < page_count) {%>',
+					'<a href="javascript:;" id = "next" class="page_next">下一页</a>',
+				'<%} else {%>',
 					'<span class = "page_next">下一页</span>',
-				'<%}%>',
+				'<% } %>',
 			'</div>',
 		'</div>',
 	].join("");
@@ -247,7 +245,7 @@ else
 			'<div class="pagebar">',
 				'<em title="共<%=kapp_count%>条">共<%=kapp_count%>条</em>',
 				'<%if(kpage_no > 1){%>',
-					'<a href="#<%=kpage_no-1%>" onclick="pageList(<%=kpage_no - 1%>);" class="page_prev">上一页</a>',
+					'<a href="#<%=kpage_no-1%>" id = "prev1" )  class="page_prev">上一页</a>',
 				'<%}else{%>',
 					'<span class = "page_prev">上一页</span>',
 				'<%}%>',
@@ -257,7 +255,7 @@ else
 						//显示所有页码
 						'<%for(var i = 1; i <= kpage_count; i++){%>',
 							'<%if (i != kpage_no) {%>',
-								'<a href="#<%=i%>" onclick = pageList(<%=i%>)><%=i%></a>',
+								'<a href="#<%=i%>" id="Page<%=i%>" ><%=i%></a>',
 							'<%}else{%>',
 								'<span><%=i%></span>',
 							'<%}%>',
@@ -266,48 +264,48 @@ else
 						//显示  1到curr curr+1 curr+2 curr+3... total
 						'<%for(var i = 1; i <= kpage_no + 3; i++){%>',
 							'<%if (i != kpage_no) {%>',
-								'<a href="#<%=i%>" onclick = pageList(<%=i%>)><%=i%></a>',
+								'<a href="#<%=i%>" id = "Page<%=i%>" ><%=i%></a>',
 							'<%}else{%>',
 								'<span><%=i%></span>',
 							'<%}%>',
 						'<%}%>',
 						//'<span>...<span>',
 						'<em class="dotted">...</em>',
-						'<a href="#<%=kpage_count%>" onclick = pageList(<%=kpage_count%>)><%=kpage_count%></a>',
+						'<a href="#<%=kpage_count%>" id = "Page<%=kpage_count%>" ><%=kpage_count%></a>',
 					'<%}%>',
 				'<%}else{%>', 
 					'<%if(kpage_no > kpage_count - 5){%>',
 						//显示1...curr-3到total
-						'<a href="#1" onclick = pageList(1)>1</a>',
+						'<a href="#1" id = "Page1">1</a>',
 						//'<span>...</span>',
 						'<em class="dotted">...</em>',
 						'<%for(var i = kpage_no - 3; i <= kpage_count; i++){%>',
 							'<%if (i != kpage_no) {%>',
-								'<a href="#<%=i%>" onclick = pageList(<%=i%>)><%=i%></a>',
+								'<a href="#<%=i%>" id = "Page<%=i%>"><%=i%></a>',
 							'<%}else{%>',
 								'<span><%=i%></span>',
 							'<%}%>',
 						'<%}%>',
 					'<%}else{%>',
 						//显示1...curr-3到curr+3...total
-						'<a href="#1" onclick = pageList(1)>1</a>',
+						'<a href="#1" id = "Page1" >1</a>',
 					//	'<span>...</span>',
 						'<em class="dotted">...</em>',
 						'<%for(var i = kpage_no - 3; i <= kpage_no + 3; i++){%>',
 							'<%if (i != kpage_no) {%>',
-								'<a href="#<%=i%>" onclick = pageList(<%=i%>)><%=i%></a>',
+								'<a href="#<%=i%>" id = "Page<%=i%>" ><%=i%></a>',
 							'<%}else{%>',
 								'<span><%=i%></span>',
 							'<%}%>',
 						'<%}%>',						
 					//	'<span>...<span>',
 						'<em class="dotted">...</em>',
-						'<a href="#<%=kpage_count%>" onclick = pageList(<%=kpage_count%>)><%=kpage_count%></a>',
+						'<a href="#<%=kpage_count%>" id = "Page<%=kpage_count%>" ><%=kpage_count%></a>',
 					'<%}%>',
 				'<%}%>',
 
 				'<%if(kpage_no < kpage_count){%>',
-					'<a href="#<%=kpage_no+1%>" onclick="pageList(<%=kpage_no+1%> );" class="page_next">下一页</a>',
+					'<a href="#<%=kpage_no+1%>" id = "next1" class="page_next">下一页</a>',
 				'<%}else{%>',
 					'<span class = "page_next">下一页</span>',
 				'<%}%>',
@@ -363,14 +361,14 @@ else
 	var insiteAppAble=true;
 	var siteAppDisplayType = insiteAppAble?  16 : 0; 
 	var displayAppType = 45;//+siteAppDisplayType;
-	var toggleWeibo = true;
 
 	//检查开发这信息,看是不是开发这,或者创建应用达到上限
 	$("#newapp").click(function(){
 		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 	});	
 	$(function(){
-
+		bindAllPageEvent();
+	
 		$('input#apptype1').click(function(){
 			if($(this).attr('checked')==true) displayAppType = displayAppType|0x1;
 			else displayAppType = displayAppType&0xFE;
@@ -402,28 +400,64 @@ else
 		// TAB
 		var content = $("#appContent").children("div.applist2");
 		$("#appTab a").click(function () {
-			console.log('welcome!');
-			console.log(toggleWeibo);
-			console.log(kpage_count);
 			var	 li = $(this).parent("li");
 			var index = li.index();
-			toggleWeibo = !toggleWeibo;
-			if(!toggleWeibo){
-				$('#pagebar').css('display','none');
-				$('#pagebar1').css('display','block');
-				hiddenkpagebar(kpage_count);
-			}
-			else{
-				$('#pagebar1').css('display','none');
-				$('#pagebar').css('display','block');			
-			}
+
 			li.addClass("currentTab").siblings().removeClass("currentTab");
 			content.eq(index).removeClass("hidden").siblings().addClass("hidden");
+			
+			if ($('#otherapplist').hasClass('hidden')){
+				$('#pagebar').css('display','block');
+				$('#pagebar1').css('display','none');
+				checkPageNum(global_obj.data.page_count);
+			}else{
+				$('#pagebar1').css('display','block');
+				$('#pagebar').css('display','none');
+				hiddenkpagebar(global_obj.data.kpage_count);
+			}
 			this.blur();
 		});
 	})
 
+	function bindAllPageEvent(){
+		for(var i = 1; i <= global_obj.data.page_count; i++){
+			bindPageEvent(i);	
+		}
+		for(var i = 1; i <= global_obj.data.kpage_count; i++){	
+			bindPageEvent1(i);
+		}	
+		
+		$("#prev").click(function(){
+			pageList(global_obj.data.page_no-1);
+		})
+		
+		$("#next").click(function(){
+			pageList(global_obj.data.page_no+1);
+		})
+			
+		$("#prev1").click(function(){
+			pageList1(global_obj.kdata.page_no-1);
+		})
+		
+		$("#next1").click(function(){
+			pageList1(global_obj.kdata.page_no+1);
+		})
+	}
 
+	function bindPageEvent1(pageNum) {
+		var Pagei = '#Page' + i;
+		$(Pagei).click(function(){
+			pageList1(i);
+		})
+	}		
+			
+	function bindPageEvent(pageNum) {
+		var pagei = '#page' + pageNum;
+		$(pagei).click(function(){
+			pageList(pageNum);
+		})
+	}
+	
 	function checkPageNum(page_count){
 		if(page_count <= 1){
 			$('#pagebar').css('display','none');
@@ -433,9 +467,7 @@ else
 		} 
 	}
 	
-	function hiddenkpagebar(page_count){
-		console.log("kpage_count:"+kpage_count);
-		console.log(global_obj.data);
+	function hiddenkpagebar(kpage_count){
 		if(kpage_count <= 1){
 			$('#pagebar1').css('display','none');
 		}
@@ -455,6 +487,7 @@ else
 		}else{
 			var ajaxpageListUrl ="/development/indexajaxapplist/"+page+'/'+displayAppType+'/'+"?d="+(new Date().getTime());
 		}*/
+		console.log("page="+page);
 		global_obj.data.page_no = page;
 		ajaxpageListUrl = "http://open_test.t.qq.com/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType+"&page="+page;
 		AjaxPageList(ajaxpageListUrl);
@@ -464,7 +497,7 @@ else
 	 */
 	function pageList1(page){ 
 		global_obj.data.kpage_no = page;
-		var ajaxpageListUrl ="http://open_test.t.qq.com/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType+"&page="+page;
+		var ajaxpageListUrl ="http://open_test.t.qq.com/pipes/interfaceserver?action=common_query&business_type=ajax_kapplist"+"&page="+page;
 		AjaxPageList(ajaxpageListUrl);
 	} 
 		
@@ -473,22 +506,27 @@ else
 			  url: ajaxpageListUrl,
 			  dataType: "json",
 			  cache: false,
-			  success: function(ResposeData){ 
-				  if (parseInt(ResposeData.data.uin) == parseInt(hdlogin) ){
-				  	  ResposeData.data.apps = ResposeData.data.apps || {};
-				  	  ResposeData.data.kapps = ResposeData.data.kapps || {};
-				  	  if(toggleWeibo){
-				  	  	   	global_obj.data.app_count = ResposeData.data.app_count;
-						  	page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
-							checkPageNum(page_count);
-							$('#applistul').html(tmpl(tpl.applistul, ResposeData.data));
-							$('#pagebar').html(tmpl(tpl.pageBar, ResposeData.data));
+			  success: function(ResponseData){ 
+				  if (parseInt(ResponseData.data.uin) == parseInt(hdlogin) ){
+				  	  ResponseData.data.apps = ResponseData.data.apps || {};
+				      ResponseData.data.kapps = ResponseData.data.kapps || {};
+				  	  if($('#otherapplist').hasClass('hidden')){
+				  	  	   	global_obj.data.app_count = ResponseData.data.app_count;
+						  	global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
+						  	global_obj.data.kpage_count = ResponseData.data.kpage_count = 0;
+						  	ResponseData.data.page_count = global_obj.data.page_count;
+							checkPageNum(global_obj.data.page_count);
+							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
+							$('#pagebar').html(tmpl(tpl.pageBar, ResponseData.data));
 						}else{						
-							global_obj.data.kapp_count = ResposeData.data.kapp_count;
-							page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数	
-							$('#applistul').html(tmpl(tpl.applistul, ResposeData.data));
-							$('#pagebar1').html(tmpl(tpl.pageBar1, ResposeData.data));
+							global_obj.data.kapp_count = ResponseData.data.kapp_count;
+							global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count / global_obj.data.page_size);  //页数
+							ResponseData.data.kpage_count = global_obj.data.kpage_count;
+							global_obj.data.page_count = ResponseData.data.page_count = 0;	
+							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
+							$('#pagebar1').html(tmpl(tpl.pageBar1, ResponseData.data));
 						}
+						bindAllPageEvent();
 				  }else{
 					location.href="/development/";
 				  }
@@ -496,3 +534,4 @@ else
 		})
 	}
 }
+})();
