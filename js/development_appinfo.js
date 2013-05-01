@@ -1,7 +1,7 @@
 ﻿;(function(){
 	if (global_obj.code){
 		if(global_obj.code == 1){
-			location.href = global_data.url;
+			location.href = global_obj.url;
 		}
 		else if (global_obj.code == 2){
 			alert(global_obj.msg);
