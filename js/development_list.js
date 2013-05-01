@@ -488,22 +488,25 @@ else
 			var ajaxpageListUrl ="/development/indexajaxapplist/"+page+'/'+displayAppType+'/'+"?d="+(new Date().getTime());
 		}*/
 		global_obj.data.page_no = page;
-		ajaxpageListUrl = "/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType+"&page="+page;
-		AjaxPageList(ajaxpageListUrl);
+		ajaxpageListUrl = "/pipes/interfaceserver";
+	var data = {"action":"common_query","business_type":"ajax_applist","page":page,"appTypes":displayAppType};
+		AjaxPageList(ajaxpageListUrl, data);
 	} 
 	/**
 	 * AJAX翻页
 	 */
 	function pageList1(page){ 
 		global_obj.data.kpage_no = page;
-		var ajaxpageListUrl ="/pipes/interfaceserver?action=common_query&business_type=ajax_kapplist"+"&page="+page;
-		AjaxPageList(ajaxpageListUrl);
+		var ajaxpageListUrl ="/pipes/interfaceserver";
+	    var data = {"action":"common_query","business_type":"ajax_kapplist","page":page};
+		AjaxPageList(ajaxpageListUrl, data);
 	} 
 		
-	function AjaxPageList(ajaxpageListUrl){ 
+	function AjaxPageList(ajaxpageListUrl,dota){ 
 		$.ajax({
 			  url: ajaxpageListUrl,
 			  dataType: "json",
+			  data: dota,
 			  cache: false,
 			  success: function(ResponseData){ 
 				  if (parseInt(ResponseData.data.uin) == parseInt(userInfo.hdlogin) ){
