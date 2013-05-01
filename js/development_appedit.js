@@ -1,5 +1,4 @@
 ;(function(){
-	alert(1);
 	var str = [
 	'.hostingclick {',
 		'cursor: pointer;',
@@ -290,7 +289,6 @@
 	].join('');
 	
 
-	console.log(this.tpl.development_app_info);
 	global_obj.data.app = global_obj.data.app || {};
 	global_obj.data.iphoneinfo = global_obj.data.iphoneinfo || {};
 	var iphoneinfo = global_obj.data.iphoneinfo;
@@ -298,7 +296,6 @@
 	var androidinfo = global_obj.data.androidinfo;
 	var app = global_obj.data.app;
 	$('#main').html(tmpl(tpl.appedit, global_obj.data));
-	/*
 	//appnav js begin
 	var user_certif_status= global_obj.data.developer.user_certif_status;
 	var user_check_status= global_obj.data.developer.user_check_status;//资质证明审核状态
@@ -616,5 +613,4 @@
 			}
 		}) 
 	});
-	*/
 })();

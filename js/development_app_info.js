@@ -317,7 +317,7 @@ tpl.apptype4 = [
 					'<% } %>',
 				'</select>',
 
-				'<% if (app.app_class_child != "" && app.app_class_child != 0 && app.app_class_child != -1 && app.app_class_main != 11 || typelist_1[1] != "") { %>',
+				'<% if (app.app_class_child != "" && app.app_class_child != 0 && app.app_class_child != -1 && app.app_class_main != 11 || (typelist_1 && typelist_1[1] != "")) { %>',
 				'<select name="app_class_child" id="app_class_child" data-rule="app_class_child" data-error="请选择分类" >',
 					'<% if (typelist_1[1] != "") { %>',
 						'<!--若站内应用二级分类为空-->',
@@ -428,6 +428,7 @@ tpl.development_app_info = [
 	'<input type="hidden" name="app_type" value="<%=app.app_type%>">',
 	'<input type="hidden" name="postname" id="postname" value="0">',
 	'<input type="hidden" name="isFramePost" value="1"/>',
+	//'<%console.log(app.app_type);%>',
 
 	'<%if (app.app_type ==5) {%>',
 		tpl.apptype5,
