@@ -115,7 +115,11 @@
 		var style = document.createElement('style');
 		var _styleid = style.id = 'cssBody' + Math.random();
 		document.getElementsByTagName('head')[0].appendChild(style);
-		document.getElementById(_styleid).innerHTML = str;
+		if (style.styleSheet){
+			style.styleSheet.cssText = str;
+		} else {
+			document.getElementById(_styleid).innerHTML = str;
+		}
 	}
 
 	util.createScript = function (src) {

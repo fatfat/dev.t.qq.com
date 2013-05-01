@@ -77,7 +77,14 @@ var common = {
 			'<div class="actioninfo">',
 				'<img src="http://mat1.gtimg.com/app/opent/images/index/transparent.gif" class="alert">对不起，在没有登录微博的情况下，您无法使用该功能。 请先 <a href="javascript:void(0)" id="loginBtn2" class="links">登录</a>',
 			'</div>',
-			tpl.footer
+			'<div id="footer">',
+				'<a href="http://wiki.open.t.qq.com/index.php/%E8%85%BE%E8%AE%AF%E5%BE%AE%E5%8D%9A%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0:%E5%85%B3%E4%BA%8E" target="_blank">关于腾讯微博开放平台</a>',
+				'<a href="http://wiki.open.t.qq.com/index.php/%E8%85%BE%E8%AE%AF%E5%BE%AE%E5%8D%9A%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0:%E9%9A%90%E7%A7%81%E6%94%BF%E7%AD%96" target="_blank">隐私政策</a>',
+				'<a href="http://wiki.open.t.qq.com/index.php/%E8%85%BE%E8%AE%AF%E5%BE%AE%E5%8D%9A%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0:%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E" target="_blank">免责声明</a>',
+				'<a href="http://wiki.open.t.qq.com/index.php/%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC" target="_blank">联系我们</a>',
+				'<br/>',
+				'Copyright &copy; 1998-2013 Tencent.All Rights Reserved',
+			'</div>'
 		].join('');
 		$('#main').html(_html);
 		$('#loginBtn,#loginBtn2').click(function() {
@@ -86,15 +93,15 @@ var common = {
 		});
 	},
 	"checkuserLogin":function(url){
-			hdlogin = window.hdlogin || false;
-			url = url || encodeURIComponent(location.href);
-			if (hdlogin){
-				return true;
-			}else{
-				common.buildLoginPage();
-				common.showLoginWin(url);
-			}
-			return false;
+		hdlogin = userInfo.hdlogin || false;
+		url = url || encodeURIComponent(location.href);
+		if (hdlogin){
+			return true;
+		}else{
+			common.buildLoginPage();
+			common.showLoginWin(url);
+		}
+		return false;
 	},
 	"loginOut":function(){
 		common.setCookie('uin',null,{domain:'qq.com',path:'/'});
@@ -212,7 +219,7 @@ $((function() {
 		window.loginWin.closebtn.bind("click",function(){loginWin.close.call(loginWin)});
 		window.loginWin.showBox = function(w, h, url, title) {
 			url = "http://ui.ptlogin2.qq.com/cgi-bin/login?appid=46000101&s_url=" + url + "&f_url=loginerroralert&style=0&link_target=blank&target=blank&hide_title_bar=1&dummy=1&bgcolor=ffffff";
-		    	
+				
 			this.show({
 				"width":w,
 				"height":h,
@@ -272,41 +279,41 @@ $((function() {
 		
 		window.loginWin.confirm = function(op,okFn,cancelFn){
 			var settings = {
-	 			 "width"       : 420
-	 			,"height"      : 180
-	 			,"text"        : ""
-	 			,"title"       : "提示"
-	 			,"ok_text"     : "确定"
-	 			,"cancel_text" : "取消"
-	 		}
-	 		,tpl = '<div style="text-align:center;margin:0 20px;">\
-		 		  <div style="text-align:left;display:inline-block;* display:inline;zoom:1;margin:22px auto 14px;word-wrap:break-word;word-break:break-all;">\
-		 			#text#\
-		 		  </div>\
-	 		</div>\
-	 		<div align="center">\
-	 		  	<a href="javascript:;" class="devSubmit sure_btn">#ok_text#</a>\
-	 		  	<a href="javascript:;" class="devCancel close_btn">#cancel_text#</a>\
-	 		</div>'
-	 		,o = loginWin
-	 		,c = o.contentarea;
-	 		if (typeof(op) === "string"){
-	 			op = tpl.replace('##',op);
-	 			settings = $.extend(settings,{"text":op});//
-	 		}else if(typeof(op) === "object"){
-	 			op.text = tpl.replace(/#(\S+)?#/g,function(){return op[arguments[1]]||("#"+arguments[1]+"#");});
-	 			$.extend(settings,op);
-	 		}
-	 		this.show(settings);
-	 		c.find(".sure_btn").bind("click",function(){
-	 			o.close();
-	 			okFn && okFn();
-	 		});
-	 		c.find(".close_btn").bind("click",function(){
-	 			o.close();
-	 			cancelFn && cancelFn();
-	 		});
-	 		this.closebtn.unbind("click").bind("click",function(){window.location.reload()});
+				  "width"       : 420
+				 ,"height"      : 180
+				 ,"text"        : ""
+				 ,"title"       : "提示"
+				 ,"ok_text"     : "确定"
+				 ,"cancel_text" : "取消"
+			 }
+			 ,tpl = '<div style="text-align:center;margin:0 20px;">\
+				   <div style="text-align:left;display:inline-block;* display:inline;zoom:1;margin:22px auto 14px;word-wrap:break-word;word-break:break-all;">\
+					 #text#\
+				   </div>\
+			 </div>\
+			 <div align="center">\
+				   <a href="javascript:;" class="devSubmit sure_btn">#ok_text#</a>\
+				   <a href="javascript:;" class="devCancel close_btn">#cancel_text#</a>\
+			 </div>'
+			 ,o = loginWin
+			 ,c = o.contentarea;
+			 if (typeof(op) === "string"){
+				 op = tpl.replace('##',op);
+				 settings = $.extend(settings,{"text":op});//
+			 }else if(typeof(op) === "object"){
+				 op.text = tpl.replace(/#(\S+)?#/g,function(){return op[arguments[1]]||("#"+arguments[1]+"#");});
+				 $.extend(settings,op);
+			 }
+			 this.show(settings);
+			 c.find(".sure_btn").bind("click",function(){
+				 o.close();
+				 okFn && okFn();
+			 });
+			 c.find(".close_btn").bind("click",function(){
+				 o.close();
+				 cancelFn && cancelFn();
+			 });
+			 this.closebtn.unbind("click").bind("click",function(){window.location.reload()});
 		}
 		
 	}();
