@@ -163,7 +163,7 @@ OPEN_VALIDATOR = {
 				,"compname" : "/apps/checkcompname"
 			}
 			,para   = {
-				"appname"  : {"action":"common_query","business_type":"ajax_checkname","checkname":encodeURIComponent(value)}
+				"appname"  : {"action":"common_query","business_type":"ajax_checkname","appname":value}
 				,"compname" : {"comp_name":encodeURIComponent(value),"comp_type":window.comp_type}
 			};
 			
