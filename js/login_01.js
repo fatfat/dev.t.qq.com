@@ -54,12 +54,44 @@ var common = {
 		loginWin.showBox(500, 300, url||encodeURIComponent(location.href),"用户登录");
 		return false;
 	},
+
+	"buildLoginPage" : function () {
+		var _html = [
+			'<div class="headWrap">',
+				'<div id="header" class="headInside">',
+					'<h1><a class="logo" title="腾讯微博开放平台" href="/">腾讯微博开放平台</a></h1>',
+					'<ul class="topNav">',
+						'<li><a href="/" hidefocus="">首页</a></li>',
+						'<li><a href="/websites/" hidefocus="">网站接入</a></li>',
+						'<li><a href="/wireless/" hidefocus="">无线接入</a></li>',
+						'<li><a href="/developer/" hidefocus="">应用开发</a></li>',
+						'<li><a href="http://wiki.open.t.qq.com/" hidefocus="">文档</a></li>',
+						'<li><a href="http://bbs.open.t.qq.com/" target="_blank" hidefocus="">论坛</a></li>',
+						'<li><a href="/development" class="active" id="developmentbtn" hidefocus="">管理中心</a></li>',
+					'</ul>',
+					'<div class="menuCon userNav" id="login_status">',
+						'<a title="点击此处登录" class="login_name" href="javascript:void(0);" id="loginBtn" hidefocus="">登录</a>',
+					'</div>',
+				'</div>',
+			'</div>',
+			'<div class="actioninfo">',
+				'<img src="http://mat1.gtimg.com/app/opent/images/index/transparent.gif" class="alert">对不起，在没有登录微博的情况下，您无法使用该功能。 请先 <a href="javascript:void(0)" id="loginBtn2" class="links">登录</a>',
+			'</div>',
+			tpl.footer
+		].join('');
+		$('#main').html(_html);
+		$('#loginBtn,#loginBtn2').click(function() {
+			common.showLoginWin();
+			return false;
+		});
+	},
 	"checkuserLogin":function(url){
 			hdlogin = window.hdlogin || false;
 			url = url || encodeURIComponent(location.href);
 			if (hdlogin){
 				return true;
 			}else{
+				common.buildLoginPage();
 				common.showLoginWin(url);
 			}
 			return false;
@@ -280,6 +312,7 @@ $((function() {
 	}();
 }));
 
+
 /*以下是待删内容*/
 var showLoginWin = common.showLoginWin,
 	cookie = common.setCookie,
@@ -306,4 +339,11 @@ $(function(){
 			}
 		}
 	});
-});/*  |xGv00|3a8d9990c72167d5413623a32edb10a0 */
+});
+
+$(document).ready(function(){
+	setTimeout(function(){
+		common.checkuserLogin();
+	},100);
+});
+/*  |xGv00|3a8d9990c72167d5413623a32edb10a0 */
