@@ -355,10 +355,8 @@ else
 	].join("");
 	
 	$("#main").html(this.tmpl(this.tpl.development_list,global_obj.data));
-
-
     
-	var insiteAppAble=true;
+	insiteAppAble=true;
 	var siteAppDisplayType = insiteAppAble?  16 : 0; 
 	var displayAppType = 45;//+siteAppDisplayType;
 
