@@ -159,7 +159,7 @@ OPEN_VALIDATOR = {
 			,dvalue = selector.attr("data-default") //默认值
 			,rule   = selector.attr("data-rule")    //验证规则
 			,url    = {
-				 "appname"  : "/apps/checkname/"+encodeURIComponent(value)
+				 "appname"  : "/pipes/interfaceserver?action=common_query&business_type=ajax_checkname&appname"+encodeURIComponent(value)
 				,"compname" : "/apps/checkcompname"
 			}
 			,para   = {

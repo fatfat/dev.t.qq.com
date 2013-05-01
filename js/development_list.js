@@ -1,5 +1,5 @@
-;(function(){
-if(!hdlogin)
+
+if(!global_obj.data.UserInfo.hdlogin)
 {
 	$('#main').html(tmpl(this.tpl.login,global_obj.data));
 }
@@ -533,4 +533,4 @@ else
 		})
 	}
 }
-})();
+
