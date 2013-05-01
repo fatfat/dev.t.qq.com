@@ -38,7 +38,7 @@
 		'</form>',
 		'</div>',
 		'</div>',
-		'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_appedit.js?20130328"></script>',
+		'<script type="text/javascript" src="/js/app_appedit.js?20130328"></script>',
 		'<!--{ include file="footer.tpl" }-->',
 		tpl.footer,
 	].join('');

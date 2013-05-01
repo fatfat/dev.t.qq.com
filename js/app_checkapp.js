@@ -772,8 +772,12 @@ $("#app_class_main").change(function(){
 		$.ajax({
 			"dataType":"json"
 			,"type":"get"
-			,"url":"/development/apptypeajax"
-			,"data":{"cid":cid}
+			,"url":"/pipes/interfaceserver"
+			,"data":{
+				"action":'common_query',
+				"business_type":'getapptype',
+				"cid":cid
+			}
 			,"success":function(d){
 				if(d!=null){
 					var ret = +d.ret , msg = common.getMsgByRet(ret);
