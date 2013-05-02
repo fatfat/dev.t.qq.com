@@ -354,7 +354,7 @@ tpl.apptype4 = [
 			'<label class="form_label"><em>*</em>',
 				'应用高度：',
 			'</label>',
-			'<span class="form_input"><input type="text" name="app_hight" id="app_hight" data-rule="apphight" data-error="应用高度" value="<%=app.app_hight%>"></span>',
+			'<span class="form_input"><input type="text" name="app_hight" id="app_hight" data-rule="apphight" data-error="应用高度" value="<%=app.app_hight == 0 ? \'\' : app.app_hight%>"></span>',
 			'<label class="gray inputdes">请填写您的应用高度（正整数），范围在700-1200</label>',
 		'</li>',
 		'<li>',
