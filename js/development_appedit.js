@@ -302,6 +302,7 @@
 	var app_binbond= global_obj.data.app.app_binbond;//保证金
 
 	$(function(){
+		appInfoEvent();
 		$("#apphost_btn").click(function(event){ 
 			if(app_binbond ===0){//未分配保证金
 				if( user_certif_status ===0 && ( user_check_status===0 || user_check_status===1 || user_check_status===2 )){
@@ -436,8 +437,10 @@
 					loginWin.close();
 					loginWin.show({text:"<center><br/>正在转为站内应用，请不要关闭浏览器！</center>",height:120,width:450});
 				    var postData = {
+				    	'action':'common_query',
+				    	 'business_type':'saveappinfo',
 					    "app_type":4,
-					    "action":1,
+					    "actiontype":1,
 					    "appid":app.app_id,
 					    "app_hosting":$("#app_hosting1 input:checked").val()
 			   		};

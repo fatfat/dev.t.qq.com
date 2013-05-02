@@ -775,6 +775,7 @@
 	                	,"appid":appid
 	                	,"app_hosting":$('#app_hosting_container').find(":checked").val()
 	                };
+
 	                $.ajax({
 	                    type: "POST",
 	                    url: "/pipes/interfaceserver",

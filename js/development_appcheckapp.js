@@ -69,7 +69,10 @@ var ex_appname = app.app_name;
 
 $("#main").html(tmpl(this.tpl.development_appcheckapp,global_obj.data));
 
+
+
 $(function(){ 
+	appInfoEvent();
 	$('input#app_name').change(function(){ 
 		if(ex_appname != $('input#app_name').val()){
 			$('input#postname').val('1');
