@@ -72,7 +72,7 @@ $("#main").html(tmpl(this.tpl.development_appcheckapp,global_obj.data));
 
 
 $(function(){ 
-	global_obj.data.appInfoEvent();
+	global_obj.inti.app_info.appInfoEvent();
 	$('input#app_name').change(function(){ 
 		if(ex_appname != $('input#app_name').val()){
 			$('input#postname').val('1');
@@ -84,7 +84,7 @@ $(function(){
 
 var app_id = app.app_id || '',
 	app_type = +app.app_type || '',
-	NextUrl = app_type == 6 ? '/development/appcheckplatform/'+app_id+'/' : '/development/appcheckmaterial/'+app_id+'/',
+	NextUrl = app_type == 6 ? '/development/appcheckplatform?appid='+app_id : '/development/appcheckmaterial?appid='+app_id,
 	typedata = '&app_hosting=' + app.app_hosting + '&app_type=' + app.app_type;
  
 $(function(){

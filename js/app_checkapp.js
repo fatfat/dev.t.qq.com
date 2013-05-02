@@ -678,7 +678,7 @@ $(function(){
 
 			 $.ajax({
 				   type: "POST",
-				   url: "/development/ajaxsavecheckapp/"+app_id+'/',
+				   url: "/development/ajaxsavecheckapp?appid="+app_id+'/',
 				   dataType: "json",
 				   data: postData,
 				   success: function(msg){
