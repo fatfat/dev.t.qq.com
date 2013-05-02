@@ -435,12 +435,16 @@
 				$sureBtn.bind("click", function () {
 					loginWin.close();
 					loginWin.show({text:"<center><br/>正在转为站内应用，请不要关闭浏览器！</center>",height:120,width:450});
-					var postData = 'app_type=4&action=1'
-					+ '&app_id='+app_id
-					+ '&app_hosting='+$('#app_hosting1 input:checked').val();
+				    var postData = {
+					    "app_type":4,
+					    "action":1,
+					    "appid":app_id,
+					    "app_hosting":$("#app_hosting1 input:checked").val()
+			   		};
+		
 					$.ajax({
 						type: "POST",
-						url: "/development/saveappinfo?appid="+app_id,
+						url: "/pipes/interfaceserver",
 						dataType: "json",
 						data: postData,
 						success: function(msg){
