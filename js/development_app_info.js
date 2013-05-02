@@ -174,10 +174,10 @@ tpl.apptype6 = [
 			'<span class="form_element form_element2 form_selectclass">',
 				'<select name="app_class_main" id="app_class_main" data-rule="app_class_main" data-error="请选择分类" class="app_class_main">',
 					'<option value="-1">请选择</option>',
-					'<% for (var i = 0, type; type = typelist[i]; i++) {%>',
-						'<%if (app.app_class_main== type.cid && type.lev == 1 && type.pid == 0 ) {%>',
+					'<% for (var i = 0, type; type = typelist[2][i]; i++) {%>',
+						'<%if (app.app_class_main== type.cid && type.lev == 1 ) {%>',
 							'<option value="<%=type.cid%>" selected="selected"><%=type.cname%></option>',
-						'<% } else if (type.lev == 1 && type.pid == 0) { %>',
+						'<% } else if (type.lev == 1 ) { %>',
 						'<option value="<%=type.cid%>"><%=type.cname%></option>',
 						'<% } %>',
 					'<% } %>',
@@ -308,7 +308,7 @@ tpl.apptype4 = [
 			'<span class="form_element form_selectclass">',
 				'<select name="app_class_main" id="app_class_main" data-rule="app_class_main" data-error="请选择分类"  class="app_class_main">',
 					'<option value="-1">请选择</option>',
-					'<% for (var i = 0, type; type = typelist[i]; i++) {%>',
+					'<% for (var i = 0, type; type = typelist[2][i]; i++) {%>',
 						'<%if (app.app_class_main== type.cid && type.lev == 1) {%>',
 						//'<%if (app.app_class_main== type.cid) {%>',
 							'<option value="<%=type.cid%>" selected="selected"><%=type.cname%></option>',
@@ -396,10 +396,10 @@ tpl.apptype45 = [
 			'<span class="form_element form_selectclass">',
 				'<select name="app_class_main" id="app_class_main" data-rule="app_class_main" data-error="请选择分类"  class="app_class_main">',
 				'<option value="-1">请选择</option>',
-				'<% for (var i = 0, type; type = typelist[i]; i++) {%>',
-					'<%if (app.app_class_child== type.cid && type.lev == 2 && type.pid == 11) {%>',
+				'<% for (var i = 0, type; type = typelist[0][i]; i++) {%>',
+					'<%if (app.app_class_child== type.cid && type.lev == 2 ) {%>',
 					'<option value="<%=type.cid%>" selected="selected"><%=type.cname%></option>',
-					'<% } else if (type.lev == 2 && type.pid == 11){ %>',
+					'<% } else if (type.lev == 2 ){ %>',
 					'<option value="<%=type.cid%>"><%=type.cname%></option>',
 					'<% } %>',
 				'<% } %>',
@@ -526,12 +526,16 @@ if (app.app_type != 5 && app.app_type != 3 && app.app_type != 6 && app.app_type 
 			$sureBtn.bind("click", function () {
 				loginWin.close();
 				loginWin.show({text:"<center><br/>正在转为站内应用，请不要关闭浏览器！</center>",height:120,width:450});
-				var postData = 'app_type=4&action=1'
-				+ '&app_id='+app_id
-				+ '&app_hosting='+$('#app_hosting1 input:checked').val();
+			    var postData = {
+				    "app_type":4
+				    ,"action":1
+				    ,"appid":app_id
+				    ,"app_hosting":$("#app_hosting1 input:checked").val()
+			    };
+				
 				$.ajax({
 					type: "POST",
-					url: "/development/saveappinfo/"+app_id+'/',
+					url: "/pipes/interfaceserver?action=1&app_type=4&appid=app_id&app_hosting="+$("#app_hosting1 input:checked").val(),
 					dataType: "json",
 					data: postData,
 					success: function(msg){
