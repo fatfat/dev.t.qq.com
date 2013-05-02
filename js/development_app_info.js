@@ -529,7 +529,7 @@ if (app.app_type != 5 && app.app_type != 3 && app.app_type != 6 && app.app_type 
 			    var postData = {
 				    "app_type":4
 				    ,"action":1
-				    ,"appid":app_id
+				    ,"appid":global_obj.data.app.app_id
 				    ,"app_hosting":$("#app_hosting1 input:checked").val()
 			    };
 				

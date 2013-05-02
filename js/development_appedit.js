@@ -438,10 +438,10 @@
 				    var postData = {
 					    "app_type":4,
 					    "action":1,
-					    "appid":app_id,
+					    "appid":app.app_id,
 					    "app_hosting":$("#app_hosting1 input:checked").val()
 			   		};
-		
+					
 					$.ajax({
 						type: "POST",
 						url: "/pipes/interfaceserver",
