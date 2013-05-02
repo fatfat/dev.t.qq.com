@@ -163,12 +163,11 @@ OPEN_VALIDATOR = {
 				,"compname" : "/apps/checkcompname"
 			}
 			,para   = {
-				"appname"  : {"action":"common_query","business_type":"ajax_checkname","checkname":value}
+				"appname"  : {"action":"common_query","business_type":"ajax_checkname","appname":value}
 				,"compname" : {"comp_name":encodeURIComponent(value),"comp_type":window.comp_type}
 			};
 			
 			para[rule]["random"]=+new Date();
-			console.log(url);
 		
 		if (dvalue != value){
 			showmsg(1,selector,"正在验证"+label+"是否重复...");
