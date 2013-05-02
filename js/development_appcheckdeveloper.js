@@ -144,7 +144,7 @@ var developer = global_obj.data.developer;
 //var NextUrl = "/development/appcheckapp/"+app.app_id+"/";
 var NextUrl = "/development/appcheckapp?appid="+app.app_id;
 //var PostUrl = "/development/ajaxsavecheckdeverloper/"+app.app_id+"/";
-var PostUrl = "/pipes/interfaceserver?action=common_query&business_type=ajaxsavecheckdeverloper"
+var PostUrl = "/pipes/interfaceserver?action=common_query&business_type=ajaxsavecheckdeverloper&appid="+app.app_id;
 var user_province = developer.user_province;
 var user_city= developer.user_city;
 
