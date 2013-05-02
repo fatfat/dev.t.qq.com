@@ -444,7 +444,7 @@ tpl.development_app_info = [
 	'<% } %>'
 ].join('');
 
-var appInfoEvent = function(){
+global_obj.data.appInfoEvent = function(){
 	var TIMER = {};
 	$("#appweiboLink").mouseover(function(){
 			if(TIMER.timer){
