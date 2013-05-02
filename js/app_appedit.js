@@ -808,6 +808,7 @@ $("form input[type='submit']").click(function(){//表单提交验证
 			}
 		}
 	}
+	debugger;
 	return false;
 });
 
