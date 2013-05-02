@@ -324,7 +324,7 @@ tpl.apptype4 = [
 						'<!--若站内应用二级分类为空-->',
 						'<option value="-1">请选择</option>',
 					'<% } %>',
-					'<% for (var i = 0, type; type = typelist_1[i]; i++) {%>',
+					'<% for (var i = 0, type; type = typelist_1[1][i]; i++) {%>',
 						'<%if (app.app_class_child == type.cid) {%>',
 							'<option value="<%=type.cid%>" selected="selected"><%=type.cname%></option>',
 						'<% } else { %>',
