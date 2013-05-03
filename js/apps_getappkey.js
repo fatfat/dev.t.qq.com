@@ -27,7 +27,7 @@ this.tpl.apps_getappkey = [
 global_obj.data.appkeyinfo.appsecret = global_obj.data.appkeyinfo.app_key;
 global_obj.data.appkeyinfo.appkey = global_obj.data.appkeyinfo.app_id;
 
-$("#main").append(tmpl(this.tpl.apps_getappkey,global_obj.data));
+$("#main").html(tmpl(this.tpl.apps_getappkey,global_obj.data));
 $(function(){
 	$('#savebtn').click(function(){
 		if (window.clipboardData) { 

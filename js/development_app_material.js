@@ -217,46 +217,48 @@ var app_type =+ app.app_type;
 
 $(function(){
 	var BKTIMER = {};
-	$("#backgroundExample").mouseover(function(){
-		if(BKTIMER.timer){
-			clearTimeout(BKTIMER.timer);
-		}
-		$("#backgroundDiv").show();
-	}).mouseout(function(){
-		BKTIMER.timer = setTimeout(function(){
-			$("#backgroundDiv").hide();
-		}, 200);
-	});
+	global_obj.data.app_material = function(){
+		$("#backgroundExample").mouseover(function(){
+			if(BKTIMER.timer){
+				clearTimeout(BKTIMER.timer);
+			}
+			$("#backgroundDiv").show();
+		}).mouseout(function(){
+			BKTIMER.timer = setTimeout(function(){
+				$("#backgroundDiv").hide();
+			}, 200);
+		});
 
-	$("#backgroundDiv").mouseover(function(){
-		if(BKTIMER.timer){
-			clearTimeout(BKTIMER.timer);
-		}
-	}).mouseout(function(){
-		BKTIMER.timer = setTimeout(function(){
-			$("#backgroundDiv").hide();
-		}, 200);
-	});
-		
-	var PRETIMER = {};
-	$("#previewExample").mouseover(function(){
-		if(PRETIMER.timer){
-			clearTimeout(PRETIMER.timer);
-		}
-		$("#previewDiv").show();
-	}).mouseout(function(){
-		PRETIMER.timer = setTimeout(function(){
-			$("#previewDiv").hide();
-		}, 200);
-	});
+		$("#backgroundDiv").mouseover(function(){
+			if(BKTIMER.timer){
+				clearTimeout(BKTIMER.timer);
+			}
+		}).mouseout(function(){
+			BKTIMER.timer = setTimeout(function(){
+				$("#backgroundDiv").hide();
+			}, 200);
+		});
+			
+		var PRETIMER = {};
+		$("#previewExample").mouseover(function(){
+			if(PRETIMER.timer){
+				clearTimeout(PRETIMER.timer);
+			}
+			$("#previewDiv").show();
+		}).mouseout(function(){
+			PRETIMER.timer = setTimeout(function(){
+				$("#previewDiv").hide();
+			}, 200);
+		});
 
-	$("#previewDiv").mouseover(function(){
-		if(PRETIMER.timer){
-			clearTimeout(PRETIMER.timer);
-		}
-	}).mouseout(function(){
-		PRETIMER.timer = setTimeout(function(){
-			$("#previewDiv").hide();
-		}, 200);
-	});
+		$("#previewDiv").mouseover(function(){
+			if(PRETIMER.timer){
+				clearTimeout(PRETIMER.timer);
+			}
+		}).mouseout(function(){
+			PRETIMER.timer = setTimeout(function(){
+				$("#previewDiv").hide();
+			}, 200);
+		});
+	}
 });

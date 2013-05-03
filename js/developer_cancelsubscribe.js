@@ -45,7 +45,7 @@ var developer_cancelsubscribe =
 ].join("");
 	
 $(function(){   
-	$(document.body).append(tmpl(developer_cancelsubscribe,{}));
+	$('#main').html(tmpl(developer_cancelsubscribe,global_obj.data));
 	$("#subcribeApiCall").click(function(){
 		$.ajax({
 	        type: "get",

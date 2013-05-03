@@ -1,12 +1,5 @@
 ;(function(){
 <!--{ include file="header.tpl" }--> 
-	var str = [
-		'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
-		'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
-		'div a#yunJPGClick{display:none}'
-	].join(""); 
-	util.createStyle(str);
-
 	tpl.whitename = [
 	tpl.header,
 	'<div id="content" class="controlCon main main_app">',
@@ -68,6 +61,12 @@
 //console.log(tpl.whitename);
 
 $('#main').html(tmpl(tpl.whitename,global_obj.data));
+	var str = [
+		'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
+		'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
+		'div a#yunJPGClick{display:none}'
+	].join(""); 
+	util.createStyle(str);
 var appid =global_obj.data.app.app_id;
 $(function(){ 
 	$("#addwhitename").click(function(){

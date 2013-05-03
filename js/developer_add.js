@@ -2,7 +2,7 @@
 	
 var developer_add = 
 [
-	headerTmpl, 
+	tpl.header, 
 	'<div id="content" class="deverCon wrapper">',
 		'<%if(developer){%>',
 		'<h3 class="formtitle">修改开发者资料</h3>',
@@ -45,7 +45,7 @@ var developer_add =
 					'</li>',
 					'<li><label class="form_label">网站地址：</label><span class="form_input"><input type="text" class="txt" name="user_website"id="user_website"  value="<%=developer && developer.user_website ? developer.user_website : ""%>" data-rule="applink" data-error="网站地址"></span><label class="gray inputdes"></label>',
 					'</li>',
-                    agreementTmpl,
+                    tpl.agreement,
 					'<li>',
 						'<label class="form_label">&nbsp;</label>',
 						'<span class="form_element">',
@@ -59,13 +59,13 @@ var developer_add =
 	'</div>',
 	'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/location.js?20130328"></script>',
 	'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/validater.js?20130328"></script>',
-	footerTmpl
+	tpl.footer
 ].join("");
 
 
 
 $(function(){
-	$(document.body).append(tmpl(developer_add, data));
+	$('#main').html(tmpl(developer_add, global_obj.data));
 	$('#reset').click(function(){location.href="developer_bedever.html";});
 	var sendmail='0';
 	$("#uretypecom").click(function(){

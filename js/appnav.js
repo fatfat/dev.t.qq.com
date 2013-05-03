@@ -39,7 +39,7 @@
 	//	 '-->
 	'</ul>' 
 	].join("");
-	$("#main").html(tmpl(developer_appnav,data));
+	$("#main").html(tmpl(developer_appnav,global_obj.data));
 	$(function(){
 		var app = data.app;
 		var developer = data.developer;	

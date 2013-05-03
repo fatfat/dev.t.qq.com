@@ -50,7 +50,7 @@
 			'</div>',
 			'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_checkmaterial.js?20130328"></script>',
 		this.tpl.footer
-	].join("\r");
+	].join("");
 	
 	var app = global_obj.data.app;
 	if(app.app_checkapi==0 && app.app_type==4 ){
@@ -62,7 +62,7 @@
 		}); 
 	}
 	var nextURL = "/development/appinfo?appid="+app.app_id;
-	$("#main").html(tmpl(this.tpl.development_appcheckmaterial,global_obj.data))
+	$("#main").html(tmpl(this.tpl.development_appcheckmaterial,global_obj.data));
 	$(function(){
 		$('input[type=file]').change(function(){ $('input#need_post').val('1')});
 	})

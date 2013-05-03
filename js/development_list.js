@@ -16,10 +16,6 @@ else
 		console.log("warning:The page_no excceeds the total page counts");
 	}            
 */
-	var str = [
-		'.dotted{display:block;float:left;color:#346496;line-height:18px;}',
-	].join("");
-	this.util.createStyle(str);
 	this.tpl = this.tpl || {};
 	this.tpl.development_list_comps = [
 		'<div  id="applist" class="applist">',
@@ -356,6 +352,10 @@ else
 	
 	$("#main").html(this.tmpl(this.tpl.development_list,global_obj.data));
     
+    var str = [
+		'.dotted{display:block;float:left;color:#346496;line-height:18px;}',
+	].join("");
+	this.util.createStyle(str);
 	insiteAppAble=true;
 	var siteAppDisplayType = insiteAppAble?  16 : 0; 
 	var displayAppType = 45;//+siteAppDisplayType;

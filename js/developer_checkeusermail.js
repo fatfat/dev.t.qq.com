@@ -24,7 +24,7 @@ var developer_checkusermail =
 ].join("");
 
 $(function(){   
-	$(document.body).append(tmpl(developer_checkusermail,data));
+	$("#main").html(tmpl(developer_checkusermail,global_obj.data));
 	var mail_domain = "www.qq.com";
 	var mail_address = '76516702@qq.com';
     $('#sendMail').click(function(){

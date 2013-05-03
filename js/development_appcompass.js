@@ -19,9 +19,9 @@
 ].join("");
 		
 $(function(){   
-	$(document.body).append(tmpl(developer_appcompass,data));
+	$(document.body).html(tmpl(developer_appcompass,global_obj.data));
 	var app = data.app;
-	$('.test').attr('href',"/development/appinfo/" + (app && app.app_id ? app.app_id : ""));		
+	$('.test').attr('href',"/development/appinfo?appid=" + (app && app.app_id ? app.app_id : ""));		
 	document.domain="qq.com";
 	var contentframe=document.getElementById("contentframe"),timer;
 	function iframeLoaded(){

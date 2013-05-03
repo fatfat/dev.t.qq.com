@@ -165,7 +165,7 @@
 '<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/location.js?20130328"></script>',
 this.tpl.footer
 ].join("\r");
-	$("#main").append(this.tmpl(this.tpl.development_developerTmpl,this.data));
+	$("#main").html(this.tmpl(this.tpl.development_developerTmpl,global_obj.data));
 $(function() {
 	var developer = window.data.developer;
 	var userType = developer.user_type || 1;

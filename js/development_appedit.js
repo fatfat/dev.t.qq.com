@@ -1,39 +1,4 @@
 ;(function(){
-	var str = [
-	'.hostingclick {',
-		'cursor: pointer;',
-		'line-height: 25px;',
-		'padding-left: 0.8em;',
-		'padding-right: 0.8em;',
-		'border-top: 1px solid #d9d9d9;',
-		'border-left: 1px solid #d9d9d9;',
-		'border-right: 1px solid #d9d9d9;',
-		'font-weight: bold;',
-	'}',
-
-	'.hosting {',     
-		'cursor: pointer;',
-		'line-height: 25px;',
-		'padding-left: 0.8em;',
-		'padding-right: 0.8em;',
-		'border-bottom: 1px solid #d9d9d9;',
-	'}',
-
-	'div a#yunJPGClick {',
-		'display: none',
-	'}',
-
-	'.icon_alert {',
-		'width: 38px;',
-		'height: 38px;',
-		'background: url(http://mat1.gtimg.com/app/opent/images/public/icon.png)',
-			'-352px -59px no-repeat;',
-		'display: inline-block;',
-		'zoom: 1;',
-	'}'
-	].join('');
-	util.createStyle(str);
-
 	tpl.development_app_material = [
 	'<li>',
 		'<label class="form_label">',
@@ -296,6 +261,40 @@
 	var androidinfo = global_obj.data.androidinfo;
 	var app = global_obj.data.app;
 	$('#main').html(tmpl(tpl.appedit, global_obj.data));
+	var str = [
+	'.hostingclick {',
+		'cursor: pointer;',
+		'line-height: 25px;',
+		'padding-left: 0.8em;',
+		'padding-right: 0.8em;',
+		'border-top: 1px solid #d9d9d9;',
+		'border-left: 1px solid #d9d9d9;',
+		'border-right: 1px solid #d9d9d9;',
+		'font-weight: bold;',
+	'}',
+
+	'.hosting {',     
+		'cursor: pointer;',
+		'line-height: 25px;',
+		'padding-left: 0.8em;',
+		'padding-right: 0.8em;',
+		'border-bottom: 1px solid #d9d9d9;',
+	'}',
+
+	'div a#yunJPGClick {',
+		'display: none',
+	'}',
+
+	'.icon_alert {',
+		'width: 38px;',
+		'height: 38px;',
+		'background: url(http://mat1.gtimg.com/app/opent/images/public/icon.png)',
+			'-352px -59px no-repeat;',
+		'display: inline-block;',
+		'zoom: 1;',
+	'}'
+	].join('');
+	util.createStyle(str);
 	//appnav js begin
 	var user_certif_status= global_obj.data.developer.user_certif_status;
 	var user_check_status= global_obj.data.developer.user_check_status;//资质证明审核状态

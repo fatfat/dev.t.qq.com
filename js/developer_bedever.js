@@ -1,6 +1,6 @@
 ﻿// JavaScript Document
 	
-var developer_bedever = 
+tpl.developer_bedever = 
 [       
 	headerTmpl, 
 	'<div id="content" class="deverCon wrapper">',
@@ -17,6 +17,6 @@ var developer_bedever =
 ].join("");
 
 $(function(){   
-	$(document.body).append(tmpl(developer_bedever,{}));
+	$('#main').html(tmpl(developer_bedever,global_obj.data));
 })
 	

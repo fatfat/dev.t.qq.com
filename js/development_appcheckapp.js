@@ -1,10 +1,3 @@
-var str = [
-	'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
-	'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
-	'div a#yunJPGClick{display:none}'
-].join('');
-util.createStyle(str);
-
 this.tpl = this.tpl || {};
 tpl.development_appcheckapp = [
 	this.tpl.header,
@@ -68,6 +61,13 @@ var ex_appname = app.app_name;
 //无线应用 http://dev.t.qq.com/apps/checkname/accddd2013s?random=1366881352328 
 
 $("#main").html(tmpl(this.tpl.development_appcheckapp,global_obj.data));
+
+var str = [
+	'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
+	'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
+	'div a#yunJPGClick{display:none}'
+].join('');
+util.createStyle(str);
 
 $(function(){ 
 	$('input#app_name').change(function(){ 

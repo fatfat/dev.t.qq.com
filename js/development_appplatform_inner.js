@@ -304,104 +304,106 @@
 		
 		$('input[type=file]').change(function(){ $('input#img_need_post').val('1')});
 		
-		$(".synchroPlatform").click(function(){
-			var app_platform=$(this).attr("_platform"),
-				$app_downurl = $("#app_downurl_"+app_platform),
-				app_downurl = $app_downurl.val(),
-				$app_marketurl = $("#app_marketurl"),
-				app_marketurl = app_platform == 1 ? "" : $app_marketurl.val(),
-				error_msg = "",
-				sychroflag = true;
-			
-			$app_downurl.trigger("blur");
-			if(app_platform == 2){
-				$app_marketurl.trigger("blur");
-			}
-			if($app_downurl.parent(".form_input").next(".tip_err").size()){
-				error_msg = $app_downurl.parent(".form_input").next(".tip_err").text();
-				sychroflag = false;
-			}
-			if(app_platform == 2 && $app_marketurl.parent(".form_input").next(".tip_err").size()){
-				if(error_msg == ""){
-					error_msg = $app_marketurl.parent(".form_input").next(".tip_err").text();
+		global_obj.init.appplatform_inner = function(){
+			$(".synchroPlatform").click(function(){
+				var app_platform=$(this).attr("_platform"),
+					$app_downurl = $("#app_downurl_"+app_platform),
+					app_downurl = $app_downurl.val(),
+					$app_marketurl = $("#app_marketurl"),
+					app_marketurl = app_platform == 1 ? "" : $app_marketurl.val(),
+					error_msg = "",
+					sychroflag = true;
+				
+				$app_downurl.trigger("blur");
+				if(app_platform == 2){
+					$app_marketurl.trigger("blur");
 				}
-			}
-			if(error_msg){
-				loginWin.alert("<center>" + error_msg + "</center>");
-				return false;
-			}
-			//loading
-			var $btn_SynchroInfo = $("#btn_SynchroInfo_"+app_platform);
-			showmsg(1,$btn_SynchroInfo,"正在同步信息");
-			$btn_SynchroInfo.attr("disabled","disabled").css("background-color","#eee");
-			
-			$.ajax({
-				 "dataType":"json"
-				,"type":"post"
-				,"url":"/development/dospider?t=" + (+new Date())
-				,"data":{"app_id" : "<!--{$app.app_id}-->", "app_platform" : app_platform, "app_downurl" : app_downurl, "app_marketurl" : app_marketurl}
-				,"success":function(d){
-					var ret = +d.ret,msg =common.getMsgByRet(ret);
-					if (msg){
-						loginWin.alert("<center>"+msg+"</center>");
-						return;
-					}
-					if(ret === 0 || ret === 3){
-						if(ret === 0){
-							showmsg(true,$btn_SynchroInfo,"信息同步成功");
-						}else if(ret === 3){
-							showmsg(false,$btn_SynchroInfo,"部分信息同步失败");
-						}
-						
-						$btn_SynchroInfo.removeAttr("disabled").css("background-color","#D6EEF6");
-						if(d.msg.app_description){
-							$("#app_description_"+app_platform).val(d.msg.app_description);
-						}
-						if(d.msg.app_version){
-							$("#app_version_"+app_platform).val(d.msg.app_version);
-						}
-						if(d.msg.app_size){
-							$("#app_size_"+app_platform).val(d.msg.app_size);
-						}
-						if(d.msg.app_score){
-							$("#app_score_"+app_platform).text(d.msg.app_score);
-						}
-						if(d.msg.app_pic1 ){
-							$("#app_pic1_"+app_platform).attr("src",d.msg.app_pic1);
-							$("#wpic1_"+app_platform).attr("data-default",d.msg.app_pic1);
-						}
-						if(d.msg.app_pic2){
-							$("#app_pic2_"+app_platform).attr("src",d.msg.app_pic2);
-							$("#wpic2_"+app_platform).attr("data-default",d.msg.app_pic2);
-						}
-						if(d.msg.app_pic3){
-							$("#app_pic3_"+app_platform).attr("src",d.msg.app_pic3);
-							$("#wpic3_"+app_platform).attr("data-default",d.msg.app_pic3);
-						}
-						if(d.msg.app_pic4){
-							$("#app_pic4_"+app_platform).attr("src",d.msg.app_pic4);
-							$("#wpic4_"+app_platform).attr("data-default",d.msg.app_pic4);
-						}
-						if(d.msg.app_pic5){
-							$("#app_pic5_"+app_platform).attr("src",d.msg.app_pic5);
-							$("#wpic5_"+app_platform).attr("data-default",d.msg.app_pic5);
-						}
-					}else if(ret === 1){
-						showmsg(false,$btn_SynchroInfo,"填写Google Play地址才可同步信息");
-						$btn_SynchroInfo.removeAttr("disabled").css("background-color","#D6EEF6");
-						return;
-					}else{
-						showmsg(false,$btn_SynchroInfo,"信息同步失败，请重试或手动填写");
-						$btn_SynchroInfo.removeAttr("disabled").css("background-color","#D6EEF6");
-						return;
+				if($app_downurl.parent(".form_input").next(".tip_err").size()){
+					error_msg = $app_downurl.parent(".form_input").next(".tip_err").text();
+					sychroflag = false;
+				}
+				if(app_platform == 2 && $app_marketurl.parent(".form_input").next(".tip_err").size()){
+					if(error_msg == ""){
+						error_msg = $app_marketurl.parent(".form_input").next(".tip_err").text();
 					}
 				}
-				,"error":function(){
-					showmsg(false,$btn_SynchroInfo,"信息同步失败，请重试");
-					$btn_SynchroInfo.removeAttr("disabled").css("background-color","#D6EEF6");
-					return;
+				if(error_msg){
+					loginWin.alert("<center>" + error_msg + "</center>");
+					return false;
 				}
-			});
+				//loading
+				var $btn_SynchroInfo = $("#btn_SynchroInfo_"+app_platform);
+				showmsg(1,$btn_SynchroInfo,"正在同步信息");
+				$btn_SynchroInfo.attr("disabled","disabled").css("background-color","#eee");
+				
+				$.ajax({
+					 "dataType":"json"
+					,"type":"post"
+					,"url":"/development/dospider?t=" + (+new Date())
+					,"data":{"app_id" : "<!--{$app.app_id}-->", "app_platform" : app_platform, "app_downurl" : app_downurl, "app_marketurl" : app_marketurl}
+					,"success":function(d){
+						var ret = +d.ret,msg =common.getMsgByRet(ret);
+						if (msg){
+							loginWin.alert("<center>"+msg+"</center>");
+							return;
+						}
+						if(ret === 0 || ret === 3){
+							if(ret === 0){
+								showmsg(true,$btn_SynchroInfo,"信息同步成功");
+							}else if(ret === 3){
+								showmsg(false,$btn_SynchroInfo,"部分信息同步失败");
+							}
+							
+							$btn_SynchroInfo.removeAttr("disabled").css("background-color","#D6EEF6");
+							if(d.msg.app_description){
+								$("#app_description_"+app_platform).val(d.msg.app_description);
+							}
+							if(d.msg.app_version){
+								$("#app_version_"+app_platform).val(d.msg.app_version);
+							}
+							if(d.msg.app_size){
+								$("#app_size_"+app_platform).val(d.msg.app_size);
+							}
+							if(d.msg.app_score){
+								$("#app_score_"+app_platform).text(d.msg.app_score);
+							}
+							if(d.msg.app_pic1 ){
+								$("#app_pic1_"+app_platform).attr("src",d.msg.app_pic1);
+								$("#wpic1_"+app_platform).attr("data-default",d.msg.app_pic1);
+							}
+							if(d.msg.app_pic2){
+								$("#app_pic2_"+app_platform).attr("src",d.msg.app_pic2);
+								$("#wpic2_"+app_platform).attr("data-default",d.msg.app_pic2);
+							}
+							if(d.msg.app_pic3){
+								$("#app_pic3_"+app_platform).attr("src",d.msg.app_pic3);
+								$("#wpic3_"+app_platform).attr("data-default",d.msg.app_pic3);
+							}
+							if(d.msg.app_pic4){
+								$("#app_pic4_"+app_platform).attr("src",d.msg.app_pic4);
+								$("#wpic4_"+app_platform).attr("data-default",d.msg.app_pic4);
+							}
+							if(d.msg.app_pic5){
+								$("#app_pic5_"+app_platform).attr("src",d.msg.app_pic5);
+								$("#wpic5_"+app_platform).attr("data-default",d.msg.app_pic5);
+							}
+						}else if(ret === 1){
+							showmsg(false,$btn_SynchroInfo,"填写Google Play地址才可同步信息");
+							$btn_SynchroInfo.removeAttr("disabled").css("background-color","#D6EEF6");
+							return;
+						}else{
+							showmsg(false,$btn_SynchroInfo,"信息同步失败，请重试或手动填写");
+							$btn_SynchroInfo.removeAttr("disabled").css("background-color","#D6EEF6");
+							return;
+						}
+					}
+					,"error":function(){
+						showmsg(false,$btn_SynchroInfo,"信息同步失败，请重试");
+						$btn_SynchroInfo.removeAttr("disabled").css("background-color","#D6EEF6");
+						return;
+					}
+				});
+			}
 		});
 	});
 })();

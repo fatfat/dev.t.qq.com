@@ -168,7 +168,7 @@ tpl.development_notice = [
 	'<!--{ include file="footer.tpl" }-->'
 ].join('');
 
-$(function(){
+global_obj.init.notice = function(){
 	$(".applyNotice").click(function(){
 		$(this).attr("href","/development/addnotice/" + app.app_id);
 	});

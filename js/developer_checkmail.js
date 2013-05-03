@@ -32,7 +32,7 @@ var developer_cancelsubscribe =
 ].join("");
 
 $(function(){   
-	$(document.body).append(tmpl(developer_cancelsubscribe,data));
+	$('#main').html(tmpl(developer_cancelsubscribe,global_obj.data));
 	var developer = data.developer;
 	if(developer && developer.user_type ? developer.user_type==1 : "false"){
 		$('a.edit').attr('href','developer_add.html');

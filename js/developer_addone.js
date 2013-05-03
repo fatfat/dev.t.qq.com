@@ -1,6 +1,6 @@
 ﻿  //JavaScript Document
 	
-var developer_addone = 
+tpl.developer_addone = 
 [
 	this.tpl.header, 
 	'<div id="content" class="deverCon wrapper">',
@@ -61,7 +61,7 @@ var developer_addone =
 	this.tpl.footer
 ].join("");
 
-$(document.body).append(tmpl(developer_addone, global_obj.data));
+$('#main').html(tmpl(developer_addone, global_obj.data));
 
 $(function(){	
 	$('#reset').click(function() {

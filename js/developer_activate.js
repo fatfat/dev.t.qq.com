@@ -33,6 +33,6 @@
 
 
 	$(function(){   
-		$(document.body).append(tmpl(developer_activate, data));
+		$('#main').html(tmpl(developer_activate, global_obj.data));
 	})
 })();
