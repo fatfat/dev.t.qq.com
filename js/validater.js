@@ -322,10 +322,14 @@ OPEN_VALIDATOR = {
 			,url    = {
 				// "appname"  : "/apps/checkname/"+encodeURIComponent(value),
 				 "compname" : "/apps/checkcompname",
-				 "appname":"/pipes/interfaceserver?action=common_query&business_type=ajax_checkname&appname="+encodeURIComponent(value)
+				 "appname":"/pipes/interfaceserver
 			}
 			,para   = {
-				 "appname"  : {}
+				 "appname"  : {
+				 	'action' : 'common_query',
+				 	'business_type' : 'ajax_checkname',
+				 	'appname' : value
+				 }
 				,"compname" : {"comp_name":encodeURIComponent(value),"comp_type":window.comp_type}
 			};
 			

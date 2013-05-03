@@ -215,6 +215,7 @@ OPEN_VALIDATOR = {
 	}
 	,appnameCheck:function(value,selector){
 		//检测应用名称唯一性
+		console.log(2);
 		 var label  = selector.attr("data-error") 	//字段名
 			,dvalue = selector.attr("data-default") //默认值
 			,rule   = selector.attr("data-rule")    //验证规则
@@ -223,7 +224,7 @@ OPEN_VALIDATOR = {
 				,"compname" : "/apps/checkcompname"
 			}
 			,para   = {
-				"appname"  : {"action":"common_query","business_type":"ajax_checkname","appname":encodeURIComponent(value)}
+				"appname"  : {"action":"common_query","business_type":"ajax_checkname","appname":value}
 				,"compname" : {"comp_name":encodeURIComponent(value),"comp_type":window.comp_type}
 			};
 			
