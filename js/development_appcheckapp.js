@@ -24,7 +24,7 @@ tpl.development_appcheckapp = [
 			'</div>',
 			'<%if (app.app_type == 6 ) {%>',
 			'<iframe id="appform_post_aec" name="appform_post_aec" width="100" height="100" src="about:blank" style="display: none;"></iframe>',
-			'<form action="/pipes/interfaceserver?appid=<%=app.app_id%>/" method="post" class="appform wirelessappform" enctype="multipart/form-data" id="appform" target="appform_post_aec" onsubmit="return false">',
+			'<form action="/development/savecheckwapp?appid=<%=app.app_id%>" method="post" class="appform wirelessappform" enctype="multipart/form-data" id="appform" target="appform_post_aec" onsubmit="return false">',
 				'<ul>',
 				this.tpl.development_app_info,
 				this.tpl.development_app_material,

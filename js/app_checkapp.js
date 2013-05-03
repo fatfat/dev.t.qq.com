@@ -13,7 +13,7 @@ OPEN_VALIDATOR = {
 			return true;
 		} 
 	}
-	,isempty:function(){return true;}
+	,isempty:function(){return true;}  
 	,appsupport:function(){return true;}
 	,appsupportIsEmpty:function(selector){
 		var label  = selector.attr("data-error"),terminal=selector.attr("data-terminal");	//字段名
@@ -852,7 +852,7 @@ $(function () {
 	if(! $("form").first().hasClass("wirelessappform")){//无线应用，则加载此段代码
 		return ;
 	}
-		
+	
 	$("<div class=\"tooltip\" id=\"tooltip\"><div class=\"toolangle\"><span class=\"a1\">◆</span><span class=\"a2\">◆</span></div><div class=\"tooltext\"></div></div>").appendTo($("body"));
     window.tooltip={
     	"timer":null,
