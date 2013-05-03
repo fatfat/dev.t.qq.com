@@ -51,7 +51,6 @@ tpl.development_appcheckapp = [
 			'<%}%>',
 		'</div>',
 	'</div>',
-'<script type="text/javascript" src="/js/app_checkapp.js?20130328"></script>',
 	this.tpl.footer
 ].join('');
 
@@ -62,6 +61,8 @@ var ex_appname = app.app_name;
 
 $("#main").html(tmpl(this.tpl.development_appcheckapp,global_obj.data));
 
+global_obj.init.appnav();
+
 var str = [
 	'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
 	'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
@@ -69,7 +70,7 @@ var str = [
 ].join('');
 util.createStyle(str);
 
-$(function(){ 
+
 	$('input#app_name').change(function(){ 
 		if(ex_appname != $('input#app_name').val()){
 			$('input#postname').val('1');
@@ -77,7 +78,7 @@ $(function(){
 			$('input#postname').val('0'); 
 		}
 	}) 
-});
+
 
 var app_id = app.app_id || '',
 	app_type = +app.app_type || '',
@@ -177,7 +178,6 @@ if  (app.app_checkapi == 0 && app.app_type == 4  ) {
 	if (app.app_type != 5 && app.app_type != 3 && app.app_type != 6 && app.app_type != 4){
 		$(function(){
 		var app_status=app.app_status;
-
 		$('a#change_type').click(function(){
 			if(app_status == 1||app_status == 7||app_status==5||app_status==4||app_status==8){
 				loginWin.show({
@@ -265,3 +265,7 @@ if  (app.app_checkapi == 0 && app.app_type == 4  ) {
 		});
 	}
 	//development_app_info js end
+
+global_obj.init.app_material();
+
+util.createScript("/js/app_checkapp.js");

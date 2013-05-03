@@ -1,6 +1,6 @@
 //JavaScript Document
 this.tpl = this.tpl||{};
-this.tpl.agreementTmpl = [
+this.tpl.agreement = [
 	'<li>',
 		'<label class="form_label">&nbsp;</label>',
 		'<div class="form_element"  style="line-height:20px;">',

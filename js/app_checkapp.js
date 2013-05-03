@@ -678,14 +678,15 @@ $(function(){
 	         			  'business_type':'savecheckapp'
 	         			  };
 
-			 postData += typedata;
+	//		 postData += typedata;
+			var postdata = $.param(postData) + typedata;
 
 			 $.ajax({
 				   type: "POST",
 			//	   url: "/pipes/interfaceserver/ajaxsavecheckapp",
 				   url: "/pipes/interfaceserver",
 				   dataType: "json",
-				   data: postData,
+				   data: postdata,
 				   success: function(msg){
 				   	   var ret = +(msg.ret || msg.error),retmsg = common.getMsgByRet(ret);
 				   	   if (retmsg){
