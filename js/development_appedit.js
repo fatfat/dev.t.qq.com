@@ -302,7 +302,11 @@
 	var app_binbond= global_obj.data.app.app_binbond;//保证金
 
 	$(function(){
+<<<<<<< HEAD
 		global_obj.init.app_info.appInfoEvent();
+=======
+		global_obj.init.app_info();
+>>>>>>> 解决创建无线应用时网址为空的问题。
 		$("#apphost_btn").click(function(event){ 
 			if(app_binbond ===0){//未分配保证金
 				if( user_certif_status ===0 && ( user_check_status===0 || user_check_status===1 || user_check_status===2 )){

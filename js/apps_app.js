@@ -218,6 +218,7 @@ $(function() {
 		} else {
 			if (appType == 6) {
 				postData["app_platform"] = $("#app_platform").val();
+				postData["app_url"] = $("#app_url").val();
 			} else {
 				postData["app_url"] = $("#app_url").val();
 			}
