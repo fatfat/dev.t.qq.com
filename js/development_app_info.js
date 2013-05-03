@@ -444,7 +444,8 @@ tpl.development_app_info = [
 	'<% } %>'
 ].join('');
 
-global_obj.data.appInfoEvent = function(){
+global_obj.init = global_obj.init || {};
+global_obj.init.app_info = function(){
 	var TIMER = {};
 	$("#appweiboLink").mouseover(function(){
 			if(TIMER.timer){
