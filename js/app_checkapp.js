@@ -664,21 +664,25 @@ $(function(){
 		
 			var app_class_child = $("#app_class_child").size()>0?$("#app_class_child").val():-1;
 
-			var postData = 'app_name='+encodeURIComponent($('input#app_name').val())
-	                     + '&app_id='+app_id+ '&app_hight='+encodeURIComponent($('input#app_hight').val())
-	                     + '&app_url='+encodeURIComponent($('input#app_url').val())
-	                     + '&app_description='+encodeURIComponent($('textarea#app_description').val())
-	                     + '&app_weibo='+encodeURIComponent($('input#app_weibo').val())
-						 + '&need_post=1'
-			 			 + '&postname='+$('input#postname').val()
-			 			 + '&app_class_main='+$('#app_class_main').val()
-			 			 + '&app_class_child='+app_class_child;
+			var postData = {'app_name':encodeURIComponent($('input#app_name').val()),
+	                      'appid':app_id,
+	            		  'app_hight':encodeURIComponent($('input#app_hight').val()),
+	                      'app_url':encodeURIComponent($('input#app_url').val()),
+	                      'app_description':encodeURIComponent($('textarea#app_description').val()),
+	                      'app_weibo':encodeURIComponent($('input#app_weibo').val()),
+						  'need_post':1,
+			 			  'postname':$('input#postname').val(),
+			 			  'app_class_main':$('#app_class_main').val(),
+			 			  'app_class_child':app_class_child,
+	         			  'business_type':'savecheckapp'
+	         			  };
 
 			 postData += typedata;
 
 			 $.ajax({
 				   type: "POST",
-				   url: "/development/ajaxsavecheckapp?appid="+app_id+'/',
+			//	   url: "/pipes/interfaceserver/ajaxsavecheckapp",
+				   url: "/pipes/interfaceserver",
 				   dataType: "json",
 				   data: postData,
 				   success: function(msg){

@@ -507,7 +507,8 @@ else
 			  data: dota,
 			  cache: false,
 			  success: function(ResponseData){ 
-				  if (parseInt(ResponseData.data.uin) == parseInt(userInfo.hdlogin) ){
+
+				  if (parseInt(ResponseData.data.uin,10) == parseInt(userInfo.hdlogin,10) ){
 				  	  ResponseData.data.apps = ResponseData.data.apps || {};
 				      ResponseData.data.kapps = ResponseData.data.kapps || {};
 				  	  if($('#otherapplist').hasClass('hidden')){

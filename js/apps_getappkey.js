@@ -13,7 +13,7 @@ this.tpl.apps_getappkey = [
 				'<p><span class="keyName">App Key:</span><span id="appidret"><%=appkeyinfo.appkey%>		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p>',
 				'<p><span class="keyName">App Secret:</span><span id="appkeyret"><%=appkeyinfo.appsecret%></span></p>',
 				'<div>',
-					'<span class="getkeyIcon2"></span><a href="/apps/saveappkey/<%=appkeyinfo.appkey%>/<%=appkeyinfo.appsecret%>/" target="_blank">保存到本地</a>',
+					'<span class="getkeyIcon2"></span><a href="/apps/saveappkey?appid=<%=appkeyinfo.appkey%>" target="_blank">保存到本地</a>',
 					'<span class="getkeyIcon3"></span><a target="_blank" href="http://wiki.open.t.qq.com/index.php/%E5%BA%94%E7%94%A8%E6%8E%A5%E5%85%A5%E6%8C%87%E5%BC%95#.E8.BF.9B.E8.A1.8C.E5.BC.80.E5.8F.91">如何使用</a>',
 				'</div>',
 			'</div>',
