@@ -322,7 +322,7 @@ OPEN_VALIDATOR = {
 			,url    = {
 				// "appname"  : "/apps/checkname/"+encodeURIComponent(value),
 				 "compname" : "/apps/checkcompname",
-				 "appname":"/pipes/interfaceserver
+				 "appname":"/pipes/interfaceserver"
 			}
 			,para   = {
 				 "appname"  : {
