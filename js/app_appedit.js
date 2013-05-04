@@ -725,7 +725,7 @@ $("form input[type='submit']").click(function(){//表单提交验证
 			return false;
 		}
 
-		$("form input[type='text'],form textarea,select#app_class_main,select#app_class_child,form input[type='file']").not("[data-default]^=''").each(function(){
+		$("form input[type='text'],form textarea,select#app_class_main,select#app_class_child,form input[type='file']").each(function(){
 			if($(f).hasClass("wirelessappform")){
 				if((app_platform === 1 && $(this).hasClass("android_field")) || (app_platform === 2 && $(this).hasClass("iphone_field"))){//只选择了iphone平台,对android字段不验证;若只选择了android平台，则对iphone字段不验证
 					return;
