@@ -1,6 +1,6 @@
 
-var development_appcheckplatformTmpl = [
-headerTmpl,
+tpl.development_appcheckplatform = [
+	tpl.header,
 	'<div id="content" class="controlCon main main_app">',
 		'<div class="approate">',
 			'<a href="/development/">我的应用</a> &gt; <span><%=app.app_name%></span>',
@@ -11,7 +11,7 @@ headerTmpl,
 					'<img src="<%=app.app_icon_75?app.app_icon_75:"http://mat1.gtimg.com/app/opent/images/index/icon.jpg"%>" height="75" width="75"/><br/>',
 					'<p><%=app.app_name%></p>',
 				'</div>',
-				appNavTmpl,
+				tpl.appnav,
 			'</div>',
 		'</div>' ,
 		'<div class="deverRight"> ',
@@ -27,8 +27,8 @@ headerTmpl,
 			    '<ul>',
 					'<input type="hidden" name="isFramePost" value="1"/>',
 					'<input type="hidden" name="isPostMaterial" value="1"/>',
-			       // '<% include file="./development/development_appplatform_inner.tpl" %>',
-			        agreementTmpl,
+			        tpl.development_appplatform_inner.js,
+			        tpl.agreement,
 			        '<li>',
 			            '<label class="form_label">&nbsp;</label>',
 			            '<span class="form_element">',
@@ -39,9 +39,9 @@ headerTmpl,
 			'</form>',
 		'</div>',
 	'</div>',
-	'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_checkmaterial.js?20130328"></script>',
-	footerTmpl
-].join("\r");
+//	'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_checkmaterial.js?20130328"></script>',
+	tpl.footer,
+].join("");
 
 if (app.app_checkapi==0&&app.app_type==4  ){
 	$(function(){ 
@@ -51,10 +51,10 @@ if (app.app_checkapi==0&&app.app_type==4  ){
 	 	$('input[type="file"]').hide();
 	}); 
 } 
-var nextURL = "/development/appinfo/"+app.app_id+"/",
+var nextURL = "/development/appinfo?appid="+app.app_id,
 	app_type = app.app_type;
 	
 $(function(){
-	$(document.body).append(tmpl(development_appcheckplatformTmpl,{}))
+	$('#main').html(tmpl(tpl.development_appcheckplatform,global_obj.data))
 	$('input[type=file]').change(function(){ $('input#need_post').val('1')});
 })
