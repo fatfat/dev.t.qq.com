@@ -193,30 +193,32 @@ tpl.development_app_material = [
 
 ].join('');
 
-var app = global_obj.data.app;
 
-if (app.app_type ==6) {
-	$(function(){
-		$('input[type=file]').change(function(){ $('input#img_need_post').val('1')});
-	})
-}
-
-if (app.app_type !=5 && app.app_type !=6) {
-	$(function(){
-		$('input[type=file]').change(function(){ $('input#img_need_post').val('1')});
-	})
-}
-
-if (app.app_type ==4) {
-	$(function(){
-		$('input[type=file]').change(function(){ $('input#img_need_post').val('1')});
-	})
-}
-
-var app_type =+ app.app_type;
-	
-var BKTIMER = {};
 global_obj.init.app_material = function(){
+
+	var app = global_obj.data.app;
+
+	if (app.app_type ==6) {
+		$(function(){
+			$('input[type=file]').change(function(){ $('input#img_need_post').val('1')});
+		})
+	}
+
+	if (app.app_type !=5 && app.app_type !=6) {
+		$(function(){
+			$('input[type=file]').change(function(){ $('input#img_need_post').val('1')});
+		})
+	}
+
+	if (app.app_type ==4) {
+		$(function(){
+			$('input[type=file]').change(function(){ $('input#img_need_post').val('1')});
+		})
+	}
+
+	var app_type =+ app.app_type;
+
+	var BKTIMER = {};
 	$("#backgroundExample").mouseover(function(){
 		if(BKTIMER.timer){
 			clearTimeout(BKTIMER.timer);
@@ -239,6 +241,7 @@ global_obj.init.app_material = function(){
 	});
 		
 	var PRETIMER = {};
+
 	$("#previewExample").mouseover(function(){
 		if(PRETIMER.timer){
 			clearTimeout(PRETIMER.timer);
