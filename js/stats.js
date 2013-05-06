@@ -1,4 +1,4 @@
-;(function(global){
+﻿;(function(global){
 	global.Ta=global.Ta||{};
 	Ta.hack=function(){
 		return {params:'',
