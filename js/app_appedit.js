@@ -1074,6 +1074,7 @@ if (+$("input[name='app_hosting']:checked").val() === 1){
 			,"url":"/apps/getappsitelist"
 			,"data":{"uin":hdlogin,"app_id":$("input[name='app_id']").val()}
 			,"success":function(d){
+				alert(d.code)
 				var ret = +d.ret,msg =common.getMsgByRet(ret);
 				if (msg){
 					loginWin.alert("<center>"+msg+"</center>");
@@ -1138,7 +1139,7 @@ $("#app_class_main").change(function(){
 });
 
 var submitCallback = function (d) {
-	var ret = +(d.ret||d.error),msg=common.getMsgByRet(ret);
+	var ret = +(d.code||d.error),msg=common.getMsgByRet(ret);
 	loginWin.close();
 	if (msg){
 		loginWin.alert("<center>"+msg+"</center>");
