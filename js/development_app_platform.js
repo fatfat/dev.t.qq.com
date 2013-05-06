@@ -44,6 +44,8 @@
 	].join('');
 
 	$('#main').html(tmpl(tpl.app_platform, global_obj.data));
+	global_obj.init.appnav();
+	global_obj.init.appplatform_inner();
 	var app = global_obj.data.app || {},
 	iphoneinfo = global_obj.data.iphoneinfo || {},
 	androidinfo = global_obj.data.androidinfo || {};

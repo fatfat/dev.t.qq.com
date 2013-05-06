@@ -377,7 +377,7 @@ $(function(){
     	});
 
     $("input#devSubmit").click(function(){
-    	if(app_type !== 6){ //非无线应用
+    	if(global_obj.data.app_type !== 6){ //非无线应用
 	    	//验证表单上传元素中都有图片
 	    	var imgisok=true,str="";
 	    	$("input[type='file']").each(function(){

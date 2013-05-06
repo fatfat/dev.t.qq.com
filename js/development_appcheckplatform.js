@@ -1,4 +1,4 @@
-
+;(function(){
 tpl.development_appcheckplatform = [
 	tpl.header,
 	'<div id="content" class="controlCon main main_app">',
@@ -23,11 +23,11 @@ tpl.development_appcheckplatform = [
 				'<label>确认开发者信息</label><i class="active"></i><label><%if(app.app_type == 6){ %>确认基本信息<%}else{%>确认应用信息<%}%></label><i class="active"></i><strong>确认平台信息</strong><i></i><label>提交审核</label>',
 			'</div>',
 			'<iframe id="appform_post_aec" name="appform_post_aec" width="100" height="100" src="about:blank" style="display:none;"></iframe>',
-			'<form target="appform_post_aec" action="/development/savecheckplatform/<%=app.app_id%>/" method="post" class="appform wirelessappform" enctype="multipart/form-data" id="appform_user">',
-			    '<ul>',
+			'<form target="appform_post_aec" action="/pipes/interfaceserver?action=common_query&business_type=savecheckplatform&appid=<%=app.app_id%>" method="post" class="appform wirelessappform" enctype="multipart/form-data" id="appform_user">',
+			 '<ul>',
 					'<input type="hidden" name="isFramePost" value="1"/>',
 					'<input type="hidden" name="isPostMaterial" value="1"/>',
-			        tpl.development_appplatform_inner.js,
+			        tpl.development_appplatform_inner,
 			        tpl.agreement,
 			        '<li>',
 			            '<label class="form_label">&nbsp;</label>',
@@ -43,6 +43,10 @@ tpl.development_appcheckplatform = [
 	tpl.footer,
 ].join("");
 
+
+var app = global_obj.data.app;
+global_obj.data.androidinfo = global_obj.data.androidinfo || {};
+global_obj.data.iphoneinfo = global_obj.data.iphoneinfo || {};
 if (app.app_checkapi==0&&app.app_type==4  ){
 	$(function(){ 
 	 	$('input,textarea').attr("disabled","disabled"); 
@@ -53,8 +57,8 @@ if (app.app_checkapi==0&&app.app_type==4  ){
 } 
 var nextURL = "/development/appinfo?appid="+app.app_id,
 	app_type = app.app_type;
-	
-$(function(){
-	$('#main').html(tmpl(tpl.development_appcheckplatform,global_obj.data))
+	$('#main').html(tmpl(tpl.development_appcheckplatform,global_obj.data));
 	$('input[type=file]').change(function(){ $('input#need_post').val('1')});
-})
+	global_obj.init.appnav();
+	global_obj.init.appplatform_inner();
+})();
