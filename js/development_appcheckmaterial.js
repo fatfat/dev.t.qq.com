@@ -36,7 +36,7 @@
 				'<input type="hidden" name="isFramePost" value="1"/>',
 				'<input type="hidden" name="isPostMaterial" value="1"/>',
 			    this.tpl.development_app_material,
-				this.tpl.agreementTmpl,
+				this.tpl.agreement,
 				'<li>',
 				   '<label class="form_label">&nbsp;</label>',
 				   ' <span class="form_element">',
@@ -51,7 +51,7 @@
 			'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_checkmaterial.js?20130328"></script>',
 		this.tpl.footer
 	].join("");
-	
+
 	var app = global_obj.data.app;
 	if(app.app_checkapi==0 && app.app_type==4 ){
 		$(function(){ 
@@ -63,6 +63,8 @@
 	}
 	var nextURL = "/development/appinfo?appid="+app.app_id;
 	$("#main").html(tmpl(this.tpl.development_appcheckmaterial,global_obj.data));
+	global_obj.init.appnav();
+	global_obj.init.app_material();
 	$(function(){
 		$('input[type=file]').change(function(){ $('input#need_post').val('1')});
 	})
