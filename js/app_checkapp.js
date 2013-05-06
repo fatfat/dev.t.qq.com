@@ -667,6 +667,7 @@ $(function(){
 
 			var postData = {'app_name':encodeURIComponent($('input#app_name').val()),
 	                      'appid':app_id,
+	            		  'action':'common_query',
 	            		  'app_hight':encodeURIComponent($('input#app_hight').val()),
 	                      'app_url':encodeURIComponent($('input#app_url').val()),
 	                      'app_description':encodeURIComponent($('textarea#app_description').val()),
