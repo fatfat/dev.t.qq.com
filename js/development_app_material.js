@@ -241,10 +241,8 @@ global_obj.init.app_material = function(){
 	});
 		
 	var PRETIMER = {};
-	console.log('haha1');
-	console.log(document.getElementById('previewExample'));
+
 	$("#previewExample").mouseover(function(){
-		console.log('haha2');
 		if(PRETIMER.timer){
 			clearTimeout(PRETIMER.timer);
 		}
