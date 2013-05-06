@@ -813,7 +813,7 @@ $("#app_class_main").change(function(){
 });
 
 var submitCallback = function (d) {//特别针对无线应用
-	var ret = +(d.ret || d.error),msg = common.getMsgByRet(ret);
+	var ret = +(d.code || d.error),msg = common.getMsgByRet(ret);
 	loginWin.close();
 	if (msg){
 		loginWin.alert("<center>"+msg+"</center>");
@@ -822,7 +822,7 @@ var submitCallback = function (d) {//特别针对无线应用
 	if (ret == 0) {
 		if(loginWin){
 			loginWin.close();
-			window.location.href = "/development/wappcheckinfo/" + app_id + "/";
+			window.location.href = "/development/wappcheckinfo?appid=" + app_id;
 			//window.location.replace("/development/wappcheckinfo/" + app_id + "/");
 		}
 	} else {
