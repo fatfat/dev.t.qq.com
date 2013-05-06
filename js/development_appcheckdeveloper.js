@@ -137,8 +137,9 @@ this.tpl.footer
 global_obj.data.developer_detail.appMax = global_obj.data.developer.appMax;
 global_obj.data.developer_detail.head = global_obj.data.developer.head;
 global_obj.data.developer = global_obj.data.developer_detail;
+global_obj.data.appnav = "info";
 //--------------------更正后台数据结束-------------------------
-$("#main").append(this.tmpl(this.tpl.development_appcheckdeveloper,global_obj.data));
+$("#main").html(this.tmpl(this.tpl.development_appcheckdeveloper,global_obj.data));
 var app = global_obj.data.app;
 var developer = global_obj.data.developer;
 //var NextUrl = "/development/appcheckapp/"+app.app_id+"/";

@@ -53,6 +53,7 @@
 		this.tpl.footer
 	].join("");
 
+	global_obj.data.appnav = "info";
 	var app = global_obj.data.app;
 	if(app.app_checkapi==0 && app.app_type==4 ){
 		$(function(){ 

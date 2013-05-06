@@ -47,6 +47,7 @@ tpl.development_appcheckplatform = [
 var app = global_obj.data.app;
 global_obj.data.androidinfo = global_obj.data.androidinfo || {};
 global_obj.data.iphoneinfo = global_obj.data.iphoneinfo || {};
+global_obj.data.appnav = "info";
 if (app.app_checkapi==0&&app.app_type==4  ){
 	$(function(){ 
 	 	$('input,textarea').attr("disabled","disabled"); 

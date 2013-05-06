@@ -58,7 +58,7 @@ var app = global_obj.data.app;
 var ex_appname = app.app_name;
 //ajax 链接网页应用 http://dev.t.qq.com/apps/checkname/abc?random=1366881099913
 //无线应用 http://dev.t.qq.com/apps/checkname/accddd2013s?random=1366881352328 
-
+global_obj.data.appnav = "info";
 $("#main").html(tmpl(this.tpl.development_appcheckapp,global_obj.data));
 
 global_obj.init.appnav();
