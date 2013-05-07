@@ -160,14 +160,23 @@
 		'</div>',
 '</div>',
 '<link href="http://mat1.gtimg.com/app/opent/css/development/index_selectapp.css" rel="stylesheet" type="text/css" />',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/validater.js"></script>',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_appadd.js"></script>',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/location.js?20130328"></script>',
 this.tpl.footer
 ].join("\r");
-	$("#main").html(this.tmpl(this.tpl.development_developerTmpl,global_obj.data));
+
+//拷贝信息
+$.extend(global_obj.data.developer_detail,global_obj.data.developer);
+global_obj.data.developer =  global_obj.data.developer_detail;
+window.user_province = global_obj.data.developer.user_province;
+window.user_city = global_obj.data.developer.user_city;
+
+
+util.createScript("/js/validater.js")
+util.createScript("/js/app_appadd.js")
+$("#main").html(this.tmpl(this.tpl.development_developerTmpl,global_obj.data));
+
+util.createScript("/js/location.js")
 $(function() {
-	var developer = window.data.developer;
+	var developer = global_obj.data.developer;
 	var userType = developer.user_type || 1;
 	var user_uin = developer.user_uin || 0
 	var user_check_status = developer.user_check_status

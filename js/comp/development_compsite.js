@@ -1,5 +1,5 @@
 var development_compsiteTmpl = [
-headerTmpl,
+this.tpl.header,
 '<style type="text/css">',
 '.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
 '.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
@@ -66,13 +66,11 @@ headerTmpl,
 			'<!--/开发者信息-->',
 		'</div>',
 	'</div>',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/validater.js?20130328"></script> ',
-footerTmpl
+	this.tpl.footer
 ].join("\r");
-
+util.createScript("/js/validater.js")
 var tSiteWebApp;
-
-var comp_type= comp.comp_type
+var comp_type= comp.comp_type;
 $(function(){
 	$(document.body).append(tmpl(development_compsiteTmpl,{}))
     $(".appform li.alert").find(".hidebtn").click(function(){
