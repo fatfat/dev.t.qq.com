@@ -39,7 +39,6 @@ tpl.development_appcheckplatform = [
 			'</form>',
 		'</div>',
 	'</div>',
-//	'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_checkmaterial.js?20130328"></script>',
 	tpl.footer,
 ].join("");
 
