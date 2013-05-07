@@ -1,4 +1,4 @@
-;(function(){
+
 	this.tpl = this.tpl||{};
 	this.tpl.development_appcheckmaterial = [
 		this.tpl.header,
@@ -30,22 +30,22 @@
 						'<label>确认开发者信息</label><i class="active"></i><label>确认应用信息</label><i class="active"></i><strong>确认应用素材</strong><i></i><label>提交审核</label>',
 					'</div>',
 					//<!--开发者信息-->
-		'<iframe id="appform_post_aec" name="appform_post_aec" width="100" height="100" src="about:blank" style="display:none;"></iframe>',
-		'<form target="appform_post_aec" action="/pipes/interfaceserver?action=common_query&business_type=savecheckmaterial&appid=<%=app.app_id%>" method="post" class="appform" enctype="multipart/form-data" id="appform_user">',
-		//	'<form target="_blank" action="/pipes/interfaceserver?action=common_query&business_type=savecheckmaterial&appid=<%=app.app_id%>" method="post" class="appform" enctype="multipart/form-data" id="appform_user">',
-			'<ul>',
-				'<input type="hidden" name="isFramePost" value="1"/>',
-				'<input type="hidden" name="isPostMaterial" value="1"/>',
-			    this.tpl.development_app_material,
-				this.tpl.agreement,
-				'<li>',
-				   '<label class="form_label">&nbsp;</label>',
-				   ' <span class="form_element">',
-						'<input type="submit" class="devSubmit" id="devSubmit" value="提交审核" data-rule="formauto"/>',
-					'</span>',
-			   ' </li>',
-			'</ul>',
-		'</form>',
+					'<iframe id="appform_post_aec" name="appform_post_aec" width="100" height="100" src="about:blank" style="display:none;"></iframe>',
+		//		'<form target="appform_post_aec" action="/pipes/interfaceserver?action=common_query&business_type=savecheckmaterial&appid=<%=app.app_id%>" method="post" class="appform" enctype="multipart/form-data" id="appform_user">',
+					'<form target="appform_post_aec" action="/development/savecheckmaterial?appid=<%=app.app_id%>" method="post" class="appform" enctype="multipart/form-data" id="appform_user">',
+						'<ul>',
+							'<input type="hidden" name="isFramePost" value="1"/>',
+							'<input type="hidden" name="isPostMaterial" value="1"/>',
+						    this.tpl.development_app_material,
+							this.tpl.agreement,
+							'<li>',
+							   '<label class="form_label">&nbsp;</label>',
+							   ' <span class="form_element">',
+									'<input type="submit" class="devSubmit" id="devSubmit" value="提交审核" data-rule="formauto"/>',
+								'</span>',
+						   ' </li>',
+						'</ul>',
+					'</form>',
 					//<!--/开发者信息-->
 				'</div>',
 			'</div>',
@@ -70,4 +70,3 @@
 		$('input[type=file]').change(function(){ $('input#need_post').val('1')});
 	})
 
-})();
