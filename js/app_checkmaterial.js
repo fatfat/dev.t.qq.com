@@ -377,11 +377,14 @@ $(function(){
     	});
 
     $("input#devSubmit").click(function(){
-    	if(global_obj.data.app_type !== 6){ //非无线应用
+    	if(global_obj.data.app.app_type !== 6){ //非无线应用
 	    	//验证表单上传元素中都有图片
 	    	var imgisok=true,str="";
 	    	$("input[type='file']").each(function(){
 	    		var img=$(this).parent().find("img");
+	    		console.log(img);
+	    		console.log([img.attr("_width"),img.attr("_height")]);
+	    		console.log([$(this).val(),$(this).attr("data-default").replace("NULL","")]);
 	    		if( (!$(this).val() && !$(this).attr("data-default").replace("NULL","")) || $(this).attr("data-error") ) {
 	    			imgisok=false;
 	    			str="<center>请选择一张"+img.attr("_width")+"×"+img.attr("_height")+"的png图片</center>";
