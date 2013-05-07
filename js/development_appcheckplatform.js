@@ -1,4 +1,4 @@
-;(function(){
+
 tpl.development_appcheckplatform = [
 	tpl.header,
 	'<div id="content" class="controlCon main main_app">',
@@ -24,7 +24,7 @@ tpl.development_appcheckplatform = [
 			'</div>',
 			'<iframe id="appform_post_aec" name="appform_post_aec" width="100" height="100" src="about:blank" style="display:none;"></iframe>',
 		//	'<form target="appform_post_aec" action="/pipes/interfaceserver?action=common_query&business_type=savecheckplatform&appid=<%=app.app_id%>" method="post" class="appform wirelessappform" enctype="multipart/form-data" id="appform_user">',
-			'<form target="appform_post_aec" action="/development/savecheckplatform?appid=<%=app.app_id%>" method="post" class="appform" enctype="multipart/form-data" id="appform_user">',
+			'<form target="appform_post_aec" action="/development/savecheckplatform?appid=<%=app.app_id%>" method="post" class="appform wirelessappform" enctype="multipart/form-data" id="appform_user">',
 				 '<ul>',
 					'<input type="hidden" name="isFramePost" value="1"/>',
 					'<input type="hidden" name="isPostMaterial" value="1"/>',
@@ -62,4 +62,3 @@ var nextURL = "/development/appinfo?appid="+app.app_id,
 	$('input[type=file]').change(function(){ $('input#need_post').val('1')});
 	global_obj.init.appnav();
 	global_obj.init.appplatform_inner();
-})();

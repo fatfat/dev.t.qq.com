@@ -92,7 +92,6 @@ $(function(){
 	 * 删除白名单
 	 */
 	$("cite[id]").click(function(){
-		console.log(this.id);
 		 var postData = 'app_id='+global_obj.data.app.app_id+'&whitenames='+this.id,t=$(this);
 		 $.ajax({ 
 			   type: "POST", 
@@ -155,7 +154,6 @@ $(function(){
 		 }
 		 qqnums=qqnums.replace(/[^0-9\n]/g,"");
 		 var postData = 'appid='+appid+'&whitenames='+encodeURIComponent(qqnums);
-		 console.log(postData);
 		 $.ajax({ 
 			   type: "POST", 
 			   dataType: "json", 

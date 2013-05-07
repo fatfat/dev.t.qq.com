@@ -32,7 +32,7 @@
 					//<!--开发者信息-->
 					'<iframe id="appform_post_aec" name="appform_post_aec" width="100" height="100" src="about:blank" style="display:none;"></iframe>',
 		//		'<form target="appform_post_aec" action="/pipes/interfaceserver?action=common_query&business_type=savecheckmaterial&appid=<%=app.app_id%>" method="post" class="appform" enctype="multipart/form-data" id="appform_user">',
-					'<form target="appform_post_aec" action="/development/savecheckmaterial?appid=<%=app.app_id%>" method="post" class="appform" enctype="multipart/form-data" id="appform_user">',
+					'<form target="appform_post_aec" action="/development/savecheckmaterial?appid=<%=app.app_id%>" method="post" class="appform wirelessappform" enctype="multipart/form-data" id="appform_user">',
 						'<ul>',
 							'<input type="hidden" name="isFramePost" value="1"/>',
 							'<input type="hidden" name="isPostMaterial" value="1"/>',

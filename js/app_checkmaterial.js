@@ -382,9 +382,6 @@ $(function(){
 	    	var imgisok=true,str="";
 	    	$("input[type='file']").each(function(){
 	    		var img=$(this).parent().find("img");
-	    		console.log(img);
-	    		console.log([img.attr("_width"),img.attr("_height")]);
-	    		console.log([$(this).val(),$(this).attr("data-default").replace("NULL","")]);
 	    		if( (!$(this).val() && !$(this).attr("data-default").replace("NULL","")) || $(this).attr("data-error") ) {
 	    			imgisok=false;
 	    			str="<center>请选择一张"+img.attr("_width")+"×"+img.attr("_height")+"的png图片</center>";
@@ -410,13 +407,24 @@ $(function(){
 				}
 		
 				var form=this.form,flag,errmsg,rule,value,submitflag=true,data='',imgisok=true;
-				
-				$("form input[type='text'],form textarea,select#app_class_main,select#app_class_child,form input[type='file']").each(function(){
+				$("form input[type='text'],form input[type='hidden'],form textarea,select#app_class_main,select#app_class_child,form input[type='file'][data-default]^=''").each(function(){
 					if($(f).hasClass("wirelessappform")){
-						if((app_platform === 1 && $(this).hasClass("android_field")) || (app_platform === 2 && $(this).hasClass("iphone_field"))){//只选择了iphone平台,对android字段不验证;若只选择了android平台，则对iphone字段不验证
-							return;
+						// 如果是iphone应用，不判断android字段
+						if (app_platform === 1){
+							if ($.contains($("#androidContainer")[0],$(this)[0])){
+								return;
+							}
+						}
+						
+						// 如果是android应用，不判断iphone字段
+						if (app_platform === 2){
+							//android平台
+							if ($.contains($("#iphoneContainer")[0],$(this)[0])){
+								return;
+							}
 						}
 					}
+					
 				    rule = $(this).attr("data-rule"),value = $(this).val(),errmsg = $(this).attr("data-error");
 					if(OPEN_VALIDATOR.hasOwnProperty(rule) && rule){
 						if((!$.trim(value) && rule!="tname"&&rule!="applink"&&rule!="androidlink") || (value=="请选择" && rule=="appsupport")){
