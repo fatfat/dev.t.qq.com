@@ -5,17 +5,6 @@ if(!userInfo.hdlogin)
 }
 else
 {
-	global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
-//	global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count/global_obj.data.page_size);  //页数
-	global_obj.data.kpage_count = 0;
-	if ( (global_obj.data.page_count ? global_obj.data.page_count:1) < global_obj.data.page_no) {    //当前页码不能超过总页数
-		console.log("warning:The page_no excceeds the total page counts");
-	}  
-/*
-	if ( (global_obj.data.kpage_count ? global_obj.data.kpage_count:1) < global_obj.data.page_no) {    //当前页码不能超过总页数
-		console.log("warning:The page_no excceeds the total page counts");
-	}            
-*/
 	this.tpl = this.tpl || {};
 	this.tpl.development_list_comps = [
 		'<div  id="applist" class="applist">',
@@ -155,14 +144,28 @@ else
 	].join("");
 	
 	//根据不同的类型渲染页面
-	if(global_obj.data.displaytype == "comps"){
-		var rightListTmpl = this.tpl.development_list_comps
-	}else if(global_obj.data.displaytype == "app"){
-		var rightListTmpl = this.tpl.development_list_app
-	}else if(global_obj.data.displaytype == "iweibo"){
-		var rightListTmpl = this.tpl.development_list_iweibo
-	};
-
+	var setRightList = function(){
+		if(global_obj.data.displaytype == "comps"){
+			rightListTmpl = this.tpl.development_list_comps;
+		}else if(global_obj.data.displaytype == "app"){
+			global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
+			global_obj.data.kpage_count = 0;
+			if ( (global_obj.data.page_count ? global_obj.data.page_count:1) < global_obj.data.page_no) {    //当前页码不能超过总页数
+				console.log("warning:The page_no excceeds the total page counts");
+			}  
+			rightListTmpl = this.tpl.development_list_app;
+		}else if(global_obj.data.displaytype == "iweibo"){
+			global_obj.data.page_count = global_obj.data.current_page;  //页数
+			if ( (global_obj.data.page_count ? global_obj.data.page_count:1) < global_obj.data.page_no) {    //当前页码不能超过总页数
+				console.log("warning:The page_no excceeds the total page counts");
+			}  
+			rightListTmpl = this.tpl.development_list_iweibo;
+		} else {
+			console.log("Wrong displaytype of " + global_obj.data.displaytype);
+		}
+		
+	}
+	
 	this.tpl.pageBar = [//翻页按钮
 		'<div id="pagebar">',
 			'<div class="pagebar">',
@@ -308,6 +311,9 @@ else
 			'</div>',
 		'</div>',
 	].join("");
+
+	var rightListTmpl = {};
+	setRightList();
 
 	this.tpl.development_list = [
 		this.tpl.header,
@@ -515,6 +521,8 @@ else
 				  	  	   	global_obj.data.app_count = ResponseData.data.app_count;
 						  	global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
 						  	global_obj.data.kpage_count = ResponseData.data.kpage_count = 0;
+						   	//根据不同的类型渲染页面
+							setRightList();
 						  	ResponseData.data.page_count = global_obj.data.page_count;
 							checkPageNum(global_obj.data.page_count);
 							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
