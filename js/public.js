@@ -169,6 +169,8 @@
 		var m = re.exec(window.location.href);
 		return m ? m[1] : '';
 	};
+	//添加一个函数记录页面上所有JS要添加的时间绑定函数,以便在文档生成后统一执行
+	this.eventBindFuncList = [];
 	//--------------add by cbyi ---------------------
 	var cache = {};
 	this.tmpl = function tmpl(str, data){
