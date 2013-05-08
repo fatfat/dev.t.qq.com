@@ -523,7 +523,8 @@ else
 							global_obj.data.kapp_count = ResponseData.data.kapp_count;
 							global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count / global_obj.data.page_size);  //页数
 							ResponseData.data.kpage_count = global_obj.data.kpage_count;
-							global_obj.data.page_count = ResponseData.data.page_count = 0;	
+							global_obj.data.page_count = ResponseData.data.page_count = 0;
+							hiddenkpagebar(global_obj.data.kpage_count);	
 							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
 							$('#pagebar1').html(tmpl(tpl.pageBar1, ResponseData.data));
 						}
