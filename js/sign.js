@@ -7,7 +7,7 @@
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/sign/app.css" type="text/css" rel="stylesheet"> ',
 		'<div id="content" class="wrapper mainC">		',
 		'<!--{ include file="websites/appnav.tpl" }-->',
-	    tpl.appnav,
+	    tpl.websites_appnav,
 		'<div class="appsArea2">',
 			'<div class="appDescription">',
 					'<img src="http://mat1.gtimg.com/app/opent/images/websites/sign/sign_logo.gif" alt="微博签名档"/>',
@@ -45,7 +45,7 @@
 	QosSS.t[2]= (new Date()).getTime();
 	QosSS.t[3]= (new Date()).getTime();
 	QosSS.t[4]= (new Date()).getTime();
-	$('#main').html(tmpl(tpl.content, data));	
+	$('#main').html(tmpl(tpl.content, global_obj.data));	
 
 	QosSS.c = new Image();
 	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});

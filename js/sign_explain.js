@@ -5,7 +5,7 @@ QosSS.t[4]= (new Date()).getTime();
 	this.tpl = this.tpl || {};
 	tpl.content = [
 		'<!--{ include file="header.tpl" }-->',
-		header,
+		tpl.header,
 		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/show/customcolor.css" type="text/css" rel="stylesheet">',
@@ -14,7 +14,7 @@ QosSS.t[4]= (new Date()).getTime();
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>签名档</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
 			'<!--{ include file="websites/appnav.tpl" }-->',
-			tpl.appnav,
+			tpl.websites_appnav,
 		'<div class="appsArea2">	',
 			'<h2 class="apptit">',
 				'<strong>使用微博组件 —— 微博签名档</strong>',
@@ -90,8 +90,8 @@ QosSS.t[4]= (new Date()).getTime();
 		'</div>',
 	'</div>',
 	  tpl.footer,
-   ].join();
-   $('#main').html(tmpl(tpl.content, data));
+   ].join("");
+   $('#main').html(tmpl(tpl.content, global_obj.data));
    $(function(){	
 		var UI = {};
 		var menu = function(){ 

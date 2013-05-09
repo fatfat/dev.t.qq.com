@@ -8,7 +8,7 @@
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>签名档</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
 			'<!--{ include file="websites/appnav.tpl" }-->',
-			tpl.appnav,
+			tpl.websites_appnav,
 			'<div class="appsArea2">',
 				'<div class="appDescription">',
 						'<img src="http://mat1.gtimg.com/app/opent/images/oldapp/sign/sign_logo.gif" alt="微博签名档"/>',
