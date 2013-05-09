@@ -1,7 +1,7 @@
 ;(function(){
 	QosSS.t[2]= (new Date()).getTime();
 	$(this).tpl = $(this).tpl || {};
-	var tpl.index = [
+	tpl.share = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20120110" rel="stylesheet" type="text/css"/> ',
@@ -10,7 +10,7 @@
 			'</div>',
 			'<div id="content" class="wrapper main main_comp main_comp">',
 			'<!--{ include file="./websites/appnav.tpl" }-->',
-			tpl.appnav,
+			tpl.websites_appnav,
 		'<div class="appsArea2">',
 				'<h1 class="comp_tit">一键分享到微博 迅速提升网站流量</h1>',
 		'<h2 class="comp_sub_tit">组件介绍</h2>',
@@ -42,7 +42,7 @@
 		tpl.footer,
 	].join("");
 	QosSS.t[3]= (new Date()).getTime();
-	$('#main').html(tmpl(tpl.index,data));
+	$('#main').html(tmpl(tpl.share,global_obj.data));
 	QosSS.c = new Image();
 	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 	QosSS.t[5]= (new Date()).getTime();
