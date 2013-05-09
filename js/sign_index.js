@@ -43,7 +43,7 @@
 			'<!--{ include file="footer.tpl" }-->',
 			tpl.footer,
 		].join("");
-		$('#main').html(tmpl(tpl.content, data));
+		$('#main').html(tmpl(tpl.content, global_obj.data));
 		QosSS.t[3]= (new Date()).getTime();
 		QosSS.t[4]= (new Date()).getTime();	
 		QosSS.c = new Image();
