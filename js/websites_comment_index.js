@@ -49,7 +49,7 @@ this.tpl.index = [
 	this.tpl.footer
 ].join("");
 
-$("#main").append(tmpl(this.tpl.index,data))
+$("#main").append(tmpl(this.tpl.index,global_obj.data))
 
 QosSS.c = new Image();
 QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});

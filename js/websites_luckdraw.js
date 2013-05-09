@@ -7,13 +7,13 @@
 		'<div id="content" class="wrapper main main_comp">',
 		'<!--{ include file="./websites/appnav.tpl" }-->',
 		tpl.websites_appnav,
-		'<div class="appsArea2"> ',
+		'<div class="appsArea2">',
 		'<h2 class="apptit">',
 					'<strong>使用微博组件 —— 微抽奖</strong>',
 			'</h2>',
 		'<p class="p">使用微博微抽奖，填写您的抽奖方式和中奖条件，提交申请，系统就会为您统计中奖用户，中奖结果会以邮件方式通知您填写的抽奖邮箱<span style="color:#f00;">（注：您必须是加V用户才能使用该功能）</span>。</p>',
 		'<h3 class="hbline"><strong>基本设置</strong></h3>',
-		'<%if(hadlogin){%>',
+		'<%if(userInfo.hdlogin){%>',
 			'<form action="/luckdraw/submit" method="post" id="tempForm" class="openForm" >',
 			'<input type="hidden"  name="weibo"  value="<%=encodeHTML(userInfo.name)%>">',
 			'<input type="hidden"  name="olduin"  value="<%=encodeHTML(userInfo.uin)%>">',
@@ -58,7 +58,7 @@
 			'</br><label class="leftword"></label>',
 			'<input type="button"  id="sb" class="devSubmit" value="提交" data-rule="formauto" />',
 			'</form>',
-		'<%}%{%>',
+		'<%}else{%>',
 			'<p >您尚未登录，请<a href="http://t.qq.com">登录</a>后使用微博抽奖系统</p>',
 		'<%}%>',
 		'</div>',
@@ -66,9 +66,8 @@
 		'<!--{ include file="footer.tpl" }-->',
 		tpl.footer,
 	].join('');
-	$('#main').html(tmpl(tpl.luckdraw,global_obj.data));
-	util.createScript("http://mat1.gtimg.com/app/opent/js/luckdraw.js");
-	encodeHTML = function (source) {
+	
+	global_obj.data.encodeHTML = function (source) {
         return String(source)
             .replace(/&/g,'&amp;')
             .replace(/</g,'&lt;')
@@ -77,6 +76,10 @@
             .replace(/"/g,'&quot;')
             .replace(/'/g,'&#39;');
     };
+
+	$('#main').html(tmpl(tpl.luckdraw,global_obj.data));
+	util.createScript("http://mat1.gtimg.com/app/opent/js/luckdraw.js");
+
 	$(document).ready(function(){
 	    if($("#Audience").attr("checked")==true){
 	        js1();
@@ -146,4 +149,3 @@
 	               },"json");
 	}
 })();
-
