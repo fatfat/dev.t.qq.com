@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<title>首页-腾讯微博开放平台</title>
+<script type="text/javascript">
+	//document.domain = "qq.com";
+	//---需要后台吐出来的信息
+	var global_obj  = {
+		data:{
+			userInfo:{
+				hdlogin:false,
+				reg_wb:""
+			},
+			nick:"",
+			navPos:2
+		}
+	}
+	//-----------
+	var QosSS = new Object();
+	QosSS.t = new Array([0,0,0,0,0,0]);
+	QosSS.t[0] = (new Date()).getTime();
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="腾讯微博,首页" />
+<meta name="description" content="腾讯微博首页" />
+<link rel="shortcut icon" href="http://mat1.gtimg.com/app/opent/images/index/favicon.ico"/>
+<link href="http://mat1.gtimg.com/app/opent/css/base_01.css" rel="stylesheet" type="text/css"/>
+<link href="http://mat1.gtimg.com/app/opent/css/login/login.css" rel="stylesheet" type="text/css"/>
+<link href="http://mat1.gtimg.com/app/opent/css/developer/dever_01.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/jquery-1.4.3.min.js"></script>
+</head>
+<body>
+<div id="main"></div>
+<script type="text/javascript" src="/js/public.js"></script>
+<script type="text/javascript" src="/js/websites/websites_index.js"></script>
+<!--登录态相关的JS文件，start-->
+<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/login_01.js"></script>
+<!--登录态相关的JS文件，end-->
+</body>
+</html>
