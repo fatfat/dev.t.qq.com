@@ -1,0 +1,6 @@
+ul.customcolor {width:290px;overflow:hidden;display:none;}
+ul.customcolor li {display:block;float:left;width:50%;margin-top:5px;background:url('../images/colorshow_bg.gif') no-repeat 120px 0%;position:relative;}
+ul.customcolor li label{display:inline-block;width:50px;text-align:right;vertical-align:top;}
+ul.customcolor li input {display:inline-block;width:55px;margin-left:5px;font-family:Tahoma, Geneva, sans-serif;height:18px;line-height:18px;vertical-align:top;}
+ul.customcolor li div {position:absolute;width:18px;height:18px;background:white;top:2px;left:122px;}
+a.autocolor {display:block;float:right;display:none;}

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/basic/basic_weibo_rep/!svn/ver/9151/opent_proj/trunk/src/opent/Application/Views/Default/websites/share
+END
+shareuse_include.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/basic/basic_weibo_rep/!svn/ver/9151/opent_proj/trunk/src/opent/Application/Views/Default/websites/share/shareuse_include.tpl
+END
+share_full.txt
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/basic/basic_weibo_rep/!svn/ver/5477/opent_proj/trunk/src/opent/Application/Views/Default/websites/share/share_full.txt
+END
+qshare_full.txt
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/basic/basic_weibo_rep/!svn/ver/6768/opent_proj/trunk/src/opent/Application/Views/Default/websites/share/qshare_full.txt
+END
+index.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/basic/basic_weibo_rep/!svn/ver/9151/opent_proj/trunk/src/opent/Application/Views/Default/websites/share/index.tpl
+END
+shareuse_include_wap.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/basic/basic_weibo_rep/!svn/ver/9151/opent_proj/trunk/src/opent/Application/Views/Default/websites/share/shareuse_include_wap.tpl
+END
+share_simple.txt
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/basic/basic_weibo_rep/!svn/ver/5477/opent_proj/trunk/src/opent/Application/Views/Default/websites/share/share_simple.txt
+END
+shareuse_include_new.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/basic/basic_weibo_rep/!svn/ver/9151/opent_proj/trunk/src/opent/Application/Views/Default/websites/share/shareuse_include_new.tpl
+END
+shareuse_m.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/basic/basic_weibo_rep/!svn/ver/9151/opent_proj/trunk/src/opent/Application/Views/Default/websites/share/shareuse_m.tpl
+END
+qshare_simple.txt
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/basic/basic_weibo_rep/!svn/ver/6768/opent_proj/trunk/src/opent/Application/Views/Default/websites/share/qshare_simple.txt
+END
+shareuse.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/basic/basic_weibo_rep/!svn/ver/9151/opent_proj/trunk/src/opent/Application/Views/Default/websites/share/shareuse.tpl
+END
