@@ -1,6 +1,5 @@
 ;(function(){
 	QosSS.t[2]= (new Date()).getTime();
-	this.tpl = this.tpl || {};
 	tpl.wrapper = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
@@ -44,7 +43,7 @@
 		'<!--{ include file="footer.tpl" }-->',
 		tpl.footer,
 	].join("");
-	$('#main').html(tmpl(tpl.wrapper,data);
+	$('#main').html(tmpl(tpl.wrapper,global_obj.data));
 	QosSS.t[3]= (new Date()).getTime();
 	QosSS.t[4]= (new Date()).getTime();
 	QosSS.c = new Image();

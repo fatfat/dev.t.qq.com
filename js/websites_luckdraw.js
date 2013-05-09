@@ -1,13 +1,12 @@
 ;(function(){
-	$(this).tpl = $(this).tpl || {};
-	tol.index = []
+	tpl.luckdraw = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20120110" rel="stylesheet" type="text/css"/> ',
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>微抽奖</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
 		'<!--{ include file="./websites/appnav.tpl" }-->',
-		tpl.appnav,
+		tpl.websites_appnav,
 		'<div class="appsArea2"> ',
 		'<h2 class="apptit">',
 					'<strong>使用微博组件 —— 微抽奖</strong>',
@@ -16,8 +15,8 @@
 		'<h3 class="hbline"><strong>基本设置</strong></h3>',
 		'<%if(hadlogin){%>',
 			'<form action="/luckdraw/submit" method="post" id="tempForm" class="openForm" >',
-			'<input type="hidden"  name="weibo"  value="<!--{$userInfo.name|escape:"html"}-->">',
-			'<input type="hidden"  name="olduin"  value="<!--{$userInfo.uin|escape:"html"}-->">',
+			'<input type="hidden"  name="weibo"  value="<%=encodeHTML(userInfo.name)%>">',
+			'<input type="hidden"  name="olduin"  value="<%=encodeHTML(userInfo.uin)%>">',
 			'<li style="margin-top:10px">',
 			'<label class="leftword">抽奖对象：</label>',
 			'<input id="Audience" class="obj" type="radio"  checked="" value="1" name="type">',
@@ -67,10 +66,17 @@
 		'<!--{ include file="footer.tpl" }-->',
 		tpl.footer,
 	].join('');
-	$('#main').html(tmpl(tpl.luckdraw,data));
-	$(this).util = $(this).util || {};
-	util.createScript("http://mat1.gtimg.com/app/opent/js/jquery-1.4.3.min.js");
+	$('#main').html(tmpl(tpl.luckdraw,global_obj.data));
 	util.createScript("http://mat1.gtimg.com/app/opent/js/luckdraw.js");
+	encodeHTML = function (source) {
+        return String(source)
+            .replace(/&/g,'&amp;')
+            .replace(/</g,'&lt;')
+            .replace(/>/g,'&gt;')
+            .replace(/\\/g,'&#92;')
+            .replace(/"/g,'&quot;')
+            .replace(/'/g,'&#39;');
+    };
 	$(document).ready(function(){
 	    if($("#Audience").attr("checked")==true){
 	        js1();

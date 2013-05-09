@@ -1,13 +1,13 @@
 ;function(){
 	$(this).tpl = $(this).tpl || {};
-	tol.index = [
+	tpl.index = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20120110" rel="stylesheet" type="text/css"/> ',
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>微抽奖</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
 		'<!--{ include file=".//websites/appnav.tpl" }-->',
-		tpl.appnav,
+		tpl.websites_appnav,
 		'<div class="appsArea2"> ',
 		/*'<!--{*',
 		'<h3 class="hbline"><strong>微抽奖简介</strong></h3>',
@@ -29,9 +29,7 @@
 		'<!--{ include file="footer.tpl" }-->',
 		tpl.footer,
 	].join("");
-	$('#main').html(tmpl(util.index,data));
-	$(this).util = $(this).util || {};
-	util.createScript("http://mat1.gtimg.com/app/opent/js/jquery-1.4.3.min.js");
+	$('#main').html(tmpl(util.index,global_obj.data));
 	/*<!--{*
 	$(document).ready(function(){
 		$("#reply").attr("checked",true);
@@ -43,7 +41,6 @@
 	});
 	});
 	*}-->*/
-	document.domain="qq.com";
 	var contentframe=document.getElementById("contentframe"),timer;
 	function iframeLoaded(){
 		clearInterval(timer);
