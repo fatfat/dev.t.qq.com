@@ -1,8 +1,8 @@
 ;(function(){
 	var this.tpl = this.tpl || {};
-	tpl.apps = [
+	tpl.wall = [
 		'<!--{ include file="header.tpl" }-->',
-		header,
+		tpl.header,
 		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20120110" rel="stylesheet" type="text/css"/> ',
@@ -10,7 +10,7 @@
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>话题墙</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
 		'<!--{ include file="./websites/appnav.tpl" }-->',
-		tpl.appnav,
+		tpl.websites_appnav,
 		'<div class="appsArea2">',
 		'<div class="appDescription">',
 		'<img src="http://mat1.gtimg.com/app/opent/images/websites/wall/mini.png" alt="话题墙"/>',
@@ -48,8 +48,9 @@
 		'</div>',
 		'</div>',
 		'<!--{ include file="footer.tpl" }-->',
-		footer,
+		tpl.footer,
 	].join("");	
+	$('#main').html(tmpl(tpl.wall,global_obj.data));
 	QosSS.t[2]= (new Date()).getTime();
 	$('#main').html(tmpl(tpl.appedit, data));
 	QosSS.t[3]= (new Date()).getTime();

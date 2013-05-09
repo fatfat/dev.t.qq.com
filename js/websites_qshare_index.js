@@ -49,7 +49,7 @@
 		this.tpl.footer
 	].join("\r");
 	
-	$("#main").append(tmpl(this.qshare_index,data));
+	$("#main").html(tmpl(this.qshare_index,global_obj.data));
 
 	QosSS.c = new Image();
 	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});

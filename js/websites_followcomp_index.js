@@ -31,7 +31,8 @@ this.tpl.index = [
         '<p class="p" style="width:572px;height:239px;background:url(http://mat1.gtimg.com/app/opent/images/websites/allfollow/indexshow.png) no-repeat -49px 0px;"></p>  ',
 	'</div>',
 	'</div> ',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/public/imgViewer.js"></script>',
+
 this.tpl.footer
 ].join("");
-$("#main").append(tmpl(this.tpl.index,data));
+$("#main").append(tmpl(this.tpl.index,global_obj.data));
+	util.createScript("http://mat1.gtimg.com/app/opent/js/public/imgViewer.js");
