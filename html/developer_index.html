@@ -7,12 +7,13 @@
 	//---需要后台吐出来的信息
 	var global_obj  = {
 		data:{
-				userInfo:{
-				hdlogin:false,
-				reg_wb:""
+			userInfo:{
+				hdlogin:true,
+				reg_wb:"123123",
+				nick:"123121"
 			},
-			nick:"",
-			navPos:8
+			developer:{user_app_numbers:1,appMax:125,user_app_limit:123},
+			navPos:3
 		}
 	}
 	//-----------
@@ -33,9 +34,10 @@
 <body>
 <div id="main"></div>
 <script type="text/javascript" src="/js/public.js"></script>
-<script type="text/javascript" src="/js/wireless_index.js"></script>
+<script type="text/javascript" src="/js/index_apps.js"></script>
+<script type="text/javascript" src="/js/developer_index.js"></script>
 <!--登录态相关的JS文件，start-->
-<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/login_01.js"></script>
+<script type="text/javascript" src="/js/login_01.js"></script>
 <!--登录态相关的JS文件，end-->
 </body>
 </html>

@@ -2,7 +2,7 @@
 	
 var developer_index = 
 [
-	headerTmpl, 
+	this.tpl.header, 
 	'<link href="http://mat1.gtimg.com/app/opent/css/developer/index/development_index.css?20120525" rel="stylesheet" type="text/css" />',
 	'<div class="banner">',
 	'<div class="wrapper"> ',
@@ -44,49 +44,50 @@ var developer_index =
 	 index_apps,
   '</div>',
 '</div>',
- 	'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_appadd.js\"></script>',
- 		footerTmpl
+ 	'<script type="text/javascript" src="/js/app_appadd.js"></script>',
+ 	this.tpl.footer
 ].join("");
 
+$(document.body).append(tmpl(developer_index, global_obj.data));
+var userInfo = global_obj.data.userInfo;
+var developer  = global_obj.data.developer;
 
-$(function(){
-	$(document.body).append(tmpl(developer_index, {}));
-	var hdlogin = userInfo.hdlogin;
-	var regweibo = userInfo.reg_wb;
-	var insiteAppAble=1;	
-	QosSS.t[2]= (new Date()).getTime();
-	$("#newapp").click(function(){
-		if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
-			return checkuserLogin(encodeURIComponent(location.href.replace(location.search,"").replace(location.hash,"")+"?t="+(~new Date())+"#newapp"));
-		}else{
-			popAppWin(developer.user_app_numbers,developer.user_app_limit);
-		}
-	});
-	$("#newgame").click(function(){
-		if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
-			return checkuserLogin(encodeURIComponent("http://" + location.host+"/apps/add/4?cid=3"));		
-		}else{
-			popAppWin(developer.user_app_numbers,developer.user_app_limit,"newgame");
-		}
-		return false;
-	});
-	
+var hdlogin = userInfo.hdlogin;
+var regweibo = userInfo.reg_wb;
+var insiteAppAble = 1;	
+QosSS.t[2]= (new Date()).getTime();
+$("#newapp").click(function(){
 	if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
-		$(".demos").find("a").removeAttr("target").click(function(){
-			return (!!checkuserLogin(encodeURIComponent($(this).attr("href"))));
-		})
+		return checkuserLogin(encodeURIComponent(location.href.replace(location.search,"").replace(location.hash,"")+"?t="+(~new Date())+"#newapp"));
 	}else{
-		if (location.hash=="#newapp"){
-			$("#newapp").trigger("click");
-		}else if(location.hash=="#newgame"){
-			$("#newgame").trigger("click");
-		}
+		popAppWin(developer.user_app_numbers,developer.user_app_limit);
 	}
-	QosSS.c = new Image();
-	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
-	QosSS.t[5]= (new Date()).getTime();
-	QosSS.c.src="http://qos.report.qq.com/collect?type=1&name="+"opent_dev_index"+"&1="+ (QosSS.t[1]- QosSS.t[0])+"&2="+ (QosSS.t[2]- QosSS.t[0])+ "&3="+ (QosSS.t[3]- QosSS.t[0])+"&4="+ (QosSS.t[4]- QosSS.t[0])+ "&5="+ (QosSS.t[5]- QosSS.t[0]);
 });
+$("#newgame").click(function(){
+	if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
+		return checkuserLogin(encodeURIComponent("http://" + location.host+"/apps/add/4?cid=3"));		
+	}else{
+		popAppWin(developer.user_app_numbers,developer.user_app_limit,"newgame");
+	}
+	return false;
+});
+
+if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
+	$(".demos").find("a").removeAttr("target").click(function(){
+		return (!!checkuserLogin(encodeURIComponent($(this).attr("href"))));
+	})
+}else{
+	if (location.hash=="#newapp"){
+		$("#newapp").trigger("click");
+	}else if(location.hash=="#newgame"){
+		$("#newgame").trigger("click");
+	}
+}
+QosSS.c = new Image();
+QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
+QosSS.t[5]= (new Date()).getTime();
+QosSS.c.src="http://qos.report.qq.com/collect?type=1&name="+"opent_dev_index"+"&1="+ (QosSS.t[1]- QosSS.t[0])+"&2="+ (QosSS.t[2]- QosSS.t[0])+ "&3="+ (QosSS.t[3]- QosSS.t[0])+"&4="+ (QosSS.t[4]- QosSS.t[0])+ "&5="+ (QosSS.t[5]- QosSS.t[0]);
+
 
 
 
