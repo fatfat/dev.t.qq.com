@@ -1,6 +1,5 @@
 
 ;(function(){	
-	var this.tpl = this.tpl || {};
     tpl.content = [
     	'<!--{ include file="header.tpl" }-->',
     	tpl.header,
@@ -51,4 +50,4 @@
 	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 	QosSS.t[5]= (new Date()).getTime();
 	QosSS.c.src="http://qos.report.qq.com/collect?type=1&name="+"opent_wsign_sign"+"&1="+ (QosSS.t[1]- QosSS.t[0])+"&2="+ (QosSS.t[2]- QosSS.t[0])+ "&3="+ (QosSS.t[3]- QosSS.t[0])+"&4="+ (QosSS.t[4]- QosSS.t[0])+ "&5="+ (QosSS.t[5]- QosSS.t[0]);
-}());
+})();
