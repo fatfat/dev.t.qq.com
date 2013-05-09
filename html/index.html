@@ -5,13 +5,16 @@
 <script type="text/javascript">
 	//document.domain = "qq.com";
 	//---需要后台吐出来的信息
-	var userInfo = {
-		hdlogin:false,
-		reg_wb:"",
-		nick:"wangxiao"
-	};
-	var navPos = 1;
-	var appType = 2;
+	var global_obj  = {
+		data:{
+				userInfo:{
+				hdlogin:false,
+				reg_wb:""
+			},
+			nick:"",
+			navPos:1
+		}
+	}
 	//-----------
 	var QosSS = new Object();
 	QosSS.t = new Array([0,0,0,0,0,0]);
@@ -25,12 +28,14 @@
 <link href="http://mat1.gtimg.com/app/opent/css/login/login.css" rel="stylesheet" type="text/css"/>
 <link href="http://mat1.gtimg.com/app/opent/css/developer/dever_01.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/jquery-1.4.3.min.js"></script>
-<script type="text/javascript" src="../public.js"></script>
-<script type="text/javascript" src="index.js"></script>
+
+</head>
+<body>
+<div class="main"></div>
+<script type="text/javascript" src="/js/public.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
 <!--登录态相关的JS文件，start-->
 <script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/login_01.js"></script>
 <!--登录态相关的JS文件，end-->
-</head>
-<body>
 </body>
 </html>

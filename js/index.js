@@ -1,5 +1,5 @@
 ﻿var indexTmpl = [
-	'<%=tmpl(headerTmpl,{})%>',
+	this.tpl.header,
 	'<link href="http://mat1.gtimg.com/app/opent/css/index/index_01.css" rel="stylesheet" type="text/css"/>',
  	'<script type="text/javascript">',
  	'QosSS.t[2]= (new Date()).getTime();',
@@ -42,11 +42,10 @@
 	    'QosSS.t[5]= (new Date()).getTime();',
 	    'QosSS.c.src="http://qos.report.qq.com/collect?type=1&name="+"opent_index"+"&1="+ (QosSS.t[1]- QosSS.t[0])+"&2="+ (QosSS.t[2]- QosSS.t[0])+ "&3="+ (QosSS.t[3]- QosSS.t[0])+"&4="+ (QosSS.t[4]- QosSS.t[0])+ "&5="+ (QosSS.t[5]- QosSS.t[0]);',
 	'</script>',
-	'<%=tmpl(footerTmpl,{})%>'
-	
+	this.tpl.footer	
 ].join("");
+$(document.body).append(tmpl(indexTmpl,global_obj.data));
 $(function(){
-	$(document.body).append(tmpl(indexTmpl,{}));
 	//首页三大应用接入mouseover效果
 	$(".connect").mouseover(function(){
 		var _this = $(this),
