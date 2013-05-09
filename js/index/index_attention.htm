@@ -1,0 +1,83 @@
+<ul class="officialAttention">
+	<li>
+		<a href="http://t.qq.com/api_weibo" target="_blank"  class="iconWrap" >
+		<img src="http://t0.qlogo.cn/mbloghead/cb16cd5ecf98d58e4f62/50" height="50" width="50" class="iconIn" alt="腾讯微博开放平台"/></a>
+		<a href="http://t.qq.com/api_weibo" target="_blank" class="nameLink"  title="腾讯微博开放平台">腾讯微博开放平台</a>
+		<span class="listenArea">
+			<!--{ if $followInfo.api_weibo }-->
+				<a class="cancel" href="javascript:;" id="api_weibo"></a>
+			<!--{ else }-->
+				<a class="listen" href="javascript:;" id="api_weibo"></a>
+			<!--{ /if }-->
+		</span>
+	</li>
+	<li>
+		<a href="http://t.qq.com/api_iweibo" target="_blank"  class="iconWrap" >
+		<img src="http://t1.qlogo.cn/mbloghead/b290ce596be363dbcdf6/50" height="50" width="50" class="iconIn" alt="iWeibo开发团队"/></a>
+		<a href="http://t.qq.com/api_iweibo" target="_blank" class="nameLink"  title="iWeibo开发团队">iWeibo开发团队</a>
+		<span class="listenArea">
+			<!--{ if $followInfo.api_iweibo }-->
+				<a class="cancel" href="javascript:;" id="api_iweibo"></a>
+			<!--{ else }-->
+				<a class="listen" href="javascript:;" id="api_iweibo"></a>
+			<!--{ /if }-->
+		</span>
+	</li>
+	<li>
+		<a href="http://t.qq.com/weiboapp" target="_blank"  class="iconWrap" >
+		<img src="http://t3.qlogo.cn/mbloghead/8f205e03686a36aef80c/50" height="50" width="50" class="iconIn" alt="腾讯微博应用频道"/></a>
+		<a href="http://t.qq.com/weiboapp" target="_blank" class="nameLink"  title="腾讯微博应用频道">腾讯微博应用频道</a>
+		<span class="listenArea">
+			<!--{ if $followInfo.weiboapp }-->
+				<a class="cancel" href="javascript:;" id="weiboapp"></a>
+			<!--{ else }-->
+				<a class="listen" href="javascript:;" id="weiboapp"></a>
+			<!--{ /if }-->
+		</span>
+	</li>
+</ul>
+<script>
+$(".officialAttention a.listen,.officialAttention a.cancel").click(function() {
+	var that = $(this),
+	p = [, {
+		"class": "cancel",
+		"title": "取消收听"
+	},
+	{
+		"class": "listen",
+		"title": "立即收听"
+	}],
+	op = {
+		"listen": 1,
+		"cancel": 2
+	}[that.attr('class')];
+	if (!checkuserLogin()) return false;
+	var param = {
+		name: that.attr("id"),
+		op: op
+	};
+	$.ajax({
+		url: '/developer/listen',
+		cache: false,
+		data: param,
+		type: 'POST',
+		dataType: 'json',
+		success: function(d) {
+			var ret = +d.ret,msg = common.getMsgByRet(ret);
+			if (msg){
+				loginWin.alert('<center>'+msg+'</center>');
+				return;
+			}
+			if (ret === 0) { //操作成功
+				that.attr("class", p[op]["class"]);
+			}else{ //失败 
+				loginWin.alert('<center>收听失败！</center>');
+			}
+		},
+		error: function() {
+			loginWin.alert('<center>连接服务器失败</center>');
+		}
+	});
+	return false;
+});
+</script>

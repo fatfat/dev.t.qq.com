@@ -1,0 +1,108 @@
+﻿<!doctype html>
+<html>
+<head>
+<title>腾讯微博应用-Q-Share</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="选中文字发微博" />
+<meta name="Description" content="" />
+<link rel="shortcut icon" href="/favicon.ico"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<style type="text/css">
+	body{margin:10px auto;font-family:Tahoma;}
+	h1 a{color:#000;text-decoration:none;}
+	big{color:#0c0;}
+	.demo{width:800px;padding:10px;font-size:12px;border:1px solid #ccc;background:#eee;margin:0 auto;line-height:24px;}
+	.demo u{font-weight:normal;color:red;}
+	.demo label{color:gray;display:block;}
+	p,.shareContent{width:800px;margin:0 auto 15px;font-size:14px;line-height:1.75;color:#333;padding:10px;}
+	.shareContent{border:1px solid #06F;width:800px;}
+	td img{display:block;margin:10px 0;padding:3px;border:1px solid #ccc;}
+	.sharebtn{width:92px;height:22px;line-height:22px;text-align:center;background:#090;color:#fff;display:block;text-decoration:none;font-size:12px;}
+</style>
+</head>
+<body>
+<div class="demo">
+<h1>应用网址：<a href="http://open.t.qq.com/apps/qshare/" target="_blank">http://open.t.qq.com/apps/qshare/</a></h1>
+<strong>例三：如何设置多个区域为分享区域</strong>
+<label>蓝色边框的区域为分享区域</label>
+<strong>调用代码</strong><br/>
+_share_tencent_weibo(null,<strong>[document.getElementById("<big>p1</big>"),document.getElementById("<big>p2</big>"),document.getElementById("<big>p3</big>")]</strong>);<br/>
+或<br/>
+_share_tencent_weibo(null,<strong>getElementsByClassName("shareContent")</strong>);<br/>
+<div style="color:gray">getElementsByClassName由第三方网站自己实现，Q-Share不提供。<br/>
+如果您使用的网站使用JS类库不是自己开发的，是由第三方实现的话，该系统基本上都会定义好与此函数功能一样的函数，比如：<br/>
+Discuz中，定义为：$C(classname, ele, tag)<br/>
+Jquery中，定义为:$('.className')<br/>
+<a href="http://open.t.qq.com/bbs/forum.php?mod=viewthread&tid=12377&page=1&extra=#pid20404" style="color:red" target="_blank">如何在phpwind中植入Q-Share功能？</a>
+</div>
+</div>
+<div class="shareContent" id="p1">
+使用腾讯微博分享按钮后，用户在访问你网站时，只要选中功能区域中的任何一段文本，并点击“分享到微博”，就可以分享选中内容，分享到腾讯微博。如果你的网页中含有图片，程序会自动抓取功能区域中的所有图片供用户选择，默认使用第一张图片。安装此应用到你的网站中，为你的网站带来更多的粉丝和访问流量。
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><img src="http://app.qpic.cn/mblogpic/98883b2a5934fda0f28c/160"/></td>
+<td><img src="http://app.qpic.cn/mblogpic/2a9fc48fa90c3083ac3e/160"/></td>
+<td><img src="http://app.qpic.cn/mblogpic/ccfffedd9f19bf496470/160"/></td>
+<td><img src="http://app.qpic.cn/mblogpic/1557cdf47bd2c1f30f18/160"/></td>
+</tr>
+</table>
+</div>
+<p>这不是分享区域，因为这里没有设置属性class="shareContent",这个页面的Q-Share分享区域设置为class="shareContent"的区域，只有设置了class为这个值的区域才能进行Q-Share分享。</p>
+<div class="shareContent" id="p2">
+<p>人生的路上,一路走来会遇上各种各样的人,真正能陪自己走下去的没有几人.漫漫人生,是靠自己去走的.人活着很多时是在为别人而活,其实生活是自己的,真不应该只活给谁来看.众生芸芸,一人难合千人意,既然难合千人意,何苦要为难自己?做真实的自我!不必在意那些人云亦云的各种纷扰,做无愧于他人的自己就好! </p>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td><img src="http://app.qpic.cn/mblogpic/283137667daa23ab416c/160"/></td>
+<td><img src="http://app.qpic.cn/mblogpic/4c3316c25d1f72e529ec/160"/></td>
+<td><img src="http://app.qpic.cn/mblogpic/45659b7eb2dc2a21eb32/160"/></td>
+<td><img src="http://app.qpic.cn/mblogpic/fef093e2e785274f93e6/160"/></td>
+</tr>
+<tr>
+<th colspan="4">由于以下图片规格大于150*150，所以鼠标移上去，会在右下角出现分享按钮，点击分享按钮可以分享图片到腾讯微博。</th>
+</tr>
+<tr>
+<td colspan="4" align="center"><br/>
+<img src="http://app.qpic.cn/mblogpic/7f149f3f2a201a33d1fa/460"/><br/><br/>
+<img src="http://app.qpic.cn/mblogpic/1a6b70eba12dd7502ad8/460"/><br/><br/>
+<img src="http://app.qpic.cn/mblogpic/9a2c35d1d22ce94186fc/460"/><br/>
+</td>
+</tr>
+</table>
+</div>
+<script>
+function getElementsByClassName(classname) {
+	var returns = [];
+	var ele = document;
+	var tag="*";
+	if(ele.getElementsByClassName) {
+		var eles = ele.getElementsByClassName(classname);
+		if(tag != '*') {
+			for (var i = 0, L = eles.length; i < L; i++) {
+				if (eles[i].tagName.toLowerCase() == tag.toLowerCase()) {
+						returns.push(eles[i]);
+				}
+			}
+		} else {
+			returns = eles;
+		}
+	}else {
+		eles = ele.getElementsByTagName(tag);
+		var pattern = new RegExp("(^|\\s)"+classname+"(\\s|$)");
+		for (i = 0, L = eles.length; i < L; i++) {
+				if (pattern.test(eles[i].className)) {
+						returns.push(eles[i]);
+				}
+		}
+	}
+	return returns;
+}
+</script>
+<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/qshare_20111102.js"></script>
+<script>
+var shareareas=getElementsByClassName("shareContent");
+//var shareareas=document.getElementsByTagName("div");
+//var shareareas=[document.getElementById("p1"),document.getElementById("p2")];
+_share_tencent_weibo(null,shareareas);
+</script>
+</body>
+</html>

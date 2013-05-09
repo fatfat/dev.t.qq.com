@@ -1,0 +1,12 @@
+(function(){
+var u={
+"hdlogin":'<!--{ $userInfo.hdlogin }-->',
+"regweibo":'<!--{ $userInfo.reg_wb }-->',
+"weiboname":'<!--{ $userInfo.name}-->',
+"weibonick":'<!--{ $userInfo.nick}-->',
+"weibosign":'<!--{ $userInfo.sign}-->',
+"weibohead":'<!--{ $userInfo.head}-->',
+"ip":'<!--{ $userInfo.ip}-->'
+}; 
+if (window.wiki&&window.wiki.login){window.wiki.login(u);}
+})();

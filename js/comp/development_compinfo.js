@@ -1,6 +1,5 @@
 var development_compinfoTmpl = [
-	//<% include file="header.tpl" %>
-	headerTmpl, 
+	this.tpl.header,
     '<div id="content" class="controlCon main main_app">',
        '<div class="approate">',
             '<a href="/development/complist/">我的组件</a> &gt;  <span><%=comp.comp_name%></span>',
@@ -104,6 +103,7 @@ var development_compinfoTmpl = [
     '</div>',
 ].join("\r");
 
+$("#main").append(tmpl(development_compinfoTmpl,global_obj.data));
 
 function compType1(){
 	//<% if(comp.comp_style|strpos:"version\"":2 %>
@@ -162,15 +162,29 @@ function compType1(){
 		   $(".comp_demo").removeClass("none");
 	   });
 	}else{
+		util.createScript("/js/websites/share/share_full.js");
+		util.createScript("/js/websites/share/share_simple.js");
+		util.createScript("/js/websites/share/qshare_full.js");
+		util.createScript("/js/websites/share/qshare_simple.js");
 		var t = [
 			'<div style="display:none;">',
-			'<textarea id="code00"><% include file="websites/share/share_full.txt" %></textarea>',
-			'<textarea id="code01"><% include file="websites/share/share_simple.txt" %></textarea>',
-			'<textarea id="code10"><% include file="websites/share/qshare_full.txt" %></textarea>',
-			'<textarea id="code11"><% include file="websites/share/qshare_simple.txt" %></textarea>',
+			'<textarea id="code00">',
+				this.tpl.share_full,
+			'</textarea>',
+			'<textarea id="code01">',
+				this.tpl.share_simple,
+			'</textarea>',
+			'<textarea id="code10">',
+				this.tpl.qshare_full,
+			'</textarea>',
+			'<textarea id="code11">',
+				this.tpl.qshare_simple,
+			'</textarea>',
 			'</div>'
 		].join("\r");
-		development_compinfoTmpl += t;
+		
+		$("#main").append(t);
+		
 		var comp_type = comp.comp_type,
 		comp_style = comp.comp_style?comp.comp_style:{"btnstyle":1,"btnsize":1,"btntext":"分享到腾讯微博","assname":"api_weibo","qshareable":1,"qsharestyle":0},
 		comp_id = comp.comp_id,
@@ -239,7 +253,7 @@ function compType1(){
 function compType2(){
 	//<!--收听组件（原批量收听）-->
 	var comp_style = comp.comp_style?comp.comp_style:{"names":"","colorstyle":0,"customcolor":"#fff","iconsize":0};
-	var comp_id = "<%=comp.comp_id%>";
+	var comp_id = comp.comp_id;
 	if (comp_style.followtype === 0) { // 快速收听
 		$("#scripts").val(decodeURIComponent(comp_style.htm));
 	}else{ // 批量收听
@@ -255,7 +269,7 @@ function compType3(){
 	var comp_id = comp.comp_id;
 	function getCodestr(){
 	var _t = [],cus=comp_style.colorstyle*4,_tn=comp_style.topicnames.replace(/,/g,"|");
-		var _appkey = "<%=comp.comp_id%>"||"801000271";
+		var _appkey = comp.comp_id||801000271;
 		var _url = 'http://wall.v.t.qq.com/index.php?c=wall&a=index&t='+_tn;
 		_url +='&ak='+_appkey;
 		_url +='&w='+[comp_style.width,0][0+comp_style.autowidth];
@@ -288,14 +302,20 @@ function compType3(){
 		$(".getcode span").css("visibility","hidden");
 }
 function compType4(){
-	//<!--Q-Share-->
+	//<!--Q-Share-->	
+		util.createScript("/js/websites/qshare/qshare_full.js");
+		util.createScript("/js/websites/qshare/qshare_simple.js");
 		var t = [
 			'<div style="display:none">',
-			'<textarea id="code00"><% include file="websites/qshare/qshare_full.txt" %></textarea>',
-			'<textarea id="code01"><% include file="websites/qshare/qshare_simple.txt" %></textarea>',
+			'<textarea id="code00">',
+				this.tpl.qshare_full,
+			'</textarea>',
+			'<textarea id="code01">',
+				this.tpl.qshare_simple,
+			'</textarea>',
 			'</div>'
 		].join("\r")
-	   development_compinfoTmpl += t;
+	 	$("#main").append(t);
 		var comp_style = comp.comp_style?comp.comp_style:{"assname":"","qsharestyle":0};
 		var comp_id = comp.comp_id;
 		var qsharebtn = ["w:118;h:25;b:share/qshare.png;",
@@ -339,7 +359,7 @@ function compType4(){
 
 function compType5(){//<!--心情板-->
     var comp_style = comp.comp_style?comp.comp_style:{"assname":"api_weibo","width":300,"height":"108","autowidth":true,"autoheight":true};
-    var comp_id = "<%=comp.comp_id%>";
+    var comp_id = comp.comp_id;
     var _url = 'http://emotion.v.t.qq.com/index.php?c=emotion&a=index';
         _url += '&appkey='+comp_id;//appkey
         _url += '&name='+(comp_style.assname||"");
@@ -546,62 +566,61 @@ function compType8(){
 	});
 }
 
-$(function(){
-    $(".appinfo li.alert").find(".hidebtn").click(function(){
-    /*
-        $(this).parent().hide();
-        $.get("/development/ajaxcompalert/<%=comp.comp_id%>?t="+new Date().getTime());
-    */
-    	var t=$(this),p=t.parent(),c=p.find(".alert_content");
-    	if (p.attr("beclose")){
-			p.hide();
-			$.get("/development/ajaxcompalert/<%=comp.comp_id%>?t="+new Date().getTime());
-    		return;
-    	}
-    	if (c.is(":visible")){
-    		c.slideUp("fast");
-    		t.html("展开↓");
-    	}else{
-    		c.slideDown("fast");
-    		t.html("收起↑");
-    	}
-    });
-	if(comp.comp_type==1){//<!--一键分享-->
-		compType1();
-	}else if(comp.comp_type==2){
-		compType2();
-	}else if(comp.comp_type==3){//<!--话题墙-->
-		compType3();
-	}else if(comp.comp_type==4){
-		compType4();
-	}else if(comp.comp_type==5){
-		compType5();
-	}else if(comp.comp_type==7){
-		compType7();
-	}else  if(comp.comp_type==6){
-		compType6()
-	}else if(comp.comp_type==8){
-		compType8();
+
+$(".appinfo li.alert").find(".hidebtn").click(function(){
+/*
+	$(this).parent().hide();
+	$.get("/development/ajaxcompalert/<%=comp.comp_id%>?t="+new Date().getTime());
+*/
+	var t=$(this),p=t.parent(),c=p.find(".alert_content");
+	if (p.attr("beclose")){
+		p.hide();
+		$.get("/development/ajaxcompalert/<%=comp.comp_id%>?t="+new Date().getTime());
+		return;
 	}
+	if (c.is(":visible")){
+		c.slideUp("fast");
+		t.html("展开↓");
+	}else{
+		c.slideDown("fast");
+		t.html("收起↑");
+	}
+});
 	
-	development_compinfoTmpl+= footerTmpl;
-	$(document.body).append(tmpl(development_compinfoTmpl,{}));
+if(comp.comp_type==1){//<!--一键分享-->
+	compType1();
+}else if(comp.comp_type==2){
+	compType2();
+}else if(comp.comp_type==3){//<!--话题墙-->
+	compType3();
+}else if(comp.comp_type==4){
+	compType4();
+}else if(comp.comp_type==5){
+	compType5();
+}else if(comp.comp_type==7){
+	compType7();
+}else  if(comp.comp_type==6){
+	compType6()
+}else if(comp.comp_type==8){
+	compType8();
+}
+
+$("#main").append(this.tpl.footer);	
 	
-	$(".code").click(function(){
-		var elm = $(this)[0],range;
-		if (document.createRange){
-			range = document.createRange();
-			range.selectNodeContents(elm);
-			sel = window.getSelection();
-			sel.removeAllRanges();
-			sel.addRange(range);
-		}else if(document.body.createTextRange){
-			range = document.body.createTextRange();
-			range.moveToElementText(elm);
-			range.select();
-		}else if(window.getSelection){
-			range = window.getSelection();
-			range.setBaseAndExtent(elm,0,elm,1);
-		}
-	});
+$(".code").click(function(){
+	var elm = $(this)[0],range;
+	if (document.createRange){
+		range = document.createRange();
+		range.selectNodeContents(elm);
+		sel = window.getSelection();
+		sel.removeAllRanges();
+		sel.addRange(range);
+	}else if(document.body.createTextRange){
+		range = document.body.createTextRange();
+		range.moveToElementText(elm);
+		range.select();
+	}else if(window.getSelection){
+		range = window.getSelection();
+		range.setBaseAndExtent(elm,0,elm,1);
+	}
 });
