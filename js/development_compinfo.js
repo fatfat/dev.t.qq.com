@@ -102,7 +102,6 @@ var development_compinfoTmpl = [
         '</div>',
     '</div>',
 ].join("\r");
-
 $("#main").append(tmpl(development_compinfoTmpl,global_obj.data));
 
 function compType1(){
@@ -586,7 +585,6 @@ $(".appinfo li.alert").find(".hidebtn").click(function(){
 		t.html("收起↑");
 	}
 });
-	
 if(comp.comp_type==1){//<!--一键分享-->
 	compType1();
 }else if(comp.comp_type==2){
