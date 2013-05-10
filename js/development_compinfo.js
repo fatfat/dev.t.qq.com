@@ -1,3 +1,8 @@
+/*变量初始化*/
+global_obj.data.navPos = 7;
+var comp = global_obj.data.comp  = global_obj.data; 
+comp.comp_style = $.parseJSON(comp.comp_style);
+
 var development_compinfoTmpl = [
 	this.tpl.header,
     '<div id="content" class="controlCon main main_app">',
@@ -71,8 +76,8 @@ var development_compinfoTmpl = [
                 '<li><strong>网站名称：</strong><em><%=comp.comp_name%>&nbsp; &nbsp;<a href="/development/compsite/<%=comp.comp_id%>">修改</a></em></li>',
                 '<li><strong>网站地址：</strong><em><a href="<%=comp.comp_url%>" target="_blank" class="a1"><%=comp.comp_url%></a>&nbsp; <a href="/development/compsite/<%=comp.comp_id%>">修改</a></em></li>',
                ' <li><strong>组件类型：</strong><em><%=comp.comp_type_name%>&nbsp; &nbsp;<a href="/websites/<%if(comp.comp_type==1||comp.comp_type==7){%>share<%}else if(comp.comp_type==2){%>followcomp<%}else if(comp.comp_type==3){%>wall<%}else if(comp.comp_type==4){%>qshare<%}else if(comp.comp_type==5){%>mood<%}else if(comp.comp_type==6){%>comment<%}else if(comp.comp_type==8){%>login<%}%>/" target="_blank">详细介绍</a></em></li>',
-                '<li><strong>接口权限：</strong><em><%=comp.comp_level%> | 通过审核后自动升级为高级&nbsp; &nbsp;<a href="http://wiki.open.t.qq.com/index.php/API%E8%B0%83%E7%94%A8%E6%9D%83%E9%99%90" target="_blank">查看接口权限详细说明&gt;&gt;</a></em></li>',
-                '<li><strong>来源显示：</strong><em><%=comp.comp_source_status%> | 通过审核后自动生效&nbsp; &nbsp;<a href="http://wiki.open.t.qq.com/index.php/%E4%BA%A7%E5%93%81%E7%B1%BBFAQ#.E6.8F.90.E4.BA.A4.E5.BA.94.E7.94.A8.E6.9D.A5.E6.BA.90.E5.AD.97.E6.AE.B5.E5.AE.A1.E6.A0.B8.E8.83.BD.E5.BE.97.E5.88.B0.E4.BB.80.E4.B9.88.E5.A5.BD.E5.A4.84.EF.BC.9F" target="_blank">查看来源显示详细说明&gt;&gt;</a></em></li>',
+                '<li><strong>接口权限：</strong><em><%=comp.comp_level_name%> | 通过审核后自动升级为高级&nbsp; &nbsp;<a href="http://wiki.open.t.qq.com/index.php/API%E8%B0%83%E7%94%A8%E6%9D%83%E9%99%90" target="_blank">查看接口权限详细说明&gt;&gt;</a></em></li>',
+                '<li><strong>来源显示：</strong><em><%=comp.comp_source_status_name%> | 通过审核后自动生效&nbsp; &nbsp;<a href="http://wiki.open.t.qq.com/index.php/%E4%BA%A7%E5%93%81%E7%B1%BBFAQ#.E6.8F.90.E4.BA.A4.E5.BA.94.E7.94.A8.E6.9D.A5.E6.BA.90.E5.AD.97.E6.AE.B5.E5.AE.A1.E6.A0.B8.E8.83.BD.E5.BE.97.E5.88.B0.E4.BB.80.E4.B9.88.E5.A5.BD.E5.A4.84.EF.BC.9F" target="_blank">查看来源显示详细说明&gt;&gt;</a></em></li>',
                 '<li><strong>组件状态：</strong><em><%=comp.comp_status_name%>&nbsp;</em></li>',
                 '<% if(comp.comp_type != 7){ %>',
                 '<li><strong>组件样式：</strong><em><span id="preview" style="display:block;width:580px;"></span><a href="/development/compset/<%=comp.comp_id%>">修改</a></em></li>',
