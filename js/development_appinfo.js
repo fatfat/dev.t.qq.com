@@ -416,7 +416,7 @@
 	var app_status=app.app_status?app.app_status:"2";
 		
 	(function ($) {
-	 	$('body').html(tmpl(developer_appinfo,global_obj.data));
+	 	$('#main').html(tmpl(developer_appinfo,global_obj.data));
 	    $.fn.moduleBox = function (op) {
 	        op = op || {};
 	        var d = {
@@ -575,9 +575,8 @@
 	    if (unchecked.size()>0){
 	        loginWin.alert({"width":470,"height":140,"text":"<center>应用申请上架前，请先确认已申请服务器和托管地址、已部署应用、已测试</center>"});
 	    }else{
-	    	<!--{if  $app.app_checkapi != 0 && $app.app_checkapi != 0}-->    
+	    	if  (app.app_checkapi != 0 && app.app_checkapi != 0)  
 	        apptostore(appplatform); 
-	        <!--{/if}-->
 	    }
 	}
 
@@ -640,94 +639,92 @@
 	                $(this).attr("disabled","disabled");
 	        }); 
 	        
-	  //  if (app.app_type == 1 || app.app_type == 2 || app.app_type == 3 || app.app_type == 4 || app.app_type == 6) &&  app.app_status != 3)
-	    $(".apptostore").click(function(){
-	    	var apptype = +app.app_type,
-	    		grayClass = apptype === 6 ? "btn4_w_gray" : "btn4_gray",
-	    		appplatform = apptype === 6 ? $(this).attr("_appplatform") : 0 ;
-	    	if ($(this).hasClass(grayClass)){
-	    		return false;
-	    	}
-	    	//$(this).attr("disabled","disabled").attr("hidefocus","true").addClass('btn4_gray');
-	    	
-	        beforeCommitCheck(appplatform);
-	    });
+	    if ((app.app_type == 1 || app.app_type == 2 || app.app_type == 3 || app.app_type == 4 || app.app_type == 6) &&  app.app_status != 3){
+		    $(".apptostore").click(function(){
+		    	var apptype = +app.app_type,
+		    		grayClass = apptype === 6 ? "btn4_w_gray" : "btn4_gray",
+		    		appplatform = apptype === 6 ? $(this).attr("_appplatform") : 0 ;
+		    	if ($(this).hasClass(grayClass)){
+		    		return false;
+		    	}
+		    	//$(this).attr("disabled","disabled").attr("hidefocus","true").addClass('btn4_gray');
+		        beforeCommitCheck(appplatform);
+		    });
 
-	    var app_online_url = "app && app.app_online_url?app.app_online_url:''".replace(/^https?:\/\//,"");
-	    
-	    $.ajax({
-			 "dataType":"json"
-			,"type":"post"
-			,"url":"/apps/getappsitelist"
-			,"data":{"uin":hdlogin,"app_id":"app.app_id"}
-			,"success":function(d){
-				var ret = +d.ret,msg =common.getMsgByRet(ret),o = $("#appstate_hostinfo"),str="";
-				if (msg){
-					o.html(msg);
-					return;
-				}
-				if (ret === 0){
-					if (! (d.data && d.data.length)){
+		    var app_online_url = "app && app.app_online_url?app.app_online_url:''".replace(/^https?:\/\//,"");
+		    $.ajax({
+				 "dataType":"json"
+				,"type":"post"
+				,"url":"/apps/getappsitelist"
+ 				,"data":{"uin":global_obj.data.userInfo.hdlogin,"appid":global_obj.data.app.app_id}
+				,"success":function(d){
+					var ret = +d.ret,msg =common.getMsgByRet(ret),o = $("#appstate_hostinfo"),str="";
+					if (msg){
+						o.html(msg);
 						return;
 					}
-					var t=0,f=0;
-					for (var i=0,k=d.data.length;i<k;i++){
-						str += '<li><input type="radio" name="app_url_radio" value="http://'
-						    + d.data[i].site +'" id="app_url_radio_'+i+'"'
-						    + (app_online_url === d.data[i].site?" checked":"")+'/> <label for="app_url_radio_'+i+'">'
-						    + d.data[i].site +'</label></li>';
-						    
-						if( app_online_url === d.data[i].site){
-							t++;
+					if (ret === 0){
+						if (! (d.data && d.data.length)){
+							return;
 						}
+						var t=0,f=0;
+						for (var i=0,k=d.data.length;i<k;i++){
+							str += '<li><input type="radio" name="app_url_radio" value="http://'
+							    + d.data[i].site +'" id="app_url_radio_'+i+'"'
+							    + (app_online_url === d.data[i].site?" checked":"")+'/> <label for="app_url_radio_'+i+'">'
+							    + d.data[i].site +'</label></li>';
+							    
+							if( app_online_url === d.data[i].site){
+								t++;
+							}
+						}
+						
+						str += '<li style="margin-bottom:3px;"><input type="radio" class="cinput" name="app_url_radio" id="app_url_radio_'+i+'" value="';
+						if(t>0 ){
+							f=0;
+							str += '" /> <label for="app_url_radio_'+i+'">手动填写';
+						}else if(app_online_url==""){
+							f=0;
+							str += '" /> <label for="app_url_radio_'+i+'">手动填写';
+						}else{
+							f=1;
+							str += 'http://'+ app_online_url+'" checked /> <label for="app_url_radio_'+i+'" class="apphost_input" >'+app_online_url;
+						}
+						
+						//str += '</label></li>';
+						str += '</label><input type="text" onblur="checkapphost(this);" data-rule="link" data-error="应用托管地址" class="apphost_input none" value="'+(f==0?"":app_online_url)+'" /></li>';
+						o.removeClass("c_orange").html("<h3>请选择应用托管地址（部署地址）</h3><ul class=\"app_url_list\">"+str+"</ul>");
+						
+						var app_url_list=$(".app_url_list");
+						app_url_list.css("height",app_url_list[0].scrollHeight > 219 ? "220px" :"auto");
 					}
-					
-					str += '<li style="margin-bottom:3px;"><input type="radio" class="cinput" name="app_url_radio" id="app_url_radio_'+i+'" value="';
-					if(t>0 ){
-						f=0;
-						str += '" /> <label for="app_url_radio_'+i+'">手动填写';
-					}else if(app_online_url==""){
-						f=0;
-						str += '" /> <label for="app_url_radio_'+i+'">手动填写';
-					}else{
-						f=1;
-						str += 'http://'+ app_online_url+'" checked /> <label for="app_url_radio_'+i+'" class="apphost_input" >'+app_online_url;
-					}
-					
-					//str += '</label></li>';
-					str += '</label><input type="text" onblur="checkapphost(this);" data-rule="link" data-error="应用托管地址" class="apphost_input none" value="'+(f==0?"":app_online_url)+'" /></li>';
-					o.removeClass("c_orange").html("<h3>请选择应用托管地址（部署地址）</h3><ul class=\"app_url_list\">"+str+"</ul>");
-					
-					var app_url_list=$(".app_url_list");
-					app_url_list.css("height",app_url_list[0].scrollHeight > 219 ? "220px" :"auto");
 				}
-			}
-		}); 
-		
-		
-		
-		$(".app_url_list").find(":radio").live("click",function(){
-			var li=$(this).parent("li"),cinput=li.parent("ul").find(".cinput"),value=cinput.val();
-			if(cinput.size()){
-				if($(this).hasClass("cinput")){//点击手动输入单选框
-					li.find('input[type="text"]').removeClass("none").val(value);
-					li.find("label").addClass("none");
-					if(value){
-						li.find('input[type="text"]').trigger("blur");
+			}); 
+			
+			
+			
+			$(".app_url_list").find(":radio").live("click",function(){
+				var li=$(this).parent("li"),cinput=li.parent("ul").find(".cinput"),value=cinput.val();
+				if(cinput.size()){
+					if($(this).hasClass("cinput")){//点击手动输入单选框
+						li.find('input[type="text"]').removeClass("none").val(value);
+						li.find("label").addClass("none");
+						if(value){
+							li.find('input[type="text"]').trigger("blur");
+						}
+					}else{//其他单选框
+						cinput.parent("li").find('input[type="text"]').addClass("none");
+						cinput.parent("li").find('label').removeClass("none");
+						cinput.parent("li").find(".tip").remove();
 					}
-				}else{//其他单选框
-					cinput.parent("li").find('input[type="text"]').addClass("none");
-					cinput.parent("li").find('label').removeClass("none");
-					cinput.parent("li").find(".tip").remove();
-				}
-			}	
-		});
-		
-		$("input.apphost_input").live("click",function(){
-			$(this).parent("li").find(".cinput").attr("checked","checked");
-		});
+				}	
+			});
+			
+			$("input.apphost_input").live("click",function(){
+				$(this).parent("li").find(".cinput").attr("checked","checked");
+			});
 
-	    <!--{/if}-->
+    	}
 	    $("a[id='appSource']").click(function(){
 	        var target=$(".appstate_body").find(".btns").find("a").first();
 	        var url=target.attr("href");
@@ -772,7 +769,7 @@
 	                	,"business_type":"saveappinfo"
 	                	 ,"app_type":4
 	                	,"actiontype":1
-	                	,"appid":appid
+	                	,"appid":global_obj.data.app.app_id
 	                	,"app_hosting":$('#app_hosting_container').find(":checked").val()
 	                };
 
@@ -834,33 +831,40 @@
 	 			return false;
 	 		}
 	 		postData = {
-		 		 "app_id":"<app.app_id>"
+	 			 "action":"common_query"
+	 			 ,"business_type":"apptostore"
+		 		 ,"appid":global_obj.data.app.app.app_id
 		 		,"app_online_url":$("#appstate_hostinfo").find(":checked").val()
 		 		,"changestatu":1
 	 		}
 	 	}else if(6==app.app_type){
 	 	 	postData = {
-		 		 "app_id":"app.app_id",
+	 	 	    	"action":"common_query",
+	              "business_type":"apptostore",
+		 		 "appid":global_obj.data.app.app_id,
 		 		 "app_platform":appplatform
 		  	}
 	 	 }else{
 	 	 	postData = {
-		 		 "app_id":"app.app_id"
+	 	 			"action":"common_query",
+	              "business_type":"apptostore",
+		 		 "appid":global_obj.data.app.app_id,
 		  	}
 	 	 }
 	 	 
 	     $.ajax({
-	          url: '/development/apptostore?appid='+appid,
+	          url: "/pipes/interfaceserver",
 	          dataType: "json",
 	          data:postData,
 	          type:"POST",
 	          cache: false,
 	          success: function(ResposeData){  
-	            if(ResposeData.ret == 0){
+	          	console.log(ResposeData.error);
+	            if(ResposeData.error == 0){
 	                loginWin.alert('<center>应用提交上架成功，审核人员会在2个工作日内处理完毕。</center>',function(){location.reload();});	
-	            }else if(ResposeData.ret > -300 && ResposeData.ret < 0){
+	            }else if(ResposeData.error > -300 && ResposeData.error < 0){
 					loginWin.confirm({'text':'<center>基本信息填写完整后才能申请上架<br />现在去填写基本信息?</center>','ok_text':'确定','cancel_text':'取消'},function(){location.href="/development/appedit?appid="+app.app_id;},function(){loginWin.close();});
-	            }else if(ResposeData.ret < -300 && appplatform){
+	            }else if(ResposeData.error < -300 && appplatform){
 	            	var platform = appplatform == 1 ? 'iPhone' : "Android" ;
 					loginWin.confirm({'text':'<center>' +  platform + '平台信息填写完整后才能申请上架<br />现在去填写平台信息?</center>','ok_text':'确定','cancel_text':'取消'},function(){location.href="/development/platforminfo?appid="+app.app_id;},function(){loginWin.close();});
 	            }else{
