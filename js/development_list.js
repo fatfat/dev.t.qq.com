@@ -18,7 +18,7 @@ else
 	if(!global_obj.data.page_size) global_obj.data.page_size = 13;
 
 	//testdata  complist:
-	if(!global_obj.data.navPos) global_obj.data.navPos = "7";
+	global_obj.data.navPos = "7";
 	if(!global_obj.data.comps)  global_obj.data.comps = global_obj.data.pagelist;
 	
 	global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
