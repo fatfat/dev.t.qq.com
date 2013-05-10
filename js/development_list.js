@@ -5,20 +5,41 @@ if(!userInfo.hdlogin)
 }
 else
 {
+	//开平变量初始化
+	global_obj.data.kapp_count = 0;
+	global_obj.data.kpage_no = 0;
+	global_obj.data.kpage_count = 13;
+	
+	//testdata  iweibo:
+	if(!global_obj.data.displaytype)  global_obj.data.displaytype = "iweibo";
+	if(!global_obj.data.iweibo) global_obj.data.iweibo = [];
+	if(!global_obj.data.app_count) global_obj.data.app_count= 0;
+	if(!global_obj.data.page_no) global_obj.data.page_no= 1;
+	if(!global_obj.data.page_size) global_obj.data.page_size = 13;
+
+	//testdata  complist:
+	if(!global_obj.data.navPos) global_obj.data.navPos = "7";
+	if(!global_obj.data.comps)  global_obj.data.comps = global_obj.data.pagelist;
+	
+	global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
+	if ( (global_obj.data.page_count ? global_obj.data.page_count:1) < global_obj.data.page_no) {    //当前页码不能超过总页数
+		console.log("warning:The page_no excceeds the total page counts");
+	}
+	
 	this.tpl = this.tpl || {};
 	this.tpl.development_list_comps = [
 		'<div  id="applist" class="applist">',
 		'<ul class="applist" id="applistul">',
-			'<%if(comps.length>0&&comp_count>0){%>',
+			'<%if(comps.length>0&&app_count>0){%>',
 				'<%for(var i=0;i<comps.length;i++){%>',
 				'<%var comp = comps[i];%>',
 				'<li>',
 					'<dl>',
 					'<dt><a href="/development/compinfo?compid=<%=comp.comp_id%>"><%=comp.comp_name%></a></dt>',
-					'<dd class="applistdd"><span>组件类型：</span><label><%=comp.compType%></label></dd>',
-					'<dd><span>接口权限：</span><label><%=comp.compLevel%>权限</label></dd>',
-					'<dd><span>来源显示：</span><label><%=comp.compSource_status%></label></dd>',
-					'<dd><span>组件状态：</span><label><%=comp.compStatus%></label></dd>',
+					'<dd class="applistdd"><span>组件类型：</span><label><%=comp.comp_type_name%></label></dd>',
+					'<dd><span>接口权限：</span><label><%=comp.comp_level_name%>权限</label></dd>',
+					'<dd><span>来源显示：</span><label><%=comp.comp_source_status_name%></label></dd>',
+					'<dd><span>组件状态：</span><label><%=comp.comp_status_name%></label></dd>',
 					'</dl>',
 					'<div align="right">',
 						'<%if(comp.comp_type!=7){%><a href="/development/compset?compid=<%=comp.comp_id%>">编辑</a> / <%}%>',
@@ -56,9 +77,9 @@ else
 						'<li style="height:auto;">你还没有创建过应用，<a href="javascript:;" onclick="$(\\"#newapp\\").trigger(\\"click\\");" style="display:inline">马上创建</a></li>',
 					'<%}%>',
 					'</ul>',
-			//		'<div id="pagebar"><%=pagelist%></div>',
 					'</div>',
 			   // <!--其他平台应用-->
+			   '<% if (displaytype == "app") {%>',
 			   '<div id="otherapplist" class="applist2 hidden">',
 				   '<ul id="applistul1">',
 						'<%for(var i=0;i<kapps.length;i++){%>',    
@@ -87,6 +108,8 @@ else
 							'<%}%>',
 						'<%}%>',
 					'</ul>',
+				'</div>',
+			'<% } %>'
 	].join("");
 	
 	this.tpl.development_list_app = [
@@ -113,8 +136,6 @@ else
 					'<label for="apptype3">站内应用</label>',
 				'</form>',
 				tpl.applistul,
-		//		'<div id="pagebar1"><%=pagelist1%></div>',
-		//		this.tpl.pageBar,
 			'</div>',  
 		'</div>'
 	].join("");
@@ -139,26 +160,17 @@ else
 				'<li style="height:auto;">你还没有使用过iWeibo，<a href="/apps/add/5/" style="display:inline;line-height:1;">马上使用</a></li>',
 		'<%}%>',
 			'</ul>',
-		'<div id="pagebar"><%=pagelist%></div>',
 		'</div> '
 	].join("");
-	
+		
+
 	//根据不同的类型渲染页面
 	var setRightList = function(){
 		if(global_obj.data.displaytype == "comps"){
 			rightListTmpl = this.tpl.development_list_comps;
 		}else if(global_obj.data.displaytype == "app"){
-			global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
-			global_obj.data.kpage_count = 0;
-			if ( (global_obj.data.page_count ? global_obj.data.page_count:1) < global_obj.data.page_no) {    //当前页码不能超过总页数
-				console.log("warning:The page_no excceeds the total page counts");
-			}  
 			rightListTmpl = this.tpl.development_list_app;
 		}else if(global_obj.data.displaytype == "iweibo"){
-			global_obj.data.page_count = global_obj.data.current_page;  //页数
-			if ( (global_obj.data.page_count ? global_obj.data.page_count:1) < global_obj.data.page_no) {    //当前页码不能超过总页数
-				console.log("warning:The page_no excceeds the total page counts");
-			}  
 			rightListTmpl = this.tpl.development_list_iweibo;
 		} else {
 			console.log("Wrong displaytype of " + global_obj.data.displaytype);
@@ -372,6 +384,7 @@ else
 	});	
 	$(function(){
 		bindAllPageEvent();
+		checkPageNum(global_obj.data.page_count);
 	
 		$('input#apptype1').click(function(){
 			if($(this).attr('checked')==true) displayAppType = displayAppType|0x1;
@@ -449,9 +462,9 @@ else
 	}
 
 	function bindPageEvent1(pageNum) {
-		var Pagei = '#Page' + i;
+		var Pagei = '#Page' + pageNum;
 		$(Pagei).click(function(){
-			pageList1(i);
+			pageList1(pageNum);
 		})
 	}		
 			
@@ -493,7 +506,7 @@ else
 		}*/
 		global_obj.data.page_no = page;
 		ajaxpageListUrl = "/pipes/interfaceserver";
-	var data = {"action":"common_query","business_type":"ajax_applist","page":page,"appTypes":displayAppType};
+	    var data = {"action":"common_query","business_type":"ajax_applist","page":page,"appTypes":displayAppType};
 		AjaxPageList(ajaxpageListUrl, data);
 	} 
 	/**
@@ -513,7 +526,6 @@ else
 			  data: dota,
 			  cache: false,
 			  success: function(ResponseData){ 
-
 				  if (parseInt(ResponseData.data.uin,10) == parseInt(userInfo.hdlogin,10) ){
 				  	  ResponseData.data.apps = ResponseData.data.apps || {};
 				      ResponseData.data.kapps = ResponseData.data.kapps || {};
