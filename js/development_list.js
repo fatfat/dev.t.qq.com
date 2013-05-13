@@ -530,7 +530,6 @@ else
 				  	  ResponseData.data.apps = ResponseData.data.apps || {};
 				      ResponseData.data.kapps = ResponseData.data.kapps || {};
 				  	  if($('#otherapplist').hasClass('hidden')){
-				  	  	    if( !ResponseData.data.app_count ) ResponseData.data.app_count = ResponseData.data. 
 				  	  	   	global_obj.data.app_count = ResponseData.data.app_count;
 						  	global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
 						  	global_obj.data.kpage_count = ResponseData.data.kpage_count = 0;
