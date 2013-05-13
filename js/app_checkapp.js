@@ -689,6 +689,7 @@ $(function(){
 				   dataType: "json",
 				   data: postdata,
 				   success: function(msg){
+				  // 	   console.log(msg);
 				   	   var ret = +(msg.ret || msg.error),retmsg = common.getMsgByRet(ret);
 				   	   if (retmsg){
 				   	   		loginWin.alert("<center>"+retmsg+"</center>");
