@@ -235,7 +235,7 @@
 		    '<li class="alert alert_warn" beclose="true"><a href="javascript:;" class="hidebtn closealert">关闭</a>',
 		    '<h4>管理员对你的应用进行了如下操作：</h4>',
 		    '<div class="alert_content"><%=app.app_bd_change%><br />',
-		    '如有疑问<a href="http://wiki.open.t.qq.com/index.php/%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC" target="_blank">请联系我们</a></div>',
+		    '如有疑问，<a href="http://wiki.open.t.qq.com/index.php/%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC" target="_blank">请联系我们</a></div>',
 		    '</li>',
 		    '<%}%>',
 		    '<!-- 审核结果提示  完 -->',
@@ -414,6 +414,8 @@
 	var appid=app.app_id;
 	var showalert = global_obj.data.showlert;
 	var app_status=app.app_status?app.app_status:"2";
+	global_obj.data.iphoneinfo = global_obj.data.iphoneinfo ||{};
+	global_obj.data.androidinfo = global_obj.data.androidinfo || {};
 		
 	(function ($) {
 	 	$('#main').html(tmpl(developer_appinfo,global_obj.data));
@@ -575,7 +577,8 @@
 	    if (unchecked.size()>0){
 	        loginWin.alert({"width":470,"height":140,"text":"<center>应用申请上架前，请先确认已申请服务器和托管地址、已部署应用、已测试</center>"});
 	    }else{
-	    	if  (app.app_checkapi != 0 && app.app_checkapi != 0)  
+	    	//仅对站内应用判断是否调用过api
+	    	if  (!(global_obj.data.app.app_type == 4 && global_obj.data.app.app_checkapi == 0))  
 	        apptostore(appplatform); 
 	    }
 	}
@@ -641,7 +644,7 @@
 	        
 	    if ((app.app_type == 1 || app.app_type == 2 || app.app_type == 3 || app.app_type == 4 || app.app_type == 6) &&  app.app_status != 3){
 		    $(".apptostore").click(function(){
-		    	var apptype = +app.app_type,
+		    	var apptype = +'app.app_type',
 		    		grayClass = apptype === 6 ? "btn4_w_gray" : "btn4_gray",
 		    		appplatform = apptype === 6 ? $(this).attr("_appplatform") : 0 ;
 		    	if ($(this).hasClass(grayClass)){
@@ -849,7 +852,7 @@
 	 	 			"action":"common_query",
 	              "business_type":"apptostore",
 		 		 "appid":global_obj.data.app.app_id,
-		  	}
+		  	}      
 	 	 }
 	 	 
 	     $.ajax({
@@ -858,8 +861,8 @@
 	          data:postData,
 	          type:"POST",
 	          cache: false,
-	          success: function(ResposeData){  
-	          	console.log(ResposeData);
+	          success: function(ResposeData){ 
+	          console.log(ResposeData); 
 	            if(ResposeData.error == 0){
 	                loginWin.alert('<center>应用提交上架成功，审核人员会在2个工作日内处理完毕。</center>',function(){location.reload();});	
 	            }else if(ResposeData.error > -300 && ResposeData.error < 0){
