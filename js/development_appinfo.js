@@ -859,7 +859,7 @@
 	          type:"POST",
 	          cache: false,
 	          success: function(ResposeData){  
-	          	console.log(ResposeData.error);
+	          	console.log(ResposeData);
 	            if(ResposeData.error == 0){
 	                loginWin.alert('<center>应用提交上架成功，审核人员会在2个工作日内处理完毕。</center>',function(){location.reload();});	
 	            }else if(ResposeData.error > -300 && ResposeData.error < 0){

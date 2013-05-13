@@ -78,7 +78,7 @@ tpl.iweiboinfo = [
 			'</div>',
 	tpl.footer
 	].join("");
-global_obj.data.app = 	global_obj.data.app || {};
+//global_obj.data.app = 	global_obj.data.app || {};
 	$('#main').html(tmpl(tpl.iweiboinfo,global_obj.data));
 	var str = [
 		'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',

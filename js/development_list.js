@@ -383,9 +383,9 @@ else
 		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 	});	
 	$(function(){
-		bindAllPageEvent();
 		checkPageNum(global_obj.data.page_count);
-	
+		bindAllPageEvent();
+		
 		$('input#apptype1').click(function(){
 			if($(this).attr('checked')==true) displayAppType = displayAppType|0x1;
 			else displayAppType = displayAppType&0xFE;
@@ -538,6 +538,7 @@ else
 							setRightList();
 						  	ResponseData.data.page_count = global_obj.data.page_count;
 							checkPageNum(global_obj.data.page_count);
+							ResponseData.data.displaytype = global_obj.data.displaytype;
 							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
 							$('#pagebar').html(tmpl(tpl.pageBar, ResponseData.data));
 						}else{						
@@ -545,6 +546,7 @@ else
 							global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count / global_obj.data.page_size);  //页数
 							ResponseData.data.kpage_count = global_obj.data.kpage_count;
 							global_obj.data.page_count = ResponseData.data.page_count = 0;
+							setRightList();
 							hiddenkpagebar(global_obj.data.kpage_count);	
 							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
 							$('#pagebar1').html(tmpl(tpl.pageBar1, ResponseData.data));
