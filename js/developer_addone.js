@@ -1,6 +1,13 @@
 ﻿  //JavaScript Document
+ 
+var developer = null;//global_obj.data.developer;
+global_obj.data.developer = null;
+var user_uin = user_uin || developer && developer.user_uin ? developer.user_uin : 0;
+var user_province = developer && developer.user_province ? developer.user_province : "";
+var user_city = developer && developer.user_city ? developer.user_city : "";
+var reSubmit = 0;
 	
-tpl.developer_addone = 
+var developer_addone  = 
 [
 	this.tpl.header, 
 	'<div id="content" class="deverCon wrapper">',
@@ -56,115 +63,113 @@ tpl.developer_addone =
 			'</form>',
 		'</div>',
 	'</div>',
-	'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/location.js?20130328"></script>',
-	'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/validater.js?20130328"></script>',
 	this.tpl.footer
 ].join("");
 
 $('#main').html(tmpl(developer_addone, global_obj.data));
-
-$(function(){	
+util.createScript("/js/location.js");
+util.createScript("/js/validater.js");
+	$(function(){
 	$('#reset').click(function() {
-		 location.href="developer_bedever.html";
+		location.href = "/developer/bedever";
 	});
-	$("#uretypecom").click(function(){
-		location.href = 'developer_add.html';
+	$("#uretypecom").click(function() {
+		location.href = '/developer/add';
 	});
-	$("#uretypeperson").click(function(){ 
-		location.href = 'developer_addone.html';
+	$("#uretypeperson").click(function() {
+		location.href = '/developer/addone';
 	});
-	var developer = data.developer;
-	var user_uin = user_uin || developer && developer.user_uin ? developer.user_uin : 0;
-	var user_province = developer && developer.user_province ? developer.user_province : "";
-	var user_city = developer && developer.user_city ? developer.user_city : "";
-	var reSubmit = 0;	
-
-	if(window.user_province > 0 ){
-		$("#company_province").val(LOCATION[1][+user_province].n).attr("_value",user_province);	
+	
+	if (window.user_province > 0) {
+		$("#company_province").val(LOCATION[1][ + user_province].n).attr("_value", user_province);
 	}
-	if(window.user_city > 0 ){
-		$("#company_city").val(LOCATION[1][+user_province][+user_city].n).attr("_value",user_city);
-		
+	if (window.user_city > 0) {
+		$("#company_city").val(LOCATION[1][ + user_province][ + user_city].n).attr("_value", user_city);
+	
 		//市/区有值的情况下加载下拉框
-        var cvalue=$("#company_city").attr("_value");
-        if(cvalue!="-1"){
-        	var arr = [],pvalue=$("#company_province").attr("_value");
-        	for(var p in LOCATION[1][pvalue]){
-        		
-	        	("n" != p) && arr.push('<li _value="' + p + '">' + LOCATION[1][pvalue][p].n + '</li>');
-	        }
-	        $('.form_select_city').html(arr.join("")).find("li:eq(0)").addClass("active");
-	    }
+		var cvalue = $("#company_city").attr("_value");
+		if (cvalue != "-1") {
+			var arr = [],
+			pvalue = $("#company_province").attr("_value");
+			for (var p in LOCATION[1][pvalue]) {
+	
+				("n" != p) && arr.push('<li _value="' + p + '">' + LOCATION[1][pvalue][p].n + '</li>');
+			}
+			$('.form_select_city').html(arr.join("")).find("li:eq(0)").addClass("active");
+		}
 	}
-	$(".appform").submit(function(){
-		if (reSubmit>0){
-			loginWin.alert("<center>你已经是开发者，请不要重复提交！</center>",function(){
+	$(".appform").submit(function() {
+		if (reSubmit > 0) {
+			loginWin.alert("<center>你已经是开发者，请不要重复提交！</center>",
+			function() {
 				location.href = '/development/';
 			});
 			return false;
 		}
-		var postData="user_type=1&user_name="+$('input#user_name').val()+"&user_id_type="+$('input#user_id_type').attr("_value")+"&user_id_card_num="+$('input#user_id_card_num').val()
-			+"&user_province="+encodeURIComponent($('input#company_province').attr("_value"))+"&user_city="+encodeURIComponent($('input#company_city').attr("_value"))+"&user_address="+encodeURIComponent($('input#user_address').val())
-			+"&user_phone="+$('input#user_phone').val()+"&user_email="+$('input#user_email').val()+"&user_website="+encodeURIComponent($('input#user_website').val());
-		postData +="&op="+$('input#op').val()+"&user_uin="+user_uin;
-		if (developer){
-			postData +="&sendmail="+$("input#sendmail").val();  //检测邮件地址是否改变，是否发邮件
+		var postData = "user_type=1&user_name=" + $('input#user_name').val() + "&user_id_type=" + $('input#user_id_type').attr("_value") + "&user_id_card_num=" + $('input#user_id_card_num').val() + "&user_province=" + encodeURIComponent($('input#company_province').attr("_value")) + "&user_city=" + encodeURIComponent($('input#company_city').attr("_value")) + "&user_address=" + encodeURIComponent($('input#user_address').val()) + "&user_phone=" + $('input#user_phone').val() + "&user_email=" + $('input#user_email').val() + "&user_website=" + encodeURIComponent($('input#user_website').val());
+		postData += "&op=" + $('input#op').val() + "&user_uin=" + user_uin;
+		if (developer) {
+			postData += "&sendmail=" + $("input#sendmail").val(); //检测邮件地址是否改变，是否发邮件
 		}
 		$.ajax({
-			   type: "POST",
-			   url: "/developer/update?t="+new Date().getTime(),
-			   dataType: "json",
-			   data: postData,
-			   success: function(d){
-				   var ret = +(d.ret || d.error),msg = common.getMsgByRet(ret);
-					if (msg){
-						loginWin.alert("<center>"+msg+"</center>");
-						return;
-					}
-				   if(ret === 0){
-					   //注册或修改成功
-					   ++reSubmit;
-					   loginWin.alert("<center>保存开发者资料成功</center>",function(){
-					   		location.href = '/development/';
-					   });
-					}else{
-						loginWin.alert("<center>保存开发者资料失败,"+d.msg+"</center>");
-					}
-			   },
-			   error:function(){
-			   		loginWin.alert("<center>网络连接失败，请稍候重试！</center>");
-			   }
-		}); 
+			type: "POST",
+			url: "/developer/update?t=" + new Date().getTime(),
+			dataType: "json",
+			data: postData,
+			success: function(d) {
+				var ret = +(d.ret || d.error),
+				msg = common.getMsgByRet(ret);
+				if (msg) {
+					loginWin.alert("<center>" + msg + "</center>");
+					return;
+				}
+				if (ret === 0) {
+					//注册或修改成功
+					++reSubmit;
+					loginWin.alert("<center>保存开发者资料成功</center>",
+					function() {
+						location.href = '/development/';
+					});
+				} else {
+					loginWin.alert("<center>保存开发者资料失败," + d.msg + "</center>");
+				}
+			},
+			error: function() {
+				loginWin.alert("<center>网络连接失败，请稍候重试！</center>");
+			}
+		});
 		return false;
 	})
 	
-	$("input#user_email").change(function(){
+	$("input#user_email").change(function() {
 		$("input#sendmail").val('1');
 	})
-		
-	$("#cardnumcheck").click(function(){
+	
+	$("#cardnumcheck").click(function() {
 		var selector = $("input[name='user_id_card_num']");
 		selector.parent(".form_input").next(".errorTip").remove();
 		selector.parent(".form_input").next(".currectTip").remove();
 		var id = $.trim(selector.val());
 		var ret = OPEN_VALIDATOR['cardnum'](id);
-		if(ret == true && id){
-			var url = '/developer/checkid/'+id;
-			if(id){
-				$.getJSON(url,function(d){
+		if (ret == true && id) {
+			var url = '/developer/checkid/' + id;
+			if (id) {
+				$.getJSON(url,
+				function(d) {
 					//d = $.parseJSON(d);
-					if(d.data.is_exist == 0){
-						showmsg(true,selector,'');
-					}else{
-						showmsg(false,selector,'此ID已被注册');
+					if (d.data.is_exist == 0) {
+						showmsg(true, selector, '');
+					} else {
+						showmsg(false, selector, '此ID已被注册');
 					}
 				});
 			}
-		}else{
-			showmsg(false,selector,'身份证格式错误');
+		} else {
+			showmsg(false, selector, '身份证格式错误');
 		}
-	});	
-})
+	});
+});
+
 
 
 
