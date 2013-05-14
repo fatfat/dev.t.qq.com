@@ -152,7 +152,7 @@ $(function(){
 				apk_size.val((app.filesize/1024/1024).toFixed(2));
 				app_uploader.addClass("none");
 				app_info.removeClass("none").find(".form_element_uploaded_name").html(app.filename);
-				app_downer.html('<a href="http://app.t.qq.com/download.php?key=' + app.filekey + '&name='+ window.appid +'.apk" target="_blank" title="点击下载">'+window.appid+'.apk</a>');
+				app_downer.html('<a href="http://app.t.qq.com/download.php?key=' + app.filekey + '&name='+ global_obj.data.app.app_id +'.apk" target="_blank" title="点击下载">'+global_obj.data.app.app_id+'.apk</a>');
 				showmsg(true,app_apk);
 			},
 			hideAppInfo = function(){

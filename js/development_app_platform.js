@@ -39,11 +39,10 @@
 		'</form>',
 		'</div>',
 		'</div>',
-		'<script type="text/javascript" src="/js/app_appedit.js"></script>',
 		'<!--{ include file="footer.tpl" }-->',
 		tpl.footer,
 	].join('');
-
+s
 	$('#main').html(tmpl(tpl.app_platform, global_obj.data));
 	global_obj.init.appnav();
 	global_obj.init.appplatform_inner();
@@ -85,7 +84,7 @@
 		 	$('input#app_url').attr("disabled","disabled");
 		});
 	}
-	
+	util.createScript("/js/app_appedit.js");
 	util.createScript("/js/app_platform_01.js");
 })();
 
