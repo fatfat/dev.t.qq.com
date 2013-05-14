@@ -85,5 +85,7 @@
 		 	$('input#app_url').attr("disabled","disabled");
 		});
 	}
+	
+	util.createScript("/js/app_platform_01.js");
 })();
 
