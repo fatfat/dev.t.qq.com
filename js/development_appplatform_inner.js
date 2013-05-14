@@ -170,7 +170,7 @@
 						'<input type="hidden" name="app_apk" class="app_apk" data-rule="appapk" data-error="apk安装包" data-default="<%=androidinfo.app_downurl%>" value="<%=androidinfo.app_downurl%>"/>',
 					'</span>',
 					'<span class="form_element_uploaded<%if (androidinfo.app_downurl) {%><% }else{ %> none<% } %>">',
-						'<span class="form_element_uploaded_name"><%if (androidinfo.app_downurl) {%><a href="http://app.t.qq.com/download.php?key=<%=androidinfo.app_downurl%>&name=<%=app.app_id%>.apk" target="_blank" title="点击下载"><%=app.app_id%>.apk</a><% } %></span>',
+						'<span class="form_element_uploaded_name"><%if (androidinfo.app_downurl) {%><a href="http://app.t.qq.com/download.php?key=<%=androidinfo.app_downurl%>&name=<%=app.app_id%>.apk" target="_blank" title="点击下载"><%=app.app_id%>.apk</a><% } %></span> ',
 						'<a href="javascript:;" class="form_element_uploaded_del">删除</a>',
 					'</span>',
 				'</div>',
