@@ -72,7 +72,7 @@ tpl.iweiboinfo = [
 		'<li><strong>App Secret：</strong><em><%=app && app.app_key? app.app_key:"&nbsp;"%></em></li>',
 		'<li><strong>接口权限：</strong><em><%=app.app_level%>权限&nbsp;</em><em class="link">通过审核后会自动升级为高级 <a href="http://wiki.open.t.qq.com/index.php/API%E8%B0%83%E7%94%A8%E6%9D%83%E9%99%90" target="_blank">查看接口权限详细说明&gt;&gt;</a></em></li>',
 		'<li><strong>来源显示：</strong><em><%=app.source_status_display%></em><em class="link">通过审核后会自动生效 <a href="http://wiki.open.t.qq.com/index.php/%E4%BA%A7%E5%93%81%E7%B1%BBFAQ#.E6.8F.90.E4.BA.A4.E5.BA.94.E7.94.A8.E6.9D.A5.E6.BA.90.E5.AD.97.E6.AE.B5.E5.AE.A1.E6.A0.B8.E8.83.BD.E5.BE.97.E5.88.B0.E4.BB.80.E4.B9.88.E5.A5.BD.E5.A4.84.EF.BC.9F" target="_blank">查看来源显示详细说明&gt;&gt;</a></em></li>				</li>',
-		'<li><strong>组件状态：</strong><em><%=app.app_status_display%>&nbsp;</em></li>',
+		'<li><strong>组件状态：</strong><em><%=app.appStatus%>&nbsp;</em></li>',
 					'</ul>',
 				'</div>',
 			'</div>',
