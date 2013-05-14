@@ -164,7 +164,7 @@ $(function(){
 		btn.bind("click",function(){
 			var iframe;
 			loginWin.show({
-				"text":'<iframe src="/index/upload" width="400" height="140" scrollong=no frameborder=0></iframe>',
+				"text":'<iframe src="/html/upload.html" width="400" height="140" scrollong=no frameborder=0></iframe>',
 				"width":400,
 				"height":180,
 				"title":"文件上传"
