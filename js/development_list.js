@@ -5,18 +5,21 @@ if(!userInfo.hdlogin)
 }
 else
 {
+	if( global_obj.error != 0){
+		location.href = '/development';//页面出错，自动跳转首页
+	}
 	//开平变量初始化
 	global_obj.data.kapp_count = 0;
 	global_obj.data.kpage_no = 0;
 	global_obj.data.kpage_count = 13;
-	
+/*	
 	//testdata  iweibo:
 	if(!global_obj.data.displaytype)  global_obj.data.displaytype = "iweibo";
 	if(!global_obj.data.iweibo) global_obj.data.iweibo = [];
 	if(!global_obj.data.app_count) global_obj.data.app_count= 0;
 	if(!global_obj.data.page_no) global_obj.data.page_no= 1;
 	if(!global_obj.data.page_size) global_obj.data.page_size = 13;
-
+*/
 	//testdata  complist:
 	global_obj.data.navPos = "7";
 	if(!global_obj.data.comps)  global_obj.data.comps = global_obj.data.pagelist;
@@ -35,15 +38,15 @@ else
 				'<%var comp = comps[i];%>',
 				'<li>',
 					'<dl>',
-					'<dt><a href="/development/compinfo?comp_id=<%=comp.comp_id%>"><%=comp.comp_name%></a></dt>',
+					'<dt><a href="/development/compinfo?compid=<%=comp.comp_id%>"><%=comp.comp_name%></a></dt>',
 					'<dd class="applistdd"><span>组件类型：</span><label><%=comp.comp_type_name%></label></dd>',
 					'<dd><span>接口权限：</span><label><%=comp.comp_level_name%>权限</label></dd>',
 					'<dd><span>来源显示：</span><label><%=comp.comp_source_status_name%></label></dd>',
 					'<dd><span>组件状态：</span><label><%=comp.comp_status_name%></label></dd>',
 					'</dl>',
 					'<div align="right">',
-						'<%if(comp.comp_type!=7){%><a href="/development/compset?comp_id=<%=comp.comp_id%>">编辑</a> / <%}%>',
-						'<a href="/development/compinfo?comp_id=<%=comp.comp_id%>">查看</a></div>',
+						'<%if(comp.comp_type!=7){%><a href="/development/compset?compid=<%=comp.comp_id%>">编辑</a> / <%}%>',
+						'<a href="/development/compinfo?compid=<%=comp.comp_id%>">查看</a></div>',
 				'</li>',
 			'<%}%>',
 			'</ul>',
@@ -361,7 +364,7 @@ else
 					'<%}%>',
 					rightListTmpl,
 					this.tpl.pageBar,
-					this.tpl.pageBar1,
+					this.tpl.pageBar1,    
 				'</div>',
 			'</div>',
 		'<script type="text/javascript" src="/js/app_appadd.js"></script>',
