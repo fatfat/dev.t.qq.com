@@ -26,7 +26,7 @@
 		'<div class="deverRight"> ',
 			'<h1 class="comp_tit">网站信息</h1>',
 			'<iframe id="appform_post_aec" name="appform_post_aec" width="100" height="100" src="about:blank" style="display:none;"></iframe>',
-			'<form action="/development/saveappinfo?appid=<%=app.app_id%>" method="post" class="appform" enctype="multipart/form-data" id="appform" target="appform_post_aec">',
+			'<form action="/development/saveappinfopage?appid=<%=app.app_id%>" method="post" class="appform" enctype="multipart/form-data" id="appform" target="appform_post_aec">',
 				'<input type="hidden" value="0" name="img_need_post" id="img_need_post"/>',
 				'<%if (app.app_type ==5){%>',
 					'<ul>',
