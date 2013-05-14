@@ -432,6 +432,7 @@
 				});
 				var $sureBtn = loginWin.contentarea.find(".devSubmit");
 				$sureBtn.bind("click", function () {
+					console.log(1);
 					loginWin.close();
 					loginWin.show({text:"<center><br/>正在转为站内应用，请不要关闭浏览器！</center>",height:120,width:450});
 				    var postData = {
@@ -562,7 +563,7 @@
 		});
 	});
 	//development_app_material  js end
-	util.createScript("/js/app_appedit.js?20130328");
+	util.createScript("/js/app_appedit.js");
 	if ((app.app_check_status ==1 && app.app_url_check == '') || app.app_status ==2 || app.app_status ==6 || (app.app_status ==5 && (iphoneinfo.app_plat_status == 1 || androidinfo.app_plat_status == 1)) || ((iphoneinfo.app_check_status ==1 || androidinfo.app_check_status ==1) && (iphoneinfo.app_plat_status == 2 || androidinfo.app_plat_status == 2))){
 		$(function(){ 
 			$('input,textarea').attr("disabled","disabled"); 
