@@ -58,26 +58,25 @@ else
 
 	tpl.applistul = [
 		'<ul id="applistul">' ,
-					'<%for(var i=0;i<apps.length;i++){%>',
-						'<% var app=apps[i];%>',		
-						'<li>',
-						'<a href="/development/appinfo?appid=<%=app.app_id%> ">',
-							'<img src=" <%=(app.app_icon_75?app.app_icon_75:"http://mat1.gtimg.com/app/opent/images/index/icon.jpg")%> " height="60" width="60"/></a>',
-						'<dl>',
-							'<dt><a href="/development/appinfo?appid=<%=app.app_id%> "><%=app.app_name%></a></dt>',
-							'<dd><span>应用分类：</span><label><%=app.appType%></label></dd>',
-							'<dd><span>接口权限：</span><label><%=app.app_level%>权限</label></dd>',
-							'<dd><span>来源显示：</span><label><%=app.source_status_display%></label></dd>',
-							'<dd><span id="appState_"<%=app.app_id%>>应用状态： </span><label><%=app.app_status_display%></label></dd>',
-						'</dl>',
+			'<%for(var i=0;i<apps.length;i++){%>',
+				'<% var app=apps[i];%>',		
+				'<li>',
+					'<a href="/development/appinfo?appid=<%=app.app_id%> ">',
+					'<img src=" <%=(app.app_icon_75?app.app_icon_75:"http://mat1.gtimg.com/app/opent/images/index/icon.jpg")%> " height="60" width="60"/></a>',
+					'<dl>',
+						'<dt><a href="/development/appinfo?appid=<%=app.app_id%> "><%=app.app_name%></a></dt>',
+						'<dd><span>应用分类：</span><label><%=app.appType%></label></dd>',
+						'<dd><span>接口权限：</span><label><%=app.app_level%>权限</label></dd>',
+						'<dd><span>来源显示：</span><label><%=app.source_status_display%></label></dd>',
+						'<dd><span id="appState_"<%=app.app_id%>>应用状态： </span><label><%=app.app_status_display%></label></dd>',
+					'</dl>',
 						'<div align="right"><a href="/development/appinfo?appid=<%=app.app_id%> ">查看</a></div>',
-						'</li>',
-					'<%}%> ',
-					'<%if(!apps||apps.length==0){%>',
-						'<li style="height:auto;">你还没有创建过应用，<a href="javascript:;" onclick="$(\\"#newapp\\").trigger(\\"click\\");" style="display:inline">马上创建</a></li>',
-					'<%}%>',
-					'</ul>',
-					'</div>',
+				'</li>',
+			'<%}%> ',
+			'<%if(!apps||apps.length==0){%>',
+				'<li style="height:auto;">你还没有创建过应用，<a href="javascript:;" onclick="$(\\"#newapp\\").trigger(\\"click\\");" style="display:inline">马上创建</a></li>',
+			'<%}%>',
+		'</ul>',
 			   // <!--其他平台应用-->
 			   '<% if (displaytype == "app") {%>',
 			   '<div id="otherapplist" class="applist2 hidden">',
@@ -163,7 +162,7 @@ else
 		'</div> '
 	].join("");
 		
-
+	
 	//根据不同的类型渲染页面
 	var setRightList = function(){
 		if(global_obj.data.displaytype == "comps"){
