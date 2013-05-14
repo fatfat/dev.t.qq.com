@@ -39,7 +39,7 @@
 		'</form>',
 		'</div>',
 		'</div>',
-		'<script type="text/javascript" src="/js/app_appedit.js?20130328"></script>',
+		'<script type="text/javascript" src="/js/app_appedit.js"></script>',
 		'<!--{ include file="footer.tpl" }-->',
 		tpl.footer,
 	].join('');
