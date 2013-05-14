@@ -17,9 +17,9 @@ this.tpl.header,
                     '<%=comp.comp_name%>',
                 '</div>',
                 '<ul class="appsnav">',
-                    '<li><a href="/development/compinfo/<%=comp.comp_id%>">组件信息</a></li>',
-                    '<li><a href="/development/compsite/<%=comp.comp_id%>">网站信息</a></li>',
-                    '<li class="active"><a href="/development/compset/<%=comp.comp_id%>">组件设置</a></li>',
+                    '<li><a href="/development/compinfo?comp_id=<%=comp.comp_id%>">组件信息</a></li>',
+                    '<li><a href="/development/compsite?comp_id=<%=comp.comp_id%>">网站信息</a></li>',
+                    '<li class="active"><a href="/development/compset?comp_id=<%=comp.comp_id%>">组件设置</a></li>',
                     '<!--  <li><a href="/development/compdel/222">删除组件</a></li>  -->',
                 '</ul>',
             '</div>',
@@ -42,7 +42,7 @@ function compType1(){
 		var share_counterpos = comp_style.counterpos;
 		var share_showcounter = comp_style.showcounter;
 		//<% include file="./websites/share/shareuse_include_new.tpl" %>
-		util.createScript("/js/websites/share/shareuse_include_new.js");
+		util.createScript("/js/shareuse_include_new.js");
 		$("#main").append(tmpl(this.tpl.shareuse_include_new,global_obj.data));
 		$(function(){
 			if (comp_style.richable === 0){
@@ -50,7 +50,7 @@ function compType1(){
 			}
 		});
 	}else{
-		util.createScript("/js/websites/share/shareuse_include.js");
+		util.createScript("/js/shareuse_include.js");
 		$("#main").append(tmpl(this.tpl.shareuse_include,global_obj.data));
 		//<% include file="./websites/share/shareuse_include.tpl" %>
 		var comp_style = comp.comp_style?comp.comp_style:{"btnstyle":1,"btnsize":1,"btntext":"分享到腾讯微博","assname":"api_weibo","qshareable":true,"qsharestyle":0};
@@ -76,7 +76,7 @@ function compType1(){
 
 function  compType2(){
 	<!--收听组件-->
-	util.createScript("/js/websites/share/explain_include.js");
+	util.createScript("/js/explain_include.js");
 	$("#main").append(tmpl(this.tpl.explain_include,global_obj.data));
 	//<% include file="./websites/followcomp/explain_include.tpl" %>
 	var comp_style = comp.comp_style?comp.comp_style:{"names":"","colorstyle":0,"customcolor":"#fff","iconsize":0};
@@ -108,7 +108,7 @@ function  compType2(){
 
 function compType3(){
 	<!--话题墙-->
-	util.createScript("/js/websites/wall/explain_include.js");
+	util.createScript("/js/explain_include.js");
 	$("#main").append(tmpl(this.tpl.explain_include,global_obj.data));
 	//<% include file="./websites/wall/explain_include.tpl" %>
 	var comp_style = comp.comp_style?comp.comp_style:{"topicnames":"%E7%BE%8E%E5%A5%B3,%E6%B8%94%E6%B0%B4%E4%B9%8B%E6%AC%A2,%E7%A6%8F%E5%88%A9","width":300,"height":550,"autowidth":true,"colorstyle":1,"defaultcolorstyle":-1,"customcolor":"B9FF40_FFF0D1_6A437A_63FFBC_91FFCF_54FF82","imgshow":0,"postpos":0};
@@ -151,7 +151,7 @@ function compType3(){
 function compType4(){
 	//<!--Q-Share-->
 	
-	util.createScript("/js/websites/qshare/qshare_explain_include.js");
+	util.createScript("/js/qshare_explain_include.js");
 	$("#main").append(tmpl(this.tpl.qshare_explain_include,global_obj.data));
 	//<% include file="./websites/qshare/qshare_explain_include.tpl" %>
 	var comp_style = comp.comp_style?comp.comp_style:{"assname":"","qsharestyle":0};
@@ -162,7 +162,7 @@ function compType4(){
 
 function compType5(){
 	//<!--心情板-->
-	util.createScript("/js/websites/mood/mooduse_include.js");
+	util.createScript("/js/mooduse_include.js");
 	$("#main").append(tmpl(this.tpl.mooduse_include,global_obj.data));
 	//<% include file="./websites/mood/mooduse_include.tpl" %>
 	var comp_style = comp.comp_style?comp.comp_style:{"assname":"api_weibo","width":300,"height":"108","autowidth":true,"autoheight":true};
@@ -187,7 +187,7 @@ function compType5(){
 
 function compType6(){
 	<!--微评论-->
-	util.createScript("/js/websites/comment/explain_include.js");
+	util.createScript("/js/explain_include.js");
 	$("#main").append(tmpl(this.tpl.explain_include,global_obj.data));
 	//<% include file="./websites/comment/explain_include.tpl" %
 	var comp_style = comp.comp_style?comp.comp_style:{"width":300,"height":550,"autowidth":true,"colorstyle":1,"defaultcolorstyle":-1,"customcolor":"white_white_white_white"};
@@ -230,7 +230,7 @@ function compType8(){
 		return '<img src="' + imgurl +'"/>';
 	};
 	//<% include file="./websites/login/loginuse_include.tpl" %>
-	util.createScript("/js/websites/login/loginuse_include.js");
+	util.createScript("/js/loginuse_include.js");
 	$("#main").append(tmpl(this.tpl.loginuse_include,global_obj.data));	
 }
 
@@ -251,7 +251,7 @@ window.onload = function(){//解决IE6下组件设置（微评论）页左侧导
 		compType8();
 	}
 	var t = [
-		'<div class="showcode_bar"><a href="javascript:;" class="devSubmit" id="showcode">获取代码</a>  <a href="/development/compinfo/<%=comp.comp_id%>" class="devCancel">取消</a></div>',
+		'<div class="showcode_bar"><a href="javascript:;" class="devSubmit" id="showcode">获取代码</a>  <a href="/development/compinfo?comp_id=<%=comp.comp_id%>" class="devCancel">取消</a></div>',
 			'</div>',
 		'</div>',
 		this.tpl.footer
