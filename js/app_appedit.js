@@ -817,8 +817,8 @@ function checkStatus(form){
 		link = $("input[name='app_url']"),
 		icon4 = $("input[name='icon4']"),
 		checkflag = false,
-		android_plat_status = global_obj.data.androidinfo.android_plat_status,
-		iphone_plat_status = global_obj.data.iphoneinfo.iphone_plat_status;
+		android_plat_status = global_obj.data.androidinfo ? global_obj.data.androidinfo.android_plat_status : "",
+		iphone_plat_status = global_obj.data.iphoneinfo ? global_obj.data.iphoneinfo.iphone_plat_status : "",
 		str = "";
     if(app_type ===1 || app_type === 2 || app_type === 3){
      	if(window.app_status && ( +app_status === 4 || +app_status === 5 || +app_status === 8)){
