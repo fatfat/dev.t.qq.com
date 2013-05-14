@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>   
+<html>   
+<head>  
+<meta charset="utf8">
+<title>文件上传</title>
+<meta name="keywords"    content="文件上传"/>
+<meta name="description" content="apk文件上传工具" />
+<meta http-equiv="expires" content="31 Dec 2013"/>
+<link rel="stylesheet" href="http://mat1.gtimg.com/app/opent/css/index/upload.css" type="text/css"/>
+<link rel="alternate" type="application/rss+xml" title="rss订阅" href="../rss.xml" />
+<script>document.domain="qq.com";</script>
+<script type="text/javascript" src="/js/upload.js"></script>
+</head>
+
+<body>
+<noscript>您的浏览器不支持javscript</noscript>
+<div id="panel">只支持100M以内的apk文件</div>
+<form id="upload_form" name="upload_form">
+	<div id="progress" class="none">
+		<div id="progress_bar"><div id="progress_bar_percent" class="progress_bar_percent"></div></div>
+	</div>
+	<input type="text" value="" class="upload_txt" id="upload_txt"/>
+	<a href="javascript:;" class="upload_btn" id="upload_btn">选择文件</a>
+</form>
+<div id="panel"></div>
+<textarea id="console" style="width:100%;height:300px;"></textarea>
+<!--
+loginWin.show({"text":'<iframe src="http://dev.open.t.qq.com/index/upload" width="400" height="140" scrollong=no frameborder=0></iframe>',"width":400,"height":180,"title":"文件上传"});
+loginWin.show({"text":'<iframe src="http://dev.open.t.qq.com/index/upload" width="100%" height="450" scrollong=no frameborder=0 marginwidth=0 marginheight=0></iframe>',"width":960,"height":450,"title":"文件上传"});
+ptlogin2_onResize(960,450)
+-->
+</body>
+</html>
