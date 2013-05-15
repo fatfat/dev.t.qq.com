@@ -751,7 +751,10 @@ $(function(){
 		 if(!need_post){location.href = NextUrl;return;} /*无修改*/
 		 var form = $(this.form);
 		 var data ={
-		 	 "need_post"  : need_post
+		 	 'action':'common_query'
+		 	 ,'business_type':'ajaxsavecheckdeverloper'
+		 	 ,"appid"  : global_obj.data.app.app_id
+		 	 ,"need_post"  : need_post
 		 	,"user_name"  : form.find("input[name='user_name']").val()
 		 	,"user_phone" : form.find("input[name='user_phone']").val()
 		 	,"company_province" : form.find("input[name='company_province']").attr("_value")
