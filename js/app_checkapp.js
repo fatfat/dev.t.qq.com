@@ -524,6 +524,7 @@ $("form input[type='submit']").click(function(){//表单提交验证
 		if(!submitflag) {return submitflag;}
 		
 		var checkboxflag = $("input[name='user_agree']").attr('checked');
+
 		if(checkboxflag === undefined){//检验是否有同意选项
 			if(submitflag){//没有checkbox user_agree
 				if(app_type === 6){
@@ -650,6 +651,7 @@ $(function(){
      
 		 //表单提交
 	 $('form').submit(function(){
+	 	 var app_type = $("input[name='app_type']").val();
 	 	 if( app_type !== 6){//非无线应用
 	        if($(".errorTip").length>0){return;}//检查表单是否有错误
 	        
