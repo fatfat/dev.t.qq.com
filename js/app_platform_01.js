@@ -172,6 +172,7 @@ $(function(){
 			iframe = loginWin.win.find("iframe")[0];
 			iframe.callback = function(d){
 				//	{"ret":0,"msg":"上传成功","data":{"filename":"hello.apk","filekey":"a002b7e6-4a28-4248-9d9f-22a0c6d730f2","filesize":1520}}
+				$('#app_downurl_2').val("2");
 				loginWin.close();
 				if (d.ret === 0){
 					showAppInfo(d.data);

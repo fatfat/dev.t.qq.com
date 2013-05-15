@@ -162,6 +162,7 @@
 					' <cite class="gray inputdes">可根据Google Play地址拉取并补充以下信息</cite>',
 				'</div>',
 			'</li>',*/
+			'<input type="hidden" name="app_downurl_2" id="app_downurl_2"  value="<%=androidinfo.app_downurl%>" data-default="<%=androidinfo.app_downurl%>" />',
 			'<li>',
 				'<label class="form_label"><em>*</em>apk安装包：</label>',
 				'<div class="form_element">',
@@ -354,7 +355,7 @@
 				 "dataType":"json"
 				,"type":"post"
 				,"url":"/development/dospider?t=" + (+new Date())
-				,"data":{"app_id" : "<!--{$app.app_id}-->", "app_platform" : app_platform, "app_downurl" : app_downurl, "app_marketurl" : app_marketurl}
+				,"data":{"app_id" : app.app_id, "app_platform" : app_platform, "app_downurl" : app_downurl, "app_marketurl" : app_marketurl}
 				,"success":function(d){
 					var ret = +d.ret,msg =common.getMsgByRet(ret);
 					if (msg){

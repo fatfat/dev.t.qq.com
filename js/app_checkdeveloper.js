@@ -746,6 +746,7 @@ $(document).ready(function(){
 var need_post = false; /*是否有修改*/
 $(function(){
 	 $('input#devSubmit').click(function(){
+	 	 console.log(1);
          if($(".tip_err").length>0){return;}//检查表单是否有错误
 		 if(!need_post){location.href = NextUrl;return;} /*无修改*/
 		 var form = $(this.form);
