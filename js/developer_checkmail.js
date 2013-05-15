@@ -2,7 +2,7 @@
 	
 var developer_cancelsubscribe = 
 [       
-	headerTmpl, 
+	this.tpl.header, 
 	'<div id="content" class="deverCon wrapper">',
 		'<h3 class="formtitle">邮箱验证开发者身份</h3>',
 		'<div class="devWrap">',
@@ -28,17 +28,19 @@ var developer_cancelsubscribe =
 			'</div>',
 		'</div>',
 	'</div>', 
-	footerTmpl
+	this.tpl.footer
 ].join("");
 
+var developer = global_obj.data.developer;
+
+$('#main').html(tmpl(developer_cancelsubscribe,global_obj.data));
+
 $(function(){   
-	$('#main').html(tmpl(developer_cancelsubscribe,global_obj.data));
-	var developer = data.developer;
 	if(developer && developer.user_type ? developer.user_type==1 : "false"){
-		$('a.edit').attr('href','developer_add.html');
+		$('a.edit').attr('href','/developer/add');
 	}
 	else{
-		$('a.edit').attr('href','developer_addone.html');
+		$('a.edit').attr('href','/developer/addone');
 	}
 	$('#edit').attr()
 	var e=$("#uemail"),email=e.text(),url="";

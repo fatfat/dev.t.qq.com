@@ -113,7 +113,8 @@ util.createScript("/js/validater.js");
 		}
 		$.ajax({
 			type: "POST",
-			url: "/developer/update?t=" + new Date().getTime(),
+			//url: "/developer/update?t=" + new Date().getTime(),
+			url:"/pipes/interfaceserver?action=common_query&business_type=updatedeveloper",
 			dataType: "json",
 			data: postData,
 			success: function(d) {

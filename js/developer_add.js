@@ -119,7 +119,8 @@ $(function(){
 		$.ajax({
 			type: "POST",
 			dataType: "json",
-			url: "/developer/update?t=" + new Date().getTime(),
+			//url: "/developer/update?t=" + new Date().getTime(),
+			url:"/pipes/interfaceserver?action=common_query&business_type=updatedeveloper",
 			data: postData,
 			success: function(d) {
 				var ret = +(d.ret || d.error),

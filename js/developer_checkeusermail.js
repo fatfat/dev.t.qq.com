@@ -2,7 +2,7 @@
 	
 var developer_checkusermail = 
 [       
-	headerTmpl,
+	this.tpl.header,
 	'<div id="content" class="deverCon clearfix">',
 		'<div class="title2">',
 			'<h3>邮箱验证开发者身份 </h3>',
@@ -20,11 +20,12 @@ var developer_checkusermail =
 			'<p id="tips">可以到垃圾邮件目录里找找，或者<a href="javascript:;" id="sendMail">点击这里</a> 重新发送验证邮件。</p>',
 		'</div>',
 	'</div> ',
-	footerTmpl
+	this.tpl.footer
 ].join("");
 
+$("#main").html(tmpl(developer_checkusermail,global_obj.data));
+
 $(function(){   
-	$("#main").html(tmpl(developer_checkusermail,global_obj.data));
 	var mail_domain = "www.qq.com";
 	var mail_address = '76516702@qq.com';
     $('#sendMail').click(function(){
