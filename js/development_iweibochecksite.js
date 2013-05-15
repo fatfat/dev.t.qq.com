@@ -1,4 +1,4 @@
-;(function(){
+
 	var str = [
 		'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
 		'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
@@ -50,4 +50,4 @@
 	var NextUrl = '/development/iweibocheckmater?appid='+ app.app_id;
 	var typedata = '&app_type=' + app.app_type; 
 	util.createScript('/js/app_checkapp.js');
-})();
+
