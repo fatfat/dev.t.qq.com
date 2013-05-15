@@ -47,7 +47,7 @@
 	$('#main').html(tmpl(tpl.iweibochecksite,global_obj.data));
 	var app_id = app && app.app_id ? app.app_id : '';  
 	var app_type = app && app.app_type ? app.app_type: '';
-	var NextUrl = '/development/iweibocheckmaterial?appid='+ app.app_id;
+	var NextUrl = '/development/iweibocheckmater?appid='+ app.app_id;
 	var typedata = '&app_type=' + app.app_type; 
 	util.createScript('/js/app_checkapp.js');
 

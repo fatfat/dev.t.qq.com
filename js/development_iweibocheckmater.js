@@ -31,7 +31,7 @@ tpl.iweibocheckmater = [
 			'</div>',
 			'<!--开发者信息-->',
 '<iframe id="appform_post_aec" name="appform_post_aec" width="100" height="100" src="about:blank" style="display:none;"></iframe>',
-'<form target="appform_post_aec" action="/development/savecheckmaterial/<!--{$app.app_id}-->/" method="post" class="appform" enctype="multipart/form-data" id="appform_user">',
+'<form target="appform_post_aec" action="/development/savecheckmaterial?appid=<%=app.app_id%>" method="post" class="appform" enctype="multipart/form-data" id="appform_user">',
 '<ul>',
 	'<input type="hidden" name="img_need_post"  id="img_need_post" value="0"  >',
 '<!--{ include file="./development/development_app_material.tpl" }-->',
