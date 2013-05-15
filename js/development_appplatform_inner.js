@@ -162,6 +162,7 @@
 					' <cite class="gray inputdes">可根据Google Play地址拉取并补充以下信息</cite>',
 				'</div>',
 			'</li>',*/
+			'<input type="hidden" name="app_downurl_2" id="app_downurl_2"  value="<%=androidinfo.app_downurl%>" data-default="<%=androidinfo.app_downurl%>" />',
 			'<li>',
 				'<label class="form_label"><em>*</em>apk安装包：</label>',
 				'<div class="form_element">',
@@ -195,12 +196,12 @@
 			    '<span class="form_input"><input type="text" name="app_size_2" id="app_size_2" value="<%=androidinfo.app_size%>" data-default="<%=androidinfo.app_size%>" data-error="安装包大小" data-rule="installSize" class="android_field" maxlength="30"/></span>',
 			    ' <cite class="gray inputdes">单位MB</cite>',
 			'</li>',
-			'<li>',
+		/*	'<li>',
 			    '<label class="form_label">',
 			        '<em>*</em> 评分：',
 			    '</label>',
 			    '<span class="form_element form_span" id="app_score_2"><%=androidinfo.app_score%></span><cite class="gray inputdes">自动拉取安卓市场评分，如无展示默认分数</cite>',
-			'</li>',
+			'</li>',*/
 			'<li>',
 			    '<label class="form_label">',
 			        '<em>*</em> 应用预览图：',
@@ -354,7 +355,7 @@
 				 "dataType":"json"
 				,"type":"post"
 				,"url":"/development/dospider?t=" + (+new Date())
-				,"data":{"app_id" : "<!--{$app.app_id}-->", "app_platform" : app_platform, "app_downurl" : app_downurl, "app_marketurl" : app_marketurl}
+				,"data":{"app_id" : app.app_id, "app_platform" : app_platform, "app_downurl" : app_downurl, "app_marketurl" : app_marketurl}
 				,"success":function(d){
 					var ret = +d.ret,msg =common.getMsgByRet(ret);
 					if (msg){

@@ -158,6 +158,8 @@ $(function(){
 			hideAppInfo = function(){
 				app_info.addClass("none");
 				app_uploader.removeClass("none");
+				console.log(1);
+				$('#app_downurl_2').val("");
 				app_apk.val("").removeAttr("data-default");
 				showmsg(false,app_apk,"请上传apk安装文件");
 			};
@@ -172,6 +174,7 @@ $(function(){
 			iframe = loginWin.win.find("iframe")[0];
 			iframe.callback = function(d){
 				//	{"ret":0,"msg":"上传成功","data":{"filename":"hello.apk","filekey":"a002b7e6-4a28-4248-9d9f-22a0c6d730f2","filesize":1520}}
+				$('#app_downurl_2').val("2");
 				loginWin.close();
 				if (d.ret === 0){
 					showAppInfo(d.data);
