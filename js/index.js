@@ -1,9 +1,11 @@
-﻿var indexTmpl = [
-	this.tpl.header,
+﻿	QosSS.c = new Image();
+	 QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
+	 QosSS.t[5]= (new Date()).getTime();
+	 QosSS.c.src="http://qos.report.qq.com/collect?type=1&name="+"opent_index"+"&1="+ (QosSS.t[1]- QosSS.t[0])+"&2="+ (QosSS.t[2]- QosSS.t[0])+ "&3="+ (QosSS.t[3]- QosSS.t[0])+"&4="+ (QosSS.t[4]- QosSS.t[0])+ "&5="+ (QosSS.t[5]- QosSS.t[0]);
+
+var indexTmpl = [
+	tpl.header,
 	'<link href="http://mat1.gtimg.com/app/opent/css/index/index_01.css" rel="stylesheet" type="text/css"/>',
- 	'<script type="text/javascript">',
- 	'QosSS.t[2]= (new Date()).getTime();',
- 	'</script>',
 	'<div class="banner_area">',
 		'<ul class="banner_lists">',
 			'<li class="banner_li banner_bg_1" style="z-index:999;">',
@@ -11,9 +13,6 @@
 			'</li>',
 		'</ul>',
 	'</div>',
-	'<script type="text/javascript">',
-	'QosSS.t[3]= (new Date()).getTime();',
-	'</script>',
 	'<div class="wrapper main">',
 		'<a class="connect" href="/websites/">',
 			'<div class="con_img websites_img" width="117px" height="116px"></div>',
@@ -32,19 +31,10 @@
 			'<strong class="con_title">应用开发</strong>',
 			'<p class="con_intro">打造创新web应用<br/>服务亿万用户</p>',
 		'</a>',	
-		'<script type="text/javascript">',
-		'QosSS.t[4]= (new Date()).getTime();',
-		'</script>',
 	'</div>', 
-	'<script type="text/javascript">',
-		'QosSS.c = new Image();',
-	    'QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});',
-	    'QosSS.t[5]= (new Date()).getTime();',
-	    'QosSS.c.src="http://qos.report.qq.com/collect?type=1&name="+"opent_index"+"&1="+ (QosSS.t[1]- QosSS.t[0])+"&2="+ (QosSS.t[2]- QosSS.t[0])+ "&3="+ (QosSS.t[3]- QosSS.t[0])+"&4="+ (QosSS.t[4]- QosSS.t[0])+ "&5="+ (QosSS.t[5]- QosSS.t[0]);',
-	'</script>',
-	this.tpl.footer	
+		this.tpl.footer	
 ].join("");
-$(document.body).append(tmpl(indexTmpl,global_obj.data));
+$('#main').html(tmpl(indexTmpl,global_obj.data));
 $(function(){
 	//首页三大应用接入mouseover效果
 	$(".connect").mouseover(function(){

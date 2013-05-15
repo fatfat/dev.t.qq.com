@@ -132,8 +132,9 @@
 	$('#main').html(tmpl(tpl.iweibocheckuser,global_obj.data));
 var NextUrl = '/development/iweibochecksite?appid='+global_obj.data.app.app_id;
 var PostUrl = '/development/ajaxsavecheckdeverloper?appid='+global_obj.data.app.app_id;
+var developer = global_obj.data.developer;
 var user_province=+developer.user_province;
-var user_city=+developer.user_city}-->';
-util.createScript('app_checkdeveloper.js');
-util.createScript('location.js');
+var user_city=+developer.user_city;
+util.createScript('/js/app_checkdeveloper.js');
+util.createScript('/js/location.js');
 })();
