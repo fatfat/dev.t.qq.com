@@ -42,7 +42,7 @@
 		'<!--{ include file="footer.tpl" }-->',
 		tpl.footer,
 	].join('');
-s
+
 	$('#main').html(tmpl(tpl.app_platform, global_obj.data));
 	global_obj.init.appnav();
 	global_obj.init.appplatform_inner();
