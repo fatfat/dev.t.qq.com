@@ -62,3 +62,5 @@ var nextURL = "/development/appinfo?appid="+app.app_id,
 	$('input[type=file]').change(function(){ $('input#need_post').val('1')});
 	global_obj.init.appnav();
 	global_obj.init.appplatform_inner();
+
+util.createScript("/js/app_platform_01.js");
