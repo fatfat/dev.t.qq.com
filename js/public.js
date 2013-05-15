@@ -173,9 +173,21 @@
 	//添加一个函数记录页面上所有JS要添加的时间绑定函数,以便在文档生成后统一执行
 	this.eventBindFuncList = [];
 	this.bindAllEvent = function(){
-		$(this.eventBindFuncList).each(function(fn){
+		$(this.eventBindFuncList).each(function(index,fn){
 			fn.call(window);
 		})
+		this.eventBindFuncList = [];
+	}
+	//用于一个循环检查DOM加载完成后执行
+	this.readyExecution = function(selector,fn,content){
+		var eventAddStatus = 1;
+		var eventTimer = setInterval(function(){
+			if(eventAddStatus&&$(selector).length>0){
+				fn.call(content);
+				eventAddStatus = null;
+				clearInterval(eventTimer);
+			}
+		},400);
 	}
 	//--------------add by cbyi ---------------------
 	var cache = {};
