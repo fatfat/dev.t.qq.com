@@ -658,8 +658,8 @@
 		    $.ajax({
 				 "dataType":"json"
 				,"type":"post"
-				,"url":"/apps/getappsitelist"
- 				,"data":{"uin":global_obj.data.userInfo.hdlogin,"appid":global_obj.data.app.app_id}
+				,"url":"/pipes/interfaceserver"
+ 				,"data":{"action":"common_query","business_type":"ajax_getappsitelist","uin":global_obj.data.userInfo.hdlogin,"appid":global_obj.data.app.app_id}
 				,"success":function(d){
 					var ret = +d.ret,msg =common.getMsgByRet(ret),o = $("#appstate_hostinfo"),str="";
 					if (msg){

@@ -176,19 +176,19 @@
 		 $.ajax({
 			 "dataType":"json"
 			,"type":"post"
-			,"url":"/apps/getappsitelist"
-			,"data":{"uin":hdlogin,"app_id":$("input[name='app_id']").val()}
+			,"url":"/pipes/interfaceserver"
+ 			,"data":{"action":"get_login_info"}
 			,"success":function(d){
-				alert(d.code);
+				console.log(d);
 				var ret = +d.ret,msg =common.getMsgByRet(ret);
 				if (msg){
 					loginWin.alert("<center>"+msg+"</center>");
 					return;
 				}
 				var loginInfo = [
-					'<%if (userInfo.hdlogin ) {%>',
+					'<%if (hdlogin ) {%>',
 					'<div class="menu">',
-						'<a class="login_name" href="javascript:;" title="<%=userInfo.nick%>"><%=userInfo.nick%><em></em></a>',
+						'<a class="login_name" href="javascript:;" title="<%=nick%>"><%=nick%><em></em></a>',
 						'<i class="nav_arrow"></i>',
 					'</div>',
 					'<ul class="childMenu userNav_sub">',

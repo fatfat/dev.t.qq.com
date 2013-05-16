@@ -1088,8 +1088,8 @@ if (+$("input[name='app_hosting']:checked").val() === 1){
 		$.ajax({
 			 "dataType":"json"
 			,"type":"post"
-			,"url":"/apps/getappsitelist"
-			,"data":{"uin":hdlogin,"app_id":$("input[name='app_id']").val()}
+			,"url":"/pipes/interfaceserver"
+			,"data":{"action":"common_query","business_type":"ajax_getappsitelist","uin":hdlogin,"appid":$("input[name='app_id']").val()}
 			,"success":function(d){
 				alert(d.code)
 				var ret = +d.ret,msg =common.getMsgByRet(ret);
