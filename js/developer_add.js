@@ -2,7 +2,7 @@
 var developer = null;//global_obj.data.developer;
 global_obj.data.developer = null;
 var sendmail = 0;
-var user_uin = user_uin || developer && developer.usr_in ? developer.user_uin: "" || 0;
+var user_uin = user_uin || developer && developer.user_uin ? developer.user_uin: global_obj.data.userInfo.uin || 0;
 var reSubmit = 0;
 var user_province = developer && developer.user_province ? developer.user_province: "";
 var user_city = developer && developer.user_city ? developer.user_city: "";
