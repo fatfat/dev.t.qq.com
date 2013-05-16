@@ -786,6 +786,21 @@ $("form input[type='submit']").click(function(){//表单提交验证
 				loginWin.alert("<center>请至少选择一个平台</center>");
 				return false;
 			}
+			
+			//提交时判断是否上传了apk文件
+			if ($("input[name='app_apk']").val() == '' && ($("#app_platform").val() == 2 || $("#app_platform").val() == 3)) {
+				var app_apk = $("input[name='app_apk']"),
+					app_uploader = $(".form_button_upload"),
+					app_downer = $(".form_element_uploaded_name"),
+					app_info = $(".form_element_uploaded");
+				app_info.addClass("none");
+				app_uploader.removeClass("none");
+				app_apk.val("").removeAttr("data-default");
+				loginWin.alert("<center>请上传apk安装文件</center>");
+				showmsg(false,app_apk,"请上传apk安装文件");
+				return false;
+			}
+			
 		}
 		
 		var checkboxflag = $("input[name='user_agree']").attr('checked');
