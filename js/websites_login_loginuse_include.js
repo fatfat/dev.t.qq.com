@@ -1,4 +1,4 @@
-var loginuse_include = [
+tpl.loginuse_include = [
 	'<link href="http://mat1.gtimg.com/app/opent/css/websites/login/use.css" rel="stylesheet" type="text/css"/>',
 	'<h2 class="comp_sub_tit">配置微博登录按钮样式</h2>',
 	'<div class="style_set">',

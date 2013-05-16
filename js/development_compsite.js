@@ -1,7 +1,9 @@
 
 var tSiteWebApp;
-global_obj.data.comp = global_obj.data;
-var comp = global_obj.data.comp;
+/*变量初始化*/
+global_obj.data.navPos = 7;
+var comp = global_obj.data.comp  = global_obj.data; 
+comp.comp_style = $.parseJSON(comp.comp_style);
 var comp_type= comp.comp_type;
 var development_compsiteTmpl = [
 this.tpl.header,
@@ -23,7 +25,7 @@ this.tpl.header,
                 '</div>',
 				'<ul class="appsnav">',
 					'<li><a href="/development/compinfo?comp_id=<%=comp.comp_id%>">组件信息</a></li>',
-					'<li class="active"><a href="/development/compsite/<%=comp.comp_id%>">网站信息</a></li>',
+					'<li class="active"><a href="/development/compsite?comp_id=<%=comp.comp_id%>">网站信息</a></li>',
 					'<% if(comp.comp_type != 7){ %>',
 					'<li><a href="/development/compset?comp_id=<%=comp.comp_id%>">组件设置</a></li>',
 					'<% } %>',
@@ -77,7 +79,6 @@ this.tpl.header,
 $("#main").append(tmpl(development_compsiteTmpl,global_obj.data))
 util.createScript("/js/validater.js")
 $(function(){
-	
     $(".appform li.alert").find(".hidebtn").click(function(){
     var t=$(this),p=t.parent(),c=p.find(".alert_content");
         if (p.attr("beclose")){

@@ -57,180 +57,189 @@ this.tpl.explain_include = [
     '</div>',
 '</dd>',
 '</dl>',
-'</div>',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/comp_validate.js"></script>'
+'</div>'
 ].join("");
 
+util.createScript("/js/comp_validate.js");
+
 /*解决IE6下点击“组件设置”时，其他导航及应用图标可不见的Bug*/
-	window.onload = function(){
-		if ($.browser.msie && ($.browser.version == "6.0")){
-			$(".appsnav").find(".active").css({"zoom":"1"});
-			$(".showcode_bar").css({"margin-bottom":"90px"});
+setTimeout(function(){
+	if ($.browser.msie && ($.browser.version == "6.0")){
+		$(".appsnav").find(".active").css({"zoom":"1"});
+		$(".showcode_bar").css({"margin-bottom":"90px"});
+	}
+},200);
+
+var _width=300;
+var _height=550;
+var _pnum=10;
+var comp_type=6;
+
+
+
+function crUrl(cfg) {
+	var _appkey = comp.comp_id || "801318648";
+	var rand = Math.random();
+	var _url = 'http://comment.v.t.qq.com/index.html?r=' + rand;
+	_url += '#appkey=' + _appkey;
+	_url += '&url=http%3A%2F%2F' + location.hostname;
+	if (cfg) {
+		if (cfg.colorstyle == 1) {
+			_url += '&colorset=' + cfg.customcolor;
 		}
+	} else {
+		if ($("input[name='color']:checked").val() == '1') { // 自定义颜色
+			var colorPlan = [];
+			$("#customcolor").find("input").each(function() {
+				colorPlan.push($(this).val());
+			});
+
+			colorPlan = encodeURIComponent(colorPlan.join("_"));
+			_url += '&colorset=';
+			_url += colorPlan;
+		}
+	}
+	$('#review').attr('src', _url).attr('width', 344).attr('height', 480);
+}
+
+function formSubmit() {
+	if ($("#showcode").attr("disabled")) {
+		return;
+	}
+
+	var customcolor = [];
+	$("#customcolor").find("input").each(function() {
+		customcolor.push($(this).val());
+	});
+	var paras = {
+		"comp_type": 6,
+		//组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板',6'微评论'
+		"comp_style": "{'url':'http%3A%2F%2F" + location.hostname + "','account':'" + $("#account").val() + "','pnum':" + $("#pnum").val() + ",'width':" + $("#width").val() + ",'height':" + $("#height").val() + ",'autowidth':" + $("#autowidth").is(":checked") + ",'colorstyle':" + $("input[name='color']:checked").val() + ",'defaultcolorstyle':" + $("#colorList").find("li.s").index() + ",'customcolor':'" + encodeURIComponent(customcolor.join("_")) + "'}",
+		"account": $("#account").val(),
+		"pnum": $("#pnum").val()
 	};
-	var _width=300;
-	var _height=550;
-	var _pnum=10;
-	 var comp_type=6;
-	$('#autowidth').click(function(){
-				if($(this).attr('checked')){
-					$('#width').attr('disabled','true');	
-					_width = 0;
-				}else{
-					$('#width').attr('disabled','');	
-					_width = parseInt($('#width').val());
-				}
-				crUrl();
+	if (comp.comp_id) {
+		paras["comp_id"] = comp.comp_id;
+	}
+	if ($("#comp_url").size() && $("#comp_name").size()) {
+		paras["comp_url"] = encodeURIComponent($("#comp_url").val());
+		paras["comp_name"] = encodeURIComponent($("#comp_name").val());
+	};
+
+	$("#showcode").attr("disabled", "disabled");
+
+	$.ajax({
+		"type": "post",
+		"url": "/websites/setmem?t=" + new Date().getTime(),
+		"data": paras,
+		"dataType": "json",
+		"success": function(d) {
+			var ret = +d.ret,
+			msg = common.getMsgByRet(ret);
+			if (msg) {
+				loginWin.alert("<center>" + msg + "</center>");
+				return;
+			}
+			if (d.ret === 0 && d.data && d.data.id) {
+				location.href = '/development/compinfo/' + d.data.id;
+			} else {
+				loginWin.alert({
+					"title": "获取代码失败！",
+					"width": 450,
+					"text": "<center>" + (d.msg || "服务器失败") + "</center>"
+				});
+			}
+			$("#showcode").removeAttr("disabled");
+		},
+		"error": function(d) {
+			loginWin.show({
+				"title": "获取代码失败！",
+				"width": 340,
+				"text": "<center>连接服务器失败</center>"
 			});
-	$('#width').blur(function(){
-				theval = $(this).val();
-					if(theval<255){
-						$(this).val(255);
-					}
-					if(theval>1024){
-						$(this).val(1024);
-					}		
-				_width = parseInt($(this).val());
-				crUrl();
-			}).keyup(function(){
-					var theval = $(this).val();
-					$(this).val(theval.replace(/[^\d]{0,4}/g,''));
-				});  
-	$('#height').blur(function(){	
-				theval = $(this).val();
-					if(theval<300){
-						$(this).val(300);
-					}
-					if(theval>800){
-						$(this).val(800);
-					}		
-				_height = $(this).val();
-				crUrl();
-			}).keyup(function(){
-					var theval = $(this).val();
-					$(this).val(theval.replace(/[^\d]{0,4}/g,''));
-	  
-			});
-    //每页条数
-	$('#pnum').blur(function(){  
-                theval = $(this).val();
-                    if(theval<1){
-                        $(this).val(1);
-                    }
-                    if(theval>30){
-                        $(this).val(30);
-                    }       
-                _pnum = $(this).val();
-                crUrl();
-            }).keyup(function(){
-                    var theval = $(this).val();
-                    $(this).val(theval.replace(/[^\d]{0,4}/g,''));
-      
-            });
-    
-	$('#colorList li').each(function(i){
-		$(this).click(function(){
+			setTimeout(function() {
+				loginWin.close();
+			},
+			2000);
+			$("#showcode").removeAttr("disabled");
+		}
+	});
+}
+
+function normalValidate() {
+	$("#comp_name").trigger("blur");
+}
+eventBindFuncList.push(function() {
+	$('#autowidth').click(function() {
+		if ($(this).attr('checked')) {
+			$('#width').attr('disabled', 'true');
+			_width = 0;
+		} else {
+			$('#width').attr('disabled', '');
+			_width = parseInt($('#width').val());
+		}
+		crUrl();
+	});
+	$('#width').blur(function() {
+		theval = $(this).val();
+		if (theval < 255) {
+			$(this).val(255);
+		}
+		if (theval > 1024) {
+			$(this).val(1024);
+		}
+		_width = parseInt($(this).val());
+		crUrl();
+	}).keyup(function() {
+		var theval = $(this).val();
+		$(this).val(theval.replace(/[^\d]{0,4}/g, ''));
+	});
+	$('#height').blur(function() {
+		theval = $(this).val();
+		if (theval < 300) {
+			$(this).val(300);
+		}
+		if (theval > 800) {
+			$(this).val(800);
+		}
+		_height = $(this).val();
+		crUrl();
+	}).keyup(function() {
+		var theval = $(this).val();
+		$(this).val(theval.replace(/[^\d]{0,4}/g, ''));
+
+	});
+	//每页条数
+	$('#pnum').blur(function() {
+		theval = $(this).val();
+		if (theval < 1) {
+			$(this).val(1);
+		}
+		if (theval > 30) {
+			$(this).val(30);
+		}
+		_pnum = $(this).val();
+		crUrl();
+	}).keyup(function() {
+		var theval = $(this).val();
+		$(this).val(theval.replace(/[^\d]{0,4}/g, ''));
+
+	});
+
+	$('#colorList li').each(function(i) {
+		$(this).click(function() {
 			$('#colorList li').removeClass('s');
 			$(this).addClass('s');
 			crUrl();
-		});		
+		});
 	});
 
-	$('input[name=post]').click(function(i){
-	crUrl();
+	$('input[name=post]').click(function(i) {
+		crUrl();
 	});
 
-	$("input[name='color']").click(function(){
-        crUrl();
-    })
-
-	function crUrl(cfg){
-		var _appkey = comp.comp_id||"801318648";
-        var rand = Math.random();
-		var _url = 'http://comment.v.t.qq.com/index.html?r='+rand;
-		_url +='#appkey='+_appkey;
-        _url +='&url=http%3A%2F%2F'+location.hostname;
-        if (cfg) {
-              if (cfg.colorstyle==1) {
-                  _url += '&colorset=' + cfg.customcolor;
-              }
-        } else {
-            if ($("input[name='color']:checked").val() == '1') { // 自定义颜色
-	        	var colorPlan = [];
-	        	$("#customcolor").find("input").each(function(){
-	        	    colorPlan.push($(this).val());
-	        	});
-
-	        	colorPlan=encodeURIComponent(colorPlan.join("_"));
-	        	_url += '&colorset=';
-	        	_url += colorPlan;
-            }
-        }
-		$('#review').attr('src', _url).attr('width',344).attr('height',480);		
-	}
-
-	
-function formSubmit(){
-	if($("#showcode").attr("disabled")){return;}
-	
-	var customcolor=[];
-	$("#customcolor").find("input").each(function(){
-		customcolor.push($(this).val());
-	});
-    var paras={
-    		"comp_type":6, //组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板',6'微评论'
-			"comp_style":"{'url':'http%3A%2F%2F"+location.hostname+"','account':'"+$("#account").val()+"','pnum':"+$("#pnum").val()+",'width':"+$("#width").val()+",'height':"+$("#height").val()+",'autowidth':"+$("#autowidth").is(":checked")+",'colorstyle':"+$("input[name='color']:checked").val()+",'defaultcolorstyle':"+$("#colorList").find("li.s").index()+",'customcolor':'"+encodeURIComponent(customcolor.join("_"))+"'}",
-            "account":$("#account").val(),
-		    "pnum":$("#pnum").val()
-	    };
-    	if(comp.comp_id){
-    		paras["comp_id"]=comp.comp_id;
-		}
-    	if ($("#comp_url").size()&&$("#comp_name").size()){
-    		paras["comp_url"]=encodeURIComponent($("#comp_url").val());
-    		paras["comp_name"]=encodeURIComponent($("#comp_name").val());
-    	};
-
-    	$("#showcode").attr("disabled","disabled");
-
-    	$.ajax({
-            "type": "post",
-        	"url": "/websites/setmem?t="+new Date().getTime(),
-        	"data": paras,
-        	"dataType":"json",
-        	"success": function(d){
-        		var ret = +d.ret,msg = common.getMsgByRet(ret);
-        		if (msg){
-        			loginWin.alert("<center>"+msg+"</center>");
-        			return;
-        		}
-				if (d.ret===0&&d.data&&d.data.id){
-					location.href='/development/compinfo/'+d.data.id;
-				}else{
-					loginWin.alert({
-					"title":"获取代码失败！",
-					"width":450,
-					"text":"<center>"+(d.msg||"服务器失败")+"</center>"
-					});
-				}
-	    		$("#showcode").removeAttr("disabled");
-        	},
-        	"error":function(d){
-        		loginWin.show({
-	    			    	"title":"获取代码失败！",
-	    			    	"width":340,
-	    			    	"text":"<center>连接服务器失败</center>"
-	    			    	});
-	    		setTimeout(function(){
-	    		loginWin.close();
-	    		},2000);
-	    		$("#showcode").removeAttr("disabled");
-        	}
-    	});
-}
-
-    	function normalValidate(){
-    	    	$("#comp_name").trigger("blur");
-    	}
- 	       
+	$("input[name='color']").click(function() {
+		crUrl();
+	})
+});      
 

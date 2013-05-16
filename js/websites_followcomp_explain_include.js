@@ -3,7 +3,6 @@ this.tpl.explain_include = [
 '<link href="http://mat1.gtimg.com/app/opent/css/websites/show/customcolor.css" type="text/css" rel="stylesheet">',
 '<link href="http://mat1.gtimg.com/app/opent/css/websites/public/ex.css" type="text/css" rel="stylesheet">',
 '<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/jscolor_20111108.js"></script>',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/customcolor.js"></script>',
 '<style>',
 '.comp_area DT{',
 'margin-top:0px;',
@@ -13,10 +12,10 @@ this.tpl.explain_include = [
 '</style>',
 '<div class="comp_area">',
     '<!--[if IE]>',
-    '<div id="show" style="width:345px;height:200px;margin-bottom:-220px;float:right;">',
+    	'<div id="show" style="width:345px;height:200px;margin-bottom:-220px;float:right;">',
     '<![endif]-->',
     '<!--[if (gt IE 9)|!(IE)]><!-->',
-	'<div id="show" style="width:345px;height:200px;margin-bottom:-200px;float:right;">',
+		'<div id="show" style="width:345px;height:200px;margin-bottom:-200px;float:right;">',
     '<!--<![endif]-->',
 			'<h3>效果预览</h3>',
 			'<div style="margin:10px auto;"><iframe id="review" src="about:blank" frameborder="0" scrolling="auto" width="301" height="664" marginwidth=0 marginheight=0 frameborder="0" scrolling="no" allowtransparency="true"></iframe></div>',
@@ -132,7 +131,7 @@ this.tpl.explain_include = [
 '<script language="javascript" src="http://pingjs.qq.com/ping.js"></script>'
 ].join("");
 
-
+var comp_type=2;
 var tencent_wb_name = userInfo.name;
 var tencent_wb_sign = userInfo.sign;
 var tencent_wb_style = 1;
@@ -141,205 +140,225 @@ var tencent_wb_style = 1;
 //			window.location = "http://t.qq.com";
 //	}
 QosSS.t[3]= (new Date()).getTime();
-$(function () {
-// 快速收听源码
-	if(userInfo.hdlogin){
-    	var _name = userInfo.name 
-    	var _sign = userInfo.sign;
-    	var _colorStyle = 0;
-    	var _type = 0;
-    	$('#typeList input').change(function(){
-    	    crUrl();
-    	});
-		// <!--{* 不是组件定制页内的修改设置 *}-->
-		if(!comp){
+
+var savedurl;
+var lastsavedurl;
+
+var initEvents = function() {
+	util.createScript("/js/customcolor.js");
+	// 快速收听源码
+	if (userInfo.hdlogin) {
+		var _name = userInfo.name
+		var _sign = userInfo.sign;
+		var _colorStyle = 0;
+		var _type = 0;
+		$('#typeList input').change(function() {
 			crUrl();
+		});
+		// <!--{* 不是组件定制页内的修改设置 *}-->
+		//if (!comp) {
+			crUrl();
+		//}
+		function crUrl() {
+			var o = $("input[name=types]:checked");
+			var f = $("input[name=followers]").is(":checked") ? 1 : 0;
+			var _url = "http://follow.v.t.qq.com/index.php?c=follow&a=quick&name=" + _name + "&style=" + o.val() + "&t=" + new Date().getTime() + "&f=" + f;
+			$('#review').attr("src", _url).attr("width", f ? o.attr("w1") : o.attr("w2")).attr("height", o.attr("h"));
 		}
-		function crUrl(){
-			var o=$("input[name=types]:checked");
-			var f=$("input[name=followers]").is(":checked") ? 1 : 0;
-			var _url="http://follow.v.t.qq.com/index.php?c=follow&a=quick&name="+_name+"&style="+o.val()+"&t="+new Date().getTime()+"&f="+f;
-			$('#review').attr("src",_url)
-						   .attr("width",f ? o.attr("w1") : o.attr("w2"))
-						   .attr("height",o.attr("h"));
-		}
-	}else{
-		window.setTimeout(function(){
+	} else {
+		window.setTimeout(function() {
 			$('#loginBtn').click();
 		},100);
-		function login(){
+		/*		function login() {
 			$('#loginBtn').click();
-		}
+		}*/
 	}
 
-// 切换一键收听与批量收听
-    var savedurl;
-    var lastsavedurl;
-    $("input:radio[name=followtype]").change(function(){
-        var followtype = $(this).val();
-        savedurl = $("#review").attr("src");
-        if (followtype == "0") {
-            $("#act").hide();
-            $("#act2").show();
-            if(!lastsavedurl || /about/i.test(lastsavedurl)) {
-                lastsavedurl = "http://follow.v.t.qq.com/index.php?c=follow&a=quick&name="+userInfo.name+"&style=1&t=1329117509845&f=1";
-            }
-            $("#review").attr("src",lastsavedurl);
-            $("#show").css({height:200,marginBottom:-200-($.browser.msie ? 20 : 0)});
-            $("#review").attr({height:$("input[name=types]:checked").attr("h")}).attr({width:$("input[name=types]:checked").attr($("#typelist0").is(":checked") ? "w1":"w2")});
-        } else if(followtype == "1") {
-            $("#act").show();
-            $("#act2").hide();
-            if(!lastsavedurl) {
-                lastsavedurl = "http://mat1.gtimg.com/app/opent/images/websites/allfollow/showfollow.png";
-            }
-            $("#review").attr("src",lastsavedurl).attr("width","301").attr("height","664");
-            $("#show").css({height:703,marginBottom:-703-($.browser.msie ? 20 : 0)});
-        }
-        lastsavedurl = savedurl;
-    });
-})
-$(function(){
-    $("#adduname").focus(function(){
-    	if(this.value==this.defaultValue){this.value='';}
-    }).keydown(function(event){
-    	if(event.keyCode == 13){
-    		nametourl();
-    	}
-    });
-    $("#addname_btn").click(function(){
-    	nametourl();
-    });
-    
-    $("input[name='color'],input[name='iconsize']").click(function(){
-    	showDemo();
-    });
-    
-    $("#color_bg").blur(function(){
-    	showDemo();
-    });
-});
+	// 切换一键收听与批量收听
+	
+	$("input:radio[name=followtype]").change(function() {
+		var followtype = $(this).val();
+		savedurl = $("#review").attr("src");
+		if (followtype == "0") {
+			$("#act").hide();
+			$("#act2").show();
+			if (!lastsavedurl || /about/i.test(lastsavedurl)) {
+				lastsavedurl = "http://follow.v.t.qq.com/index.php?c=follow&a=quick&name=" + userInfo.name + "&style=1&t=1329117509845&f=1";
+			}
+			$("#review").attr("src", lastsavedurl);
+			$("#show").css({
+				height: 200,
+				marginBottom: -200 - ($.browser.msie ? 20 : 0)
+			});
+			$("#review").attr({
+				height: $("input[name=types]:checked").attr("h")
+			}).attr({
+				width: $("input[name=types]:checked").attr($("#typelist0").is(":checked") ? "w1": "w2")
+			});
+		} else if (followtype == "1") {
+			$("#act").show();
+			$("#act2").hide();
+			if (!lastsavedurl) {
+				lastsavedurl = "http://mat1.gtimg.com/app/opent/images/websites/allfollow/showfollow.png";
+			}
+			$("#review").attr("src", lastsavedurl).attr("width", "301").attr("height", "664");
+			$("#show").css({
+				height: 703,
+				marginBottom: -703 - ($.browser.msie ? 20 : 0)
+			});
+		}
+		lastsavedurl = savedurl;
+	});
 
-function namecheck(name){
-	$("#namelist").find(".name_con").each(function(){
-		if ($(this).text()==name){
-		name=false;
+	$("#adduname").focus(function() {
+		if (this.value == this.defaultValue) {
+			this.value = '';
+		}
+	}).keydown(function(event) {
+		if (event.keyCode == 13) {
+			nametourl();
 		}
 	});
-	return ((new RegExp('^[a-zA-Z](\\w|_|\\d|-){0,19}$','g')).test(name));
+	$("#addname_btn").click(function() {
+		nametourl();
+	});
+
+	$("input[name='color'],input[name='iconsize']").click(function() {
+		showDemo();
+	});
+
+	$("#color_bg").blur(function() {
+		showDemo();
+	});
 }
 
-function nametourl(){
+function namecheck(name) {
+	$("#namelist").find(".name_con").each(function() {
+		if ($(this).text() == name) {
+			name = false;
+		}
+	});
+	return ((new RegExp('^[a-zA-Z](\\w|_|\\d|-){0,19}$', 'g')).test(name));
+}
+
+function nametourl() {
 	var name = $("#adduname").val();
-	if(namecheck(name)){
-		var html = '<li class=\"name_con\" onmouseover="listOver(this)" onmouseout="listOut(this)"><a href=\"javascript:;\" onclick=\"removeName(this)\"></a><span>'+name+'</span></li>';
+	if (namecheck(name)) {
+		var html = '<li class=\"name_con\" onmouseover="listOver(this)" onmouseout="listOut(this)"><a href=\"javascript:;\" onclick=\"removeName(this)\"></a><span>' + name + '</span></li>';
 		$("#namelist").append(html);
 		$("#adduname").val('');
 		showDemo();
 	}
 }
 
-function showDemo(){
-	if ($(".namelist").find("li").size()){
-	var names=[];
-	$(".namelist").find(".name_con").each(function(){
-		names.push($(this).text());
-	});
-	var comp_id = comp.comp_id||"801000271";
-		$("#review").attr("src","http://follow.v.t.qq.com/index.php?c=follow&a=index&appkey="+comp_id+"&bg="+["fff",$("#color_bg").val().replace("#","")][$("input[name='color']:checked").val()]+"&hsize="+[100,50][$("input[name='iconsize']:checked").val()]+"&name="+names.join(","));
-	}else{
-	$("#review").attr("src","http://mat1.gtimg.com/app/opent/images/websites/allfollow/showfollow.png");
+function showDemo() {
+	if ($(".namelist").find("li").size()) {
+		var names = [];
+		$(".namelist").find(".name_con").each(function() {
+			names.push($(this).text());
+		});
+		var comp_id = comp.comp_id || "801000271";
+		$("#review").attr("src", "http://follow.v.t.qq.com/index.php?c=follow&a=index&appkey=" + comp_id + "&bg=" + ["fff", $("#color_bg").val().replace("#", "")][$("input[name='color']:checked").val()] + "&hsize=" + [100, 50][$("input[name='iconsize']:checked").val()] + "&name=" + names.join(","));
+	} else {
+		$("#review").attr("src", "http://mat1.gtimg.com/app/opent/images/websites/allfollow/showfollow.png");
 	}
 }
 
-function listOver(t){
+function listOver(t) {
 	$(t).addClass("name_closebg");
 }
 
-function listOut(t){
+function listOut(t) {
 	$(t).removeClass("name_closebg");
 }
 
-function removeName(t){
+function removeName(t) {
 	$(t).parent().remove();
 	showDemo();
 }
 
-// function crUrl(){}
+function crUrl(){}
 
-function formSubmit(){
-	if($("#showcode").attr("disabled")){return;}
-    var followtype = parseInt($("input[name=followtype]:checked").val(),10); //0 快速收听 1 批量收听
-    var paras={"comp_type":2};//组件类型 1、'一键分享',2'收听组件（原批量收听）',3'话题墙',4'Q-Share',5'心情板'
-    // 组件ID
-    if (comp.comp_id){
-    	paras["comp_id"]=comp.comp_id
+function formSubmit() {
+	if ($("#showcode").attr("disabled")) {
+		return;
 	}
-    // 网址信息
-    if ($("#comp_url").size()&&$("#comp_name").size()){
-    	paras["comp_url"]=encodeURIComponent($("#comp_url").val());
-    	paras["comp_name"]=encodeURIComponent($("#comp_name").val());
-    };
+	var followtype = parseInt($("input[name=followtype]:checked").val(), 10); //0 快速收听 1 批量收听
+	var paras = {
+		"comp_type": 2
+	}; //组件类型 1、'一键分享',2'收听组件（原批量收听）',3'话题墙',4'Q-Share',5'心情板'
+	// 组件ID
+	if (comp.comp_id) {
+		paras["comp_id"] = comp.comp_id
+	}
+	// 网址信息
+	if ($("#comp_url").size() && $("#comp_name").size()) {
+		paras["comp_url"] = encodeURIComponent($("#comp_url").val());
+		paras["comp_name"] = encodeURIComponent($("#comp_name").val());
+	};
 
-    switch(followtype) {
-    //快速收听
-    case 0:
-    var htm = $("#show div").html().replace(/&amp;/g,"&").replace(/([A-Z]+)/g,function($1){return $1.toLowerCase();}).replace(/id=\"[a-z]+\"/,"").replace(/\s+/," ");
-    htm = encodeURIComponent(htm);
-    paras["comp_style"] = ["{\"followtype\":0,","\"displayfolloweramount\":",$("#typelist0").attr("checked"),",","\"displaystyle\":",$("input[name=types]:checked").val(),",","\"htm\":","\"",htm,"\"","}"].join("");
-    break;
-    //一键收听
-    case 1:
-    	var names=[];
-    	$(".namelist").find(".name_con").each(function(){
-    		names.push($(this).text());
-    	});
-    	if (names.length == 0){
-        	if (loginWin){
-        		loginWin.alert({
-	    			    	"title":"添加失败！",
-	    			    	"width":450,
-	    			    	"text":"<center>请添加待收听的微博帐号！</center>"
-	    			    	});
-        	}
-    	    return false;
-    	}
-    	$("#showcode").attr("disabled","disabled");
-        paras["comp_style"] = "{\"names\":\""+names.join(",")+"\",\"colorstyle\":"+$("input[name='color']:checked").val()+",\"customcolor\":\""+$("#color_bg").val()+"\",\"iconsize\":"+$("input[name='iconsize']:checked").val()+"}"; //组件风格 
-    break;
-    }
-
-    $.ajax(
-    {
-        "type":"post",
-    	"url":"/development/compadd?t="+new Date().getTime(),
-    	"data":paras,
-    	"dataType":"json",
-    	"success":function(d){
-    		   var ret = +d.ret , msg = common.getMsgByRet(ret);
-    		if (msg){
-    			loginWin.alert("<center>"+msg+"</center>");
-    			return;
-    		}
-			if (ret === 0 && d.data && d.data.id){
-				location.href='/development/compinfo/'+d.data.id;
-			}else{
+	switch (followtype) {
+		//快速收听
+	case 0:
+		var htm = $("#show div").html().replace(/&amp;/g, "&").replace(/([A-Z]+)/g,
+		function($1) {
+			return $1.toLowerCase();
+		}).replace(/id=\"[a-z]+\"/, "").replace(/\s+/, " ");
+		htm = encodeURIComponent(htm);
+		paras["comp_style"] = ["{\"followtype\":0,", "\"displayfolloweramount\":", $("#typelist0").attr("checked"), ",", "\"displaystyle\":", $("input[name=types]:checked").val(), ",", "\"htm\":", "\"", htm, "\"", "}"].join("");
+		break;
+		//一键收听
+	case 1:
+		var names = [];
+		$(".namelist").find(".name_con").each(function() {
+			names.push($(this).text());
+		});
+		if (names.length == 0) {
+			if (loginWin) {
 				loginWin.alert({
-					"title":"获取代码失败！",
-					"width":450,
-					"text":"<center>"+(d.msg||"服务器失败")+"</center>"
+					"title": "添加失败！",
+					"width": 450,
+					"text": "<center>请添加待收听的微博帐号！</center>"
+				});
+			}
+			return false;
+		}
+		$("#showcode").attr("disabled", "disabled");
+		paras["comp_style"] = "{\"names\":\"" + names.join(",") + "\",\"colorstyle\":" + $("input[name='color']:checked").val() + ",\"customcolor\":\"" + $("#color_bg").val() + "\",\"iconsize\":" + $("input[name='iconsize']:checked").val() + "}"; //组件风格 
+		break;
+	}
+
+	$.ajax({
+		"type": "post",
+		"url": "/development/compadd?t=" + new Date().getTime(),
+		"data": paras,
+		"dataType": "json",
+		"success": function(d) {
+			var ret = +d.ret,
+			msg = common.getMsgByRet(ret);
+			if (msg) {
+				loginWin.alert("<center>" + msg + "</center>");
+				return;
+			}
+			if (ret === 0 && d.data && d.data.id) {
+				location.href = '/development/compinfo/' + d.data.id;
+			} else {
+				loginWin.alert({
+					"title": "获取代码失败！",
+					"width": 450,
+					"text": "<center>" + (d.msg || "服务器失败") + "</center>"
 				});
 			}
 			$("#showcode").removeAttr("disabled");
-    	},
-    	"error":function(d){
-    		loginWin.alert({
-				    	"title":"获取代码失败！",
-				    	"width":340,
-				    	"text":"<center>连接服务器失败</center>"
-				    	});
+		},
+		"error": function(d) {
+			loginWin.alert({
+				"title": "获取代码失败！",
+				"width": 340,
+				"text": "<center>连接服务器失败</center>"
+			});
 			$("#showcode").removeAttr("disabled");
-    	}
-    });
+		}
+	});
 }
-var comp_type=2;
+eventBindFuncList.push(initEvents)
