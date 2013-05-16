@@ -246,7 +246,6 @@ function compType8(){
 	};
 	//<% include file="./websites/login/loginuse_include.tpl" %>
 	util.createScript("/js/websites_login_loginuse_include.js",function(){
-		alert(tpl.loginuse_include)
 		$(".showcode_bar").before(tmpl(tpl.loginuse_include,global_obj.data));	
 	});
 }
