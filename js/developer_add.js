@@ -1,6 +1,6 @@
 ﻿// JavaScript Document
-
-var developer = global_obj.data.developer || developer;
+var developer = null;//global_obj.data.developer;
+global_obj.data.developer = null;
 var sendmail = 0;
 var user_uin = user_uin || developer && developer.usr_in ? developer.user_uin: "" || 0;
 var reSubmit = 0;
@@ -78,10 +78,10 @@ $(function(){
 	});
 	
 	$("#uretypecom").click(function() {
-		location.href = 'developer_add.html';
+		location.href = '/developer/add';
 	});
 	$("#uretypeperson").click(function() {
-		location.href = 'developer_addone.html';
+		location.href = '/developer/addone';
 	});
 	
 	if (window.user_province > 0) {
