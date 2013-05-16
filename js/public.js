@@ -170,6 +170,40 @@
 		var m = re.exec(window.location.href);
 		return m ? m[1] : '';
 	};
+	
+	//获取登陆态
+	util.setLoginInfo = function(){
+		 $.ajax({
+			 "dataType":"json"
+			,"type":"post"
+			,"url":"/apps/getappsitelist"
+			,"data":{"uin":hdlogin,"app_id":$("input[name='app_id']").val()}
+			,"success":function(d){
+				alert(d.code);
+				var ret = +d.ret,msg =common.getMsgByRet(ret);
+				if (msg){
+					loginWin.alert("<center>"+msg+"</center>");
+					return;
+				}
+				var loginInfo = [
+					'<%if (userInfo.hdlogin ) {%>',
+					'<div class="menu">',
+						'<a class="login_name" href="javascript:;" title="<%=userInfo.nick%>"><%=userInfo.nick%><em></em></a>',
+						'<i class="nav_arrow"></i>',
+					'</div>',
+					'<ul class="childMenu userNav_sub">',
+						'<li class="sub_item"><a class="sub_item_link sub_active" href="/development/developer/">编辑开发者信息</a></li>',
+						'<li class="sub_item"><a class="sub_item_link" href="javascript:;" id="logoutBtn">退出</a></li>',
+					'</ul>',
+					'<%} else {%>',
+					'<a title="点击此处登录" class="login_name" href="javascript:void(0);" id="loginBtn" hidefocus>登录</a>',
+					'<%}%>',
+				].join("");
+				$('#login_status').html(tmpl(loginInfo,d.data));
+			}
+		});
+	};
+	
 	//添加一个函数记录页面上所有JS要添加的时间绑定函数,以便在文档生成后统一执行
 	this.eventBindFuncList = [];
 	this.bindAllEvent = function(){
