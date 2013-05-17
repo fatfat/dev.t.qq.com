@@ -93,3 +93,4 @@ this.tpl.header,
 this.tpl.footer,
 ].join("");
 $("#main").append(tmpl(wireless_index,global_obj.data));
+util.setLoginInfo();

@@ -1,9 +1,6 @@
 var websites_index = [
 	this.tpl.header,
-'<script type="text/javascript">',
-'QosSS.t[2]= (new Date()).getTime()',
-'</script>',
-'<link href="http://mat1.gtimg.com/app/opent/css/websites/websites.css?20120110" rel="stylesheet" type="text/css"/>',
+'<link href="http://mat1.gtimg.com/app/opent/css/websites/websites.css" rel="stylesheet" type="text/css"/>',
 	'<div class="banner"><div></div></div>',
 	'<div class="link_banner wrapper">',
 		'<ul class="link_list clearfix">',
@@ -66,6 +63,7 @@ var websites_index = [
 $("#main").append(tmpl(websites_index,global_obj.data));
 
 $(document).ready(function(){
+	util.setLoginInfo();
 	//为所有链接添加hidefocus属性
 	$("a").attr("hidefocus",true);
 });

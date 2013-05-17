@@ -1,8 +1,5 @@
 var websites_login = [
 this.tpl.header,
-'<script type="text/javascript">',
-	'QosSS.t[2]=(new Date()).getTime()',
-'</script>',
 '<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20130308" rel="stylesheet" type="text/css" />',
 '<div class="wrapper breadcast">',
 	'<a href="/">腾讯微博开放平台</a> &gt; <a href="/websites">网站接入</a> &gt; <span>登录按钮</span>',
@@ -42,7 +39,8 @@ this.tpl.header,
 '</div>',
 this.tpl.footer
 ].join("");
-$("#main").append(tmpl(websites_login,global_obj.data))
+$("#main").append(tmpl(websites_login,global_obj.data));
+util.setLoginInfo();
 QosSS.c = new Image();
 QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 QosSS.t[5]= (new Date()).getTime();

@@ -179,7 +179,7 @@
 			,"url":"/pipes/interfaceserver"
  			,"data":{"action":"get_login_info"}
 			,"success":function(d){
-				console.log(d);
+			//	console.log(d);
 				if (d.ret !=0 && d.msg){
 					loginWin.alert("<center>"+msg+"</center>");
 					return;
@@ -199,6 +199,7 @@
 					'<%}%>',
 				].join("");
 				$('#login_status').html(tmpl(loginInfo,d.data));
+				hdlogin = d.data.hdlogin;
 			}
 		});
 	};

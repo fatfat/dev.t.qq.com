@@ -49,10 +49,11 @@ var developer_index =
 ].join("");
 
 $(document.body).append(tmpl(developer_index, global_obj.data));
+util.setLoginInfo();
 var userInfo = global_obj.data.userInfo;
 var developer  = global_obj.data.developer;
 
-var hdlogin = userInfo.hdlogin;
+var hdlogin = userInfo.hdlogin || false;
 var regweibo = userInfo.reg_wb;
 var insiteAppAble = 1;	
 QosSS.t[2]= (new Date()).getTime();

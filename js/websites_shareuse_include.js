@@ -151,17 +151,18 @@
 	    	$("#showcode").attr("disabled","disabled");
 	    	$.ajax(
 	    	{"type":"post",
-	    	"url":"/pipes/interfaceserver",
+	    	"url":"/pipes/interfaceserver?t="+ new Date().getTime(),
 	    	"data":paras,
 	    	"dataType":"json",
 	    	"success":function(d){
+	    		console.log(d);
 	    		var ret = +d.ret , msg = common.getMsgByRet(ret);
 	    		if (msg){
 	    			loginWin.alert("<center>"+msg+"</center>");
 	    			return;
 	    		}
 				if (ret === 0 && d.data && d.data.id){
-					location.href='/development/compinfo/'+d.data.id;
+					location.href='/development/compinfo?comp_id='+d.data.id;
 				}else{
 					loginWin.alert({
 						"title":"获取代码失败！",
