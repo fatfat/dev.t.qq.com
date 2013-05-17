@@ -36,6 +36,8 @@ var indexTmpl = [
 ].join("");
 $('#main').html(tmpl(indexTmpl,global_obj.data));
 $(function(){
+	userInfo = global_obj.data.userInfo || {};
+	util.setLoginInfo();
 	//首页三大应用接入mouseover效果
 	$(".connect").mouseover(function(){
 		var _this = $(this),

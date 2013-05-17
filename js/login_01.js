@@ -320,7 +320,7 @@ $((function() {
 }));
 
 
-/*以下是待删内容*/
+/*以下是待删内容*//*
 var showLoginWin = common.showLoginWin,
 	cookie = common.setCookie,
 	checkuserLogin = common.checkuserLogin,
@@ -340,8 +340,10 @@ $(function(){
 		var t = $("#login_status"),target = event.target;
 		if (window.hdlogin){
 			if ($.contains(t[0],target) || t[0] === target){
+				console.log(true);
 				t.addClass("menuContainer");
 			}else{
+				console.log(false);
 				t.removeClass("menuContainer");
 			}
 		}

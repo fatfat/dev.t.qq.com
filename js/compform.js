@@ -1,0 +1,15 @@
+tpl.compform = [
+	'<h2 class="comp_sub_tit">填写网站信息</h2>',
+	'<form class="appform comp_site_form">',
+	'<ul>',
+		'<li><label class="form_label">网站名称： </label>',
+			'<span class="form_input"><input type="text" value="" name="comp_name" id="comp_name" maxlength="16" data-rule="compname" data-error="网站名称"/></span>',
+			'<cite class="gray inputdes">该名称用于显示来源 <a href="http://wiki.open.t.qq.com/index.php/%E4%BA%A7%E5%93%81%E7%B1%BBFAQ#.E6.8F.90.E4.BA.A4.E5.BA.94.E7.94.A8.E6.9D.A5.E6.BA.90.E5.AD.97.E6.AE.B5.E5.AE.A1.E6.A0.B8.E8.83.BD.E5.BE.97.E5.88.B0.E4.BB.80.E4.B9.88.E5.A5.BD.E5.A4.84.EF.BC.9F" target="_blank" class="icon_help" title="提交应用来源字段审核能得到什么好处？"></a></cite>',
+		'</li>',
+		'<li><label class="form_label">网站地址： </label>',
+		'<span class="form_input"><input type="text" value="" name="comp_url" id="comp_url" data-rule="link" data-error="网站地址"/></span>',
+			'<cite class="gray inputdes">用户通过该链接地址访问你的网站</cite>',
+		'</li>', 
+	'</ul>',
+	'</form>',
+].join("");

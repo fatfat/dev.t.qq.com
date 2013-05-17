@@ -1,6 +1,6 @@
 var comp_type=1;
 this.tpl = this.tpl || {};
-this.tpl.shareuse_include_new = [
+this.tpl.websites_shareuse_include_new = [
 	'<h2 class="comp_sub_tit">Rich化功能</h2>',
 	//'<!--{if !$comp.comp_id}--><!--{*<a href="?explain=1&compat=1" target="_self" class="none">旧版</a>*}--><!--{/if}-->',
 	'<div class="p1">',

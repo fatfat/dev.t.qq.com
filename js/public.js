@@ -180,8 +180,7 @@
  			,"data":{"action":"get_login_info"}
 			,"success":function(d){
 				console.log(d);
-				var ret = +d.ret,msg =common.getMsgByRet(ret);
-				if (msg){
+				if (d.ret !=0 && d.msg){
 					loginWin.alert("<center>"+msg+"</center>");
 					return;
 				}

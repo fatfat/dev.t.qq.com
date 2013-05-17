@@ -321,8 +321,8 @@ OPEN_VALIDATOR = {
 			,rule   = selector.attr("data-rule")    //验证规则
 			,url    = {
 				// "appname"  : "/apps/checkname/"+encodeURIComponent(value),
-				 "compname" : "/apps/checkcompname",
-				 "appname":"/pipes/interfaceserver"
+				 "appname":"/pipes/interfaceserver",
+				 "compname" : "/pipes/interfaceserver"
 			}
 			,para   = {
 				 "appname"  : {
@@ -330,7 +330,7 @@ OPEN_VALIDATOR = {
 				 	'business_type' : 'ajax_checkname',
 				 	'appname' : value
 				 }
-				,"compname" : {"comp_name":encodeURIComponent(value),"comp_type":window.comp_type}
+				,"compname" : {"action":"common_query","business_type":"ajax_checkcompname","comp_name":encodeURIComponent(value),"comp_type":window.comp_type}
 			};
 			
 			para[rule]["random"]=+new Date();

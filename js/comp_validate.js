@@ -60,11 +60,14 @@ OPEN_VALIDATOR = {
 		,
 		url = {
 			"appname": "/apps/checkname/" + encodeURIComponent(value),
-			"compname": "/apps/checkcompname"
+			"compname": "/pipes/interfaceserver"
 		},
+				
 		para = {
 			"appname": {},
 			"compname": {
+				"action":"common_query",
+				"business_type":"ajax_checkcompname",
 				"comp_name": encodeURIComponent(value),
 				"comp_type": window.comp_type
 			}
@@ -318,6 +321,7 @@ function compValidateEvent() {
 	});
 
 	$("#showcode").click(function() { //表单提交验证
+		console.log(1);
 		var flag, errmsg, rule, value, submitflag = true,
 		data = '',
 		f = this.form,
