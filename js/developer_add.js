@@ -1,6 +1,5 @@
 ﻿// JavaScript Document
-var developer = null;//global_obj.data.developer;
-global_obj.data.developer = null;
+var developer = global_obj.data.developer;
 var sendmail = 0;
 var user_uin = user_uin || developer && developer.user_uin ? developer.user_uin: global_obj.data.userInfo.uin || 0;
 var reSubmit = 0;
