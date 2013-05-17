@@ -29,7 +29,9 @@ $(function(){
 	 	}else{
 	 		if($("input[name='appplatform']:checked").length == 0){
 				//$("#platformTitle").append($('<span class="tip tip_err" style="margin-top:0;"><span class="tip_icon"></span>请至少选择一个平台</span>"'));
-				loginWin.alert("<center>请至少选择一个平台</center>");	
+
+                console.log('212');
+				loginWin.alert("<center>请至少选择一个平台</center>");
 			}else{
 				//$("#platformTitle").next(".tip_err").remove();	
 			}

@@ -300,7 +300,7 @@
 			}
 		});
 		
-		$("input[name='appplatform']").change(function(){
+		/*$("input[name='appplatform']").change(function(){
 		 	if($(this).attr("checked")){
 		 		$(this).parent(".form_platform").next(".paltform_container").show();
 		 		if($("input[name='appplatform']").not(":checked").legnth > 0){
@@ -309,6 +309,7 @@
 		 	}else{
 		 		if($("input[name='appplatform']:checked").length == 0){
 					//$("#platformTitle").append($('<span class="tip tip_err" style="margin-top:0;"><span class="tip_icon"></span>请至少选择一个平台</span>"'));
+                    console.log('121');
 					loginWin.alert("<center>请至少选择一个平台</center>");	
 				}else{
 					//$("#platformTitle").next(".tip_err").remove();	
@@ -316,7 +317,7 @@
 				$(this).parent(".form_platform").next(".paltform_container").hide();
 		 	}
 			getPlatform();
-		});
+		});*/
 	
 		$('input[type=file]').change(function(){ $('input#img_need_post').val('1')});
 		
