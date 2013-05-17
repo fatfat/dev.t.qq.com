@@ -255,3 +255,6 @@
 	  return data ? fn( data ) : fn;
 	};
 })();
+if(global_obj.code==1){
+	top.location.href = global_obj.url;
+}
