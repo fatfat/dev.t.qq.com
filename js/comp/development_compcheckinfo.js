@@ -1,5 +1,5 @@
-var development_compcheckinfoTmpl = [
-headerTmpl,
+var development_compcheckinfo = [
+tpl.header,
 '<style type="text/css">',
 '.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
 '.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
@@ -65,12 +65,14 @@ headerTmpl,
 			'<!--/开发者信息-->',
 		'</div>',
 	'</div>',
-	footerTmpl,
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/validater.js?20130328"></script>'
+	tpl.footer,
 ].join("\r");
+util.createScript("/js/validater.js");
+
 var comp_type = comp.comp_type;
+$("#main").append(tmpl(development_compcheckinfoTmpl,global_obj.data))
 $(function(){
-	$(document.body).append(tmpl(development_compcheckinfoTmpl,{}))
+	
 	//反选
 	$("input[id^='app_type_select_']").click(function(){
 		$(this).parent().parent().next("dd").find("input[type='checkbox']").each(function(){

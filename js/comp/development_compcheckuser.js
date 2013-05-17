@@ -1,5 +1,5 @@
-var development_compcheckuserTmpl = [
-headerTmpl,
+var development_compcheckuser = [
+tpl.header,
 '<style type="text/css">',
 '.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
 '.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
@@ -144,12 +144,11 @@ headerTmpl,
 tpl.footer,
 ].join("\r");
 
-$(function(){
-	$(document.body).append(tmpl(development_compcheckuserTmpl,{}));
-});
+$("#main").append(tmpl(development_compcheckuser,global_obj.data));
+
 var need_post = false;
-var NextUrl = '/development/compcheckinfo/'+comp.comp_id+'/';
-var PostUrl = '/development/ajaxsavecheckdeverloper/'+app.app_id+'/'; 
+var NextUrl = '/development/compcheckinfo?comp_id='+comp.comp_id+'/';
+var PostUrl = '/development/ajaxsavecheckdeverloper?comp_id='+app.app_id+'/'; 
 var user_province=developer.user_province;
 var user_city= developer.user_city;
 

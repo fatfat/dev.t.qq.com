@@ -1,6 +1,7 @@
 ﻿  //JavaScript Document
  
-var developer = global_obj.data.developer;
+var developer = global_obj.data.developer||global_obj.data.developer_detail;
+global_obj.data.developer = developer;
 var user_uin = user_uin || developer && developer.user_uin ? developer.user_uin : global_obj.data.userInfo.uin||0;
 var user_province = developer && developer.user_province ? developer.user_province : "";
 var user_city = developer && developer.user_city ? developer.user_city : "";
