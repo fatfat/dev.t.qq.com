@@ -59,19 +59,14 @@ OPEN_VALIDATOR = {
 		rule = selector.attr("data-rule") //验证规则
 		,
 		url = {
-			"appname": "/apps/checkname/" + encodeURIComponent(value),
+			//"appname": "/apps/checkname/" + encodeURIComponent(value),
+			"appname":"/pipes/interfaceserver",
 			"compname": "/pipes/interfaceserver"
 		},
-				
-		para = {
-			"appname": {},
-			"compname": {
-				"action":"common_query",
-				"business_type":"ajax_checkcompname",
-				"comp_name": encodeURIComponent(value),
-				"comp_type": window.comp_type
-			}
-		};
+		para   = {
+				"appname"  : {"action":"common_query","business_type":"ajax_checkname","appname":value}
+				,"compname" : {"action":"common_query","business_type":"ajax_checkcompname","comp_name":encodeURIComponent(value),"comp_type":window.comp_type}
+			};
 
 		para[rule]["random"] = +new Date();
 
@@ -321,7 +316,6 @@ function compValidateEvent() {
 	});
 
 	$("#showcode").click(function() { //表单提交验证
-		console.log(1);
 		var flag, errmsg, rule, value, submitflag = true,
 		data = '',
 		f = this.form,

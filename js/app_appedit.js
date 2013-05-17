@@ -161,8 +161,8 @@ OPEN_VALIDATOR = {
 			,url    = {
 				 "appname"  : "/pipes/interfaceserver"
 				,"compname" : "/pipes/interfaceserver"
-			}
-			,para   = {
+			},
+			para   = {
 				"appname"  : {"action":"common_query","business_type":"ajax_checkname","appname":value}
 				,"compname" : {"action":"common_query","business_type":"ajax_checkcompname","comp_name":encodeURIComponent(value),"comp_type":window.comp_type}
 			};
@@ -1088,8 +1088,8 @@ if (+$("input[name='app_hosting']:checked").val() === 1){
 		$.ajax({
 			 "dataType":"json"
 			,"type":"post"
-			,"url":"/pipes/interfaceserver"
-			,"data":{"action":"common_query","business_type":"ajax_getappsitelist","uin":hdlogin,"appid":$("input[name='app_id']").val()}
+			,"url":"/apps/getappsitelist"
+			,"data":{"uin":hdlogin,"app_id":$("input[name='app_id']").val()}
 			,"success":function(d){
 				alert(d.code)
 				var ret = +d.ret,msg =common.getMsgByRet(ret);
