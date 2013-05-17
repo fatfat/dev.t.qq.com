@@ -137,11 +137,13 @@
 	if($("#showcode").attr("disabled")){return;}
 	var paras={
 	    		"comp_type":1, //组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板'
+	    		"action":common_query,
+	    		"business_type":"ajax_compadd",
 				"comp_style":"{\"btnstyle\":"+$("input[name='t1']:checked").val()+",\"btnsize\":"+$("input[name='size']:checked").val()+",\"btntext\":\""+$("input[name='reply_text']").val()+"\",\"assname\":\""+$("#assname").val()+"\",\"qshareable\":"+$("input[name='qshareable']").is(":checked")+",\"qsharestyle\":"+$("input[name='qsharebtn']:checked").attr("id").replace("qsharebtn","")+"}"
 	    	};
-	    	<!--{if $comp.comp_id}-->
-	    	paras["comp_id"]=<!--{$comp.comp_id}-->;
-	    	<!--{/if}-->
+	    	if (comp.comp_id)
+	    	paras["comp_id"]=comp.comp_id;
+	    	
 	    	if ($("#comp_url").size()&&$("#comp_name").size()){
 	    		paras["comp_url"]=encodeURIComponent($("#comp_url").val());
 	    		paras["comp_name"]=encodeURIComponent($("#comp_name").val());
@@ -149,7 +151,7 @@
 	    	$("#showcode").attr("disabled","disabled");
 	    	$.ajax(
 	    	{"type":"post",
-	    	"url":"/development/compadd?t="+new Date().getTime(),
+	    	"url":"/pipes/interfaceserver",
 	    	"data":paras,
 	    	"dataType":"json",
 	    	"success":function(d){

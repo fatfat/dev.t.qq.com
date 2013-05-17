@@ -17,7 +17,6 @@ QosSS.t[0]=(new Date()).getTime();
 <link href="http://mat1.gtimg.com/app/opent/css/login/login.css" rel="stylesheet" type="text/css"/>
 <link href="http://mat1.gtimg.com/app/opent/css/developer/dever_01.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/jquery-1.4.3.min.js"></script>
-<script type="text/javascript" src="/js/login_01.js"></script>
 </head>
 <body>
 <script type="text/javascript">
@@ -30,7 +29,9 @@ pgvMain();
 </script>
 
 <script type="text/javascript">
-var userInfo={};
+var userInfo={"hdlogin":false};
+var global_obj = {"data":{"navPos":"2"}};
+global_obj.data.userInfo = userInfo;
 </script>
 
 <div id="main"></div>

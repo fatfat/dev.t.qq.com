@@ -43,7 +43,7 @@ this.tpl.header,
 				'<div id="appDeveloperInfo">',
 					'<div class="appDeveloper">',
 						'<iframe id="appform_post_aec" name="appform_post_aec" width="100" height="100" src="about:blank" style="display:none;"></iframe>',
-						'<form target="appform_post_aec" action="/development/certsubmit/<%=developer.user_uin%>" method="post" class="appform" enctype="multipart/form-data" id="appform_user">',
+						'<form target="appform_post_aec" action="/development/certificationsubmit?user_uin=<%=developer.user_uin%>" method="post" class="appform" enctype="multipart/form-data" id="appform_user">',
 							'<ul class="appinfo" style="margin-top:0;">',
 								'<%if(developer.user_check_status==2){%>',
 									'<li class="alert alert_warn"><a href="javascript:;" class="hidebtn closealert">收起↑</a>',
@@ -172,17 +172,20 @@ this.tpl.header,
 		'</div>',
 '</div>',
 '<link href="http://mat1.gtimg.com/app/opent/css/development/index_selectapp.css" rel="stylesheet" type="text/css" />',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/location.js?20130328"></script>',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/validater.js"></script>',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/app_appadd.js"></script>',
 this.tpl.footer
 ].join("\r");
+
+util.createScript("/js/location.js");
+util.createScript("/js/validater.js");
+util.createScript("/js/app_appadd.js");
+
+
 global_obj.data.navPos = 7;
 global_obj.data.displaytype = 1;
 global_obj.data.developer = global_obj.data;
 $("#main").append(this.tmpl(this.tpl.development_certification,global_obj.data));
 $(function(){
-	var developer = window.data.developer;
+	var developer = global_obj.data.developer;
 	var userType= developer.user_type||1;
 	var user_uin= developer.user_uin||0;
 	var user_certif_status= developer.user_certif_status;

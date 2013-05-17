@@ -330,7 +330,7 @@ function formSubmit() {
 
 	$.ajax({
 		"type": "post",
-		"url": "/development/compadd?t=" + new Date().getTime(),
+		"url": "/pipes/interfaceserver?action=common_query&business_type=ajax_compadd&t=" + new Date().getTime(),
 		"data": paras,
 		"dataType": "json",
 		"success": function(d) {
