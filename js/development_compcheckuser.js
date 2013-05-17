@@ -17,10 +17,10 @@ tpl.header,
                     '<%=comp.comp_name%>',
                 '</div>',
 				'<ul class="appsnav">',
-					'<li class="active"><a href="/development/compinfo/<%=comp.comp_id%>">组件信息</a></li>',
-					'<li><a href="/development/compsite/<%=comp.comp_id%>">网站信息</a></li>',
+					'<li class="active"><a href="/development/compinfo?comp_id=<%=comp.comp_id%>">组件信息</a></li>',
+					'<li><a href="/development/compsite?comp_id=<%=comp.comp_id%>">网站信息</a></li>',
 					'<% if(comp.comp_type !== 7){ %>',
-					'<li><a href="/development/compset/<%=comp.comp_id%>">组件设置</a></li>',
+					'<li><a href="/development/compset?comp_id=<%=comp.comp_id%>">组件设置</a></li>',
 					'<% } %>',
 					//<!-- 
 					//<li><a href="/development/compdel/222">删除组件</a></li> 
@@ -148,7 +148,7 @@ $("#main").append(tmpl(development_compcheckuser,global_obj.data));
 
 var need_post = false;
 var NextUrl = '/development/compcheckinfo?comp_id='+comp.comp_id+'/';
-var PostUrl = '/development/ajaxsavecheckdeverloper?comp_id='+app.app_id+'/'; 
+var PostUrl = "/pipes/interfaceserver?action=common_query&business_type=ajax_compcheckover?comp_id="+comp.comp_id;
 var user_province=developer.user_province;
 var user_city= developer.user_city;
 

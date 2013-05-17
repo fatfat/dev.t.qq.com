@@ -17,10 +17,10 @@ tpl.header,
                    ' <%=comp.comp_name%>',
                 '</div>',
 				'<ul class="appsnav">',
-					'<li class="active"><a href="/development/compinfo/<%=comp.comp_id%>">组件信息</a></li>',
-					'<li><a href="/development/compsite/<%=comp.comp_id%>">网站信息</a></li>',
+					'<li class="active"><a href="/development/compinfo?comp_id=<%=comp.comp_id%>">组件信息</a></li>',
+					'<li><a href="/development/compsite?comp_id=<%=comp.comp_id%>">网站信息</a></li>',
 					'<%if(comp.comp_type==7){%>',
-						'<li><a href="/development/compset/<%=comp.comp_id%>">组件设置</a></li>',
+						'<li><a href="/development/compset?comp_id=<%=comp.comp_id%>">组件设置</a></li>',
 					'<%}%>',
 					//<!-- 
 					//<li><a href="/development/compdel/222">删除组件</a></li> 
@@ -68,9 +68,9 @@ tpl.header,
 	tpl.footer,
 ].join("\r");
 util.createScript("/js/validater.js");
-
+var comp = global_obj.data;
 var comp_type = comp.comp_type;
-$("#main").append(tmpl(development_compcheckinfoTmpl,global_obj.data))
+$("#main").append(tmpl(development_compcheckinfo,global_obj.data))
 $(function(){
 	
 	//反选
@@ -137,7 +137,7 @@ $(function(){
                         	"width":420,
                         	"height":185
                         	},function(){
-                        	location.href="/development/compinfo/"+comp.comp_id;
+                        	location.href="/development/compinfo?comp_id"+comp.comp_id;
                         	});
                         }
                     }else{
@@ -150,7 +150,7 @@ $(function(){
                         	"height":120
                         	});
                         	setTimeout(function(){
-                        		location.href="/development/compinfo/"+comp.comp_id;
+                        		location.href="/development/compinfo?comp_id"+comp.comp_id;
                         	},1500);
                         }else{
                         	alert("提交失败\n"+d.msg); 

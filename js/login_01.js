@@ -320,7 +320,7 @@ $((function() {
 }));
 
 
-/*以下是待删内容*//*
+/*以下是待删内容*/
 var showLoginWin = common.showLoginWin,
 	cookie = common.setCookie,
 	checkuserLogin = common.checkuserLogin,
