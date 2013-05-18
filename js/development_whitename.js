@@ -58,8 +58,6 @@
 	tpl.footer,
 ].join("");
 
-//console.log(tpl.whitename);
-
 $('#main').html(tmpl(tpl.whitename,global_obj.data));
 	var str = [
 		'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',

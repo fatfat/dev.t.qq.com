@@ -215,7 +215,6 @@ OPEN_VALIDATOR = {
 	}
 	,appnameCheck:function(value,selector){
 		//检测应用名称唯一性
-		console.log(2);
 		 var label  = selector.attr("data-error") 	//字段名
 			,dvalue = selector.attr("data-default") //默认值
 			,rule   = selector.attr("data-rule")    //验证规则
@@ -691,7 +690,6 @@ $(function(){
 				   dataType: "json",
 				   data: postdata,
 				   success: function(msg){
-				  // 	   console.log(msg);
 				   	   var ret = +(msg.ret || msg.error),retmsg = common.getMsgByRet(ret);
 				   	   if (retmsg){
 				   	   		loginWin.alert("<center>"+retmsg+"</center>");

@@ -432,7 +432,6 @@
 				});
 				var $sureBtn = loginWin.contentarea.find(".devSubmit");
 				$sureBtn.bind("click", function () {
-					console.log(1);
 					loginWin.close();
 					loginWin.show({text:"<center><br/>正在转为站内应用，请不要关闭浏览器！</center>",height:120,width:450});
 				    var postData = {

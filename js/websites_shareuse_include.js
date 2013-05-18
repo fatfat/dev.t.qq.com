@@ -155,7 +155,6 @@
 	    	"data":paras,
 	    	"dataType":"json",
 	    	"success":function(d){
-	    		console.log(d);
 	    		var ret = +d.ret , msg = common.getMsgByRet(ret);
 	    		if (msg){
 	    			loginWin.alert("<center>"+msg+"</center>");

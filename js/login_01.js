@@ -340,10 +340,8 @@ $(function(){
 		var t = $("#login_status"),target = event.target;
 		if (window.hdlogin){
 			if ($.contains(t[0],target) || t[0] === target){
-				console.log(true);
 				t.addClass("menuContainer");
 			}else{
-				console.log(false);
 				t.removeClass("menuContainer");
 			}
 		}

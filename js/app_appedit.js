@@ -959,7 +959,7 @@ var app_platform_name = $("input[name='app_phone'],input[name='app_pad'],input[n
 		if(v || 0){//兼容老数据
 			$("#app_support").val($(this).parent("li").find(".form_select_options").find("li:eq("+index+")").text());
 			$("#app_support").attr("data-terminal",n);
-			$("#app_support_list").show();console.log($("#app_support_list").find("input[value='"+v+"']"));
+			$("#app_support_list").show();
 			$("#app_support_list").find("input[value='"+v+"']").parent().show().siblings("dd").hide();
 			s= v.split("|");
 			for(var i in s){

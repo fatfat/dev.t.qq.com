@@ -157,7 +157,6 @@ if  (app.app_checkapi == 0 && app.app_type == 4  ) {
 				}else if($("#android_pf").attr("checked")){
 					app_platform = 2;
 				}
-				console.log(app_platform);
 				$("input[name='app_platform']").val(app_platform);
 				return app_platform;
 			 }

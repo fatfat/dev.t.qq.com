@@ -219,7 +219,7 @@ tpl.apptype4 = [
 	'<!--站内应用-->',
 		'<li>',
 			'<label class="form_label"><em>*</em> 应用名称： </label>',
-			'<span class="form_input"><input type="text" name="app_name" id="app_name" data-rule="appname"  <% if (app.app_status ==3 ||app.app_status ==5||app.app_status ==8||app.app_status ==6||app.app_status ==4||app.app_comefrom!=0) { console.log(app.app_status);%>  disabled= "disabled" <% } %>',
+			'<span class="form_input"><input type="text" name="app_name" id="app_name" data-rule="appname"  <% if (app.app_status ==3 ||app.app_status ==5||app.app_status ==8||app.app_status ==6||app.app_status ==4||app.app_comefrom!=0) { %>  disabled= "disabled" <% } %>',
 				'value="<%=app.app_name%>" data-default="<%=app.app_name%>" data-error="应用名称" maxlength="14"/></span>',
 			'<label class="gray inputdes">该名称用于<a href="http://wiki.open.t.qq.com/index.php/%E4%BA%A7%E5%93%81%E7%B1%BBFAQ#.E6.8F.90.E4.BA.A4.E5.BA.94.E7.94.A8.E6.9D.A5.E6.BA.90.E5.AD.97.E6.AE.B5.E5.AE.A1.E6.A0.B8.E8.83.BD.E5.BE.97.E5.88.B0.E4.BB.80.E4.B9.88.E5.A5.BD.E5.A4.84.EF.BC.9F" target="_blank">来源显示</a>，不超过7个汉字</label><br/>',
 		'</li>',
@@ -429,7 +429,6 @@ tpl.development_app_info = [
 	'<input type="hidden" name="app_type" value="<%=app.app_type%>">',
 	'<input type="hidden" name="postname" id="postname" value="0">',
 	'<input type="hidden" name="isFramePost" value="1"/>',
-	//'<%console.log(app.app_type);%>',
 
 	'<%if (app.app_type ==5) {%>',
 		tpl.apptype5,

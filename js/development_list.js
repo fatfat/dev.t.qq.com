@@ -26,7 +26,6 @@ else
 	
 	global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
 	if ( (global_obj.data.page_count ? global_obj.data.page_count:1) < global_obj.data.page_no) {    //当前页码不能超过总页数
-		console.log("warning:The page_no excceeds the total page counts");
 	}
 	
 	this.tpl = this.tpl || {};
@@ -175,7 +174,6 @@ else
 		}else if(global_obj.data.displaytype == "iweibo"){
 			rightListTmpl = this.tpl.development_list_iweibo;
 		} else {
-			console.log("Wrong displaytype of " + global_obj.data.displaytype);
 		}
 		
 	}
