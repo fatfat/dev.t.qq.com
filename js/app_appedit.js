@@ -789,6 +789,7 @@ $("form input[type='submit']").click(function(){//表单提交验证
 			
 			//提交时判断是否上传了apk文件
 			if ($("input[name='app_apk']").val() == '' && ($("#app_platform").val() == 2 || $("#app_platform").val() == 3)) {
+				$('#android_pf')[0].scrollIntoView();
 				var app_apk = $("input[name='app_apk']"),
 					app_uploader = $(".form_button_upload"),
 					app_downer = $(".form_element_uploaded_name"),
