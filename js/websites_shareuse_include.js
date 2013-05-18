@@ -8,7 +8,7 @@
 			'</div>',
 			'<div class="p1">',
 			'<div class="sizeselect">',
-				'<h3>样式设置<!--{if !$comp.comp_id}--><a href="/websites/share?explain=1" target="_self" style="padding-left:10px;font-size:12px;font-weight:normal;">新版</a><!--{/if}--></h3>',
+				'<h3>样式设置<%if !comp.comp_id{%><a href="/websites/share?explain=1" target="_self" style="padding-left:10px;font-size:12px;font-weight:normal;">新版</a><%}%></h3>',
 			'<p><span class="f14">样式</span> 　　<input type="radio" value="1" name="t1" id="style1" checked="checked" /> <label for="style1">按钮</label> 　　<input type="radio" value="2" name="t1" id="style2"/> <label for="style2">图标</label></p>',
 			'<p><span class="f14">大小</span> 　　<input type="radio" value="1" name="size" checked="checked" id="sizea"/> <label for="sizea">大</label> 　　　<input type="radio" value="2" name="size" id="sizeb"/> <label for="sizeb">中</label>　　 <input type="radio" value="3" name="size" id="sizec"/> <label for="sizec">小</label></p>',
 			'<p id="replytext" style="display:none;"><label>按钮文字</label><span class="form_input"><input type="text" size="20" name="reply_text" id="reply_text" value="转播到腾讯微博"/></span></p>',

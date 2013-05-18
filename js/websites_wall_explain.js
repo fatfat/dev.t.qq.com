@@ -1,5 +1,4 @@
 ;(function(){
-	this.tpl = this.tpl || {};
 	tpl.wrapper = [
 		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
@@ -8,7 +7,7 @@
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>话题墙</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
 		'<!--{ include file="./websites/appnav.tpl" }-->',
-		tpl.appnav,
+		tpl.websites_appnav,
 
 		'<div class="appsArea2">	',
 			'<h2 class="apptit">',
@@ -18,7 +17,7 @@
 			tpl.compform,
 		'<%if(userInfo.hdlogin){%>',
 			'<!--{ include file="./websites/wall/explain_include.tpl" }-->',
-			tpl.explain_include,
+			tpl.websites_wall_explain_include,
 			'<!--<div class="p1" id="getScript">',
 				'<h3>代码获取</h3>',
 				'<div class="fcgray">复制以下代码，粘贴到你的网页后台代码中，即可在网页<br />中看到你的话题墙</div>',
@@ -38,13 +37,13 @@
 		'</div>',
 	].join("");
 	
-	tpl.explain = [
-		'<!--{ include file="header.tpl" }-->',
-		tpl.header.
+	tpl.wall_explain = [
+		tpl.header,
 		tpl.wrapper,
 		tpl.footer,
 	].join("");
-	$('#main').html(tmpl(tpl.explain, data));	
+
+	$('#main').html(tmpl(tpl.wall_explain, global_obj.data));	
 	
 	if (!developerinfo){
 		location.href="/developer/bedever/";
@@ -73,7 +72,6 @@
 		}
 	}
 	
-	this.util = this.util || {};
 	util.createScript("http://pingjs.qq.com/ping.js");
 	if(typeof(pgvMain) == 'function')
 		pgvMain();

@@ -3,13 +3,13 @@ QosSS.t[3]= (new Date()).getTime();
 QosSS.t[4]= (new Date()).getTime();
 ;(function(){
 	this.tpl = this.tpl || {};
-	tpl.content = [
+	tpl.sign_explain = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
 		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/show/customcolor.css" type="text/css" rel="stylesheet">',
-		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20120110" rel="stylesheet" type="text/css"/> ',
+		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/> ',
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/public/ex.css" type="text/css" rel="stylesheet">',
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>签名档</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
@@ -91,7 +91,7 @@ QosSS.t[4]= (new Date()).getTime();
 	'</div>',
 	  tpl.footer,
    ].join("");
-   $('#main').html(tmpl(tpl.content, global_obj.data));
+   $('#main').html(tmpl(tpl.sign_explain, global_obj.data));
    $(function(){	
 		var UI = {};
 		var menu = function(){ 

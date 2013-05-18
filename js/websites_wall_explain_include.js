@@ -11,7 +11,7 @@ var sty = [
 
 util.createStyle(sty);	
 
-tpl.explain_include = [
+tpl.websites_wall_explain_include = [
 	'<link href="http://mat1.gtimg.com/app/opent/css/websites/show/customcolor.css" type="text/css" rel="stylesheet">',
 	'<div class="comp_area">',
 	'<div id="show" style="margin-bottom:-630px;height:630px;width:345px;float:right;">',

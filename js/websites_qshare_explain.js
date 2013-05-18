@@ -2,16 +2,8 @@
 	this.tpl = this.tpl ||{};
 	this.tpl.qshare_explain = [
 		this.tpl.header,
-		'<script>',
-			'<%if(!developerinfo){%>location.href="/developer/bedever/";<%}%>',
-		'</script>',
-		'<script type="text/javascript">',
-		'QosSS.t[2]= (new Date()).getTime()',
-		'</script>',
-		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20120110" rel="stylesheet" type="text/css"/>',
-		'<script type="text/javascript">',
-		'QosSS.t[3]= (new Date()).getTime()',
-		'</script>',
+		'<%if(!developerinfo){%>location.href="/developer/bedever/";<%}%>',
+		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/>',
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>Q-Share</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
 			this.tpl.websites_appnav,
@@ -28,15 +20,12 @@
 					'<textarea id="scripts"></textarea><input type="hidden" length="32" id="theKey" />',
 					'<p><input type="checkbox" id="conpress"/> <label for="conpress">压缩代码</label></p>',
 					'<p class="tr"><img src="http://mat1.gtimg.com/app/opent/images/oldapp/qshare/copybut.png" id="copyscript" border="0"/></p>',
-					'<script type="text/javascript">',
-					'QosSS.t[4]= (new Date()).getTime()',
-					'</script>',
 				'</div>',
 			'</div>',
 			'</div>',
 			this.tpl.footer
 		].join("");
-	$("#main").append(tmpl(this.tpl.qshare_explain,data));
+	$("#main").append(tmpl(this.tpl.qshare_explain,global_obj.data));
 	$(function(){
 		var UI = {};
 		var menu = function(){ 

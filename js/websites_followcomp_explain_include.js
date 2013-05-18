@@ -1,15 +1,15 @@
-
+util.createScript("http://mat1.gtimg.com/app/opent/js/jscolor_20111108.js");
+var str = [
+	'.comp_area DT{',
+	'margin-top:0px;',
+	'font-size:14px;',
+	'line-height:16px;',
+	'}',
+	].join("");
+	util.createStyle(str);
 this.tpl.explain_include = [
 '<link href="http://mat1.gtimg.com/app/opent/css/websites/show/customcolor.css" type="text/css" rel="stylesheet">',
 '<link href="http://mat1.gtimg.com/app/opent/css/websites/public/ex.css" type="text/css" rel="stylesheet">',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/jscolor_20111108.js"></script>',
-'<style>',
-'.comp_area DT{',
-'margin-top:0px;',
-'font-size:14px;',
-'line-height:16px;',
-'}',
-'</style>',
 '<div class="comp_area">',
     '<!--[if IE]>',
     	'<div id="show" style="width:345px;height:200px;margin-bottom:-220px;float:right;">',
@@ -122,12 +122,6 @@ this.tpl.explain_include = [
 '</div>',
 '<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/comp_validate.js?20130328"></script>',
 '<script language="javascript">if(typeof(pgvMain) == "function")pgvMain();</script>',
-'<script type="text/javascript">',
- 'QosSS.c = new Image();',
- 'QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});',
- 'QosSS.t[5]= (new Date()).getTime();',
- 'QosSS.c.src="http://qos.report.qq.com/collect?type=1&name="+"opent_wfollow_explain"+"&1="+ (QosSS.t[1]- QosSS.t[0])+"&2="+ (QosSS.t[2]- QosSS.t[0])+ "&3="+ (QosSS.t[3]- QosSS.t[0])+"&4="+ (QosSS.t[4]- QosSS.t[0])+ "&5="+ (QosSS.t[5]- QosSS.t[0]);',
- '</script>',
 '<script language="javascript" src="http://pingjs.qq.com/ping.js"></script>'
 ].join("");
 

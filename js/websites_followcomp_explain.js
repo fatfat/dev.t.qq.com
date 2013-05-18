@@ -1,11 +1,9 @@
 this.tpl.explain = [
 	this.tpl.header,
-	'<script> ',
 	'<%if(!developerinfo){%>location.href="/developer/bedever/";<%}%>',
-	'</script>',
 	'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 	'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
-	'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20120110" rel="stylesheet" type="text/css"/> ',
+	'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/> ',
 	'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>收听组件</span></div>',
 	'<div id="content" class="wrapper main main_comp">		',
 		this.tpl.websites_appnav,
@@ -25,13 +23,12 @@ this.tpl.explain = [
 		'<%}%>',
 		'</div>',
 	'</div>',
-	'<script language="javascript" src="http://pingjs.qq.com/ping.js"></script>',
-	'<script language="javascript">if(typeof(pgvMain) == "function")pgvMain();</script>',
 	this.tpl.footer
 ].join("");
-
-$("#main").html(tmpl(this.tpl.explain,global_obj.data));
+var comp = {"comp_id":2};
 util.setLoginInfo();
+$("#main").html(tmpl(this.tpl.explain,global_obj.data));
+
 if(userInfo.hdlogin){
 	function smartLen( str ){
 		str = str.replace(new RegExp("((news|telnet|nttp|file|http|ftp|https)://){1}(([-A-Za-z0-9]+(\\.[-A-Za-z0-9]+)*(\\.[-A-Za-z]{2,5}))|([0-9]{1,3}(\\.[0-9]{1,3}){3}))(:[0-9]*)?(/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*)*","gi"),'填充填充填充填充填充填');
@@ -91,5 +88,8 @@ if(userInfo.hdlogin){
 		$('#loginBtn').click();
 	}
 }
+
+util.createScript("http://pingjs.qq.com/ping.js");
+if(typeof(pgvMain) == "function")pgvMain();
 
 

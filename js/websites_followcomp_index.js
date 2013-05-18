@@ -1,7 +1,6 @@
-this.tpl = this.tpl ||{};
-this.tpl.index = [
+this.tpl.websites_followcomp_index = [
 	this.tpl.header,
-'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20120110" rel="stylesheet" type="text/css"/> ',
+'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/> ',
 '<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>收听组件</span></div>',
 '<div id="content" class="wrapper main main_comp">',
    this.tpl.websites_appnav,
@@ -31,9 +30,8 @@ this.tpl.index = [
         '<p class="p" style="width:572px;height:239px;background:url(http://mat1.gtimg.com/app/opent/images/websites/allfollow/indexshow.png) no-repeat -49px 0px;"></p>  ',
 	'</div>',
 	'</div> ',
-
-this.tpl.footer
+	this.tpl.footer
 ].join("");
-$("#main").append(tmpl(this.tpl.index,global_obj.data));
-util.setLoginInfo();
+$("#main").html(tmpl(tpl.websites_followcomp_index,global_obj.data));
+	util.setLoginInfo();
 	util.createScript("/js/imgViewer.js");
