@@ -71,6 +71,22 @@ OPEN_VALIDATOR = {
 	}
 };	
 
+$("<div class=\"tooltip\" id=\"tooltip\"><div class=\"toolangle\"><span class=\"a1\">◆</span><span class=\"a2\">◆</span></div><div class=\"tooltext\"></div></div>").appendTo($("body"));
+window.tooltip={
+	"timer":null,
+	"show":function(t,o,s){
+		var ot=o.offset();
+		$("#tooltip").show().css({"left":ot.left,"top":ot.top+o.height()}).find(".tooltext").html(t);
+		//o.get(0).scrollIntoView(true);
+		clearTimeout(tooltip.timer);
+		if (s){
+			tooltip.timer=setTimeout(function(){
+			$("#tooltip").fadeOut();
+			},s);
+		}
+	}
+};
+
 OPEN_VALIDATOR.apptypeName = /iweibo/.test(location.pathname) ? "组件" : (/platform/.test(location.pathname) ? "平台" : "应用" );
 
 $("form input[type='text'],form textarea").blur(function(){//单个即时验证
@@ -478,6 +494,41 @@ $(function(){
 			    		}	
 					}
 				});
+				if (submitflag) {
+					var picEmpty = false;
+					if ($('#iphone_pf').attr('checked') == true) {
+						for (var i = 0; i < 5; i++) {
+							if ($('input[type="file"]')[i].value == '') {
+								picEmpty = true;
+								str="<center>请上传应用图标</center>";
+								loginWin.alert(str);
+								tooltip.show(str,$($(".uploadbtn")[i]),2000);
+								$('#app_score_1')[0].scrollIntoView();
+								break;
+								return;
+							}
+						}
+					}
+					if (picEmpty) {
+						return;
+					}
+					if ($('#android_pf').attr('checked') == true) {
+						for (var i = 5; i < 10; i++) {
+							if ($('input[type="file"]')[i].value == '') {
+								picEmpty = true;
+								str="<center>请上传应用图标</center>";
+								loginWin.alert(str);
+								tooltip.show(str,$($(".uploadbtn")[i]),2000);
+								$('#app_size_2')[0].scrollIntoView();
+								break;
+								return;
+							}
+						}
+					}
+					if (picEmpty) {
+						return;
+					}
+				}
 				if(!submitflag) {return submitflag;}
 				
 				//创建无线应用，还需验证是否选择了应用平台
@@ -514,7 +565,6 @@ $(function(){
 		var confirmSubmitten = confirm("审核结果返回前，将不能修改"+OPEN_VALIDATOR.apptypeName+"信息，确定将此"+OPEN_VALIDATOR.apptypeName+"提交审核？");
 		if(!confirmSubmitten){return confirmSubmitten;}
 
-		//
     	loginWin.show({
         	"title":"提交审核",
         	"width":410,
