@@ -30,8 +30,8 @@ this.tpl.explain = [
 	this.tpl.footer
 ].join("");
 
-$("#main").append(tmpl(this.tpl.explain,data))
-
+$("#main").html(tmpl(this.tpl.explain,global_obj.data));
+util.setLoginInfo();
 if(userInfo.hdlogin){
 	function smartLen( str ){
 		str = str.replace(new RegExp("((news|telnet|nttp|file|http|ftp|https)://){1}(([-A-Za-z0-9]+(\\.[-A-Za-z0-9]+)*(\\.[-A-Za-z]{2,5}))|([0-9]{1,3}(\\.[0-9]{1,3}){3}))(:[0-9]*)?(/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*)*","gi"),'填充填充填充填充填充填');

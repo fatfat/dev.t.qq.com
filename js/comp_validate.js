@@ -51,6 +51,7 @@ OPEN_VALIDATOR = {
 		}
 	},
 	appnameCheck: function(value, selector) {
+		console.log(1);
 		//检测应用名称唯一性
 		var label = selector.attr("data-error") //字段名
 		,
@@ -71,6 +72,8 @@ OPEN_VALIDATOR = {
 		para[rule]["random"] = +new Date();
 
 		if (dvalue != value) {
+			console.log(url[rule]);
+			console.log(para[rule]);
 			showmsg(1, selector, "正在验证" + label + "是否重复...");
 			$.ajax({
 				"type": "get",

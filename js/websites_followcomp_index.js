@@ -35,4 +35,5 @@ this.tpl.index = [
 this.tpl.footer
 ].join("");
 $("#main").append(tmpl(this.tpl.index,global_obj.data));
-	util.createScript("http://mat1.gtimg.com/app/opent/js/public/imgViewer.js");
+util.setLoginInfo();
+	util.createScript("/js/imgViewer.js");

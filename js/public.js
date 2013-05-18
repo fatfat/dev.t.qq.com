@@ -199,7 +199,7 @@
 					'<%}%>',
 				].join("");
 				$('#login_status').html(tmpl(loginInfo,d.data));
-				hdlogin = d.data.hdlogin;
+				userInfo.hdlogin = hdlogin = d.data.hdlogin;
 			}
 		});
 	};

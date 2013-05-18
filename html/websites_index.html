@@ -5,16 +5,9 @@
 <script type="text/javascript">
 	//document.domain = "qq.com";
 	//---需要后台吐出来的信息
-	var global_obj  = {
-		data:{
-			userInfo:{
-				hdlogin:false,
-				reg_wb:""
-			},
-			nick:"",
-			navPos:2
-		}
-	}
+	var userInfo={};
+	var global_obj = {"data":{"navPos":2,"hdlogin":false}};
+	global_obj.userInfo = userInfo;
 	//-----------
 	var QosSS = new Object();
 	QosSS.t = new Array([0,0,0,0,0,0]);
@@ -34,7 +27,7 @@
 <script type="text/javascript" src="/js/public.js"></script>
 <script type="text/javascript" src="/js/websites_index.js"></script>
 <!--登录态相关的JS文件，start-->
-<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/login_02.js"></script>
+<script type="text/javascript" src="/js/login_02.js"></script>
 <!--登录态相关的JS文件，end-->
 </body>
 </html>
