@@ -25,7 +25,7 @@ this.tpl.explain = [
 	'</div>',
 	this.tpl.footer
 ].join("");
-var comp = {"comp_id":2};
+
 util.setLoginInfo();
 $("#main").html(tmpl(this.tpl.explain,global_obj.data));
 
