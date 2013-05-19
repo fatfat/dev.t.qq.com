@@ -51,7 +51,6 @@ OPEN_VALIDATOR = {
 		}
 	},
 	appnameCheck: function(value, selector) {
-		console.log(1);
 		//检测应用名称唯一性
 		var label = selector.attr("data-error") //字段名
 		,

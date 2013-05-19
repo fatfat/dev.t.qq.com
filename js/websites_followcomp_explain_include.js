@@ -120,7 +120,7 @@ this.tpl.explain_include = [
 			'</ul>',
 		'</div>',
 '</div>',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/comp_validate.js?20130328"></script>',
+'<script type="text/javascript" src="/js/comp_validate.js?20130328"></script>',
 '<script language="javascript">if(typeof(pgvMain) == "function")pgvMain();</script>',
 '<script language="javascript" src="http://pingjs.qq.com/ping.js"></script>'
 ].join("");
@@ -336,7 +336,7 @@ function formSubmit() {
 				return;
 			}
 			if (ret === 0 && d.data && d.data.id) {
-				location.href = '/development/compinfo/' + d.data.id;
+				location.href = '/development/compinfo?comp_id=' + d.data.id;
 			} else {
 				loginWin.alert({
 					"title": "获取代码失败！",
@@ -356,4 +356,4 @@ function formSubmit() {
 		}
 	});
 }
-eventBindFuncList.push(initEvents)
+//eventBindFuncList.push(initEvents)
