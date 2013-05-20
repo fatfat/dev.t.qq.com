@@ -316,7 +316,6 @@ function compValidateEvent() {
 	});
 
 	$("#showcode").click(function() { //表单提交验证
-		console.log("a");
 		var flag, errmsg, rule, value, submitflag = true,
 		data = '',
 		f = this.form,

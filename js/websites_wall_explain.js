@@ -44,10 +44,13 @@
 	].join("");
 
 	$('#main').html(tmpl(tpl.wall_explain, global_obj.data));	
-	
-	if (!developerinfo){
+	util.createScript("/js/jscolor.js");
+	util.createScript("/js/customcolor.js");
+	util.createScript("/js/comp_validate.js",function(){bindAllEvent()}); 
+
+/*	if (!developerinfo){
 		location.href="/developer/bedever/";
-	}
+	}*/
 	QosSS.t[2]= (new Date()).getTime();	
 	QosSS.t[3]= (new Date()).getTime();
 	QosSS.t[4]= (new Date()).getTime();

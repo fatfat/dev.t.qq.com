@@ -78,7 +78,7 @@ var _height = 590;
 var _opt = 7;
 var comp_type = 3;
 
-var wall_explain = function(){
+eventBindFuncList.push(function(){
 	$("input[name='topicname']").change(function() {
 		crUrl(false);
 	});
@@ -151,7 +151,7 @@ var wall_explain = function(){
 		}
 		$(this).parent().find("ul").show();
 	})
-};
+});
 
 function crUrl(o) {
 	if ($.trim($('input#t1').val()).length == 0) return false;
@@ -166,8 +166,9 @@ function crUrl(o) {
 	} else {
 		var _tn = _t.join('');
 	}
-
-	var _appkey = comp.comp_id || "801000271";
+	
+//	var _appkey = comp.comp_id || "801000271";
+	_appkey = "801000271";
 	var wbname = encodeURIComponent($.trim($('#wbname').val()));
 	var wburl = encodeURIComponent($.trim($('#originurl').val()));
 	if (_tn != '' && _appkey != '') {
@@ -277,9 +278,9 @@ function formSubmit() {
 		//组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板'
 		"comp_style": "{\"topicnames\":\"" + topicnames.join("") + "\",\"width\":" + $("#width").val() + ",\"height\":" + $("#height").val() + ",\"autowidth\":" + $("#autowidth").is(":checked") + ",\"colorstyle\":" + $("input[name='color']:checked").val() + ",\"defaultcolorstyle\":" + colors + ",\"customcolor\":\"" + customcolor.join("_") + "\",\"imgshow\":" + $("input[name='imgshow']:checked").val() + ",\"postpos\":" + $("input[name='post']:checked").val() + ",\"tmodel\": " + tmodelp + " , \"wbname\" : \"" + wbnamep + "\", \"wburl\":\"" + wburlp + "\"}"
 	};
-	if (comp.comp_id) {
+/*	if (comp.comp_id) {
 		paras["comp_id"] = comp.comp_id;
-	}
+	}*/
 	if ($("#comp_url").size() && $("#comp_name").size()) {
 		paras["comp_url"] = encodeURIComponent($("#comp_url").val());
 		paras["comp_name"] = encodeURIComponent($("#comp_name").val());
@@ -307,7 +308,7 @@ function formSubmit() {
 				return;
 			}
 			if (ret === 0 && d.data && d.data.id) {
-				location.href = '/development/compinfo/' + d.data.id;
+				location.href = '/development/compinfo?comp_id=' + d.data.id;
 			} else {
 				loginWin.alert({
 					"title": "获取代码失败！",
