@@ -1,7 +1,6 @@
 /*变量初始化*/
 global_obj.data.navPos = 7;
 var comp = global_obj.data.comp  = global_obj.data; 
-comp.comp_style = $.parseJSON(comp.comp_style);
 var development_compinfoTmpl = [
 	this.tpl.header,
     '<div id="content" class="controlCon main main_app">',
