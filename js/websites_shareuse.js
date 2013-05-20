@@ -1,6 +1,6 @@
 //;(function(){
 //	if (!developerinfo) location.href="/developer/bedever/";
-global_obj.data.compat = 2;
+global_obj.data.compat = 3;
 	var websites_shareuse = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
@@ -27,18 +27,18 @@ global_obj.data.compat = 2;
 	'</h1>',
 			'<!--{ include file="./websites/compform.tpl" }-->',
 		tpl.compform,
-	/*	'<%if (compat == 1 ){%>',
+		'<%if (compat == 1 ){%>',
 		'<!--{ include file="./websites/share/shareuse_include.tpl" }-->',
-		tpl.websites_shareuse_include_new,
+	//	tpl.websites_shareuse_include_new,
 		'<%} else if (compat == 2 ){%>',
 		'<!--{ include file="./websites/share/shareuse_include_wap.tpl" }-->',
-		tpl.websites_share_include_wap,
+	//	tpl.websites_share_include_wap,
 		'<%} else {%>',
 		'<!--{ include file="./websites/share/shareuse_include_new.tpl" }-->',
-		tpl.websites_shareuse_include_new,
+	//	tpl.websites_shareuse_include_new,
 		'<%}%>',
 		'<h2 class="comp_sub_tit">获取代码</h2>',
-		'<div class="p1">&nbsp;&nbsp;<a href="javascript:;" class="btn_code" id="showcode">获取代码</a> </div>',*/
+		'<div class="p1">&nbsp;&nbsp;<a href="javascript:;" class="btn_code" id="showcode">获取代码</a> </div>',
 		'</div>',
 		'</div>',
 		tpl.footer

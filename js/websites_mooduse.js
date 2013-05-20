@@ -1,19 +1,19 @@
-;function(){
-	if (!developerinfo )
-		location.href="/developer/bedever/";
+;(function(){
+//	if (!developerinfo )
+//		location.href="/developer/bedever/";
 	tpl.mooduse = [
 		'<!--{ include file="header.tpl" }--> ',
 		tpl.header,
 		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
-		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20120110" rel="stylesheet" type="text/css"/> ',
+		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/> ',
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>心情板</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
 		'<!--{ include file="./websites/appnav.tpl" }-->',
 			'<div class="appsArea2">	',
 				'<h3 class="hbline"><strong>心情板功能简介</strong></h3>',
-				'<5if(userInfo.hdlogin){*>',
+				'<%if(userInfo.hdlogin){%>',
 				'<!--{ include file="./websites/compform.tpl" }-->',
-				tpl.compform
+				tpl.compform,
 				'<!--{ include file="./websites/mood/mooduse_include.tpl" }-->',
 				tpl.mooduse_include,
 				'<div class="p1">',
@@ -30,7 +30,7 @@
 					'<div><input type="button" value="" class="button" id="copyscript" /></div>',
 				'</div>',
 				'-->',
-				'<%}else%{>',
+				'<%}else{%>',
 					'<div class="errormsg">对不起，在没有登录微博的情况下，你无法使用该功能。 请<a href="javascript:login();">登录</a></div>',
 				'<%}%>',
 			'</div>',

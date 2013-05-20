@@ -5,7 +5,7 @@
 		tpl.header,
 		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
-		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20120110" rel="stylesheet" type="text/css"/> ',
+		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/> ',
 
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>话题墙</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
@@ -52,7 +52,6 @@
 	].join("");	
 	$('#main').html(tmpl(tpl.wall,global_obj.data));
 	QosSS.t[2]= (new Date()).getTime();
-	$('#main').html(tmpl(tpl.appedit, data));
 	QosSS.t[3]= (new Date()).getTime();
 	QosSS.t[4]= (new Date()).getTime();
 	QosSS.c = new Image();
