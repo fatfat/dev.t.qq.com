@@ -4,8 +4,6 @@
 		'<div style="clear:left;"></div>',
 	].join("");
 	this.util = this.util || {};
-	util.createScript("http://mat1.gtimg.com/app/newvt/share/js/share_20120711.js");
-	util.createScript("http://mat1.gtimg.com/app/opent/js/comp_validate.js?20120515");
 
 	function formSubmit(){
 	    if($("#showcode").attr("disabled")){return;}

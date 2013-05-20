@@ -29,13 +29,13 @@ global_obj.data.compat = 3;
 		tpl.compform,
 		'<%if (compat == 1 ){%>',
 		'<!--{ include file="./websites/share/shareuse_include.tpl" }-->',
-	//	tpl.websites_shareuse_include_new,
+		tpl.websites_shareuse_include_new,
 		'<%} else if (compat == 2 ){%>',
 		'<!--{ include file="./websites/share/shareuse_include_wap.tpl" }-->',
-	//	tpl.websites_share_include_wap,
+		tpl.websites_share_include_wap,
 		'<%} else {%>',
 		'<!--{ include file="./websites/share/shareuse_include_new.tpl" }-->',
-	//	tpl.websites_shareuse_include_new,
+		tpl.websites_shareuse_include_new,
 		'<%}%>',
 		'<h2 class="comp_sub_tit">获取代码</h2>',
 		'<div class="p1">&nbsp;&nbsp;<a href="javascript:;" class="btn_code" id="showcode">获取代码</a> </div>',
@@ -44,6 +44,7 @@ global_obj.data.compat = 3;
 		tpl.footer
 		].join("");
 		$('#main').html(tmpl(websites_shareuse,global_obj.data));
+
 	$(function(){
 	    var UI = {};
 	    var menu = function(){ 
@@ -77,4 +78,8 @@ global_obj.data.compat = 3;
 	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 	QosSS.t[5]= (new Date()).getTime();
 	QosSS.c.src="http://qos.report.qq.com/collect?type=1&name="+"opent_ws_use"+"&1="+ (QosSS.t[1]- QosSS.t[0])+"&2="+ (QosSS.t[2]- QosSS.t[0])+ "&3="+ (QosSS.t[3]- QosSS.t[0])+"&4="+ (QosSS.t[4]- QosSS.t[0])+ "&5="+ (QosSS.t[5]- QosSS.t[0]);
+	util.createScript("/js/share.js");
+	util.createScript("/js/comp_validate.js",function(){
+		bindAllEvent();
+	});
 //})();

@@ -71,8 +71,6 @@ OPEN_VALIDATOR = {
 		para[rule]["random"] = +new Date();
 
 		if (dvalue != value) {
-			console.log(url[rule]);
-			console.log(para[rule]);
 			showmsg(1, selector, "正在验证" + label + "是否重复...");
 			$.ajax({
 				"type": "get",
@@ -374,7 +372,7 @@ function compValidateEvent() {
 			return false;
 		}
 	});
-
+	alert(1);
 	$("form").keydown(function(event) { //阻止回车提交
 		if (event.keyCode == 13) {
 			//$(this).find("input[type='submit']").trigger("click");

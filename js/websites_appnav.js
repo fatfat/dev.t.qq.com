@@ -4,7 +4,7 @@ this.tpl = this.tpl||{};
 this.tpl.websites_appnav = [
 	'<ul class="appsnav">',
 	'<li><a href="/websites/login/"><span class="icon icon_login"></span>微博登录</a></li>',
-	'<li><a href="/websites/share/"><span class="icon icon_share"></span>一键分享</a></li>',
+	'<li><a href="/websites/share"><span class="icon icon_share"></span>一键分享</a></li>',
 	'<li><a href="/websites/followcomp/"><span class="icon icon_follow"></span>收听组件</a></li>',
 	'<!--{*<li><a href="/websites/allfollow/">批量收听</a></li>*}-->',
 	'<li><a href="/websites/wall/"><span class="icon icon_wall"></span>话题墙</a></li>',
