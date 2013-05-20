@@ -148,9 +148,9 @@ var comp = global_obj.data.comp;
 global_obj.data.developer = global_obj.data.developer_detail;
 var developer = global_obj.data.developer;
 $("#main").append(tmpl(development_compcheckuser,global_obj.data));
-alert(comp.comp_id)
+
 var need_post = false;
-var NextUrl = '/development/compcheckinfo?comp_id='+comp.comp_id+'/';
+var NextUrl = '/development/compcheckinfo?comp_id='+comp.comp_id;
 var PostUrl = "/pipes/interfaceserver?action=common_query&business_type=ajax_compcheckover?comp_id="+comp.comp_id;
 var user_province=developer.user_province;
 var user_city= developer.user_city;
