@@ -105,7 +105,8 @@ function refreshUrl() {
 	//是否自动适应宽度
 	_ah = 0 + $('#autoheight').is(":checked"); //是否自动适应高度
 	if (namecheck($("#assname").val())) {
-		_url += '&appkey=' + ("<!--{$comp.comp_id}-->" || "801000271"); //appkey
+//		_url += '&appkey=' + ("<!--{$comp.comp_id}-->" || "801000271"); //appkey
+    	_url += '&appkey=' + "801000271"; //appkey
 		_url += '&name=' + $("#assname").val();
 		_url += '&w=' + [_width, 0][_aw];
 		_url += '&h=' + [_height, 0][_aw];

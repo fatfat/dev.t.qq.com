@@ -19,7 +19,7 @@
 			'<!--{ if $userInfo.hdlogin }-->',
 				'<div id="show" style="height:600px;margin-bottom:-600px;width:335px;margin-right:30px;">',
 					'<h3>效果预览</h3>',
-					'<div style="width:100%;height:571px;overflow:auto;"><iframe id="review" frameborder="0" scrolling="no" marginwidth=0 marginheight=0  src="http://show.v.t.qq.com/index.php?c=show&a=index&n=<!--{$userInfo.name }-->&w=302&h=552&fl=2&l=8&o=31&si=<!--{$userInfo.sign }-->" width="303" height="552"></iframe></div>	',
+					'<div style="width:100%;height:571px;overflow:auto;"><iframe id="review" frameborder="0" scrolling="no" marginwidth=0 marginheight=0  src="http://show.v.t.qq.com/index.php?c=show&a=index&n=<%=userInfo.name%>&w=302&h=552&fl=2&l=8&o=31&si=<%=userInfo.sign%>" width="303" height="552"></iframe></div>	',
 				'</div>',
 				'<div id="act" class="p1">',
 					'<h3>样式设置</h3>',
