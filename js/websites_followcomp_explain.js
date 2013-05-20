@@ -88,8 +88,7 @@ if(userInfo.hdlogin){
 		$('#loginBtn').click();
 	}
 }
-compValidateEvent();
-initEvents();
+bindAllEvent();
 util.createScript("http://pingjs.qq.com/ping.js");
 if(typeof(pgvMain) == "function")pgvMain();
 

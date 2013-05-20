@@ -1,12 +1,12 @@
 ;(function() {
 	//页面参数控制跳转，add by fat
 	if (userInfo.developer_status == 0){
-		if(!/developer\/(bedever|add|addone|edit|checkemail|active)/.test(location.href)){
+		if(!/developer\/(bedever|add|addone|edit)/.test(location.href)){
 			location.href = "/developer/bdever";
 		}
 	} 
 	if (userInfo.user_status == 0){
-		if(!/developer\/(bedever|add|addone|edit|checkemail|active)/.test(location.href)){
+		if(!/developer\/(checkemail|active)/.test(location.href)){
 			location.href = "/developer/checkemail";
 		}
 	}

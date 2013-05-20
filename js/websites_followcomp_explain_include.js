@@ -1,4 +1,3 @@
-util.createScript("http://mat1.gtimg.com/app/opent/js/jscolor_20111108.js");
 var str = [
 	'.comp_area DT{',
 	'margin-top:0px;',
@@ -120,10 +119,14 @@ this.tpl.explain_include = [
 			'</ul>',
 		'</div>',
 '</div>',
-'<script type="text/javascript" src="/js/comp_validate.js?20130328"></script>',
 '<script language="javascript">if(typeof(pgvMain) == "function")pgvMain();</script>',
 '<script language="javascript" src="http://pingjs.qq.com/ping.js"></script>'
 ].join("");
+
+util.createScript("/js/jscolor.js");
+util.createScript("/js/comp_validate.js",function(){
+	bindAllEvent();
+});
 
 var comp_type=2;
 var tencent_wb_name = userInfo.name;
@@ -356,4 +359,4 @@ function formSubmit() {
 		}
 	});
 }
-//eventBindFuncList.push(initEvents)
+eventBindFuncList.push(initEvents)
