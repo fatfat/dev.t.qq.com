@@ -1,5 +1,6 @@
 //;(function(){
-	if (!developerinfo) location.href="/developer/bedever/";
+//	if (!developerinfo) location.href="/developer/bedever/";
+global_obj.data.compat = 2;
 	var websites_shareuse = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
@@ -16,17 +17,17 @@
 		'<div id="content" class="wrapper main main_comp">',
 		'<!--{ include file="./websites/appnav.tpl" }-->',
 		tpl.websites_appnav,
-		'<div class="appsArea2">',
-		'<h1 class="comp_tit">',
+	'<div class="appsArea2">',
+			'<h1 class="comp_tit">',
 		'<%if (compat == 2 ){%>',
 		'使用微博组件 —— 一键分享（移动版）',
 		'<%} else {%>',
 		'组件设置',
 		'<%}%>',
-		'</h1>',
-		'<!--{ include file="./websites/compform.tpl" }-->',
+	'</h1>',
+			'<!--{ include file="./websites/compform.tpl" }-->',
 		tpl.compform,
-		'<%if (compat == 1 ){%>',
+	/*	'<%if (compat == 1 ){%>',
 		'<!--{ include file="./websites/share/shareuse_include.tpl" }-->',
 		tpl.websites_shareuse_include_new,
 		'<%} else if (compat == 2 ){%>',
@@ -37,7 +38,7 @@
 		tpl.websites_shareuse_include_new,
 		'<%}%>',
 		'<h2 class="comp_sub_tit">获取代码</h2>',
-		'<div class="p1">&nbsp;&nbsp;<a href="javascript:;" class="btn_code" id="showcode">获取代码</a> </div>',
+		'<div class="p1">&nbsp;&nbsp;<a href="javascript:;" class="btn_code" id="showcode">获取代码</a> </div>',*/
 		'</div>',
 		'</div>',
 		tpl.footer
