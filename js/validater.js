@@ -1306,7 +1306,7 @@ $("input[type='file']").change(function(){
     	
 var submitCallback = function (d) {
 	//var ret = +(d.ret||d.error),msg=common.getMsgByRet(ret);
-	var ret = +d.ret ,msg=common.getMsgByRet(ret);
+	var ret = +d.ret||d.code ,msg=common.getMsgByRet(ret);
 	loginWin.close();
 	if (msg){
 		loginWin.alert("<center>"+msg+"</center>");
