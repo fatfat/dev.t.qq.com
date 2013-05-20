@@ -141,7 +141,7 @@ function formSubmit() {
 				return;
 			}
 			if (d.ret === 0 && d.data && d.data.id) {
-				location.href = '/development/compinfo/' + d.data.id;
+				location.href = '/development/compinfo?comp_id=' + d.data.id;
 			} else {
 				loginWin.alert({
 					"title": "获取代码失败！",
