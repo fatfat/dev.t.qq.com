@@ -28,8 +28,8 @@ this.tpl.websites_shareuse_include_new = [
 	'<div style="clear:left;"></div>',
 ].join("");
 
-util.createScript("/js/share.js");
-util.createScript("/js/comp_validate.js");
+//util.createScript("/js/share.js");
+//util.createScript("/js/comp_validate.js");
 
 function formSubmit() {
 	if ($("#showcode").attr("disabled")) {

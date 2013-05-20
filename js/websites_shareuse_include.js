@@ -56,7 +56,6 @@ tpl.shareuse_include = [
 		'}',
 		'return $("#reshow").html(_img)&&_img;',
 		'}',
-		'<script type="text/javascript" src="/js/comp_validate.js"></script>',
 	].join("");
 
 	var appkey='',shareid="share_btn_"+(new Date().getTime());

@@ -1,6 +1,6 @@
 //JavaScript Document
 this.tpl = this.tpl ||{};
-this.tpl.explain = [
+this.tpl.comment_explain = [
 	this.tpl.header,
 	'<script> ',
 	'<%if(!developerinfo ){%>location.href="/developer/bedever/";<%}%>',
@@ -35,7 +35,8 @@ this.tpl.explain = [
 	this.tpl.footer
 ].join("");
 
-$("#main").append(tmpl(this.tpl.explain,data));
+$("#main").append(tmpl(this.tpl.comment_explain,global_obj.data));
+
 if(userInfo.hdlogin){
 	var _name = userInfo.name;
 	$("#copyscript").click(function(){

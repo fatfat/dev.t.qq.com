@@ -1,10 +1,10 @@
 ;(function(){
 	QosSS.t[2]= (new Date()).getTime();
-	$(this).tpl = $(this).tpl || {};
-	var tpl.show_explain = [
+
+	tpl.show_explain = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
-		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
+		/*	'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/> ',
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/public/ex.css" type="text/css" rel="stylesheet">',
@@ -12,7 +12,7 @@
 		'<div id="content" class="wrapper main main_comp">',
 		'<!--{ include file="./websites/appnav.tpl" }-->',
 		tpl.websites_appnav,
-			'<div class="appsArea2">',
+		'<div class="appsArea2">',
 				'<h2 class="apptit">',
 					'<strong>使用微博组件 —— 微博秀</strong>',
 				'</h2>',
@@ -30,8 +30,7 @@
 					'<a href="/websites/show?explain=2" id="gotoEx" class="devSubmit">立即使用</a>',
 				'</div>	',
 			'</div>',
-		'</div>',
-		'<script language="javascript" src="http://pingjs.qq.com/ping.js"></script>',
+		'</div>',*/
 		'<!--{ include file="footer.tpl" }-->',
 		tpl.footer,
 	].join("");
@@ -76,7 +75,7 @@
 		$(this).addClass("s").find("input").attr("checked","checked");
 		$('#gotoEx').attr('href','/websites/show?explain='+($(this).find("input").val()==0?2:3));
 	});				
-
+	util.createScript("http://pingjs.qq.com/ping.js");
 	QosSS.c = new Image();
 	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 	QosSS.t[5]= (new Date()).getTime();

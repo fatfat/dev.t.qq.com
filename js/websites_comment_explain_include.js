@@ -60,7 +60,7 @@ this.tpl.explain_include = [
 '</div>'
 ].join("");
 
-util.createScript("/js/comp_validate.js");
+util.createScript("/js/comp_validate.js",function(){bindAllEvent();});
 
 /*解决IE6下点击“组件设置”时，其他导航及应用图标可不见的Bug*/
 setTimeout(function(){
@@ -78,7 +78,8 @@ var comp_type=6;
 
 
 function crUrl(cfg) {
-	var _appkey = comp.comp_id || "801318648";
+//	var _appkey = comp.comp_id || "801318648";
+	var _appkey = "801318648";
 	var rand = Math.random();
 	var _url = 'http://comment.v.t.qq.com/index.html?r=' + rand;
 	_url += '#appkey=' + _appkey;
@@ -112,15 +113,17 @@ function formSubmit() {
 		customcolor.push($(this).val());
 	});
 	var paras = {
+		"action":"common_query",
+		"business_type":"ajax_setmem",
 		"comp_type": 6,
 		//组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板',6'微评论'
 		"comp_style": "{'url':'http%3A%2F%2F" + location.hostname + "','account':'" + $("#account").val() + "','pnum':" + $("#pnum").val() + ",'width':" + $("#width").val() + ",'height':" + $("#height").val() + ",'autowidth':" + $("#autowidth").is(":checked") + ",'colorstyle':" + $("input[name='color']:checked").val() + ",'defaultcolorstyle':" + $("#colorList").find("li.s").index() + ",'customcolor':'" + encodeURIComponent(customcolor.join("_")) + "'}",
 		"account": $("#account").val(),
 		"pnum": $("#pnum").val()
 	};
-	if (comp.comp_id) {
+/*	if (comp.comp_id) {
 		paras["comp_id"] = comp.comp_id;
-	}
+	}*/
 	if ($("#comp_url").size() && $("#comp_name").size()) {
 		paras["comp_url"] = encodeURIComponent($("#comp_url").val());
 		paras["comp_name"] = encodeURIComponent($("#comp_name").val());
@@ -130,7 +133,7 @@ function formSubmit() {
 
 	$.ajax({
 		"type": "post",
-		"url": "/websites/setmem?t=" + new Date().getTime(),
+		"url": "/pipes/interfaceserver?t=" + new Date().getTime(),
 		"data": paras,
 		"dataType": "json",
 		"success": function(d) {

@@ -174,9 +174,11 @@ OPEN_VALIDATOR = {
 		,
 		rule = selector.attr("data-rule") //验证规则
 		,
-		url = "/websites/checkacc?" + ( + new Date()),
+		url = "/pipes/interfaceserver?t=" + ( + new Date()),
 		para = {
-			"account": value
+			"account": value,
+			"action":"common_query",
+			"business_type":"ajax_checkacc"
 		};
 
 		if (dvalue != value) {
