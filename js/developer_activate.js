@@ -31,7 +31,7 @@ var developer_activate = [
 ].join("");
 
 global_obj.data.uinError = global_obj.uinError;
-global_obj.data.confirm_uin = global_obj.confirm_uin;
+global_obj.data.comform_uin = global_obj.comform_uin;
 global_obj.data.request_url = global_obj.request_url;
 global_obj.data.activateResult = global_obj.activateResult;
 $('#main').html(tmpl(developer_activate, global_obj.data));
