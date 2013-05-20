@@ -27,7 +27,7 @@ tpl.mooduse_include = [
 	'</div>',
 ].join("");
 	
-util.createScript("/js/comp_validate.js");
+util.createScript("/js/comp_validate.js",function(){bindAllEvent()});
 
 var comp_type = 5;
 
@@ -52,9 +52,9 @@ function formSubmit() {
 		$("#assname").trigger("change");
 		return;
 	}
-	if (comp.comp_id) {
+/*	if (comp.comp_id) {
 		paras["comp_id"] = comp.comp_id
-	}
+	}*/
 	$("#showcode").attr("disabled", "disabled");
 	$.ajax({
 		"type": "post",
@@ -69,7 +69,7 @@ function formSubmit() {
 				return;
 			}
 			if (ret === 0 && d.data && d.data.id) {
-				location.href = '/development/compinfo/' + d.data.id;
+				location.href = '/development/compinfo?comp_id=' + d.data.id;
 			} else {
 				loginWin.alert({
 					"title": "获取代码失败！",

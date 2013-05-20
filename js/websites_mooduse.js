@@ -9,6 +9,7 @@
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>心情板</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
 		'<!--{ include file="./websites/appnav.tpl" }-->',
+		tpl.websites_appnav,
 			'<div class="appsArea2">	',
 				'<h3 class="hbline"><strong>心情板功能简介</strong></h3>',
 				'<%if(userInfo.hdlogin){%>',
