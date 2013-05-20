@@ -79,8 +79,10 @@ else
 				'<li style="height:auto;">你还没有创建过应用，<a href="javascript:;" onclick="$(\\"#newapp\\").trigger(\\"click\\");" style="display:inline">马上创建</a></li>',
 			'<%}%>',
 		'</ul>',
-			   // <!--其他平台应用-->
-			   '<% if (displaytype == "app") {%>',
+	].join("");
+	
+	tpl.applistul1 = [
+					   // <!--其他平台应用-->
 			   '<div id="otherapplist" class="applist2 hidden">',
 				   '<ul id="applistul1">',
 						'<%for(var i=0;i<kapps.length;i++){%>',    
@@ -110,8 +112,7 @@ else
 						'<%}%>',
 					'</ul>',
 				'</div>',
-			'<% } %>'
-	].join("");
+		].join("");
 	
 	this.tpl.development_list_app = [
 		//<!------------------------------------已创建的应用----------------------------------------->
@@ -137,7 +138,8 @@ else
 					'<label for="apptype3">站内应用</label>',
 				'</form>',
 				tpl.applistul,
-			'</div>',  
+			'</div>', 
+			tpl.applistul1, 
 		'</div>'
 	].join("");
 	this.tpl.development_list_iweibo = [
