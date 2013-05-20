@@ -1,17 +1,17 @@
 ;(function(){
 	QosSS.t[2]= (new Date()).getTime();
 	$(this).tpl = $(this).tpl || {};
-	var tpl.explain1 = [
+	tpl.show_explain1 = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
 		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
-		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20120110" rel="stylesheet" type="text/css"/>',
+		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/>',
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/public/ex.css" type="text/css" rel="stylesheet">  ',
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>微博秀</span></div>',
 		'<div id="content" class="wrapper mainC">',
 		'<!--{ include file="./websites/appnav.tpl" }-->',
-		tpl.appnav,
+		tpl.websites_appnav,
 		'<div class="appsArea2">',
 			'<h3 class="hbline"><strong>微博秀功能简介</strong></h3>	',
 			'<p class="p">使用微博秀，将生成的代码放置到你的博客、网站或是其它支持html代码的位置，就能向网页访问者展示你在腾讯微博的最新广播和听众。</p>',
@@ -41,7 +41,7 @@
 	].join("");
 	QosSS.t[3]= (new Date()).getTime();
 	QosSS.t[4]= (new Date()).getTime()
-
+	$('#main').html(tmpl(tpl.show_explain1,global_obj.data));
 	var UI = {};
 	$(function(){
 		var menu = function(){ 

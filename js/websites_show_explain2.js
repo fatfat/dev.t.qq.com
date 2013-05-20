@@ -1,7 +1,6 @@
-;(function(){}
-	QosSS.t[2]= (new Date()).getTime(),
-	$(this).tpl = $(this).tpl || {};
-	tpl.explain2 = []
+;(function(){
+//	QosSS.t[2]= (new Date()).getTime();
+	tpl.show_explain2 = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
 		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
@@ -12,7 +11,7 @@
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>微博秀</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
 		'<!--{ include file="./websites/appnav.tpl" }-->',
-		tpl.appnav,
+		tpl.websites_appnav,
 		'<div class="appsArea2">	',
 				'<h2 class="apptit">',
 					'<strong>使用微博组件 —— 微博秀</strong>',
@@ -109,7 +108,7 @@
 		].join("");
 		QosSS.t[3]= (new Date()).getTime();
 		QosSS.t[4]= (new Date()).getTime();
-		$('#main').html(tmpl(tpl.explain2,data));
+		$('#main').html(tmpl(tpl.show_explain2,global_obj.data));
 
 		var UI = {};
 		$(function(){
@@ -129,9 +128,9 @@
 			window.UI = UI;
 			UI.menu.hl(1);
 		});	
-		if(userInfo.hdlogin)
-			var _name = '<!--{ $userInfo.name }-->'; 
-			var _sign = '<!--{ $userInfo.sign }-->';		
+		if(userInfo.hdlogin){
+			var _name = userInfo.name; 
+			var _sign = userInfo.sign;		
 			var _width=300;
 			var _height=550;
 			var _colorStyle = 0;
