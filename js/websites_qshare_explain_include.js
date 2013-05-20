@@ -34,7 +34,7 @@ this.tpl.qshare_explain_include = [
 	'</div>'
 ].join("");
 
-util.createScript("/js/comp_validate.js");
+util.createScript("/js/comp_validate.js",function(){bindAllEvent();});
 
 function formSubmit(){
 	if($("#showcode").attr("disabled")){return;}
@@ -42,9 +42,9 @@ function formSubmit(){
 			"comp_type":4, //组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板'
 			"comp_style":"{\"assname\":\""+$("#assname").val()+"\",\"qsharestyle\":"+$("input[name='qsharebtn']:checked").attr("id").replace("qsharebtn","")+"}"
 		};
-		if(comp.comp_id){
+	/*	if(comp.comp_id){
 			paras["comp_id"]= comp.comp_id;
-		}
+		}*/
 		if ($("#comp_url").size()&&$("#comp_name").size()){
 			paras["comp_url"]=encodeURIComponent($("#comp_url").val());
 			paras["comp_name"]=encodeURIComponent($("#comp_name").val());

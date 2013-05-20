@@ -4,7 +4,7 @@
 	tpl.show_explain = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
-		/*	'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
+		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/> ',
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/public/ex.css" type="text/css" rel="stylesheet">',
@@ -30,13 +30,13 @@
 					'<a href="/websites/show?explain=2" id="gotoEx" class="devSubmit">立即使用</a>',
 				'</div>	',
 			'</div>',
-		'</div>',*/
+		'</div>',
 		'<!--{ include file="footer.tpl" }-->',
 		tpl.footer,
 	].join("");
 	QosSS.t[3]= (new Date()).getTime();
 	QosSS.t[4]= (new Date()).getTime();
-	$('#main').html(tmpl(tpl.show_explain,data));
+	$('#main').html(tmpl(tpl.show_explain,global_obj.data));
 	var UI = {};
 	$(function(){
 		var menu = function(){ 
