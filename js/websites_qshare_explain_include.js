@@ -34,9 +34,12 @@ this.tpl.qshare_explain_include = [
 	'</div>'
 ].join("");
 
-util.createScript("/js/comp_validate.js");
+util.createScript("/js/comp_validate.js",function(){
+	bindAllEvent();
+});
 
 function formSubmit(){
+	alert(123)
 	if($("#showcode").attr("disabled")){return;}
    var paras={
 			"comp_type":4, //组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板'
@@ -50,8 +53,8 @@ function formSubmit(){
 			paras["comp_name"]=encodeURIComponent($("#comp_name").val());
 		}
 		$("#showcode").attr("disabled","disabled");
-		$.ajax(
-		{"type":"post",
+		$.ajax({
+		"type":"post",
 		"url":"/pipes/interfaceserver?action=common_query&business_type=ajax_compadd&t=" + new Date().getTime(),
 		"data":paras,
 		"dataType":"json",
@@ -62,7 +65,7 @@ function formSubmit(){
 				return;
 			}
 			if (ret === 0 && d.data && d.data.id){
-				location.href='/development/compinfo/'+d.data.id;
+				location.href='/development/compinfo?comp_id='+d.data.id;
 			}else{
 				loginWin.alert({
 					"title":"获取代码失败！",

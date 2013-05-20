@@ -77,7 +77,9 @@ this.tpl.header,
 
 
 $("#main").append(tmpl(development_compsiteTmpl,global_obj.data))
+
 util.createScript("/js/validater.js")
+
 $(function(){
     $(".appform li.alert").find(".hidebtn").click(function(){
     var t=$(this),p=t.parent(),c=p.find(".alert_content");
