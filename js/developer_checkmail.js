@@ -37,10 +37,10 @@ $('#main').html(tmpl(developer_cancelsubscribe,global_obj.data));
 
 $(function(){   
 	if(developer && developer.user_type ? developer.user_type==1 : "false"){
-		$('a.edit').attr('href','/developer/add');
+		$('a.edit').attr('href','/developer/edit');
 	}
 	else{
-		$('a.edit').attr('href','/developer/addone');
+		$('a.edit').attr('href','/developer/edit');
 	}
 	$('#edit').attr()
 	var e=$("#uemail"),email=e.text(),url="";
