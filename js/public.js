@@ -1,6 +1,5 @@
 ;(function() {
 	//页面参数控制跳转，add by fat
-	alert(userInfo.developer_status+"  "+userInfo.user_status)
 	if (userInfo.developer_status == 0){
 		if(!/developer\/(bedever|add|addone)/.test(location.href)){
 			location.href = "/developer/bdever";
