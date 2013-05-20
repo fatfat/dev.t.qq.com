@@ -752,7 +752,7 @@ $(function(){
 		 var data ={
 		 	 'action':'common_query'
 		 	 ,'business_type':'ajaxsavecheckdeverloper'
-		 	 ,"appid"  : global_obj.data.app.app_id
+		 	 ,"appid"  : global_obj.data.app?global_obj.data.app.app_id:global_obj.data.comp.comp_id
 		 	 ,"need_post"  : need_post
 		 	,"user_name"  : form.find("input[name='user_name']").val()
 		 	,"user_phone" : form.find("input[name='user_phone']").val()
