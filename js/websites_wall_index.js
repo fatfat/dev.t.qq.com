@@ -1,5 +1,4 @@
 ;(function(){
-	var this.tpl = this.tpl || {};
 	tpl.wall = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
@@ -51,6 +50,12 @@
 		tpl.footer,
 	].join("");	
 	$('#main').html(tmpl(tpl.wall,global_obj.data));
+	
+	util.createScript("/js/jscolor.js");
+	util.createScript("/js/customcolor.js");
+	util.createScript("/js/comp_validate.js",bindAllEvent();); 
+	wall_explain();
+//	bindAllEvent();
 	QosSS.t[2]= (new Date()).getTime();
 	QosSS.t[3]= (new Date()).getTime();
 	QosSS.t[4]= (new Date()).getTime();

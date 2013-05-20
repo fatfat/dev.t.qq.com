@@ -316,6 +316,7 @@ function compValidateEvent() {
 	});
 
 	$("#showcode").click(function() { //表单提交验证
+		console.log("a");
 		var flag, errmsg, rule, value, submitflag = true,
 		data = '',
 		f = this.form,
@@ -372,7 +373,7 @@ function compValidateEvent() {
 			return false;
 		}
 	});
-	alert(1);
+
 	$("form").keydown(function(event) { //阻止回车提交
 		if (event.keyCode == 13) {
 			//$(this).find("input[type='submit']").trigger("click");

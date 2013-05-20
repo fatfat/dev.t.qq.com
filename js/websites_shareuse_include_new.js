@@ -43,9 +43,9 @@ function formSubmit() {
 		//组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板'
 		"comp_style": "{\"version\":" + 2 + ",\"iconindex\":\"" + share_iconindex + "\",\"showcounter\":" + share_showcounter + ",\"counterpos\":\"" + share_counterpos + "\",\"richable\":" + richable + "}"
 	};
-	if (comp.comp_id) {
+/*	if (comp.comp_id) {
 		paras["comp_id"] = comp.comp_id;
-	}
+	}*/
 	if ($("#comp_url").size() && $("#comp_name").size()) {
 		paras["comp_url"] = encodeURIComponent($("#comp_url").val());
 		paras["comp_name"] = encodeURIComponent($("#comp_name").val());

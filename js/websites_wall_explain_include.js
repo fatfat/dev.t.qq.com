@@ -73,87 +73,85 @@ tpl.websites_wall_explain_include = [
 	'</div>'
 ].join("");
 	
-util.createScript("/js/jscolor.js");
-util.createScript("/js/customcolor.js");
-util.createScript("/js/comp_validate.js")
-
-var _width = 345;
+ var _width = 345;
 var _height = 590;
 var _opt = 7;
 var comp_type = 3;
 
-$("input[name='topicname']").change(function() {
-	crUrl(false);
-});
-
-$('#wbname').change(function() {
-	crUrl(false);
-});
-
-$('#width').blur(function() {
-	theval = $(this).val();
-	if (theval < 255) {
-		$(this).val(255);
-	}
-	if (theval > 1024) {
-		$(this).val(1024);
-	}
-	_width = parseInt($(this).val());
-	crUrl(false);
-}).keyup(function() {
-	var theval = $(this).val();
-	$(this).val(theval.replace(/[^\d]{0,4}/g, ''));
-});
-$('#height').blur(function() {
-	theval = $(this).val();
-	if (theval < 300) {
-		$(this).val(300);
-	}
-	if (theval > 800) {
-		$(this).val(800);
-	}
-	_height = $(this).val();
-	crUrl(false);
-}).keyup(function() {
-	var theval = $(this).val();
-	$(this).val(theval.replace(/[^\d]{0,4}/g, ''));
-
-});
-
-$('#colorList li').each(function(i) {
-	$(this).click(function() {
-		$('#colorList li').removeClass('s');
-		$(this).addClass('s');
-		crUrl();
-	});
-});
-
-$('input[name=imgshow]').click(function() {
-	crUrl(false);
-});
-
-$('input[name=post]').click(function(i) {
-	crUrl(false);
-});
-
-$('input[name=tmodel]').click(function(i) {
-	crUrl(false);
-});
-/*
-	$('#use_customcolorset').click(function(){
-		crUrl('',4);
+var wall_explain = function(){
+	$("input[name='topicname']").change(function() {
+		crUrl(false);
 	});
 
-    $('#defaultColor').change(function () {
-        $("#colorList > li:first-child").trigger('click');
-    });*/
-$("input[name='color']").click(function() {
-	$("#colorList,#customcolor").hide();
-	if ($(this).val() == 0) {
-		$(this).parent().find("li:eq(0)").trigger("click");;
-	}
-	$(this).parent().find("ul").show();
-})
+	$('#wbname').change(function() {
+		crUrl(false);
+	});
+
+	$('#width').blur(function() {
+		theval = $(this).val();
+		if (theval < 255) {
+			$(this).val(255);
+		}
+		if (theval > 1024) {
+			$(this).val(1024);
+		}
+		_width = parseInt($(this).val());
+		crUrl(false);
+	}).keyup(function() {
+		var theval = $(this).val();
+		$(this).val(theval.replace(/[^\d]{0,4}/g, ''));
+	});
+	$('#height').blur(function() {
+		theval = $(this).val();
+		if (theval < 300) {
+			$(this).val(300);
+		}
+		if (theval > 800) {
+			$(this).val(800);
+		}
+		_height = $(this).val();
+		crUrl(false);
+	}).keyup(function() {
+		var theval = $(this).val();
+		$(this).val(theval.replace(/[^\d]{0,4}/g, ''));
+
+	});
+
+	$('#colorList li').each(function(i) {
+		$(this).click(function() {
+			$('#colorList li').removeClass('s');
+			$(this).addClass('s');
+			crUrl();
+		});
+	});
+
+	$('input[name=imgshow]').click(function() {
+		crUrl(false);
+	});
+
+	$('input[name=post]').click(function(i) {
+		crUrl(false);
+	});
+
+	$('input[name=tmodel]').click(function(i) {
+		crUrl(false);
+	});
+	/*
+		$('#use_customcolorset').click(function(){
+			crUrl('',4);
+		});
+
+	    $('#defaultColor').change(function () {
+	        $("#colorList > li:first-child").trigger('click');
+	    });*/
+	$("input[name='color']").click(function() {
+		$("#colorList,#customcolor").hide();
+		if ($(this).val() == 0) {
+			$(this).parent().find("li:eq(0)").trigger("click");;
+		}
+		$(this).parent().find("ul").show();
+	})
+};
 
 function crUrl(o) {
 	if ($.trim($('input#t1').val()).length == 0) return false;
