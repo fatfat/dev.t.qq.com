@@ -34,7 +34,7 @@ tpl.header,
 				'<strong>确认开发者信息</strong><i></i><label>确认组件信息</label><i></i><label>提交审核</label>',
 			'</div>',
 			'<!--开发者信息-->',
-'<iframe id="appform_post" width="100" height="100" src="about:blank"></iframe>',
+'<iframe id="appform_post" width="100" height="100" src="about:blank"><iframe>',
 '<form action="" method="post" class="appform"  id="appform_user"  onsubmit="return false;" >',
    ' <ul class="appinfo_certif">',
 '<%if(developer.user_type !=2){ %>',
@@ -132,7 +132,7 @@ tpl.header,
  		'<li>',
             '<label class="form_label">&nbsp;</label>',
            ' <span class="form_element">',
-				//'<!--<input type="button" class="devCancel" value="保存设置">-->',
+'<!--	            <input type="button" class="devCancel" value="保存设置">-->',
 	            '<input type="submit" class="devSubmit" id="devSubmit" value="下一步" data-rule="formauto">',
             '</span>',
        ' </li>',
@@ -144,9 +144,6 @@ tpl.header,
 tpl.footer,
 ].join("\r");
 
-var comp = global_obj.data.comp = global_obj.data;
-global_obj.data.developer = global_obj.data.developer_detail;
-var developer = global_obj.data.developer;
 $("#main").append(tmpl(development_compcheckuser,global_obj.data));
 
 var need_post = false;

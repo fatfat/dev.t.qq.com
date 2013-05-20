@@ -29,9 +29,7 @@ this.tpl.websites_shareuse_include_new = [
 ].join("");
 
 util.createScript("/js/share.js");
-util.createScript("/js/comp_validate.js",function(){
-	bindAllEvent();
-});
+util.createScript("/js/comp_validate.js");
 
 function formSubmit() {
 	if ($("#showcode").attr("disabled")) {

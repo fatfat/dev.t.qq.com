@@ -48,6 +48,7 @@ function compType1(){
 		//<% include file="./websites/share/shareuse_include_new.tpl" %>
 		util.createScript("/js/websites_shareuse_include_new.js",function(){
 			$(".showcode_bar").before(tmpl(tpl.shareuse_include_new,global_obj.data));
+			bindAllEvent();//添加事件
 			$(function(){
 				if (comp_style.richable === 0){
 					$("#richable").removeAttr("checked");
@@ -84,6 +85,7 @@ function  compType2(){
 	<!--收听组件-->
 	util.createScript("/js/websites_followcomp_explain_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.explain_include,global_obj.data));
+		bindAllEvent();
 		//<% include file="./websites/followcomp/explain_include.tpl" %>
 		var comp_style = comp.comp_style?comp.comp_style:{"names":"","colorstyle":0,"customcolor":"#fff","iconsize":0};
 		var comp_id = comp.comp_id;
@@ -116,7 +118,7 @@ function  compType2(){
 function compType3(){
 	<!--话题墙-->
 	util.createScript("/js/websites_wall_explain_include.js",function(){
-		$(".showcode_bar").before(tmpl(tpl.websites_wall_explain_include,global_obj.data));
+		$(".showcode_bar").before(tmpl(tpl.explain_include,global_obj.data));
 		//<% include file="./websites/wall/explain_include.tpl" %>
 		var comp_style = comp.comp_style?comp.comp_style:{"topicnames":"%E7%BE%8E%E5%A5%B3,%E6%B8%94%E6%B0%B4%E4%B9%8B%E6%AC%A2,%E7%A6%8F%E5%88%A9","width":300,"height":550,"autowidth":true,"colorstyle":1,"defaultcolorstyle":-1,"customcolor":"B9FF40_FFF0D1_6A437A_63FFBC_91FFCF_54FF82","imgshow":0,"postpos":0};
 		var comp_id = comp.comp_id;
@@ -158,9 +160,10 @@ function compType3(){
 }
 function compType4(){
 	//<!--Q-Share-->
-	alert("-Q-Share")
+	
 	util.createScript("/js/websites_qshare_explain_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.qshare_explain_include,global_obj.data));
+		bindAllEvent();
 		//<% include file="./websites/qshare/qshare_explain_include.tpl" %>
 		var comp_style = comp.comp_style?comp.comp_style:{"assname":"","qsharestyle":0};
 		var comp_id = comp.comp_id;
@@ -246,6 +249,7 @@ function compType8(){
 		$(".showcode_bar").before(tmpl(tpl.loginuse_include,global_obj.data));	
 	});
 }
+
 	if(comp.comp_type == 1){
 		compType1();
 	}else if(comp.comp_type == 2){
