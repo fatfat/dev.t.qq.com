@@ -254,6 +254,7 @@
 					'<%}%>',
 				].join("");
 				$('#login_status').html(tmpl(loginInfo,d.data));
+				$('#logoutBtn').bind("click",common.loginOut);
 				global_obj.data.userInfo.hdlogin = userInfo.hdlogin = hdlogin = d.data.hdlogin;
 			}
 		});
