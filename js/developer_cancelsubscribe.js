@@ -49,7 +49,7 @@ $(function(){
 	$("#subcribeApiCall").click(function(){
 		$.ajax({
 	        type: "get",
-	        url: "/developer/cancelsub/1",
+	        url: "/pipes/interfaceserver?action=common_query&business_type=cancelsub&user_cancel_subscribe=1",
 	        dataType: "json",
 	        success: function(d){
 	            if(d.ret == 0){
