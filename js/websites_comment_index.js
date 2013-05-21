@@ -51,6 +51,7 @@ this.tpl.index = [
 
 $("#main").append(tmpl(this.tpl.index,global_obj.data));
 bindAllEvent();
+util.setLoginInfo();
 QosSS.c = new Image();
 QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 QosSS.t[5]= (new Date()).getTime();

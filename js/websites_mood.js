@@ -40,4 +40,5 @@
 	].join("");
 	$('#main').html(tmpl(tpl.mood,global_obj.data));
 	bindAllEvent();
+	util.setLoginInfo();
 })();

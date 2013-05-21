@@ -166,7 +166,7 @@
 			var p=location.pathname;
 			$(".appsnav").find("li").find("a").each(function(){
 				var pathname = location.pathname.replace(/\/use/gi,"/")+"/";
-				console.log([pathname,$(this).attr("href")]);
+		//		console.log([pathname,$(this).attr("href")]);
 				pathname = pathname.replace(/[1-9]+/g,"");  //微博秀
 				if (pathname.indexOf($(this).attr("href"))>-1){
 					$(this).parent().addClass("active");
