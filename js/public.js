@@ -153,7 +153,7 @@
 	].join("");
 		
 	$(function(){
-		if(global_obj.data.navPos==7){
+		if(global_obj.data.navPos==2){
 			var p=location.pathname;
 			$(".appsnav").find("li").find("a").each(function(){
 				var pathname = location.pathname.replace(/\/use/gi,"/")+"/";
