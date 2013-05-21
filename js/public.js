@@ -239,8 +239,10 @@
 					loginWin.alert("<center>"+msg+"</center>");
 					return;
 				}
+				console.log(d);
+				console.log(d.data.hdlogin);
 				var loginInfo = [
-					'<%if (hdlogin ) {%>',
+					'<%if (hdlogin != "false" ) {%>',
 					'<div class="menu">',
 						'<a class="login_name" href="javascript:;" title="<%=nick%>"><%=nick%><em></em></a>',
 						'<i class="nav_arrow"></i>',
