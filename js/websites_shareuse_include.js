@@ -136,7 +136,7 @@ tpl.shareuse_include = [
 	if($("#showcode").attr("disabled")){return;}
 	var paras={
 	    		"comp_type":1, //组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板'
-	    		"action":common_query,
+	    		"action":"common_query",
 	    		"business_type":"ajax_compadd",
 				"comp_style":"{\"btnstyle\":"+$("input[name='t1']:checked").val()+",\"btnsize\":"+$("input[name='size']:checked").val()+",\"btntext\":\""+$("input[name='reply_text']").val()+"\",\"assname\":\""+$("#assname").val()+"\",\"qshareable\":"+$("input[name='qshareable']").is(":checked")+",\"qsharestyle\":"+$("input[name='qsharebtn']:checked").attr("id").replace("qsharebtn","")+"}"
 	    	};
