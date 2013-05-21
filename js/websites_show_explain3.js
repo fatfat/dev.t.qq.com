@@ -109,7 +109,7 @@
 		QosSS.t[3]= (new Date()).getTime();
 		QosSS.t[4]= (new Date()).getTime();
 		$('#main').html(tmpl(tpl.show_explain2,global_obj.data));
-
+		bindAllEvent();
 		var UI = {};
 		$(function(){
 			var menu = function(){ 
