@@ -286,6 +286,37 @@ D();else{k=g.sid;d="http://tcss.qq.com/heatmap/"+k%100+"/";k+="";h=k.length;b=0;
 a+".js?random="+ +new Date,function(){var a;if(window._Cnf&&(a=window._Cnf.url)){a=a.split("|");for(var b=0;b<a.length;b++)if(a[b]==H){D();break}}})}}g.logo&&255!=g.logo&&(d=g.logo,k={9:"\u817e\u8baf\u5206\u6790",10:"\u7f51\u7ad9\u7edf\u8ba1",df:'<img src="http://tcss.qq.com/icon/toss_'+d+'.gif" border="0" />'},document.write(['<a href="http://ta.qq.com?ADTAG=FROUM.FOOTER.CLICK.ICON" title="\u817e\u8baf\u5206\u6790" target="_blank">',k[d]||k.df,"<a>"].join("")))}}var q={afs:{key:1,id:"ssid",c_id:"pgv_afsid",
 fr:"hash"},afc:{key:2,id:"__tacid",c_id:"pgv_afcid",fr:"param"},gdt:{key:11,id:"qz_gdt",c_id:"pgv_gdtid",fr:"param"}};t.pgvSendClick=function(d,a){var b=Ta.src.replace(/ext=[^&]*/,function(){return"ext="+("evtid"==a?"ty=0;evtid=":"adid=")+d}).replace(/r2=([^&]*)/,function(a,b){return"r2=a"+b});(new Image(1,1)).src=b};t.Ta=t.Ta||{};Ta.pgv=x;!Ta.async&&x(Ta.hack?Ta.hack():"")})({sid:"",pf:"",hot:{url:"",isValid:!1}},this);
 	
+	//agreement.js
+	this.tpl.agreement = [
+	'<li>',
+		'<label class="form_label">&nbsp;</label>',
+		'<div class="form_element"  style="line-height:20px;">',
+		'<input type="checkbox" name="user_agree" id="user_agree">' ,
+		'<label for="user_agree">我同意接受</label>',
+		'<a target="_blank" href="/index/agreement/" class="valign">《腾讯微博开放平台开发者服务协议》</a>',
+		'<br/>',
+		'<input type="checkbox" name="user_agree" id="user_agree2" agreement="腾讯微博开放平台第三方应用审核规范">', 
+		'<label for="user_agree2">我同意接受</label>',
+		'<a target="_blank" href="http://wiki.open.t.qq.com/index.php/%E8%85%BE%E8%AE%AF%E5%BE%AE%E5%8D%9A%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%AE%A1%E6%A0%B8%E8%A7%84%E8%8C%83" class="valign">《腾讯微博开放平台第三方应用审核规范》</a>',
+		'</div>',
+	'</li>'
+	].join("");
+	//compform.js
+	tpl.compform = [
+		'<h2 class="comp_sub_tit">填写网站信息</h2>',
+		'<form class="appform comp_site_form">',
+		'<ul>',
+			'<li><label class="form_label">网站名称： </label>',
+				'<span class="form_input"><input type="text" value="" name="comp_name" id="comp_name" maxlength="16" data-rule="compname" data-error="网站名称"/></span>',
+				'<cite class="gray inputdes">该名称用于显示来源 <a href="http://wiki.open.t.qq.com/index.php/%E4%BA%A7%E5%93%81%E7%B1%BBFAQ#.E6.8F.90.E4.BA.A4.E5.BA.94.E7.94.A8.E6.9D.A5.E6.BA.90.E5.AD.97.E6.AE.B5.E5.AE.A1.E6.A0.B8.E8.83.BD.E5.BE.97.E5.88.B0.E4.BB.80.E4.B9.88.E5.A5.BD.E5.A4.84.EF.BC.9F" target="_blank" class="icon_help" title="提交应用来源字段审核能得到什么好处？"></a></cite>',
+			'</li>',
+			'<li><label class="form_label">网站地址： </label>',
+			'<span class="form_input"><input type="text" value="" name="comp_url" id="comp_url" data-rule="link" data-error="网站地址"/></span>',
+				'<cite class="gray inputdes">用户通过该链接地址访问你的网站</cite>',
+			'</li>', 
+		'</ul>',
+		'</form>',
+	].join("");
 	//--------------add by cbyi ---------------------
 	var cache = {};
 	this.tmpl = function tmpl(str, data){
