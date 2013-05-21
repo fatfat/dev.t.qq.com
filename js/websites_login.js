@@ -41,6 +41,7 @@ this.tpl.footer
 ].join("");
 $("#main").append(tmpl(websites_login,global_obj.data));
 util.setLoginInfo();
+bindAllEvent();
 QosSS.c = new Image();
 QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 QosSS.t[5]= (new Date()).getTime();

@@ -39,4 +39,5 @@
 		tpl.footer,
 	].join("");
 	$('#main').html(tmpl(tpl.mood,global_obj.data));
+	bindAllEvent();
 })();
