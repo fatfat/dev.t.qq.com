@@ -38,11 +38,15 @@ util.createScript("/js/comp_validate.js",function(){bindAllEvent();});
 
 function formSubmit(){
 	if($("#showcode").attr("disabled")){return;}
-   var paras={
+	var paras={
 			"comp_type":4, //组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板'
 			"comp_style":"{\"assname\":\""+$("#assname").val()+"\",\"qsharestyle\":"+$("input[name='qsharebtn']:checked").attr("id").replace("qsharebtn","")+"}"
 		};
+<<<<<<< HEAD
 	/*	if(comp.comp_id){
+=======
+		/*if(comp.comp_id){
+>>>>>>> 生成qshare组件可用
 			paras["comp_id"]= comp.comp_id;
 		}*/
 		if ($("#comp_url").size()&&$("#comp_name").size()){
@@ -62,7 +66,7 @@ function formSubmit(){
 				return;
 			}
 			if (ret === 0 && d.data && d.data.id){
-				location.href='/development/compinfo/'+d.data.id;
+				location.href='/development/compinfo?comp_id='+d.data.id;
 			}else{
 				loginWin.alert({
 					"title":"获取代码失败！",

@@ -44,6 +44,9 @@
 		window.UI = UI;
 		UI.menu.hl(1);
 	});	
+	$.getScript('/js/comp_validate.js', function () {
+		compValidateEvent();
+	});
 	QosSS.c = new Image();
 	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 	QosSS.t[5]= (new Date()).getTime();
