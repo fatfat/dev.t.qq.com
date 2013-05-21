@@ -10,6 +10,15 @@
 		}
 	}
 	
+	//添加一个函数记录页面上所有JS要添加的时间绑定函数,以便在文档生成后统一执行
+	this.eventBindFuncList = [];
+	this.bindAllEvent = function(){
+		$(this.eventBindFuncList).each(function(index,fn){
+			fn.call(window);
+		})
+		this.eventBindFuncList = [];
+	}
+	
 	this.tpl = this.tpl || {};
 	tpl.appnav = [
 		'<ul class="appsnav">',
@@ -152,7 +161,7 @@
 		'</ul>',
 	].join("");
 		
-	$(function(){
+	eventBindFuncList.push(function(){
 		if(global_obj.data.navPos==2){
 			var p=location.pathname;
 			$(".appsnav").find("li").find("a").each(function(){
@@ -248,14 +257,7 @@
 		});
 	};
 		
-	//添加一个函数记录页面上所有JS要添加的时间绑定函数,以便在文档生成后统一执行
-	this.eventBindFuncList = [];
-	this.bindAllEvent = function(){
-		$(this.eventBindFuncList).each(function(index,fn){
-			fn.call(window);
-		})
-		this.eventBindFuncList = [];
-	}
+
 	//用于一个循环检查DOM加载完成后执行
 	this.readyExecution = function(selector,fn,content){
 		var eventAddStatus = 1;

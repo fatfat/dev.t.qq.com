@@ -43,6 +43,7 @@
 	].join("");
 	QosSS.t[3]= (new Date()).getTime();
 	$('#main').html(tmpl(tpl.share,global_obj.data));
+	bindAllEvent();
 	QosSS.c = new Image();
 	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 	QosSS.t[5]= (new Date()).getTime();

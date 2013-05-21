@@ -44,6 +44,7 @@
 		tpl.footer,
 	].join("");
 	$('#main').html(tmpl(tpl.wrapper,global_obj.data));
+	bindAllEvent();
 	QosSS.t[3]= (new Date()).getTime();
 	QosSS.t[4]= (new Date()).getTime();
 	QosSS.c = new Image();

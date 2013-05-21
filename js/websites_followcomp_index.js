@@ -34,4 +34,5 @@ this.tpl.websites_followcomp_index = [
 ].join("");
 $("#main").html(tmpl(tpl.websites_followcomp_index,global_obj.data));
 	util.setLoginInfo();
+	bindAllEvent();
 	util.createScript("/js/imgViewer.js");
