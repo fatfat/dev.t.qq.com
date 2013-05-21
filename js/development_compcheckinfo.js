@@ -110,14 +110,15 @@ $(function(){
 	});
 	$(".appform").submit(function(){
 	if(confirm("提交审核后组件信息将不能修改，是否确定继续提交审核？")){
-		var postData ='comp_id='+comp.comp_id+
+		var postData ='comp_id='+comp.comp_id
 		+'&comp_user_uin='+comp.comp_user_uin
 		+'&comp_status='+comp.comp_status
-		+'&comp_level='+comp.comp_level+
+		+'&comp_level='+comp.comp_level
 		+'&comp_name='+encodeURIComponent($('input[name="comp_name"]').val())
 		+'&comp_url='+encodeURIComponent($('input[name="comp_url"]').val())
 		+'&comp_source_status='+encodeURIComponent($('input[name="comp_source_status"]').val())
 		+"action=common_query&business_type=ajax_compcheckover";
+		console.log(postData)
          $.ajax({
                "type": "POST",
                //"url": "/development/compcheckover?t="+new Date().getTime(),
