@@ -5,17 +5,9 @@
 <script type="text/javascript">
 	//document.domain = "qq.com";
 	//---需要后台吐出来的信息
-	var global_obj  = {
-		data:{
-				userInfo:{
-				hdlogin:false,
-				reg_wb:""
-			},
-			nick:"",
-			navPos:1
-		}
-	}
-	var userInfo = global_obj.data.userInfo;
+	var userInfo={"hdlogin":false,"developer_statu":1,"user_status":1};
+	var global_obj = {"data":{"navPos":1}};
+	global_obj.data.userInfo = userInfo;
 	//-----------
 	var QosSS = new Object();
 	QosSS.t = new Array([0,0,0,0,0,0]);

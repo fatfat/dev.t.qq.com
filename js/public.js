@@ -255,7 +255,14 @@
 					'<%}%>',
 				].join("");
 				$('#login_status').html(tmpl(loginInfo,d.data));
-				$('#logoutBtn').bind("click",common.loginOut);
+				if (d.data.hdlogin != "false"){
+					$('#logoutBtn').bind("click",common.loginOut);
+				} else {
+					$('#loginBtn').click(function() {
+						common.showLoginWin();
+					//	return false;
+					});
+				}
 				global_obj.data.userInfo.hdlogin = userInfo.hdlogin = hdlogin = d.data.hdlogin;
 			}
 		});
