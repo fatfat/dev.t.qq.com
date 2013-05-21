@@ -116,10 +116,12 @@ $(function(){
 		+'&comp_level='+comp.comp_level+
 		+'&comp_name='+encodeURIComponent($('input[name="comp_name"]').val())
 		+'&comp_url='+encodeURIComponent($('input[name="comp_url"]').val())
-		+'&comp_source_status='+encodeURIComponent($('input[name="comp_source_status"]').val());
+		+'&comp_source_status='+encodeURIComponent($('input[name="comp_source_status"]').val())
+		+"action=common_query&business_type=ajax_compcheckover";
          $.ajax({
                "type": "POST",
-               "url": "/development/compcheckover?t="+new Date().getTime(),
+               //"url": "/development/compcheckover?t="+new Date().getTime(),
+			   "url":"/pipes/interfaceserver",
                "dataType": "json",
                "data": postData,
                "success": function(d){
