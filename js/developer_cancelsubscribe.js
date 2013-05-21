@@ -2,7 +2,7 @@
 	
 var developer_cancelsubscribe = 
 [       
-	headerTmpl, 
+	this.tpl.header, 
 	'<style>',
 	/*body,div,input,p{
 		margin:0;
@@ -41,7 +41,7 @@ var developer_cancelsubscribe =
 	'<div class="actioninfo">',
 		'<img src="http://mat1.gtimg.com/app/opent/images/index/transparent.gif" class="alert">取消订阅后将无法及时收到API调用相关信息。确定取消订阅？<br/><a href="javascript:void(0)" id="subcribeApiCall" class="links">确定</a> &nbsp; <a href="javascript:void(0)" id="cancelSubscribe" class="links">关闭</a>',
 	'</div>',
-	footerTmpl	
+	this.tpl.footer	
 ].join("");
 	
 $(function(){   
