@@ -45,7 +45,6 @@
 		].join("");
 		$('#main').html(tmpl(tpl.content, global_obj.data));
 		bindAllEvent();
-		console.log(util)
 		util.setLoginInfo();
 		QosSS.t[3]= (new Date()).getTime();
 		QosSS.t[4]= (new Date()).getTime();	

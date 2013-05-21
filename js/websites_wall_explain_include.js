@@ -294,6 +294,9 @@ function formSubmit() {
 		});
 		return;
 	}
+	if(window.comp){
+		paras["comp_id"] = comp.comp_id;
+	}
 	$("#showcode").attr("disabled", "disabled");
 	$.ajax({
 		"type": "post",
@@ -337,7 +340,9 @@ function normalValidate() {
 	$("#comp_name").trigger("blur");
 }
 
-
+util.createScript("/js/comp_validate.js",function(){
+	bindAllEvent();
+});
 /*window.onload = function(){//解决IE6下组件设置（话题墙）页左侧导航隐藏的bug
 		if($.browser.msie && $.browser.version == "6.0"){
 			$(".deverRight").css({"width":"782px"});

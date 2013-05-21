@@ -285,10 +285,9 @@ function formSubmit() {
 		"comp_type": 2
 	}; //组件类型 1、'一键分享',2'收听组件（原批量收听）',3'话题墙',4'Q-Share',5'心情板'
 	// 组件ID
-	/*
-	if (comp && comp.comp_id) {
+	if (window.comp) {
 		paras["comp_id"] = comp.comp_id
-	}*/
+	}
 	// 网址信息
 	if ($("#comp_url").size() && $("#comp_name").size()) {
 		paras["comp_url"] = encodeURIComponent($("#comp_url").val());
@@ -325,7 +324,6 @@ function formSubmit() {
 		paras["comp_style"] = "{\"names\":\"" + names.join(",") + "\",\"colorstyle\":" + $("input[name='color']:checked").val() + ",\"customcolor\":\"" + $("#color_bg").val() + "\",\"iconsize\":" + $("input[name='iconsize']:checked").val() + "}"; //组件风格 
 		break;
 	}
-
 	$.ajax({
 		"type": "post",
 		"url": "/pipes/interfaceserver?action=common_query&business_type=ajax_compadd&t=" + new Date().getTime(),

@@ -8,6 +8,8 @@
 		if(!/developer\/(add|addone|edit|checkemail|activate)/.test(location.href)){
 			location.href = "/developer/checkemail";
 		}
+	}else if(global_obj.code==1){
+		top.location.href = global_obj.url;
 	}
 	
 	//添加一个函数记录页面上所有JS要添加的时间绑定函数,以便在文档生成后统一执行
@@ -166,7 +168,6 @@
 			var p=location.pathname;
 			$(".appsnav").find("li").find("a").each(function(){
 				var pathname = location.pathname.replace(/\/use/gi,"/")+"/";
-		//		console.log([pathname,$(this).attr("href")]);
 				pathname = pathname.replace(/[1-9]+/g,"");  //微博秀
 				if (pathname.indexOf($(this).attr("href"))>-1){
 					$(this).parent().addClass("active");
@@ -239,8 +240,6 @@
 					loginWin.alert("<center>"+msg+"</center>");
 					return;
 				}
-				console.log(d);
-				console.log(d.data.hdlogin);
 				var loginInfo = [
 					'<%if (hdlogin != "false" ) {%>',
 					'<div class="menu">',
@@ -360,6 +359,3 @@ fr:"hash"},afc:{key:2,id:"__tacid",c_id:"pgv_afcid",fr:"param"},gdt:{key:11,id:"
 	};
 })();
 
-if(global_obj.code==1){
-	//top.location.href = global_obj.url;
-}

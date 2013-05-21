@@ -28,8 +28,10 @@ this.tpl.websites_shareuse_include_new = [
 	'<div style="clear:left;"></div>',
 ].join("");
 
-//util.createScript("/js/share.js");
-//util.createScript("/js/comp_validate.js");
+util.createScript("/js/share.js");
+util.createScript("/js/comp_validate.js",function(){
+	bindAllEvent();
+});
 
 function formSubmit() {
 	if ($("#showcode").attr("disabled")) {
@@ -49,6 +51,9 @@ function formSubmit() {
 	if ($("#comp_url").size() && $("#comp_name").size()) {
 		paras["comp_url"] = encodeURIComponent($("#comp_url").val());
 		paras["comp_name"] = encodeURIComponent($("#comp_name").val());
+	}
+	if(window.comp){
+		paras["comp_id"] = comp.comp_id;
 	}
 	$("#showcode").attr("disabled", "disabled");
 	$.ajax({

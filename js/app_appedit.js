@@ -1092,7 +1092,6 @@ if (+$("input[name='app_hosting']:checked").val() === 1){
 			,"url":"/apps/getappsitelist"
 			,"data":{"uin":hdlogin,"app_id":$("input[name='app_id']").val()}
 			,"success":function(d){
-				alert(d.code)
 				var ret = +d.ret,msg =common.getMsgByRet(ret);
 				if (msg){
 					loginWin.alert("<center>"+msg+"</center>");

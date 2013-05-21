@@ -52,9 +52,9 @@ function formSubmit() {
 		$("#assname").trigger("change");
 		return;
 	}
-/*	if (comp.comp_id) {
+	if (window.comp) {
 		paras["comp_id"] = comp.comp_id
-	}*/
+	}
 	$("#showcode").attr("disabled", "disabled");
 	$.ajax({
 		"type": "post",

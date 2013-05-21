@@ -79,6 +79,9 @@ function formSubmit(){
 		paras['comp_url'] = encodeURIComponent($('#comp_url').val());
 		paras['comp_name'] = encodeURIComponent($('#comp_name').val());
 	}
+	if (window.comp) {
+		paras["comp_id"] = comp.comp_id
+	}
 	$('#showcode').attr('disabled','disabled');
 	$.ajax({'type' : 'post',
 		'url':"/pipes/interfaceserver?action=common_query&business_type=ajax_compadd&t=" + new Date().getTime(),
@@ -116,4 +119,6 @@ function normalValidate(){
 }
 var comp_type=8;
 util.createScript("/js/login_vt.js")
-util.createScript("/js/comp_validate.js");
+util.createScript("/js/comp_validate.js",function(){
+	bindAllEvent();
+});

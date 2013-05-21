@@ -4,7 +4,6 @@
 			location.href = global_obj.url;
 		}
 		else if (global_obj.code == 2){
-			alert(global_obj.msg);
 			location.href = global_obj.url;
 		}
 		else {
