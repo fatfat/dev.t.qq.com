@@ -180,8 +180,8 @@
 	util.createScript = function (src,callback) {
 		var script = document.createElement('script');
 		script.type = 'text/javascript';
-		script.src = src;
 		script.onload = callback;
+		script.src = src;
 		document.body.appendChild(script);
 	}
 	//--------------add by cbyi ---------------------
