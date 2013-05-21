@@ -92,6 +92,7 @@ QosSS.t[4]= (new Date()).getTime();
 	  tpl.footer,
    ].join("");
    $('#main').html(tmpl(tpl.sign_explain, global_obj.data));
+   bindAllEvent();
    $(function(){	
 		var UI = {};
 		var menu = function(){ 

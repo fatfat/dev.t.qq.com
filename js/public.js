@@ -166,6 +166,7 @@
 			var p=location.pathname;
 			$(".appsnav").find("li").find("a").each(function(){
 				var pathname = location.pathname.replace(/\/use/gi,"/")+"/";
+				console.log([pathname,$(this).attr("href")]);
 				pathname = pathname.replace(/[1-9]+/g,"");  //微博秀
 				if (pathname.indexOf($(this).attr("href"))>-1){
 					$(this).parent().addClass("active");
@@ -253,6 +254,7 @@
 					'<%}%>',
 				].join("");
 				$('#login_status').html(tmpl(loginInfo,d.data));
+				$('#logoutBtn').bind("click",common.loginOut);
 				global_obj.data.userInfo.hdlogin = userInfo.hdlogin = hdlogin = d.data.hdlogin;
 			}
 		});
