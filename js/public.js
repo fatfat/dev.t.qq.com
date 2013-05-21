@@ -1,7 +1,7 @@
 ;(function() {
 	//页面参数控制跳转，add by fat
 	if (userInfo.developer_status == 0){
-		if(!/developer\/(bedever|add|addone)/.test(location.href)){
+		if(!/developer\/(bedever|add|addone|activate)/.test(location.href)){
 			location.href = "/developer/bedever";
 		}
 	}else if (userInfo.user_status == 0){
@@ -153,16 +153,18 @@
 	].join("");
 		
 	$(function(){
-		var p=location.pathname;
-		$(".appsnav").find("li").find("a").each(function(){
-			var pathname = location.pathname.replace(/\/use/gi,"");
-			if (pathname.indexOf($(this).attr("href"))>-1){
-				$(this).parent().addClass("active");
-				return;
-			}else if(1){
-			
-			}
-		});
+		if(global_obj.data.navPos==7){
+			var p=location.pathname;
+			$(".appsnav").find("li").find("a").each(function(){
+				var pathname = location.pathname.replace(/\/use/gi,"/")+"/";
+				if (pathname.indexOf($(this).attr("href"))>-1){
+					$(this).parent().addClass("active");
+					return;
+				}else if(1){
+				
+				}
+			});
+		}
 	})
 
 	util.createScript = function (src,callback) {
