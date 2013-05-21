@@ -155,7 +155,8 @@
 	$(function(){
 		var p=location.pathname;
 		$(".appsnav").find("li").find("a").each(function(){
-			if ($(this).attr("href").indexOf(location.pathname)>-1){
+			var pathname = location.pathname.replace(/\/use/gi,"");
+			if (pathname.indexOf($(this).attr("href"))>-1){
 				$(this).parent().addClass("active");
 				return;
 			}else if(1){
@@ -349,6 +350,7 @@ fr:"hash"},afc:{key:2,id:"__tacid",c_id:"pgv_afcid",fr:"param"},gdt:{key:11,id:"
 	  return data ? fn( data ) : fn;
 	};
 })();
+
 if(global_obj.code==1){
 	//top.location.href = global_obj.url;
 }
