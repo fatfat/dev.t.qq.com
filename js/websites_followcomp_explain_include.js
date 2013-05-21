@@ -359,4 +359,4 @@ function formSubmit() {
 		}
 	});
 }
-eventBindFuncList.push(initEvents)
+eventBindFuncList.push(initEvents);
