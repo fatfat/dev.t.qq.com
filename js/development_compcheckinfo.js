@@ -117,11 +117,9 @@ $(function(){
 		+'&comp_name='+encodeURIComponent($('input[name="comp_name"]').val())
 		+'&comp_url='+encodeURIComponent($('input[name="comp_url"]').val())
 		+'&comp_source_status='+encodeURIComponent($('input[name="comp_source_status"]').val())
-		+"action=common_query&business_type=ajax_compcheckover";
-		console.log(postData)
+		+"&action=common_query&business_type=ajax_compcheckover";
          $.ajax({
                "type": "POST",
-               //"url": "/development/compcheckover?t="+new Date().getTime(),
 			   "url":"/pipes/interfaceserver",
                "dataType": "json",
                "data": postData,
@@ -140,7 +138,7 @@ $(function(){
                         	"width":420,
                         	"height":185
                         	},function(){
-                        	location.href="/development/compinfo?comp_id"+comp.comp_id;
+                        	location.href="/development/compinfo?comp_id="+comp.comp_id;
                         	});
                         }
                     }else{
@@ -153,7 +151,7 @@ $(function(){
                         	"height":120
                         	});
                         	setTimeout(function(){
-                        		location.href="/development/compinfo?comp_id"+comp.comp_id;
+                        		location.href="/development/compinfo?comp_id="+comp.comp_id;
                         	},1500);
                         }else{
                         	alert("提交失败\n"+d.msg); 

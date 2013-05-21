@@ -151,7 +151,7 @@ $("#main").append(tmpl(development_compcheckuser,global_obj.data));
 
 var need_post = false;
 var NextUrl = '/development/compcheckinfo?comp_id='+comp.comp_id;
-var PostUrl = "/pipes/interfaceserver?action=common_query&business_type=ajax_compcheckover&comp_id="+comp.comp_id;
+var PostUrl = "/pipes/interfaceserver?action=common_query&business_type=ajaxsavecheckdeverloper";
 var user_province=developer.user_province;
 var user_city= developer.user_city;
 
