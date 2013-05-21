@@ -241,8 +241,8 @@ OPEN_VALIDATOR = {
 		var label  = selector.attr("data-error") 	//字段名
 			,dvalue = selector.attr("data-default") //默认值
 			,rule   = selector.attr("data-rule")    //验证规则
-			,url    = "/developer/checkcomid/"+encodeURIComponent(value);
-		
+			//,url    = "/developer/checkcomid/"+encodeURIComponent(value);
+			,url = "/pipes/interfaceserver?action=common_query&business_type=checkcomid&comid="+encodeURIComponent(value);
 		if (dvalue != value){
 			showmsg(1,selector,"正在验证"+label);
 			$.ajax({
