@@ -1,5 +1,5 @@
 function showSelectAppType(){
-	var createAppUrl = "http://open_test.t.qq.com/apps/add?business_type=wirelessadd&type=4&cid=3&uin=63631700"
+//	var createAppUrl = "http://open_test.t.qq.com/apps/add?business_type=wirelessadd&type=4&cid=3&uin=63631700"
 	
 	loginWin.show({
         "width": 526,

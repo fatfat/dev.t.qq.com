@@ -508,7 +508,11 @@ else
 		}*/
 		global_obj.data.page_no = page;
 		ajaxpageListUrl = "/pipes/interfaceserver";
-	    var data = {"action":"common_query","business_type":"ajax_applist","page":page,"appTypes":displayAppType};
+		if (global_obj.data.displaytype == "apps"){
+	    	var data = {"action":"common_query","business_type":"ajax_applist","page":page,"appTypes":displayAppType};
+	    } else {
+	    	var data = {"action":"common_query","business_type":"complist","page":page,"appTypes":displayAppType};
+	    }
 		AjaxPageList(ajaxpageListUrl, data);
 	} 
 	/**
