@@ -366,7 +366,7 @@ else
 					this.tpl.pageBar1,    
 				'</div>',
 			'</div>',
-		'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/rebuild/app_appadd.js"></script>',
+		'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/rebuild/js/app_appadd.js"></script>',
 		this.tpl.footer,
 	].join("");
 	

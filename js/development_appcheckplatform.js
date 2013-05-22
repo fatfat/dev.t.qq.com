@@ -63,4 +63,4 @@ var nextURL = "/development/appinfo?appid="+app.app_id,
 	global_obj.init.appnav();
 	global_obj.init.appplatform_inner();
 
-util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/app_platform_01.js");
+util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/app_platform_01.js");

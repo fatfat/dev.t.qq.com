@@ -182,7 +182,7 @@ var user_city = developer.user_city;
 var insiteAppAble = developer.user_hosting || false;
 var displayAppType = 15;
 	
-util.createScripts(["http://mat1.gtimg.com/app/opent/js/rebuild/location.js","http://mat1.gtimg.com/app/opent/js/rebuild/validater.js","http://mat1.gtimg.com/app/opent/js/rebuild/app_appadd.js"]);
+util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/location.js","http://mat1.gtimg.com/app/opent/rebuild/js/validater.js","http://mat1.gtimg.com/app/opent/rebuild/js/app_appadd.js"]);
 
 $(function() {
 	//开发者资料

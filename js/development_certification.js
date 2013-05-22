@@ -191,7 +191,7 @@ var displayAppType = 15;
 
 $("#main").append(this.tmpl(this.tpl.development_certification, global_obj.data));
 
-util.createScripts(["http://mat1.gtimg.com/app/opent/js/rebuild/location.js","http://mat1.gtimg.com/app/opent/js/rebuild/validater.js","http://mat1.gtimg.com/app/opent/js/rebuild/app_appadd.js"]);
+util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/location.js","http://mat1.gtimg.com/app/opent/rebuild/js/validater.js","http://mat1.gtimg.com/app/opent/rebuild/js/app_appadd.js"]);
 
 $(function() {
 	$('input[type=file]').change(function() {

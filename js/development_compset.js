@@ -46,7 +46,7 @@ function compType1(){
 		var share_counterpos = comp_style.counterpos;
 		var share_showcounter = comp_style.showcounter;
 		//<% include file="./websites/share/shareuse_include_new.tpl" %>
-		util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/websites_shareuse_include_new.js",function(){
+		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_shareuse_include_new.js",function(){
 			$(".showcode_bar").before(tmpl(tpl.shareuse_include_new,global_obj.data));
 			bindAllEvent();
 			$(function(){
@@ -56,7 +56,7 @@ function compType1(){
 			});
 		});
 	}else{
-		util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/websites_shareuse_include.js",function(){
+		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_shareuse_include.js",function(){
 			$(".showcode_bar").before(tmpl(tpl.shareuse_include,global_obj.data));
 			bindAllEvent();
 			//<% include file="./websites/share/shareuse_include.tpl" %>
@@ -84,7 +84,7 @@ function compType1(){
 
 function  compType2(){
 	<!--收听组件-->
-	util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/websites_followcomp_explain_include.js",function(){
+	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_followcomp_explain_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.explain_include,global_obj.data));
 		bindAllEvent();
 		//<% include file="./websites/followcomp/explain_include.tpl" %>
@@ -118,7 +118,7 @@ function  compType2(){
 
 function compType3(){
 	<!--话题墙-->
-	util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/websites_wall_explain_include.js",function(){
+	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_wall_explain_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.websites_wall_explain_include,global_obj.data));
 		bindAllEvent();
 		//<% include file="./websites/wall/explain_include.tpl" %>
@@ -163,7 +163,7 @@ function compType3(){
 function compType4(){
 	//<!--Q-Share-->
 	alert("-Q-Share")
-	util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/websites_qshare_explain_include.js",function(){
+	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_qshare_explain_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.qshare_explain_include,global_obj.data));
 		bindAllEvent();
 		//<% include file="./websites/qshare/qshare_explain_include.tpl" %>
@@ -176,7 +176,7 @@ function compType4(){
 
 function compType5(){
 	//<!--心情板-->
-	util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/websites_mooduse_include.js",function(){
+	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_mooduse_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.mooduse_include,global_obj.data));
 		bindAllEvent();
 		//<% include file="./websites/mood/mooduse_include.tpl" %>
@@ -203,7 +203,7 @@ function compType5(){
 
 function compType6(){
 	<!--微评论-->
-	util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/websites_comment_explain_include.js",function(){
+	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_comment_explain_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.explain_include,global_obj.data));
 		bindAllEvent();
 		//<% include file="./websites/comment/explain_include.tpl" %
@@ -248,7 +248,7 @@ function compType8(){
 		return '<img src="' + imgurl +'"/>';
 	};
 	//<% include file="./websites/login/loginuse_include.tpl" %>
-	util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/websites_login_loginuse_include.js",function(){
+	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_login_loginuse_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.loginuse_include,global_obj.data));
 		bindAllEvent();	
 	});

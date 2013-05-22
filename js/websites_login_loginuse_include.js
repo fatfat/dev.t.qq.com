@@ -118,6 +118,6 @@ function normalValidate(){
    	$("#comp_name").trigger("blur");
 }
 var comp_type=8;
-util.createScripts(["http://mat1.gtimg.com/app/opent/js/rebuild/login_vt.js","http://mat1.gtimg.com/app/opent/js/rebuild/comp_validate.js"],function(){
+util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/login_vt.js","http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js"],function(){
 	bindAllEvent();
 });

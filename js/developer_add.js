@@ -70,7 +70,7 @@ var developer_add = [
 
 $('#main').html(tmpl(developer_add, global_obj.data));
 
-util.createScripts(["http://mat1.gtimg.com/app/opent/js/rebuild/location.js","http://mat1.gtimg.com/app/opent/js/rebuild/validater.js"]);
+util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/location.js","http://mat1.gtimg.com/app/opent/rebuild/js/validater.js"]);
 $(function(){
 	$('#reset').click(function() {
 		location.href = "/developer/bedever";

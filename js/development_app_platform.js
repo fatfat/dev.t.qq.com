@@ -84,6 +84,6 @@
 		 	$('input#app_url').attr("disabled","disabled");
 		});
 	}
-	util.createScripts(["http://mat1.gtimg.com/app/opent/js/rebuild/app_appedit.js","http://mat1.gtimg.com/app/opent/js/rebuild/app_platform_01.js"]);
+	util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/app_appedit.js","http://mat1.gtimg.com/app/opent/rebuild/js/app_platform_01.js"]);
 })();
 

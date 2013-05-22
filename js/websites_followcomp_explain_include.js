@@ -123,7 +123,7 @@ this.tpl.explain_include = [
 '<script language="javascript" src="http://pingjs.qq.com/ping.js"></script>'
 ].join("");
 
-util.createScripts(["http://mat1.gtimg.com/app/opent/js/rebuild/jscolor.js","http://mat1.gtimg.com/app/opent/js/rebuild/customcolor.js","http://mat1.gtimg.com/app/opent/js/rebuild/comp_validate.js"],function(){
+util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/jscolor.js","http://mat1.gtimg.com/app/opent/rebuild/js/customcolor.js","http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js"],function(){
 	bindAllEvent();
 });
 
