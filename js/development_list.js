@@ -534,11 +534,7 @@ else
 			  data: dota,
 			  cache: false,
 			  success: function(ResponseData){ 
-			  	  console.log(ResponseData.data);
-			  	  alert([ResponseData.data.uin,userInfo.hdlogin])
-			  	  console.log([parseInt(ResponseData.data.uin,10) , parseInt(userInfo.hdlogin,10)]);
 				  if (parseInt(ResponseData.data.uin,10) == parseInt(userInfo.hdlogin,10) ){
-				  	  console.log('success');
 				  	  ResponseData.data.apps = ResponseData.data.apps || {};
 				      ResponseData.data.kapps = ResponseData.data.kapps || {};
 				  	  if(global_obj.data.displaytype != "app" || $('#otherapplist').hasClass('hidden')){
@@ -551,9 +547,7 @@ else
 							ResponseData.data.displaytype = global_obj.data.displaytype;        
 							ResponseData.data.kapp_count = 0;
 							if(!ResponseData.data.comps) ResponseData.data.comps = ResponseData.data.datalist;
-							console.log(ResponseData.data.comps);
 							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
-							console.log($('#applistul').html());
 							$('#pagebar').html(tmpl(tpl.pageBar, ResponseData.data));
 							checkPageNum(global_obj.data.page_count);
 						}else{						
@@ -568,7 +562,6 @@ else
 						}
 						bindAllPageEvent();
 				  }else{
-				  	  console.log('failed');
 					location.href="/development/";
 				  }
 			  },
