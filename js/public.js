@@ -1,7 +1,7 @@
 ;(function() {
 	//页面参数控制跳转，add by fat
 	if (userInfo.developer_status == 0){
-		if(!/developer\/(bedever|add|addone|activate)/.test(location.href)){
+		if(!/developer(\/(bedever|add|addone|activate))?/.test(location.href)){
 			location.href = "/developer/bedever";
 		}
 	}else if (userInfo.user_status == 0){
@@ -85,7 +85,7 @@
 				'<div class="menuCon userNav" id = "login_status">',
 					'<%if (userInfo.hdlogin ) {%>',
 					'<div class="menu">',
-						'<a class="login_name" href="javascript:;" title="<%=userInfo.nick%>"><%=userInfo.nick%><em></em></a>',
+						'<a class="login_name" href="javascript:;" title="<%=userInfo.nick?userInfo.nick:userInfo.hdlogin%>"><%=userInfo.nick?userInfo.nick:userInfo.hdlogin%><em></em></a>',
 						'<i class="nav_arrow"></i>',
 					'</div>',
 					'<ul class="childMenu userNav_sub">',
