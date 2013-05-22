@@ -69,7 +69,7 @@
 	].join();
 	
 	util.createStyle(str);
-	util.createScript("/js/app_appedit.js");
+	util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/app_appedit.js");
 
 	app = global_obj.data.app;
 	if (app.app_check_status ==1 && app.app_status != 1){

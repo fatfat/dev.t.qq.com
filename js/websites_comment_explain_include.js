@@ -60,7 +60,7 @@ this.tpl.explain_include = [
 '</div>'
 ].join("");
 
-util.createScript("/js/comp_validate.js",function(){bindAllEvent();});
+util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/comp_validate.js",function(){bindAllEvent();});
 
 /*解决IE6下点击“组件设置”时，其他导航及应用图标可不见的Bug*/
 setTimeout(function(){

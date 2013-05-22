@@ -78,7 +78,7 @@ global_obj.data.compat = 3;
 	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 	QosSS.t[5]= (new Date()).getTime();
 	QosSS.c.src="http://qos.report.qq.com/collect?type=1&name="+"opent_ws_use"+"&1="+ (QosSS.t[1]- QosSS.t[0])+"&2="+ (QosSS.t[2]- QosSS.t[0])+ "&3="+ (QosSS.t[3]- QosSS.t[0])+"&4="+ (QosSS.t[4]- QosSS.t[0])+ "&5="+ (QosSS.t[5]- QosSS.t[0]);
-	util.createScripts(["/js/share.js","/js/comp_validate.js"],function(){
+	util.createScripts(["http://mat1.gtimg.com/app/opent/js/rebuild/share.js","http://mat1.gtimg.com/app/opent/js/rebuild/comp_validate.js"],function(){
 		bindAllEvent();
 	});
 //})();

@@ -67,7 +67,7 @@ tpl.header,
 	'</div>',
 	tpl.footer,
 ].join("\r");
-util.createScript("/js/validater.js");
+util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/validater.js");
 var comp = global_obj.data;
 var comp_type = comp.comp_type;
 $("#main").append(tmpl(development_compcheckinfo,global_obj.data))

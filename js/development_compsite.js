@@ -78,7 +78,7 @@ this.tpl.header,
 
 $("#main").append(tmpl(development_compsiteTmpl,global_obj.data))
 
-util.createScript("/js/validater.js")
+util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/validater.js")
 
 $(function(){
     $(".appform li.alert").find(".hidebtn").click(function(){

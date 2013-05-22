@@ -60,7 +60,7 @@
 	    var comp_type=7;
 	
 })();
-util.createScript("/js/comp_validate.js",function(){
+util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/comp_validate.js",function(){
 	bindAllEvent();
 });
 

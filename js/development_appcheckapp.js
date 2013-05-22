@@ -267,4 +267,4 @@ if  (app.app_checkapi == 0 && app.app_type == 4  ) {
 
 global_obj.init.app_material();
 
-util.createScript("/js/app_checkapp.js");
+util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/app_checkapp.js");

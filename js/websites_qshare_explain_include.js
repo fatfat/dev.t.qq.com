@@ -34,7 +34,7 @@ this.tpl.qshare_explain_include = [
 	'</div>'
 ].join("");
 
-util.createScript("/js/comp_validate.js",function(){bindAllEvent();});
+util.createScript("http://mat1.gtimg.com/app/opent/js/rebuild/comp_validate.js",function(){bindAllEvent();});
 
 function formSubmit(){
 	if($("#showcode").attr("disabled")){return;}
