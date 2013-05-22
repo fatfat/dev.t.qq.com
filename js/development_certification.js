@@ -174,81 +174,88 @@ this.tpl.header,
 '<link href="http://mat1.gtimg.com/app/opent/css/development/index_selectapp.css" rel="stylesheet" type="text/css" />',
 this.tpl.footer
 ].join("\r");
+global_obj.data.navPos = 7;
+global_obj.data.displaytype = 1;
+global_obj.data.developer = global_obj.data;
+var developer = global_obj.data.developer;
+var userType = developer.user_type || 1;
+var user_uin = developer.user_uin || 0;
+var user_certif_status = developer.user_certif_status;
+var user_check_status = developer.user_check_status; //资质证明审核状态
+var user_idcard_pic = developer.user_idcard_pic;
+var user_certif_pic = developer.user_certif_pic;
+var user_tmp_id = developer.user_tmp_id;
+var user_tmp_name = developer.user_tmp_name;
+var insiteAppAble = developer.user_hosting || false;
+var displayAppType = 15;
+
+$("#main").append(this.tmpl(this.tpl.development_certification, global_obj.data));
 
 util.createScript("/js/location.js");
 util.createScript("/js/validater.js");
 util.createScript("/js/app_appadd.js");
 
+$(function() {
+	$('input[type=file]').change(function() {
+		$('input#img_need_post').val('1')
+	});
+	//上传图片兼容ff,opera
+	$(".appform input[type=file]").each(function() {
+		var uploadbtn = $(this).parent("dt").find(".uploaddiv").find(".upload_pic"),
+		_value = +uploadbtn.attr("_value");
 
-global_obj.data.navPos = 7;
-global_obj.data.displaytype = 1;
-global_obj.data.developer = global_obj.data;
-$("#main").append(this.tmpl(this.tpl.development_certification,global_obj.data));
-$(function(){
-	var developer = global_obj.data.developer;
-	var userType= developer.user_type||1;
-	var user_uin= developer.user_uin||0;
-	var user_certif_status= developer.user_certif_status;
-	var user_check_status= developer.user_check_status;//资质证明审核状态
-	var user_idcard_pic= developer.user_idcard_pic;
-	var user_certif_pic=developer.user_certif_pic;
-	var user_tmp_id=developer.user_tmp_id;
-	var user_tmp_name=developer.user_tmp_name;
-	$(function(){
-		$('input[type=file]').change(function(){ 
-			$('input#img_need_post').val('1')
-		});
-		//上传图片兼容ff,opera
-		$(".appform input[type=file]").each(function(){
-			var uploadbtn=$(this).parent("dt").find(".uploaddiv").find(".upload_pic"),
-				_value=+uploadbtn.attr("_value");
-			
-			if(uploadbtn.size()){
-				if(_value === 0){ //上传
-					$(this).removeClass("moz1").removeClass("ie6_1").addClass("moz0").addClass("ie6_0");
-				}
-				else if(_value === 1){
-					$(this).removeClass("moz0").removeClass("ie6_0").addClass("moz1").addClass("ie6_1");
-				}
-			}else{
-				$(this).removeClass("moz0").removeClass("moz1").removeClass("ie6_0").removeClass("ie6_1");	
+		if (uploadbtn.size()) {
+			if (_value === 0) { //上传
+				$(this).removeClass("moz1").removeClass("ie6_1").addClass("moz0").addClass("ie6_0");
+			} else if (_value === 1) {
+				$(this).removeClass("moz0").removeClass("ie6_0").addClass("moz1").addClass("ie6_1");
 			}
-		});
-		
-		if( (user_certif_status === 0 && user_check_status === 0 && user_idcard_pic!="" && user_certif_pic!="")//从开平拉过来的数据，开平未提交审核
-			|| user_check_status === 1 ){//审核拒绝都可点
-			$('input#ajaxCertifSubmit').attr("class","devSubmit").removeAttr("disabled"); 
-		}else{
-			$('input#ajaxCertifSubmit').attr("class","devCancel").attr("disabled","disabled"); 
+		} else {
+			$(this).removeClass("moz0").removeClass("moz1").removeClass("ie6_0").removeClass("ie6_1");
 		}
-		
-		$(".pic_example").click(function(){
-			var src=$(this).attr("_src"),title=$(this).attr("_title"),width=$(this).attr("_width"),height=$(this).attr("_height");
-			loginWin.showImg({"title":title,"text":src,"width":width,"height":height});
-		});
-	 
-		$("#newapp").click(function(){
-			popAppWin(+developer.user_app_numbers,+developer.appMax); 
-		});
-		
-		$(".appinfo li.alert").find(".hidebtn").click(function(){
-			var t=$(this),p=t.parent(),c=p.find(".alert_content");
-	
-			if (c.is(":visible")){
-				c.slideUp("fast");
-				t.html("展开↓");
-			}else{
-				c.slideDown("fast");
-				t.html("收起↑");
-			}
-		});
-	})
-							
-	function closealert(obj){
-		var a=$(obj),alertul=a.parent(".appinfo")	;
-		alertul.hide();
+	});
+
+	if ((user_certif_status === 0 && user_check_status === 0 && user_idcard_pic != "" && user_certif_pic != "") //从开平拉过来的数据，开平未提交审核
+	|| user_check_status === 1) { //审核拒绝都可点
+		$('input#ajaxCertifSubmit').attr("class", "devSubmit").removeAttr("disabled");
+	} else {
+		$('input#ajaxCertifSubmit').attr("class", "devCancel").attr("disabled", "disabled");
 	}
-	
-	var insiteAppAble= developer.user_hosting||false;
-	var displayAppType = 15;
-});
+
+	$(".pic_example").click(function() {
+		var src = $(this).attr("_src"),
+		title = $(this).attr("_title"),
+		width = $(this).attr("_width"),
+		height = $(this).attr("_height");
+		loginWin.showImg({
+			"title": title,
+			"text": src,
+			"width": width,
+			"height": height
+		});
+	});
+
+	$("#newapp").click(function() {
+		popAppWin( + developer.user_app_numbers, +developer.appMax);
+	});
+
+	$(".appinfo li.alert").find(".hidebtn").click(function() {
+		var t = $(this),
+		p = t.parent(),
+		c = p.find(".alert_content");
+
+		if (c.is(":visible")) {
+			c.slideUp("fast");
+			t.html("展开↓");
+		} else {
+			c.slideDown("fast");
+			t.html("收起↑");
+		}
+	});
+})
+
+function closealert(obj) {
+	var a = $(obj),
+	alertul = a.parent(".appinfo");
+	alertul.hide();
+}

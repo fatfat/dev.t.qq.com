@@ -1,4 +1,4 @@
-;(function(){
+
 	var str = [
 		'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
 		'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
@@ -129,12 +129,16 @@
 		'</div>',
 		tpl.footer
 	].join("");
-	$('#main').html(tmpl(tpl.iweibocheckuser,global_obj.data));
+	
+$('#main').html(tmpl(tpl.iweibocheckuser,global_obj.data));
+
+var NextUrl = '/development/iweibochecksite?appid='+global_obj.data.app.app_id;
+var PostUrl = '/pipes/interfaceserver';
 var developer_detail = global_obj.data.developer_detail;
 var user_province=+developer_detail.user_province;
 var user_city=+developer_detail.user_city;
+
 util.createScript('/js/app_checkdeveloper.js');
 util.createScript('/js/location.js');
-})();
-var NextUrl = '/development/iweibochecksite?appid='+global_obj.data.app.app_id;
-var PostUrl = '/pipes/interfaceserver';
+
+

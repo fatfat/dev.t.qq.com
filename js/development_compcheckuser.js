@@ -147,6 +147,7 @@ tpl.footer,
 var comp = global_obj.data.comp;
 global_obj.data.developer = global_obj.data.developer_detail;
 var developer = global_obj.data.developer;
+
 $("#main").append(tmpl(development_compcheckuser,global_obj.data));
 
 var need_post = false;
