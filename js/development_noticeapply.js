@@ -145,6 +145,5 @@ function formSubmit(){
         	}
         	});
     }
-	this.util.createScript("http://mat1.gtimg.com/app/opent/js/notice_validate.js?20130328");
-//<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/notice_validate.js?20130328"></script>
+	this.util.createScript("/js/notice_validate.js");
 	

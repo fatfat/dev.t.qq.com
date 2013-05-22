@@ -792,4 +792,3 @@ $(function(){
 	 });
 	 $('form#appform_user input').change(function(){  need_post = 1; }) 
 });
-

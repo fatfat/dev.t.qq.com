@@ -118,7 +118,6 @@ function normalValidate(){
    	$("#comp_name").trigger("blur");
 }
 var comp_type=8;
-util.createScript("/js/login_vt.js")
-util.createScript("/js/comp_validate.js",function(){
+util.createScripts(["/js/login_vt.js","/js/comp_validate.js"],function(){
 	bindAllEvent();
 });

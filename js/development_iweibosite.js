@@ -68,7 +68,7 @@
 		'.icon_alert{width:38px;height:38px;background:url(http://mat1.gtimg.com/app/opent/images/public/icon.png) -352px -59px no-repeat;display:inline-block;zoom:1;}'
 	].join();
 	
-	util.createScript(str);
+	util.createStyle(str);
 	util.createScript("/js/app_appedit.js");
 
 	app = global_obj.data.app;

@@ -191,9 +191,7 @@ var displayAppType = 15;
 
 $("#main").append(this.tmpl(this.tpl.development_certification, global_obj.data));
 
-util.createScript("/js/location.js");
-util.createScript("/js/validater.js");
-util.createScript("/js/app_appadd.js");
+util.createScripts(["/js/location.js","/js/validater.js","/js/app_appadd.js"]);
 
 $(function() {
 	$('input[type=file]').change(function() {

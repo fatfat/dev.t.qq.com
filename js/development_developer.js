@@ -182,9 +182,7 @@ var user_city = developer.user_city;
 var insiteAppAble = developer.user_hosting || false;
 var displayAppType = 15;
 	
-util.createScript("/js/location.js");
-util.createScript("/js/validater.js");
-util.createScript("/js/app_appadd.js");
+util.createScripts(["/js/location.js","/js/validater.js","/js/app_appadd.js"]);
 
 $(function() {
 	//开发者资料

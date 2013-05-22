@@ -67,8 +67,7 @@ var developer_addone  =
 ].join("");
 
 $('#main').html(tmpl(developer_addone, global_obj.data));
-util.createScript("/js/location.js");
-util.createScript("/js/validater.js");
+util.createScripts(["/js/location.js","/js/validater.js"]);
 	$(function(){
 	$('#reset').click(function() {
 		location.href = "/developer/bedever";

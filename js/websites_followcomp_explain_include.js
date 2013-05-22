@@ -123,8 +123,7 @@ this.tpl.explain_include = [
 '<script language="javascript" src="http://pingjs.qq.com/ping.js"></script>'
 ].join("");
 
-util.createScript("/js/jscolor.js");
-util.createScript("/js/comp_validate.js",function(){
+util.createScripts(["/js/jscolor.js","/js/customcolor.js","/js/comp_validate.js"],function(){
 	bindAllEvent();
 });
 
@@ -142,7 +141,6 @@ var savedurl;
 var lastsavedurl;
 
 var initEvents = function() {
-	util.createScript("/js/customcolor.js");
 	// 快速收听源码
 	if (userInfo.hdlogin) {
 		var _name = userInfo.name

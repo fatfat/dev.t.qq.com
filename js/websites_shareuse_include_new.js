@@ -28,8 +28,7 @@ this.tpl.websites_shareuse_include_new = [
 	'<div style="clear:left;"></div>',
 ].join("");
 
-util.createScript("/js/share.js");
-util.createScript("/js/comp_validate.js",function(){
+util.createScript(["/js/share.js","/js/comp_validate.js"],function(){
 	bindAllEvent();
 });
 

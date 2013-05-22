@@ -147,7 +147,6 @@ tpl.footer,
 var comp = global_obj.data.comp;
 global_obj.data.developer = global_obj.data.developer_detail;
 var developer = global_obj.data.developer;
-
 $("#main").append(tmpl(development_compcheckuser,global_obj.data));
 
 var need_post = false;
@@ -156,5 +155,9 @@ var PostUrl = "/pipes/interfaceserver?action=common_query&business_type=ajaxsave
 var user_province=developer.user_province;
 var user_city= developer.user_city;
 
-util.createScript('/js/app_checkdeveloper.js');
-util.createScript('/js/location.js');
+util.createScripts(['/js/location.js','/js/app_checkdeveloper.js']);
+
+
+
+
+

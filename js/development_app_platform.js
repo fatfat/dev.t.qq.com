@@ -84,7 +84,6 @@
 		 	$('input#app_url').attr("disabled","disabled");
 		});
 	}
-	util.createScript("/js/app_appedit.js");
-	util.createScript("/js/app_platform_01.js");
+	util.createScripts(["/js/app_appedit.js","/js/app_platform_01.js"]);
 })();
 

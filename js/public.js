@@ -178,13 +178,22 @@
 			});
 		}
 	})
-
 	util.createScript = function (src,callback) {
 		var script = document.createElement('script');
 		script.type = 'text/javascript';
 		script.onload = callback;
 		script.src = src;
 		document.body.appendChild(script);
+	}
+	util.createScripts = function(scripts,callback){
+		var script = scripts.shift();
+		if(!script){
+			if($.isFunction(callback)){callback()};
+			return;
+		}
+		util.createScript(script,function(){
+			util.createScripts(scripts,callback);
+		})
 	}
 	//--------------add by cbyi ---------------------
 	//让下面显示的内容与导航之间存在一定的间隙

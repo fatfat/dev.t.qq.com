@@ -137,8 +137,7 @@ var PostUrl = '/pipes/interfaceserver';
 var developer_detail = global_obj.data.developer_detail;
 var user_province=+developer_detail.user_province;
 var user_city=+developer_detail.user_city;
+util.createScripts(['/js/location.js','/js/app_checkdeveloper.js']);
 
-util.createScript('/js/app_checkdeveloper.js');
-util.createScript('/js/location.js');
 
 
