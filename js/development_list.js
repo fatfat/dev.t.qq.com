@@ -61,8 +61,8 @@ else
 
 	tpl.applistul = [
 		'<ul id="applistul">' ,
-			'<%for(var i=0;i<apps.length;i++){%>',
-				'<% var app=apps[i];%>',		
+			'<%for(var i=0, app={};i<apps.length, app=apps[i];i++){%>',
+				//'<% var app=apps[i];%>',		
 				'<li>',
 					'<a href="/development/appinfo?appid=<%=app.app_id%> ">',
 					'<img src=" <%=(app.app_icon_75?app.app_icon_75:"http://mat1.gtimg.com/app/opent/images/index/icon.jpg")%> " height="60" width="60"/></a>',
@@ -512,7 +512,6 @@ else
 		if (global_obj.data.displaytype == "app"){
 	    	var data = {"action":"common_query","business_type":"ajax_applist","page":page,"appTypes":displayAppType};
 	    } else {
-	    	alert("comps");
 	    	var data = {"action":"common_query","business_type":"complist","page":page,"appTypes":displayAppType};
 	    }
 		AjaxPageList(ajaxpageListUrl, data);
@@ -534,9 +533,6 @@ else
 			  data: dota,
 			  cache: false,
 			  success: function(ResponseData){ 
-			  	  console.log(ResponseData.data);
-			  	  alert([ResponseData.data.uin,userInfo.hdlogin])
-			  	  console.log([parseInt(ResponseData.data.uin,10) , parseInt(userInfo.hdlogin,10)]);
 				  if (parseInt(ResponseData.data.uin,10) == parseInt(userInfo.hdlogin,10) ){
 				  	  console.log('success');
 				  	  ResponseData.data.apps = ResponseData.data.apps || {};
@@ -544,16 +540,20 @@ else
 				  	  if(global_obj.data.displaytype != "app" || $('#otherapplist').hasClass('hidden')){
 				  	  	   	global_obj.data.app_count = ResponseData.data.app_count;
 						  	global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
-						  	global_obj.data.kpage_count = ResponseData.data.kpage_count = 0;
+						  	
 						   	//根据不同的类型渲染页面
 							setRightList();
 						  	ResponseData.data.page_count = global_obj.data.page_count;
 							ResponseData.data.displaytype = global_obj.data.displaytype;        
-							ResponseData.data.kapp_count = 0;
-							if(!ResponseData.data.comps) ResponseData.data.comps = ResponseData.data.datalist;
-							console.log(ResponseData.data.comps);
-							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
-							console.log($('#applistul').html());
+							
+							if(!ResponseData.data.comps) ResponseData.data.comps = ResponseData.data.pagelist;
+							if(global_obj.data.displaytype == "app") {
+								global_obj.data.kpage_count = ResponseData.data.kpage_count = 0;
+								ResponseData.data.kapp_count = 0;
+								$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
+							} else if ( global_obj.data.displaytype == "comps" ) {
+								$('#applistul').html(tmpl(tpl.development_list_comps, ResponseData.data));
+							}
 							$('#pagebar').html(tmpl(tpl.pageBar, ResponseData.data));
 							checkPageNum(global_obj.data.page_count);
 						}else{						
@@ -568,7 +568,6 @@ else
 						}
 						bindAllPageEvent();
 				  }else{
-				  	  console.log('failed');
 					location.href="/development/";
 				  }
 			  },
