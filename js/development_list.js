@@ -32,24 +32,24 @@ else
 	this.tpl = this.tpl || {};
 	this.tpl.development_list_comps = [
 		'<div  id="applist" class="applist">',
-		'<ul class="applist" id="applistul">',
-			'<%if(comps.length>0&&app_count>0){%>',
-				'<%for(var i=0;i<comps.length;i++){%>',
-				'<%var comp = comps[i];%>',
-				'<li>',
-					'<dl>',
-					'<dt><a href="/development/compinfo?comp_id=<%=comp.comp_id%>"><%=comp.comp_name%></a></dt>',
-					'<dd class="applistdd"><span>组件类型：</span><label><%=comp.comp_type_name%></label></dd>',
-					'<dd><span>接口权限：</span><label><%=comp.comp_level_name%>权限</label></dd>',
-					'<dd><span>来源显示：</span><label><%=comp.comp_source_status_name%></label></dd>',
-					'<dd><span>组件状态：</span><label><%=comp.comp_status_name%></label></dd>',
-					'</dl>',
-					'<div align="right">',
-						'<%if(comp.comp_type!=7){%><a href="/development/compset?comp_id=<%=comp.comp_id%>">编辑</a> / <%}%>',
-						'<a href="/development/compinfo?comp_id=<%=comp.comp_id%>">查看</a></div>',
-				'</li>',
-			'<%}%>',
-			'</ul>',
+		'<%if(comps.length>0&&app_count>0){%>',
+			'<ul class="applist" id="applistul">',
+				'<%for(var i=0, comp = {};i<comps.length && (comp = comps[i]);i++){%>',
+				//	'<%var comp = comps[i];%>',
+					'<li>',
+						'<dl>',
+						'<dt><a href="/development/compinfo?comp_id=<%=comp.comp_id%>"><%=comp.comp_name%></a></dt>',
+						'<dd class="applistdd"><span>组件类型：</span><label><%=comp.comp_type_name%></label></dd>',
+						'<dd><span>接口权限：</span><label><%=comp.comp_level_name%>权限</label></dd>',
+						'<dd><span>来源显示：</span><label><%=comp.comp_source_status_name%></label></dd>',
+						'<dd><span>组件状态：</span><label><%=comp.comp_status_name%></label></dd>',
+						'</dl>',
+						'<div align="right">',
+							'<%if(comp.comp_type!=7){%><a href="/development/compset?comp_id=<%=comp.comp_id%>">编辑</a> / <%}%>',
+							'<a href="/development/compinfo?comp_id=<%=comp.comp_id%>">查看</a></div>',
+					'</li>',
+				'<%}%>',
+				'</ul>',
 			//'<div id="pagebar"><%=pagelist%></div>',
 			'<%}else{%>'  , 
 				'<ul class="applist">',
@@ -545,18 +545,16 @@ else
 						  	ResponseData.data.page_count = global_obj.data.page_count;
 							ResponseData.data.displaytype = global_obj.data.displaytype;        
 
-							
-							if(!ResponseData.data.comps) ResponseData.data.comps = ResponseData.data.pagelist;
 							if(global_obj.data.displaytype == "app") {
 								global_obj.data.kpage_count = ResponseData.data.kpage_count = 0;
 								ResponseData.data.kapp_count = 0;
 								$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
 							} else if ( global_obj.data.displaytype == "comps" ) {
+								if(!ResponseData.data.comps) ResponseData.data.comps = ResponseData.data.pagelist;
 								$('#applistul').html(tmpl(tpl.development_list_comps, ResponseData.data));
 							}
 							ResponseData.data.kapp_count = 0;
-							if(!ResponseData.data.comps) ResponseData.data.comps = ResponseData.data.datalist;
-							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
+	
 							$('#pagebar').html(tmpl(tpl.pageBar, ResponseData.data));
 							checkPageNum(global_obj.data.page_count);
 						}else{						
