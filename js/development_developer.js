@@ -169,8 +169,7 @@ global_obj.data.developer = global_obj.data.developer_detail;
 window.user_province = global_obj.data.developer.user_province;
 window.user_city = global_obj.data.developer.user_city;
 
-util.createScript("/js/validater.js");
-util.createScript("/js/app_appadd.js");
+
 $("#main").html(this.tmpl(this.tpl.development_developerTmpl, global_obj.data));
 
 var developer = global_obj.data.developer;
@@ -184,6 +183,8 @@ var insiteAppAble = developer.user_hosting || false;
 var displayAppType = 15;
 	
 util.createScript("/js/location.js");
+util.createScript("/js/validater.js");
+util.createScript("/js/app_appadd.js");
 
 $(function() {
 	//开发者资料
