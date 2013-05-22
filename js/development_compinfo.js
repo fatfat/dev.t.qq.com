@@ -1,7 +1,6 @@
 /*变量初始化*/
 global_obj.data.navPos = 7;
 var comp = global_obj.data.comp  = global_obj.data; 
-comp.comp_style = $.parseJSON(comp.comp_style);
 var development_compinfoTmpl = [
 	this.tpl.header,
     '<div id="content" class="controlCon main main_app">',
@@ -165,6 +164,7 @@ function compType1(){
 		   $(".comp_demo").removeClass("none");
 	   });
 	}else{
+		/*
 		util.createScript("/js/websites/share/share_full.js");
 		util.createScript("/js/websites/share/share_simple.js");
 		util.createScript("/js/websites/share/qshare_full.js");
@@ -187,7 +187,7 @@ function compType1(){
 		].join("\r");
 		
 		$("#main").append(t);
-		
+		*/
 		var comp_type = comp.comp_type,
 		comp_style = comp.comp_style?comp.comp_style:{"btnstyle":1,"btnsize":1,"btntext":"分享到腾讯微博","assname":"api_weibo","qshareable":1,"qsharestyle":0},
 		comp_id = comp.comp_id,
@@ -306,7 +306,7 @@ function compType3(){
 }
 function compType4(){
 	//<!--Q-Share-->	
-		util.createScript("/js/websites/qshare/qshare_full.js");
+		/*util.createScript("/js/websites/qshare/qshare_full.js");
 		util.createScript("/js/websites/qshare/qshare_simple.js");
 		var t = [
 			'<div style="display:none">',
@@ -318,7 +318,7 @@ function compType4(){
 			'</textarea>',
 			'</div>'
 		].join("\r")
-	 	$("#main").append(t);
+	 	$("#main").append(t);*/
 		var comp_style = comp.comp_style?comp.comp_style:{"assname":"","qsharestyle":0};
 		var comp_id = comp.comp_id;
 		var qsharebtn = ["w:118;h:25;b:share/qshare.png;",
