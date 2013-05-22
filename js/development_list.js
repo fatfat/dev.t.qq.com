@@ -1,6 +1,7 @@
 ;(function(){
 if(!userInfo.hdlogin)
 {
+	global_obj.data.navPos = "7";
 	$('#main').html(tmpl(this.tpl.login,global_obj.data));
 }
 else
@@ -547,9 +548,10 @@ else
 						   	//根据不同的类型渲染页面
 							setRightList();
 						  	ResponseData.data.page_count = global_obj.data.page_count;
-							ResponseData.data.displaytype = global_obj.data.displaytype;
-							ResponseData.data.kapps_count = 0;
+							ResponseData.data.displaytype = global_obj.data.displaytype;        
+							ResponseData.data.kapp_count = 0;
 							if(!ResponseData.data.comps) ResponseData.data.comps = ResponseData.data.datalist;
+							console.log(ResponseData.data.comps);
 							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
 							console.log($('#applistul').html());
 							$('#pagebar').html(tmpl(tpl.pageBar, ResponseData.data));

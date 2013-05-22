@@ -236,8 +236,11 @@
 		var m = re.exec(window.location.href);
 		return m ? m[1] : '';
 	};
-	
 	//获取登陆态
+	/**
+	 * [获取登录态信息]
+	 * @return {[null]} [返回空]
+	 */
 	util.setLoginInfo = function(){
 		 $.ajax({
 			 "dataType":"json"
