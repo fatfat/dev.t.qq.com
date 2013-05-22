@@ -534,7 +534,6 @@ else
 			  cache: false,
 			  success: function(ResponseData){ 
 				  if (parseInt(ResponseData.data.uin,10) == parseInt(userInfo.hdlogin,10) ){
-				  	  console.log('success');
 				  	  ResponseData.data.apps = ResponseData.data.apps || {};
 				      ResponseData.data.kapps = ResponseData.data.kapps || {};
 				  	  if(global_obj.data.displaytype != "app" || $('#otherapplist').hasClass('hidden')){
@@ -545,6 +544,7 @@ else
 							setRightList();
 						  	ResponseData.data.page_count = global_obj.data.page_count;
 							ResponseData.data.displaytype = global_obj.data.displaytype;        
+<<<<<<< HEAD
 							
 							if(!ResponseData.data.comps) ResponseData.data.comps = ResponseData.data.pagelist;
 							if(global_obj.data.displaytype == "app") {
@@ -554,6 +554,11 @@ else
 							} else if ( global_obj.data.displaytype == "comps" ) {
 								$('#applistul').html(tmpl(tpl.development_list_comps, ResponseData.data));
 							}
+=======
+							ResponseData.data.kapp_count = 0;
+							if(!ResponseData.data.comps) ResponseData.data.comps = ResponseData.data.datalist;
+							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
+>>>>>>> 83a65253a9eff6f4bf51814b03dbb089296470b8
 							$('#pagebar').html(tmpl(tpl.pageBar, ResponseData.data));
 							checkPageNum(global_obj.data.page_count);
 						}else{						

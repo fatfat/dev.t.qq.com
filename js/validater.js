@@ -906,7 +906,6 @@ $("#app_class_child").change(function() {
 	var appObj = $("#app_class_child");
 	var cid = appObj.val();
 	if (cid != -1) {
-		//			alert(cid);
 		showmsg(true, appObj, "");
 
 	}
@@ -921,7 +920,6 @@ $("#app_class_main").change(function() {
 
 	var cid = $("#app_class_main").val();
 
-	//alert(cid);
 	if (cid != -1) {
 		if (app_type == 4) {
 			$.ajax({
@@ -954,7 +952,6 @@ $("#app_class_main").change(function() {
 					$.each(d,
 					function(i, n) {
 						appObj.append("<option value=" + n.cid + ">" + n.cname + "</option>");
-						//		alert(n.cid);
 					});
 
 					appObj.css("display", "inline-block");
