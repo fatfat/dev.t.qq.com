@@ -512,7 +512,6 @@ else
 		if (global_obj.data.displaytype == "app"){
 	    	var data = {"action":"common_query","business_type":"ajax_applist","page":page,"appTypes":displayAppType};
 	    } else {
-	    	alert("comps");
 	    	var data = {"action":"common_query","business_type":"complist","page":page,"appTypes":displayAppType};
 	    }
 		AjaxPageList(ajaxpageListUrl, data);
