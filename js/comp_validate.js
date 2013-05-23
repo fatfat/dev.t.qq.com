@@ -1,4 +1,7 @@
 /*author:icefrogli,date:20110930*/
+if(window.OPEN_VALIDATOR){
+	
+}
 var OPEN_VALIDATOR; //检测对象封装
 OPEN_VALIDATOR = {
 	isempty: function() {
@@ -26,9 +29,9 @@ OPEN_VALIDATOR = {
 		tchar, msg = selector && selector.attr("data-error") || "网站名称",
 		form = selector && selector[0].form;
 		value = value.replace(/\s/g, "");
-		tchar = value.match(/[^\w\-\u4e00-\u9fa5]+/g);
+		//tchar = value.match(/[^\w\-\u4e00-\u9fa5]+/g);
+		tchar = value.match(/[^ A-Za-z0-9（）()\u4e00-\u9fa5]+/g);
 		$("#comp_name").val(value);
-
 		if (value && tchar) {
 			return '##不能含有特殊字符' + tchar.join("");
 		}
@@ -307,7 +310,8 @@ function compValidateEvent() {
 				OPEN_VALIDATOR["assnameCheck"](value, selector);
 			}
 		} else {
-			if (/^[\w\-\u4e00-\u9fa5]{1,16}$/.test(value)) {
+			if (/^[A-Za-z0-9（）()\u4e00-\u9fa5]{1,14}$/.test(value) && value.replace(/^\s+|\s+$/g,"").replace(/[^\x00-\xff]/g, 'TX').length<=14){
+			//if (/^[\w\-\u4e00-\u9fa5]{1,16}$/.test(value)) {
 				selector.removeAttr("data-only");
 				selector.attr("data-working", 1);
 				OPEN_VALIDATOR["appnameCheck"](value, selector);
