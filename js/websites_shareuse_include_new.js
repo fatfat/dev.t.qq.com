@@ -28,7 +28,7 @@ this.tpl.websites_shareuse_include_new = [
 	'<div style="clear:left;"></div>',
 ].join("");
 
-util.createScript(["http://mat1.gtimg.com/app/opent/rebuild/js/share.js","http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js"],function(){
+util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/share.js","http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js"],function(){
 	bindAllEvent();
 });
 
