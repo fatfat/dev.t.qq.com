@@ -105,7 +105,7 @@
 										'<label class="form_label"><em>*</em>联系人：</label><span class="form_input"><input type="text" class="txt" name="user_name"  id="user_name"value="<%=developer_detail.user_name%>" data-rule="comperson" data-error="联系人" maxlength="30"></span>',
 									'</li>',
 									'<li>',
-										'<label class="form_label"><em>*</em>手机号码：</label><span class="form_input"><input type="text" class="txt" name="user_phone" id="user_phone" value="<!--{$developer_detail.user_phone}-->" data-rule="mobilenum" data-error="手机号码" maxlength="11"></span>',
+										'<label class="form_label"><em>*</em>手机号码：</label><span class="form_input"><input type="text" class="txt" name="user_phone" id="user_phone" value="<%=developer_detail.user_phone%>" data-rule="mobilenum" data-error="手机号码" maxlength="11"></span>',
 										'<label class="gray inputdes">仅限中国境内手机号码，无需加0或+86</label>',
 									'</li>',
 									'<li>',

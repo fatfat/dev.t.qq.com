@@ -828,6 +828,7 @@ $("form input[type='submit']").click(function(){//表单提交验证
 });
 
 function checkStatus(form){
+
 	var app_type= +$("input[name='app_type']").val(),
 		app_status = global_obj.data.app.app_status;
 		link = $("input[name='app_url']"),
@@ -836,6 +837,7 @@ function checkStatus(form){
 		android_plat_status = global_obj.data.androidinfo ? global_obj.data.androidinfo.android_plat_status : "",
 		iphone_plat_status = global_obj.data.iphoneinfo ? global_obj.data.iphoneinfo.iphone_plat_status : "",
 		str = "";
+
     if(app_type ===1 || app_type === 2 || app_type === 3){
      	if(window.app_status && ( +app_status === 4 || +app_status === 5 || +app_status === 8)){
 			if( link.val() != link.attr("data-default") ) {
@@ -845,7 +847,7 @@ function checkStatus(form){
      	}
      }else if(app_type === 6){
      	 var wapp_platform = $("#wapp_platform").val();//1:无线应用上架通过，更改平台信息任一字段，需重新审核
-     	 	                                           //0:无线应用审核通过、上架拒绝、下架后，修改应用网址和75X75图标后需要重新审核
+                                 //0:无线应用审核通过、上架拒绝、下架后，修改应用网址和75X75图标后需要重新审核
      	 if(wapp_platform == 0){
 	     	 if(+app_status === 5 && android_plat_status !=2 && iphone_plat_status!=2){
 	     	 	 if( link.val() != link.attr("data-default") || ( icon4.val() != "" && icon4.val() != icon4.attr("data-default") )) {
