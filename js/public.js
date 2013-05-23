@@ -162,6 +162,17 @@
 		'<!--<li><a href="http://app.t.qq.com/?via=WB.TQQ.TOP.APP&g=2#mywebs" target="_blank">已授权网站</a></li>-->',
 		'</ul>',
 	].join("");
+	
+	tpl.development_iweibonav = [
+	'<ul class="appsnav">',
+		'<li <%if (appnav =="info") {%> class="active"  <%}%>><a href="/development/iweiboinfo?appid=<%=app.app_id%>">组件信息</a></li>',
+		'<li <%if (appnav =="edit"){%> class="active"  <%}%>><a href="/development/iweibosite?appid=<%=app.app_id%>">网站信息</a></li>',
+		'<!-- ',
+		'<li><a href="">转让应用</a></li>',
+		'<li><a href="">删除应用</a></li>',
+		'-->',
+	'</ul>'
+].join("");
 		
 	eventBindFuncList.push(function(){
 		if(global_obj.data.navPos==2){
