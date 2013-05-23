@@ -46,7 +46,7 @@ function compType1(){
 		var share_showcounter = comp_style.showcounter;
 		//<% include file="./websites/share/shareuse_include_new.tpl" %>
 		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_shareuse_include_new.js",function(){
-			$(".showcode_bar").before(tmpl(tpl.shareuse_include_new,global_obj.data));
+			$(".showcode_bar").before(tmpl(tpl.websites_shareuse_include_new,global_obj.data));
 			bindAllEvent();
 			$(function(){
 				if (comp_style.richable === 0){
