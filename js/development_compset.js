@@ -162,7 +162,6 @@ function compType3(){
 }
 function compType4(){
 	//<!--Q-Share-->
-	alert("-Q-Share")
 	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_qshare_explain_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.qshare_explain_include,global_obj.data));
 		bindAllEvent();

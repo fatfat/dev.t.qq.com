@@ -19,7 +19,7 @@ tpl.header,
 				'<ul class="appsnav">',
 					'<li class="active"><a href="/development/compinfo?comp_id=<%=comp.comp_id%>">组件信息</a></li>',
 					'<li><a href="/development/compsite?comp_id=<%=comp.comp_id%>">网站信息</a></li>',
-					'<%if(comp.comp_type==7){%>',
+					'<%if(comp.comp_type!==7){%>',
 						'<li><a href="/development/compset?comp_id=<%=comp.comp_id%>">组件设置</a></li>',
 					'<%}%>',
 					//<!-- 
