@@ -20,7 +20,7 @@
 		})
 		this.eventBindFuncList = [];
 	}
-	
+	var scripsCache = [];
 	this.tpl = this.tpl || {};
 	tpl.appnav = [
 		'<ul class="appsnav">',
@@ -179,11 +179,17 @@
 		}
 	})
 	util.createScript = function (src,callback) {
-		var script = document.createElement('script');
-		script.type = 'text/javascript';
-		script.onload = callback;
-		script.src = src;
-		document.body.appendChild(script);
+		$(document).ready(function(){
+			if($.inArray(src,scripsCache)!=-1){
+				return;
+			}
+			var script = document.createElement('script');
+			script.type = 'text/javascript';
+			script.onload = callback;
+			script.src = src;
+			document.body.appendChild(script);
+			scripsCache.push(src);
+		})
 	}
 	util.createScripts = function(scripts,callback){
 		var script = scripts.shift();
