@@ -26,7 +26,7 @@ this.tpl.explain = [
 	this.tpl.footer
 ].join("");
 
-util.setLoginInfo();
+//util.setLoginInfo();
 $("#main").html(tmpl(this.tpl.explain,global_obj.data));
 
 if(userInfo.hdlogin){

@@ -151,6 +151,7 @@ OPEN_VALIDATOR = {
 	,link:function(value){
 		var strRegex = "^((news|telnet|nttp|file|http|ftp|https)://)(([-A-Za-z0-9_]+(\\.[-A-Za-z0-9_]+)*(\\.[-A-Za-z]{2,6}))|([0-9]{1,3}(\\.[0-9]{1,3}){3}))(:[0-9]*)?(/[-A-Za-z0-9_$\\.+!*(),;:@&=?/~#%']*)*";  
 		var re = new RegExp(strRegex);  
+
 		if (/["'<>]/g.test(value)){
 			return "##不能含有'\"<>";
 		}else if(re.test(value)){

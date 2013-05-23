@@ -1,7 +1,7 @@
 this.tpl = this.tpl||{};
 this.tpl.wireless_intro = [
 this.tpl.header,
-'<link href="http://mat1.gtimg.com/app/opent/css/wireless/wireless.css?20120110" rel="stylesheet" type="text/css"/>',
+'<link href="http://mat1.gtimg.com/app/opent/css/wireless/wireless.css" rel="stylesheet" type="text/css"/>',
 '<div class="wrapper breadcast">',
 '</div>',
 '<div id="content" class="wrapper main main_comp w_intromain">',
