@@ -208,7 +208,7 @@ function compType6(){
 		//<% include file="./websites/comment/explain_include.tpl" %
 		var comp_style = comp.comp_style?comp.comp_style:{"width":300,"height":550,"autowidth":true,"colorstyle":1,"defaultcolorstyle":-1,"customcolor":"white_white_white_white"};
 		var comp_id = comp.comp_id;
-		$(function(){
+		eventBindFuncList.push(function(){
 			var customcolor=decodeURIComponent(comp_style.customcolor).split("_");
 			for(var i in customcolor){
 				$("#customcolor").find("input:eq("+i+")").val("#"+customcolor[i]);
@@ -234,7 +234,6 @@ function compType6(){
 				$("#customcolor").hide();
 			}
 			crUrl(comp_style);
-		
 		});
 	});
 }

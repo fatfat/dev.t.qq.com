@@ -1,7 +1,5 @@
 this.tpl.explain_include = [
 '<link href="http://mat1.gtimg.com/app/opent/css/websites/show/customcolor.css" type="text/css" rel="stylesheet">',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/jscolor_20111108.js"></script>',
-'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/js/customcolor.js"></script>',
 '<style type="text/css">',
 '.colorList li,.colorList1 li{float:left;height:40px;padding:4px;margin-bottom:8px;}',
 '.color1, .color2, .color3, .color4, .color5, .color6, .color7 {height: 36px;margin: 1px;width: 36px;}',
@@ -60,7 +58,7 @@ this.tpl.explain_include = [
 '</div>'
 ].join("");
 
-util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js",function(){bindAllEvent();});
+util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/jscolor.js","http://mat1.gtimg.com/app/opent/rebuild/js/customcolor.js","http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js"],function(){bindAllEvent();});
 
 /*解决IE6下点击“组件设置”时，其他导航及应用图标可不见的Bug*/
 setTimeout(function(){
@@ -78,8 +76,7 @@ var comp_type=6;
 
 
 function crUrl(cfg) {
-//	var _appkey = comp.comp_id || "801318648";
-	var _appkey = "801318648";
+	var _appkey = comp.comp_id || "801318648";
 	var rand = Math.random();
 	var _url = 'http://comment.v.t.qq.com/index.html?r=' + rand;
 	_url += '#appkey=' + _appkey;
@@ -123,6 +120,7 @@ function formSubmit() {
 	};
 	if (window.comp) {
 		paras["comp_id"] = comp.comp_id;
+		//paras["business_type"]= "ajax_compadd";
 	}
 	if ($("#comp_url").size() && $("#comp_name").size()) {
 		paras["comp_url"] = encodeURIComponent($("#comp_url").val());

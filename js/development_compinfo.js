@@ -390,7 +390,7 @@ function compType6(){//<!--微评论-->
         return _url;
     }
     var _url=getCodestr();
-    $("#scripts").val(['<div id="qqwb_comment__" data-appkey="<%=comp.comp_id%>" data-width="' , [comp_style.width,"100%"][0+comp_style.autowidth] , '" data-height="' , comp_style.height , '"' , (comp_style.colorstyle == 1 ? ' data-colors="'+decodeURIComponent(comp_style.customcolor)+'"' : '') , '></div>','\n<script src="http://mat1.gtimg.com/app/openjs/openjs.js#debug=yes&autoboot=no"><\/script>'].join(''));
+    $("#scripts").val(['<div id="qqwb_comment__" data-appkey="'+comp.comp_id+'" data-width="' , [comp_style.width,"100%"][0+comp_style.autowidth] , '" data-height="' , comp_style.height , '"' , (comp_style.colorstyle == 1 ? ' data-colors="'+decodeURIComponent(comp_style.customcolor)+'"' : '') , '></div>','\n<script src="http://mat1.gtimg.com/app/openjs/openjs.js#debug=yes&autoboot=no"><\/script>'].join(''));
     $("#preview").html("<iframe frameborder=\"0\" scrolling=\"no\" src=\""+_url+"\" width=\""+[comp_style.width,"100%"][0+comp_style.autowidth]+"\" height=\""+comp_style.height+"\"><iframe>");
     $(".getcode span").css("visibility","hidden");
 }
