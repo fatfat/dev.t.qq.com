@@ -35,9 +35,11 @@ var indexTmpl = [
 		this.tpl.footer	
 ].join("");
 $('#main').html(tmpl(indexTmpl,global_obj.data));
+
 $(function(){
 	userInfo = global_obj.data.userInfo || {};
 	util.setLoginInfo();
+	window.init();
 	//首页三大应用接入mouseover效果
 	$(".connect").mouseover(function(){
 		var _this = $(this),

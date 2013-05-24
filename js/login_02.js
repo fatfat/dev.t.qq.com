@@ -343,9 +343,53 @@ $((function() {
 	 		this.closebtn.unbind("click").bind("click",function(){window.location.reload()});
 		}
 		
-	}();
+	}//();
 }));
 
+	this.util = this.util || {};
+	//获取登陆态
+	/**
+	 * [获取登录态信息]
+	 * @return {[null]} [返回空]
+	 */
+	util.setLoginInfo = function(){
+		 $.ajax({
+			 "dataType":"json"
+			,"type":"post"
+			,"url":"/pipes/interfaceserver"
+ 			,"data":{"action":"get_login_info"}
+			,"success":function(d){
+				if (d.ret !=0 && d.msg){
+					loginWin.alert("<center>"+msg+"</center>");
+					return;
+				}
+				var loginInfo = [
+					'<%if (hdlogin != "false" ) {%>',
+					'<div class="menu">',
+						'<a class="login_name" href="javascript:;" title="<%=nick%>"><%=nick%><em></em></a>',
+						'<i class="nav_arrow"></i>',
+					'</div>',
+					'<ul class="childMenu userNav_sub">',
+						'<li class="sub_item"><a class="sub_item_link sub_active" href="/development/developer/">编辑开发者信息</a></li>',
+						'<li class="sub_item"><a class="sub_item_link" href="javascript:;" id="logoutBtn">退出</a></li>',
+					'</ul>',
+					'<%} else {%>',
+					'<a title="点击此处登录" class="login_name" href="javascript:void(0);" id="loginBtn" hidefocus>登录</a>',
+					'<%}%>',
+				].join("");
+				$('#login_status').html(tmpl(loginInfo,d.data));
+				if (d.data.hdlogin != "false"){
+					$('#logoutBtn').bind("click",common.loginOut);
+				} else {
+					$('#loginBtn').click(function() {
+						common.showLoginWin();
+					//	return false;
+					});
+				}
+				global_obj.data.userInfo.hdlogin = userInfo.hdlogin = hdlogin = d.data.hdlogin;
+			}
+		});
+	};
 /*以下是待删内容*/
 var showLoginWin = common.showLoginWin,
 	cookie = common.setCookie,
