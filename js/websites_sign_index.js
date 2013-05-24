@@ -46,6 +46,7 @@
 		$('#main').html(tmpl(tpl.content, global_obj.data));
 		bindAllEvent();
 		util.setLoginInfo();
+		window.init();
 		QosSS.t[3]= (new Date()).getTime();
 		QosSS.t[4]= (new Date()).getTime();	
 		QosSS.c = new Image();

@@ -37,3 +37,5 @@ $('#w_showdemo').toggle(
     }
 );
 this.bindAllEvent();
+util.setLoginInfo();
+window.init();

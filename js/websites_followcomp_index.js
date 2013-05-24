@@ -34,5 +34,6 @@ this.tpl.websites_followcomp_index = [
 ].join("");
 $("#main").html(tmpl(tpl.websites_followcomp_index,global_obj.data));
 	util.setLoginInfo();
+	window.init();
 	bindAllEvent();
 	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/imgViewer.js");

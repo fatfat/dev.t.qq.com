@@ -72,3 +72,5 @@ $('#w_showdemo').toggle(
     }
 );
 this.bindAllEvent();
+setLoginInfo();
+window.init();

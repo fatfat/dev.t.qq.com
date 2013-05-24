@@ -41,3 +41,5 @@ this.tpl.header,
 '</div>',
 this.tpl.footer
 ].join("");
+util.setLoginInfo();
+window.init();

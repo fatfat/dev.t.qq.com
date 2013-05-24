@@ -64,6 +64,7 @@ $("#main").append(tmpl(websites_index,global_obj.data));
 
 $(document).ready(function(){
 	util.setLoginInfo();
+	window.init();
 	//为所有链接添加hidefocus属性
 	$("a").attr("hidefocus",true);
 });

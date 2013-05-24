@@ -52,6 +52,7 @@
 	$("#main").html(tmpl(this.qshare_index,global_obj.data));
 	bindAllEvent();
 	util.setLoginInfo();
+	window.init();
 	QosSS.c = new Image();
 	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 	QosSS.t[5]= (new Date()).getTime();

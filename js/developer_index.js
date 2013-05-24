@@ -85,6 +85,7 @@ var developer_index =
 
 $(document.body).append(tmpl(developer_index, global_obj.data));
 util.setLoginInfo();
+window.init();
 var userInfo = global_obj.data.userInfo;
 var developer  = global_obj.data.developer;
 
