@@ -84,7 +84,7 @@ $(function(){
     var t=$(this),p=t.parent(),c=p.find(".alert_content");
         if (p.attr("beclose")){
 			p.hide();
-			$.get("/development/clearcompsitemsg/"+comp.comp_id+"?t="+new Date().getTime());
+			$.get("/development/clearcompsitemsg?comp_id="+comp.comp_id+"?t="+new Date().getTime());
 			return;
         }
     });
