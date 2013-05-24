@@ -296,7 +296,7 @@ function compValidateEvent() {
 			text.val(value);
 		}
 		if (OPEN_VALIDATOR.hasOwnProperty(rule) && rule) { //判断是否进行检测
-			if (!$.trim(value) && rule != "tname" && rule != "appdes" && rule != "topicname") {
+			if (!$.trim(value) && rule != "tname" && rule != "appdes" && rule != "topicname" && rule!="applink") {
 				errmsg += "不能为空";
 				flag = false;
 			} else {
@@ -352,7 +352,7 @@ function compValidateEvent() {
 			value = $(this).val();
 			errmsg = $(this).attr("data-error");
 			if (OPEN_VALIDATOR.hasOwnProperty(rule) && rule) {
-				if (!$.trim(value) && rule != "tname" && rule != "appdes" && rule != "topicname") {
+				if (!$.trim(value) && rule != "tname" && rule != "appdes" && rule != "topicname" && rule!= "applink") {
 					errmsg += "不能为空";
 					flag = false;
 				} else {

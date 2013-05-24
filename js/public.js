@@ -1,11 +1,11 @@
 ;(function() {
 	//页面参数控制跳转，add by fat
 	if (userInfo.developer_status == 0){
-		if(!/developer(\/(bedever|add|addone|activate))?/.test(location.href)){
+		if(!/developer(\/(bedever|add|addone|activate))?/.test(location.href) || /\/development\/developer/.test(location.href)){
 			location.href = "/developer/bedever";
 		}
 	}else if (userInfo.user_status == 0){
-		if(!/developer\/(add|addone|edit|checkemail|activate)/.test(location.href)){
+		if(!/developer\/(add|addone|edit|checkemail|activate)?/.test(location.href) || /\/development\/developer/.test(location.href)){
 			location.href = "/developer/checkemail";
 		}
 	}else if(global_obj.code==1){
