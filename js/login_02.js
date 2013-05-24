@@ -140,7 +140,7 @@ var common = {
 	}
 };
 
-$((function() {
+//$((function() {
 	var moduleObj = {};
 	(function($) {
 		$.fn.moduleBox = function(op) {
@@ -217,7 +217,7 @@ $((function() {
 		};
 	})(jQuery);
 
-	var init = function() {
+	this.init = function() {
 		$('#logoutBtn').bind("click",common.loginOut);
 		$('#loginBtn,#loginBtn2').click(function() {
 			common.showLoginWin();
@@ -344,7 +344,7 @@ $((function() {
 		}
 		
 	}//();
-}));
+//}));
 
 	this.util = this.util || {};
 	//获取登陆态

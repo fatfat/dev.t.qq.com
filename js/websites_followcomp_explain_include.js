@@ -252,7 +252,7 @@ function showDemo() {
 		$(".namelist").find(".name_con").each(function() {
 			names.push($(this).text());
 		});
-		var comp_id = comp.comp_id || "801000271";
+		var comp_id = window.comp ? comp.comp_id : "801000271";
 		$("#review").attr("src", "http://follow.v.t.qq.com/index.php?c=follow&a=index&appkey=" + comp_id + "&bg=" + ["fff", $("#color_bg").val().replace("#", "")][$("input[name='color']:checked").val()] + "&hsize=" + [100, 50][$("input[name='iconsize']:checked").val()] + "&name=" + names.join(","));
 	} else {
 		$("#review").attr("src", "http://mat1.gtimg.com/app/opent/images/websites/allfollow/showfollow.png");
