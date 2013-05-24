@@ -67,7 +67,7 @@ OPEN_VALIDATOR = {
 			"compname": "/pipes/interfaceserver"
 		},
 		para   = {
-				"appname"  : {"action":"common_query","business_type":"ajax_checkname","appname":value}
+				"appname"  : {"action":"common_query","business_type":"ajax_checkname","appname":encodeURIComponent(value)}
 				,"compname" : {"action":"common_query","business_type":"ajax_checkcompname","comp_name":encodeURIComponent(value),"comp_type":window.comp_type}
 			};
 
