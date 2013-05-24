@@ -49,5 +49,5 @@
 	var app_type = app && app.app_type ? app.app_type: '';
 	var NextUrl = '/development/iweibocheckmater?appid='+ app.app_id;
 	var typedata = '&app_type=' + app.app_type; 
-	util.createScript('/js/app_checkapp.js');
+	util.createScript('http://mat1.gtimg.com/app/opent/rebuild/js/app_checkapp.js');
 

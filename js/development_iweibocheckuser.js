@@ -137,7 +137,7 @@ var PostUrl = '/pipes/interfaceserver';
 var developer_detail = global_obj.data.developer_detail;
 var user_province=+developer_detail.user_province;
 var user_city=+developer_detail.user_city;
-util.createScripts(['/js/location.js','/js/app_checkdeveloper.js']);
+util.createScripts(['http://mat1.gtimg.com/app/opent/rebuild/js/location.js','http://mat1.gtimg.com/app/opent/rebuild/js/app_checkdeveloper.js']);
 
 
 

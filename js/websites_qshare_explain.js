@@ -44,7 +44,7 @@
 		window.UI = UI;
 		UI.menu.hl(1);
 	});	
-	$.getScript('/js/comp_validate.js', function () {
+	util.createScript('http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js', function () {
 		compValidateEvent();
 	});
 	QosSS.c = new Image();

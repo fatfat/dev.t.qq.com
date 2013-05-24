@@ -57,6 +57,6 @@ tpl.iweibocheckmater = [
 	var nextURL = "/development/iweiboinfo?appid="+global_obj.data.app.app_id;
 	$("input[type=file]").change(function(){ $("input#img_need_post").val("1")});
 
-	util.createScript('/js/app_checkmaterial.js');
+	util.createScript('http://mat1.gtimg.com/app/opent/rebuild/js/app_checkmaterial.js');
 
 

@@ -80,7 +80,6 @@ var developer_index =
 	 index_apps,
   '</div>',
 '</div>',
- 	'<script type="text/javascript" src="/js/app_appadd.js"></script>',
  	this.tpl.footer
 ].join("");
 
@@ -93,6 +92,7 @@ var hdlogin = userInfo.hdlogin || false;
 var regweibo = userInfo.reg_wb;
 var insiteAppAble = 1;	
 QosSS.t[2]= (new Date()).getTime();
+util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/app_appadd.js");
 $("#newapp").click(function(){
 	if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
 		return checkuserLogin(encodeURIComponent(location.href.replace(location.search,"").replace(location.hash,"")+"?t="+(~new Date())+"#newapp"));
