@@ -564,11 +564,13 @@ $(function () {
 								$this.attr("data-error",str);
 								clearImage();
 								return;
-							};
-						
-							$this.removeAttr("data-error");
+							}
+							if(!hasError){
+								$this.removeAttr("data-error",str);
+							}
 						})(0);
 					};
+					
 					if(filetypeReg.test(f.type)&&(f.fileSize||f.size)/1024<=maxsize){
 	    			
 					}else if(filetypeReg.test(f.type)==false){
@@ -725,7 +727,9 @@ $("form input[type='submit']").click(function(){//表单提交验证
 			return false;
 		}
 
+
 		$("form input[type='text'],form textarea,select#app_class_main,select#app_class_child,form input[type='file']").each(function(){
+			//.not("[data-default]^=''")
 			if($(f).hasClass("wirelessappform")){
 				if((app_platform === 1 && $(this).hasClass("android_field")) || (app_platform === 2 && $(this).hasClass("iphone_field"))){//只选择了iphone平台,对android字段不验证;若只选择了android平台，则对iphone字段不验证
 					return;
@@ -804,6 +808,7 @@ $("form input[type='submit']").click(function(){//表单提交验证
 			
 		}
 		
+		
 		var checkboxflag = $("input[name='user_agree']").attr('checked');
 		if(checkboxflag === undefined){//检验是否有同意选项
 			if(submitflag){//没有checkbox user_agree
@@ -828,7 +833,6 @@ $("form input[type='submit']").click(function(){//表单提交验证
 });
 
 function checkStatus(form){
-
 	var app_type= +$("input[name='app_type']").val(),
 		app_status = global_obj.data.app.app_status;
 		link = $("input[name='app_url']"),
@@ -897,7 +901,6 @@ function checkStatus(form){
 	 	     }
 	     }
      }
-   
      if(checkflag){
      	 loginWin.confirm({"text":str,"width":440,"ok_text":"确定","cancel_text":"取消"},function(){ submitForm(form);},function(){loginWin.close();});
 	     return false;
