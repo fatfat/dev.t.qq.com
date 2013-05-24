@@ -36,14 +36,15 @@ tpl.header,
 $("#main").append(tmpl(development_compsetTmpl,global_obj.data));
 
 
+var share_iconindex,share_counterpos,share_showcounter;
 function compType1(){
 	//'<!--一键分享-->'
 	if(comp.comp_style){
 		var comp_style = comp.comp_style?comp.comp_style:{"version":2,"iconindex":1,"showcounter":1,"counterpos":"top"};
 		var comp_id = comp.comp_id;
-		var share_iconindex = comp_style.iconindex;
-		var share_counterpos = comp_style.counterpos;
-		var share_showcounter = comp_style.showcounter;
+		share_iconindex = comp_style.iconindex;
+		share_counterpos = comp_style.counterpos;
+	    share_showcounter = comp_style.showcounter;
 		//<% include file="./websites/share/shareuse_include_new.tpl" %>
 		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_shareuse_include_new.js",function(){
 			$(".showcode_bar").before(tmpl(tpl.websites_shareuse_include_new,global_obj.data));
