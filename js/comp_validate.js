@@ -60,22 +60,12 @@ OPEN_VALIDATOR = {
 					//return 1;
 				}
 			}
-<<<<<<< HEAD
 			else if(k==0){
 				return "##不能为空";
 			}else{
 				return "##不能超过7个汉字";
 			}
-	}
-=======
-		} else if (k == 0) {
-			console.log(6);
-			return "##不能为空";
-		} else {
-			return "##不能超过16个字符";
-		}
 	},
->>>>>>> 解决话题墙添加来源为空的bug
 	appnameCheck: function(value, selector) {
 		//检测应用名称唯一性
 		var label = selector.attr("data-error"), //字段名
