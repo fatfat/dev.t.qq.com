@@ -41,5 +41,6 @@ this.tpl.header,
 '</div>',
 this.tpl.footer
 ].join("");
+$('#main').html(tmpl(tpl.wireless_intro,global_obj.data));
 util.setLoginInfo();
 window.init();

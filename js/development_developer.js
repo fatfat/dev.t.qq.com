@@ -281,7 +281,7 @@ $(function() {
 		var t = $(this),
 		w = t.parent(".alert_content").parent(".alert_warn");
 		w.hide();
-		$.get("/developer/rollinfo/" + developer.user_uin + ">?t=" + new Date().getTime());
+		$.get("/developer/rollinfo?uin=" + global_obj.data.user_uin + ">?t=" + new Date().getTime());
 		return;
 	});
 })
