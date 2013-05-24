@@ -24,6 +24,13 @@ OPEN_VALIDATOR = {
 			return "格式错误";
 		}
 	}
+	,applink:function(value){
+		if (value){
+			return OPEN_VALIDATOR.link(value);
+		}else{
+			return true;
+		}
+	}
 	,compname:function(value,selector){
 		var k,
 			tchar,

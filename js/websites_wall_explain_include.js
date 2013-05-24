@@ -168,7 +168,7 @@ function crUrl(o) {
 	}
 	
 //	var _appkey = comp.comp_id || "801000271";
-	_appkey = "801000271";
+	var _appkey = "801000271";
 	var wbname = encodeURIComponent($.trim($('#wbname').val()));
 	var wburl = encodeURIComponent($.trim($('#originurl').val()));
 	if (_tn != '' && _appkey != '') {
