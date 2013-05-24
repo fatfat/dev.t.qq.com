@@ -36,7 +36,6 @@ OPEN_VALIDATOR = {
 			$("#comp_name").val(value);
 		
 		if (value && tchar){
-			alert('haha');
 			return '##不能含有非法字符'+tchar.join("");
 		}
 			if(k>0&&k<=14){
@@ -325,11 +324,8 @@ function compValidateEvent() {
 			//if (/^[\w\-\u4e00-\u9fa5]{1,16}$/.test(value)) {
 				selector.removeAttr("data-only");
 				selector.attr("data-working", 1);
-				console.log('haha1');
 				OPEN_VALIDATOR["appnameCheck"](value, selector);
-				console.log('haha2');
 			} else {
-				console.log('haha3');
 				selector.removeAttr("data-only");
 			}
 		}
