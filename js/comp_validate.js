@@ -15,52 +15,62 @@ OPEN_VALIDATOR = {
 		}
 		return true;
 	},
-	link: function(value) {
-		var strRegex = "^((news|telnet|nttp|file|http|ftp|https)://)(([-A-Za-z0-9_]+(\\.[-A-Za-z0-9_]+)*(\\.[-A-Za-z]{2,6}))|([0-9]{1,3}(\\.[0-9]{1,3}){3}))(:[0-9]*)?(/[-A-Za-z0-9_$\\.+!*(),;:@&=?/~#%']*)*";
-		var re = new RegExp(strRegex);
-		if (re.test(value)) {
+	,link:function(value){
+		var strRegex = "^((news|telnet|nttp|file|http|ftp|https)://)(([-A-Za-z0-9_]+(\\.[-A-Za-z0-9_]+)*(\\.[-A-Za-z]{2,6}))|([0-9]{1,3}(\\.[0-9]{1,3}){3}))(:[0-9]*)?(/[-A-Za-z0-9_$\\.+!*(),;:@&=?/~#%']*)*";  
+		var re = new RegExp(strRegex);  
+		if(re.test(value)){
 			return true;
-		} else {
+		}else{
 			return "格式错误";
 		}
-	},
-	compname: function(value, selector) {
-		var k = value.length,
-		tchar, msg = selector && selector.attr("data-error") || "网站名称",
-		form = selector && selector[0].form;
-		value = value.replace(/\s/g, "");
-		//tchar = value.match(/[^\w\-\u4e00-\u9fa5]+/g);
-		tchar = value.match(/[^ A-Za-z0-9（）()\u4e00-\u9fa5]+/g);
-		$("#comp_name").val(value);
-		if (value && tchar) {
-			return '##不能含有特殊字符' + tchar.join("");
+	}
+	,compname:function(value,selector){
+		var k,
+			tchar,
+			msg = selector && selector.attr("data-error") || "网站名称",
+			form = selector && selector[0].form;
+			value = value.replace(/^\s+|\s$/g,"");
+			selector.val(value);
+			tchar = value.match(/[^ A-Za-z0-9（）()\u4e00-\u9fa5]+/g);
+			k = value.replace(/[^\x00-\xff]/g,"tx").length;
+			$("#comp_name").val(value);
+		
+		if (value && tchar){
+			return '##不能含有非法字符'+tchar.join("");
 		}
-		var k = value.length;
-		if (k > 0 && k <= 16) {
-			var dataonly = selector.attr("data-only");
-			if (dataonly) {
-				if (dataonly === "true") {
-					return true;
-				} else {
-					return "此##已被注册";
+			if(k>0&&k<=14){
+				var dataonly = selector.attr("data-only");
+				if (dataonly){
+					if (dataonly === "true"){
+						return true;
+					}else{
+						return "此##已被注册";
+					}
+				}else{
+					var dvalue = selector.attr("data-default"); //默认值
+					if(dvalue){
+						if(value==dvalue){
+							return true;
+						}else{
+							return 1;
+						}
+					}else{
+						return 1;	
+					}
+					//return 1;
 				}
-			} else {
-				return 1;
 			}
-		} else if (k == 0) {
-			return "##不能为空";
-		} else {
-			return "##不能超过16个字符";
-		}
-	},
+			else if(k==0){
+				return "##不能为空";
+			}else{
+				return "##不能超过7个汉字";
+			}
+	}
 	appnameCheck: function(value, selector) {
 		//检测应用名称唯一性
-		var label = selector.attr("data-error") //字段名
-		,
-		dvalue = selector.attr("data-default") //默认值
-		,
-		rule = selector.attr("data-rule") //验证规则
-		,
+		var label = selector.attr("data-error"), //字段名
+		dvalue = selector.attr("data-default"), //默认值
+		rule = selector.attr("data-rule"), //验证规则
 		url = {
 			//"appname": "/apps/checkname/" + encodeURIComponent(value),
 			"appname":"/pipes/interfaceserver",

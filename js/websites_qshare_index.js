@@ -32,7 +32,7 @@
 				'<h3 class="hbline"><strong>如何使用Q-Share？</strong></h3>',
 				'<p class="p">按照以下步骤操作，就能在你的博客或网页中添加Q-Share分享按钮模块:</p>',
 				'<div class="p">',
-				'第一步:访问腾讯微博Q-Share分享按钮代码获取页面 <a href="/?explain=1">立即访问&gt;&gt;</a><br/>',
+				'第一步:访问腾讯微博Q-Share分享按钮代码获取页面 <a href="/websites/qshare?explain=1">立即访问&gt;&gt;</a><br/>',
 				'第二步:将生成的代码粘贴到网页底部，并设置分享按钮和分享区域，就能在网页中使用本功能。',
 				'</div>',
 				'<h3 class="hbline"><strong>Q-Share将分享哪些内容？</strong></h3>		',
