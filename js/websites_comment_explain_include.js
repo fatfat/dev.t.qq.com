@@ -121,9 +121,9 @@ function formSubmit() {
 		"account": $("#account").val(),
 		"pnum": $("#pnum").val()
 	};
-/*	if (comp.comp_id) {
+	if (window.comp) {
 		paras["comp_id"] = comp.comp_id;
-	}*/
+	}
 	if ($("#comp_url").size() && $("#comp_name").size()) {
 		paras["comp_url"] = encodeURIComponent($("#comp_url").val());
 		paras["comp_name"] = encodeURIComponent($("#comp_name").val());
