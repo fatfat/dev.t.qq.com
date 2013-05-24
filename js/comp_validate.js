@@ -60,12 +60,22 @@ OPEN_VALIDATOR = {
 					//return 1;
 				}
 			}
+<<<<<<< HEAD
 			else if(k==0){
 				return "##不能为空";
 			}else{
 				return "##不能超过7个汉字";
 			}
 	}
+=======
+		} else if (k == 0) {
+			console.log(6);
+			return "##不能为空";
+		} else {
+			return "##不能超过16个字符";
+		}
+	},
+>>>>>>> 解决话题墙添加来源为空的bug
 	appnameCheck: function(value, selector) {
 		//检测应用名称唯一性
 		var label = selector.attr("data-error"), //字段名
@@ -134,6 +144,7 @@ OPEN_VALIDATOR = {
 	},
 	topicname: function(value, selector) {
 		if ($.trim(value).length == 0) {
+			console.log(2);
 			return "不能为空";
 		} else if (/^[^#]{1,20}$/.test($.trim(value))) {
 			return true;
@@ -166,6 +177,7 @@ OPEN_VALIDATOR = {
 		var dataonly = selector.attr("data-only"),
 		label = selector.attr("data-error");
 		if (/^\s*$/.test(value)) {
+			console.log(3);
 			return "不能为空";
 		} else if (! (/^[a-zA-Z][a-zA-Z0-9_\-]{0,19}$/g.test(value))) {
 			return "##格式错误";
@@ -290,6 +302,7 @@ function compValidateEvent() {
 		}
 		if (OPEN_VALIDATOR.hasOwnProperty(rule) && rule) { //判断是否进行检测
 			if (!$.trim(value) && rule != "tname" && rule != "appdes" && rule != "topicname") {
+			console.log(4);
 				errmsg += "不能为空";
 				flag = false;
 			} else {
@@ -346,6 +359,8 @@ function compValidateEvent() {
 			errmsg = $(this).attr("data-error");
 			if (OPEN_VALIDATOR.hasOwnProperty(rule) && rule) {
 				if (!$.trim(value) && rule != "tname" && rule != "appdes" && rule != "topicname") {
+				return;
+				console.log(5);
 					errmsg += "不能为空";
 					flag = false;
 				} else {

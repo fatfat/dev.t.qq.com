@@ -27,7 +27,7 @@ tpl.websites_wall_explain_include = [
 	'',
 	'<dl class="p">',
 	'<dt>添加来源</dt>',
-	'<dd  style="width:332px;"><span class="form_input"><input type="text" id="originurl" name="originurl" placeholder="请输入网站url" data-rule="link" data-error=""/></span></dd>',
+	'<dd  style="width:332px;"><span class="form_input"><input type="text" id="originurl" name="originurl" placeholder="请输入网站url" data-rule="applink" data-error="来源网址"/></span></dd>',
 	'</dl>',
 	'',
 	'<dl class="p">',
