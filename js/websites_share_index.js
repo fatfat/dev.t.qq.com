@@ -4,7 +4,7 @@
 	tpl.share = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
-		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20120110" rel="stylesheet" type="text/css"/> ',
+		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/> ',
 			'<div class="wrapper breadcast">',
 			'<a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>一键分享</span>',
 			'</div>',
