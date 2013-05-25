@@ -190,7 +190,9 @@
 		}
 	})
 	util.createScript = function (src,callback) {
+		alert(1);
 		$(document).ready(function(){
+			alert(2);
 			if($.inArray(src,scripsCache)!=-1){
 				return;
 			}

@@ -1,4 +1,4 @@
-﻿;(function(){
+﻿;(;(function(){
 	if (global_obj.code){
 		if(global_obj.code == 1){
 			location.href = global_obj.url;
@@ -10,10 +10,7 @@
 			alert("Wrong hint code" + global_obj.code);
 		}
 	}
-	var developer_appinfo = 
-	[       
-		tpl.header, 
-		'<style type="text/css">',
+	var str = [
 		'.hostingclick {',
 		    'cursor: pointer;',
 		    'line-height: 25px;',
@@ -47,37 +44,41 @@
 		    'display: none',
 		'}',
 		'#change_type_a_link a {vertical-align:baseline;}',
-		'</style>',
+	].join("");
+	util.createStyle(str);
+	var developer_appinfo = 
+	[       
+		tpl.header, 
 		'<div id="content" class="controlCon main main_app">',
 		'<div class="approate"><a href="/development/">我的应用</a> &gt; <span><%=app.app_name%></span>',
 		'</div>',
 		'<div class="deverLeft">',
-		'<div class="leftMain">',
-		'<div class="uicon"><img src="<%=app && app.app_icon_75 ? app.app_icon_75:"http://mat1.gtimg.com/app/opent/images/index/icon.jpg"%>"',
-		    'height="75" width="75" /><br />',
-		'<p><%=app.app_name%></p>',
-		'</div>',
-
-		tpl.appnav,
-		'</div>',
-		'</div>',
+			'<div class="leftMain">',
+				'<div class="uicon"><img src="<%=app && app.app_icon_75 ? app.app_icon_75:"http://mat1.gtimg.com/app/opent/images/index/icon.jpg"%>"',
+				    'height="75" width="75" /><br />',
+				'<p><%=app.app_name%></p>',
+				'</div>',//uicon
+				tpl.appnav,
+			'</div>',//leftMain
+		'</div>',//deverLeft
+			
 		'<div class="deverRight">',
 		'<h1 class="comp_tit">应用信息汇总</h1>',
 		'<ul class="appinfo">',
 	//	    '<!-- 审核结果提示 -->',
 		    '<%if (app.app_status==0){%>',
-		    '<li class="alert alert_warn"><a href="javascript:;"',
-		        'class="hidebtn closealert">收起↑</a>',
-		    '<h4>你的应用被无效禁止使用</h4>',
-		    '<div class="alert_content">你现在可以继续开发应用，若已开发完成且满足<a href="http://wiki.open.t.qq.com/index.php/%E8%85%BE%E8%AE%AF%E5%BE%AE%E5%8D%9A%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%AE%A1%E6%A0%B8%E8%A7%84%E8%8C%83"',
-		        'target="_blank">应用审核标准</a>，可点击“<a href="javascript:void(0);"',
-		        'id="appSource">提交审核</a>”</div>',
-		    '</li>',
+			    '<li class="alert alert_warn"><a href="javascript:;"',
+			        'class="hidebtn closealert">收起↑</a>',
+			    '<h4>你的应用被无效禁止使用</h4>',
+			    '<div class="alert_content">你现在可以继续开发应用，若已开发完成且满足<a href="http://wiki.open.t.qq.com/index.php/%E8%85%BE%E8%AE%AF%E5%BE%AE%E5%8D%9A%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%AE%A1%E6%A0%B8%E8%A7%84%E8%8C%83"',
+			        'target="_blank">应用审核标准</a>，可点击“<a href="javascript:void(0);"',
+			        'id="appSource">提交审核</a>”</div>',
+			    '</li>',
 		    '<%}else if(app.app_status==1){%>',
 		    '<li class="alert alert_warn">',
-		                    '<a href="javascript:;" class="hidebtn closealert">收起↑</a>',
-		                    '<h4>你的应用尚未提交审核</h4>',
-		                    '<div class="alert_content">你现在可以继续开发应用，若已开发完成且满足<a href="http://wiki.open.t.qq.com/index.php/%E8%85%BE%E8%AE%AF%E5%BE%AE%E5%8D%9A%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%AE%A1%E6%A0%B8%E8%A7%84%E8%8C%83" target="_blank">应用审核标准</a>，',
+		          '<a href="javascript:;" class="hidebtn closealert">收起↑</a>',
+		           '<h4>你的应用尚未提交审核</h4>',
+		          '<div class="alert_content">你现在可以继续开发应用，若已开发完成且满足<a href="http://wiki.open.t.qq.com/index.php/%E8%85%BE%E8%AE%AF%E5%BE%AE%E5%8D%9A%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%94%E7%94%A8%E5%AE%A1%E6%A0%B8%E8%A7%84%E8%8C%83" target="_blank">应用审核标准</a>，',
 		                '<%if(app.app_type==4 &&  app.app_hosting == 0){%>',
 		                    '可点击“提交审核”',
 		                '<%}else if(app.app_type==4 &&  app.app_hosting == 1){%> ',
@@ -85,7 +86,7 @@
 		                '<%}else{%>  ',
 		                    '可点击“提交审核”',
 		                '<%}%>',
-		                '</div>',
+		            '</div>',
 		    '</li>',
 		    '<%}else if(app.app_status==2){%>',
 		    '<li class="alert alert_warn">',
@@ -850,7 +851,7 @@
 	 	 	postData = {
 	 	 			"action":"common_query",
 	              "business_type":"apptostore",
-		 		 "appid":global_obj.data.app.app_id,
+		 		 "appid":global_obj.data.app.app_id
 		  	}      
 	 	 }
 	 	 

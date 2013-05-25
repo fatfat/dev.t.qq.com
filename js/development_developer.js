@@ -281,7 +281,6 @@ $(function() {
 		var t = $(this),
 		w = t.parent(".alert_content").parent(".alert_warn");
 		w.hide();
-		alert(global_obj.data.user_uin);
 		$.get("/pipes/interfaceserver?action=common_query&business_type=rollinfo?uin=" + userInfo.uin + "&t=" + new Date().getTime());
 		return;
 	});

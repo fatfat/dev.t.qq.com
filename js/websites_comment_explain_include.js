@@ -118,7 +118,9 @@ function formSubmit() {
 		"account": $("#account").val(),
 		"pnum": $("#pnum").val()
 	};
+		
 	if (window.comp) {
+		alert(1);
 		paras["comp_id"] = comp.comp_id;
 		//paras["business_type"]= "ajax_compadd";
 	}

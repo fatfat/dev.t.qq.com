@@ -26,9 +26,9 @@ tpl.mooduse_include = [
 	'</dl>',
 	'</div>',
 ].join("");
-	
-util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js",function(){bindAllEvent()});
-
+	/*
+//util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js",function(){bindAllEvent()});
+*/
 var comp_type = 5;
 
 function normalValidate() {

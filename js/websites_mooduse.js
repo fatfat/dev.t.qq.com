@@ -39,6 +39,8 @@
 		tpl.footer
 		].join("");
 		$('#main').html(tmpl(tpl.mooduse,global_obj.data));
+		
+		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js",function(){bindAllEvent()});
 		var UI = {};
 		$(function(){
 			var menu = function(){ 

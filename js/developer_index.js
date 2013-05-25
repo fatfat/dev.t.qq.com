@@ -1,5 +1,5 @@
 ﻿  //JavaScript Document
-var index_apps = [
+tpl.index_apps = [
 '<ul>',
 	'<li>',
 		'<a target="_blank" href="http://app.t.qq.com/app/intro/801210285?via=801210285_WB.SEARCH.ALL.1.1"><img src="http://openmat.gtimg.com/pic/801210285_50.png"/></a>',
@@ -77,7 +77,7 @@ var developer_index =
    '</div>',
    '<div class="main_right demos">',
 	 '<h2 class="title">优秀应用介绍</h2>',
-	 index_apps,
+	 tpl.index_apps,
   '</div>',
 '</div>',
  	this.tpl.footer
