@@ -48,7 +48,7 @@
 									'<%if (developer.user_type !=2 ){%>个人身份证件<%}else{%>营业执照号码：<%}%>预修改为：<%=developer.user_tmp_id%>',
 								'<%}%>',
 							'</h4>',
-							'<div class="alert_content">请确认<a href="/development/certification/">资质证明</a>与你的基本信息一致，否则修改将不予以通过。你还可以<a href="javascript:;" class="rollbtn">撤销修改</a></div>',
+							'<div class="alert_content">请确认<a href="/development/certification">资质证明</a>与你的基本信息一致，否则修改将不予以通过。你还可以<a href="javascript:;" class="rollbtn">撤销修改</a></div>',
 							'</li>',
 							'<%}%>',
 						'</ul>',
@@ -281,7 +281,7 @@ $(function() {
 		var t = $(this),
 		w = t.parent(".alert_content").parent(".alert_warn");
 		w.hide();
-		$.get("/pipes/interfaceserver?action=common_query&business_type=rollinfo?uin=" + userInfo.uin + "&t=" + new Date().getTime());
+		$.get("/pipes/interfaceserver?action=common_query&business_type=rollinfo&uin=" + userInfo.uin + "&t=" + new Date().getTime());
 		return;
 	});
 })

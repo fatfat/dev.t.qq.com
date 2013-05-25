@@ -155,7 +155,7 @@ var PostUrl = "/pipes/interfaceserver?action=common_query&business_type=ajaxsave
 var user_province=developer.user_province;
 var user_city= developer.user_city;
 
-util.createScripts(['/js/location.js','/js/app_checkdeveloper.js']);
+util.createScripts(['http://mat1.gtimg.com/app/opent/rebuild/js/location.js','http://mat1.gtimg.com/app/opent/rebuild/js/app_checkdeveloper.js']);
 
 
 

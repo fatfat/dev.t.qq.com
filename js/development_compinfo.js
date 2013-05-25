@@ -165,10 +165,10 @@ function compType1(){
 	   });
 	}else{
 		/*
-		util.createScript("/js/websites/share/share_full.js");
-		util.createScript("/js/websites/share/share_simple.js");
-		util.createScript("/js/websites/share/qshare_full.js");
-		util.createScript("/js/websites/share/qshare_simple.js");
+		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites/share/share_full.js");
+		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites/share/share_simple.js");
+		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites/share/qshare_full.js");
+		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites/share/qshare_simple.js");
 		var t = [
 			'<div style="display:none;">',
 			'<textarea id="code00">',
@@ -306,8 +306,8 @@ function compType3(){
 }
 function compType4(){
 	//<!--Q-Share-->	
-		/*util.createScript("/js/websites/qshare/qshare_full.js");
-		util.createScript("/js/websites/qshare/qshare_simple.js");
+		/*util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites/qshare/qshare_full.js");
+		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites/qshare/qshare_simple.js");
 		var t = [
 			'<div style="display:none">',
 			'<textarea id="code00">',

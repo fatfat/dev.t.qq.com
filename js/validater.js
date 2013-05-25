@@ -451,37 +451,38 @@ OPEN_VALIDATOR = {
 	complicensenum: function(value, selector) { //公司营业执照号码
 		value = value.replace(/\s/g, "");
 		selector.val(value);
-		//var tchar = value.match(/[^0-9a-zA-Z\-]+/g);
-		var tchar = value.match(/^[0-9]([0-9]|-(?!-)){6,18}[0-9]$/g);
+		var tchar = value.match(/[^0-9a-zA-Z\-]+/g);
+		console.log(tchar);
+	//	var tchar = value.match(/^[0-9]([0-9]|-(?!-)){6,18}[0-9]$/g);
 		if (value && tchar) {
 			return '你填写的##含有非法字符';
 		}
 
-		if (value.length >= 8 && value.length <= 20) {
-			if (new RegExp(/^[0-9a-zA-Z-]{8,20}$/).test(value)) {
+		if(value.length>=8 && value.length<=20){
+			if(new RegExp(/^[0-9a-zA-Z-]{8,20}$/).test(value)){
 				var dataonly = selector.attr("data-only");
-				if (dataonly) {
-					if (dataonly === "true") {
+				if (dataonly){
+					if (dataonly === "true"){
 						return true;
-					} else {
+					}else{
 						return "该##已被注册";
 					}
-				} else {
+				}else{
 					var dvalue = selector.attr("data-default"); //默认值
-					if (dvalue) {
-						if (value == dvalue) {
+					if(dvalue){
+						if(value==dvalue){
 							return true;
-						} else {
+						}else{
 							return 1;
 						}
-					} else {
-						return 1;
+					}else{
+						return 1;	
 					}
 				}
-			} else {
-				return '##格式错误';
+			}else{
+				return '##格式错误';	
 			}
-		} else {
+		}else{
 			return "请填写8-20位##";
 		}
 	},
@@ -494,6 +495,7 @@ OPEN_VALIDATOR = {
 		//,url    = "/developer/checkcomid/"+encodeURIComponent(value);
 		,
 		url = "/pipes/interfaceserver?action=common_query&business_type=checkcomid&comid=" + encodeURIComponent(value);
+
 		if (dvalue != value) {
 			showmsg(1, selector, "正在验证" + label);
 			$.ajax({
@@ -501,9 +503,10 @@ OPEN_VALIDATOR = {
 				"dataType": "json",
 				"url": url,
 				"success": function(d) {
-					//var w = selector.attr("data-working")|0,ret = +d.ret,err = common.getMsgByRet(ret); //转化为自然数
+					console.log(d);
+				//	var w = selector.attr("data-working")|0,ret = +d.ret,err = common.getMsgByRet(ret); //转化为自然数
 					var w = selector.attr("data-working") | 0,
-					ret = +(d.code || d.error),
+					ret = + d.error,
 					err = common.getMsgByRet(ret); //转化为自然数
 					if (err) {
 						selector.attr("data-only", false);
@@ -831,35 +834,23 @@ $("form input[data-rule='appname'],form input[data-rule='compname']").change(fun
 });
 
 $("form input[data-rule='complicensenum'],form input[data-rule='cardnum_new'],form input[data-rule='passport']").change(function() {
-	var selector = $(this),
-	rule = selector.attr("data-rule"),
-	value = selector.val();
-	var rulecheck = {
-		"complicensenum": {
-			"reg": /^[0-9a-zA-Z-]{8,20}$/,
-			"check": "complicensenumCheck"
-		},
-		"cardnum_new": {
-			"reg": /^[0-9xX]{18}$/,
-			"check": "cardnumCheck"
-		},
-		"passport": {
-			"reg": /^[0-9a-zA-Z]+$/,
-			"check": "cardnumCheck"
-		}
-	};
+	var selector = $(this),rule = selector.attr("data-rule"),value = selector.val();
+	var rulecheck={"complicensenum":{"reg":/^[0-9a-zA-Z-]{8,20}$/,"check":"complicensenumCheck"}
+					 ,"cardnum_new":{"reg":/^[0-9xX]{18}$/,"check":"cardnumCheck"}
+				     ,"passport":{"reg":/^[0-9a-zA-Z]+$/,"check":"cardnumCheck"}
+			};
 
-	for (var r in rulecheck) {
-		if (rule == r) {
-
-			if (rulecheck[r]["reg"].test(value)) {
+	for(var r in rulecheck){
+		if(rule==r){
+		
+			if (rulecheck[r]["reg"].test(value)){
 				selector.removeAttr("data-only");
-				selector.attr("data-working", 1);
-				OPEN_VALIDATOR[rulecheck[r]["check"]](value, selector);
-			} else {
+				selector.attr("data-working",1);
+				OPEN_VALIDATOR[rulecheck[r]["check"]](value,selector);
+			}else{
 				selector.removeAttr("data-only");
 			}
-			break;
+			break;			
 		}
 	}
 });
