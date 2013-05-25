@@ -16,7 +16,7 @@
 //userInfo.hdlogin = window.hdlogin = "76516702";
 util.createStyle(str);
 global_obj.data.navPos='0';
-/*	this.tpl.pageBar = [//翻页按钮
+	this.tpl.pageBar = [//翻页按钮
 		'<div id="pagebar">',
 			'<div class="pagebar">',
 				'<em title="共<%=app_count%>条">共<%=app_count%>条</em>',
@@ -87,7 +87,7 @@ global_obj.data.navPos='0';
 				'<% } %>',
 			'</div>',
 		'</div>',
-	].join("");*/
+	].join("");
 tpl.index_more = [
 	tpl.header,
 	'<div id="content" class="wrapper main main_more_news">',
@@ -98,11 +98,72 @@ tpl.index_more = [
 		'<%for(var i = 0, totalNum = pagelist.length, list = pagelist[0]; i < totalNum && (list = pagelist[i]); i++)	{%>',
 			'<li><span><a href=<%=list.link%> target = _blank; title = <%=list.title%>><%=list.title%></a></span><cite><%=list.pubDate%></cite></li>',
 		'<%}%></ul>',
+		tpl.pageBar,
 	'</div>',
 	'<script type="text/javascript" src="http://tajs.qq.com/stats?sId=22020733" charset="UTF-8"></script>',
  	'<!--[if IE 8]><script>alert(1);try{document.execCommand("BackgroundImageCache", false, true);}catch(e){}</script><![endif]-->',
 	tpl.footer,
 ].join("\r");
-$('#main').html(tmpl(tpl.index_more,global_obj.data));
+
+//global_obj.data.app_count=80;
+	global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
+	$('#main').html(tmpl(tpl.index_more,global_obj.data));
+	window.bindAllPageEvent();
+		
+	 function AjaxPageList(ajaxpageListUrl,dota){ 
+		$.ajax({
+			  url: ajaxpageListUrl,
+			  dataType: "json",
+			  data: dota,
+			  cache: false,
+			  success: function(ResponseData){ 
+				ResponseData.data.page_count = global_obj.data.page_count;
+				global_obj.data.page_no = global_obj.data.page_no;
+				$('#pagebar').html(tmpl(tpl.pageBar, ResponseData.data));
+				checkPageNum(global_obj.data.page_count);
+			  },
+	  		  error:function(){console.log('error');}
+		})
+	}	
+	 function pageList (page){ 
+		global_obj.data.page_no = page;
+		ajaxpageListUrl = "/pipes/interfaceserver";
+    	var data = {"action":"common_query","business_type":"moreinfolist","page":page};
+		AjaxPageList(ajaxpageListUrl, data);
+	} 
+	  
+	function bindPageEvent (pageNum) {
+		var pagei = '#page' + pageNum;
+		$(pagei).click(function(){
+			alert("click page"+pagei);
+			pageList(pageNum);
+		})
+	}
+	
+
+	 function checkPageNum(page_count){
+		if(page_count <= 1){
+			$('#pagebar').css('display','none');
+		}
+		else{
+			$('#pagebar').css('display','block');
+		} 
+	}
+	
+	function  bindAllPageEvent(){
+		for(var i = 1; i <= global_obj.data.page_count; i++){
+			bindPageEvent(i);	
+		}
+		
+		$("#prev").click(function(){
+			pageList(global_obj.data.page_no-1);
+		})
+		
+		$("#next").click(function(){
+			pageList(global_obj.data.page_no+1);
+		})
+	}
+	
+
 
 
