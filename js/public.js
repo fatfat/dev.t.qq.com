@@ -217,7 +217,7 @@
 	var wapperStyle = ".deverCon.wrapper{margin-top:45px;}";
 	util.createStyle(wapperStyle)
 	//导航栏 用户登录相关信息需要用到的数据 (login_01.js里面)
-	window.hdlogin = global_obj.data.userInfo.hdlogin;
+	window.hdlogin = userInfo.hdlogin;
     global_obj.init = global_obj.init || {};
 //	    var user_certif_status= developer.user_certif_status
 //		var user_check_status= developer.user_check_status;//资质证明审核状态
