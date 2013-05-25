@@ -1,4 +1,4 @@
-﻿;(;(function(){
+﻿;(function(){
 	if (global_obj.code){
 		if(global_obj.code == 1){
 			location.href = global_obj.url;
