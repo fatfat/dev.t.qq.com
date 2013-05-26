@@ -88,9 +88,8 @@ global_obj.data.navPos='0';
 			'</div>',
 		'</div>',
 	].join("");
-tpl.index_more = [
-	tpl.header,
-	'<div id="content" class="wrapper main main_more_news">',
+	tpl.content = [
+		'<div id="content" class="wrapper main main_more_news">',
 		'<div class="approate">',
 			'<a href="/">腾讯微博开放平台</a> &gt; <span>开放平台动态</span>',
 		'</div>',
@@ -100,12 +99,17 @@ tpl.index_more = [
 		'<%}%></ul>',
 		tpl.pageBar,
 	'</div>',
+		].join("");
+		
+			
+tpl.index_more = [
+	tpl.header,
+	tpl.content,
 	'<script type="text/javascript" src="http://tajs.qq.com/stats?sId=22020733" charset="UTF-8"></script>',
  	'<!--[if IE 8]><script>alert(1);try{document.execCommand("BackgroundImageCache", false, true);}catch(e){}</script><![endif]-->',
 	tpl.footer,
 ].join("\r");
 
-//global_obj.data.app_count=80;
 	global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
 	$('#main').html(tmpl(tpl.index_more,global_obj.data));
 	window.bindAllPageEvent();
@@ -117,10 +121,12 @@ tpl.index_more = [
 			  data: dota,
 			  cache: false,
 			  success: function(ResponseData){ 
+			  	console.log(ResponseData.data);
 				ResponseData.data.page_count = global_obj.data.page_count;
 				global_obj.data.page_no = global_obj.data.page_no;
-				$('#pagebar').html(tmpl(tpl.pageBar, ResponseData.data));
+				$('#content').html(tmpl(tpl.content, ResponseData.data));
 				checkPageNum(global_obj.data.page_count);
+				bindAllPageEvent();
 			  },
 	  		  error:function(){console.log('error');}
 		})
@@ -156,10 +162,12 @@ tpl.index_more = [
 		}
 		
 		$("#prev").click(function(){
+			console.log(1);
 			pageList(global_obj.data.page_no-1);
 		})
 		
 		$("#next").click(function(){
+			console.log(2);
 			pageList(global_obj.data.page_no+1);
 		})
 	}
