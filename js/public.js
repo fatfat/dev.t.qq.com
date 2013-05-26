@@ -190,13 +190,24 @@
 		}
 	})
 	util.createScript = function (src,callback) {
-		$(document).ready(function(){
-			if($.inArray(src,scripsCache)!=-1){
-				return;
+			$(document).ready(function(){
+				if($.inArray(src,scripsCache)!=-1){
+					return;
 			}
 			var script = document.createElement('script');
 			script.type = 'text/javascript';
-			script.onload = callback;
+			//add by fat,IE8以下不支持onload事件
+			if(navigator.userAgent.indexOf('MSIE') >= 0){
+			    script.onreadystatechange = function(){
+			        if(this.readyState == 'loaded' || this.readyState == 'complete'){
+			            callback();
+			        }
+			    }
+			}else{
+			    script.onload = function(){
+			        callback();
+			    }
+			}
 			script.src = src;
 			document.body.appendChild(script);
 			scripsCache.push(src);

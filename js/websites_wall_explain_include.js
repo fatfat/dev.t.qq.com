@@ -160,7 +160,7 @@ function crUrl(o) {
 	}
 	
 //	var _appkey = comp.comp_id || "801000271";
-	var _appkey = "801000271";
+	var _appkey = window.comp && comp.comp_id ? comp.comp_id : "801000271";
 	var wbname = encodeURIComponent($.trim($('#wbname').val()));
 	var wburl = encodeURIComponent($.trim($('#originurl').val()));
 	if (_tn != '' && _appkey != '') {
@@ -270,9 +270,9 @@ function formSubmit() {
 		//组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板'
 		"comp_style": "{\"topicnames\":\"" + topicnames.join("") + "\",\"width\":" + $("#width").val() + ",\"height\":" + $("#height").val() + ",\"autowidth\":" + $("#autowidth").is(":checked") + ",\"colorstyle\":" + $("input[name='color']:checked").val() + ",\"defaultcolorstyle\":" + colors + ",\"customcolor\":\"" + customcolor.join("_") + "\",\"imgshow\":" + $("input[name='imgshow']:checked").val() + ",\"postpos\":" + $("input[name='post']:checked").val() + ",\"tmodel\": " + tmodelp + " , \"wbname\" : \"" + wbnamep + "\", \"wburl\":\"" + wburlp + "\"}"
 	};
-/*	if (comp.comp_id) {
+	if (window.comp && comp.comp_id) {
 		paras["comp_id"] = comp.comp_id;
-	}*/
+	}
 	if ($("#comp_url").size() && $("#comp_name").size()) {
 		paras["comp_url"] = encodeURIComponent($("#comp_url").val());
 		paras["comp_name"] = encodeURIComponent($("#comp_name").val());
@@ -331,10 +331,10 @@ function formSubmit() {
 function normalValidate() {
 	$("#comp_name").trigger("blur");
 }
-
+/*
 util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js",function(){
 	bindAllEvent();
-});
+});*/
 /*window.onload = function(){//解决IE6下组件设置（话题墙）页左侧导航隐藏的bug
 		if($.browser.msie && $.browser.version == "6.0"){
 			$(".deverRight").css({"width":"782px"});
