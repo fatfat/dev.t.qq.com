@@ -83,7 +83,7 @@ function crUrl(cfg) {
 	_url += '&url=http%3A%2F%2F' + location.hostname;
 	if (cfg) {
 		if (cfg.colorstyle == 1) {
-			_url += '&colorset=' + cfg.customcolor;
+			_url += '&colorset=' + encodeURIComponent(cfg.customcolor);
 		}
 	} else {
 		if ($("input[name='color']:checked").val() == '1') { // 自定义颜色
@@ -120,7 +120,6 @@ function formSubmit() {
 	};
 		
 	if (window.comp) {
-		alert(1);
 		paras["comp_id"] = comp.comp_id;
 		//paras["business_type"]= "ajax_compadd";
 	}
