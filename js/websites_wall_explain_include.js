@@ -331,10 +331,10 @@ function formSubmit() {
 function normalValidate() {
 	$("#comp_name").trigger("blur");
 }
-/*
+
 util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js",function(){
 	bindAllEvent();
-});*/
+});
 /*window.onload = function(){//解决IE6下组件设置（话题墙）页左侧导航隐藏的bug
 		if($.browser.msie && $.browser.version == "6.0"){
 			$(".deverRight").css({"width":"782px"});

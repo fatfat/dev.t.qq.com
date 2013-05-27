@@ -57,8 +57,9 @@ this.tpl.explain_include = [
 '</dl>',
 '</div>'
 ].join("");
-
+setTimeout(function(){
 util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/jscolor.js","http://mat1.gtimg.com/app/opent/rebuild/js/customcolor.js","http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js"],function(){bindAllEvent();});
+},2000)
 
 /*解决IE6下点击“组件设置”时，其他导航及应用图标可不见的Bug*/
 setTimeout(function(){
