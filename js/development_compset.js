@@ -127,7 +127,7 @@ function compType3(){
 		//<% include file="./websites/wall/explain_include.tpl" %>
 		var comp_style = comp.comp_style?comp.comp_style:{"topicnames":"%E7%BE%8E%E5%A5%B3,%E6%B8%94%E6%B0%B4%E4%B9%8B%E6%AC%A2,%E7%A6%8F%E5%88%A9","width":300,"height":550,"autowidth":true,"colorstyle":1,"defaultcolorstyle":-1,"customcolor":"B9FF40_FFF0D1_6A437A_63FFBC_91FFCF_54FF82","imgshow":0,"postpos":0};
 		var comp_id = comp.comp_id;
-		$(function(){
+		eventBindFuncList.push(function(){
 			var topicnames=comp_style.topicnames.split(","),originurl=comp_style.wburl || "",wbname=comp_style.wbname || "",customcolor=comp_style.customcolor.split("_");
 			for(var i in topicnames){
 			$("input[name='topicname']:eq("+i+")").val(decodeURIComponent(topicnames[i]));
