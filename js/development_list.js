@@ -577,7 +577,7 @@ else
 					location.href="/development/";
 				  }
 			  },
-	  		  error:function(){console.log('error');}
+	  		  error:function(){}
 		})
 	}
 }

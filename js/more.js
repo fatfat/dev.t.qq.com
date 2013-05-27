@@ -121,14 +121,13 @@ tpl.index_more = [
 			  data: dota,
 			  cache: false,
 			  success: function(ResponseData){ 
-			  	console.log(ResponseData.data);
 				ResponseData.data.page_count = global_obj.data.page_count;
 				global_obj.data.page_no = global_obj.data.page_no;
 				$('#content').html(tmpl(tpl.content, ResponseData.data));
 				checkPageNum(global_obj.data.page_count);
 				bindAllPageEvent();
 			  },
-	  		  error:function(){console.log('error');}
+	  		  error:function(){}
 		})
 	}	
 	 function pageList (page){ 
@@ -161,12 +160,10 @@ tpl.index_more = [
 		}
 		
 		$("#prev").click(function(){
-			console.log(1);
 			pageList(global_obj.data.page_no-1);
 		})
 		
 		$("#next").click(function(){
-			console.log(2);
 			pageList(global_obj.data.page_no+1);
 		})
 	}

@@ -73,8 +73,8 @@ global_obj.data.compat = 3;
         }
     });
 	util.createScript("http://pingjs.qq.com/ping.js");
-	util.setLoginInfo();
-	window.init();
+	//util.setLoginInfo();
+	//window.init();
 	if(typeof(pgvMain) == 'function')pgvMain();
 	QosSS.c = new Image();
 	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});

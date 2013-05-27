@@ -201,12 +201,12 @@
 			if(navigator.userAgent.indexOf('MSIE') >= 0){
 			    script.onreadystatechange = function(){
 			        if(this.readyState == 'loaded' || this.readyState == 'complete'){
-			            callback();
+			            callback&&callback();
 			        }
 			    }
 			}else{
 			    script.onload = function(){
-			        callback();
+			        callback&&callback();
 			    }
 			}
 			script.src = src;

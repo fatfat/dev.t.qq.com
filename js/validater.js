@@ -452,7 +452,6 @@ OPEN_VALIDATOR = {
 		value = value.replace(/\s/g, "");
 		selector.val(value);
 		var tchar = value.match(/[^0-9a-zA-Z\-]+/g);
-		console.log(tchar);
 	//	var tchar = value.match(/^[0-9]([0-9]|-(?!-)){6,18}[0-9]$/g);
 		if (value && tchar) {
 			return '你填写的##含有非法字符';
@@ -503,7 +502,6 @@ OPEN_VALIDATOR = {
 				"dataType": "json",
 				"url": url,
 				"success": function(d) {
-					console.log(d);
 				//	var w = selector.attr("data-working")|0,ret = +d.ret,err = common.getMsgByRet(ret); //转化为自然数
 					var w = selector.attr("data-working") | 0,
 					ret = + d.error,
