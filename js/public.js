@@ -239,7 +239,7 @@
 		$("#apphost_btn").click(function(event){ 
 			if(app_binbond ===0){//未分配保证金
 				if( user_certif_status ===0 && ( user_check_status===0 || user_check_status===1 || user_check_status===2 )){
-					var str="<center>开发者资质证明通过审核后，才能申请服务器和托管地址<br/><br/><a href=\"/development/certification/\">现在去上传资质证明</a><br/><br/></center>";
+					var str="<center>开发者资质证明通过审核后，才能申请服务器和托管地址<br/><br/><a href=\"/development/certification\">现在去上传资质证明</a><br/><br/></center>";
 					loginWin.alert({"text":str,"height":215,"ok_text":"我知道了"});
 					return false;	
 				}
