@@ -30,7 +30,7 @@
 			'<%if (app.app_type ==\'6\') {%>',
 				'<li <%if (appnav ==\'platform\') {%> class="active"<%}%>><a href="/development/platforminfo?appid=<%=app.app_id%>">平台信息</a></li>',
 			'<%}%>',
-			'<li <%if (appnav ==\'compass\') {%> class="active"<%}%>><a href="/development/appcompass?appid=<%=app.app_id%>/">业务数据</a></li>',
+			'<li <%if (appnav ==\'compass\') {%> class="active"<%}%>><a href="/development/appcompass?appid=<%=app.app_id%>">业务数据</a></li>',
 			'<%if (app.app_type ==\'4\' && app.app_type_check !=\'1\') {%>',
 				'<%if (app.app_hosting==1) {%>',
 					'<%if (developer.user_certif_status==1 || app.app_binbond==1) {%>',
