@@ -180,7 +180,6 @@ function compType5(){
 	//<!--心情板-->
 	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_mooduse_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.mooduse_include,global_obj.data));
-		bindAllEvent();
 		//<% include file="./websites/mood/mooduse_include.tpl" %>
 		var comp_style = comp.comp_style?comp.comp_style:{"assname":"api_weibo","width":300,"height":"108","autowidth":true,"autoheight":true};
 		var comp_id = comp.comp_id;
@@ -189,11 +188,13 @@ function compType5(){
 		$("#height").val(comp_style["height"]||108);
 		if (comp_style.autowidth){
 			$("#autowidth").attr("checked","checked");
+			$('#width').attr("disabled", "true");
 		}else{
 			$("#autowidth").removeAttr("checked");
 		}
 		if (comp_style.autoheight){
 			$("#autoheight").attr("checked","checked");
+			$('#height').attr("disabled", "true");
 		}else{
 			$("#autoheight").removeAttr("checked");
 		}
