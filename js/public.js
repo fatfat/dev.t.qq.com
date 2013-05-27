@@ -148,7 +148,7 @@
 	this.tpl.websites_appnav = [
 		'<ul class="appsnav">',
 		'<li><a href="/websites/login/"><span class="icon icon_login"></span>微博登录</a></li>',
-		'<li><a href="/websites/share"><span class="icon icon_share"></span>一键分享</a></li>',
+		'<li><a href="/websites/share/"><span class="icon icon_share"></span>一键分享</a></li>',
 		'<li><a href="/websites/followcomp/"><span class="icon icon_follow"></span>收听组件</a></li>',
 		'<!--{*<li><a href="/websites/allfollow/">批量收听</a></li>*}-->',
 		'<li><a href="/websites/wall/"><span class="icon icon_wall"></span>话题墙</a></li>',
@@ -179,9 +179,9 @@
 		if(global_obj.data.navPos==2){
 			var p=location.pathname;
 			$(".appsnav").find("li").find("a").each(function(){
-				var pathname = location.pathname.replace(/\/use/gi,"/")+"/";
-				pathname = pathname.replace(/[1-9]+/g,"");  //微博秀
-				if (pathname.indexOf($(this).attr("href"))>-1){
+				var pathname = location.pathname.replace(/\/use/gi,"/");
+				pathname = pathname.replace(/[1-9]+/g,"");  //微博秀	
+				if ($(this).attr("href").indexOf(pathname)>-1){
 					$(this).parent().addClass("active");
 					return;
 				}else if(1){
