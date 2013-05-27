@@ -1,7 +1,4 @@
 ﻿util.createStyle("#content{width:985px;}");
-global_obj.data.app={};
-global_obj.data.app.app_id='1111111';
-global_obj.data.app.app_name="hello";
 tpl.businessData = [
 	tpl.header,
 	
