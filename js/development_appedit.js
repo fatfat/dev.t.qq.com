@@ -1,4 +1,39 @@
 ;(function(){
+		var str = [
+	'.hostingclick {',
+		'cursor: pointer;',
+		'line-height: 25px;',
+		'padding-left: 0.8em;',
+		'padding-right: 0.8em;',
+		'border-top: 1px solid #d9d9d9;',
+		'border-left: 1px solid #d9d9d9;',
+		'border-right: 1px solid #d9d9d9;',
+		'font-weight: bold;',
+	'}',
+
+	'.hosting {',     
+		'cursor: pointer;',
+		'line-height: 25px;',
+		'padding-left: 0.8em;',
+		'padding-right: 0.8em;',
+		'border-bottom: 1px solid #d9d9d9;',
+	'}',
+
+	'div a#yunJPGClick {',
+		'display: none',
+	'}',
+
+	'.icon_alert {',
+		'width: 38px;',
+		'height: 38px;',
+		'background: url(http://mat1.gtimg.com/app/opent/images/public/icon.png)',
+			'-352px -59px no-repeat;',
+		'display: inline-block;',
+		'zoom: 1;',
+	'}'
+	].join('');
+	util.createStyle(str);
+	
 	tpl.development_app_material = [
 	'<li>',
 		'<label class="form_label">',
@@ -253,7 +288,6 @@
 	tpl.footer,
 	].join('');
 	
-
 	global_obj.data.app = global_obj.data.app || {};
 	global_obj.data.iphoneinfo = global_obj.data.iphoneinfo || {};
 	var iphoneinfo = global_obj.data.iphoneinfo;
@@ -261,42 +295,9 @@
 	var androidinfo = global_obj.data.androidinfo;
 	var app = global_obj.data.app;
 	$('#main').html(tmpl(tpl.appedit, global_obj.data));
-	var str = [
-	'.hostingclick {',
-		'cursor: pointer;',
-		'line-height: 25px;',
-		'padding-left: 0.8em;',
-		'padding-right: 0.8em;',
-		'border-top: 1px solid #d9d9d9;',
-		'border-left: 1px solid #d9d9d9;',
-		'border-right: 1px solid #d9d9d9;',
-		'font-weight: bold;',
-	'}',
 
-	'.hosting {',     
-		'cursor: pointer;',
-		'line-height: 25px;',
-		'padding-left: 0.8em;',
-		'padding-right: 0.8em;',
-		'border-bottom: 1px solid #d9d9d9;',
-	'}',
-
-	'div a#yunJPGClick {',
-		'display: none',
-	'}',
-
-	'.icon_alert {',
-		'width: 38px;',
-		'height: 38px;',
-		'background: url(http://mat1.gtimg.com/app/opent/images/public/icon.png)',
-			'-352px -59px no-repeat;',
-		'display: inline-block;',
-		'zoom: 1;',
-	'}'
-	].join('');
-	util.createStyle(str);
 	//appnav js begin
-	var user_certif_status= global_obj.data.developer.user_certif_status;
+/*	var user_certif_status= global_obj.data.developer.user_certif_status;
 	var user_check_status= global_obj.data.developer.user_check_status;//资质证明审核状态
 	var app_binbond= global_obj.data.app.app_binbond;//保证金
 
@@ -317,14 +318,15 @@
 			loginWin.alert('<center>应用通过审核后才能使用支付结算服务！</center>')
 		});   
 		$("a#apppay_unpay").click(function(){ 
+			alert("appay_unpay");
 			loginWin.alert('<center>尚未开通支付权限，如需开通请<a href="http://wiki.open.t.qq.com/index.php/%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC" target="_blank">联系我们</a></center>')
 		}); 
 		$("a#apppay_unOnline").click(function(){ 
 		loginWin.alert('<center>应用上架后才能申请此功能！</center>')
 		}); 
-	}); 
+	}); */
 	//appnav js end
-
+	window.bindAllEvent();
 	//development_app_info js begin
 	if (app.app_type != 5) {
 		var str = [
@@ -562,6 +564,8 @@
 		});
 	});
 	//development_app_material  js end
+	
+	
 	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/app_appedit.js");
 	if ((app.app_check_status ==1 && app.app_url_check == '') || app.app_status ==2 || app.app_status ==6 || (app.app_status ==5 && (iphoneinfo.app_plat_status == 1 || androidinfo.app_plat_status == 1)) || ((iphoneinfo.app_check_status ==1 || androidinfo.app_check_status ==1) && (iphoneinfo.app_plat_status == 2 || androidinfo.app_plat_status == 2))){
 		$(function(){ 

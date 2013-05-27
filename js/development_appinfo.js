@@ -704,7 +704,7 @@
 				}
 			}); 
 			
-			
+			window.bindAllEvent();
 			
 			$(".app_url_list").find(":radio").live("click",function(){
 				var li=$(this).parent("li"),cinput=li.parent("ul").find(".cinput"),value=cinput.val();
