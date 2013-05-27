@@ -1,13 +1,14 @@
 /*变量初始化*/
 global_obj.data.navPos = 7;
 var comp = global_obj.data.comp  = global_obj.data; 
+var str = [
+	'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
+	'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
+	'div a#yunJPGClick{display:none}'
+	].join("");
+	util.createScript(str);
 var development_compsetTmpl = [
 tpl.header,
-'<style type="text/css">',
-'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
-'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
-'div a#yunJPGClick{display:none}',
-'</style> ',
 	'<div id="content" class="controlCon main main_app">',
         '<div class="approate">',
             '<a href="/development/complist/">我的组件</a> &gt; <span><%=comp.comp_name%></span>',
@@ -26,15 +27,17 @@ tpl.header,
                     '<!--  <li><a href="/development/compdel/222">删除组件</a></li>  -->',
                 '</ul>',
             '</div>',
-        '</div>', 
+        '</div>',
         
         '<div class="deverRight"> ',
-            '<h1 class="comp_tit">组件设置</h1>'
-            
+           '<h1 class="comp_tit">组件设置</h1>',
+            '<div class="showcode_bar"><a href="javascript:;" class="devSubmit" id="showcode">获取代码</a>  <a href="/development/compinfo?comp_id=<%=comp.comp_id%>" class="devCancel">取消</a></div>',
+		'</div>',
+	'</div>',
+	tpl.footer
 ].join("\r");
 
 $("#main").append(tmpl(development_compsetTmpl,global_obj.data));
-
 
 var share_iconindex,share_counterpos,share_showcounter;
 function compType1(){
@@ -267,13 +270,7 @@ function compType8(){
 		compType8();
 	}
 	
-	var btns = [
-		'<div class="showcode_bar"><a href="javascript:;" class="devSubmit" id="showcode">获取代码</a>  <a href="/development/compinfo?comp_id=<%=comp.comp_id%>" class="devCancel">取消</a></div>',
-			'</div>',
-		'</div>',
-	].join("");
-	$(".deverRight").append(tmpl(btns,global_obj.data));
-	$("#main").append(tpl.footer);
+
 	
 //解决IE6下组件设置（微评论）页左侧导航隐藏和效果预览框过长的bug	
 setTimeout(function(){
