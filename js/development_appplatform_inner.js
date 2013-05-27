@@ -61,7 +61,7 @@
 			    '<label class="form_label">',
 			        '<em>*</em> 评分：',
 			    '</label>',
-			    ' <span class="form_element form_span" id="app_score_1"><%=iphoneinfo.app_score%></span><cite class="gray inputdes">自动拉取appstore评分，如无展示默认分数</cite>',
+			    ' <span class="form_element form_span" id="app_score_1"><%=((iphoneinfo.app_score == "0.0") ? "4.0" : iphoneinfo.app_score)%></span><cite class="gray inputdes">自动拉取appstore评分，如无展示默认分数</cite>',
 			'</li>',
 			'<li>',
 			    '<label class="form_label">',

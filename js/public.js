@@ -1,5 +1,6 @@
 ;(function() {
 	//页面参数控制跳转，add by fat
+	//TODO:限制条件的正则判断有问题，比如注册成为开发者以后应该去邮箱激活页的，也可能是后台参数有问题
 	if (userInfo.developer_status == 0){
 		if(!/developer(\/(bedever|add|addone|activate))?/.test(location.href) || /\/development\/developer/.test(location.href)){
 			location.href = "/developer/bedever";

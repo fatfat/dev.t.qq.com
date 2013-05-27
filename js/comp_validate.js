@@ -2,7 +2,7 @@
 if(window.OPEN_VALIDATOR){
 	
 }
-alert("comp_validate.js");
+
 var OPEN_VALIDATOR; //检测对象封装
 OPEN_VALIDATOR = {
 	isempty: function() {
@@ -33,7 +33,6 @@ OPEN_VALIDATOR = {
 		}
 	}
 	,compname:function(value,selector){
-		alert(1);
 			var k,
 			tchar,
 			msg = selector && selector.attr("data-error") || "网站名称",
@@ -76,7 +75,6 @@ OPEN_VALIDATOR = {
 			}
 	},
 	appnameCheck: function(value, selector) {
-		alert("检测应用名称唯一性");
 		//检测应用名称唯一性
 		var label = selector.attr("data-error"), //字段名
 		dvalue = selector.attr("data-default"), //默认值
@@ -287,7 +285,6 @@ function showmsg(flag, selector, msg) { //提示信息
 }
 
 function compValidateEvent() {
-	alert("event");
 	$("input[type='text'],textarea").blur(function() { //单个即时验证
 		var text, value, rule, errmsg, flag;
 		text = $(this);
@@ -300,7 +297,6 @@ function compValidateEvent() {
 			text.val(value);
 		}
 		if (OPEN_VALIDATOR.hasOwnProperty(rule) && rule) { //判断是否进行检测
-		alert("判断是否进行检测");
 			if (!$.trim(value) && rule != "tname" && rule != "appdes" && rule != "topicname" && rule!="applink") {
 				errmsg += "不能为空";
 				flag = false;
@@ -412,7 +408,6 @@ function compValidateEvent() {
 		$(".form_input").next(".currectTip").remove();
 	});
 }
-alert("addEvent");
 //add the event
 eventBindFuncList.push(compValidateEvent);
-alert(eventBindFuncList);
+

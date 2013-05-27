@@ -106,7 +106,7 @@ tpl.index_more = [
 	tpl.header,
 	tpl.content,
 	'<script type="text/javascript" src="http://tajs.qq.com/stats?sId=22020733" charset="UTF-8"></script>',
- 	'<!--[if IE 8]><script>alert(1);try{document.execCommand("BackgroundImageCache", false, true);}catch(e){}</script><![endif]-->',
+ 	'<!--[if IE 8]><script>try{document.execCommand("BackgroundImageCache", false, true);}catch(e){}</script><![endif]-->',
 	tpl.footer,
 ].join("\r");
 
@@ -141,7 +141,6 @@ tpl.index_more = [
 	function bindPageEvent (pageNum) {
 		var pagei = '#page' + pageNum;
 		$(pagei).click(function(){
-			alert("click page"+pagei);
 			pageList(pageNum);
 		})
 	}

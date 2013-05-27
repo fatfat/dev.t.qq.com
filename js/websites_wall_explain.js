@@ -47,7 +47,7 @@
 //	util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/jscolor.js","http://mat1.gtimg.com/app/opent/rebuild/js/customcolor.js","http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js"],function(){bindAllEvent()}); 
 	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/jscolor.js");
 	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/customcolor.js");
-	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js",function(){alert("callback");window.bindAllEvent();});
+	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js",function(){window.bindAllEvent();});
 
 /*	if (!developerinfo){
 		location.href="/developer/bedever/";

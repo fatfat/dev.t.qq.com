@@ -77,11 +77,11 @@ else
 				'</li>',
 			'<%}%> ',
 			'<%if(!apps||apps.length==0){%>',
-				'<li style="height:auto;">你还没有创建过应用，<a href="javascript:;" onclick="$(\\"#newapp\\").trigger(\\"click\\");" style="display:inline">马上创建</a></li>',
+				'<li style="height:auto;">你还没有创建过应用，<a href="javascript:;" id="firstApp" onclick="$(\\"#newapp\\").trigger(\\"click\\");" style="display:inline">马上创建</a></li>',
 			'<%}%>',
 		'</ul>',
 	].join("");
-	
+
 	tpl.applistul1 = [
 					   // <!--其他平台应用-->
 			   '<div id="otherapplist" class="applist2 hidden">',
@@ -385,6 +385,11 @@ else
 	$("#newapp").click(function(){
 		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 	});	
+	//马上创建按钮的事件绑定
+	$('#firstApp').click(function(){
+		$("#newapp").trigger("click");
+	});
+	
 	$(function(){
 		checkPageNum(global_obj.data.page_count);
 		bindAllPageEvent();
