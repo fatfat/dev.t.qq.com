@@ -63,7 +63,7 @@ function update_shareicon () {
     });
 }
 
-$(function () {
+eventBindFuncList.push(function () {
     // 隐藏预览
     // $('.sizeshow').hide();
     // 切换背景
