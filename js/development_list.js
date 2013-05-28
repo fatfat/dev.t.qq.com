@@ -77,7 +77,7 @@ else
 				'</li>',
 			'<%}%> ',
 			'<%if(!apps||apps.length==0){%>',
-				'<li style="height:auto;">你还没有创建过应用，<a href="javascript:;" id="firstApp" onclick="$(\\"#newapp\\").trigger(\\"click\\");" style="display:inline">马上创建</a></li>',
+				'<li id = "appCreate" style="height:auto;">你还没有创建过应用，<a href="javascript:;" id="firstApp" onclick="$(\\"#newapp\\").trigger(\\"click\\");" style="display:inline">马上创建</a></li>',
 			'<%}%>',
 		'</ul>',
 	].join("");
@@ -367,16 +367,13 @@ else
 					this.tpl.pageBar1,    
 				'</div>',
 			'</div>',
-		'<script type="text/javascript" src="http://mat1.gtimg.com/app/opent/rebuild/js/app_appadd.js"></script>',
 		this.tpl.footer,
 	].join("");
-	
+					
+	this.util.createStyle('.dotted{display:block;float:left;color:#346496;line-height:18px;}');	
 	$("#main").html(this.tmpl(this.tpl.development_list,global_obj.data));
-    
-    var str = [
-		'.dotted{display:block;float:left;color:#346496;line-height:18px;}',
-	].join("");
-	this.util.createStyle(str);
+    util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/app_appadd.js");
+
 	insiteAppAble=true;
 	var siteAppDisplayType = insiteAppAble?  16 : 0; 
 	var displayAppType = 45;//+siteAppDisplayType;
@@ -385,11 +382,6 @@ else
 	$("#newapp").click(function(){
 		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 	});	
-	//马上创建按钮的事件绑定
-	$('#firstApp').click(function(){
-		$("#newapp").trigger("click");
-	});
-	
 	$(function(){
 		checkPageNum(global_obj.data.page_count);
 		bindAllPageEvent();
@@ -445,6 +437,15 @@ else
 	})
 
 	function bindAllPageEvent(){
+		//应用列表筛选过程中，如果没有应用应该提示没有相关应用而不是引导用户创建应用，add by fat
+		if(global_obj.data.displaytype == "app") {
+			if(!($('input#apptype1').attr("checked") && $('input#apptype2').attr("checked") && $('input#apptype3').attr("checked") && $('input#apptype4').attr("checked"))){
+				if($('#applistul > li > dl').length == 0 && $('#appCreate').length > 0){
+					$('#appCreate').html("没有相关应用");
+				}
+			}
+		}
+		
 		for(var i = 1; i <= global_obj.data.page_count; i++){
 			bindPageEvent(i);	
 		}
