@@ -204,8 +204,9 @@ OPEN_VALIDATOR = {
 	,complicensenum:function(value,selector){//公司营业执照号码
 		value = value.replace(/\s/g,"");
 		selector.val(value);
-		var tchar = value.match(/[^0-9a-zA-Z\-]+/g);
-		if (value && tchar){
+//		var tchar = value.match(/[^0-9a-zA-Z\-]+/g);
+		var tchar = value.match(/^[0-9]([0-9]|-(?!-)){6,18}[0-9]$/);
+		if (value && !tchar){
 			return '你填写的##含有非法字符';
 		}
 		
@@ -528,7 +529,7 @@ function showmsgforselect(flag,selector,msg){
 }
 $("form input[data-rule='complicensenum'],form input[data-rule='cardnum_new'],form input[data-rule='passport']").change(function(){
 	var selector = $(this),rule = selector.attr("data-rule"),value = selector.val();
-	var rulecheck={"complicensenum":{"reg":/^[0-9a-zA-Z-]{8,20}$/,"check":"complicensenumCheck"}
+	var rulecheck={"complicensenum":{"reg":/^[0-9]([0-9]|-(?!-)){6,18}[0-9]$/,"check":"complicensenumCheck"}
 					 ,"cardnum_new":{"reg":/^[0-9xX]{18}$/,"check":"cardnumCheck"}
 				     ,"passport":{"reg":/^[0-9a-zA-Z]+$/,"check":"cardnumCheck"}
 			};
