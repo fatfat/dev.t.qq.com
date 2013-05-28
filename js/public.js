@@ -44,7 +44,7 @@
 					'<li><a href="javascript:;" id="apppay_uncheck">支付结算</a></li>',
 				'<%} else {%>',
 					'<%if (app.app_pay) {%>',
-						'<li><a href="/development/apppay/<%=app.app_id%>" >支付结算</a></li>',
+						'<li><a href="/development/apppay?appid=<%=app.app_id%>" >支付结算</a></li>',
 					'<%} else {%>',
 						'<li><a href="javascript:;" id="apppay_unpay">支付结算</a></li>',
 					'<%}%>',
@@ -247,24 +247,23 @@
 				}
 			}
 			location.href = $(this).attr("href");
-			console.log(location.href);
-			
+					
 			return false;
 		}); 
 		$("a#apppay_uncheck").click(function(){ 
 			global_obj.data.businessType = "支付结算";
-			loginWin.alert('<center>应用通过审核后才能使用支付结算服务！</center>')
+			loginWin.alert('<center>应用通过审核后才能使用支付结算服务！</center>');
 		});   
 		$("a#apppay_unpay").click(function(){ 
 			global_obj.data.businessType = "支付结算";
-			loginWin.alert('<center>尚未开通支付权限，如需开通请<a href="http://wiki.open.t.qq.com/index.php/%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC" target="_blank">联系我们</a></center>')
+			loginWin.alert('<center>尚未开通支付权限，如需开通请<a href="http://wiki.open.t.qq.com/index.php/%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC" target="_blank">联系我们</a></center>');
 		}); 
 		$("a#apppay_unOnline").click(function(){ 
-			global_obj.data.businessType = "更多服务"；
-			loginWin.alert('<center>应用上架后才能申请此功能！</center>')
+			global_obj.data.businessType = "更多服务";
+			loginWin.alert('<center>应用上架后才能申请此功能！</center>');
 		}); 
 	}
-	if(global_obj.data.app.app_type == "4"){
+	if(global_obj.data.app && global_obj.data.app.app_type == "4"){
 		eventBindFuncList.push(global_obj.init.appnav);
 	}
 	

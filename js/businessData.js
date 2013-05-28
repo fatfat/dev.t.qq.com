@@ -5,7 +5,7 @@ tpl.businessData = [
 	
 	'<div id="content" class="controlCon main main_app">',
 		'<div class="approate">',
-			'<a href="/development">我的应用</a> &gt; <a href="/development/appinfo?appid=<%=app.app_id%>"><%=app.app_name%></a> &gt; <span>businessType</span> ',
+			'<a href="/development">我的应用</a> &gt; <a href="/development/appinfo?appid=<%=app.app_id%>"><%=app.app_name%></a> &gt; <span><%=businessType%></span> ',
 			'<div class="approate_back"><a href="/development/appinfo?appid=<%=app.app_id%>">返回&gt;&gt;</a></div>',
 		'</div>',
 		'<iframe width="100%" height="500" frameborder="0" marginwidth="0" marginheight="0" src="http://compass.qq.com/reports?appid=<%=app.app_id%>" id="contentframe" onload="iframeLoaded(this)" scrolling="no"></iframe>',
