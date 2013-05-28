@@ -584,6 +584,8 @@
 	}
 
 	$(function(){
+		window.bindAllEvent();
+		
 	    $(".appstate_des").find("dd").find(":checkbox").live("click",function(){
 	            var dd=$(this).parent(),dl=dd.parent();
 	                if (dd.index()>1&&!dd.hasClass("active")){
@@ -703,8 +705,6 @@
 					}
 				}
 			}); 
-			
-			window.bindAllEvent();
 			
 			$(".app_url_list").find(":radio").live("click",function(){
 				var li=$(this).parent("li"),cinput=li.parent("ul").find(".cinput"),value=cinput.val();

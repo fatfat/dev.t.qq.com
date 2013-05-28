@@ -237,7 +237,6 @@
 		 
     global_obj.init.appnav = function(){
 		$("#apphost_btn").click(function(event){ 
-			global_obj.data.businessType = "应用托管";
 			if(global_obj.data.app.app_binbond ===0){//未分配保证金
 				if( global_obj.data.developer.user_certif_status ===0 && ( global_obj.data.developer.user_check_status===0 || global_obj.data.developer.user_check_status===1 || global_obj.data.developer.user_check_status===2 )){
 					var str="<center>开发者资质证明通过审核后，才能申请服务器和托管地址<br/><br/><a href=\"/development/certification\">现在去上传资质证明</a><br/><br/></center>";
@@ -250,15 +249,12 @@
 			return false;
 		}); 
 		$("a#apppay_uncheck").click(function(){ 
-			global_obj.data.businessType = "支付结算";
 			loginWin.alert('<center>应用通过审核后才能使用支付结算服务！</center>');
 		});   
 		$("a#apppay_unpay").click(function(){ 
-			global_obj.data.businessType = "支付结算";
 			loginWin.alert('<center>尚未开通支付权限，如需开通请<a href="http://wiki.open.t.qq.com/index.php/%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC" target="_blank">联系我们</a></center>');
 		}); 
 		$("a#apppay_unOnline").click(function(){ 
-			global_obj.data.businessType = "更多服务";
 			loginWin.alert('<center>应用上架后才能申请此功能！</center>');
 		}); 
 	}
