@@ -60,12 +60,15 @@ this.tpl.explain_include = [
 util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/jscolor.js","http://mat1.gtimg.com/app/opent/rebuild/js/customcolor.js","http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js"],function(){bindAllEvent();});
 
 /*解决IE6下点击“组件设置”时，其他导航及应用图标可不见的Bug*/
-setTimeout(function(){
-	if ($.browser.msie && ($.browser.version == "6.0")){
-		$(".appsnav").find(".active").css({"zoom":"1"});
-		$(".showcode_bar").css({"margin-bottom":"90px"});
-	}
-},200);
+
+$(function(){
+	setTimeout(function(){
+		if ($.browser.msie && ($.browser.version == "6.0")){
+			$(".appsnav").find(".active").css({"zoom":"1"});
+			$(".showcode_bar").css({"margin-bottom":"90px"});
+		}
+	},200);
+});
 
 var _width=300;
 var _height=550;
@@ -75,7 +78,11 @@ var comp_type=6;
 
 
 function crUrl(cfg) {
-	var _appkey = comp.comp_id || "801318648";
+	if(window.comp){
+		var _appkey = comp.comp_id||"801318648";
+	}else{
+		var _appkey = "801318648";
+	}
 	var rand = Math.random();
 	var _url = 'http://comment.v.t.qq.com/index.html?r=' + rand;
 	_url += '#appkey=' + _appkey;
