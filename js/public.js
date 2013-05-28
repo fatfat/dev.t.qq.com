@@ -16,7 +16,6 @@
 	//添加一个函数记录页面上所有JS要添加的时间绑定函数,以便在文档生成后统一执行
 	this.eventBindFuncList = [];
 	this.bindAllEvent = function(){
-		console.log(this.eventBindFuncList);
 		$(this.eventBindFuncList).each(function(index,fn){
 			fn.call(window);
 		})
