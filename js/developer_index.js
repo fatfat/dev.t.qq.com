@@ -36,7 +36,7 @@ tpl.index_apps = [
 '</ul>'
 ].join("");
 	
-var developer_index = 
+tpl.developer_index = 
 [
 	this.tpl.header, 
 	'<link href="http://mat1.gtimg.com/app/opent/css/developer/index/development_index.css?20120525" rel="stylesheet" type="text/css" />',
@@ -83,44 +83,46 @@ var developer_index =
  	this.tpl.footer
 ].join("");
 
-$(document.body).append(tmpl(developer_index, global_obj.data));
+$(document.body).append(tmpl(tpl.developer_index, global_obj.data));
 util.setLoginInfo();
 window.init();
 var userInfo = global_obj.data.userInfo;
-var developer  = global_obj.data.developer;
+var developer  = global_obj.data.developer_detail;
 
-var hdlogin = userInfo.hdlogin || false;
+var hdlogin = userInfo.hdlogin || '';
 var regweibo = userInfo.reg_wb;
-var insiteAppAble = 1;	
-QosSS.t[2]= (new Date()).getTime();
-util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/app_appadd.js");
-$("#newapp").click(function(){
+var insiteAppAble=1;
+
+$(function(){
+	$("#newapp").click(function(){
+		if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
+			return checkuserLogin(encodeURIComponent(location.href.replace(location.search,"").replace(location.hash,"")+"?t="+(~new Date())+"#newapp"));
+		}else{
+			popAppWin(+"",+"");
+		}
+	});
+	$("#newgame").click(function(){
+		if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
+			return checkuserLogin(encodeURIComponent("http://" + location.host+"/apps/add/4?cid=3"));		
+		}else{
+			popAppWin(+"",+"","newgame");
+		}
+		return false;
+	});
+	
 	if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
-		return checkuserLogin(encodeURIComponent(location.href.replace(location.search,"").replace(location.hash,"")+"?t="+(~new Date())+"#newapp"));
+		$(".demos").find("a").removeAttr("target").click(function(){
+			return (!!checkuserLogin(encodeURIComponent($(this).attr("href"))));
+		})
 	}else{
-		popAppWin(developer.user_app_numbers,developer.user_app_limit);
+		if (location.hash=="#newapp"){
+			$("#newapp").trigger("click");
+		}else if(location.hash=="#newgame"){
+			$("#newgame").trigger("click");
+		}
 	}
-});
-$("#newgame").click(function(){
-	if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
-		return checkuserLogin(encodeURIComponent("http://" + location.host+"/apps/add/4?cid=3"));		
-	}else{
-		popAppWin(developer.user_app_numbers,developer.user_app_limit,"newgame");
-	}
-	return false;
 });
 
-if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
-	$(".demos").find("a").removeAttr("target").click(function(){
-		return (!!checkuserLogin(encodeURIComponent($(this).attr("href"))));
-	})
-}else{
-	if (location.hash=="#newapp"){
-		$("#newapp").trigger("click");
-	}else if(location.hash=="#newgame"){
-		$("#newgame").trigger("click");
-	}
-}
 QosSS.c = new Image();
 QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 QosSS.t[5]= (new Date()).getTime();

@@ -1,4 +1,14 @@
 this.tpl = this.tpl || {};
+	if (app.app_type != 5) {
+		var str = [
+			'label.form_label{width:100px;}',
+			'.appform span.form_input{margin-left:100px;}',
+			'.appform .form_element {margin-left:100px;}',
+			'#showtgdiv{display:none;line-height:1.75;}',
+			'#showtgdiv.show{display:inline-block;*display:inline;zoom:1;}'
+		].join('');
+		util.createStyle(str);
+	}
 tpl.development_appcheckapp = [
 	this.tpl.header,
 	'<div id="content" class="controlCon main main_app">',
@@ -62,7 +72,7 @@ global_obj.data.appnav = "info";
 $("#main").html(tmpl(this.tpl.development_appcheckapp,global_obj.data));
 
 global_obj.init.appnav();
-
+util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/app_checkapp.js");
 var str = [
 	'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
 	'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
@@ -98,17 +108,6 @@ if  (app.app_checkapi == 0 && app.app_type == 4  ) {
 	}); 
 }
 //development_app_info js begin
-	if (app.app_type != 5) {
-		var str = [
-			'label.form_label{width:100px;}',
-			'.appform span.form_input{margin-left:100px;}',
-			'.appform .form_element {margin-left:100px;}',
-			'#showtgdiv{display:none;line-height:1.75;}',
-			'#showtgdiv.show{display:inline-block;*display:inline;zoom:1;}'
-		].join('');
-		util.createStyle(str);
-	}
-
 	if (app.app_type == 4) {
 		$(function(){
 			$("input[name='app_hosting']").click(function(){
@@ -267,4 +266,3 @@ if  (app.app_checkapi == 0 && app.app_type == 4  ) {
 
 global_obj.init.app_material();
 
-util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/app_checkapp.js");
