@@ -91,28 +91,27 @@ var userInfo = global_obj.data.userInfo;
 var developer  = global_obj.data.developer_detail;
 
 var hdlogin = userInfo.hdlogin || '';//
-//	var hdlogin = "76516702";
 var regweibo = userInfo.reg_wb;
 var insiteAppAble=1;
 
 $(function(){
 	$("#newapp").click(function(){
-		if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
+		if( hdlogin==undefined || hdlogin == false || hdlogin == 'false' ){
 			return checkuserLogin(encodeURIComponent(location.href.replace(location.search,"").replace(location.hash,"")+"?t="+(~new Date())+"#newapp"));
 		}else{
-			popAppWin(+"",+"");
+			popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 		}
 	});
 	$("#newgame").click(function(){
-		if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
+		if( hdlogin==undefined || hdlogin == false || hdlogin == 'false'){
 			return checkuserLogin(encodeURIComponent("http://" + location.host+"/apps/add/4?cid=3"));		
 		}else{
-			popAppWin(+"",+"","newgame");
+			popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 		}
 		return false;
 	});
 	
-	if( hdlogin==undefined || hdlogin == '' || hdlogin == '0'){
+	if( hdlogin==undefined || hdlogin == false || hdlogin == 'false'){
 		$(".demos").find("a").removeAttr("target").click(function(){
 			return (!!checkuserLogin(encodeURIComponent($(this).attr("href"))));
 		})
