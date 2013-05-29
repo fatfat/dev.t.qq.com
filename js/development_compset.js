@@ -169,10 +169,12 @@ function compType4(){
 		$(".showcode_bar").before(tmpl(tpl.qshare_explain_include,global_obj.data));
 		bindAllEvent();
 		//<% include file="./websites/qshare/qshare_explain_include.tpl" %>
-		var comp_style = comp.comp_style?comp.comp_style:{"assname":"","qsharestyle":0};
-		var comp_id = comp.comp_id;
-		$("#assname").val(comp_style.assname||"");
-		$("#qsharebtn"+(comp_style.qsharestyle||0)).attr("checked","checked");
+		$(function(){
+			var comp_style = comp.comp_style?comp.comp_style:{"assname":"","qsharestyle":0};
+			var comp_id = comp.comp_id;
+			$("#assname").val(comp_style.assname||"");
+			$("#qsharebtn"+(comp_style.qsharestyle||0)).attr("checked","checked");
+		})
 	});
 }
 

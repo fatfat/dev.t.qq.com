@@ -1,7 +1,6 @@
-;(function(){
+
 //	QosSS.t[2]= (new Date()).getTime();
 	tpl.show_explain2 = [
-		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
 		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
@@ -10,13 +9,12 @@
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/public/ex.css" type="text/css" rel="stylesheet"> ',
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>微博秀</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
-		'<!--{ include file="./websites/appnav.tpl" }-->',
 		tpl.websites_appnav,
 		'<div class="appsArea2">	',
 				'<h2 class="apptit">',
 					'<strong>使用微博组件 —— 微博秀</strong>',
 				'</h2>',
-			'<!--{ if $userInfo.hdlogin }-->',
+			'<%if(userInfo.hdlogin){%>',
 				'<div id="show" style="height:600px;margin-bottom:-600px;width:335px;margin-right:30px;">',
 					'<h3>效果预览</h3>',
 					'<div style="width:100%;height:571px;overflow:auto;"><iframe id="review" frameborder="0" scrolling="no" marginwidth=0 marginheight=0  src="http://show.v.t.qq.com/index.php?c=show&a=index&n=<%=userInfo.name%>&w=302&h=552&fl=2&l=8&o=31&si=<%=userInfo.sign%>" width="303" height="552"></iframe></div>	',
@@ -98,18 +96,20 @@
 				'</div>',
 				'<br />',
 				'<br />',
-				'<!--{else}-->',
+				'<%}else{%>',
 					'<div class="errormsg">对不起，在没有登录微博的情况下，你无法使用该功能。 请<a href="javascript:login();">登录</a></div>',
-				'<!--{/if}-->',
+				'<%}%>',
 			'</div>',
 			'</div>',
-			<!--{ include file="footer.tpl" }-->
 			tpl.footer,
 		].join("");
 		QosSS.t[3]= (new Date()).getTime();
 		QosSS.t[4]= (new Date()).getTime();
 		$('#main').html(tmpl(tpl.show_explain2,global_obj.data));
-		bindAllEvent();
+		util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/jscolor.js","http://mat1.gtimg.com/app/opent/rebuild/js/customcolor.js"],function(){
+	bindAllEvent();
+});
+		
 		var UI = {};
 		$(function(){
 			var menu = function(){ 
@@ -319,6 +319,7 @@
 				}
 				else
 				{
+					
 					_url +='&co='+_colorStyle;
 					$('#defaultColor').attr('checked', 'checked');
 					$('#customcolor').css('display', 'none');
@@ -377,4 +378,3 @@
 		QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 		QosSS.t[5]= (new Date()).getTime();
 		QosSS.c.src="http://qos.report.qq.com/collect?type=1&name="+"opent_wshow_explain2"+"&1="+ (QosSS.t[1]- QosSS.t[0])+"&2="+ (QosSS.t[2]- QosSS.t[0])+ "&3="+ (QosSS.t[3]- QosSS.t[0])+"&4="+ (QosSS.t[4]- QosSS.t[0])+ "&5="+ (QosSS.t[5]- QosSS.t[0]);
-})();
