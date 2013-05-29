@@ -89,7 +89,6 @@ function  compType2(){
 	<!--收听组件-->
 	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_followcomp_explain_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.explain_include,global_obj.data));
-		bindAllEvent();
 		//<% include file="./websites/followcomp/explain_include.tpl" %>
 		var comp_style = comp.comp_style?comp.comp_style:{"names":"","colorstyle":0,"customcolor":"#fff","iconsize":0};
 		var comp_id = comp.comp_id;
