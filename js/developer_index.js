@@ -83,13 +83,15 @@ tpl.developer_index =
  	this.tpl.footer
 ].join("");
 
-$(document.body).append(tmpl(tpl.developer_index, global_obj.data));
+$('#main').html(tmpl(tpl.developer_index, global_obj.data));
+util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/app_appadd.js");
 util.setLoginInfo();
 window.init();
 var userInfo = global_obj.data.userInfo;
 var developer  = global_obj.data.developer_detail;
 
-var hdlogin = userInfo.hdlogin || '';
+var hdlogin = userInfo.hdlogin || '';//
+//	var hdlogin = "76516702";
 var regweibo = userInfo.reg_wb;
 var insiteAppAble=1;
 

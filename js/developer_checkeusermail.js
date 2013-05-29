@@ -26,15 +26,13 @@ var developer_checkusermail =
 $("#main").html(tmpl(developer_checkusermail,global_obj.data));
 
 $(function(){   
-	var mail_domain = "www.qq.com";
-	var mail_address = '76516702@qq.com';
     $('#sendMail').click(function(){
         //$url = 'http://open.t.qq.com/cgi-bin/send_mail?m='+Math.random();//{"ret":0}
        	var $url = '/developer/sendmail';
         $.getJSON($url,function(d){
         	if(d && (d.ret==0)){
 	            $('#tit').html('<span style="color:#3A8DC9">激活邮件已重新发送</span>');
-	            $('#infos').html( '系统已经重新发送了一封激活邮件至<a href=' + mail_domain + 'target="_blank">' + mail_address + '</a>');
+	            $('#infos').html( '系统已经重新发送了一封激活邮件至<a href=' + global_obj.data.mail_domain + 'target="_blank">' + global_obj.data.mail_address + '</a>');
 	            $('#tips').html('1. 请到邮箱中的垃圾邮件、广告邮件目录中找找看<br>2. 如果你总是收不到激活邮件，我们建议你 <a href="javascript:history.go(-1);">更换一个Email地址</a>');
             }
             else{

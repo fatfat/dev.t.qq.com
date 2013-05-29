@@ -410,7 +410,7 @@ var showLoginWin = common.showLoginWin,
 $(function(){
 	$("body").mouseover(function(event){
 		var t = $("#login_status"),target = event.target;
-		if (window.hdlogin != "false"){
+		if (window.hdlogin && window.hdlogin != "false" && window.hdlogin != false){
 			if ($.contains(t[0],target) || t[0] === target){
 				t.addClass("menuContainer");
 			}else{
