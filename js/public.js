@@ -9,7 +9,7 @@
 		}
 	}else if (userInfo.user_status == 0){
 		var webtype = location.pathname.split('/');
-		if( !( /developer/.test(webtype[1]) && (webtype[2] == undefined || webtype[2] == "" || /(add|addone|edit|checkemail|activate)/.test(webtype[2])) )){
+		if( !( /developer/.test(webtype[1]) && (webtype[2] == undefined || webtype[2] == "" || /(edit|checkemail|activate)/.test(webtype[2])) )){
 			location.pathname = "/developer/checkemail";
 		}
 	}else if(global_obj.code==1){

@@ -366,7 +366,7 @@ var common = {
 				var loginInfo = [
 					'<%if (hdlogin != "false" ) {%>',
 					'<div class="menu">',
-						'<a class="login_name" href="javascript:;" title="<%=nick%>"><%=nick%><em></em></a>',
+						'<a class="login_name" href="javascript:;" title="<%=nick?nick:uin%>"><%=nick?nick:uin%><em></em></a>',
 						'<i class="nav_arrow"></i>',
 					'</div>',
 					'<ul class="childMenu userNav_sub">',
@@ -377,6 +377,7 @@ var common = {
 					'<a title="点击此处登录" class="login_name" href="javascript:void(0);" id="loginBtn" hidefocus>登录</a>',
 					'<%}%>',
 				].join("");
+				console.log(d.data);
 				$('#login_status').html(tmpl(loginInfo,d.data));
 				if (d.data.hdlogin != "false"){
 					d.data.hdlogin = true;
