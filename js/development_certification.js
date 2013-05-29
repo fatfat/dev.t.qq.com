@@ -234,7 +234,7 @@ $(function() {
 	});
 
 	$("#newapp").click(function() {
-		popAppWin( + developer.user_app_numbers, +developer.appMax);
+		popAppWin( + developer.user_app_numbers, +developer.user_app_limit);
 	});
 
 	$(".appinfo li.alert").find(".hidebtn").click(function() {

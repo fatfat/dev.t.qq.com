@@ -31,7 +31,7 @@ var developer_cancelsubscribe =
 	this.tpl.footer
 ].join("");
 
-global_obj.developer_detail.appMax = global_obj.data.developer.appMax;
+global_obj.developer_detail.user_app_limit = global_obj.data.developer.user_app_limit;
 global_obj.developer_detail.head = global_obj.data.developer.head;
 var developer = global_obj.data.developer = global_obj.developer_detail;
 

@@ -13,7 +13,6 @@
 			location.pathname = "/developer/checkemail";
 		}
 	}else if(global_obj.code==1){
-		alert('3');
 		top.location.href = global_obj.url;
 	}
 	
