@@ -14,6 +14,8 @@
 		}
 	}else if(global_obj.code==1){
 		top.location.href = global_obj.url;
+	}else if(global_obj.code==-3){
+		location.href = global_obj.url;
 	}
 	
 	//添加一个函数记录页面上所有JS要添加的时间绑定函数,以便在文档生成后统一执行
