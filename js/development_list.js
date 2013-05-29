@@ -10,19 +10,11 @@ else
 		location.href = '/development';//页面出错，自动跳转首页
 	}
 	//开平变量初始化
-	global_obj.data.kapp_count = 0;
-	global_obj.data.kpage_no = 0;
-	if(!global_obj.data.kpage_count){
-		global_obj.data.kpage_count = 13;
-	}
-/*	
-	//testdata  iweibo:
-	if(!global_obj.data.displaytype)  global_obj.data.displaytype = "iweibo";
-	if(!global_obj.data.iweibo) global_obj.data.iweibo = [];
-	if(!global_obj.data.app_count) global_obj.data.app_count= 0;
-	if(!global_obj.data.page_no) global_obj.data.page_no= 1;
-	if(!global_obj.data.page_size) global_obj.data.page_size = 13;
-*/
+	global_obj.data.kapp_count = global_obj.data.kapp_count || 0;
+	global_obj.data.kpage_no = global_obj.data.kpage_no || 0;
+	global_obj.data.kpage_size = global_obj.data.kpage_size || 13;
+	global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count / global_obj.data.kpage_size);
+
 	//testdata  complist:
 	global_obj.data.navPos = "7";
 	if(!global_obj.data.comps)  global_obj.data.comps = global_obj.data.pagelist;
@@ -96,7 +88,7 @@ else
 								'<dt style="color:#346496"><%=kapp.app_name%></dt>' ,
 								'<dd><span>应用KEY：</span><label><%=kapp.app_id%></label></dd>',
 								'<dd><span>&nbsp;&nbsp;&nbsp;&nbsp;创建平台：</span><label> <%=kapp.create_plat%></label></dd>',
-								'<dd><span>&nbsp;&nbsp;&nbsp;&nbsp;已上线平台：</span><label><%=kapp.online_plat%></label></dd>',
+								'<dd><span>&nbsp;&nbsp;&nbsp;&nbsp;已上线平台：</span><label><%=kapp.online_plat?kapp.online_plat:"无"%></label></dd>',
 							'</dl>',
 							'<div align="right">',
 								'<%if(kapp.wb_had){%>',
@@ -257,7 +249,7 @@ else
 	].join("");
 				
 	this.tpl.pageBar1 = [//翻页按钮
-		'<div id="pagebar" style="display:none">',
+		'<div id="pagebar1" style="display:none">',
 			'<div class="pagebar">',
 				'<em title="共<%=kapp_count%>条">共<%=kapp_count%>条</em>',
 				'<%if(kpage_no > 1){%>',
@@ -455,21 +447,23 @@ else
 			bindPageEvent1(i);
 		}	
 		
-		$("#prev").click(function(){
-			pageList(global_obj.data.page_no-1);
-		})
-		
-		$("#next").click(function(){
-			pageList(global_obj.data.page_no+1);
-		})
+		if (global_obj.data.displaytype != "app" || $('#otherapplist').hasClass('hidden')){
+			$("#prev").click(function(){
+				pageList(global_obj.data.page_no-1);
+			})
 			
-		$("#prev1").click(function(){
-			pageList1(global_obj.kdata.page_no-1);
-		})
-		
-		$("#next1").click(function(){
-			pageList1(global_obj.kdata.page_no+1);
-		})
+			$("#next").click(function(){
+				pageList(global_obj.data.page_no+1);
+			})
+		} else {
+			$("#prev1").click(function(){
+				pageList1(global_obj.data.kpage_no-1);
+			})
+			
+			$("#next1").click(function(){
+				pageList1(global_obj.data.kpage_no+1);
+			})	
+		}
 	}
 
 	function bindPageEvent1(pageNum) {
