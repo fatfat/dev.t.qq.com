@@ -1,4 +1,5 @@
-
+	insiteAppAble=true;
+	var siteAppDisplayType = insiteAppAble?  16 : 0; 
 	this.tpl = this.tpl || {};
 	this.tpl.development_developerTmpl = [
 	this.tpl.header,
