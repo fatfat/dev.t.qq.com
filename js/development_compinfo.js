@@ -260,7 +260,7 @@ function compType2(){
 	if (comp_style.followtype === 0) { // 快速收听
 		$("#scripts").val(decodeURIComponent(comp_style.htm));
 	}else{ // 批量收听
-		$("#scripts").val("<iframe frameborder='0' scrolling='auto' src='"+("http://follow.v.t.qq.com/index.php?c=follow&a=index&appkey="+comp_id+"&bg="+["fff",comp_style.customcolor.replace("#","")][comp_style.colorstyle]+"&hsize="+[100,50][comp_style.iconsize]+"&name="+comp_style.names.replace(/\|/g,","))+"' width='301' height='"+(50+Math.ceil(comp_style.names.split("|").length/3)*80)+"'><iframe>");
+		$("#scripts").val("<iframe frameborder='0' scrolling='auto' src='"+("http://follow.v.t.qq.com/index.php?c=follow&a=index&appkey="+comp_id+"&bg="+["fff",comp_style.customcolor.replace("#","")][comp_style.colorstyle]+"&hsize="+[100,50][comp_style.iconsize]+"&name="+comp_style.names.replace(/\|/g,","))+"' width='301' height='"+(50+Math.ceil(comp_style.names.split("|").length/3)*80)+"'></iframe>");
 	}
 	$("#preview").html($("#scripts").val());
 	$(".getcode span").css("visibility","hidden");
@@ -300,7 +300,7 @@ function compType3(){
 			return _url;
 		}
 	var _url=getCodestr();
-		$("#scripts").val("<iframe frameborder=\"0\" scrolling=\"no\" src=\""+_url+"\" width=\""+[comp_style.width,"100%"][0+comp_style.autowidth]+"\" height=\""+comp_style.height+"\"><iframe>");
+		$("#scripts").val("<iframe frameborder=\"0\" scrolling=\"no\" src=\""+_url+"\" width=\""+[comp_style.width,"100%"][0+comp_style.autowidth]+"\" height=\""+comp_style.height+"\"></iframe>");
 		$("#preview").html($("#scripts").val());
 		$(".getcode span").css("visibility","hidden");
 }
@@ -368,7 +368,7 @@ function compType5(){//<!--心情板-->
         _url += '&name='+(comp_style.assname||"");
         _url += '&w='+([comp_style.width,0][0+comp_style.autowidth]);
         _url += '&h='+([comp_style.height-10,0][0+comp_style.autoheight]);
-        $('#scripts').val('<iframe frameborder="0" marginwidth="0" marginheight="0" scrolling="no" src="'+_url+'" width="'+[comp_style.width,"100%"][0+comp_style.autowidth]+'" height="'+[comp_style.height,"auto"][0+comp_style.autoheight]+'"><iframe>');
+        $('#scripts').val('<iframe frameborder="0" marginwidth="0" marginheight="0" scrolling="no" src="'+_url+'" width="'+[comp_style.width,"100%"][0+comp_style.autowidth]+'" height="'+[comp_style.height,"auto"][0+comp_style.autoheight]+'"></iframe>');
         $("#preview").html($("#scripts").val()).find("iframe").attr("height",125);
         $(".getcode span").css("visibility","hidden");
 }
@@ -391,7 +391,7 @@ function compType6(){//<!--微评论-->
     }
     var _url=getCodestr();
     $("#scripts").val(['<div id="qqwb_comment__" data-appkey="'+comp.comp_id+'" data-width="' , [comp_style.width,"100%"][0+comp_style.autowidth] , '" data-height="' , comp_style.height , '"' , (comp_style.colorstyle == 1 ? ' data-colors="'+decodeURIComponent(comp_style.customcolor)+'"' : '') , '></div>','\n<script src="http://mat1.gtimg.com/app/openjs/openjs.js#debug=yes&autoboot=no"><\/script>'].join(''));
-    $("#preview").html("<iframe frameborder=\"0\" scrolling=\"no\" src=\""+_url+"\" width=\""+[comp_style.width,"100%"][0+comp_style.autowidth]+"\" height=\""+comp_style.height+"\"><iframe>");
+    $("#preview").html("<iframe frameborder=\"0\" scrolling=\"no\" src=\""+_url+"\" width=\""+[comp_style.width,"100%"][0+comp_style.autowidth]+"\" height=\""+comp_style.height+"\"></iframe>");
     $(".getcode span").css("visibility","hidden");
 }
 function compType7(){
