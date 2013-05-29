@@ -12,7 +12,9 @@ else
 	//开平变量初始化
 	global_obj.data.kapp_count = 0;
 	global_obj.data.kpage_no = 0;
-	global_obj.data.kpage_count = 13;
+	if(!global_obj.data.kpage_count){
+		global_obj.data.kpage_count = 13;
+	}
 /*	
 	//testdata  iweibo:
 	if(!global_obj.data.displaytype)  global_obj.data.displaytype = "iweibo";
@@ -332,12 +334,12 @@ else
 
 	this.tpl.development_list = [
 		this.tpl.header,
-		'<link href="http://mat1.gtimg.com/app/opent/css/development/index_selectapp.css?201205251" rel="stylesheet" type="text/css" />',
+		'<link href="http://mat1.gtimg.com/app/opent/css/development/index_selectapp.css" rel="stylesheet" type="text/css" />',
 			'<div id="content" class="controlCon main main_app">',
 				'<div class="deverLeft">',
 					'<div class="leftMain">',
 						'<div class="uicon">﻿',//<!--用户头像-->
-							'<img src="<%=developer.head?developer.head+"/100":"http://mat1.gtimg.com/app/opent/images/index/icon.jpg"%>" height="75" width="75" />',
+							'<img src="<%=developer.head?developer.head:"http://mat1.gtimg.com/app/opent/images/index/icon.jpg"%>" height="75" width="75" />',
 							'<br>',
 							'<%=userInfo.nick%>',
 						'</div>',
@@ -563,7 +565,8 @@ else
 	
 							$('#pagebar').html(tmpl(tpl.pageBar, ResponseData.data));
 							checkPageNum(global_obj.data.page_count);
-						}else{						
+						}else{		
+							console.log(ResponseData.data);		
 							global_obj.data.kapp_count = ResponseData.data.kapp_count;
 							global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count / global_obj.data.page_size);  //页数
 							ResponseData.data.kpage_count = global_obj.data.kpage_count;

@@ -379,7 +379,7 @@ var common = {
 				].join("");
 				console.log(d.data);
 				$('#login_status').html(tmpl(loginInfo,d.data));
-				if (d.data.hdlogin != "false"){
+				if (d.data.hdlogin && d.data.hdlogin != false && d.data.hdlogin != "false"){
 					d.data.hdlogin = true;
 					$('#logoutBtn').bind("click",common.loginOut);
 				} else {
