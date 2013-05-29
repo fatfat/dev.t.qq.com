@@ -9,7 +9,7 @@ var developer_cancelsubscribe =
 			'<div class="nopassTop clearfix">',
 				'<div class="uicon">',			
 					'<%if(developer && developer.head ){%>',
-						'<img src="<%=developer.head%>/100" height="100" width="100" />',
+						'<img src="<%=developer.head%>" height="100" width="100" />',
 					'<%}else{%>',
 						'<img src="http://mat1.gtimg.com/app/opent/images/index/icon.jpg" height="100" width="100" />',
 					'<%}%>',
