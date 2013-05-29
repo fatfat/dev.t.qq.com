@@ -502,13 +502,6 @@ else
 	 * AJAX翻页
 	 */
 	function pageList(page){ 
-		/*if(comps){
-			var ajaxpageListUrl ="/development/indexajaxcomplist/"+page+"?d="+(new Date().getTime());
-		}else if(iweibo){
-			var ajaxpageListUrl ="/development/indexajaxiweibolist/"+page+"?d="+(new Date().getTime());
-		}else{
-			var ajaxpageListUrl ="/development/indexajaxapplist/"+page+'/'+displayAppType+'/'+"?d="+(new Date().getTime());
-		}*/
 		global_obj.data.page_no = page;
 		ajaxpageListUrl = "/pipes/interfaceserver";
 		if (global_obj.data.displaytype == "app"){
@@ -522,6 +515,7 @@ else
 	 * AJAX翻页
 	 */
 	function pageList1(page){ 
+		alert(page);
 		global_obj.data.kpage_no = page;
 		var ajaxpageListUrl ="/pipes/interfaceserver";
 	    var data = {"action":"common_query","business_type":"ajax_kapplist","page":page};
@@ -541,7 +535,6 @@ else
 				  	  if(global_obj.data.displaytype != "app" || $('#otherapplist').hasClass('hidden')){
 				  	  	   	global_obj.data.app_count = ResponseData.data.app_count;
 						  	global_obj.data.page_count = Math.ceil(global_obj.data.app_count / global_obj.data.page_size);  //页数
-						  	
 						   	//根据不同的类型渲染页面
 							setRightList();
 						  	ResponseData.data.page_count = global_obj.data.page_count;
@@ -556,14 +549,13 @@ else
 								$('#applistul').html(tmpl(tpl.development_list_comps, ResponseData.data));
 							}
 							ResponseData.data.kapp_count = 0;
-	
 							$('#pagebar').html(tmpl(tpl.pageBar, ResponseData.data));
 							checkPageNum(global_obj.data.page_count);
 						}else{		
-							console.log(ResponseData.data);		
-							global_obj.data.kapp_count = ResponseData.data.kapp_count;
-							global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count / global_obj.data.page_size);  //页数
+					//		global_obj.data.kapp_count = ResponseData.data.kapp_count;
+					//		global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count / global_obj.data.kpage_size);  //页数
 							ResponseData.data.kpage_count = global_obj.data.kpage_count;
+							console.log(ResponseData.data.kpage_count);
 							global_obj.data.page_count = ResponseData.data.page_count = 0;
 							setRightList();
 							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
