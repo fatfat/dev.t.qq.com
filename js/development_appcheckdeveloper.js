@@ -134,7 +134,7 @@ this.tpl.footer
 ].join("\r");
 
 //--------------------更正后台数据开始-------------------------
-global_obj.data.developer_detail.appMax = global_obj.data.developer.appMax;
+global_obj.data.developer_detail.user_app_limit = global_obj.data.developer.user_app_limit;
 global_obj.data.developer_detail.head = global_obj.data.developer.head;
 global_obj.data.developer = global_obj.data.developer_detail;
 global_obj.data.appnav = "info";

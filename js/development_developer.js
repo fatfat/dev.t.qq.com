@@ -21,7 +21,7 @@
 					'<li class="active"><a href="/development/developer/">开发者资料</a></li>',
 				'</ul>',
 				 
-				'<%if (developer.user_app_numbers < developer.appMax){%>',
+				'<%if (developer_detail.user_app_numbers < developer_detail.user_app_limit){%>',
 				'<a href="javascript:;" class="creatIcon" rel="/development/create" id="newapp">创建应用</a>',
 				'<%}%>',
 			'</div>',
@@ -274,7 +274,7 @@ $(function() {
 		});
 	});
 	$("#newapp").click(function() {
-		popAppWin( +developer.user_app_numbers,+developer.appMax);
+		popAppWin( +developer.user_app_numbers,+developer.user_app_limit);
 	});
 
 	$(".appinfo li.alert").find(".rollbtn").click(function() {
