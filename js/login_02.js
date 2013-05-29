@@ -379,8 +379,10 @@ var common = {
 				].join("");
 				$('#login_status').html(tmpl(loginInfo,d.data));
 				if (d.data.hdlogin != "false"){
+					d.data.hdlogin = true;
 					$('#logoutBtn').bind("click",common.loginOut);
 				} else {
+					d.data.hdlogin = false;
 					$('#loginBtn').click(function() {
 						common.showLoginWin();
 					//	return false;
