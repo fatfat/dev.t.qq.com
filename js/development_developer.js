@@ -169,7 +169,8 @@ $.extend(global_obj.data.developer_detail, global_obj.data.developer);
 global_obj.data.developer = global_obj.data.developer_detail;
 window.user_province = global_obj.data.developer.user_province;
 window.user_city = global_obj.data.developer.user_city;
-
+//var insiteAppAble= global_obj.data.developer_detail.user_hosting ? global_obj.data.developer_detail.user_hosting:false;
+//var displayAppType = 15;
 
 $("#main").html(this.tmpl(this.tpl.development_developerTmpl, global_obj.data));
 
@@ -180,7 +181,7 @@ var user_check_status = developer.user_check_status
 var user_certif_status = developer.user_certif_status;
 var user_province = developer.user_province;
 var user_city = developer.user_city;
-var insiteAppAble = developer.user_hosting || false;
+insiteAppAble=true;
 var displayAppType = 15;
 	
 util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/location.js","http://mat1.gtimg.com/app/opent/rebuild/js/validater.js","http://mat1.gtimg.com/app/opent/rebuild/js/app_appadd.js"]);
@@ -274,8 +275,8 @@ $(function() {
 			}
 		});
 	});
-	$("#newapp").click(function() {
-		popAppWin( +developer.user_app_numbers,+developer.user_app_limit);
+	$("#newapp").click(function() {	
+		popAppWin( developer.user_app_numbers,developer.user_app_limit);
 	});
 
 	$(".appinfo li.alert").find(".rollbtn").click(function() {
