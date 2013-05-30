@@ -80,12 +80,14 @@ else
 	tpl.applistul1 = [
 					   // <!--其他平台应用-->
 				   '<ul id="applistul1">',
-						'<%for(var i=0;i<kapps.length;i++){%>',    
-							'<%var kapp=kapps[i];%>',          
+						'<%for(var i=0,kapp,length=kapps.length;i<length && (kapp=kapps[i]);i++){%>',    
 							'<li>',
+						//	'<a href="/development/appinfo?appid=<%=kapp.app_id%>" >',
 							'<img src="<%=(kapp.app_icon_75?kapp.app_icon_75:"http://mat1.gtimg.com/app/opent/images/index/icon.jpg")%>" height="60" width="60" />',
+						//	'</a>',
 							'<dl>',
-								'<dt style="color:#346496"><%=kapp.app_name%></dt>' ,
+						//		'<dt style="color:#346496"><a href="/development/appinfo?appid=<%=kapp.app_id%>" ><%=kapp.app_name%></a></dt>' ,
+						    	'<dt style="color:#346496"><%=kapp.app_name%></dt>' ,
 								'<dd><span>应用KEY：</span><label><%=kapp.app_id%></label></dd>',
 								'<dd><span>&nbsp;&nbsp;&nbsp;&nbsp;创建平台：</span><label> <%=kapp.create_plat%></label></dd>',
 								'<dd><span>&nbsp;&nbsp;&nbsp;&nbsp;已上线平台：</span><label><%=kapp.online_plat?kapp.online_plat:"无"%></label></dd>',
@@ -453,23 +455,22 @@ else
 			bindPageEvent1(i);
 		}	
 		
-		if (global_obj.data.displaytype != "app" || $('#otherapplist').hasClass('hidden')){
-			$("#prev").click(function(){
-				pageList(global_obj.data.page_no-1);
-			})
-			
-			$("#next").click(function(){
-				pageList(global_obj.data.page_no+1);
-			})
-		} else {
-			$("#prev1").click(function(){
-				pageList1(global_obj.data.kpage_no-1);
-			})
-			
-			$("#next1").click(function(){
-				pageList1(global_obj.data.kpage_no+1);
-			})	
-		}
+		$("#prev").click(function(){
+			pageList(global_obj.data.page_no-1);
+		})
+		
+		$("#next").click(function(){
+			pageList(global_obj.data.page_no+1);
+		})
+
+		$("#prev1").click(function(){
+			pageList1(global_obj.data.kpage_no-1);
+		})
+		
+		$("#next1").click(function(){
+			pageList1(global_obj.data.kpage_no+1);
+		})	
+
 	}
 
 	function bindPageEvent1(pageNum) {
