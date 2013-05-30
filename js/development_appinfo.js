@@ -121,7 +121,7 @@
 			        '如果你的应用满足<a href="http://wiki.open.t.qq.com/index.php/%E8%85%BE%E8%AE%AF%E5%BE%AE%E5%8D%9A%E5%BA%94%E7%94%A8%E9%A2%91%E9%81%93%E4%B8%8A%E6%9E%B6%E5%AE%A1%E6%A0%B8%E8%A7%84%E8%8C%83" target="_blank">应用上架标准</a>，可点击“申请上架”，审核通过后应用即出现在对应平台的应用频道',
 			    '<%}%>',
 		    '</li>',
-		    '<%}else if(app.app_status==5 && app.app_type == 6){%>',
+		    '<%}else if((app.app_status==5 || app.app_status==3 || app.app_status==4)&& app.app_type == 6){%>',
 			    '<%if ((iphoneinfo.app_plat_status=="" || iphoneinfo.app_plat_status==0) && (androidinfo.app_plat_status=="" || androidinfo.app_plat_status==0)){%>',
 				    '<li class="alert alert_warn"><a href="javascript:;" class="hidebtn closealert">收起↑</a>',
 				    '<h4>你的应用已通过审核</h4>',

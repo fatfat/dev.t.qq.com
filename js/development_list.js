@@ -96,7 +96,7 @@ else
 								'<%if(kapp.wb_had){%>',
 									'<a href="/development/appinfo?appid=<%=kapp.app_id%>">已接入到微博（查看）</a>',
 								'<%}else{%>',
-									'<a href="/development/appinfo?appid=<%=kapp.app_id%>&comfrom=<%=kapp.app_comefrom%> ">接入到微博 </a>',
+									'<a href="/development/appinfo?appid=<%=kapp.app_id%>&comefrom=<%=kapp.app_comefrom%> ">接入到微博 </a>',
 								'<%}%>',
 							'</div>',
 							'</li>',
@@ -143,7 +143,7 @@ else
 		'</div>'
 	].join("");
 	tpl.iweibolistul = [
-				'<%for(var i=0;i<iweibo.length;i++){%>',
+		'<%for(var i=0;i<iweibo.length;i++){%>',
 			'<%var app = iweibo[i];%>',			
 				'<li>',
 				'<a href="/development/iweiboinfo?appid=<%=app.app_id%> ">',
@@ -159,11 +159,11 @@ else
 		'<%} if(!iweibo||iweibo.length==0){%> ',
 				'<li style="height:auto;">你还没有使用过iWeibo，<a href="/apps/add/5/" style="display:inline;line-height:1;">马上使用</a></li>',
 		'<%}%>'
-		].join();
+		].join("");
 	this.tpl.development_list_iweibo = [
 		//<!------------------------------------iweibo----------------------------------------->  
 		'<div class="applist2" id="applist">',
-		'<ul id="applistul">',
+		    '<ul id="applistul">',
 				tpl.iweibolistul,
 			'</ul>',
 		'</div> '
