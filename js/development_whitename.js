@@ -13,8 +13,7 @@
 					'<p><%=app.app_name%></p>',
 				'</div>',
 				
-				'<!--{ include file="./development/appnav.tpl" }--> ',
-				tpl.development_appnav,
+				tpl.appnav,
 			'</div>',
 		'</div> ',
 		'<div class="deverRight">',
