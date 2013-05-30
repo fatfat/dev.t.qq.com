@@ -1070,7 +1070,7 @@ $(function() {
 			if (data.length) {
 				for (var i = 0,
 				k = data.length; i < k; i++) {
-					arr.push("<li>http://" + data[i].site + "</li>");
+					arr.push("<li>http://" + data[i] + "</li>");
 				}
 				arr.push("<li _index='" + i + "'>手动填写</li>");
 			} else {
@@ -1173,12 +1173,11 @@ $(function() {
 			$.ajax({
 				"dataType": "json",
 				"type": "post",
-				//"url": "/apps/getappsitelist",
 				"url": "/pipes/interfaceserver",
 				"data": {
-				"action": 'common_query',
-					"uin": hdlogin,
-					"app_id": $("input[name='app_id']").val(),
+					"action": 'common_query',
+					"uin": global_obj.data.userInfo.hdlogin,
+					"appid": global_obj.data.app.app_id,
 					"business_type":"ajax_getappsitelist"
 				},
 				"success": function(d) {

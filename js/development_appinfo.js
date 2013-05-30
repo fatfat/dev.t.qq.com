@@ -415,9 +415,8 @@
 	var app_status=app.app_status?app.app_status:"2";
 	global_obj.data.iphoneinfo = global_obj.data.iphoneinfo ||{};
 	global_obj.data.androidinfo = global_obj.data.androidinfo || {};
-	
+	$('#main').html(tmpl(developer_appinfo,global_obj.data));
 	(function ($) {
-	 	$('#main').html(tmpl(developer_appinfo,global_obj.data));
 	    $.fn.moduleBox = function (op) {
 	        op = op || {};
 	        var d = {
@@ -584,7 +583,6 @@
 
 	$(function(){
 		window.bindAllEvent();
-		
 	    $(".appstate_des").find("dd").find(":checkbox").live("click",function(){
 	            var dd=$(this).parent(),dl=dd.parent();
 	                if (dd.index()>1&&!dd.hasClass("active")){
@@ -592,7 +590,6 @@
 	                }else if(dd.index()==1&&dl.find("input[type='checkbox']:checked").size()>1){
 	                	return false;
 	                }
-	                
 	                if (dd.index() === 1){
 	                	if (dd.find("input[type='radio']").size() == 0){
 	                		//loginWin.show({"text":'<div style="text-align:center;margin:30px 0 10px;">未检测到托管地址信息<br/>请先申请托管地址，并绑定域名</div><div style="text-align:center;"><a href="javascript:;" class="devSubmit" onclick="$(\'#apphost_btn\').trigger(\'click\');return false;">现在去申请</a> <a href="javascript:;" class="devSubmit" onclick="loginWin.close();">以后再说</a></div>',"width":440,"height":195});
@@ -656,6 +653,7 @@
 		    });
 
 		    var app_online_url = "app && app.app_online_url?app.app_online_url:''".replace(/^https?:\/\//,"");
+			alert(global_obj.data.app.app_id)
 		    $.ajax({
 				 "dataType":"json"
 				,"type":"post"
@@ -674,11 +672,11 @@
 						var t=0,f=0;
 						for (var i=0,k=d.data.length;i<k;i++){
 							str += '<li><input type="radio" name="app_url_radio" value="http://'
-							    + d.data[i].site +'" id="app_url_radio_'+i+'"'
-							    + (app_online_url === d.data[i].site?" checked":"")+'/> <label for="app_url_radio_'+i+'">'
-							    + d.data[i].site +'</label></li>';
+							    + d.data[i] +'" id="app_url_radio_'+i+'"'
+							    + (app_online_url === d.data[i]?" checked":"")+'/> <label for="app_url_radio_'+i+'">'
+							    + d.data[i] +'</label></li>';
 							    
-							if( app_online_url === d.data[i].site){
+							if( app_online_url === d.data[i]){
 								t++;
 							}
 						}
