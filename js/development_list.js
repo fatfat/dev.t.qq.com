@@ -335,7 +335,7 @@ else
 				'<div class="deverLeft">',
 					'<div class="leftMain">',
 						'<div class="uicon">﻿',//<!--用户头像-->
-							'<img src="<%=developer.head?developer.head:"http://mat1.gtimg.com/app/opent/images/index/icon.jpg"%>" height="75" width="75" />',
+							'<img src="<%=(developer.head && developer.head != "" )?developer.head:"http://mat1.gtimg.com/app/opent/images/index/icon.jpg"%>" height="75" width="75" />',
 							'<br>',
 							'<%=userInfo.nick%>',
 						'</div>',

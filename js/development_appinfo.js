@@ -411,8 +411,7 @@
 	var app = global_obj.data.app;
 	var insiteAppAble=true;
 	var appid=app.app_id;
-//	var showalert = global_obj.data.showlert;
- var showalert = global_obj.data.showlert = "1";
+	var showalert = global_obj.data.showlert ? global_obj.data.showlert : "0";
 	var app_status=app.app_status?app.app_status:"2";
 	global_obj.data.iphoneinfo = global_obj.data.iphoneinfo ||{};
 	global_obj.data.androidinfo = global_obj.data.androidinfo || {};

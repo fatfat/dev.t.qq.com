@@ -126,7 +126,6 @@ $(function(){
 		 var qqnums=$('textarea#whitenames').val();
 		 var qqs=qqnums.split(/\n+/),qqarr=[];
 		 for(var i in qqs){
-		 	 alert(qqs[i]);
 		 	if (/^\s*$/.test(qqs[i])){
 		 		continue;
 		 	}
