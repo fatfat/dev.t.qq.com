@@ -176,8 +176,8 @@ $("#main").html(this.tmpl(this.tpl.development_developerTmpl, global_obj.data));
 
 var developer = global_obj.data.developer;
 var userType = developer.user_type || 1;
-var user_uin = developer.user_uin || 0
-var user_check_status = developer.user_check_status
+var user_uin = developer.user_uin || 0;
+var user_check_status = developer.user_check_status;
 var user_certif_status = developer.user_certif_status;
 var user_province = developer.user_province;
 var user_city = developer.user_city;
