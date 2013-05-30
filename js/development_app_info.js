@@ -289,7 +289,7 @@ tpl.apptype4 = [
 						'</a>',
 					'<% } else { %>',
 						'<span class="gray inputdes inputdes2">应用托管地址是应用在托管服务器上的部署地址，',
-							'<br/>需申请才能获得，<a href="javascript:;" onclick="$("#apphost_btn").trigger("click");return false;">现在去申请</a>',
+							'<br/>需申请才能获得，<a href="javascript:;" onclick="applyApphost();return false;">现在去申请</a>',
 						'</span>',
 					'<% } %>',
 				'<% } else { %>',
@@ -454,3 +454,6 @@ tpl.development_app_info = [
 		tpl.apptype45,
 	'<% } %>'
 ].join('');
+function applyApphost(){
+	$('#apphost_btn').trigger('click');
+}
