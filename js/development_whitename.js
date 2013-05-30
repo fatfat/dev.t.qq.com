@@ -63,7 +63,7 @@
 	].join(""); 
 	util.createStyle(str);
 $('#main').html(tmpl(tpl.whitename,global_obj.data));
-
+bindAllEvent();
 var appid =global_obj.data.app.app_id;
 $(function(){ 
 	$("#addwhitename").click(function(){
