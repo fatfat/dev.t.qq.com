@@ -84,45 +84,43 @@ tpl.developer_index =
 ].join("");
 
 $('#main').html(tmpl(tpl.developer_index, global_obj.data));
-util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/app_appadd.js");
+
 util.setLoginInfo();
 window.init();
 var userInfo = global_obj.data.userInfo;
 var developer  = global_obj.data.developer_detail;
 
-var hdlogin = userInfo.hdlogin || '';//
+var hdlogin = userInfo.hdlogin || '';
 var regweibo = userInfo.reg_wb;
 var insiteAppAble=1;
 
-$(function(){
-	$("#newapp").click(function(){
-		if( hdlogin==undefined || hdlogin == false || hdlogin == 'false' ){
+$("#newapp").click(function(){
+	if( hdlogin==undefined || hdlogin == false || hdlogin == 'false' ){
 			return checkuserLogin(encodeURIComponent(location.href.replace(location.search,"").replace(location.hash,"")+"?t="+(~new Date())+"#newapp"));
-		}else{
-			popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
-		}
-	});
-	$("#newgame").click(function(){
-		if( hdlogin==undefined || hdlogin == false || hdlogin == 'false'){
-			return checkuserLogin(encodeURIComponent("http://" + location.host+"/apps/add/4?cid=3"));		
-		}else{
-			popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
-		}
-		return false;
-	});
-	
-	if( hdlogin==undefined || hdlogin == false || hdlogin == 'false'){
-		$(".demos").find("a").removeAttr("target").click(function(){
-			return (!!checkuserLogin(encodeURIComponent($(this).attr("href"))));
-		})
 	}else{
-		if (location.hash=="#newapp"){
-			$("#newapp").trigger("click");
-		}else if(location.hash=="#newgame"){
-			$("#newgame").trigger("click");
-		}
+		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 	}
 });
+$("#newgame").click(function(){
+	if( hdlogin==undefined || hdlogin == false || hdlogin == 'false'){
+		return checkuserLogin(encodeURIComponent("http://" + location.host+"/apps/add/4?cid=3"));		
+	}else{
+		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
+	}
+	return false;
+});
+	
+if( hdlogin==undefined || hdlogin == false || hdlogin == 'false'){
+	$(".demos").find("a").removeAttr("target").click(function(){
+		return (!!checkuserLogin(encodeURIComponent($(this).attr("href"))));
+	})
+}else{
+	if (location.hash=="#newapp"){
+		$("#newapp").trigger("click");
+	}else if(location.hash=="#newgame"){
+		$("#newgame").trigger("click");
+	}
+}	
 
 QosSS.c = new Image();
 QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
