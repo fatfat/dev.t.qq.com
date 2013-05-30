@@ -122,7 +122,7 @@
 			    '<%}%>',
 		    '</li>',
 		    '<%}else if((app.app_status==5 || app.app_status==3 || app.app_status==4)&& app.app_type == 6){%>',
-			    '<%if ((iphoneinfo.app_plat_status=="" || iphoneinfo.app_plat_status==0) && (androidinfo.app_plat_status=="" || androidinfo.app_plat_status==0)){%>',
+			    '<%if ((!iphoneinfo.app_plat_status || iphoneinfo.app_plat_status=="" || iphoneinfo.app_plat_status==0) && (!androidinfo.app_plat_status || androidinfo.app_plat_status=="" || androidinfo.app_plat_status==0)){%>',
 				    '<li class="alert alert_warn"><a href="javascript:;" class="hidebtn closealert">收起↑</a>',
 				    '<h4>你的应用已通过审核</h4>',
 					    '<%if(app.app_nosubmit){%>',
