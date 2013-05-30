@@ -331,7 +331,7 @@ else
 				'<div class="deverLeft">',
 					'<div class="leftMain">',
 						'<div class="uicon">﻿',//<!--用户头像-->
-							'<img src="<%=developer.head?developer.head:"http://mat1.gtimg.com/app/opent/images/index/icon.jpg"%>" height="75" width="75" />',
+							'<img src="<%=developer.head?developer.head+"/100":"http://mat1.gtimg.com/app/opent/images/index/icon.jpg"%>" height="75" width="75" />',
 							'<br>',
 							'<%=userInfo.nick%>',
 						'</div>',
@@ -518,7 +518,7 @@ else
 		alert(page);
 		global_obj.data.kpage_no = page;
 		var ajaxpageListUrl ="/pipes/interfaceserver";
-	    var data = {"action":"common_query","business_type":"ajax_kapplist","page":page};
+	    var data = {"action":"common_query","business_type":"ajax_kapplist","page1":page};
 		AjaxPageList(ajaxpageListUrl, data);
 	} 
 		
@@ -555,7 +555,7 @@ else
 					//		global_obj.data.kapp_count = ResponseData.data.kapp_count;
 					//		global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count / global_obj.data.kpage_size);  //页数
 							ResponseData.data.kpage_count = global_obj.data.kpage_count;
-							console.log(ResponseData.data.kpage_count);
+
 							global_obj.data.page_count = ResponseData.data.page_count = 0;
 							setRightList();
 							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));

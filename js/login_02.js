@@ -377,7 +377,7 @@ var common = {
 					'<a title="点击此处登录" class="login_name" href="javascript:void(0);" id="loginBtn" hidefocus>登录</a>',
 					'<%}%>',
 				].join("");
-				console.log(d.data);
+
 				$('#login_status').html(tmpl(loginInfo,d.data));
 				if (d.data.hdlogin && d.data.hdlogin != false && d.data.hdlogin != "false"){
 					d.data.hdlogin = true;
