@@ -8,7 +8,7 @@
 			'<div class="leftMain"> ',
 				'<div class="uicon">﻿',
 					'<%if (developer.head){%>',
-					'<img src="<%=developer.head%>" height="75" width="75" />',
+					'<img src="<%=developer.head+"/100"%>" height="75" width="75" />',
 					'<%}else{%>',
 					'<img src="http://mat1.gtimg.com/app/opent/images/index/icon.jpg" height="75" width="75" />',
 					'<%}%>',
