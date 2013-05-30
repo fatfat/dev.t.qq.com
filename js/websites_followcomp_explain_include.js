@@ -151,9 +151,9 @@ var initEvents = function() {
 			crUrl();
 		});
 		// <!--{* 不是组件定制页内的修改设置 *}-->
-		//if (!comp) {
+		if (!comp) {
 			crUrl();
-		//}
+		}
 		function crUrl() {
 			var o = $("input[name=types]:checked");
 			var f = $("input[name=followers]").is(":checked") ? 1 : 0;

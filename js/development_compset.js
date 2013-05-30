@@ -91,30 +91,32 @@ function  compType2(){
 		$(".showcode_bar").before(tmpl(tpl.explain_include,global_obj.data));
 		//<% include file="./websites/followcomp/explain_include.tpl" %>
 		var comp_style = comp.comp_style?comp.comp_style:{"names":"","colorstyle":0,"customcolor":"#fff","iconsize":0};
-		var comp_id = comp.comp_id;
-		if (comp_style.followtype === 0) { // 快速收听
-			$(function () {
-				if (comp_style.displayfolloweramount) {
-					$("#typelist0").attr("checked","checked");
-				} else {
-					$("#typelist0").attr("checked","");
-				}
-				$("input[name=types]").filter("[value="+comp_style.displaystyle+"]").trigger("click").trigger("change");
-			});
-		} else {
-			// 批量收听定制页参数初始化
-			$(function(){
-				$("input[name=followtype]").filter("[value=1]").trigger("click").trigger("change");
-				$(".namelist").html(comp_style.names.replace(/([^,]+),?/g,"<li class=\"name_con\" onmouseover=\"listOver(this)\" onmouseout=\"listOut(this)\"><a href=\"javascript:;\" onclick=\"removeName(this)\"></a><span>$1</span></li>"));
-				$("input[name='color']").filter("[value="+comp_style.colorstyle+"]").attr("checked","checked");
-				$("input[name='iconsize']").filter("[value="+comp_style.iconsize+"]").attr("checked","checked");
-				$("#color_bg").val(comp_style.customcolor);
-				if (comp_style.colorstyle==1){
-				$("#customcolor").show();
-				}
-				showDemo();
-			});
-		}
+		eventBindFuncList.push(function(){	
+			var comp_id = comp.comp_id;
+			if (comp_style.followtype === 0) { // 快速收听
+				$(function () {
+					if (comp_style.displayfolloweramount) {
+						$("#typelist0").attr("checked","checked");
+					} else {
+						$("#typelist0").attr("checked","");
+					}
+					$("input[name=types]").filter("[value="+comp_style.displaystyle+"]").trigger("click").trigger("change");
+				});
+			} else {
+				// 批量收听定制页参数初始化
+				$(function(){
+					$("input[name=followtype]").filter("[value=1]").trigger("click").trigger("change");
+					$(".namelist").html(comp_style.names.replace(/([^,]+),?/g,"<li class=\"name_con\" onmouseover=\"listOver(this)\" onmouseout=\"listOut(this)\"><a href=\"javascript:;\" onclick=\"removeName(this)\"></a><span>$1</span></li>"));
+					$("input[name='color']").filter("[value="+comp_style.colorstyle+"]").attr("checked","checked");
+					$("input[name='iconsize']").filter("[value="+comp_style.iconsize+"]").attr("checked","checked");
+					$("#color_bg").val(comp_style.customcolor);
+					if (comp_style.colorstyle==1){
+					$("#customcolor").show();
+					}
+					showDemo();
+				});
+			}
+		});
 	});
 }
 
