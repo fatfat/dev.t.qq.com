@@ -60,7 +60,8 @@ var nextURL = "/development/appinfo?appid="+app.app_id,
 	app_type = app.app_type;
 	$('#main').html(tmpl(tpl.development_appcheckplatform,global_obj.data));
 	$('input[type=file]').change(function(){ $('input#need_post').val('1')});
-	global_obj.init.appnav();
-	global_obj.init.appplatform_inner();
+//	global_obj.init.appnav();
+bindAllEvent();
+//	global_obj.init.appplatform_inner();
 
 util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/app_platform_01.js");

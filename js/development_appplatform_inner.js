@@ -291,7 +291,7 @@
 		return app_platform;
 	 }
 		
-	global_obj.init.appplatform_inner = function(){
+	eventBindFuncList.push( function(){
 		$("input[name='appplatform']").each(function(index){
 			if($(this).attr("checked")){
 				$(".paltform_container").eq(index).show();
@@ -419,5 +419,5 @@
 				}
 			});
 		});
-	}
+	});
 })();

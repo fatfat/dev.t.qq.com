@@ -392,7 +392,7 @@ $(function(){
 	    		}
     	});
 
-    $("input#devSubmit").click(function(){
+      $("input#devSubmit").click(function(){
     	if(global_obj.data.app.app_type !== 6){ //非无线应用
 	    	//验证表单上传元素中都有图片
 	    	var imgisok=true,str="";
@@ -421,22 +421,9 @@ $(function(){
 					loginWin.alert("<center>请至少选择一个平台</center>");
 					return false;
 				}
-
-				//提交时判断是否上传了apk文件
-				if ($("input[name='app_apk']").val() == '' && ($("#app_platform").val() == 2 || $("#app_platform").val() == 3)) {
-					var app_apk = $("input[name='app_apk']"),
-						app_uploader = $(".form_button_upload"),
-						app_downer = $(".form_element_uploaded_name"),
-						app_info = $(".form_element_uploaded");
-					app_info.addClass("none");
-					app_uploader.removeClass("none");
-					app_apk.val("").removeAttr("data-default");
-					loginWin.alert("<center>请上传apk安装文件</center>");
-					showmsg(false,app_apk,"请上传apk安装文件");
-					return false;
-				}
 		
 				var form=this.form,flag,errmsg,rule,value,submitflag=true,data='',imgisok=true;
+				
 				$("form input[type='text'],form input[type='hidden'],form textarea,select#app_class_main,select#app_class_child,form input[type='file'][data-default]^=''").each(function(){
 					if($(f).hasClass("wirelessappform")){
 						// 如果是iphone应用，不判断android字段
@@ -454,8 +441,6 @@ $(function(){
 							}
 						}
 					}
-
-					
 				    rule = $(this).attr("data-rule"),value = $(this).val(),errmsg = $(this).attr("data-error");
 					if(OPEN_VALIDATOR.hasOwnProperty(rule) && rule){
 						if((!$.trim(value) && rule!="tname"&&rule!="applink"&&rule!="androidlink") || (value=="请选择" && rule=="appsupport")){
@@ -494,41 +479,6 @@ $(function(){
 			    		}	
 					}
 				});
-				if (submitflag) {
-					var picEmpty = false;
-					if ($('#iphone_pf').attr('checked') == true) {
-						for (var i = 0; i < 5; i++) {
-							if ($('input[type="file"]')[i].value == '') {
-								picEmpty = true;
-								str="<center>请上传应用图标</center>";
-								loginWin.alert(str);
-								tooltip.show(str,$($(".uploadbtn")[i]),2000);
-								$('#app_score_1')[0].scrollIntoView();
-								break;
-								return;
-							}
-						}
-					}
-					if (picEmpty) {
-						return;
-					}
-					if ($('#android_pf').attr('checked') == true) {
-						for (var i = 5; i < 10; i++) {
-							if ($('input[type="file"]')[i].value == '') {
-								picEmpty = true;
-								str="<center>请上传应用图标</center>";
-								loginWin.alert(str);
-								tooltip.show(str,$($(".uploadbtn")[i]),2000);
-								$('#app_size_2')[0].scrollIntoView();
-								break;
-								return;
-							}
-						}
-					}
-					if (picEmpty) {
-						return;
-					}
-				}
 				if(!submitflag) {return submitflag;}
 				
 				//创建无线应用，还需验证是否选择了应用平台
@@ -565,6 +515,7 @@ $(function(){
 		var confirmSubmitten = confirm("审核结果返回前，将不能修改"+OPEN_VALIDATOR.apptypeName+"信息，确定将此"+OPEN_VALIDATOR.apptypeName+"提交审核？");
 		if(!confirmSubmitten){return confirmSubmitten;}
 
+		//
     	loginWin.show({
         	"title":"提交审核",
         	"width":410,
