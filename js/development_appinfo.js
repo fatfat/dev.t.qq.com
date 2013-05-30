@@ -653,7 +653,6 @@
 		    });
 
 		    var app_online_url = "app && app.app_online_url?app.app_online_url:''".replace(/^https?:\/\//,"");
-			alert(global_obj.data.app.app_id)
 		    $.ajax({
 				 "dataType":"json"
 				,"type":"post"
