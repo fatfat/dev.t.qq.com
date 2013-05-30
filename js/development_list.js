@@ -24,11 +24,8 @@ else
 	}
 	
 	this.tpl = this.tpl || {};
-	this.tpl.development_list_comps = [
-		'<div  id="applist" class="applist">',
-		'<%if(comps.length>0&&app_count>0){%>',
-			'<ul class="applist" id="applistul">',
-				'<%for(var i=0, comp = {};i<comps.length && (comp = comps[i]);i++){%>',
+	tpl.complistul = [
+			'<%for(var i=0, comp = {};i<comps.length && (comp = comps[i]);i++){%>',
 				//	'<%var comp = comps[i];%>',
 					'<li>',
 						'<dl>',
@@ -42,7 +39,13 @@ else
 							'<%if(comp.comp_type!=7){%><a href="/development/compset?comp_id=<%=comp.comp_id%>">编辑</a> / <%}%>',
 							'<a href="/development/compinfo?comp_id=<%=comp.comp_id%>">查看</a></div>',
 					'</li>',
-				'<%}%>',
+				'<%}%>'
+		].join("");
+	this.tpl.development_list_comps = [
+		'<div  id="applist" class="applist">',
+		'<%if(comps.length>0&&app_count>0){%>',
+			'<ul class="applist" id="applistul">',
+				tpl.complistul,	
 				'</ul>',
 			//'<div id="pagebar"><%=pagelist%></div>',
 			'<%}else{%>'  , 
@@ -54,7 +57,6 @@ else
 	].join("");
 
 	tpl.applistul = [
-		'<ul id="applistul">' ,
 			'<%for(var i=0, app={};i<apps.length, app=apps[i];i++){%>',
 				//'<% var app=apps[i];%>',		
 				'<li>',
@@ -72,13 +74,11 @@ else
 			'<%}%> ',
 			'<%if(!apps||apps.length==0){%>',
 				'<li id = "appCreate" style="height:auto;">你还没有创建过应用，<a href="javascript:;" id="firstApp" onclick="$(\\"#newapp\\").trigger(\\"click\\");" style="display:inline">马上创建</a></li>',
-			'<%}%>',
-		'</ul>',
+			'<%}%>'
 	].join("");
 
 	tpl.applistul1 = [
 					   // <!--其他平台应用-->
-			   '<div id="otherapplist" class="applist2 hidden">',
 				   '<ul id="applistul1">',
 						'<%for(var i=0;i<kapps.length;i++){%>',    
 							'<%var kapp=kapps[i];%>',          
@@ -105,8 +105,7 @@ else
 								'<li style="height:auto;">您还没有在其他平台创建过应用</li>',
 							'<%}%>',
 						'<%}%>',
-					'</ul>',
-				'</div>',
+					'</ul>'
 		].join("");
 	
 	this.tpl.development_list_app = [
@@ -132,16 +131,17 @@ else
 					'<input type="checkbox" name="apptype" id="apptype3" checked=""/>',
 					'<label for="apptype3">站内应用</label>',
 				'</form>',
-				tpl.applistul,
+				'<ul id="applistul">' ,
+					tpl.applistul,
+				'</ul>',
 			'</div>', 
-			tpl.applistul1, 
+			'<div id="otherapplist" class="applist2 hidden">',
+				tpl.applistul1, 
+			'</div>',
 		'</div>'
 	].join("");
-	this.tpl.development_list_iweibo = [
-		//<!------------------------------------iweibo----------------------------------------->  
-		'<div class="applist2" id="applist">',
-		'<ul id="applistul">',
-		'<%for(var i=0;i<iweibo.length;i++){%>',
+	tpl.iweibolistul = [
+				'<%for(var i=0;i<iweibo.length;i++){%>',
 			'<%var app = iweibo[i];%>',			
 				'<li>',
 				'<a href="/development/iweiboinfo?appid=<%=app.app_id%> ">',
@@ -156,7 +156,13 @@ else
 				'</li>',
 		'<%} if(!iweibo||iweibo.length==0){%> ',
 				'<li style="height:auto;">你还没有使用过iWeibo，<a href="/apps/add/5/" style="display:inline;line-height:1;">马上使用</a></li>',
-		'<%}%>',
+		'<%}%>'
+		].join();
+	this.tpl.development_list_iweibo = [
+		//<!------------------------------------iweibo----------------------------------------->  
+		'<div class="applist2" id="applist">',
+		'<ul id="applistul">',
+				tpl.iweibolistul,
 			'</ul>',
 		'</div> '
 	].join("");
@@ -176,7 +182,6 @@ else
 	}
 	
 	this.tpl.pageBar = [//翻页按钮
-		'<div id="pagebar">',
 			'<div class="pagebar">',
 				'<em title="共<%=app_count%>条">共<%=app_count%>条</em>',
 				'<%if(page_no > 1){%>',
@@ -244,12 +249,10 @@ else
 				'<%} else {%>',
 					'<span class = "page_next">下一页</span>',
 				'<% } %>',
-			'</div>',
-		'</div>',
+			'</div>'
 	].join("");
 				
 	this.tpl.pageBar1 = [//翻页按钮
-		'<div id="pagebar1" style="display:none">',
 			'<div class="pagebar">',
 				'<em title="共<%=kapp_count%>条">共<%=kapp_count%>条</em>',
 				'<%if(kpage_no > 1){%>',
@@ -317,8 +320,7 @@ else
 				'<%}else{%>',
 					'<span class = "page_next">下一页</span>',
 				'<%}%>',
-			'</div>',
-		'</div>',
+			'</div>'
 	].join("");
 
 	var rightListTmpl = {};
@@ -357,11 +359,15 @@ else
 						 '</h1>',
 					'<%}%>',
 					rightListTmpl,
-					this.tpl.pageBar,
-					this.tpl.pageBar1,    
+					'<div id="pagebar">',
+						this.tpl.pageBar,
+					'</div>',
+					'<div id="pagebar1" style="display:none">',
+						this.tpl.pageBar1, 
+					'</div>',   
 				'</div>',
 			'</div>',
-		this.tpl.footer,
+		this.tpl.footer
 	].join("");
 					
 	this.util.createStyle('.dotted{display:block;float:left;color:#346496;line-height:18px;}');	
@@ -515,7 +521,6 @@ else
 	 * AJAX翻页
 	 */
 	function pageList1(page){ 
-		alert(page);
 		global_obj.data.kpage_no = page;
 		var ajaxpageListUrl ="/pipes/interfaceserver";
 	    var data = {"action":"common_query","business_type":"ajax_kapplist","page1":page};
@@ -546,7 +551,10 @@ else
 								$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
 							} else if ( global_obj.data.displaytype == "comps" ) {
 								if(!ResponseData.data.comps) ResponseData.data.comps = ResponseData.data.pagelist;
-								$('#applistul').html(tmpl(tpl.development_list_comps, ResponseData.data));
+								$('#applistul').html(tmpl(tpl.complistul, ResponseData.data));
+							} else if ( global_obj.data.displaytype == "iweibo" ) {
+								if(!ResponseData.data.iweibo) ResponseData.data.iweibo = ResponseData.data.pagelist;
+								$('#applistul').html(tmpl(tpl.iweibolistul, ResponseData.data));
 							}
 							ResponseData.data.kapp_count = 0;
 							$('#pagebar').html(tmpl(tpl.pageBar, ResponseData.data));
@@ -555,12 +563,11 @@ else
 					//		global_obj.data.kapp_count = ResponseData.data.kapp_count;
 					//		global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count / global_obj.data.kpage_size);  //页数
 							ResponseData.data.kpage_count = global_obj.data.kpage_count;
-
 							global_obj.data.page_count = ResponseData.data.page_count = 0;
-							setRightList();
-							$('#applistul').html(tmpl(tpl.applistul, ResponseData.data));
+						//	setRightList();
+							$('#otherapplist').html(tmpl(tpl.applistul1, ResponseData.data));
 							$('#pagebar1').html(tmpl(tpl.pageBar1, ResponseData.data));
-							hiddenkpagebar(global_obj.data.kpage_count);
+						//	hiddenkpagebar(global_obj.data.kpage_count);
 						}
 						bindAllPageEvent();
 				  }else{
