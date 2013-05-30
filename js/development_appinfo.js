@@ -1,5 +1,4 @@
-﻿
-	if (global_obj.code){
+﻿	if (global_obj.code){
 		if(global_obj.code == 1){
 			location.href = global_obj.url;
 		}
@@ -408,15 +407,16 @@
 	  '</div>',
 	  tpl.footer,
 	].join("");
-
+//debugger;
 	var app = global_obj.data.app;
 	var insiteAppAble=true;
 	var appid=app.app_id;
-	var showalert = global_obj.data.showlert;
+//	var showalert = global_obj.data.showlert;
+ var showalert = global_obj.data.showlert = "1";
 	var app_status=app.app_status?app.app_status:"2";
 	global_obj.data.iphoneinfo = global_obj.data.iphoneinfo ||{};
 	global_obj.data.androidinfo = global_obj.data.androidinfo || {};
-		
+	
 	(function ($) {
 	 	$('#main').html(tmpl(developer_appinfo,global_obj.data));
 	    $.fn.moduleBox = function (op) {

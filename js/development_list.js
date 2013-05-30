@@ -96,7 +96,7 @@ else
 								'<%if(kapp.wb_had){%>',
 									'<a href="/development/appinfo?appid=<%=kapp.app_id%>">已接入到微博（查看）</a>',
 								'<%}else{%>',
-									'<a href="/development/appinfo?appid=<%=kapp.app_id%>?comfrom=<%=kapp.app_comefrom%> ">接入到微博 </a>',
+									'<a href="/development/appinfo?appid=<%=kapp.app_id%>&comfrom=<%=kapp.app_comefrom%> ">接入到微博 </a>',
 								'<%}%>',
 							'</div>',
 							'</li>',

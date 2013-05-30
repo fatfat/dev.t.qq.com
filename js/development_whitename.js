@@ -56,14 +56,14 @@
 	'</div>',
 	tpl.footer,
 ].join("");
-
-$('#main').html(tmpl(tpl.whitename,global_obj.data));
 	var str = [
 		'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
 		'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
 		'div a#yunJPGClick{display:none}'
 	].join(""); 
 	util.createStyle(str);
+$('#main').html(tmpl(tpl.whitename,global_obj.data));
+
 var appid =global_obj.data.app.app_id;
 $(function(){ 
 	$("#addwhitename").click(function(){
@@ -126,6 +126,7 @@ $(function(){
 		 var qqnums=$('textarea#whitenames').val();
 		 var qqs=qqnums.split(/\n+/),qqarr=[];
 		 for(var i in qqs){
+		 	 alert(qqs[i]);
 		 	if (/^\s*$/.test(qqs[i])){
 		 		continue;
 		 	}
