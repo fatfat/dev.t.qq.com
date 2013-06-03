@@ -6,9 +6,13 @@ if(!userInfo.hdlogin)
 }
 else
 {
-	if( global_obj.error != 0){
+/*	if( global_obj.error != 0){
+		if(global_obj.msg){
+			alert(global_obj.msg);
+		}
 		location.href = '/development';//页面出错，自动跳转首页
-	}
+	}*/
+
 	//开平变量初始化
 	global_obj.data.kapp_count = global_obj.data.kapp_count || 0;
 	global_obj.data.kpage_no = global_obj.data.kpage_no || 0;

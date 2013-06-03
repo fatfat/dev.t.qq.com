@@ -5,17 +5,18 @@
 	if (userInfo.developer_status == 0){
 		var webtype = location.pathname.split('/');
 		if( !( /developer/.test(webtype[1]) && (webtype[2] == undefined || webtype[2] == "" || /(bedever|add|addone|activate)/.test(webtype[2])) ) ){
-			location.pathname = "/developer/bedever";
+			location.href = "/developer/bedever";
 		}
 	}else if (userInfo.user_status == 0){
 		var webtype = location.pathname.split('/');
 		if( !( /developer/.test(webtype[1]) && (webtype[2] == undefined || webtype[2] == "" || /(edit|checkemail|activate)/.test(webtype[2])) )){
-			location.pathname = "/developer/checkemail";
+			location.href = "/developer/checkemail";
 		}
-	}else if(global_obj.code==1){
-		top.location.href = global_obj.url;
-	}else if(global_obj.code==-3){
-		location.href = global_obj.url;
+	}else if(global_obj.code){
+		if(global_obj.msg){
+			alert(global_obj.msg);
+		}
+		location.href = "/development/";
 	}
 	
 	//添加一个函数记录页面上所有JS要添加的时间绑定函数,以便在文档生成后统一执行
