@@ -18,6 +18,7 @@ else
 	global_obj.data.kpage_no = global_obj.data.kpage_no || 0;
 	global_obj.data.kpage_size = global_obj.data.kpage_size || 13;
 	global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count / global_obj.data.kpage_size);
+	var ajaxUrl = "";
 
 	//testdata  complist:
 	global_obj.data.navPos = "7";
@@ -537,12 +538,16 @@ else
 	} 
 		
 	function AjaxPageList(ajaxpageListUrl,dota){ 
+		ajaxUrl = ajaxpageListUrl;
 		$.ajax({
 			  url: ajaxpageListUrl,
 			  dataType: "json",
 			  data: dota,
 			  cache: false,
 			  success: function(ResponseData){ 
+			  	  if(ajaxUrl != ajaxpageListUrl){
+			  	  	return;
+			  	  }
 				  if (parseInt(ResponseData.data.uin,10) == parseInt(userInfo.hdlogin,10) ){
 				  	  ResponseData.data.apps = ResponseData.data.apps || {};
 				      ResponseData.data.kapps = ResponseData.data.kapps || {};
