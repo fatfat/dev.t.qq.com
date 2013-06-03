@@ -182,8 +182,8 @@ var userType = developer.user_type || 1;
 var user_uin = developer.user_uin || 0;
 var user_certif_status = developer.user_certif_status;
 var user_check_status = developer.user_check_status; //资质证明审核状态
-var user_idcard_pic = developer.user_idcard_pic;
-var user_certif_pic = developer.user_certif_pic;
+var user_idcard_pic = developer.user_idcard_pic||"";
+var user_certif_pic = developer.user_certif_pic||"";
 var user_tmp_id = developer.user_tmp_id;
 var user_tmp_name = developer.user_tmp_name;
 var insiteAppAble = developer.user_hosting || false;
@@ -212,7 +212,6 @@ $(function() {
 			$(this).removeClass("moz0").removeClass("moz1").removeClass("ie6_0").removeClass("ie6_1");
 		}
 	});
-
 	if ((user_certif_status === 0 && user_check_status === 0 && user_idcard_pic != "" && user_certif_pic != "") //从开平拉过来的数据，开平未提交审核
 	|| user_check_status === 1) { //审核拒绝都可点
 		$('input#ajaxCertifSubmit').attr("class", "devSubmit").removeAttr("disabled");
