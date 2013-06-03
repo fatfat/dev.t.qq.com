@@ -195,6 +195,19 @@
 				}
 			});
 		}
+		if (global_obj.data.app.app_type == 4) {
+			$("input[name='app_hosting']").click(function(){
+				var t = $(this).filter(":checked").val();
+					$("#app_realpath_desc").html([
+						'应用开发完毕后，请将应用地址填写在此处 <br/>应用测试页面的iframe会调用此地址帮助您完成应用测试 <br/>应用提交审核后，审核人员也会通过该地址审核你的应用 <br/>用户使用此应用时，微博服务器会向该地址发送请求获取应用内容',
+						'应用开发完毕后请先将应用部署在自己的服务器上，并将应用地址填写在此处<br/>应用测试页面的iframe会调用此地址帮助您完成应用测试<br>应用提交审核后，审核人员也会通过该地址审核你的应用<br> 应用上架后此地址失效'
+					][+t]).width([350,420][+t]);
+			});
+			$('#tuguan').mouseover(function(){
+				$('#showtgdiv').addClass("show");
+				$(this).parent().addClass("reflow");
+			});
+		}
 	})
 	util.createScript = function (src,callback) {
 			$(document).ready(function(){
