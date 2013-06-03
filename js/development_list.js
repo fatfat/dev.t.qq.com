@@ -77,7 +77,7 @@ else
 				'</li>',
 			'<%}%> ',
 			'<%if(!apps||apps.length==0){%>',
-				'<li id = "appCreate" style="height:auto;">你还没有创建过应用，<a href="javascript:;" id="firstApp" onclick="$(\\"#newapp\\").trigger(\\"click\\");" style="display:inline">马上创建</a></li>',
+				'<li id = "appCreate" style="height:auto;">你还没有创建过应用，<a href="javascript:;" id="firstApp" style="display:inline">马上创建</a></li>',
 			'<%}%>'
 	].join("");
 
@@ -388,6 +388,10 @@ else
 	$("#newapp").click(function(){
 		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 	});	
+	
+	$('#firstApp').click(function(){
+		$("#newapp").trigger("click");
+	});
 	$(function(){
 		checkPageNum(global_obj.data.page_count);
 		bindAllPageEvent();
