@@ -204,8 +204,8 @@ OPEN_VALIDATOR = {
 	,complicensenum:function(value,selector){//公司营业执照号码
 		value = value.replace(/\s/g,"");
 		selector.val(value);
-//		var tchar = value.match(/[^0-9a-zA-Z\-]+/g);
-		var tchar = value.match(/^[0-9]([0-9]|-(?!-)){6,18}[0-9]$/);
+		var tchar = value.match(/[^0-9a-zA-Z\-]+/g);
+//		var tchar = value.match(/^[0-9]([0-9]|-(?!-)){6,18}[0-9]$/);
 		if (value && !tchar){
 			return '你填写的##含有非法字符';
 		}
