@@ -195,7 +195,7 @@
 				}
 			});
 		}
-		if (global_obj.data.app.app_type == 4) {
+		if (global_obj.data.app&&global_obj.data.app.app_type == 4) {
 			$("input[name='app_hosting']").click(function(){
 				var t = $(this).filter(":checked").val();
 					$("#app_realpath_desc").html([
