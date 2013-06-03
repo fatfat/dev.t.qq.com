@@ -6,14 +6,19 @@ if(!userInfo.hdlogin)
 }
 else
 {
-	if( global_obj.error != 0){
+/*	if( global_obj.error != 0){
+		if(global_obj.msg){
+			alert(global_obj.msg);
+		}
 		location.href = '/development';//页面出错，自动跳转首页
-	}
+	}*/
+
 	//开平变量初始化
 	global_obj.data.kapp_count = global_obj.data.kapp_count || 0;
 	global_obj.data.kpage_no = global_obj.data.kpage_no || 0;
 	global_obj.data.kpage_size = global_obj.data.kpage_size || 13;
 	global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count / global_obj.data.kpage_size);
+	var ajaxUrl = "";
 
 	//testdata  complist:
 	global_obj.data.navPos = "7";
@@ -73,7 +78,7 @@ else
 				'</li>',
 			'<%}%> ',
 			'<%if(!apps||apps.length==0){%>',
-				'<li id = "appCreate" style="height:auto;">你还没有创建过应用，<a href="javascript:;" id="firstApp" onclick="$(\\"#newapp\\").trigger(\\"click\\");" style="display:inline">马上创建</a></li>',
+				'<li id = "appCreate" style="height:auto;">你还没有创建过应用，<a href="javascript:;" id="firstApp" style="display:inline">马上创建</a></li>',
 			'<%}%>'
 	].join("");
 
@@ -384,6 +389,10 @@ else
 	$("#newapp").click(function(){
 		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 	});	
+	
+	$('#firstApp').click(function(){
+		$("#newapp").trigger("click");
+	});
 	$(function(){
 		checkPageNum(global_obj.data.page_count);
 		bindAllPageEvent();
@@ -529,12 +538,16 @@ else
 	} 
 		
 	function AjaxPageList(ajaxpageListUrl,dota){ 
+		ajaxUrl = ajaxpageListUrl;
 		$.ajax({
 			  url: ajaxpageListUrl,
 			  dataType: "json",
 			  data: dota,
 			  cache: false,
 			  success: function(ResponseData){ 
+			  	  if(ajaxUrl != ajaxpageListUrl){
+			  	  	return;
+			  	  }
 				  if (parseInt(ResponseData.data.uin,10) == parseInt(userInfo.hdlogin,10) ){
 				  	  ResponseData.data.apps = ResponseData.data.apps || {};
 				      ResponseData.data.kapps = ResponseData.data.kapps || {};
