@@ -1422,7 +1422,7 @@ var submitCallback = function(d) {
 				"title": "修改资质证明",
 				"width": 410,
 				"height": 185,
-				"text": "<center><br/><label class=\"icon_alert\"></label> &nbsp; " + OPEN_VALIDATOR.apptypeName + "提交审核失败，原因&nbsp;<strong>" + reason + "</strong><br/><input type=\"button\" class=\"devSubmit closeBtn\" value=\"确定\"/></center>"
+				"text": "<center><br/><label class=\"icon_alert\"></label> &nbsp; 资质证明提交审核失败，原因&nbsp;<strong>" + reason + "</strong><br/><input type=\"button\" class=\"devSubmit closeBtn\" value=\"确定\"/></center>"
 			});
 			loginWin.contentarea.find(".closeBtn").bind("click",
 			function() {
