@@ -1,4 +1,5 @@
-﻿util.createStyle("#content{width:985px;}");
+﻿document.domain="qq.com";
+util.createStyle("#content{width:985px;}");
 if (global_obj.data.pagename == "appcompass"){
 	global_obj.data.src = "http://compass.qq.com/reports?appid=";
 	global_obj.data.businessType = "业务数据";
@@ -31,16 +32,20 @@ tpl.businessData = [
 ].join("");
 $('#main').html(tmpl(tpl.businessData,global_obj.data));
 
-document.domain="qq.com";
 var timer;
 function iframeLoaded(contentframe){
-	clearInterval(timer);
 	var win=contentframe.contentWindow,
-		doc=win.document.documentElement||win.document.body;
-		timer=setInterval(function(){
-		var h=doc.scrollHeight;
-		if (h){
-			contentframe.height=h;
-		}
-	},500);
+		doc,
+		fun = function(doc){
+			timer=setInterval(function(){
+			var h=doc.scrollHeight;
+			if (h){
+				contentframe.height=h;
+			}
+		},500);
+	};
+	clearInterval(timer);
+	if (win.document){
+		fun(win.document.documentElement||win.document.body);
+	}
 }
