@@ -1362,7 +1362,6 @@ $("input[type='file']").change(function() {
 	};
 });
 
-var user_certif_status = global_obj.data.user_certif_status;
 var submitCallback = function(d) {
 	//var ret = +(d.ret||d.error),msg=common.getMsgByRet(ret);
 	var ret = +d.ret || d.code,
@@ -1375,7 +1374,6 @@ var submitCallback = function(d) {
 
 	if (ret == 0) {
 		if (loginWin) {
-
 			//当前资质审核状态为通过、修改后通过
 			if (user_certif_status === 1 && (user_check_status === 0 || user_check_status === 3)) {
 				var str = "<center>你重新提交的资质证明正在审核中，通过审核后才可生效。请确认资质证明与你的基本信息一致，否则审核将不予以通过。现在就去修改基本信息？</center>";
