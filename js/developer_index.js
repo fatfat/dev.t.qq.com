@@ -98,6 +98,9 @@ $("#newapp").click(function(){
 	if( hdlogin==undefined || hdlogin == false || hdlogin == 'false' ){
 			return checkuserLogin(encodeURIComponent(location.href.replace(location.search,"").replace(location.hash,"")+"?t="+(~new Date())+"#newapp"));
 	}else{
+		if( userInfo.reg_wb == 0 ){
+			location.href = "http://reg.t.qq.com/invite.php";
+		}
 		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 	}
 });
@@ -105,6 +108,9 @@ $("#newgame").click(function(){
 	if( hdlogin==undefined || hdlogin == false || hdlogin == 'false'){
 		return checkuserLogin(encodeURIComponent("http://" + location.host+"/apps/add/4?cid=3"));		
 	}else{
+		if( userInfo.reg_wb == 0 ){
+			location.href = "http://reg.t.qq.com/invite.php";
+		}
 		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 	}
 	return false;

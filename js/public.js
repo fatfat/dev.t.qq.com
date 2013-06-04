@@ -1,18 +1,20 @@
 ;(function() {
+	//未注册微博用户跳转到微博注册页
+	var webtype = location.pathname.split('/');	
 	if(userInfo && userInfo.hdlogin != false && userInfo.hdlogin != "false" && userInfo.reg_wb == 0){
-		location.href = "http://reg.t.qq.com/invite.php";
+		if( !(/developer/.test(webtype[1])) && (webtype[2] == undefined || webtype[2] == "") ){//developer页不跳转，创建应用时再跳转
+			location.href = "http://reg.t.qq.com/invite.php";
+		}
 	}
 	
 	//页面参数控制跳转，add by fat
 	//TODO:限制条件的正则判断有问题，比如注册成为开发者以后应该去邮箱激活页的，也可能是后台参数有问题
 	
 	if (userInfo.developer_status == 0){
-		var webtype = location.pathname.split('/');
 		if( !( /developer/.test(webtype[1]) && (webtype[2] == undefined || webtype[2] == "" || /(bedever|add|addone|activate)/.test(webtype[2])) ) ){
 			location.href = "/developer/bedever";
 		}
 	}else if (userInfo.user_status == 0){
-		var webtype = location.pathname.split('/');
 		if( !( /developer/.test(webtype[1]) && (webtype[2] == undefined || webtype[2] == "" || /(edit|checkemail|activate)/.test(webtype[2])) )){
 			location.href = "/developer/checkemail";
 		}
