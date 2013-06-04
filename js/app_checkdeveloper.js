@@ -211,7 +211,7 @@ OPEN_VALIDATOR = {
 		}
 		
 		if(value.length>=8 && value.length<=20){
-			if(new RegExp(/^[0-9a-zA-Z-]{8,20}$/).test(value)){
+			if(new RegExp(/^[0-9]([0-9]|-(?!-)){6,18}[0-9]$/).test(value)){
 				var dataonly = selector.attr("data-only");
 				if (dataonly){
 					if (dataonly === "true"){
