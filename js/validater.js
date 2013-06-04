@@ -454,7 +454,6 @@ OPEN_VALIDATOR = {
 		var tchar = value.match(/[^0-9\-]+/g);
 	//	var tchar = value.match(/^[0-9]([0-9]|-(?!-)){6,18}[0-9]$/);
 		if (value && tchar) {
-		//	console.log([value,tchar,value && !tchar]);
 			return '你填写的##含有非法字符';
 		}
 
@@ -648,7 +647,6 @@ $("form input[type='text'],form textarea").blur(function() { //单个即时验�
 	}
 	if (OPEN_VALIDATOR.hasOwnProperty(rule) && rule) { //判断是否进行检测
 		if (!$.trim(value) && rule != "tname" && rule != "appdes" && (rule != "applink" || (rule == "applink" && tSiteWebApp == true)) && rule != "companycity") {
-
 			errmsg += "不能为空";
 			flag = false;
 		} else {
@@ -842,7 +840,7 @@ $("form input[data-rule='complicensenum'],form input[data-rule='cardnum_new'],fo
 
 	for(var r in rulecheck){
 		if(rule==r){
-		
+			value = value.replace(/\s/g, "");
 			if (rulecheck[r]["reg"].test(value)){
 				selector.removeAttr("data-only");
 				selector.attr("data-working",1);
