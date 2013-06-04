@@ -1,5 +1,5 @@
 ;(function() {
-	if(!userInfo || userInfo.reg_wb == 0){
+	if(userInfo && userInfo.hdlogin != false && userInfo.hdlogin != "false" && userInfo.reg_wb == 0){
 		location.href = "http://reg.t.qq.com/invite.php";
 	}
 	
