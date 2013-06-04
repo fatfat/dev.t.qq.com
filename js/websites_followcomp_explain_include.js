@@ -151,7 +151,7 @@ var initEvents = function() {
 			crUrl();
 		});
 		// <!--{* 不是组件定制页内的修改设置 *}-->
-		if (!comp) {
+		if (!window.comp) {
 			crUrl();
 		}
 		function crUrl() {
