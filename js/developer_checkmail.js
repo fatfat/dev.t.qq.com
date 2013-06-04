@@ -8,16 +8,16 @@ var developer_cancelsubscribe =
 		'<div class="devWrap">',
 			'<div class="nopassTop clearfix">',
 				'<div class="uicon">',			
-					'<%if(developer && developer.head ){%>',
-						'<img src="<%=developer.head%>" height="100" width="100" />',
+					'<%if(developer_detail && developer_detail.head ){%>',
+						'<img src="<%=developer_detail.head%>" height="100" width="100" />',
 					'<%}else{%>',
 						'<img src="http://mat1.gtimg.com/app/opent/images/index/icon.jpg" height="100" width="100" />',
 					'<%}%>',
 				'</div> ',
 				'<div class="right">',
-					'<p><strong>开发者姓名：</strong><%=developer && developer.user_name ? developer.user_name : ""%></p>',
-					'<p><strong>开发者类型：</strong><%if(developer && developer.user_type ? developer.user_type==1 : "false"){%>个人<%}else{%>公司<%}%></p>',
-					'<p><strong>电子邮箱：</strong><span id="uemail"><%=developer && developer.user_email ? developer.user_email : ""%></span></p>',
+					'<p><strong>开发者姓名：</strong><%=developer_detail && developer_detail.user_name ? developer_detail.user_name : ""%></p>',
+					'<p><strong>开发者类型：</strong><%if(developer_detail && developer_detail.user_type ? developer_detail.user_type==1 : "false"){%>个人<%}else{%>公司<%}%></p>',
+					'<p><strong>电子邮箱：</strong><span id="uemail"><%=developer_detail && developer_detail.user_email ? developer_detail.user_email : ""%></span></p>',
 					'<p><strong><a class="edit" href="/developer/edit">修改开发者资料</a></strong></p>',
 				'</div>',
 			'</div>',
@@ -30,10 +30,10 @@ var developer_cancelsubscribe =
 	'</div>', 
 	this.tpl.footer
 ].join("");
-
+/*
 global_obj.developer_detail.user_app_limit = global_obj.developer_detail.user_app_limit || global_obj.data.developer.user_app_limit;
-global_obj.developer_detail.head = global_obj.developer_detail.head || global_obj.data.developer.head;
-var developer = global_obj.data.developer = global_obj.developer_detail;
+global_obj.developer_detail.head = global_obj.developer_detail.head || global_obj.data.developer.head;*/
+var developer = global_obj.developer_detail;
 
 $('#main').html(tmpl(developer_cancelsubscribe,global_obj.data));
 

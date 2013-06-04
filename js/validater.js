@@ -832,7 +832,7 @@ $("form input[data-rule='appname'],form input[data-rule='compname']").change(fun
 });
 
 $("form input[data-rule='complicensenum'],form input[data-rule='cardnum_new'],form input[data-rule='passport']").change(function() {
-	var selector = $(this),rule = selector.attr("data-rule"),value = selector.val();
+	var selector = $(this),rule = selector.attr("data-rule"),value = selector.val().replace(/\s/g, "");
 	var rulecheck={"complicensenum":{"reg":/^[0-9]([0-9]|-(?!-)){6,18}[0-9]$/,"check":"complicensenumCheck"}
 					 ,"cardnum_new":{"reg":/^[0-9xX]{18}$/,"check":"cardnumCheck"}
 				     ,"passport":{"reg":/^[0-9a-zA-Z]+$/,"check":"cardnumCheck"}
@@ -840,7 +840,6 @@ $("form input[data-rule='complicensenum'],form input[data-rule='cardnum_new'],fo
 
 	for(var r in rulecheck){
 		if(rule==r){
-			value = value.replace(/\s/g, "");
 			if (rulecheck[r]["reg"].test(value)){
 				selector.removeAttr("data-only");
 				selector.attr("data-working",1);

@@ -251,7 +251,8 @@ OPEN_VALIDATOR = {
 					"dataType":"json",
 					"url":url,
 					"success":function(d){
-						var w = selector.attr("data-working")|0,ret = +d.ret,err = common.getMsgByRet(ret); //转化为自然数
+						var w = selector.attr("data-working")|0,ret = +d.error,err = common.getMsgByRet(ret); //转化为自然数
+
 						if (err){
 							selector.attr("data-only",false);
 							showmsg(false,selector,err);
@@ -528,7 +529,7 @@ function showmsgforselect(flag,selector,msg){
 
 }
 $("form input[data-rule='complicensenum'],form input[data-rule='cardnum_new'],form input[data-rule='passport']").change(function(){
-	var selector = $(this),rule = selector.attr("data-rule"),value = selector.val();
+	var selector = $(this),rule = selector.attr("data-rule"),value = selector.val().replace(/\s/g, "");
 	var rulecheck={"complicensenum":{"reg":/^[0-9]([0-9]|-(?!-)){6,18}[0-9]$/,"check":"complicensenumCheck"}
 					 ,"cardnum_new":{"reg":/^[0-9xX]{18}$/,"check":"cardnumCheck"}
 				     ,"passport":{"reg":/^[0-9a-zA-Z]+$/,"check":"cardnumCheck"}
@@ -536,7 +537,6 @@ $("form input[data-rule='complicensenum'],form input[data-rule='cardnum_new'],fo
 	
 	for(var r in rulecheck){
 		if(rule==r){
-		
 			if (rulecheck[r]["reg"].test(value)){
 				selector.removeAttr("data-only");
 				selector.attr("data-working",1);
