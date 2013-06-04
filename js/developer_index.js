@@ -100,6 +100,7 @@ $("#newapp").click(function(){
 	}else{
 		if( userInfo.reg_wb == 0 ){
 			location.href = "http://reg.t.qq.com/invite.php";
+			return;
 		}
 		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 	}
@@ -110,6 +111,7 @@ $("#newgame").click(function(){
 	}else{
 		if( userInfo.reg_wb == 0 ){
 			location.href = "http://reg.t.qq.com/invite.php";
+			return;
 		}
 		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 	}
