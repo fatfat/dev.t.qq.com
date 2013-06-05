@@ -699,7 +699,12 @@ $(function() {
 		}
 		$("#app_support").trigger("blur");
 	});
-
+/*	
+	$("input[name='check_app_os']").change(function() {
+		var	str = getOS();
+		$("#app_support").trigger("blur");
+	});
+*/
 	$('input#app_name,input#app_url,input#app_down_url,input#app_support,textarea#app_description,input[type=checkbox],input#app_weibo,select#app_class_main,select#app_class_child').change(function() {
 		need_post = 1;
 	});
@@ -777,6 +782,11 @@ $(function() {
 		if (submitrule == 'formauto') { //表单自动提交
 			if ($(f).hasClass("wirelessappform") && app_platform === 0) {
 				loginWin.alert("<center>请至少选择一个平台</center>");
+				return false;
+			}
+			//针对客户端应用需要勾选至少一个平台，add by fat
+			if(global_obj.data.app.app_type == 3 && $("input[name='check_app_os']:checked").size() == 0){
+				loginWin.alert("<center>请至少选择一个应用平台</center>");
 				return false;
 			}
 
@@ -1033,6 +1043,7 @@ $(function() {
 	});
 	/*初使化支持平台数据*/
 	var app_platform_name = $("input[name='app_phone'],input[name='app_pad'],input[name='app_os']").filter("[value ^='']");
+//	var app_platform_name = $(input[name='app_os']").filter("[value ^='']");
 	if (app_platform_name.size() === 0) {
 		$("input[name='app_phone']").val('Android');
 		app_platform_name = $("input[name='app_phone']");

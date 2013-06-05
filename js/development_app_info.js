@@ -114,14 +114,15 @@ tpl.apptype3 = [
 		 '<div id="app_support_list">',
 		   ' <dl>',
 		    	'<dd>',
-			    	'<input type="checkbox" name="check_app_os"  id="app_pc_0" value="Windows" /><label for="app_pc_0">Windows</label>', 
-			    	'<input type="checkbox" name="check_app_os"  id="app_pc_1" value="Mac"/><label for="app_pc_1">Mac</label>', 
-			    	'<input type="checkbox" name="check_app_os"  id="app_pc_2" value="Linux"/><label for="app_pc_2">Linux</label>',
+			    	'<input type="checkbox" name="check_app_os"  id="app_pc_0" data-rule="isempty" value="Windows" <%if(/Windows/.test(app.app_os)){%>checked<%}%>/><label for="app_pc_0">Windows</label>', 
+			    	'<input type="checkbox" name="check_app_os"  id="app_pc_1" data-rule="isempty" value="Mac" <%if(/Mac/.test(app.app_os)){%>checked<%}%>/><label for="app_pc_1">Mac</label>', 
+			    	'<input type="checkbox" name="check_app_os"  id="app_pc_2" data-rule="isempty" value="Linux" <%if(/Linux/.test(app.app_os)){%>checked<%}%>/><label for="app_pc_2">Linux</label>',
 				'</dd>',
 		    '</dl>',
 		'</div>',
 
 		'<input type="hidden" name="app_phone" value="<%=app.app_phone%>"/><input type="hidden" name="app_pad" value="<%=app.app_pad%>"/><input type="hidden" name="app_os" value="<%=app.app_os%>"/></li>',
+//		'<input type="hidden" name="app_os" value="<%=app.app_os%>"/></li>',
 	
 		'<li>',
 			'<label class="form_label"><em>*</em>',
