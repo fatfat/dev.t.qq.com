@@ -12,21 +12,14 @@ var sty = [
 util.createStyle(sty);	
 
 tpl.websites_wall_explain_include = [
-	//'<link href="http://mat1.gtimg.com/app/opent/css/developer/dever_03.css" rel="stylesheet" type="text/css"/>',
 	'<link href="http://mat1.gtimg.com/app/opent/css/websites/show/customcolor.css" type="text/css" rel="stylesheet">',
 	'<div class="comp_area">',
-		'<div id="show" style="margin-bottom:-630px;height:630px;width:345px;float:right;">',
+		'<div id="show" class="show_wall">',
 			'<h3>效果预览</h3>',
 			'<div style="width:100%;height:601px;overflow:auto">',
 			'<iframe id="review" frameborder="0" marginwidth=0 marginheight=0 scrolling="no" src="http://mat1.gtimg.com/app/opent/images/websites/show.png" width="345" height="594"></iframe>',
 			'</div>',
 		'</div>',
-		/*'<div id="show" class="show_wall">',
-			'<h3>效果预览</h3>',
-			'<div style="width:100%;height:601px;overflow:auto">',
-			'<iframe id="review" frameborder="0" marginwidth=0 marginheight=0 scrolling="no" src="http://mat1.gtimg.com/app/opent/images/websites/show.png" width="345" height="594"></iframe>',
-			'</div>',
-		'</div>',*/
 	'<dl class="p" style="_margin-top:-20px;">',
 		'<dt>话题定制</dt>',
 		'<dd  style="width:332px;"><span class="form_input"><input type="text" id="t1" name="topicname" placeholder="请输入话题名称" data-rule="topicname" data-error="话题名称"/></span></dd>',
