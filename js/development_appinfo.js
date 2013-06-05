@@ -352,7 +352,7 @@
 		            '<dl class="appstate_des">',
 		            '<dt>应用上架审核前，请完成并确认以下步聚：</dt>',  
 		            '<dd class="active"><i></i><input type="checkbox" id="appstate_des1" />', 
-		            ' <label for="appstate_des1">已申请服务器和托管地址、已绑定域名</label>',
+		            ' <label for="appstate_des1"> 已申请服务器和托管地址、已绑定域名</label>',
 		            '<span class="valign"><a href="javascript:;" onclick="applyApphost();return false;">现在去申请</a> | ',
 		            '<a href="http://wiki.opensns.qq.com/wiki/%E5%BA%94%E7%94%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E#.E7.94.B3.E8.AF.B7.E8.B5.84.E6.BA.90.2F.E8.AE.BE.E5.A4.87.E6.89.A9.E5.AE.B9" target="_blank">申请指引</a></span>',
 		            '<div class="app_hostinfo none c_orange" id="appstate_hostinfo">未检测到托管地址信息、请先申请托管地址，并绑定域名</div>',

@@ -402,6 +402,7 @@ else
 			else displayAppType = displayAppType&0xFE;
 			var apptypeUrl = "/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType;
 			AjaxPageList(apptypeUrl);
+			global_obj.data.page_no = 1;
 		}) 
 		 
 		$('input#apptype2').click(function(){
@@ -409,6 +410,7 @@ else
 			else displayAppType = displayAppType&0xFB;
 			var apptypeUrl = "/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType;
 			AjaxPageList(apptypeUrl);
+			global_obj.data.page_no = 1;
 		})
 		 
 		$('input#apptype3').click(function(){
@@ -416,6 +418,7 @@ else
 			else displayAppType= displayAppType&0xF7;
 			var apptypeUrl = "/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType;
 			AjaxPageList(apptypeUrl);
+			global_obj.data.page_no = 1;
 		})
 		
 		$('input#apptype4').click(function(){
@@ -423,6 +426,7 @@ else
 			else displayAppType= displayAppType&0xDF;
 			var apptypeUrl = "/pipes/interfaceserver?action=common_query&business_type=ajax_applist&appTypes="+displayAppType;
 			AjaxPageList(apptypeUrl);
+			global_obj.data.page_no = 1;
 		})
 	
 		// TAB

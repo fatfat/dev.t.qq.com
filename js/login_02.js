@@ -117,7 +117,8 @@ var common = {
 	})(),
 	"showLoginWin":function(url){
 		loginWin.close();
-		loginWin.showBox(500, 300, url||encodeURIComponent(location.href),"用户登录");
+	//	loginWin.showBox(500, 300, url||encodeURIComponent(location.href),"用户登录");
+		setTimeout(function(){loginWin.showBox(500, 300, url||encodeURIComponent(location.href),"用户登录");},100);
 		return false;
 	},
 	"checkuserLogin":function(url){
@@ -386,7 +387,7 @@ var common = {
 					d.data.hdlogin = false;
 					$('#loginBtn').click(function() {
 						common.showLoginWin();
-					//	return false;
+						return false;
 					});
 				}
 				global_obj.data.userInfo.hdlogin = userInfo.hdlogin = hdlogin = d.data.hdlogin;
