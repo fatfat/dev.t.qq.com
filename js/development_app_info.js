@@ -58,7 +58,7 @@ tpl.apptype3 = [
 			'<label class="form_label">',
 				'<em>*</em>下载地址：',
 			'</label>',
-			'<span class="form_input"><input type="text" name="app_down_url" id="app_down_url" value="<%=app.app_down_url%>" data-error="下载地址" data-rule="link"/></span>',
+			'<span class="form_input"><input type="text" name="app_down_url" id="app_down_url" value="<%=app.app_down_url%>" data-error="下载地址" data-rule="link"  data-default="<%=app.app_down_url%>"/></span>',
 		'</li>',
 		'<li>',
 			'<label class="form_label"><em>*</em>',

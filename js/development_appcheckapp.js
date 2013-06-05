@@ -94,6 +94,7 @@ var app_id = app.app_id || '',
 	app_type = +app.app_type || '',
 	NextUrl = app_type == 6 ? '/development/appcheckplatform?appid='+app_id : '/development/appcheckmaterial?appid='+app_id,
 	typedata = '&app_hosting=' + app.app_hosting + '&app_type=' + app.app_type;
+//	typedata = {"app_hosting":app.app_hosting,"app_type":"app.app_type"};
  
 $(function(){
 	$('input[type=radio]').change(function(){ need_post = 1;})

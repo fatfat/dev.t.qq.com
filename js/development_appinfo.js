@@ -311,7 +311,7 @@
 			        '<a href="javascript:;" class="btn4 btn4_gray" hidefocus="true">申请上架</a>',
 			    '<%}%>',
 			'<%}else{%> ',
-				'<%if (app.app_status == 5 && app.app_nosubmit != 1 && app.app_check_status != 1 ){%>',
+				'<%if ((app.app_status == 5 || app.app_status == 4 || app.app_status == 3) && app.app_nosubmit != 1 && app.app_check_status != 1 ){%>',
 				'<div class="wireless_tostore">',
 					'<a href="javascript:;" id="apptoIstore" _appplatform="1" <%if ((app.app_platform == 1 || app.app_platform == 3) && iphoneinfo.app_plat_status != 1 && iphoneinfo.app_plat_status != 2 && iphoneinfo.app_check_status != 1){%>class="btn4_w btn4_w_iphone apptostore"<%}else{%>class="btn4_w_gray btn4_gray_iphone"<%}%> title="申请上架到iPhone应用频道">申请上架</a> ',
 					'<a href="javascript:;" id="apptoAstore" _appplatform="2" <%if ((app.app_platform == 2 || app.app_platform == 3) && androidinfo.app_plat_status != 1 && androidinfo.app_plat_status != 2 && androidinfo.app_check_status != 1){%>class="btn4_w btn4_w_android apptostore"<%}else{%>class="btn4_w_gray btn4_gray_android"<%}%> title="申请上架到Android应用频道">申请上架</a> ',

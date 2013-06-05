@@ -652,18 +652,18 @@ $(function(){
 		 //表单提交
 	 $('form').submit(function(){
 	 	 var app_type = $("input[name='app_type']").val();
-	 	 if( app_type !== 6){//非无线应用
+	 	 if( app_type != 6){//非无线应用
 	        if($(".errorTip").length>0){return;}//检查表单是否有错误
 	        
 			if(!need_post){location.href = NextUrl;return;} /*无修改*/
 			//var	typedata = "";全局变量
-			if(app_type===3) {
-				var sep_str = "|"
+			if(app_type==3) {
+				var sep_str = "|";
 	            typedata += ("&app_os=" +$("input[name='app_os']").val());
 	            typedata += ("&app_phone=" + $("input[name='app_phone']").val());
 	            typedata += ("&app_pad=" + $("input[name='app_pad']").val());
-				typedata += '&app_down_url='+encodeURIComponent($('input#app_down_url').val())
-	     	}
+				typedata += '&app_down_url='+encodeURIComponent($('input#app_down_url').val());
+		    }
 		
 			var app_class_child = $("#app_class_child").size()>0?$("#app_class_child").val():-1;
 
