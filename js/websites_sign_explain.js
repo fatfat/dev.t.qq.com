@@ -1,10 +1,9 @@
 QosSS.t[2]= (new Date()).getTime();
 QosSS.t[3]= (new Date()).getTime();
 QosSS.t[4]= (new Date()).getTime();
-;(function(){
+
 	this.tpl = this.tpl || {};
 	tpl.sign_explain = [
-		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
 		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
@@ -13,40 +12,42 @@ QosSS.t[4]= (new Date()).getTime();
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/public/ex.css" type="text/css" rel="stylesheet">',
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>签名档</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
-			'<!--{ include file="websites/appnav.tpl" }-->',
 			tpl.websites_appnav,
 		'<div class="appsArea2">	',
 			'<h2 class="apptit">',
 				'<strong>使用微博组件 —— 微博签名档</strong>',
 			'</h2>',
 		'<%if(userInfo.hdlogin){%>',
-			'<div id="show" style="margin-bottom:-150px;height:150px;width:400px;margin-right:30px;">',
+			'<div id="show" style="margin-bottom:-150px;height:150px;width:400px;margin-right:30px;float:right">',
 				'<h3>效果预览</h3>',
-				'<div style="margin:10px;">',
-				'<a href="http://t.qq.com/<%=userInfo.name%>" target="_blank"><img id="reshow" src="http://v.t.qq.com/cgi-bin/signature?name=<%=userInfo.name%>&sign=<%=userInfo.sign%>&type=1" border="0"/></a></div>',
-				'</div>',
-				'<div class="p1" id="act">',
-					'<h3>选择用途</h3>',
-					'<ul id="typeList">',
-						'<li><input type="radio" name="types" value="0" checked="checked" id="typelist0"/> <label for="typelist0">ubb签名（可用于论坛签名档）</label></li>',
-						'<li><input type="radio" name="types" value="1" id="typelist1"/> <label for="typelist1">博客或网站</label></li>',
-						'<li><input type="radio" name="types" value="2" id="typelist2"/> <label for="typelist2">嵌入图片及电子邮件签名</label></li>',
-						'<li><input type="radio" name="types" value="3" id="typelist3"/> <label for="typelist3">生成outlook邮件签名</label></li>',
-						'<li><input type="radio" name="types" value="4" id="typelist4"/> <label for="typelist4">生成foxmail邮件签名</label></li>',
-					'</ul>',
-				'</div>',
-				'<div class="p1">',
-					'<h3>颜色与主题</h3>',
-					'<ul id="colorList" class="colorList" style="width:220px;">',
-						'<li class="s"><div class="color1"></div></li>',
-						'<li><div class="color2"></div></li>',
-						'<li><div class="color3"></div></li>',
-						'<li><div class="color4"></div></li>',
-						'<li><div class="color5"></div></li>',
-						'<li><div class="color6"></div></li>',
-						'<li><div class="color7"></div></li>',
-					'</ul>',
-				'</div>',
+					'<div style="margin:10px;">',
+						'<a href="http://t.qq.com/<%=userInfo.name%>" target="_blank">',
+							'<img id="reshow1"   src="http://v.t.qq.com/cgi-bin/signature?name=<%=userInfo.name%>&sign=<%=userInfo.sign%>&type=1" border="0" style="height:100px;line-height:56px;text-align:center;"/>',
+						'</a>',
+					'</div>',
+			'</div>',
+			'<div class="p1" id="act">',
+				'<h3>选择用途</h3>',
+				'<ul id="typeList">',
+					'<li><input type="radio" name="types" value="0" checked="checked" id="typelist0"/> <label for="typelist0">ubb签名（可用于论坛签名档）</label></li>',
+					'<li><input type="radio" name="types" value="1" id="typelist1"/> <label for="typelist1">博客或网站</label></li>',
+					'<li><input type="radio" name="types" value="2" id="typelist2"/> <label for="typelist2">嵌入图片及电子邮件签名</label></li>',
+					'<li><input type="radio" name="types" value="3" id="typelist3"/> <label for="typelist3">生成outlook邮件签名</label></li>',
+					'<li><input type="radio" name="types" value="4" id="typelist4"/> <label for="typelist4">生成foxmail邮件签名</label></li>',
+				'</ul>',
+			'</div>',
+			'<div class="p1">',
+				'<h3>颜色与主题</h3>',
+				'<ul id="colorList" class="colorList" style="width:220px;">',
+					'<li class="s"><div class="color1"></div></li>',
+					'<li><div class="color2"></div></li>',
+					'<li><div class="color3"></div></li>',
+					'<li><div class="color4"></div></li>',
+					'<li><div class="color5"></div></li>',
+					'<li><div class="color6"></div></li>',
+					'<li><div class="color7"></div></li>',
+				'</ul>',
+			'</div>',
 				'<div class="p1" id="getCode1">',
 					'<h3>代码获取</h3>',
 				'<div class="fcgray">请将以下代码复制粘贴到需要使用微博签名档的位置</div>',
@@ -89,11 +90,18 @@ QosSS.t[4]= (new Date()).getTime();
 			'<%}%>',
 		'</div>',
 	'</div>',
+	'<!--[if IE 6]>',
+			'<script>',
+				'try {',
+					'document.execCommand("BackgroundImageCache", false, true);',
+				'} catch(e) {}',
+			'</script>',
+		'<![endif]-->',
 	  tpl.footer,
    ].join("");
    $('#main').html(tmpl(tpl.sign_explain, global_obj.data));
    bindAllEvent();
-   $(function(){	
+   $(function(){
 		var UI = {};
 		var menu = function(){ 
 				this.menus = $('.nav ul li');
@@ -111,6 +119,7 @@ QosSS.t[4]= (new Date()).getTime();
 		window.UI = UI;
 		UI.menu.hl(1);
 	});				
+	
 	if(userInfo.hdlogin){
 		var _name = userInfo.name; 
 		var _sign = userInfo.sign;
@@ -138,7 +147,7 @@ QosSS.t[4]= (new Date()).getTime();
 			var _c = _colorStyle + 1;
 			//var _url = 'http://v.t.qq.com/cgi-bin/signature?name='+_name+'&sign='+_sign+'&type='+_c;
 			var _url = 'http://v.t.qq.com/sign/'+_name+'/'+_sign+'/'+_c+'.jpg';
-			$('#reshow').attr('src',_url);
+			$('#reshow1').attr('src',_url);
 			$('#getCode1').show();
 			//$("#getCode2").css("position","absolute");
 			switch(_type){
@@ -194,7 +203,7 @@ QosSS.t[4]= (new Date()).getTime();
 	}
 		
 	function copyToClpBrd(){
-		var div = document.getElementById('reshow');
+		var div = document.getElementById('reshow1');
 		var controlRange;
 		if (document.body.createControlRange) {
 			controlRange = document.body.createControlRange();
@@ -221,4 +230,4 @@ QosSS.t[4]= (new Date()).getTime();
 	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 	QosSS.t[5]= (new Date()).getTime();
 	QosSS.c.src="http://qos.report.qq.com/collect?type=1&name="+"opent_wsign_explain"+"&1="+ (QosSS.t[1]- QosSS.t[0])+"&2="+ (QosSS.t[2]- QosSS.t[0])+ "&3="+ (QosSS.t[3]- QosSS.t[0])+"&4="+ (QosSS.t[4]- QosSS.t[0])+ "&5="+ (QosSS.t[5]- QosSS.t[0]);
-}());
+	
