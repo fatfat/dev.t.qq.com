@@ -50,9 +50,10 @@ tpl.development_noticeapply = [
 	'</div>',
 	'</div>',
 
-	'//<!--{ include file="footer.tpl" }-->'
+	'//<!--{ include file="footer.tpl" }-->',
+		tpl.footer,
 ].join('');
-
+$('#main').html(tpl.development_noticeapplay,global_obj.data);
 $(function(){
 	//帐号未通过审核——重新提交申请
 	var notice_check_status="app.notice_check_status",notice_bdaction="app.notice_bdaction";

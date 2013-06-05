@@ -165,12 +165,14 @@ tpl.development_notice = [
 		
 		'</div>',
 	'</div>',
-	'<!--{ include file="footer.tpl" }-->'
+	'<!--{ include file="footer.tpl" }-->',
+	tpl.footer
 ].join('');
 
+$('#main').html(tpl.development_notice,global_obj.data);
 global_obj.init.notice = function(){
 	$(".applyNotice").click(function(){
-		$(this).attr("href","/development/addnotice/" + app.app_id);
+		$(this).attr("href","/development/addnotice?appid=" + app.app_id);
 	});
 });
 
