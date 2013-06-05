@@ -50,6 +50,12 @@ this.tpl.index = [
 ].join("");
 
 $("#main").append(tmpl(this.tpl.index,global_obj.data));
+
+setTimeout(function(){
+	if ($.browser.msie && ($.browser.version == "6.0")){
+		$(".appsArea2").css({"zoom":"1"});
+	}
+},200);
 bindAllEvent();
 util.setLoginInfo();
 window.init();
