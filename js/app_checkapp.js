@@ -664,7 +664,12 @@ $(function(){
 	            typedata += ("&app_pad=" + $("input[name='app_pad']").val());
 				typedata += '&app_down_url='+encodeURIComponent($('input#app_down_url').val());
 		    }
-		
+		    //针对客户端应用需要勾选至少一个平台，add by fat
+			if(global_obj.data.app.app_type == 3 && $("input[name='check_app_os']:checked").size() == 0){
+				loginWin.alert("<center>请至少选择一个应用平台</center>");
+				return false;
+			}
+
 			var app_class_child = $("#app_class_child").size()>0?$("#app_class_child").val():-1;
 
 			var postData = {'app_name':encodeURIComponent($('input#app_name').val()),

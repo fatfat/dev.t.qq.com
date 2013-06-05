@@ -169,7 +169,7 @@ tpl.development_notice = [
 	tpl.footer
 ].join('');
 
-$('#main').html(tpl.development_notice,global_obj.data);
+$('#main').html(tmpl(tpl.development_notice,global_obj.data));
 global_obj.init.notice = function(){
 	$(".applyNotice").click(function(){
 		$(this).attr("href","/development/addnotice?appid=" + app.app_id);

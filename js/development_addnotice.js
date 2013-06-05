@@ -5,22 +5,22 @@ var str = [
 	'.appform .form_button {margin-left:90px;}'
 ].join('');
 util.createStyle(str);
-
 this.tpl = this.tpl || {};
 tpl.development_noticeapply = [
-	'//<!--{ include file="header.tpl" }-->',
-
+//	'<!--{ include file="header.tpl" }-->',
+	tpl.header,
 	'<div id="content" class="controlCon main main_app">',
 		'<div class="approate"><a href="/development/">我的应用</a> &gt; <span><%=app.app_name%></span>',
 		'</div>',
 		'<div class="deverLeft">',
 			'<div class="leftMain">',
-				'<div class="uicon"><img src="<%=app.app_icon_75 || \'http://mat1.gtimg.com/app/opent/images/index/icon.jpg\'%>"',
+				'<div class="uicon"><img src="<%=app.app_icon_75 || "http://mat1.gtimg.com/app/opent/images/index/icon.jpg"%>"',
 					'height="75" width="75" /><br />',
 				'<p><%=app.app_name%></p>',
 				'</div>',
 
-			'//<!--{ include file="./development/appnav.tpl" }-->',
+			'<!--{ include file="./development/appnav.tpl" }-->',
+			tpl.appnav,
 			'</div>',
 		'</div>',
 		
@@ -36,13 +36,13 @@ tpl.development_noticeapply = [
 		'</li>',
 		'<li><label class="form_label">效果预览： </label>',
 		'<div class="form_img" id="appPreview">',
-			'<img id =\'nullimg\' class=\'nulimg\' src=\'http://mat1.gtimg.com/app/opent/images/websites/0.gif\' width=\'560\' height=\'110\'/>',
+			'<img id ="nullimg" class="nulimg" src="http://mat1.gtimg.com/app/opent/images/websites/0.gif" width="560" height="110"/>',
 		'</div>',
 		'</li>',
 		'<li><label class="form_label">&nbsp;</label>',
 			'<div class="form_button">',
 				'<input type="submit" class="devSubmit" id="noticeSubmit" value="提交申请">',
-				'<input type="reset" class="devCancel" value="以后再说" onclick="javascript:{window.location.href=\'/development/notice/<%=app.app_id%>\'}">',
+				'<input type="reset" class="devCancel" value="以后再说" onclick="javascript:{window.location.href="/development/notice?appid=<%=app.app_id%>"}">',
 			'</div>',
 		'</li>',
 	'</ul>',
@@ -50,11 +50,13 @@ tpl.development_noticeapply = [
 	'</div>',
 	'</div>',
 
-	'//<!--{ include file="footer.tpl" }-->',
-		tpl.footer,
-].join('');
-$('#main').html(tpl.development_noticeapplay,global_obj.data);
+	'<!--{ include file="footer.tpl" }-->',
+	tpl.footer
+].join("");
+$('#main').html(tmpl(tpl.development_noticeapply,global_obj.data));
 $(function(){
+	global_obj.init.appnav();
+	bindAllEvent();
 	//帐号未通过审核——重新提交申请
 	var notice_check_status="app.notice_check_status",notice_bdaction="app.notice_bdaction";
 	if(notice_check_status=="1" || notice_bdaction=="3")
