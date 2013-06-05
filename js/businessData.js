@@ -1,18 +1,23 @@
 ﻿document.domain="qq.com";
-util.createStyle("#content{width:985px;}");
+
 if (global_obj.data.pagename == "appcompass"){
+	util.createStyle("#content{width:985px;}");
 	global_obj.data.src = "http://compass.qq.com/reports?appid=";
 	global_obj.data.businessType = "业务数据";
 } else if (global_obj.data.pagename == "apphost") {
+	util.createStyle("#content{width:1000px;}");
 	global_obj.data.src = "http://opencloud.qq.com/?appid=";
 	global_obj.data.businessType = "应用托管";
 } else if (global_obj.data.pagename == "apppay") {
+	util.createStyle("#content{width:1000px;}");
 	global_obj.data.src = "http://opencloud.qq.com/?appid=";
 	global_obj.data.businessType = "支付结算";
 } else if (global_obj.data.pagename == "notice") {
+	util.createStyle("#content{width:1000px;}");
 	global_obj.data.src = "http://opencloud.qq.com/?appid=";
 	global_obj.data.businessType = "更多服务";
 } else {
+	util.createStyle("#content{width:985px;}");
 	global_obj.data.src = "http://compass.qq.com/reports?appid=";
 	global_obj.data.businessType = "业务数据";
 }
