@@ -26,8 +26,10 @@ var str = [
 util.createStyle(str);
 
 this.tpl = this.tpl || {};
+
 tpl.development_notice = [
 	'<!--{ include file="header.tpl" }-->',
+	tpl.header,
 	'<div id="content" class="controlCon main main_app">',
 		'<div class="approate"><a href="/development/">我的应用</a> &gt; <span><%=app.app_name%></span>',
 		'</div>',
@@ -46,7 +48,7 @@ tpl.development_notice = [
 		'<h1 class="comp_tit">接入通知系统</h1>',
 		'<% if (!app.notice_account) { %>',
 			'<p>应用可通过通知接口将应用信息以系统通知的形式下发到用户，是触达用户的有效方式</p>',
-			'<a href="/development/addnotice/<%=app.app_id%>" title="申请接入" class="devSubmit">申请接入</a>',
+			'<a href="/development/addnotice?appid=<%=app.app_id%>" title="申请接入" class="devSubmit">申请接入</a>',
 		'<%}%>',
 		
 		'<!-- 审核结果提示 -->',
@@ -61,7 +63,7 @@ tpl.development_notice = [
 				'<li>',
 				'<h4>审核未通过，原因如下：</h4>',
 				'<p><%=app.notice_check_msg%></p>',
-				'<p>请修改后<a href="/development/addnotice/<%=app.app_id%>">重新提交审核</a>，如有疑问请<a href="http://wiki.open.t.qq.com/index.php/%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC" target="_blank">联系我们</a></p>',
+				'<p>请修改后<a href="/development/addnotice?appid=<%=app.app_id%>">重新提交审核</a>，如有疑问请<a href="http://wiki.open.t.qq.com/index.php/%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC" target="_blank">联系我们</a></p>',
 				'</li>',
 				'<%} else if (app.notice_check_status==3) {%>',
 				 '<li>',
@@ -92,7 +94,7 @@ tpl.development_notice = [
 				 '<h4>该应用的通知接口权限已被管理员停用，但可重新申请调用。原因如下：</h4>',
 				 '<p><%=app.notice_check_msg%></p>',
 				 '<p>如有疑问请<a href="http://wiki.open.t.qq.com/index.php/%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC" target="_blank">联系我们</a></p>',
-				 '<a href="/development/addnotice/<%=app.app_id%>" title="申请接入" class="devSubmit">申请接入</a>',
+				 '<a href="/development/addnotice?appid=<%=app.app_id%>" title="申请接入" class="devSubmit">申请接入</a>',
 				 '<br/>',
 				 '<li>',
 			'<%}%>',
@@ -101,7 +103,7 @@ tpl.development_notice = [
 			'<!-- 通知系统介绍 -->',
 		'<h1 class="comp_tit">通知系统介绍</h1>',
 		'<ul class="noticeinfo">',
-			'<% if (app.notice_status==2  || ($app.notice_bdaction==0 && $app.notice_check_status==3)) { %>',
+			'<% if (app.notice_status==2  || (app.notice_bdaction==0 && app.notice_check_status==3)) { %>',
 			'<li class="alertnotice"><p><b>通知接口的使用方式介绍</b></p>',
 				'<p>请求说明</p>',
 				'<table cellpadding="0" border="0" class="noticetbl">',
@@ -174,6 +176,6 @@ global_obj.init.notice = function(){
 	$(".applyNotice").click(function(){
 		$(this).attr("href","/development/addnotice?appid=" + app.app_id);
 	});
-});
+};
 
 
