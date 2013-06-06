@@ -68,7 +68,8 @@ $(function(){
 		text.attr("data-only",true);//已经验证过帐号
 		var errmsg = text.attr("data-error");//提示信息
 		showmsg(true,text,errmsg);
-		getPreview("app.notice_head","app.notice_nick","app.notice_type");
+		var app = global_obj.data.app;
+		getPreview(app.notice_head,app.notice_nick,app.notice_type);
 	}
 });
 
@@ -84,8 +85,8 @@ function getPreview(head,nick,notice_type){
     }else if(notice_type==0){
     	previewhtml+="vip";
     }
-    previewhtml+="'></a>"+"<a class='gray'>:</a></h3><p>亲，你很久没来【"+"app.app_name"+"】了，我们又推出新功能啦，不要犹豫了，快来体验吧！"
-    		   +"<a>http://url.cn/ouzlnc</a></p><p class='time'>"+"app.notice_date"+"</p></dd></dl></div>";
+    previewhtml+="'></a>"+"<a class='gray'>:</a></h3><p>亲，你很久没来【"+global_obj.data.app.app_name+"】了，我们又推出新功能啦，不要犹豫了，快来体验吧！"
+    		   +"<a href='http://url.cn/ouzlnc' target='_blank'>http://url.cn/ouzlnc</a></p><p class='time'>"+"app.notice_date"+"</p></dd></dl></div>";
 	$("#appPreview").html(previewhtml);
 }
 

@@ -43,7 +43,6 @@ OPEN_VALIDATOR = {
 					"url":url,
 					"data":para,
 					"success":function(d){
-						console.log(d);
 						var w = selector.attr("data-working")|0,ret = +d.ret,err = common.getMsgByRet(ret);; //转化为自然数
 						if (err){
 							selector.attr("data-only",false);
