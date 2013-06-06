@@ -639,10 +639,10 @@
 	                .find("label").removeClass("gray");
 	                $(this).attr("disabled","disabled");
 	        }); 
-	        
-	    if ((app.app_type == 1 || app.app_type == 2 || app.app_type == 3 || app.app_type == 4 || app.app_type == 6) &&  app.app_status != 3){
+
+//	    if ((app.app_type == 1 || app.app_type == 2 || app.app_type == 3 || app.app_type == 4 || app.app_type == 6) &&  app.app_status != 3){
 		    $(".apptostore").click(function(){
-		    	var apptype = +app.app_type,
+		    	var apptype = app.app_type,
 		    		grayClass = apptype === 6 ? "btn4_w_gray" : "btn4_gray",
 		    		appplatform = apptype === 6 ? $(this).attr("_appplatform") : 0 ;
 		    	if ($(this).hasClass(grayClass)){
@@ -723,7 +723,7 @@
 				$(this).parent("li").find(".cinput").attr("checked","checked");
 			});
 
-    	}
+   // 	}
 	    $("a[id='appSource']").click(function(){
 	        var target=$(".appstate_body").find(".btns").find("a").first();
 	        var url=target.attr("href");

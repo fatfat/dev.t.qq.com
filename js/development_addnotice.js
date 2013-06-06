@@ -103,7 +103,7 @@ function formSubmit(){
 	}
 			
     var paras={
-        		"app_id"  : "app.app_id"
+        		"app_id"  : global_obj.data.app.app_id
 				,"notice_account" :$("#notice_account").val()
         	};
         
@@ -111,7 +111,7 @@ function formSubmit(){
         	
         	$.ajax(
         	{"type":"post",
-        	"url":"/development/noticecheck?t="+new Date().getTime(),
+        	"url":"/development/addnotice?t="+new Date().getTime(),
         	"data":paras,
         	"dataType":"json",
         	"success":function(d){

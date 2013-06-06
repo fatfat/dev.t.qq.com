@@ -32,8 +32,8 @@ OPEN_VALIDATOR = {
 		var label  = selector.attr("data-error") 	//字段名
 			,dvalue = selector.attr("data-default") //默认值
 			,rule   = selector.attr("data-rule")    //验证规则
-			,url    = "/development/checkaccount"
-			,para   = {"name":value};
+			,url    = "/pipes/interfaceserver"
+			,para   = {"action":"common_query","business_type":"ajax_checkvip","account":value};
 			
 		if (dvalue != value){
 			showmsg(1,selector,"正在验证"+label);
@@ -43,6 +43,7 @@ OPEN_VALIDATOR = {
 					"url":url,
 					"data":para,
 					"success":function(d){
+						console.log(d);
 						var w = selector.attr("data-working")|0,ret = +d.ret,err = common.getMsgByRet(ret);; //转化为自然数
 						if (err){
 							selector.attr("data-only",false);
