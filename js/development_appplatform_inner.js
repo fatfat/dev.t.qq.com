@@ -162,9 +162,10 @@
 					' <cite class="gray inputdes">可根据Google Play地址拉取并补充以下信息</cite>',
 				'</div>',
 			'</li>',*/
-			'<input type="hidden" name="app_downurl_2" id="app_downurl_2"  value="<%=androidinfo.app_downurl%>" data-default="<%=androidinfo.app_downurl%>" />',
+//			'<input type="hidden" name="app_downurl_2" id="app_downurl_2"  value="<%=androidinfo.app_downurl%>" data-default="<%=androidinfo.app_downurl%>" />',
 			'<li>',
 				'<label class="form_label"><em>*</em>apk安装包：</label>',
+
 				'<div class="form_element">',
 					'<span class="form_button_upload <%if(androidinfo.app_downurl){%> none<%}%>">',
 						'<input type="button" class="btn_abled" _platform="2" value="上传" id="app_apk_uploader"/>',

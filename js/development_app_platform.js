@@ -1,5 +1,7 @@
 ;(function(){
 	this.tpl = this.tpl || {};
+
+//	global_obj.data.androidinfo.app_check_status = 1;
 	global_obj.data.app = global_obj.data.app || {};
 	if (!global_obj.data.iphoneinfo) global_obj.data.iphoneinfo = {}; 
 	if (!global_obj.data.androidinfo) global_obj.data.androidinfo = {}; 
@@ -46,7 +48,7 @@
 	$('#main').html(tmpl(tpl.app_platform, global_obj.data));
 //	global_obj.init.appnav();
 //	global_obj.init.appplatform_inner();
-bindAllEvent();console.log(global_obj.data);
+bindAllEvent();
 	var app = global_obj.data.app || {},
 	iphoneinfo = global_obj.data.iphoneinfo || {},
 	androidinfo = global_obj.data.androidinfo || {};
