@@ -129,7 +129,7 @@ function formSubmit(){
 				    	"width":450,
 				    	"text":"<center>提交申请成功</center>"
 				    	},function(){
-				    		location.href="/development/notice?appid="+glboal_obj.data.app.app_id;	
+				    		location.href="/development/notice?appid="+global_obj.data.app.app_id;	
 				    	});	
 				    
 			   		}else{
