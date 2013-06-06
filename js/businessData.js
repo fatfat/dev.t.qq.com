@@ -10,13 +10,13 @@ if (global_obj.data.pagename == "appcompass"){
 	global_obj.data.businessType = "应用托管";
 } else if (global_obj.data.pagename == "apppay") {
 	util.createStyle("#content{width:1000px;}");
-	global_obj.data.src = "http://opencloud.qq.com/?appid=";
+	global_obj.data.src = "http://cpay.qq.com/qzone/qz/go/";
 	global_obj.data.businessType = "支付结算";
-} else if (global_obj.data.pagename == "notice") {
+}/* else if (global_obj.data.pagename == "notice") {
 	util.createStyle("#content{width:1000px;}");
 	global_obj.data.src = "http://opencloud.qq.com/?appid=";
 	global_obj.data.businessType = "更多服务";
-} else {
+}*/ else {
 	util.createStyle("#content{width:985px;}");
 	global_obj.data.src = "http://compass.qq.com/reports?appid=";
 	global_obj.data.businessType = "业务数据";

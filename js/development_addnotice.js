@@ -106,7 +106,7 @@ function formSubmit(){
     var paras={
     			"action":"common_query"
     			,"business_type":"ajax_noticecheck"
-        		,"app_id"  : global_obj.data.app.app_id
+        		,"appid"  : global_obj.data.app.app_id
 				,"notice_account" :$("#notice_account").val()
         	};
         
@@ -129,7 +129,7 @@ function formSubmit(){
 				    	"width":450,
 				    	"text":"<center>提交申请成功</center>"
 				    	},function(){
-				    		location.href="/development/notice?appid=app.app_id";	
+				    		location.href="/development/notice?appid="+glboal_obj.data.app.app_id;	
 				    	});	
 				    
 			   		}else{
