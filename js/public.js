@@ -39,7 +39,7 @@
 		'<ul class="appsnav">',
 			'<li <%if (appnav ==\'info\') {%> class="active"<%}%>><a href="/development/appinfo?appid=<%=app.app_id%>">应用汇总</a></li>',
 			'<li <%if (appnav ==\'edit\') {%> class="active"<%}%>><a href="/development/appedit?appid=<%=app.app_id%>">基本信息</a></li>',
-			'<%if (app.app_type ==\'6\') {%>',
+			'<%if (app.app_type == 6) {%>',
 				'<li <%if (appnav ==\'platform\') {%> class="active"<%}%>><a href="/development/platforminfo?appid=<%=app.app_id%>">平台信息</a></li>',
 			'<%}%>',
 			'<li <%if (appnav ==\'compass\') {%> class="active"<%}%>><a href="/development/appcompass?appid=<%=app.app_id%>">业务数据</a></li>',

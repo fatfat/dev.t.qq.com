@@ -53,8 +53,8 @@ bindAllEvent();
 	var app_status=global_obj.data.app.app_status,
 		iphone_plat_status =  iphoneinfo.app_plat_status || {},
 		android_plat_status = androidinfo.app_plat_status || {};
-
-	if ((app.app_check_status ==1 && app.app_url_check == '') || app.app_status ==2 || app.app_status ==6 || (app.app_status ==5 && (iphoneinfo.app_plat_status == 1 || androidinfo.app_plat_status == 1)) || ((iphoneinfo.app_check_status ==1 || androidinfo.app_check_status ==1) && (iphoneinfo.app_plat_status == 2 || androidinfo.app_plat_status == 2))) {
+	if (app.app_check_status ==1 && app.app_url_check == '') || app.app_status ==2 || app.app_status ==6 || (iphoneinfo.app_plat_status == 1 || androidinfo.app_plat_status == 1) || (app.app_status ==3 || (iphoneinfo.app_check_status == 1 || androidinfo.app_check_status == 1)){
+//	if ((app.app_check_status ==1 && app.app_url_check == '') || app.app_status ==2 || app.app_status ==6 || (app.app_status ==5 && (iphoneinfo.app_plat_status == 1 || androidinfo.app_plat_status == 1)) || ((iphoneinfo.app_check_status ==1 || androidinfo.app_check_status ==1) && (iphoneinfo.app_plat_status == 2 || androidinfo.app_plat_status == 2))) {
 		$(function(){ 
 		 	$('input,textarea').attr("disabled","disabled"); 
 		 	$('input,select').attr("disabled","disabled"); 

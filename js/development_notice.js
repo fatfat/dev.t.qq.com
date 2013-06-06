@@ -26,7 +26,7 @@ var str = [
 util.createStyle(str);
 
 this.tpl = this.tpl || {};
-
+global_obj.data.app=[];
 tpl.development_notice = [
 	'<!--{ include file="header.tpl" }-->',
 	tpl.header,
@@ -41,6 +41,7 @@ tpl.development_notice = [
 				'</div>',
 
 			'<!--{ include file="./development/appnav.tpl" }-->',
+				tpl.appnav,
 			'</div>',
 		'</div>',
 		
