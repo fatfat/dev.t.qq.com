@@ -910,7 +910,7 @@ $(function() {
 
 	function checkStatus(form) {
 		var app_type = +$("input[name='app_type']").val(),
-		app_status = global_obj.data.app.app_status;
+		app_status = global_obj.data.app.app_status,
 		link = $("input[name='app_url']"),
 		icon4 = $("input[name='icon4']"),
 		checkflag = false,
@@ -919,7 +919,7 @@ $(function() {
 		str = "";
 
 		if (app_type === 1 || app_type === 2 || app_type === 3) {
-			if (window.app_status && ( + app_status === 4 || +app_status === 5 || +app_status === 8)) {
+			if (app_status === 4 || app_status === 5 || app_status === 8) {
 				if (link.val() != link.attr("data-default")) {
 					str = "<center>修改" + link.attr("data-error") + "后需再次提交审核，审核通过后才能生效。<br/>是否提交修改资料审核？</center>";
 					checkflag = true;
