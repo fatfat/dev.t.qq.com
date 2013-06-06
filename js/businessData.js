@@ -22,6 +22,10 @@ if (global_obj.data.pagename == "appcompass"){
 	global_obj.data.businessType = "业务数据";
 }
 
+if(!/appedit/.test(global_obj.refer)){
+	global_obj.data.refer = "http://dev.t.qq.com/development/appinfo?appid="+global_obj.data.app.app_id;
+}
+
 tpl.businessData = [
 	tpl.header,
 	

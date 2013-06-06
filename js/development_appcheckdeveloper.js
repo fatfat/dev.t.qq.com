@@ -140,6 +140,7 @@ global_obj.data.developer = global_obj.data.developer_detail;
 global_obj.data.appnav = "info";
 //--------------------更正后台数据结束-------------------------
 $("#main").html(this.tmpl(this.tpl.development_appcheckdeveloper,global_obj.data));
+bindAllEvent();
 var app = global_obj.data.app;
 var developer = global_obj.data.developer;
 //var NextUrl = "/development/appcheckapp/"+app.app_id+"/";

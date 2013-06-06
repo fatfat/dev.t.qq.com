@@ -55,7 +55,7 @@ tpl.development_noticeapply = [
 ].join("");
 $('#main').html(tmpl(tpl.development_noticeapply,global_obj.data));
 $(function(){
-	global_obj.init.appnav();
+//	global_obj.init.appnav();
 	bindAllEvent();
 	//帐号未通过审核——重新提交申请
 	var notice_check_status=global_obj.data.app.notice_check_status,notice_bdaction=global_obj.data.app.notice_bdaction;

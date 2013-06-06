@@ -9,6 +9,12 @@ this.tpl = this.tpl || {};
 		].join('');
 		util.createStyle(str);
 	}
+	var str = [
+	'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
+	'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
+	'div a#yunJPGClick{display:none}'
+	].join('');
+	util.createStyle(str);
 tpl.development_appcheckapp = [
 	this.tpl.header,
 	'<div id="content" class="controlCon main main_app">',
@@ -71,15 +77,8 @@ var ex_appname = app.app_name;
 global_obj.data.appnav = "info";
 $("#main").html(tmpl(this.tpl.development_appcheckapp,global_obj.data));
 
-global_obj.init.appnav();
+bindAllEvent();
 util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/app_checkapp.js");
-var str = [
-	'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
-	'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
-	'div a#yunJPGClick{display:none}'
-].join('');
-util.createStyle(str);
-
 
 	$('input#app_name').change(function(){ 
 		if(ex_appname != $('input#app_name').val()){

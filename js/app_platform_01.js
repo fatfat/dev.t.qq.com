@@ -23,7 +23,7 @@ $(function(){
 	 $("input[name='appplatform']").change(function(){
 	 	if($(this).attr("checked")){
 	 		$(this).parent(".form_platform").next(".paltform_container").show();
-	 		if($("input[name='appplatform']").not(":checked").legnth > 0){
+	 		if($("input[name='appplatform']").not(":checked").length > 0){
 	 			$("input[name='appplatform']").not(":checked").next(".paltform_container").hide();
 	 		}
 	 	}else{
