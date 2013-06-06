@@ -58,7 +58,7 @@ $(function(){
 	global_obj.init.appnav();
 	bindAllEvent();
 	//帐号未通过审核——重新提交申请
-	var notice_check_status="app.notice_check_status",notice_bdaction="app.notice_bdaction";
+	var notice_check_status=global_obj.data.app.notice_check_status,notice_bdaction=global_obj.data.app.notice_bdaction;
 	if(notice_check_status=="1" || notice_bdaction=="3")
 	{
 		var notice_account= "app.notice_account";
@@ -104,7 +104,9 @@ function formSubmit(){
 	}
 			
     var paras={
-        		"app_id"  : global_obj.data.app.app_id
+    			"action":"common_query"
+    			,"business_type":"ajax_noticecheck"
+        		,"app_id"  : global_obj.data.app.app_id
 				,"notice_account" :$("#notice_account").val()
         	};
         
@@ -112,7 +114,7 @@ function formSubmit(){
         	
         	$.ajax(
         	{"type":"post",
-        	"url":"/development/addnotice?t="+new Date().getTime(),
+        	"url":"/pipes/interfaceserver?t="+new Date().getTime(),
         	"data":paras,
         	"dataType":"json",
         	"success":function(d){
@@ -127,7 +129,7 @@ function formSubmit(){
 				    	"width":450,
 				    	"text":"<center>提交申请成功</center>"
 				    	},function(){
-				    		location.href="/development/notice/app.app_id";	
+				    		location.href="/development/notice?appid=app.app_id";	
 				    	});	
 				    
 			   		}else{

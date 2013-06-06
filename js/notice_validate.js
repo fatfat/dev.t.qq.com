@@ -58,7 +58,7 @@ OPEN_VALIDATOR = {
 									$("form input[type='submit']").trigger("click");
 								},500);
 							}else{
-								getPreview(d.head,d.nick,d.notice_type);
+								getPreview(d.data.head,d.data.nick,d.data.notice_type);
 							}
 							selector.removeAttr("data-working");
 						}else if(ret===1){
