@@ -69,6 +69,7 @@ OPEN_VALIDATOR = {
 							if (w == 2){
 								loginWin.alert("<center>该"+label+"尚未通过认证</center>");
 							}
+							getPreview("http://app.qlogo.cn/mbloghead/f961aa13250bb219f968","你画我猜",0);
 							return false;
 						}else{
 							selector.attr("data-only",false);
@@ -78,6 +79,7 @@ OPEN_VALIDATOR = {
 							if (w == 2){
 								loginWin.alert("<center>该"+label+"不存在</center>");
 							}
+							getPreview("http://app.qlogo.cn/mbloghead/f961aa13250bb219f968","你画我猜",0);
 							return false;
 						}
 					},
@@ -86,6 +88,7 @@ OPEN_VALIDATOR = {
 						setTimeout(function(){
 							showmsg(false,selector,'验证失败！请检查网络');
 						},100);
+						getPreview("http://app.qlogo.cn/mbloghead/f961aa13250bb219f968","你画我猜",0);
 						return false;
 					}
 			});
@@ -218,5 +221,6 @@ $("form").keydown(function(event){//阻止回车提交
 $("form input[type='reset']").click(function(){//清除提示
 	$(".form_input").next(".errorTip").remove();
 	$(".form_input").next(".currectTip").remove();
+	location.href="/development/notice?appid="+global_obj.data.app.app_id;	
 });
 });

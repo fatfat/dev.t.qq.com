@@ -42,7 +42,7 @@ tpl.development_noticeapply = [
 		'<li><label class="form_label">&nbsp;</label>',
 			'<div class="form_button">',
 				'<input type="submit" class="devSubmit" id="noticeSubmit" value="提交申请">',
-				'<input type="reset" class="devCancel" value="以后再说" onclick="javascript:{window.location.href="/development/notice?appid=<%=app.app_id%>"}">',
+				'<input type="reset" class="devCancel" value="以后再说" >',
 			'</div>',
 		'</li>',
 	'</ul>',
@@ -57,6 +57,8 @@ $('#main').html(tmpl(tpl.development_noticeapply,global_obj.data));
 $(function(){
 //	global_obj.init.appnav();
 	bindAllEvent();
+	//预览图默认值 addbyfat
+	getPreview("http://app.qlogo.cn/mbloghead/f961aa13250bb219f968","你画我猜",0);
 	//帐号未通过审核——重新提交申请
 	var notice_check_status=global_obj.data.app.notice_check_status,notice_bdaction=global_obj.data.app.notice_bdaction;
 	if(notice_check_status=="1" || notice_bdaction=="3")
