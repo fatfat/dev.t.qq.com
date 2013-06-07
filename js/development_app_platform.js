@@ -67,9 +67,30 @@ bindAllEvent();
 		 	$("#btn_SynchroInfo_1").attr("disabled","disabled").css("background-color","#eee");
 		 	$("#btn_SynchroInfo_2").attr("disabled","disabled").css("background-color","#eee");
 		});
-
-	}
-
+	}/*
+	if ((app.app_check_status ==1 && app.app_url_check == '') || app.app_status ==2 || app.app_status ==6 ) { 
+		$('input,textarea').attr("disabled","disabled"); 
+	 	$('input,select').attr("disabled","disabled"); 
+	  	$('input#devSubmit').attr("class","devCancel");
+	 	$('label.uploadbtn').hide();
+	 	$('input[type="file"]').hide();
+	 	$('input[name=appplatform]').attr("disabled","disabled");
+	} else if(iphoneinfo.app_plat_status == 1 || (app.app_status ==3 && iphoneinfo.app_check_status == 1)){
+		$('iphoneContainer li input,textarea,select').attr("disabled","disabled"); 
+	 	$('iphoneContainer li input#devSubmit').attr("class","devCancel");
+	 	$('label.uploadbtn').hide();
+	 	$('input[type="file"]').hide();
+	 	$('input[name=appplatform]').attr("disabled","disabled");
+	} else if(androidinfo.app_plat_status == 1 || (app.app_status ==3 && androidinfo.app_check_status == 1)) {
+		$('input,textarea').attr("disabled","disabled"); 
+	 	$('input,select').attr("disabled","disabled"); 
+	 	$('input#devSubmit').attr("class","devCancel");
+	 	$('label.uploadbtn').hide();
+	 	$('input[type="file"]').hide();
+	 	$('input[name=appplatform]').attr("disabled","disabled");
+	}*/
+	
+	
 	if (app.app_status ==5 && iphoneinfo.app_plat_status == 2) {
 		$(function(){ 
 		 	$("#btn_SynchroInfo_1").attr("disabled","disabled").css("background-color","#eee");
