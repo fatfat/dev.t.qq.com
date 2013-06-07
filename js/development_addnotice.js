@@ -88,7 +88,7 @@ function getPreview(head,nick,notice_type){
     	previewhtml+="vip";
     }
     previewhtml+="'></a>"+"<a class='gray'>:</a></h3><p>亲，你很久没来【"+global_obj.data.app.app_name+"】了，我们又推出新功能啦，不要犹豫了，快来体验吧！"
-    		   +"<a href='http://url.cn/ouzlnc' target='_blank'>http://url.cn/ouzlnc</a></p><p class='time'>"+global_obj.data.app.notice_date+"</p></dd></dl></div>";
+    		   +"<a target='_blank'>http://url.cn/ouzlnc</a></p><p class='time'>"+global_obj.data.app.notice_date+"</p></dd></dl></div>";
 	$("#appPreview").html(previewhtml);
 }
 

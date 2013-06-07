@@ -43,6 +43,7 @@ OPEN_VALIDATOR = {
 					"url":url,
 					"data":para,
 					"success":function(d){
+						console.log(d);
 						var w = selector.attr("data-working")|0,ret = +d.ret,err = common.getMsgByRet(ret);; //转化为自然数
 						if (err){
 							selector.attr("data-only",false);
@@ -140,6 +141,7 @@ $("input[type='text']").blur(function(){//单个即时验证
 		if(!$.trim(value)){
 			errmsg += "不能为空";
 			flag = false;
+			getPreview("http://app.qlogo.cn/mbloghead/f961aa13250bb219f968","你画我猜",0);
 		}else{
 			var ret = OPEN_VALIDATOR[rule](value,text);//执行检测规则
 			if (ret == undefined){
@@ -154,6 +156,10 @@ $("input[type='text']").blur(function(){//单个即时验证
 				flag = false;
 				//errmsg = ret.replace(/##/g,errmsg);
 				errmsg=ret;
+			}
+			
+			if(ret != true){
+				getPreview("http://app.qlogo.cn/mbloghead/f961aa13250bb219f968","你画我猜",0);
 			}
 		}
 		showmsg(flag,text,errmsg);
