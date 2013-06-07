@@ -884,7 +884,7 @@ $(function () {
 		    	$img = $(this).parent().find("img"),
 		    	timg=new Image(),
 		    	str="",
-		    	maxsize = $img.attr("_size") || 500;//图像最大大小，无线应用图标为10K，其他为500K
+		    	maxsize = $img.attr("_size") ||$this.attr("_size")|| 500;//图像最大大小，无线应用图标为10K，其他为500K
     			if(document.all){ //ie
     				img.src="http://mat1.gtimg.com/app/opent/images/websites/0.gif";
     				var timer = setTimeout(function(){ 
