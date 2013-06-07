@@ -141,7 +141,7 @@ $("input[type='text']").blur(function(){//单个即时验证
 		if(!$.trim(value)){
 			errmsg += "不能为空";
 			flag = false;
-			getPreview("http://app.qlogo.cn/mbloghead/f961aa13250bb219f968","你画我猜",0);
+	//		getPreview("http://app.qlogo.cn/mbloghead/f961aa13250bb219f968","你画我猜",0);
 		}else{
 			var ret = OPEN_VALIDATOR[rule](value,text);//执行检测规则
 			if (ret == undefined){
@@ -157,14 +157,12 @@ $("input[type='text']").blur(function(){//单个即时验证
 				//errmsg = ret.replace(/##/g,errmsg);
 				errmsg=ret;
 			}
-			
-			if(ret != true){
-				getPreview("http://app.qlogo.cn/mbloghead/f961aa13250bb219f968","你画我猜",0);
-			}
 		}
 		showmsg(flag,text,errmsg);
 	}
-
+	if(!flag){
+			getPreview("http://app.qlogo.cn/mbloghead/f961aa13250bb219f968","你画我猜",0);
+	}
 });
 
 $("form input[data-rule='appweibo']").change(function(){
