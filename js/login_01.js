@@ -224,7 +224,7 @@ $((function() {
 				"width":w,
 				"height":h,
 				"title": title || "对不起，您还未登录",
-				"text": "<div id=\"login_div\" style=\"padding-top:20px;\"><iframe src=\"" + url + "\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" marginwidth=\"0\" marginheight=\"0\"></iframe></div>"
+				"text": "<div id=\"login_div\" style=\"*display:inline;zoom:1;padding-top:20px;width:100%;height:100%;\"><iframe src=\"" + url + "\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" marginwidth=\"0\" marginheight=\"0\"></iframe></div>"
 			})
 		}
 		window.loginWin.alert = function(s, close_callback) {
