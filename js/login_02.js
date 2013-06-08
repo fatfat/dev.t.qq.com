@@ -247,12 +247,21 @@ var common = {
 		window.loginWin.closebtn.bind("click",function(){loginWin.close.call(loginWin)});
 		window.loginWin.showBox = function(w, h, url, title) {
 			url = "http://ui.ptlogin2.qq.com/cgi-bin/login?appid=46000101&s_url=" + url + "&f_url=loginerroralert&style=0&link_target=blank&target=blank&hide_title_bar=1&dummy=1&bgcolor=ffffff";
-		    	
+		    /*url = 'http://ui.ptlogin2.qq.com/cgi-bin/login?' + $.param({
+				"appid":46000101,
+				"style":11,
+				"low_login":1,
+				"hide_title_bar":1,
+				"hide_close_icon":1,
+				"self_regurl":"http://reg.t.qq.com/index.php?pref=opent",
+				"hln_logo":"http://mat1.gtimg.com/app/opent/images/websites/space.gif",
+				"s_url":url
+			});*/
 			this.show({
 				"width":w,
 				"height":h,
 				"title": title || "对不起，您还未登录",
-				"text": "<div id=\"login_div\" style=\"padding-top:20px;\"><iframe src=\"" + url + "\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" marginwidth=\"0\" marginheight=\"0\"></iframe></div>"
+				"text": "<div id=\"login_div\" style=\"*display:inline;zoom:1;padding-top:20px;width:100%;height:100%;\"><iframe src=\"" + url + "\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\" marginwidth=\"0\" marginheight=\"0\"></iframe></div>"
 			})
 		}
 		window.loginWin.alert = function(s, close_callback) {
@@ -402,13 +411,13 @@ var showLoginWin = common.showLoginWin,
 		return ( !! checkuserLogin(o.attr("href")));
 	},
 	ptlogin2_onResize = function(w,h){
+		console.log([w,h].join(","));
 		$(".modulebox_content").removeAttr("style")
 			.parent().width(w).css("margin-left",-Math.ceil(w/2)).end()
-			.height(h+40).parent().height(h+75).css("margin-top",-Math.ceil((h+75)/2));
+			.height(h+40).parent().height(h+75);
 		$("#login_div").height(h);
 	}
 	;
-	
 $(function(){
 	$("body").mouseover(function(event){
 		var t = $("#login_status"),target = event.target;
