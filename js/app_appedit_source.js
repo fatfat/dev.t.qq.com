@@ -722,7 +722,6 @@ $(function() {
 			}
 		}
 	});
-
 	$("form input[type='text'],form textarea").blur(function() { //单个即时验证
 		var text, value, rule, errmsg, flag;
 		text = $(this);
