@@ -4,8 +4,7 @@
     if(developerinfo)
         location.href="/developer/bedever/";
 
-    var tpl.explain1 = [
-        <!--{ include file="header.tpl" }-->
+   tpl.explain1 = [
         tpl.header,
 	'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 	'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
