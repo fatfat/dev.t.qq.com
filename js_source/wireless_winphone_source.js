@@ -1,10 +1,10 @@
 var wireless_winphone = [
-this.tpl.header,
+tpl.header,
 '<link href="http://mat1.gtimg.com/app/opent/css/wireless/wireless.css?20120110" rel="stylesheet" type="text/css"/>',
 '<div class="wrapper breadcast">',
 '</div>',
 '<div id="content" class="wrapper main main_comp">',
-    this.tpl.wireless_osnav,
+    tpl.wireless_osnav,
     '<div class="appsArea2">',
 		'<h1 class="comp_tit">腾讯微博无线接入 for WP7</h1>',
         '<div class="w_downwrap">',
@@ -50,7 +50,7 @@ this.tpl.header,
         '</div>',
 	'</div>  ',
 '</div>',
-this.tpl.footer,
+tpl.footer,
 ].join("");
 $("#main").append(tmpl(wireless_winphone,global_obj.data));
 

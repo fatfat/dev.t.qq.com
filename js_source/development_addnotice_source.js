@@ -63,7 +63,7 @@ $(function(){
 	var notice_check_status=global_obj.data.app.notice_check_status,notice_bdaction=global_obj.data.app.notice_bdaction;
 	if(notice_check_status=="1" || notice_bdaction=="3")
 	{
-		var notice_account= "app.notice_account";
+		var notice_account= app.notice_account;
 		var	text =$("#notice_account");
 		text.val(notice_account);
 		
