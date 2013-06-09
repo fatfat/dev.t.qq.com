@@ -292,7 +292,7 @@ function compValidateEvent() {
 		value = text.val();
 		rule = text.attr("data-rule"); //检测规则
 		errmsg = text.attr("data-error"); //提示信息
-		if (rule == "link" && value.length > 0 && value.search(/http[s]?:\/\//) == -1) {
+		if (rule.indexOf("link")!=-1 && value.length > 0 && value.search(/http[s]?:\/\//) == -1) {
 			value = "http://" + value;
 			text.val(value);
 		}
