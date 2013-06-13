@@ -423,7 +423,6 @@ $(function(){
 				}
 		
 				var form=this.form,flag,errmsg,rule,value,submitflag=true,data='',imgisok=true;
-				
 				$("form input[type='text'],form input[type='hidden'],form textarea,select#app_class_main,select#app_class_child,form input[type='file'][data-default]^=''").each(function(){
 					if($(f).hasClass("wirelessappform")){
 						// 如果是iphone应用，不判断android字段
@@ -443,7 +442,7 @@ $(function(){
 					}
 				    rule = $(this).attr("data-rule"),value = $(this).val(),errmsg = $(this).attr("data-error");
 					if(OPEN_VALIDATOR.hasOwnProperty(rule) && rule){
-						if((!$.trim(value) && rule!="tname"&&rule!="applink"&&rule!="androidlink") || (value=="请选择" && rule=="appsupport")){
+						if((!$.trim(value) && rule!="tname"&&rule!="applink"&&rule!="androidlink") || (value=="请选择" && rule=="appsupport")){				
 							errmsg += "不能为空";
 							flag = false;
 						}else{
@@ -489,6 +488,20 @@ $(function(){
 						loginWin.alert("<center>请至少选择一个平台</center>");
 						return false;
 					}
+					//提交时判断是否上传了apk文件
+					if ($("input[name='app_apk']").val() == '' && ($("#app_platform").val() == 2 || $("#app_platform").val() == 3)) {
+						$('#android_pf')[0].scrollIntoView();
+						var app_apk = $("input[name='app_apk']"),
+						app_uploader = $(".form_button_upload"),
+						app_downer = $(".form_element_uploaded_name"),
+						app_info = $(".form_element_uploaded");
+						app_info.addClass("none");
+						app_uploader.removeClass("none");
+						app_apk.val("").removeAttr("data-default");
+						loginWin.alert("<center>请上传apk安装文件</center>");
+						showmsg(false, app_apk, "请上传apk安装文件");
+						return false;
+					}
 				}
 			}	
 		}
@@ -497,7 +510,7 @@ $(function(){
 		var agreements = $("input[name='user_agree']");
 		if(agreements.size()===0){//检验是否有同意选项
 			if(submitflag){//没有checkbox user_agree
-				$("form").submit();
+				//$("form").submit();
 			}else{
 				return false;
 			}
@@ -506,7 +519,8 @@ $(function(){
 				loginWin.alert("<center>您尚未同意《"+(agreements.not(":checked").attr("agreement")||"腾讯微博开放平台开发者服务协议")+"》</center>");
 				return false;
 			}else{
-				$("form").submit();
+				alert(4)
+				//$("form").submit();
 				return false;
 			}
 		}

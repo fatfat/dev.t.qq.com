@@ -158,7 +158,7 @@ $(function(){
 			hideAppInfo = function(){
 				app_info.addClass("none");
 				app_uploader.removeClass("none");
-		//		$('#app_downurl_2').val("");
+				$('#app_downurl_2').val("");
 				app_apk.val("").removeAttr("data-default");
 				showmsg(false,app_apk,"请上传apk安装文件");
 			};
