@@ -236,8 +236,6 @@
 				'<div class="uicon"><img src="<%=app.app_icon_75 || \'http://mat1.gtimg.com/app/opent/images/index/icon.jpg\'%>" height="75" width="75" /><br />',
 					'<p><%=app.app_name%></p>',
 				'</div>',
-
-			//'<!--{ include file="./development/appnav.tpl" }-->',
 				tpl.appnav,
 			'</div>',
 		'</div>',
