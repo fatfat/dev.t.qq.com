@@ -69,6 +69,7 @@ OPEN_VALIDATOR = {
 				}
 			}
 			else if(k==0){
+				alert(1)
 				return "##不能为空";
 			}else{
 				return "##不能超过7个汉字";
