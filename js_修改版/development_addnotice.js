@@ -18,8 +18,6 @@ tpl.development_noticeapply = [
 					'height="75" width="75" /><br />',
 				'<p><%=app.app_name%></p>',
 				'</div>',
-
-			'<!--{ include file="./development/appnav.tpl" }-->',
 			tpl.appnav,
 			'</div>',
 		'</div>',
@@ -49,8 +47,6 @@ tpl.development_noticeapply = [
 	'</form>',
 	'</div>',
 	'</div>',
-
-	'<!--{ include file="footer.tpl" }-->',
 	tpl.footer
 ].join("");
 $('#main').html(tmpl(tpl.development_noticeapply,global_obj.data));
@@ -124,12 +120,11 @@ function　removePreview(){
 
 function formSubmit(){
 	if($("#noticeSubmit").attr("disabled")){return;}
-	var notice_status="app.notice_status";
+	var notice_status= global_obj.data.app.notice_status;
 	if(notice_status=="0"){
 		loginWin.alert("<center>当前应用禁止提交接入申请。</center>");
 		return false;
 	}
-			
     var paras={
     			"action":"common_query"
     			,"business_type":"ajax_noticecheck"

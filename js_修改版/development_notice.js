@@ -28,7 +28,6 @@ util.createStyle(str);
 this.tpl = this.tpl || {};
 
 tpl.development_notice = [
-	'<!--{ include file="header.tpl" }-->',
 	tpl.header,
 	'<div id="content" class="controlCon main main_app">',
 		'<div class="approate"><a href="/development/">我的应用</a> &gt; <span><%=app.app_name%></span>',
@@ -39,8 +38,6 @@ tpl.development_notice = [
 					'height="75" width="75" /><br />',
 				'<p><%=app.app_name%></p>',
 				'</div>',
-
-			'<!--{ include file="./development/appnav.tpl" }-->',
 				tpl.appnav,
 			'</div>',
 		'</div>',
@@ -168,7 +165,6 @@ tpl.development_notice = [
 		
 		'</div>',
 	'</div>',
-	'<!--{ include file="footer.tpl" }-->',
 	tpl.footer
 ].join('');
 
