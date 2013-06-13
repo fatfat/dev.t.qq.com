@@ -510,7 +510,7 @@ $(function(){
 		var agreements = $("input[name='user_agree']");
 		if(agreements.size()===0){//检验是否有同意选项
 			if(submitflag){//没有checkbox user_agree
-				//$("form").submit();
+				$("form").submit();
 			}else{
 				return false;
 			}
@@ -519,8 +519,7 @@ $(function(){
 				loginWin.alert("<center>您尚未同意《"+(agreements.not(":checked").attr("agreement")||"腾讯微博开放平台开发者服务协议")+"》</center>");
 				return false;
 			}else{
-				alert(4)
-				//$("form").submit();
+				$("form").submit();
 				return false;
 			}
 		}
