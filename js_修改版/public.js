@@ -168,6 +168,7 @@
 		'<li><a href="/websites/followcomp/"><span class="icon icon_follow"></span>收听组件</a></li>',
 		'<!--{*<li><a href="/websites/allfollow/">批量收听</a></li>*}-->',
 		'<li><a href="/websites/wall/"><span class="icon icon_wall"></span>话题墙</a></li>',
+		'<li><a href="/websites/read/"><span class="icon icon_wall"></span>阅读墙</a></li>',
 		'<li><a href="/websites/qshare/"><span class="icon icon_qshare"></span>Q-Share</a></li>',
 		'<li><a href="/websites/mood/"><span class="icon icon_mood"></span>心情板</a></li>',
 		'<li><a href="/websites/comment/"><span class="icon icon_comment"></span>微评论</a></li>',
