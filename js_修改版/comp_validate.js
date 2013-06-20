@@ -39,7 +39,7 @@ OPEN_VALIDATOR = {
 			form = selector && selector[0].form;
 			value = value.replace(/^\s+|\s$/g,"");
 			selector.val(value);
-			tchar = value.match(/[^ A-Za-z0-9（）()\u4e00-\u9fa5]+/g);
+			tchar = value.match(/[^A-Za-z0-9（）()\u4e00-\u9fa5]+/g);
 			k = value.replace(/[^\x00-\xff]/g,"tx").length;
 			$("#comp_name").val(value);
 
