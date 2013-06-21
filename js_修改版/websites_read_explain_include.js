@@ -12,30 +12,201 @@ var sty = [
 	'.color1, .color2, .color3, .color4, .color5, .color6, .color7 {height: 36px;margin: 1px;width: 36px;}',
 	'.colorList li, .colorList1 li{height:38px;padding:0;margin:4px 10px 0 0;border-radius:4px;}',
 	'.colorList1 li.s{border: 4px solid #A8DE86;margin-top:0;}',
-	'.toExtend{width:12px;line-height:12px;margin-right:20px;cursor:pointer;}',
-	'.theme{display:inline-block;width:14px;height:14px;border:1px solid #000;margin-bottom:-2px;}',
-	'.panel{padding:0 10px 10px 10px;line-height:150%;}',
+	'.addIcon{width:12px;line-height:12px;margin-right:20px;cursor:pointer;}',
+	'.toExtend{cursor:pointer;font-size:14px;color:#666;font-weight:bold;display:block;}',
 	'.comp_area h4{font-size:12px;margin:10px 0;}',
 	'.comp_area ul li{margin-left:70px;list-style:square;}',
-	'#addMod{padding:2px;}'
+//	'.comp_area a{font-size:14px;color:#666;font-weight:bold;display:block;}',
+	'#addMod{padding:2px;}',
+
+	'html,body{display:block;margin:0;padding:0;min-height:100%;height:100%;overflow-x:hidden;}',
+	'body{text-align:center;padding:0 1px;overflow:visible;border:1px solid #ccc;border-top:0;border-bottom:0;height:100%;}',
+	'.c_gray{color:gray;}',
+	'.c_green{color:#0a0;}',
+	'.list{position:absolute;right:0;top:0;width:250px;min-height:100%;overflow:hidden;background:#fff;text-align:left;font-size:12px;}',
+	'.list strong{height:40px;line-height:40px;text-align:left;display:block;text-indent:10px;}',
+	'.list a{display:block;text-align:left;height:36px;line-height:36px;color:#333;text-decoration:none;background:#fefefe;border-top:1px solid #ccc;border-bottom:1px solid #fff;text-indent:10px;}',
+	'.list a:hover{background:#eee;border-top-color:#ccc;}',
+	'.list p{margin:8px;}',
+	'.configboard{width:250px;padding:0;position:absolute;top:0;left:0;text-align:left;font-size:12px;background:rgba(255,255,255,.5);min-height:100%;overflow:hidden;}',
+
+	'input,label{vertical-align:middle;}',
+	'input[type="text"]{padding:5px;}',
+	'.panel{padding:10px;line-height:150%;}',
+	'.panel h4{margin:0;padding:0;margin:5px 0;color:#090;font-size:12px;}',
+	'.theme{display:inline-block ;width:14px;height:14px;border:1px solid #000;margin-bottom:-2px;}',
+	'.split-line{height:0;line-height:0;font-size:0;border-bottom:1px dotted #ccc;margin:10px 40px;}',
+	'.dialog{width:600px;height:480px;background:#fff;border:1px solid #DADADA;position:fixed;top:50%;left:50%;margin:-240px 0 0 -212px;z-index:2;_ position:absolute;}',
+	'.dialog ul{list-style:none;}',
+	'.dialog .closeBtn{position:absolute;top:0;right:0;display:inline-block;text-decoration:none;color:#333;font-weight:bold;height:34px;line-height:34px;width:34px;text-align:center;}',
+	'.tabbar{height:34px;text-align:left;text-indent:10px;',
+		'background:#FEFEFD;',
+		'background: -o-linear-gradient(top,#FEFEFD,#F0F0F1);',
+		'background: -moz-linear-gradient(top,#FEFEFD,#F0F0F1);',
+		'background: -webkit-gradient(linear, left top, left bottom, from(#FEFEFD), to(#F0F0F1));',
+		'filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#FEFEFD", endColorstr="#F0F0F1");',
+		'border-bottom:1px solid #DADADA;',
+	'}',
+	'.tabbar .tab{height:26px;line-height:26px;padding:0 20px;display:inline-block;margin:8px 0 0;font-size:14px;color:#333;text-decoration:none;color:#666;text-indent:0;}',
+	'.tabbar .active{background:#fff;border:1px solid #DADADA;border-bottom:none;color:#999;cursor:default;}',
+	'.controls{text-align:right;padding:5px 35px;}',
+	'.timeline{text-align:left;list-style:none;font:12px "宋体",Tahoma,Arial}',
+	'.timeline dl{margin:20px 0 0 40px;}',
+	'.timeline dt,.timeline dd{margin:0 0 5px;}',
+	'.timeline dt{margin:10px 0 5px;color:#090;}',
+	'.timelineList{list-style:none;margin:0;padding:0;width:372px;}',
+	'.timelineList li{margin:10px 0;border:1px solid #DADADA;padding:5px;}',
+	'.timelineList li .condition{font-size:12px;color:#090;word-break:break-all;}',
+	'.btn{padding:5px 25px;}',
+	'.none{display:none;}',
+	'.code{margin:8px;border:1px solid #aaa;padding:5px;border-radius:3px;white-space:pre;word-break:break-all;word-wrap:break-word;}'
 ].join("");
 
 util.createStyle(sty);	
 
+tpl.websites_read_iframe = [
+	'<div class="form1 dialog none">',
+		'<a href="javascript:;" class="closeBtn">&times;</a>',
+		'<div class="tabbar">',
+			'<a href="javascript:;" class="tab active">关键词</a>',
+			'<a href="javascript:;" class="tab">话题</a>',
+			'<a href="javascript:;" class="tab">多用户</a>',
+			'<!--<a href="javascript:;" class="tab">url</a>-->',
+		'</div>',
+		'<div class="timelines">',
+			'<form class="timeline">',
+				'<dl>',
+				'<dt>时间线名称</dt>',
+				'<dd><input type="text" size="20" maxlength="8" style="width:500px;" name="Name" value="热门搜索"/><input type="hidden" name="ConditionType" value="0"/></dd>',
+				'<dt>指定关键词，每行为一个关键词</dt>',
+				'<dd><textarea size="20" style="width:500px;" name="Condition" rows="5">一键分享&#13;话题墙&#13;阅读墙&#13;微博登录&#13;微博组件</textarea></dd>',
+				'<dt>排序方式</dt>',
+				'<dd>',
+					'<input type="radio" name="SortType" value="1" id="SortType1" checked/> <label for="SortType1">时间排序</label>',
+					'<input type="radio" name="SortType" value="2" id="SortType2"/> <label for="SortType2">热度排序</label>',
+					'<input type="radio" name="SortType" value="4" id="SortType3"/> <label for="SortType3">相关性排序</label>',
+				'</dd>',
+				'<dt>名人筛选</dt>',
+				'<dd>',
+					'<input type="radio" name="Famous" value="0" id="Famous1" checked/> <label for="Famous1">不使用名人筛选</label>',
+					'<input type="radio" name="Famous" value="1" id="Famous2"/> <label for="Famous2">使用名人筛选</label>',
+				'</dd>',
+				'<dt>正文类型</dt>',
+				'<dd>',
+					'<input type="hidden" name="ContentType" value="0"/>',
+					'<input type="radio" name="__ContentType" value="0" id="ContentType1" checked/> <label for="ContentType1">所有</label>',
+					'<input type="radio" name="__ContentType" value="1" id="ContentType2"/> <label for="ContentType2">自定义</label>',
+					'<div class="content-type none">',
+						'<input type="checkbox" name="_ContentType" value="2" id="_ContentType_1" checked/> <label for="_ContentType_1">包含url</label>',
+						'<input type="checkbox" name="_ContentType" value="4" id="_ContentType_2" checked/> <label for="_ContentType_2">有图片</label>',
+						'<input type="checkbox" name="_ContentType" value="8" id="_ContentType_3" checked/> <label for="_ContentType_3">有视频</label>',
+						'<input type="checkbox" name="_ContentType" value="16" id="_ContentType_4" checked/> <label for="_ContentType_4">有音频</label>',
+					'</div>',
+				'</dd>',
+				'<dt>消息类型</dt>',
+				'<dd>',
+					'<input type="radio" name="MessageType" value="0" id="MsgType1" checked/> <label for="MsgType1">所有</label>',
+					'<input type="radio" name="MessageType" value="1" id="MsgType2"/> <label for="MsgType2">原创</label>',
+					'<input type="radio" name="MessageType" value="2" id="MsgType3"/> <label for="MsgType3">转播</label>',
+				'</dd>',
+				'</dl>',
+			'</form>',
+			'<form class="timeline none">',
+				'<dl>',
+				'<dt>时间线名称</dt>',
+				'<dd><input type="text" size="20" maxlength="8" style="width:500px;" name="Name" value="最热话题"/><input type="hidden" name="ConditionType" value="1"/></dd>',
+				'<dt>指定话题，每行为一个话题，最多只支持5个话题</dt>',
+				'<dd><textarea size="20" style="width:500px;" name="Condition" rows="5">阅读墙测试&#13;API接口意见&#13;API接口问题&#13;NOKIA925 超乎所见 震撼上市&#13;分享视频</textarea></dd>',
+				'<dt>排序方式</dt>',
+				'<dd>',
+					'<input type="radio" name="SortType" value="1" id="SortType4" checked/> <label for="SortType4">时间排序</label>',
+					'<input type="radio" name="SortType" value="2" id="SortType5"/> <label for="SortType5">热度排序</label>',
+					'<input type="radio" name="SortType" value="4" id="SortType6" disabled/> <label for="SortType6" class="c_gray">相关性排序(暂不支持)</label>',
+				'</dd>',
+				'<dt>名人筛选</dt>',
+				'<dd>',
+					'<input type="radio" name="Famous" value="0" id="Famous3" checked/> <label for="Famous3">不使用名人筛选</label>',
+					'<input type="radio" name="Famous" value="1" id="Famous4"/> <label for="Famous4">使用名人筛选</label>',
+				'</dd>',
+				'<dt>正文类型</dt>',
+				'<dd>',
+					'<input type="hidden" name="ContentType" value="0"/>',
+					'<input type="radio" name="__ContentType" value="0" id="ContentType3" checked/> <label for="ContentType3">所有</label>',
+					'<input type="radio" name="__ContentType" value="1" id="ContentType4"/> <label for="ContentType4">自定义</label>',
+					'<div class="content-type none">',
+						'<input type="checkbox" name="_ContentType" value="2" id="_ContentType_5" checked/> <label for="_ContentType_5">包含url</label>',
+						'<input type="checkbox" name="_ContentType" value="4" id="_ContentType_6" checked/> <label for="_ContentType_6">有图片</label>',
+						'<input type="checkbox" name="_ContentType" value="8" id="_ContentType_7" checked/> <label for="_ContentType_7">有视频</label>',
+						'<input type="checkbox" name="_ContentType" value="16" id="_ContentType_8" checked/> <label for="_ContentType_8">有音频</label>',
+					'</div>',
+				'</dd>',
+				'<dt>消息类型</dt>',
+				'<dd>',
+					'<input type="radio" name="MessageType" value="0" id="MsgType4" checked/> <label for="MsgType4">所有</label>',
+					'<input type="radio" name="MessageType" value="1" id="MsgType5"/> <label for="MsgType5">原创</label>',
+					'<input type="radio" name="MessageType" value="2" id="MsgType6"/> <label for="MsgType6">转播</label>',
+				'</dd>',
+				'</dl>',
+			'</form>',
+			'<form class="timeline none">',
+				'<dl>',
+				'<dt>时间线名称</dt>',
+				'<dd><input type="text" size="20" maxlength="8" style="width:500px;" name="Name" value="名人动态"/><input type="hidden" name="ConditionType" value="2"/></dd>',
+				'<dt>指定微博帐号，每行为一个微博帐号</dt>',
+				'<dd><textarea size="20" style="width:500px;" name="Condition" rows="5">laozi12345&#13;fucaixie&#13;xiefucai1986&#13;fucaige&#13;fucai12345</textarea></dd>',
+				'<dt>排序方式</dt>',
+				'<dd>',
+					'<input type="radio" name="SortType" value="1" id="SortType7" checked/> <label for="SortType7">时间排序</label>',
+					'<input type="radio" name="SortType" value="2" id="SortType8" disabled/> <label for="SortType8" class="c_gray">热度排序(暂不支持)</label>',
+					'<input type="radio" name="SortType" value="4" id="SortType9" disabled/> <label for="SortType9" class="c_gray">相关性排序(暂不支持)</label>',
+				'</dd>',
+				'<dt>名人筛选</dt>',
+				'<dd>',
+					'<input type="radio" name="Famous" value="0" id="Famous5" checked/> <label for="Famous5">不使用名人筛选</label>',
+					'<input type="radio" name="Famous" value="1" id="Famous6"/> <label for="Famous6">使用名人筛选</label>',
+				'</dd>',
+				'<dt>正文类型</dt>',
+				'<dd>',
+					'<input type="hidden" name="ContentType" value="0"/>',
+					'<input type="radio" name="__ContentType" value="0" id="ContentType5" checked/> <label for="ContentType5">所有</label>',
+					'<input type="radio" name="__ContentType" value="1" id="ContentType6"/> <label for="ContentType6">自定义</label>',
+					'<div class="content-type none">',
+						'<input type="checkbox" name="_ContentType" value="2" id="_ContentType_9" checked/> <label for="_ContentType_9">包含url</label>',
+						'<input type="checkbox" name="_ContentType" value="4" id="_ContentType_10" checked/> <label for="_ContentType_10">有图片</label>',
+						'<input type="checkbox" name="_ContentType" value="8" id="_ContentType_11" checked/> <label for="_ContentType_11">有视频</label>',
+						'<input type="checkbox" name="_ContentType" value="16" id="_ContentType_12" checked/> <label for="_ContentType_12">有音频</label>',
+					'</div>',
+				'</dd>',
+				'<dt>消息类型</dt>',
+				'<dd>',
+					'<input type="radio" name="MessageType" value="0" id="MsgType7" checked/> <label for="MsgType7">所有</label>',
+					'<input type="radio" name="MessageType" value="1" id="MsgType8"/> <label for="MsgType8">原创</label>',
+					'<input type="radio" name="MessageType" value="2" id="MsgType9"/> <label for="MsgType9">转播</label>',
+				'</dd>',
+				'</dl>',
+			'</form>',
+		'</div>',
+		'<div class="controls">',
+			'<input type="button" class="btn" value="确定"/>',
+		'</div>',
+	'</div>',
+	].join(" ");
+
 tpl.websites_read_explain_include = [
+	tpl.websites_read_iframe,
 	'<link href="http://mat1.gtimg.com/app/opent/css/websites/show/customcolor.css" type="text/css" rel="stylesheet">',
-	'<div class="comp_area">',
-		'<div id="show" class="show_wall">',
+	'<div class="comp_area" id = "configboard" style="min-height:700px;width:411px;overflow:hidden;">',
+		'<div id="show" class="show_wall" style="height:594px;">',
 			'<h3>样式预览</h3>',
-			'<div style="width:100%;height:601px;overflow:auto">',
-				'<iframe id="review" frameborder="0" marginwidth=0 marginheight=0 scrolling="no" src="http://mat1.gtimg.com/app/opent/images/websites/show.png" width="345" height="594"></iframe>',
-			'</div>',
+		//	'<div style="width:100%;height:601px;overflow:auto">',
+				'<iframe width="345px" height="594px" frameborder="0"  marginwidth=0 marginheight=0 style="border:1px solid #ccc;position:relative;" allowtransparency="true" src="about:blank" id="frame" srcolling="no"></iframe>',
+		//	'</div>',
 		'</div>',
 	
 		'<h2 class="comp_sub_tit">自定义配置</h2>',
 
-		'<h3 class="p"><em class="toExtend">+</em>整体样式与风格配置</h3>',
-		'<ul style="display:none">',
+		'<a href="javascript:;" class="p toExtend"><em class="addIcon">+</em>整体样式与风格配置</a>',
+		'<ul class="none">',
 			'<li><h4>阅读墙尺寸</h4>',
 				'<div class="panel">',
 					'<input type="text" name="width" size="5" value="100%"> <label>&times;</label> <input type="text" name="height" size="5" value="100%"/>',
@@ -57,7 +228,7 @@ tpl.websites_read_explain_include = [
 					'<input type="checkbox" name="nobg" id="nobg"/> <label for="nobg">背景色透明</label>',
 				'</div>',
 			'</li>',
-			'<li><h4>整体模块显示</h4>',
+			'<li><h4>整体模块显示<span class="none"><input type="checkbox" id="AllModule" name="ModuleConfigure" checked/><label for="AllModule">全选</label></span></h4>',
 				'<div class="panel">',
 					'<input type="checkbox" id="TitleModule" name="TitleModule" checked/> <label for="TitleModule">标题栏</label> ',
 					'<input type="checkbox" id="PubModule" name="PubModule" checked/> <label for="PubModule">发表框</label><br/> ',
@@ -67,9 +238,8 @@ tpl.websites_read_explain_include = [
 			'</li>',
 		'</ul>',
 						
-						
-		'<h3 class="p"><em class="toExtend" id="styleConfig">+</em>标题栏样式</h3>',
-		'<ul style="display:none;">',
+		'<a href="javascript:;" class="p toExtend"><em class="addIcon">+</em>标题栏样式</a>',					
+		'<ul class="none">',
 			'<li>',
 				'<h4>收听帐号</h4>',
 				'<div class="panel">',
@@ -77,9 +247,9 @@ tpl.websites_read_explain_include = [
 				'</div>',
 			'</li>',
 		'</ul>',
-				
-		'<h3 class="p"><em class="toExtend" id="styleConfig">+</em>消息发表框样式</h3>',
-		'<ul style="display:none;">',
+	
+		'<a href="javascript:;" class="p toExtend"><em class="addIcon">+</em>消息发表框样式</a>',				
+		'<ul class="none">',
 			'<li>',
 				'<h4>显示位置：</h4>',
 				'<div class="panel">',
@@ -106,12 +276,11 @@ tpl.websites_read_explain_include = [
 				'<div class="panel">',
 					'<input type="text" name="InitialContent" placeholder="指定发表框默认显示的内容" value="#阅读墙测试# 说点什么吧"/>',
 				'</div>',			
-			//	'<p>发表框位置</p><div class="panel"><input type="text" name="OfficialAccount" placeholder="指定用户可收听的微博帐号" value="api_weibo"/></div>',
-			'</li>',
+				'</li>',
 		'</ul>',
 				
-		'<h3 class="p"><em class="toExtend" id="styleConfig">+</em>时间线样式与内容</h3>',
-		'<ul style="display:none;">',
+		'<a href="javascript:;" class="p toExtend"><em class="addIcon">+</em>时间线样式与内容</a>',	
+		'<ul class="none">',
 			'<li>',
 				'<h4>时间线样式</h4>',
 				'<div class="panel">',
@@ -129,7 +298,7 @@ tpl.websites_read_explain_include = [
 			'<li>',
 				'<h4>图片显示：</h4>',
 				'<div class="panel">',
-					'<input type="radio" name="PicStyle" value="0" id="PicStyle0" checked/> <label for="PicStyle0">图片</label>',
+					'<input type="radio" name="PicStyle" value="0" id="PicStyle0" checked/> <label for="PicStyle0">图片</label> ',
 					'<input type="radio" name="PicStyle" value="1" id="PicStyle1"/> <label for="PicStyle1">缩略图</label>',
 				'</div>',
 			'</li>',
@@ -140,15 +309,33 @@ tpl.websites_read_explain_include = [
 				'</div>',
 			'</li>',
 		'</ul>',
+		//自定义模块里的内容
+		'<div class="split-line"></div>',
 			
-		'<h3 class="p"><em class="toExtend" id="styleConfig">+</em>添加自定义模块</h3>',
-		'<ul style="display:none;">',
+		'<a href="javascript:;" class="p toExtend"><em class="addIcon">+</em>添加自定义模块</a>',	
+		'<ul class="none">',
 			'<li>',
 				'<div class="panel">',
 					'<input type="button" value="添加自定义模块" id="addMod" class="btn createTimeline" data-action="createTimeline">',
 				'</div>',
 			'</li>',
 		'</ul>',
+		'<ul id="timelineList" class="timelineList"></ul>',
+	'<!--<div class="p1" id="getScript">',
+		'<h3>代码获取</h3>',
+		'<div class="fcgray">复制以下代码，粘贴到你的网页后台代码中，即可在网页<br />中看到你的话题墙</div>',
+		'<textarea style="width:300px;height:60px;" id="showscripts">请先填写需要定制的话题名和appkey</textarea>',
+		'<div><input type="button" value="" class="button" id="copyscript" /></div>',
+	'</div>-->',
+	'<div class="p1" style="margin-top:40px;">',
+		'<a href="javascript:;" class="devSubmit" id="showcode">获取代码</a> ',
+		'<!--',
+		'<a href="javascript:;" onclick="document.referrer&&location.replace(document.referrer);" class="devCancel">取消</a> ',
+		'-->',
+	'</div>',
+	'<%}else{%>',
+		'<div class="errormsg">对不起，在没有登录微博的情况下，你无法使用该功能。 请<a href="javascript:login();">登录</a></div>',
+	'<%}%>',
 	'</div>',
 ].join("");
 	
@@ -159,190 +346,15 @@ var comp_type = 3;
 
 eventBindFuncList.push(function(){
 	$('.toExtend').click(function(){
-		if($(this).html() == "+") {
-			$(this).parent().next('ul').css("display","block");
-			$(this).html('-');
+		if($(this).children('.addIcon').html() == "+") {
+			$(this).next('ul').css("display","block");
+			$(this).children('.addIcon').html('-');
 		} else {	
-			$(this).parent().next('ul').css("display","none");
-			$(this).html('+');
+			$(this).next('ul').css("display","none");
+			$(this).children('.addIcon').html('+');
 		}
 	});
-	
-	$("input[name='topicname']").change(function() {
-		crUrl(false);
-	});
-
-	$('#wbname').change(function() {
-		crUrl(false);    
-	});
-
-	$('#width').blur(function() {
-		theval = $(this).val();
-		if (theval < 255) {
-			$(this).val(255);
-		}
-		if (theval > 1024) {
-			$(this).val(1024);
-		}
-		_width = parseInt($(this).val());
-		crUrl(false);
-	}).keyup(function() {
-		var theval = $(this).val();
-		$(this).val(theval.replace(/[^\d]{0,4}/g, ''));
-	});
-	$('#height').blur(function() {
-		theval = $(this).val();
-		if (theval < 300) {
-			$(this).val(300);
-		}
-		if (theval > 800) {
-			$(this).val(800);
-		}
-		_height = $(this).val();
-		crUrl(false);
-	}).keyup(function() {
-		var theval = $(this).val();
-		$(this).val(theval.replace(/[^\d]{0,4}/g, ''));
-
-	});
-
-	$('#colorList li').each(function(i) {
-		$(this).click(function() {
-			$('#colorList li').removeClass('s');
-			$(this).addClass('s');
-			crUrl();
-		});
-	});
-
-	$('input[name=imgshow]').click(function() {
-		crUrl(false);
-	});
-
-	$('input[name=post]').click(function(i) {
-		crUrl(false);
-	});
-
-	$('input[name=tmodel]').click(function(i) {
-		crUrl(false);
-	});
-	/*
-		$('#use_customcolorset').click(function(){
-			crUrl('',4);
-		});
-
-	    $('#defaultColor').change(function () {
-	        $("#colorList > li:first-child").trigger('click');
-	    });*/
-	$("input[name='color']").click(function() {
-		$("#colorList,#customcolor").hide();
-		if ($(this).val() == 0) {
-			$(this).parent().find("li:eq(0)").trigger("click");;
-		}
-		$(this).parent().find("ul").show();
-	})
 });
-
-function crUrl(o) {
-	if ($.trim($('input#t1').val()).length == 0) return false;
-	var _t = [],
-	cus = $("input[name='color']:checked").val() * 4,
-	_colorStyle = $('#colorList li.s').attr('data-color') - 0 || 4;
-	if ($('#t1').size() && $('#t1').val() != '') {
-		_t.push(encodeURIComponent($.trim($('#t1').val())));
-	}
-	if (_t.length == 0) {
-		return false;
-	} else {
-		var _tn = _t.join('');
-	}
-	
-//	var _appkey = comp.comp_id || "801000271";
-	var _appkey = window.comp && comp.comp_id ? comp.comp_id : "801000271";
-	var wbname = encodeURIComponent($.trim($('#wbname').val()));
-	var wburl = encodeURIComponent($.trim($('#originurl').val()));
-	if (_tn != '' && _appkey != '') {
-		$('#review').show();
-		$('#showImgs').hide();
-	} else {
-		$('#review').hide();
-		$('#showImgs').show();
-	}
-	var _url = 'http://wall.v.t.qq.com/index.php?c=wall&a=index&t=' + _tn;
-	if (_width) {
-		_width = parseInt($('#width').val());
-	}
-	_height = parseInt($('#height').val());
-	_url += '&ak=' + _appkey;
-	_url += '&w=' + [_width, "0"][0 + $("#autowidth").is(":checked")];
-	_url += '&h=' + _height;
-	_url += '&n=' + wbname;
-	_url += '&url=' + wburl;
-	_url += '&o=' +
-	function() {
-		var _opt = 7;
-		switch ( + $("input[name='imgshow']:checked").val() || 0) {
-		case 0:
-			_opt &= ~parseInt(1 << 1, '0x');
-			break; //1,5,13
-		case 1:
-			_opt |= parseInt(1 << 1, '0x');
-			break; //3,7,15
-		}
-		switch ( + $("input[name='post']:checked").val() || 0) {
-		case 0:
-			_opt |= parseInt(1 << 3, '0x');
-			_opt |= parseInt(1 << 2, '0x');
-			break;
-		case 1:
-			_opt &= ~parseInt(1 << 3, '0x');
-			_opt |= parseInt(1 << 2, '0x');
-			break;
-		default:
-			_opt &= ~parseInt(1 << 2, '0x');
-		}
-		switch ( + $("input[name='tmodel']:checked").val() || 0) {
-		case 0:
-			_opt &= ~parseInt(1 << 5, '0x');
-			break;
-		case 5:
-			_opt |= parseInt(1 << 5, '0x');
-			break;
-		}
-		return _opt;
-	} ();
-	var colorPlan = [];
-	if (cus == 4) {
-		_url += '&s=' + cus;
-		$("#customcolor").find("input").each(function() {
-			colorPlan.push($(this).val().replace("#", ""));
-		});
-		colorPlan = colorPlan.join("_");
-		_url += '&cs=';
-		_url += colorPlan;
-	} else {
-		_url += '&s=' + _colorStyle;
-	}
-
-	iframewidth = [_width, "100%"][0 + $("#autowidth").is(":checked")];
-	if (o) {
-		$('#review').attr('width', iframewidth).attr('height', _height);
-	} else {
-		$('#review').attr('src', _url).attr('width', iframewidth).attr('height', _height);
-	}
-	/*
-		if(_tn != '' && _appkey != ''){
-			if ( cus == 4 )
-			{
-				$('#showscripts').val('<iframe frameborder="0" scrolling="no" src="http://wall.v.t.qq.com/index.php?c=wall&a=index&t='+_tn+'&ak='+_appkey+'&w='+_width+'&h='+_height+'&o='+_opt+'&s='+ cus +'&cs=' + colorPlan + '" width="'+iframewidth+'" height="'+_height+'"></iframe>');
-			}
-			else
-			{
-				$('#showscripts').val('<iframe frameborder="0" scrolling="no" src="http://wall.v.t.qq.com/index.php?c=wall&a=index&t='+_tn+'&ak='+_appkey+'&w='+_width+'&h='+_height+'&o='+_opt+'&s='+_colorStyle+'" width="'+iframewidth+'" height="'+_height+'"></iframe>');
-			}			
-		}else{
-			$('#showscripts').val('请先填写需要定制的话题名和appkey');
-		}*/
-}
 
 function formSubmit() {
 	if ($("#showcode").attr("disabled")) {
@@ -432,37 +444,31 @@ function normalValidate() {
 util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js",function(){
 	bindAllEvent();
 });
-/*window.onload = function(){//解决IE6下组件设置（话题墙）页左侧导航隐藏的bug
-		if($.browser.msie && $.browser.version == "6.0"){
-			$(".deverRight").css({"width":"782px"});
-			$(".comp_area").css({"width":"701px"});
-			$("#show").css({"zoom":"1"});
-			$("#review").css({"zoom":"1"});
-		}
-	}*/
+
 var getConfigInfo = function(){
-		var form = document.getElementById("configboard"),
-			f = $(form),
+		var form = $("#configboard"),//获取配置面板
+	//		f = $(form),
 			param = {};
 			param["config"] = (function(arr){
-				arr.push(form["appkey"].value);
-				arr.push(f.find("[name='theme']:checked").val());
-				arr.push(+form["nobg"].checked);
-				arr.push([+form.ModuleConfigure.checked,+form.TitleModule.checked,+form.PubModule.checked,+form.TabModule.checked,+form.TimelineModule.checked].join(""));
-				arr.push(f.find("[name='PageStyle']:checked").val());
-				arr.push(f.find("[name='PicStyle']:checked").val());
-				arr.push(+f.find("[name='HeadStyle']").is(":checked"));
-				arr.push(form.TwitterNum.value);
+	//			arr.push(form["appkey"].value);
+				arr.push(window.comp && comp.comp_id ? comp.comp_id : "801351684");
+				arr.push(form.find("[name='theme']:checked").val());
+				arr.push(+form.find("[name='nobg']")[0].checked);
+				arr.push([+form.find("[name='ModuleConfigure']")[0].checked,+form.find("[name='TitleModule']")[0].checked,+form.find("[name='PubModule']")[0].checked,+form.find("[name='TabModule']")[0].checked,+form.find("[name='TimelineModule']")[0].checked].join(""));
+				arr.push(form.find("[name='PageStyle']:checked").val());
+				arr.push(form.find("[name='PicStyle']:checked").val());
+				arr.push(+form.find("[name='HeadStyle']").is(":checked"));
+				arr.push(form.find("[name='TwitterNum']").val());
 				arr.push((function(_arr){
-					f.find("[name='InsertFunction']:checked").each(function(){
+					form.find("[name='InsertFunction']:checked").each(function(){
 						_arr.push($(this).val());
 					});
 					return _arr.join("");
-				})([f.find("[name='position']:checked").val()]));
+				})([form.find("[name='position']:checked").val()]));
 				return arr.join("-");
 			})([]);
-			param["account"] = form.OfficialAccount.value;
-			param["sendbox"] =[encodeURIComponent(form.SourceUrl.value),encodeURIComponent(form.InitialContent.value)].join("|");
+			param["account"] = form.find("[name='OfficialAccount']").val();
+			param["sendbox"] =[encodeURIComponent(form.find("[name='SourceUrl']").val()),encodeURIComponent(form.find("[name='InitialContent']").val())].join("|");
 			return param;
 	},
 	getTimelineInfo = function(){
@@ -526,7 +532,6 @@ $(function(){
 			param["MessageType"] = f.find("input[name='MessageType']:checked").val();
 			if (param["Name"] && param["Condition"]){
 				dialog.addClass("none");
-				
 				if (f.parent().attr("editId")){
 					li = timelineList.find("li:eq("+f.parent().attr("editId")+")");
 				}else{
@@ -553,7 +558,7 @@ $(function(){
 			code2= $("#code2"),
 			form = $("#configboard"),
 			id = 'txwbydq_01',
-			f = form.get(0),
+	//		f = form.get(0),
 			colors = ['d0d0d0','ccc','333','000'],
 			config = {},
 			jsonToString = function(o){
@@ -586,10 +591,11 @@ $(function(){
 				return "{"+arr.join(",")+"}";
 			},
 			codeStr1 = '&lt;script type="text/javascript" src="http://mat1.gtimg.com/app/vt/js/read/import.js" charset="utf-8"&gt;&lt;/script&gt;';
-			codeStr2 = '&lt;iframe width="'+f.width.value+'" height="'+f.height.value+'" frameborder="0" style="border:1px solid #'+colors[+form.find("input[name='theme']:checked").val()]+';" allowtransparency="true" src="about:blank" id="'+id+'" srcolling="no"&gt;&lt;/iframe&gt;';
-			config.appkey = f.appkey.value;
+			codeStr2 = '&lt;iframe width="'+form.width()+'" height="'+form.height()+'" frameborder="0" style="border:1px solid #'+colors[+form.find("input[name='theme']:checked").val()]+';" allowtransparency="true" src="about:blank" id="'+id+'" srcolling="no"&gt;&lt;/iframe&gt;';
+	//		config.appkey = form.appkey.value; TODO
+			config.appkey = window.comp && comp.comp_id ? comp.comp_id : "801351684";
 			config.theme = +form.find("input[name='theme']:checked").val();
-			config.nobg = +f.nobg.checked;
+			config.nobg = +form.find("[name='nobg']")[0].checked;
 			config.ModuleConfigure = {
 				"PubModule":+$("#PubModule").is(":checked"),
 				"TabModule":+$("#TabModule").is(":checked"),
@@ -600,10 +606,10 @@ $(function(){
 				"HeadStyle":+$("#HeadStyle").is(":checked"),
 				"PageStyle":+form.find("input[name='PageStyle']:checked").val(),
 				"PicStyle":+form.find("input[name='PicStyle']:checked").val(),
-				"TwitterNum":+f.TwitterNum.value
+				"TwitterNum":+form.find("input[name='TwitterNum']").val()
 			};
 			config.PubModuleConfigure = {
-				"InitialContent":f.InitialContent.value,
+				"InitialContent":form.find("input[name='InitialContent']").val(),
 				"InsertFunction":(function(a){
 					var arr = [];
 					a.each(function(){
@@ -611,11 +617,11 @@ $(function(){
 					});
 					return arr;
 				})(form.find("input[name='InsertFunction']:checked")),
-				"SourceUrl":f.SourceUrl.value,
+				"SourceUrl":form.find("input[name='SourceUrl']").val(),
 				"position":+form.find("input[name='position']:checked").val()
 			};
 			config.TitleModuleConfigure = {
-				"OfficialAccount":f.OfficialAccount.value
+				"OfficialAccount":form.find("input[name='OfficialAccount']").val()
 			};
 			config.TimelineModuleConfigure = (function(lis){
 				var arr = [];
@@ -673,7 +679,7 @@ $(function(){
 		t.addClass("active").siblings().removeClass("active");
 		dialog.find(".timeline:eq("+i+")").removeClass("none").siblings().addClass("none");
 	});
-	dialog.find(".close").bind("click",function(){
+	dialog.find(".closeBtn").bind("click",function(){
 		$(this).parent().addClass("none");
 	});
 	dialog.find(".btn").bind("click",showTimeLine);
@@ -722,7 +728,7 @@ $(function(){
 			iframe.attr("src","http://read.v.t.qq.com?"+$.param(getConfigInfo()))
 			.attr("width",form.find("[name='width']").val())
 			.attr("height",form.find("[name='height']").val());
-			
+
 			if (window.localStorage){
 				localStorage.setItem("configInfo",getConfigInfo());
 			}
