@@ -8,19 +8,19 @@ var common = {},scroll = function(event,scroller){
 
 
 var sty = [
+	'html,body{font-size:12px;display:block;margin:0;padding:0;min-height:100%;height:100%;overflow-x:hidden;}',
+	'body{text-align:center;padding:0 1px;overflow:visible;border:1px solid #ccc;border-top:0;border-bottom:0;height:100%;}',
 	'.colorList li,.colorList1 li{float:left;height:40px;padding:4px;margin-bottom:8px;}',
 	'.color1, .color2, .color3, .color4, .color5, .color6, .color7 {height: 36px;margin: 1px;width: 36px;}',
 	'.colorList li, .colorList1 li{height:38px;padding:0;margin:4px 10px 0 0;border-radius:4px;}',
 	'.colorList1 li.s{border: 4px solid #A8DE86;margin-top:0;}',
 	'.addIcon{width:12px;line-height:12px;margin-right:20px;cursor:pointer;}',
-	'.toExtend{cursor:pointer;font-size:14px;color:#666;font-weight:bold;display:block;}',
+	'.toExtend{cursor:pointer;font-size:14px;color:#666;font-weight:bold;display:block;margin:10px 40px 0;}',
 	'.comp_area h4{font-size:12px;margin:10px 0;}',
 	'.comp_area ul li{margin-left:70px;list-style:square;}',
 //	'.comp_area a{font-size:14px;color:#666;font-weight:bold;display:block;}',
 	'#addMod{padding:2px;}',
-
-	'html,body{display:block;margin:0;padding:0;min-height:100%;height:100%;overflow-x:hidden;}',
-	'body{text-align:center;padding:0 1px;overflow:visible;border:1px solid #ccc;border-top:0;border-bottom:0;height:100%;}',
+	'i{color:red;}',
 	'.c_gray{color:gray;}',
 	'.c_green{color:#0a0;}',
 	'.list{position:absolute;right:0;top:0;width:250px;min-height:100%;overflow:hidden;background:#fff;text-align:left;font-size:12px;}',
@@ -32,8 +32,9 @@ var sty = [
 
 	'input,label{vertical-align:middle;}',
 	'input[type="text"]{padding:5px;}',
-	'.panel{padding:10px;line-height:150%;}',
-	'.panel h4{margin:0;padding:0;margin:5px 0;color:#090;font-size:12px;}',
+	'.panel{padding:2px 4px;line-height:150%;}',
+	'.panel h4{margin:0;padding:0;margin:5px 0;font-size:12px;}',
+	'.panel p{margin:3px 0;}',
 	'.theme{display:inline-block ;width:14px;height:14px;border:1px solid #000;margin-bottom:-2px;}',
 	'.split-line{height:0;line-height:0;font-size:0;border-bottom:1px dotted #ccc;margin:10px 40px;}',
 	'.dialog{width:600px;height:480px;background:#fff;border:1px solid #DADADA;position:fixed;top:50%;left:50%;margin:-240px 0 0 -212px;z-index:2;_ position:absolute;}',
@@ -66,56 +67,19 @@ util.createStyle(sty);
 
 tpl.websites_read_iframe = [
 	'<div class="form1 dialog none">',
-		'<a href="javascript:;" class="closeBtn">&times;</a>',
+		'<a href="javascript:void(0);" class="closeBtn">&times;</a>',
 		'<div class="tabbar">',
-			'<a href="javascript:;" class="tab active">关键词</a>',
-			'<a href="javascript:;" class="tab">话题</a>',
-			'<a href="javascript:;" class="tab">多用户</a>',
-			'<!--<a href="javascript:;" class="tab">url</a>-->',
+			'<a href="javascript:void(0);" class="tab active">话题</a>',
+			'<a href="javascript:void(0);" class="tab">多用户</a>',	
+			'<a href="javascript:void(0);" class="tab">关键词</a>',
+			'<!--<a href="javascript:void(0);" class="tab">url</a>-->',
 		'</div>',
 		'<div class="timelines">',
 			'<form class="timeline">',
 				'<dl>',
 				'<dt>时间线名称</dt>',
-				'<dd><input type="text" size="20" maxlength="8" style="width:500px;" name="Name" value="热门搜索"/><input type="hidden" name="ConditionType" value="0"/></dd>',
-				'<dt>指定关键词，每行为一个关键词</dt>',
-				'<dd><textarea size="20" style="width:500px;" name="Condition" rows="5">一键分享&#13;话题墙&#13;阅读墙&#13;微博登录&#13;微博组件</textarea></dd>',
-				'<dt>排序方式</dt>',
-				'<dd>',
-					'<input type="radio" name="SortType" value="1" id="SortType1" checked/> <label for="SortType1">时间排序</label>',
-					'<input type="radio" name="SortType" value="2" id="SortType2"/> <label for="SortType2">热度排序</label>',
-					'<input type="radio" name="SortType" value="4" id="SortType3"/> <label for="SortType3">相关性排序</label>',
-				'</dd>',
-				'<dt>名人筛选</dt>',
-				'<dd>',
-					'<input type="radio" name="Famous" value="0" id="Famous1" checked/> <label for="Famous1">不使用名人筛选</label>',
-					'<input type="radio" name="Famous" value="1" id="Famous2"/> <label for="Famous2">使用名人筛选</label>',
-				'</dd>',
-				'<dt>正文类型</dt>',
-				'<dd>',
-					'<input type="hidden" name="ContentType" value="0"/>',
-					'<input type="radio" name="__ContentType" value="0" id="ContentType1" checked/> <label for="ContentType1">所有</label>',
-					'<input type="radio" name="__ContentType" value="1" id="ContentType2"/> <label for="ContentType2">自定义</label>',
-					'<div class="content-type none">',
-						'<input type="checkbox" name="_ContentType" value="2" id="_ContentType_1" checked/> <label for="_ContentType_1">包含url</label>',
-						'<input type="checkbox" name="_ContentType" value="4" id="_ContentType_2" checked/> <label for="_ContentType_2">有图片</label>',
-						'<input type="checkbox" name="_ContentType" value="8" id="_ContentType_3" checked/> <label for="_ContentType_3">有视频</label>',
-						'<input type="checkbox" name="_ContentType" value="16" id="_ContentType_4" checked/> <label for="_ContentType_4">有音频</label>',
-					'</div>',
-				'</dd>',
-				'<dt>消息类型</dt>',
-				'<dd>',
-					'<input type="radio" name="MessageType" value="0" id="MsgType1" checked/> <label for="MsgType1">所有</label>',
-					'<input type="radio" name="MessageType" value="1" id="MsgType2"/> <label for="MsgType2">原创</label>',
-					'<input type="radio" name="MessageType" value="2" id="MsgType3"/> <label for="MsgType3">转播</label>',
-				'</dd>',
-				'</dl>',
-			'</form>',
-			'<form class="timeline none">',
-				'<dl>',
-				'<dt>时间线名称</dt>',
 				'<dd><input type="text" size="20" maxlength="8" style="width:500px;" name="Name" value="最热话题"/><input type="hidden" name="ConditionType" value="1"/></dd>',
-				'<dt>指定话题，每行为一个话题，最多只支持5个话题</dt>',
+				'<dt>指定话题，每行为一个话题，最多支持5个话题</dt>',
 				'<dd><textarea size="20" style="width:500px;" name="Condition" rows="5">阅读墙测试&#13;API接口意见&#13;API接口问题&#13;NOKIA925 超乎所见 震撼上市&#13;分享视频</textarea></dd>',
 				'<dt>排序方式</dt>',
 				'<dd>',
@@ -152,7 +116,7 @@ tpl.websites_read_iframe = [
 				'<dl>',
 				'<dt>时间线名称</dt>',
 				'<dd><input type="text" size="20" maxlength="8" style="width:500px;" name="Name" value="名人动态"/><input type="hidden" name="ConditionType" value="2"/></dd>',
-				'<dt>指定微博帐号，每行为一个微博帐号</dt>',
+				'<dt>指定微博帐号，每行为一个微博帐号，最多支持10个</dt>',
 				'<dd><textarea size="20" style="width:500px;" name="Condition" rows="5">laozi12345&#13;fucaixie&#13;xiefucai1986&#13;fucaige&#13;fucai12345</textarea></dd>',
 				'<dt>排序方式</dt>',
 				'<dd>',
@@ -185,6 +149,43 @@ tpl.websites_read_iframe = [
 				'</dd>',
 				'</dl>',
 			'</form>',
+			'<form class="timeline none">',
+				'<dl>',
+				'<dt>时间线名称</dt>',
+				'<dd><input type="text" size="20" maxlength="8" style="width:500px;" name="Name" value="热门搜索"/><input type="hidden" name="ConditionType" value="0"/></dd>',
+				'<dt>指定关键词，每行为一个关键词，最多添加5个</dt>',
+				'<dd><textarea size="20" style="width:500px;" name="Condition" rows="5">一键分享&#13;话题墙&#13;阅读墙&#13;微博登录&#13;微博组件</textarea></dd>',
+				'<dt>排序方式</dt>',
+				'<dd>',
+					'<input type="radio" name="SortType" value="1" id="SortType1" checked/> <label for="SortType1">时间排序</label>',
+					'<input type="radio" name="SortType" value="2" id="SortType2"/> <label for="SortType2">热度排序</label>',
+					'<input type="radio" name="SortType" value="4" id="SortType3"/> <label for="SortType3">相关性排序</label>',
+				'</dd>',
+				'<dt>名人筛选</dt>',
+				'<dd>',
+					'<input type="radio" name="Famous" value="0" id="Famous1" checked/> <label for="Famous1">不使用名人筛选</label>',
+					'<input type="radio" name="Famous" value="1" id="Famous2"/> <label for="Famous2">使用名人筛选</label>',
+				'</dd>',
+				'<dt>正文类型</dt>',
+				'<dd>',
+					'<input type="hidden" name="ContentType" value="0"/>',
+					'<input type="radio" name="__ContentType" value="0" id="ContentType1" checked/> <label for="ContentType1">所有</label>',
+					'<input type="radio" name="__ContentType" value="1" id="ContentType2"/> <label for="ContentType2">自定义</label>',
+					'<div class="content-type none">',
+						'<input type="checkbox" name="_ContentType" value="2" id="_ContentType_1" checked/> <label for="_ContentType_1">包含url</label>',
+						'<input type="checkbox" name="_ContentType" value="4" id="_ContentType_2" checked/> <label for="_ContentType_2">有图片</label>',
+						'<input type="checkbox" name="_ContentType" value="8" id="_ContentType_3" checked/> <label for="_ContentType_3">有视频</label>',
+						'<input type="checkbox" name="_ContentType" value="16" id="_ContentType_4" checked/> <label for="_ContentType_4">有音频</label>',
+					'</div>',
+				'</dd>',
+				'<dt>消息类型</dt>',
+				'<dd>',
+					'<input type="radio" name="MessageType" value="0" id="MsgType1" checked/> <label for="MsgType1">所有</label>',
+					'<input type="radio" name="MessageType" value="1" id="MsgType2"/> <label for="MsgType2">原创</label>',
+					'<input type="radio" name="MessageType" value="2" id="MsgType3"/> <label for="MsgType3">转播</label>',
+				'</dd>',
+				'</dl>',
+			'</form>',
 		'</div>',
 		'<div class="controls">',
 			'<input type="button" class="btn" value="确定"/>',
@@ -205,15 +206,18 @@ tpl.websites_read_explain_include = [
 	
 		'<h2 class="comp_sub_tit">自定义配置</h2>',
 
-		'<a href="javascript:;" class="p toExtend"><em class="addIcon">+</em>整体样式与风格配置</a>',
+		'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>整体样式与风格配置</a>',
 		'<ul class="none">',
-			'<li><h4>阅读墙尺寸</h4>',
+			'<li>',
 				'<div class="panel">',
+					'<h4>阅读墙尺寸</h4>',
+					'<p><i>*</i> 请根据页面填写所需组件大小百分比或像素大小</p>',
 					'<input type="text" name="width" size="5" value="100%"> <label>&times;</label> <input type="text" name="height" size="5" value="100%"/>',
 				'</div>',
 			'</li>',
-			'<li><h4>阅读墙背景</h4>',
+			'<li>',
 				'<div class="panel">',
+					'<h4>阅读墙背景</h4>',
 					'<input type="radio" name="theme" value="0" id="theme0" checked/> <label for="theme0" class="theme" style="background:#fff;border-color:#DADADA;"></label> ',
 					'<input type="radio" name="theme" value="1" id="theme1"/> <label for="theme1" class="theme" style="background:#E5E5E5;border-color:#CFCFCF;"></label> ',
 					'<input type="radio" name="theme" value="2" id="theme2"/> <label for="theme2" class="theme" style="background:#555555;border-color:#6F6F6F;"></label> ',
@@ -228,8 +232,9 @@ tpl.websites_read_explain_include = [
 					'<input type="checkbox" name="nobg" id="nobg"/> <label for="nobg">背景色透明</label>',
 				'</div>',
 			'</li>',
-			'<li><h4>整体模块显示<span class="none"><input type="checkbox" id="AllModule" name="ModuleConfigure" checked/><label for="AllModule">全选</label></span></h4>',
+			'<li>',
 				'<div class="panel">',
+					'<h4>整体模块显示<span class="none"><input type="checkbox" id="AllModule" name="ModuleConfigure" checked/><label for="AllModule">全选</label></span></h4>',
 					'<input type="checkbox" id="TitleModule" name="TitleModule" checked/> <label for="TitleModule">标题栏</label> ',
 					'<input type="checkbox" id="PubModule" name="PubModule" checked/> <label for="PubModule">发表框</label><br/> ',
 					'<input type="checkbox" id="TabModule" name="TabModule" checked/> <label for="TabModule">页卡栏</label> ',
@@ -238,88 +243,109 @@ tpl.websites_read_explain_include = [
 			'</li>',
 		'</ul>',
 						
-		'<a href="javascript:;" class="p toExtend"><em class="addIcon">+</em>标题栏样式</a>',					
+		'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>标题栏样式</a>',					
 		'<ul class="none">',
 			'<li>',
-				'<h4>收听帐号</h4>',
 				'<div class="panel">',
-					'<div class="panel"><input type="text" name="OfficialAccount" placeholder="指定用户可收听的微博帐号" value="api_weibo"/></div>',
+					'<h4>收听微博帐号</h4>',
+					'<input type="text" name="OfficialAccount" placeholder="指定用户可收听的微博帐号" value="api_weibo"/>',
 				'</div>',
 			'</li>',
 		'</ul>',
 	
-		'<a href="javascript:;" class="p toExtend"><em class="addIcon">+</em>消息发表框样式</a>',				
+		'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>消息发表框样式</a>',				
 		'<ul class="none">',
 			'<li>',
-				'<h4>显示位置：</h4>',
 				'<div class="panel">',
-					'<input type="radio" name="position" value="0" id="position1" checked/> <label for="position1">时间线上面</label> ',
-					'<input type="radio" name="position" value="1" id="position2"/> <label for="position2">时间线下面</label> ',
+					'<h4>显示位置：</h4>',
+					'<input type="radio" name="position" value="0" id="position1" checked/> <label for="position1">居上</label> ',
+					'<input type="radio" name="position" value="1" id="position2"/> <label for="position2">居下</label> ',
 				'</div>',
 			'</li>',
 			'<li>',
-				'<h4>附属功能：</h4>',
 				'<div class="panel">',
+					'<h4>支持功能：</h4>',
 					'<input type="checkbox" name="InsertFunction" value="0" id="InsertFunction0" checked/> <label for="InsertFunction0">表情</label> ',
 					'<input type="checkbox" name="InsertFunction" value="1" id="InsertFunction1" checked/> <label for="InsertFunction1">图片</label> ',
 					'<input type="checkbox" name="InsertFunction" value="2" id="InsertFunction2" checked/> <label for="InsertFunction2">@好友</label> ',
 				'</div>',
 			'</li>',
 			'<li>',
-				'<h4>来源设置：</h4>',
 				'<div class="panel">',
+					'<h4>来源设置：</h4>',
 					'<input type="text" name="SourceUrl" placeholder="指定一个发表微博后会自动带上的url地址" value="http://mat1.gtimg.com/app/tmp/read.html"/>',
 				'</div>',
 			'</li>',
 			'<li>',
-				'<h4>默认内容：</h4>',
 				'<div class="panel">',
+					'<h4>默认展示文字：</h4>',
+					'<p><i>*</i> 请为您的阅读墙填写默认的展示文字，最多不超过140个字</p>',
 					'<input type="text" name="InitialContent" placeholder="指定发表框默认显示的内容" value="#阅读墙测试# 说点什么吧"/>',
 				'</div>',			
 				'</li>',
 		'</ul>',
 				
-		'<a href="javascript:;" class="p toExtend"><em class="addIcon">+</em>时间线样式与内容</a>',	
+		'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>时间线样式与内容</a>',	
 		'<ul class="none">',
 			'<li>',
-				'<h4>时间线样式</h4>',
 				'<div class="panel">',
-					'<input type="radio" name="PageStyle" value="0" id="PageStyle0" checked/> <label for="PageStyle0">时间线固定高度</label> ',
-					'<input type="radio" name="PageStyle" value="1" id="PageStyle1"/> <label for="PageStyle1">根据内容自适应高度</label><br/> ',
-					'<input type="radio" name="PageStyle" value="2" id="PageStyle2"/> <label for="PageStyle2">时间线内容自适应刷新</label> ',
+					'<h4>时间线样式</h4>',
+					'<input type="radio" name="PageStyle" value="0" id="PageStyle0" checked/> <label for="PageStyle0">固定高度</label><br/> ',
+					'<input type="radio" name="PageStyle" value="1" id="PageStyle1"/> <label for="PageStyle1">上墙模式</label><br/> ',
+					'<input type="radio" name="PageStyle" value="2" id="PageStyle2"/> <label for="PageStyle2">自定义高度</label> ',
 				'</div>',					
 			'</li>',
 			'<li>',
-				'<h4>时间线每次拉取微博数量</h4>',
 				'<div class="panel">',
+					'<h4>时间线每次拉取微博数量</h4>',
 					'<input type="number" name="TwitterNum" placeholder="每页多少条微博(1-20)" value="20" max="20" min="1"/>',
 				'</div>',
 			'</li>',
 			'<li>',
-				'<h4>图片显示：</h4>',
 				'<div class="panel">',
+					'<h4>图片显示：</h4>',
 					'<input type="radio" name="PicStyle" value="0" id="PicStyle0" checked/> <label for="PicStyle0">图片</label> ',
 					'<input type="radio" name="PicStyle" value="1" id="PicStyle1"/> <label for="PicStyle1">缩略图</label>',
 				'</div>',
 			'</li>',
 			'<li>',
-				'<h4>头像显示：</h4>',
 				'<div class="panel">',
+					'<h4>头像显示：</h4>',
 					'<input type="checkbox" name="HeadStyle" value="0" id="HeadStyle" checked/> <label for="HeadStyle">显示用户头像</label>',
 				'</div>',
 			'</li>',
 		'</ul>',
-		//自定义模块里的内容
-		'<div class="split-line"></div>',
-			
-		'<a href="javascript:;" class="p toExtend"><em class="addIcon">+</em>添加自定义模块</a>',	
+		
+		'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>垃圾消息过滤设置</a>',					
 		'<ul class="none">',
 			'<li>',
 				'<div class="panel">',
-					'<input type="button" value="添加自定义模块" id="addMod" class="btn createTimeline" data-action="createTimeline">',
+					'<h4>过滤关键词</h4>',
+					'<p><i>*</i> 填写您要过滤的关键字/词/url，最多填写20个</p>',
+					'<textarea size="20"  name="Condition" rows="5"></textarea>',
 				'</div>',
 			'</li>',
+			'<li>',
+				'<div class="panel">',
+					'<h4>过滤用户</h4>',
+					'<p><i>*</i> 填写您要过滤的用户微博帐号，最多填写20个</p>',
+					'<textarea size="20" name="Condition" rows="5"></textarea>',
+				'</div>',
+			'</li>',
+		'</ul>',		
+			
+		//自定义模块里的内容
+		'<div class="split-line"></div>',
+			
+		'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>添加自定义模块</a>',	
+		'<ul class="none">',
+			'<li style="list-style:none outside none;">',
+				'<div class="panel">',
+					'<input type="button" value="添加自定义模块" id="addMod" class="btn createTimeline" data-action="createTimeline">',
+				'</div>',        
+			'</li>',
 		'</ul>',
+			
 		'<ul id="timelineList" class="timelineList"></ul>',
 	'<!--<div class="p1" id="getScript">',
 		'<h3>代码获取</h3>',
@@ -328,9 +354,9 @@ tpl.websites_read_explain_include = [
 		'<div><input type="button" value="" class="button" id="copyscript" /></div>',
 	'</div>-->',
 	'<div class="p1" style="margin-top:40px;">',
-		'<a href="javascript:;" class="devSubmit" id="showcode">获取代码</a> ',
+		'<a href="javascript:void(0);" class="devSubmit" id="showcode">获取代码</a> ',
 		'<!--',
-		'<a href="javascript:;" onclick="document.referrer&&location.replace(document.referrer);" class="devCancel">取消</a> ',
+		'<a href="javascript:void(0);" onclick="document.referrer&&location.replace(document.referrer);" class="devCancel">取消</a> ',
 		'-->',
 	'</div>',
 	'<%}else{%>',
@@ -360,7 +386,7 @@ function formSubmit() {
 	if ($("#showcode").attr("disabled")) {
 		return;
 	}
-	var topicnames = [],
+/*	var topicnames = [],
 	customcolor = [];
 	$("input[name='topicname']").each(function() {
 		if (/^[^#]{1,20}$/.test($.trim($(this).val()))) {
@@ -373,7 +399,7 @@ function formSubmit() {
 	var tmodelp = +$("input[name='tmodel']:checked").val(),
 	wbnamep = encodeURIComponent($.trim($('#wbname').val())),
 	wburlp = encodeURIComponent($.trim($('#originurl').val())),
-	colors = $('#colorList li.s').attr('data-color');
+	colors = $('#colorList li.s').attr('data-color');*/
 	var paras = {
 		"comp_type": 3,
 		//组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板'
@@ -386,7 +412,7 @@ function formSubmit() {
 		paras["comp_url"] = encodeURIComponent($("#comp_url").val());
 		paras["comp_name"] = encodeURIComponent($("#comp_name").val());
 	};
-	if (topicnames.length == 0) {
+/*	if (topicnames.length == 0) {
 		loginWin.show({
 			"title": "获取代码失败！",
 			"width": 240,
@@ -394,7 +420,7 @@ function formSubmit() {
 			"text": "<center><br/>请至少指定一个需要定制的话题</center>"
 		});
 		return;
-	}
+	}*/
 	if(window.comp){
 		paras["comp_id"] = comp.comp_id;
 	}
@@ -487,20 +513,17 @@ var getConfigInfo = function(){
 			return arr.join("\n") || "0";
 	},
 	onIframeload = function(iframe){
-		var onMessage = function(d){
+		var onMessage = function(event){
+			var d = event.data;
 			if (/^\d+$/.test(d) && iframe.height != (+d)){
 				iframe.height = d;
 			}
 		};
 		if (window.postMessage){
 				if (window.addEventListener){
-					window.addEventListener('message',function(event){
-						onMessage(event.data);
-					});
+					window.addEventListener('message',onMessage);
 				}else{
-					window.attachEvent("onmessage",function(event){
-						onMessage(event.data);
-					});
+					window.attachEvent("onmessage",onMessage);
 				}
 			
 		}else{
@@ -540,7 +563,9 @@ $(function(){
 				for(var i in param){
 					li.attr(i,param[i]);
 				}
-				li.html(param["Name"]+'<div class="condition">'+param["Condition"]+'</div></div><div><a href="javascript:;" data-action="edit">修改</a> <a href="javascript:;" data-action="del">删除</a></div>');
+				var conditionType = {"0":"关键词","1":"话题","2":"多用户","3":"多URL"}[param["ConditionType"]];
+				li.html(conditionType + ": " + param["Name"] + '</div></div><div><a href="javascript:void(0);" data-action="edit">修改</a> <a href="javascript:void(0);" data-action="del">删除</a></div>');
+			//	li.html(param["Name"]+'<div class="condition">'+param["Condition"]+'</div></div><div><a href="javascript:void(0);" data-action="edit">修改</a> <a href="javascript:void(0);" data-action="del">删除</a></div>');
 			}
 			$("#configboard").find("input").first().trigger("change");
 			f.parent().removeAttr("editId");
@@ -759,8 +784,10 @@ $(function(){
 							}
 							
 						var li = $("<li></li>").appendTo($("#timelineList"));
+						var conditionType = {"0":"关键词","1":"话题","2":"多用户","3":"多URL"}[o["ConditionType"]];
 						for (var n in o){
-							li.attr(n,o[n].toString()).html(o["Name"]+'<div class="condition">'+ o["Condition"].toString() +'</div><div><a href="javascript:;" data-action="edit">修改</a> <a href="javascript:;" data-action="del">删除</a></div>');
+							li.attr(n,o[n].toString()).html(conditionType + ": " + o["Name"] + '</div></div><div><a href="javascript:void(0);" data-action="edit">修改</a> <a href="javascript:void(0);" data-action="del">删除</a></div>');
+					//		li.attr(n,o[n].toString()).html(o["Name"]+'<div class="condition">'+ o["Condition"].toString() +'</div><div><a href="javascript:void(0);" data-action="edit">修改</a> <a href="javascript:void(0);" data-action="del">删除</a></div>');
 						}
 						o = {};
 					}

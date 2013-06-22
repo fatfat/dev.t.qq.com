@@ -8,8 +8,6 @@
 	}
 	
 	//页面参数控制跳转，add by fat
-	//TODO:限制条件的正则判断有问题，比如注册成为开发者以后应该去邮箱激活页的，也可能是后台参数有问题
-	
 	if (userInfo.developer_status == 0){
 		if( !( /developer/.test(webtype[1]) && (webtype[2] == undefined || webtype[2] == "" || /(bedever|add|addone|activate)/.test(webtype[2])) ) ){
 			location.href = "/developer/bedever";
@@ -165,10 +163,9 @@
 		'<ul class="appsnav">',
 		'<li><a href="/websites/login/"><span class="icon icon_login"></span>微博登录</a></li>',
 		'<li><a href="/websites/share/"><span class="icon icon_share"></span>一键分享</a></li>',
+		'<li><a href="/websites/read/"><span class="icon icon_wall"></span>阅读墙</a></li>',
 		'<li><a href="/websites/followcomp/"><span class="icon icon_follow"></span>收听组件</a></li>',
 		'<!--{*<li><a href="/websites/allfollow/">批量收听</a></li>*}-->',
-		'<li><a href="/websites/wall/"><span class="icon icon_wall"></span>话题墙</a></li>',
-		'<li><a href="/websites/read/"><span class="icon icon_wall"></span>阅读墙</a></li>',
 		'<li><a href="/websites/qshare/"><span class="icon icon_qshare"></span>Q-Share</a></li>',
 		'<li><a href="/websites/mood/"><span class="icon icon_mood"></span>心情板</a></li>',
 		'<li><a href="/websites/comment/"><span class="icon icon_comment"></span>微评论</a></li>',
@@ -178,7 +175,8 @@
 		'<li><a href="/websites/sign/"><span class="icon icon_sign"></span>签名档</a></li>',
 		'<!--{*<li><a href="/websites/luckdraw/">微抽奖</a></li>*}-->',
 		'<!--<li><a href="http://app.t.qq.com/?via=WB.TQQ.TOP.APP&g=2#mywebs" target="_blank">已授权网站</a></li>-->',
-		'</ul>',
+		'<li><a href="/websites/wall/"><span class="icon icon_wall"></span>话题墙</a></li>',
+		'</ul>'
 	].join("");
 	
 	tpl.development_iweibonav = [
