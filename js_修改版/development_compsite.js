@@ -75,9 +75,9 @@ this.tpl.header,
 
 
 
-$("#main").append(tmpl(development_compsiteTmpl,global_obj.data))
+$("#main").append(tmpl(development_compsiteTmpl,global_obj.data));
 
-util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/validater.js")
+util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/validater.js");
 
 $(function(){
     $(".appform li.alert").find(".hidebtn").click(function(){

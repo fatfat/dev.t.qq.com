@@ -6,7 +6,7 @@ var str = [
 	'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
 	'div a#yunJPGClick{display:none}'
 	].join("");
-	util.createScript(str);
+	util.createStyle(str);
 var development_compsetTmpl = [
 tpl.header,
 	'<div id="content" class="controlCon main main_app">',

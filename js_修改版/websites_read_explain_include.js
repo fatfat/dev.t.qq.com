@@ -400,10 +400,13 @@ function formSubmit() {
 	wbnamep = encodeURIComponent($.trim($('#wbname').val())),
 	wburlp = encodeURIComponent($.trim($('#originurl').val())),
 	colors = $('#colorList li.s').attr('data-color');*/
+	var module = (+$('#TitleModule')[0].checked) | (+$('#PubModule')[0].checked << 1) | (+$('#TabModule')[0].checked << 2) | (+$('#TimelineModule')[0].checked << 3) | (+$("input[name='nobg']")[0].checked << 4) ;
+	var insertFunction = (+$('#InsertFunction0')[0].checked) | (+$('#InsertFunction1')[0].checked << 1) | (+$('#InsertFunction2')[0].checked << 2);
 	var paras = {
-		"comp_type": 3,
+		"comp_type": 8,
 		//组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板'
-		"comp_style": "{\"topicnames\":\"" + topicnames.join("") + "\",\"width\":" + $("#width").val() + ",\"height\":" + $("#height").val() + ",\"autowidth\":" + $("#autowidth").is(":checked") + ",\"colorstyle\":" + $("input[name='color']:checked").val() + ",\"defaultcolorstyle\":" + colors + ",\"customcolor\":\"" + customcolor.join("_") + "\",\"imgshow\":" + $("input[name='imgshow']:checked").val() + ",\"postpos\":" + $("input[name='post']:checked").val() + ",\"tmodel\": " + tmodelp + " , \"wbname\" : \"" + wbnamep + "\", \"wburl\":\"" + wburlp + "\"}"
+		"comp_style": "\"width\":" + $("input[name='width']").val() + ",\"height\":" + $("input[name='height']").val() + ",\"colorstyle\":" + $("input[name='theme']:checked").val() + ",\"module\":"  + module + ",\"OfficialAccount\":" +　$("input[name='OfficialAccount']").val() + ",\"position\":" +　$("input[name='position']:checked").val() + ",\"InsertFunction\":" +　insertFunction + ",\"SourceUrl\":" +　$("input[name='SourceUrl']").val() + ",\"InitialContent\":" +　$("input[name='InitialContent']").val() + ",\"PageStyle\":" +　$("input[name='PageStyle']:checked").val() + ",\"TwitterNum\":" +　$("input[name='TwitterNum']").val() + ",\"PicStyle\":" +　$("input[name='PicStyle']:checked").val() + ",\"HeadStyle\":" +　$("input[name='HeadStyle']")[0].checked + ",\"Condition0\":" +　$("textarea[name='Condition']")[0].value + ",\"Condition1\":" +　$("textarea[name='Condition']")[1].value　
+	//	"comp_style": "{\"topicnames\":\"" + topicnames.join("") + "\",\"width\":" + $("#width").val() + ",\"height\":" + $("#height").val() + ",\"autowidth\":" + $("#autowidth").is(":checked") + ",\"colorstyle\":" + $("input[name='color']:checked").val() + ",\"defaultcolorstyle\":" + colors + ",\"customcolor\":\"" + customcolor.join("_") + "\",\"imgshow\":" + $("input[name='imgshow']:checked").val() + ",\"postpos\":" + $("input[name='post']:checked").val() + ",\"tmodel\": " + tmodelp + " , \"wbname\" : \"" + wbnamep + "\", \"wburl\":\"" + wburlp + "\"}"
 	};
 	if (window.comp && comp.comp_id) {
 		paras["comp_id"] = comp.comp_id;

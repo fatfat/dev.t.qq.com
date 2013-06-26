@@ -229,6 +229,7 @@
 			if(navigator.userAgent.indexOf('MSIE') >= 0){
 			    script.onreadystatechange = function(){
 			        if(this.readyState == 'loaded' || this.readyState == 'complete'){
+			        	script.onreadystatechange = null;
 			            callback&&callback();
 			        }
 			    }
