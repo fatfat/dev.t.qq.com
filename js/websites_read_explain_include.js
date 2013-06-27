@@ -6,7 +6,59 @@ var common = {},scroll = function(event,scroller){
 		return false;
 	}
 
+var jsonToString = function(o){
+	if (window.JSON){
+		return JSON.stringify(o);
+	}
 
+	var arr = [],
+		format = function(s){
+			if (typeof s === "object" && s !== null){
+				if (s.length){
+					var sarr = [];
+					for(var j=0,jk=s.length;j<jk;j++){
+						sarr.push(format(s[j]));
+					}
+					return "["+sarr.join(",")+"]";
+				}
+				return jsonToString(s);
+			}else if(typeof s === "string"){
+				return '"'+s+'"';
+			}else if(typeof s === "number"){
+				return s;
+			}else{
+				return s;
+			}
+		};
+	for(var i in o){
+		arr.push(['"'+i+'"',format(o[i])].join(":"));
+	}
+	return "{"+arr.join(",")+"}";
+};
+
+var O2String = function(O) {
+	var S = [];
+	var J = "";
+	if (Object.prototype.toString.apply(O) === '[object Array]') {
+		for (var i = 0; i < O.length; i++)
+		S.push(O2String(O[i]));
+		J = '[' + S.join(',') + ']';
+	}
+	else if (Object.prototype.toString.apply(O) === '[object Date]') {
+		J = "new Date(" + O.getTime() + ")";
+	}
+	else if (Object.prototype.toString.apply(O) === '[object RegExp]' || Object.prototype.toString.apply(O) === '[object Function]')  {
+		J = O.toString();
+	}
+	else if (Object.prototype.toString.apply(O) === '[object Object]') {
+		for (var i in O) {
+			O[i] = typeof(O[i]) == 'string' ? '\"' + O[i] + '\"': (typeof(O[i]) === 'object' ? O2String(O[i]) : O[i]);
+			S.push("\"" + i + "\"" + ':' + O[i]);
+		}
+		J = '{' + S.join(',') + '}';
+	}
+	return J;
+};
 var sty = [
 	'html,body{font-size:12px;display:block;margin:0;padding:0;min-height:100%;height:100%;overflow-x:hidden;}',
 	'body{text-align:center;padding:0 1px;overflow:visible;border:1px solid #ccc;border-top:0;border-bottom:0;height:100%;}',
@@ -66,7 +118,6 @@ var sty = [
 util.createStyle(sty);	
 
 tpl.websites_read_iframe = [
-	'<div class="form1 dialog none">',
 		'<a href="javascript:void(0);" class="closeBtn">&times;</a>',
 		'<div class="tabbar">',
 			'<a href="javascript:void(0);" class="tab active">话题</a>',
@@ -78,9 +129,9 @@ tpl.websites_read_iframe = [
 			'<form class="timeline">',
 				'<dl>',
 				'<dt>时间线名称</dt>',
-				'<dd><input type="text" size="20" maxlength="8" style="width:500px;" name="Name" value="最热话题"/><input type="hidden" name="ConditionType" value="1"/></dd>',
+				'<dd><input type="text" size="20" maxlength="8" data-rule="word" data-error="word" style="width:500px;" name="Name" value=""/><input type="hidden" name="ConditionType" value="1"/></dd>',
 				'<dt>指定话题，每行为一个话题，最多支持5个话题</dt>',
-				'<dd><textarea size="20" style="width:500px;" name="Condition" rows="5">阅读墙测试&#13;API接口意见&#13;API接口问题&#13;NOKIA925 超乎所见 震撼上市&#13;分享视频</textarea></dd>',
+				'<dd><textarea size="20" style="width:500px;" data-rule="word" data-error="word" name="Condition" rows="5"></textarea></dd>',
 				'<dt>排序方式</dt>',
 				'<dd>',
 					'<input type="radio" name="SortType" value="1" id="SortType4" checked/> <label for="SortType4">时间排序</label>',
@@ -115,9 +166,9 @@ tpl.websites_read_iframe = [
 			'<form class="timeline none">',
 				'<dl>',
 				'<dt>时间线名称</dt>',
-				'<dd><input type="text" size="20" maxlength="8" style="width:500px;" name="Name" value="名人动态"/><input type="hidden" name="ConditionType" value="2"/></dd>',
+				'<dd><input type="text" size="20" maxlength="8" style="width:500px;" data-rule="word" data-error="word" name="Name" value=""/><input type="hidden" name="ConditionType" value="2"/></dd>',
 				'<dt>指定微博帐号，每行为一个微博帐号，最多支持10个</dt>',
-				'<dd><textarea size="20" style="width:500px;" name="Condition" rows="5">laozi12345&#13;fucaixie&#13;xiefucai1986&#13;fucaige&#13;fucai12345</textarea></dd>',
+				'<dd><textarea size="20" style="width:500px;" data-error="weibos" data-rule="weibos" name="Condition" rows="5"></textarea></dd>',
 				'<dt>排序方式</dt>',
 				'<dd>',
 					'<input type="radio" name="SortType" value="1" id="SortType7" checked/> <label for="SortType7">时间排序</label>',
@@ -152,9 +203,9 @@ tpl.websites_read_iframe = [
 			'<form class="timeline none">',
 				'<dl>',
 				'<dt>时间线名称</dt>',
-				'<dd><input type="text" size="20" maxlength="8" style="width:500px;" name="Name" value="热门搜索"/><input type="hidden" name="ConditionType" value="0"/></dd>',
+				'<dd><input type="text" size="20" maxlength="8" data-rule="word" data-error="word" style="width:500px;" name="Name" value=""/><input type="hidden" name="ConditionType" value="0"/></dd>',
 				'<dt>指定关键词，每行为一个关键词，最多添加5个</dt>',
-				'<dd><textarea size="20" style="width:500px;" name="Condition" rows="5">一键分享&#13;话题墙&#13;阅读墙&#13;微博登录&#13;微博组件</textarea></dd>',
+				'<dd><textarea size="20" style="width:500px;" data-error="keyWords" data-rule="keyWords" name="Condition" rows="5"></textarea></dd>',
 				'<dt>排序方式</dt>',
 				'<dd>',
 					'<input type="radio" name="SortType" value="1" id="SortType1" checked/> <label for="SortType1">时间排序</label>',
@@ -190,11 +241,12 @@ tpl.websites_read_iframe = [
 		'<div class="controls">',
 			'<input type="button" class="btn" value="确定"/>',
 		'</div>',
-	'</div>',
 	].join(" ");
 
 tpl.websites_read_explain_include = [
-	tpl.websites_read_iframe,
+	'<div class="form1 dialog none">',
+		tpl.websites_read_iframe,
+	'</div>',
 	'<link href="http://mat1.gtimg.com/app/opent/css/websites/show/customcolor.css" type="text/css" rel="stylesheet">',
 	'<div class="comp_area" id = "configboard" style="min-height:700px;width:411px;overflow:hidden;">',
 		'<div id="show" class="show_wall" style="height:594px;">',
@@ -299,7 +351,7 @@ tpl.websites_read_explain_include = [
 				'<div class="panel">',
 					'<h4>时间线每次拉取微博数量</h4>',
 				//	'<input type="number" name="TwitterNum" placeholder="每页多少条微博(1-20)" value="20" max="20" min="1"/>',
-					'<select style="display:block" data-rule="app_class_main" data-error="请选择分类">',
+					'<select name="TwitterNum" style="display:block" data-rule="app_class_main" data-error="请选择分类">',
 						'<option value="5">5条</option>',
 						'<option value="10">10条</option>',
 						'<option value="20" selected>20条</option>',
@@ -358,7 +410,7 @@ tpl.websites_read_explain_include = [
 	'<!--<div class="p1" id="getScript">',
 		'<h3>代码获取</h3>',
 		'<div class="fcgray">复制以下代码，粘贴到你的网页后台代码中，即可在网页<br />中看到你的话题墙</div>',
-		'<textarea style="width:300px;height:60px;" id="showscripts">请先填写需要定制的话题名和appkey</textarea>',
+		'<textarea style="width:300px;height:60px;" data-rule="topic" data-error="topic" id="showscripts">请先填写需要定制的话题名和appkey</textarea>',
 		'<div><input type="button" value="" class="button" id="copyscript" /></div>',
 	'</div>-->',
 	'<div class="p1" style="margin-top:40px;">',
@@ -389,7 +441,21 @@ eventBindFuncList.push(function(){
 		}
 	});
 });
-
+var	submitTimelineInfo = function(){
+		var t = $("#timelineList"),arr = [];
+			t.find("li").each(function(){
+				var li = $(this),attrs = ["Name","ConditionType","Condition","SortType","Famous","ContentType","MessageType"],timeline = {};
+				for (var i in attrs){
+					if (attrs[i] === "Condition"){
+						timeline[attrs[i]] = encodeURIComponent(li.attr(attrs[i]));
+					}else{
+						timeline[attrs[i]] = li.attr(attrs[i]);
+					}
+				}
+				arr.push(timeline);
+			});
+			return arr;
+	}
 function formSubmit() {
 	if ($("#showcode").attr("disabled")) {
 		return;
@@ -411,33 +477,54 @@ function formSubmit() {
 	var module = (+$('#TitleModule')[0].checked) | (+$('#PubModule')[0].checked << 1) | (+$('#TabModule')[0].checked << 2) | (+$('#TimelineModule')[0].checked << 3) | (+$("input[name='nobg']")[0].checked << 4) ;
 	var insertFunction = (+$('#InsertFunction0')[0].checked) | (+$('#InsertFunction1')[0].checked << 1) | (+$('#InsertFunction2')[0].checked << 2);
 	var filter = {"updateTime":new Date().getTime(),"userIds":[], "keyWords":[]};
-	var weibos=$("textarea[name='filter']")[1].value.split(/\n+/);
-	for(var i in weibos){
+	var userIds=$("textarea[name='filter']")[1].value.split(/\n+/);
+	for(var i in userIds){
 	/*	if (/^\s*$/.test(qqs[i])){
 			continue;
 		}*/
 //		if (/^[1-9]\d{4,}$/.test(weibos[i])==false){
-			filter.userIds.push(weibos[i]);
+			filter.userIds.push(userIds[i]);
 //		}
 	}
-	var weibos=$("textarea[name='filter']")[0].value.split(/\n+/);
-	for(var i in weibos){
+
+	var keyWords=$("textarea[name='filter']")[0].value.split(/\n+/);
+	for(var i in keyWords){
 	/*	if (/^\s*$/.test(qqs[i])){
 			continue;
 		}*/
 //		if (/^[1-9]\d{4,}$/.test(weibos[i])==false){
-			filter.keyWords.push(encodeURIComponent(weibos[i]));
+			filter.keyWords.push(encodeURIComponent(keyWords[i]));
 //		}
 	}	
-	console.log(filter);
+	
+	var submitTimeline = submitTimelineInfo();
+			console.log(submitTimeline)
+	var comp_style_json = {
+		"width":$("input[name='width']").val(),
+		"height":$("input[name='height']").val(),
+		"colorstyle":$("input[name='theme']:checked").val(),
+		"module":module,
+		"OfficialAccount":$("input[name='OfficialAccount']").val(),
+		 "position":$("input[name='position']:checked").val(),
+		"InsertFunction":insertFunction,
+		"SourceUrl":encodeURIComponent($("input[name='SourceUrl']").val()),
+		"InitialContent":encodeURIComponent($("input[name='InitialContent']").val()),
+		 "PageStyle":$("input[name='PageStyle']:checked").val(),
+		"TwitterNum":$("#configboard").find("[name='TwitterNum']").val(),
+		"PicStyle":$("input[name='PicStyle']:checked").val(),
+		 "HeadStyle":$("input[name='HeadStyle']")[0].checked,
+		 "filter":filter,
+		"submitTimeline":submitTimeline
+	};
+
 	var paras = {
 		"comp_type": 9,
 		//组件类型 1、'一键分享',2'批量收听',3'话题墙',4'Q-Share',5'心情板'
-		"comp_style": "{\"width\":\"" + $("input[name='width']").val() + "\",\"height\":\"" + $("input[name='height']").val() + "\",\"colorstyle\":" + $("input[name='theme']:checked").val() + ",\"module\":"  + module + ",\"OfficialAccount\":\"" +　$("input[name='OfficialAccount']").val() + "\",\"position\":" +　$("input[name='position']:checked").val() + ",\"InsertFunction\":" +　insertFunction + ",\"SourceUrl\":\"" +　encodeURIComponent($("input[name='SourceUrl']").val()) + "\",\"InitialContent\":\"" +　encodeURIComponent($("input[name='InitialContent']").val()) + "\",\"PageStyle\":" +　$("input[name='PageStyle']:checked").val() + ",\"TwitterNum\":" +　$("input[name='TwitterNum']").val() + ",\"PicStyle\":" +　$("input[name='PicStyle']:checked").val() + ",\"HeadStyle\":" +　$("input[name='HeadStyle']")[0].checked + ",filter:\"" + filter　+ "\"}"
-	//	"comp_style": "{\"topicnames\":\"" + topicnames.join("") + "\",\"width\":" + $("#width").val() + ",\"height\":" + $("#height").val() + ",\"autowidth\":" + $("#autowidth").is(":checked") + ",\"colorstyle\":" + $("input[name='color']:checked").val() + ",\"defaultcolorstyle\":" + colors + ",\"customcolor\":\"" + customcolor.join("_") + "\",\"imgshow\":" + $("input[name='imgshow']:checked").val() + ",\"postpos\":" + $("input[name='post']:checked").val() + ",\"tmodel\": " + tmodelp + " , \"wbname\" : \"" + wbnamep + "\", \"wburl\":\"" + wburlp + "\"}"
+		"comp_style": O2String(comp_style_json)
 	};
-	console.log(paras.comp_style);
-	alert(paras.comp_style);
+	/*		"{\"width\":\"" + $("input[name='width']").val() + "\",\"height\":\"" + $("input[name='height']").val() + "\",\"colorstyle\":" + $("input[name='theme']:checked").val() + ",\"module\":"  + module + ",\"OfficialAccount\":\"" +　$("input[name='OfficialAccount']").val() + "\",\"position\":" +　$("input[name='position']:checked").val() + ",\"InsertFunction\":" +　insertFunction + ",\"SourceUrl\":\"" +　encodeURIComponent($("input[name='SourceUrl']").val()) + "\",\"InitialContent\":\"" +　encodeURIComponent($("input[name='InitialContent']").val()) + "\",\"PageStyle\":" +　$("input[name='PageStyle']:checked").val() + ",\"TwitterNum\":" +　$("#configboard").find("[name='TwitterNum']").val() + ",\"PicStyle\":" +　$("input[name='PicStyle']:checked").val() + ",\"HeadStyle\":" +　$("input[name='HeadStyle']")[0].checked + ",\"filter\":\"" + O2String(filter) + "\"}"
+	};*/
+
 	if (window.comp && comp.comp_id) {
 		paras["comp_id"] = comp.comp_id;
 	}
@@ -445,18 +532,10 @@ function formSubmit() {
 		paras["comp_url"] = encodeURIComponent($("#comp_url").val());
 		paras["comp_name"] = encodeURIComponent($("#comp_name").val());
 	};
-/*	if (topicnames.length == 0) {
-		loginWin.show({
-			"title": "获取代码失败！",
-			"width": 240,
-			"height": 120,
-			"text": "<center><br/>请至少指定一个需要定制的话题</center>"
-		});
-		return;
-	}*/
 	if(window.comp){
 		paras["comp_id"] = comp.comp_id;
 	}
+
 	$("#showcode").attr("disabled", "disabled");
 	$.ajax({
 		"type": "post",
@@ -482,6 +561,7 @@ function formSubmit() {
 			$("#showcode").removeAttr("disabled");
 		},
 		"error": function(d) {
+			alert(2);
 			loginWin.show({
 				"title": "获取代码失败！",
 				"width": 340,
@@ -599,6 +679,8 @@ $(function(){
 				var conditionType = {"0":"关键词","1":"话题","2":"多用户","3":"多URL"}[param["ConditionType"]];
 				li.html(conditionType + ": " + param["Name"] + '</div></div><div><a href="javascript:void(0);" data-action="edit">修改</a> <a href="javascript:void(0);" data-action="del">删除</a></div>');
 			//	li.html(param["Name"]+'<div class="condition">'+param["Condition"]+'</div></div><div><a href="javascript:void(0);" data-action="edit">修改</a> <a href="javascript:void(0);" data-action="del">删除</a></div>');
+			} else if( !param["Condition"] ) {
+				dialog.addClass("none");
 			}
 			$("#configboard").find("input").first().trigger("change");
 			f.parent().removeAttr("editId");
@@ -619,35 +701,6 @@ $(function(){
 	//		f = form.get(0),
 			colors = ['d0d0d0','ccc','333','000'],
 			config = {},
-			jsonToString = function(o){
-				if (window.JSON){
-					return JSON.stringify(o);
-				}
-			
-				var arr = [],
-					format = function(s){
-						if (typeof s === "object" && s !== null){
-							if (s.length){
-								var sarr = [];
-								for(var j=0,jk=s.length;j<jk;j++){
-									sarr.push(format(s[j]));
-								}
-								return "["+sarr.join(",")+"]";
-							}
-							return jsonToString(s);
-						}else if(typeof s === "string"){
-							return '"'+s+'"';
-						}else if(typeof s === "number"){
-							return s;
-						}else{
-							return s;
-						}
-					};
-				for(var i in o){
-					arr.push(['"'+i+'"',format(o[i])].join(":"));
-				}
-				return "{"+arr.join(",")+"}";
-			},
 			codeStr1 = '&lt;script type="text/javascript" src="http://mat1.gtimg.com/app/vt/js/read/import.js" charset="utf-8"&gt;&lt;/script&gt;';
 			codeStr2 = '&lt;iframe width="'+form.width()+'" height="'+form.height()+'" frameborder="0" style="border:1px solid #'+colors[+form.find("input[name='theme']:checked").val()]+';" allowtransparency="true" src="about:blank" id="'+id+'" srcolling="no"&gt;&lt;/iframe&gt;';
 	//		config.appkey = form.appkey.value; TODO
@@ -664,7 +717,7 @@ $(function(){
 				"HeadStyle":+$("#HeadStyle").is(":checked"),
 				"PageStyle":+form.find("input[name='PageStyle']:checked").val(),
 				"PicStyle":+form.find("input[name='PicStyle']:checked").val(),
-				"TwitterNum":+form.find("input[name='TwitterNum']").val()
+				"TwitterNum":+$('select[data-error="请选择分类"]').val()
 			};
 			config.PubModuleConfigure = {
 				"InitialContent":form.find("input[name='InitialContent']").val(),
@@ -709,7 +762,7 @@ $(function(){
 			].join("\n"));
 	}
 	;
-	
+
 eventBindFuncList.push(function(){
 	$("input[name='__ContentType']").change(function(){
 		var t = $(this),val = +t.val(),selector = t.siblings(".content-type"),target = t.siblings("input[name='ContentType']");
@@ -757,9 +810,9 @@ eventBindFuncList.push(function(){
 				if (pageStyle === 2){
 					onIframeload(iframe[0]);
 				}
-				if (window.localStorage && msg !== "0"){
+			/*	if (window.localStorage && msg !== "0"){
 					localStorage.setItem("timelineInfo",msg);
-				}
+				}*/
 			},
 			onFrameLoad = function(){
 				var win = frame.contentWindow,msg = getTimelineInfo();
@@ -802,7 +855,7 @@ eventBindFuncList.push(function(){
 				arr,
 				o = {};
 				
-				if (timelineInfo){
+			/*	if (timelineInfo){
 					timelines = timelineInfo.split("\n");
 					for(var i=0,k=timelines.length;i<k;i++){
 						var arr = timelines[i].split("\t");
@@ -825,7 +878,7 @@ eventBindFuncList.push(function(){
 						}
 						o = {};
 					}
-				}
+				}*/
 				$("#configboard").find("input").first().trigger("change");
 		}else{
 			$("#configboard").find("input").first().trigger("change");

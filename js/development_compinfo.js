@@ -568,7 +568,113 @@ function compType8(){
 		showCodestr();
 	});
 }
+function compType9(){
+	var codestr= '<div class="code_tit">1. 将以下代码插入到页面中需要部署分享按钮的地方</div>'
+		   + '<div contenteditAble="true" class="code">'
+		   + [
+			'&lt;div id="qqwb_share__" data-appkey="' + comp.comp_id+'" ',
+			'data-icon="' + share_iconindex +'" ',
+			'data-counter="' + share_showcounter +'" ',
+			share_showcounter ? 'data-counter_pos="' + share_counterpos + '" ' : '',
+			'data-content="{title}" ',
+			richable && 'data-richcontent="{line1}|{line2}|{line3}" ' || '',
+			'data-pic="{pic}"&gt;&lt;/div&gt;'
+		   ].join('').replace(/\{(\w+)\}/g,'<span class="c_red">{$1}</span>')
+		   + '</div>'
+		   + '<div class="code_tit">2. 将以下代码插入到<span class="c_green">&lt;/body&gt;</span>之前</div>'
+		   + '<div contenteditAble="true" class="code">'
+		   + '&lt;script src="http://mat1.gtimg.com/app/openjs/openjs.js#autoboot=no&debug=no"&gt;&lt;\/script&gt;'
+		   + '</div>'
+		   + '<div class="code_tit">3. 把代码中标红的参数按以下说明进行相应替换</div>'
+		   + '<table width="100%" cellpadding="7" border="1" class="paratable">'
+		   + '<tr><th>title</th><td>默认的文本内容或Rich化分享时的消息体标题，rich化时最多15个全角字符长度</td></tr>'
+		   + (function(richable){
+				if (richable === 0){
+					return '';
+				}else{
+					return '<tr><th>line1</th><td>Rich化消息体第一行文字，最多15个全角字符长度</td></tr>'
+				   + '<tr><th>line2</th><td>Rich化消息体第二行文字，最多15个全角字符长度</td></tr>'
+				   + '<tr><th>line3</th><td>Rich化消息体第三行文字，最多15个全角字符长度</td></tr>';
+				}
+		   })(richable)
+		   + '<tr><th>pic</th><td>需要被分享的图片url，多张图片以|分隔</td></tr>'
+		   + '</table>'
+		   ;
+	var buildCode = function(timer){
+		var id = 'txwbydq_01',
+			colors = ['d0d0d0','ccc','333','000'],
+			config = {},
+			codeStr1 = '&lt;script type="text/javascript" src="http://mat1.gtimg.com/app/vt/js/read/import.js" charset="utf-8"&gt;&lt;/script&gt;';
+			codeStr2 = '&lt;iframe width="'+form.width()+'" height="'+form.height()+'" frameborder="0" style="border:1px solid #'+colors[+form.find("input[name='theme']:checked").val()]+';" allowtransparency="true" src="about:blank" id="'+id+'" srcolling="no"&gt;&lt;/iframe&gt;';
+	//		config.appkey = form.appkey.value; TODO
+			config.appkey = window.comp && comp.comp_id ? comp.comp_id : "801351684";
+			config.theme = +form.find("input[name='theme']:checked").val();
+			config.nobg = +form.find("[name='nobg']")[0].checked;
+			config.ModuleConfigure = {
+				"PubModule":+$("#PubModule").is(":checked"),
+				"TabModule":+$("#TabModule").is(":checked"),
+				"TimelineModule":+$("#TimelineModule").is(":checked"),
+				"TitleModule":+$("#TitleModule").is(":checked")
+			};
+			config.TimelineDetail = {
+				"HeadStyle":+$("#HeadStyle").is(":checked"),
+				"PageStyle":+form.find("input[name='PageStyle']:checked").val(),
+				"PicStyle":+form.find("input[name='PicStyle']:checked").val(),
+				"TwitterNum":+$('select[data-error="请选择分类"]').val()
+			};
+			config.PubModuleConfigure = {
+				"InitialContent":form.find("input[name='InitialContent']").val(),
+				"InsertFunction":(function(a){
+					var arr = [];
+					a.each(function(){
+						arr.push(+$(this).val());
+					});
+					return arr;
+				})(form.find("input[name='InsertFunction']:checked")),
+				"SourceUrl":form.find("input[name='SourceUrl']").val(),
+				"position":+form.find("input[name='position']:checked").val()
+			};
+			config.TitleModuleConfigure = {
+				"OfficialAccount":form.find("input[name='OfficialAccount']").val()
+			};
+			config.TimelineModuleConfigure = (function(lis){
+				var arr = [];
+				lis.each(function(){
+					var conf = {},li = $(this);
+						conf.Condition = li.attr("Condition").split("\t");
+						conf.ConditionType = +li.attr("ConditionType");
+						conf.ContentType = +li.attr("ContentType");
+						conf.Famous = +li.attr("Famous");
+						conf.MessageType = +li.attr("MessageType");
+						conf.Name = li.attr("Name");
+						conf.SortType = +li.attr("SortType");
+					arr.push(conf);
+				});
+				return arr;
+			})($("#timelineList").find("li"));
+			
+			code1.html(codeStr1);
+			code2.html([
+				codeStr2,
+				'',
+				'&lt;script type="text/javascript"&gt;window.showTxWbYDQ(document.getElementById("'+id+'"),',
+				jsonToString(config),
+				',',
+				'function(d){/*回调函数,d的值格式为：{"action":"发表","ret":0,"errcode":0,"msg":"ok","data":{"id":231174038614579,"time":1371544700}},其中action的值可能为“发表、转播、评论”*/}',
+				');&lt;/script&gt;'
+			].join("\n"));
+	}
+	;
+		var comp_style = comp.comp_style?comp.comp_style:{"width":"100%","height":"100%","colorstyle":1,"module":15,"OfficialAccount":"api_weibo","position":0,"InsertFunction":7,"SourceUrl":"http://mat1.gtimg.com/app/tmp/read.html","InitialContent":"#阅读墙测试# 说点什么吧","PageStyle":0,"TwitterNum":20,"PicStyle":0,"HeadStyle":1};
+	
+	var comp_id = comp.comp_id;
 
+	var _url=buildCode();
+	console.log(buildCode());
+	/*	$("#scripts").val("<iframe frameborder=\"0\" scrolling=\"no\" src=\""+_url+"\" width=\""+[comp_style.width,"100%"][0+comp_style.autowidth]+"\" height=\""+comp_style.height+"\"></iframe>");
+		$("#preview").html($("#scripts").val());
+		$(".getcode span").css("visibility","hidden");*/
+}
 
 $(".appinfo li.alert").find(".hidebtn").click(function(){
 /*
@@ -605,6 +711,8 @@ if(comp.comp_type==1){//<!--一键分享-->
 	compType6()
 }else if(comp.comp_type==8){
 	compType8();
+}else if(comp.comp_type==9){
+	compType9();
 }
 
 $("#main").append(this.tpl.footer);	

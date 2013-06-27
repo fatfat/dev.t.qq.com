@@ -99,7 +99,9 @@
 					common.setMsg('上传成功,<a href="http://app.t.qq.com/download.php?key='+(common.config.filekey.slice(1))+'&name='+encodeURIComponent(common.config.filename)+'" target="_blank">点击下载</a>',1);
 					common.setUploadProgress(1);
 					if (frameElement.callback){
-						frameElement.callback({"ret":0,"msg":"上传成功","data":{"filename":common.config.filename,"filekey":common.config.filekey.slice(1),"filesize":common.config.fileSize}});
+						setTimeout(function(){
+							frameElement.callback({"ret":0,"msg":"上传成功","data":{"filename":common.config.filename,"filekey":common.config.filekey.slice(1),"filesize":common.config.fileSize}});
+						},100);
 					}
 				}
 			},//3
@@ -119,18 +121,19 @@
 			files = _plugin.SelectFiles(window).split(/[\s\r\n]+/g);
 			return files[0];
 		}else{
-			common.setMsg('您需要安装上传控件才能进行上传，点击此处 <a href="http://mail.qq.com/cgi-bin/readtemplate?t=browser_addon&check=false&returnto='+encodeURIComponent(top.location.href)+'" onclick="return common.installActive();">安装上传控件</a>',2);
+			common.setMsg('您需要安装上传控件才能进行上传，点击此处 <a href="http://mail.qq.com/cgi-bin/readtemplate?t=browser_addon&check=false&returnto='+encodeURIComponent(top.location.href)+'" onclick="return common.resizeFrameElement(960,450);">安装上传控件</a>',2);
 			return false;	
 		}		
 	},
 	"getFileInfo":function(){
 		var filename;
 		common.config.file = common.selectFile();
-		filename = common.config.file.match(/([^\\]+$)/);
-
 		if (common.config.file){
+			filename = common.config.file.match(/([^\\]+$)/);
 			if (/\.apk$/.test(common.config.file) === false){
-				common.setMsg("仅支持apk安装包！",2);
+				var d = document.documentElement || document.body;
+				common.setMsg("仅支持apk安装包！你的安装包文件路径为：<br/>"+common.config.file+"<br/><span style=\"color:green;\">注：安装包路径中不能含有空格！</span>",2);
+				common.resizeFrameElement(d.scrollWidth,d.scrollHeight);
 				return false;
 			}
 			common.config.filename = filename && filename[1];
@@ -177,10 +180,10 @@
 		panel.className = ["","yes","no"][ret];
 		panel.innerHTML = text;
 	},
-	"installActive":function(){
+	"resizeFrameElement":function(w,h){
 		frameElement.width="100%";
-		frameElement.height=450;
-		parent.ptlogin2_onResize(960,450);
+		frameElement.height=h;
+		parent.ptlogin2_onResize(w,h);
 	}
 };
 
@@ -196,7 +199,8 @@ function $(a){
 	return document.getElementById(a);
 }
 window.onload = function(){
-	common.initPlugin();
+	var ret = common.initPlugin();
+	
 	$("upload_btn").onclick = common.init;
 	if (!(window.console && window.console.log)){
 		var log = document.getElementById("console");

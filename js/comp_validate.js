@@ -405,7 +405,7 @@ function compValidateEvent() {
 			value = $(this).val();
 			errmsg = $(this).attr("data-error");
 			if (OPEN_VALIDATOR.hasOwnProperty(rule) && rule) {
-				if (!$.trim(value) && rule != "tname" && rule != "appdes" && rule != "topicname" && rule!= "applink") {
+				if (!$.trim(value) && rule != "tname" && rule != "appdes" && rule != "topicname" && rule!= "applink" && rule != "appweibo" && rule != "keyWords" && rule != "appWeibos") {
 					errmsg += "不能为空";
 					flag = false;
 				} else {
