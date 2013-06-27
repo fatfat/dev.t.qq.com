@@ -1,1 +1,867 @@
-var jscolor={dir:"",bindClass:"color",binding:true,preloading:true,confirmAction:null,install:function(){if(document.readyState==="complete"){return jscolor.init()}jscolor.addEvent(window,"load",jscolor.init)},init:function(){if(jscolor.binding){jscolor.bind()}if(jscolor.preloading){jscolor.preload()}},getDir:function(){if(!jscolor.dir){var a=jscolor.detectDir();jscolor.dir=a!==false?a:"jscolor/"}return"http://mat1.gtimg.com/app/opent/images/websites/jscolor/";return jscolor.dir},detectDir:function(){var a=location.href;var c=document.getElementsByTagName("base");for(var d=0;d<c.length;d+=1){if(c[d].href){a=c[d].href}}var c=document.getElementsByTagName("script");for(var d=0;d<c.length;d+=1){if(c[d].src&&/(^|\/)jscolor\.js([?#].*)?$/i.test(c[d].src)){var b=new jscolor.URI(c[d].src);var e=b.toAbsolute(a);e.path=e.path.replace(/[^\/]+$/,"");e.query=null;e.fragment=null;return e.toString()}}return false},bind:function(){var matchClass=new RegExp("(^|\\s)("+jscolor.bindClass+")\\s*(\\{[^}]*\\})?","i");var e=document.getElementsByTagName("input");for(var i=0;i<e.length;i+=1){var m;if(!e[i].color&&e[i].className&&(m=e[i].className.match(matchClass))){var prop={};if(m[3]){try{eval("prop="+m[3])}catch(eInvalidProp){}}e[i].color=new jscolor.color(e[i],prop)}}},onConfirmChange:function(a){this.confirmAction=a},confirm:function(){if(this.confirmAction){this.confirmAction()}},preload:function(){for(var a in jscolor.imgRequire){if(jscolor.imgRequire.hasOwnProperty(a)){jscolor.loadImage(a)}}},images:{pad:[181,101],sld:[16,101],cross:[15,15],arrow:[7,11]},imgRequire:{},imgLoaded:{},requireImage:function(a){jscolor.imgRequire[a]=true},loadImage:function(a){if(!jscolor.imgLoaded[a]){jscolor.imgLoaded[a]=new Image();jscolor.imgLoaded[a].src=jscolor.getDir()+a}},fetchElement:function(a){return typeof a==="string"?document.getElementById(a):a},addEvent:function(c,a,b){if(c.addEventListener){c.addEventListener(a,b,false)}else{if(c.attachEvent){c.attachEvent("on"+a,b)}}},fireEvent:function(c,a){if(!c){return}if(document.createEventObject){var b=document.createEventObject();c.fireEvent("on"+a,b)}else{if(document.createEvent){var b=document.createEvent("HTMLEvents");b.initEvent(a,true,true);c.dispatchEvent(b)}else{if(c["on"+a]){c["on"+a]()}}}},getElementPos:function(b){var c=b,d=b;var a=0,e=0;if(c.offsetParent){do{a+=c.offsetLeft;e+=c.offsetTop}while(c=c.offsetParent)}while((d=d.parentNode)&&d.nodeName.toUpperCase()!=="BODY"){a-=d.scrollLeft;e-=d.scrollTop}return[a,e]},getElementSize:function(a){return[a.offsetWidth,a.offsetHeight]},getMousePos:function(a){if(!a){a=window.event}if(typeof a.pageX==="number"){return[a.pageX,a.pageY]}else{if(typeof a.clientX==="number"){return[a.clientX+document.body.scrollLeft+document.documentElement.scrollLeft,a.clientY+document.body.scrollTop+document.documentElement.scrollTop]}}},getViewPos:function(){if(typeof window.pageYOffset==="number"){return[window.pageXOffset,window.pageYOffset]}else{if(document.body&&(document.body.scrollLeft||document.body.scrollTop)){return[document.body.scrollLeft,document.body.scrollTop]}else{if(document.documentElement&&(document.documentElement.scrollLeft||document.documentElement.scrollTop)){return[document.documentElement.scrollLeft,document.documentElement.scrollTop]}else{return[0,0]}}}},getViewSize:function(){if(typeof window.innerWidth==="number"){return[window.innerWidth,window.innerHeight]}else{if(document.body&&(document.body.clientWidth||document.body.clientHeight)){return[document.body.clientWidth,document.body.clientHeight]}else{if(document.documentElement&&(document.documentElement.clientWidth||document.documentElement.clientHeight)){return[document.documentElement.clientWidth,document.documentElement.clientHeight]}else{return[0,0]}}}},URI:function(b){this.scheme=null;this.authority=null;this.path="";this.query=null;this.fragment=null;this.parse=function(c){var d=c.match(/^(([A-Za-z][0-9A-Za-z+.-]*)(:))?((\/\/)([^\/?#]*))?([^?#]*)((\?)([^#]*))?((#)(.*))?/);this.scheme=d[3]?d[2]:null;this.authority=d[5]?d[6]:null;this.path=d[7];this.query=d[9]?d[10]:null;this.fragment=d[12]?d[13]:null;return this};this.toString=function(){var c="";if(this.scheme!==null){c=c+this.scheme+":"}if(this.authority!==null){c=c+"//"+this.authority}if(this.path!==null){c=c+this.path}if(this.query!==null){c=c+"?"+this.query}if(this.fragment!==null){c=c+"#"+this.fragment}return c};this.toAbsolute=function(d){var d=new jscolor.URI(d);var e=this;var c=new jscolor.URI;if(d.scheme===null){return false}if(e.scheme!==null&&e.scheme.toLowerCase()===d.scheme.toLowerCase()){e.scheme=null}if(e.scheme!==null){c.scheme=e.scheme;c.authority=e.authority;c.path=a(e.path);c.query=e.query}else{if(e.authority!==null){c.authority=e.authority;c.path=a(e.path);c.query=e.query}else{if(e.path===""){c.path=d.path;if(e.query!==null){c.query=e.query}else{c.query=d.query}}else{if(e.path.substr(0,1)==="/"){c.path=a(e.path)}else{if(d.authority!==null&&d.path===""){c.path="/"+e.path}else{c.path=d.path.replace(/[^\/]+$/,"")+e.path}c.path=a(c.path)}c.query=e.query}c.authority=d.authority}c.scheme=d.scheme}c.fragment=e.fragment;return c};function a(c){var e="";while(c){if(c.substr(0,3)==="../"||c.substr(0,2)==="./"){c=c.replace(/^\.+/,"").substr(1)}else{if(c.substr(0,3)==="/./"||c==="/."){c="/"+c.substr(3)}else{if(c.substr(0,4)==="/../"||c==="/.."){c="/"+c.substr(4);e=e.replace(/\/?[^\/]*$/,"")}else{if(c==="."||c===".."){c=""}else{var d=c.match(/^\/?[^\/]*/)[0];c=c.substr(d.length);e=e+d}}}}}return e}if(b){this.parse(b)}},getNextEl:function(a,b){if(a.nextSibling.nodeName.toLowerCase()!==b){return this.getNextEl(a.nextSibling,b)}return a.nextSibling},color:function(f,v){this.required=true;this.adjust=true;this.hash=false;this.caps=true;this.valueElement=f;this.styleElement=jscolor.getNextEl(f,"div");this.hsv=[0,0,1];this.rgb=[1,1,1];this.pickerOnfocus=true;this.pickerMode="HSV";this.pickerPosition="bottom";this.pickerFace=10;this.pickerFaceColor="ThreeDFace";this.pickerBorder=1;this.pickerBorderColor="ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight";this.pickerInset=1;this.pickerInsetColor="ThreeDShadow ThreeDHighlight ThreeDHighlight ThreeDShadow";this.pickerZIndex=10000;for(var w in v){if(v.hasOwnProperty(w)){this[w]=v[w]}}this.hidePicker=function(){if(aa()){r();jscolor.confirm()}};this.showPicker=function(){h.importColor();if(!aa()){var H=jscolor.getElementPos(f);var E=jscolor.getElementSize(f);var G=jscolor.getViewPos();var D=jscolor.getViewSize();var b=[2*this.pickerBorder+4*this.pickerInset+2*this.pickerFace+jscolor.images.pad[0]+2*jscolor.images.arrow[0]+jscolor.images.sld[0],2*this.pickerBorder+2*this.pickerInset+2*this.pickerFace+jscolor.images.pad[1]];var C,B,A;switch(this.pickerPosition.toLowerCase()){case"left":C=1;B=0;A=-1;break;case"right":C=1;B=0;A=1;break;case"top":C=0;B=1;A=-1;break;default:C=0;B=1;A=1;break}var F=(E[B]+b[B])/2;var a=[-G[C]+H[C]+b[C]>D[C]?(-G[C]+H[C]+E[C]/2>D[C]/2&&H[C]+E[C]-b[C]>=0?H[C]+E[C]-b[C]:H[C]):H[C],-G[B]+H[B]+E[B]+b[B]-F+F*A>D[B]?(-G[B]+H[B]+E[B]/2>D[B]/2&&H[B]+E[B]-F-F*A>=0?H[B]+E[B]-F-F*A:H[B]+E[B]-F+F*A):(H[B]+E[B]-F+F*A>=0?H[B]+E[B]-F+F*A:H[B]+E[B]-F-F*A)];g(a[C],a[B])}};this.importColor=function(){if(!i){this.exportColor()}else{if(!this.adjust){if(!this.fromString(i.value,q)){ac.style.backgroundColor=ac.jscStyle.backgroundColor;ac.style.color=ac.jscStyle.color;this.exportColor(q|y)}}else{if(!this.required&&/^\s*$/.test(i.value)){i.value="";ac.style.backgroundColor=ac.jscStyle.backgroundColor;ac.style.color=ac.jscStyle.color;this.exportColor(q|y)}else{if(this.fromString(i.value)){}else{this.exportColor()}}}}};this.exportColor=function(a){if(!(a&q)&&i){var b=this.toString();if(this.caps){b=b.toUpperCase()}if(this.hash){b="#"+b}i.value=b}if(!(a&y)&&ac){ac.style.backgroundColor="#"+this.toString();ac.style.color=0.213*this.rgb[0]+0.715*this.rgb[1]+0.072*this.rgb[2]<0.5?"#FFF":"#000"}if(!(a&u)&&aa()){n()}if(!(a&k)&&aa()){x()}};this.fromHSV=function(b,B,A,a){b<0&&(b=0)||b>6&&(b=6);B<0&&(B=0)||B>1&&(B=1);A<0&&(A=0)||A>1&&(A=1);this.rgb=ab(b===null?this.hsv[0]:(this.hsv[0]=b),B===null?this.hsv[1]:(this.hsv[1]=B),A===null?this.hsv[2]:(this.hsv[2]=A));this.exportColor(a)};this.fromRGB=function(C,a,A,b){C<0&&(C=0)||C>1&&(C=1);a<0&&(a=0)||a>1&&(a=1);A<0&&(A=0)||A>1&&(A=1);var B=z(C===null?this.rgb[0]:(this.rgb[0]=C),a===null?this.rgb[1]:(this.rgb[1]=a),A===null?this.rgb[2]:(this.rgb[2]=A));if(B[0]!==null){this.hsv[0]=B[0]}if(B[2]!==0){this.hsv[1]=B[1]}this.hsv[2]=B[2];this.exportColor(b)};this.fromString=function(b,a){var A=b.match(/^\W*([0-9A-F]{3}([0-9A-F]{3})?)\W*$/i);if(!A){return false}else{if(A[1].length===6){this.fromRGB(parseInt(A[1].substr(0,2),16)/255,parseInt(A[1].substr(2,2),16)/255,parseInt(A[1].substr(4,2),16)/255,a)}else{this.fromRGB(parseInt(A[1].charAt(0)+A[1].charAt(0),16)/255,parseInt(A[1].charAt(1)+A[1].charAt(1),16)/255,parseInt(A[1].charAt(2)+A[1].charAt(2),16)/255,a)}return true}};this.toString=function(){return((256|Math.round(255*this.rgb[0])).toString(16).substr(1)+(256|Math.round(255*this.rgb[1])).toString(16).substr(1)+(256|Math.round(255*this.rgb[2])).toString(16).substr(1))};function z(E,a,B){var D=Math.min(Math.min(E,a),B);var C=Math.max(Math.max(E,a),B);var b=C-D;if(b===0){return[null,0,C]}var A=E===D?3+(B-a)/b:(a===D?5+(E-B)/b:1+(a-E)/b);return[A===6?0:A,b/C,C]}function ab(B,D,C){if(B===null){return[C,C,C]}var A=Math.floor(B);var a=A%2?B-A:1-(B-A);var E=C*(1-D);var b=C*(1-D*a);switch(A){case 6:case 0:return[C,b,E];case 1:return[b,C,E];case 2:return[E,C,b];case 3:return[E,b,C];case 4:return[b,E,C];case 5:return[C,E,b]}}function r(){delete jscolor.picker.owner;document.getElementsByTagName("body")[0].removeChild(jscolor.picker.boxB)}function g(C,E){if(!jscolor.picker){jscolor.picker={box:document.createElement("div"),boxB:document.createElement("div"),pad:document.createElement("div"),padB:document.createElement("div"),padM:document.createElement("div"),sld:document.createElement("div"),sldB:document.createElement("div"),sldM:document.createElement("div"),bottompad:document.createElement("div")};for(var F=0,a=4;F<jscolor.images.sld[1];F+=a){var B=document.createElement("div");B.style.height=a+"px";B.style.fontSize="1px";B.style.lineHeight="0";jscolor.picker.sld.appendChild(B)}jscolor.picker.sldB.appendChild(jscolor.picker.sld);jscolor.picker.box.appendChild(jscolor.picker.sldB);jscolor.picker.box.appendChild(jscolor.picker.sldM);jscolor.picker.padB.appendChild(jscolor.picker.pad);jscolor.picker.box.appendChild(jscolor.picker.padB);jscolor.picker.box.appendChild(jscolor.picker.padM);jscolor.picker.boxB.appendChild(jscolor.picker.box);jscolor.picker.box.appendChild(jscolor.picker.bottompad)}var A=jscolor.picker;t=[C+h.pickerBorder+h.pickerFace+h.pickerInset,E+h.pickerBorder+h.pickerFace+h.pickerInset];d=[null,E+h.pickerBorder+h.pickerFace+h.pickerInset];A.box.onmouseup=A.box.onmouseout=function(){f.focus()};A.box.onmousedown=function(){m=true};A.box.onmousemove=function(G){s&&e(G);o&&p(G)};A.padM.onmouseup=A.padM.onmouseout=function(){if(s){s=false;jscolor.fireEvent(i,"change")}};A.padM.onmousedown=function(G){s=true;e(G)};A.sldM.onmouseup=A.sldM.onmouseout=function(){if(o){o=false;jscolor.fireEvent(i,"change")}};A.sldM.onmousedown=function(G){o=true;p(G)};A.box.style.width=4*h.pickerInset+2*h.pickerFace+jscolor.images.pad[0]+2*jscolor.images.arrow[0]+jscolor.images.sld[0]+"px";A.box.style.height=2*h.pickerInset+2*h.pickerFace+jscolor.images.pad[1]+25+"px";A.boxB.style.position="absolute";A.boxB.style.clear="both";A.boxB.style.left=C+"px";A.boxB.style.top=E+"px";A.boxB.style.zIndex=h.pickerZIndex;A.boxB.style.border=h.pickerBorder+"px solid";A.boxB.style.borderColor=h.pickerBorderColor;A.boxB.style.background=h.pickerFaceColor;A.pad.style.width=jscolor.images.pad[0]+"px";A.pad.style.height=jscolor.images.pad[1]+"px";A.padB.style.position="absolute";A.padB.style.left=h.pickerFace+"px";A.padB.style.top=h.pickerFace+"px";A.padB.style.border=h.pickerInset+"px solid";A.padB.style.borderColor=h.pickerInsetColor;A.padM.style.position="absolute";A.padM.style.left="0";A.padM.style.top="0";A.padM.style.width=h.pickerFace+2*h.pickerInset+jscolor.images.pad[0]+jscolor.images.arrow[0]+"px";A.padM.style.height=A.box.style.height;A.padM.style.cursor="crosshair";A.sld.style.overflow="hidden";A.sld.style.width=jscolor.images.sld[0]+"px";A.sld.style.height=jscolor.images.sld[1]+"px";A.sldB.style.position="absolute";A.sldB.style.right=h.pickerFace+"px";A.sldB.style.top=h.pickerFace+"px";A.sldB.style.border=h.pickerInset+"px solid";A.sldB.style.borderColor=h.pickerInsetColor;A.sldM.style.position="absolute";A.sldM.style.right="0";A.sldM.style.top="0";A.sldM.style.width=jscolor.images.sld[0]+jscolor.images.arrow[0]+h.pickerFace+2*h.pickerInset+"px";A.sldM.style.height=A.box.style.height;try{A.sldM.style.cursor="pointer"}catch(b){A.sldM.style.cursor="hand"}A.bottompad.style.cssText="background:transparent;width:100%;height:25px;position:absolute;left:0%;top:"+(2*h.pickerInset+2*h.pickerFace+jscolor.images.pad[1]-5)+"px;";A.bottompad.innerHTML="<button style='float:right;margin-right:8px;' onclick=\"javascript:jscolor.picker.owner.valueElement.blur();\">确定</button>";switch(l){case 0:var D="hs.png";break;case 1:var D="hv.png";break}A.padM.style.background="url('"+jscolor.getDir()+"cross.gif') no-repeat";A.sldM.style.background="url('"+jscolor.getDir()+"arrow.gif') no-repeat";if(!A.pad.style.background){A.pad.style.background="url('"+(jscolor.getDir()+D)+"') no-repeat"}n();x();jscolor.picker.owner=h;document.getElementsByTagName("body")[0].appendChild(A.boxB)}function n(){switch(l){case 0:var a=1;break;case 1:var a=2;break}var F=Math.round((h.hsv[0]/6)*(jscolor.images.pad[0]-1));var E=Math.round((1-h.hsv[a])*(jscolor.images.pad[1]-1));jscolor.picker.padM.style.backgroundPosition=(h.pickerFace+h.pickerInset+F-Math.floor(jscolor.images.cross[0]/2))+"px "+(h.pickerFace+h.pickerInset+E-Math.floor(jscolor.images.cross[1]/2))+"px";var G=jscolor.picker.sld.childNodes;switch(l){case 0:var b=ab(h.hsv[0],h.hsv[1],1);for(var A=0;A<G.length;A+=1){G[A].style.backgroundColor="rgb("+(b[0]*(1-A/G.length)*100)+"%,"+(b[1]*(1-A/G.length)*100)+"%,"+(b[2]*(1-A/G.length)*100)+"%)"}break;case 1:var b,C,D=[h.hsv[2],0,0];var A=Math.floor(h.hsv[0]);var B=A%2?h.hsv[0]-A:1-(h.hsv[0]-A);switch(A){case 6:case 0:b=[0,1,2];break;case 1:b=[1,0,2];break;case 2:b=[2,0,1];break;case 3:b=[2,1,0];break;case 4:b=[1,2,0];break;case 5:b=[0,2,1];break}for(var A=0;A<G.length;A+=1){C=1-1/(G.length-1)*A;D[1]=D[0]*(1-C*B);D[2]=D[0]*(1-C);G[A].style.backgroundColor="rgb("+(D[b[0]]*100)+"%,"+(D[b[1]]*100)+"%,"+(D[b[2]]*100)+"%)"}break}}function x(){switch(l){case 0:var a=2;break;case 1:var a=1;break}var b=Math.round((1-h.hsv[a])*(jscolor.images.sld[1]-1));jscolor.picker.sldM.style.backgroundPosition="0 "+(h.pickerFace+h.pickerInset+b-Math.floor(jscolor.images.arrow[1]/2))+"px"}function aa(){return jscolor.picker&&jscolor.picker.owner===h}function c(){if(i===f){h.importColor()}if(h.pickerOnfocus){h.hidePicker()}}function ad(){if(i!==f){h.importColor()}}function e(b){var a=jscolor.getMousePos(b);var B=a[0]-t[0];var A=a[1]-t[1];switch(l){case 0:h.fromHSV(B*(6/(jscolor.images.pad[0]-1)),1-A/(jscolor.images.pad[1]-1),null,k);break;case 1:h.fromHSV(B*(6/(jscolor.images.pad[0]-1)),null,1-A/(jscolor.images.pad[1]-1),k);break}}function p(b){var a=jscolor.getMousePos(b);var A=a[1]-t[1];switch(l){case 0:h.fromHSV(null,null,1-A/(jscolor.images.sld[1]-1),u);break;case 1:h.fromHSV(null,1-A/(jscolor.images.sld[1]-1),null,u);break}}var h=this;var l=this.pickerMode.toLowerCase()==="hvs"?1:0;var m=false;var i=jscolor.fetchElement(this.valueElement),ac=jscolor.fetchElement(this.styleElement);var s=false,o=false;var t,d;var q=1<<0,y=1<<1,u=1<<2,k=1<<3;jscolor.addEvent(f,"focus",function(){if(h.pickerOnfocus){h.showPicker()}});jscolor.addEvent(f,"blur",function(){if(!m){window.setTimeout(function(){m||c();m=false},0)}else{m=false}});if(i){var j=function(){h.fromString(i.value,q)};jscolor.addEvent(i,"keyup",j);jscolor.addEvent(i,"input",j);jscolor.addEvent(i,"blur",ad);i.setAttribute("autocomplete","off")}if(ac){ac.jscStyle={backgroundColor:ac.style.backgroundColor,color:ac.style.color}}switch(l){case 0:jscolor.requireImage("hs.png");break;case 1:jscolor.requireImage("hv.png");break}jscolor.requireImage("cross.gif");jscolor.requireImage("arrow.gif");this.importColor()}};jscolor.install();
+/**
+ * jscolor, JavaScript Color Picker
+ *
+ * @version 1.3.1
+ * @license GNU Lesser General Public License, http://www.gnu.org/copyleft/lesser.html
+ * @author  Jan Odvarko, http://odvarko.cz
+ * @created 2008-06-15
+ * @updated 2010-01-23
+ * @link    http://jscolor.com
+ */
+
+
+var jscolor = {
+
+
+	dir : '', // location of jscolor directory (leave empty to autodetect)
+	bindClass : 'color', // class name
+	binding : true, // automatic binding via <input class="...">
+	preloading : true, // use image preloading?
+	confirmAction : null,
+
+
+	install : function() {
+		if ( document.readyState === "complete" ) {
+			return jscolor.init();
+		}
+		jscolor.addEvent(window, 'load', jscolor.init);
+		
+	},
+
+	init : function() {
+		if(jscolor.binding) {
+			jscolor.bind();
+		}
+		if(jscolor.preloading) {
+			jscolor.preload();
+		}
+	},
+
+
+	getDir : function() {
+		if(!jscolor.dir) {
+			var detected = jscolor.detectDir();
+			jscolor.dir = detected!==false ? detected : 'jscolor/';
+		}
+		return "http://mat1.gtimg.com/app/opent/images/websites/jscolor/"
+		return jscolor.dir;
+	},
+
+
+	detectDir : function() {
+		var base = location.href;
+
+		var e = document.getElementsByTagName('base');
+		for(var i=0; i<e.length; i+=1) {
+			if(e[i].href) { base = e[i].href; }
+		}
+
+		var e = document.getElementsByTagName('script');
+		for(var i=0; i<e.length; i+=1) {
+			if(e[i].src && /(^|\/)jscolor\.js([?#].*)?$/i.test(e[i].src)) {
+				var src = new jscolor.URI(e[i].src);
+				var srcAbs = src.toAbsolute(base);
+				srcAbs.path = srcAbs.path.replace(/[^\/]+$/, ''); // remove filename
+				srcAbs.query = null;
+				srcAbs.fragment = null;
+				return srcAbs.toString();
+			}
+		}
+		return false;
+	},
+
+
+	bind : function() {
+		var matchClass = new RegExp('(^|\\s)('+jscolor.bindClass+')\\s*(\\{[^}]*\\})?', 'i');
+		var e = document.getElementsByTagName('input');
+		for(var i=0; i<e.length; i+=1) {
+			var m;
+			if(!e[i].color && e[i].className && (m = e[i].className.match(matchClass))) {
+				var prop = {};
+				if(m[3]) {
+					try {
+						eval('prop='+m[3]);
+					} catch(eInvalidProp) {}
+				}
+				e[i].color = new jscolor.color(e[i], prop);
+			}
+		}
+	},
+	
+	onConfirmChange : function(func){
+		this.confirmAction = func;
+	},
+
+	confirm : function(){
+		if(this.confirmAction){
+			this.confirmAction();
+		}
+	},
+
+	preload : function() {
+		for(var fn in jscolor.imgRequire) {
+			if(jscolor.imgRequire.hasOwnProperty(fn)) {
+				jscolor.loadImage(fn);
+			}
+		}
+	},
+
+
+	images : {
+		pad : [ 181, 101 ],
+		sld : [ 16, 101 ],
+		cross : [ 15, 15 ],
+		arrow : [ 7, 11 ]
+	},
+
+
+	imgRequire : {},
+	imgLoaded : {},
+
+
+	requireImage : function(filename) {
+		jscolor.imgRequire[filename] = true;
+	},
+
+
+	loadImage : function(filename) {
+		if(!jscolor.imgLoaded[filename]) {
+			jscolor.imgLoaded[filename] = new Image();
+			jscolor.imgLoaded[filename].src = jscolor.getDir()+filename;
+		}
+	},
+
+
+	fetchElement : function(mixed) {
+		return typeof mixed === 'string' ? document.getElementById(mixed) : mixed;
+	},
+
+
+	addEvent : function(el, evnt, func) {
+		if(el.addEventListener) {
+			el.addEventListener(evnt, func, false);
+		} else if(el.attachEvent) {
+			el.attachEvent('on'+evnt, func);
+		}
+	},
+
+
+	fireEvent : function(el, evnt) {
+		if(!el) {
+			return;
+		}
+		if(document.createEventObject) {
+			var ev = document.createEventObject();
+			el.fireEvent('on'+evnt, ev);
+		} else if(document.createEvent) {
+			var ev = document.createEvent('HTMLEvents');
+			ev.initEvent(evnt, true, true);
+			el.dispatchEvent(ev);
+		} else if(el['on'+evnt]) { // alternatively use the traditional event model (IE5)
+			el['on'+evnt]();
+		}
+	},
+
+
+	getElementPos : function(e) {
+		var e1=e, e2=e;
+		var x=0, y=0;
+		if(e1.offsetParent) {
+			do {
+				x += e1.offsetLeft;
+				y += e1.offsetTop;
+			} while(e1 = e1.offsetParent);
+		}
+		while((e2 = e2.parentNode) && e2.nodeName.toUpperCase() !== 'BODY') {
+			x -= e2.scrollLeft;
+			y -= e2.scrollTop;
+		}
+		return [x, y];
+	},
+
+
+	getElementSize : function(e) {
+		return [e.offsetWidth, e.offsetHeight];
+	},
+
+
+	getMousePos : function(e) {
+		if(!e) { e = window.event; }
+		if(typeof e.pageX === 'number') {
+			return [e.pageX, e.pageY];
+		} else if(typeof e.clientX === 'number') {
+			return [
+				e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft,
+				e.clientY + document.body.scrollTop + document.documentElement.scrollTop
+			];
+		}
+	},
+
+
+	getViewPos : function() {
+		if(typeof window.pageYOffset === 'number') {
+			return [window.pageXOffset, window.pageYOffset];
+		} else if(document.body && (document.body.scrollLeft || document.body.scrollTop)) {
+			return [document.body.scrollLeft, document.body.scrollTop];
+		} else if(document.documentElement && (document.documentElement.scrollLeft || document.documentElement.scrollTop)) {
+			return [document.documentElement.scrollLeft, document.documentElement.scrollTop];
+		} else {
+			return [0, 0];
+		}
+	},
+
+
+	getViewSize : function() {
+		if(typeof window.innerWidth === 'number') {
+			return [window.innerWidth, window.innerHeight];
+		} else if(document.body && (document.body.clientWidth || document.body.clientHeight)) {
+			return [document.body.clientWidth, document.body.clientHeight];
+		} else if(document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight)) {
+			return [document.documentElement.clientWidth, document.documentElement.clientHeight];
+		} else {
+			return [0, 0];
+		}
+	},
+
+
+	URI : function(uri) { // See RFC3986
+
+		this.scheme = null;
+		this.authority = null;
+		this.path = '';
+		this.query = null;
+		this.fragment = null;
+
+		this.parse = function(uri) {
+			var m = uri.match(/^(([A-Za-z][0-9A-Za-z+.-]*)(:))?((\/\/)([^\/?#]*))?([^?#]*)((\?)([^#]*))?((#)(.*))?/);
+			this.scheme = m[3] ? m[2] : null;
+			this.authority = m[5] ? m[6] : null;
+			this.path = m[7];
+			this.query = m[9] ? m[10] : null;
+			this.fragment = m[12] ? m[13] : null;
+			return this;
+		};
+
+		this.toString = function() {
+			var result = '';
+			if(this.scheme !== null) { result = result + this.scheme + ':'; }
+			if(this.authority !== null) { result = result + '//' + this.authority; }
+			if(this.path !== null) { result = result + this.path; }
+			if(this.query !== null) { result = result + '?' + this.query; }
+			if(this.fragment !== null) { result = result + '#' + this.fragment; }
+			return result;
+		};
+
+		this.toAbsolute = function(base) {
+			var base = new jscolor.URI(base);
+			var r = this;
+			var t = new jscolor.URI;
+
+			if(base.scheme === null) { return false; }
+
+			if(r.scheme !== null && r.scheme.toLowerCase() === base.scheme.toLowerCase()) {
+				r.scheme = null;
+			}
+
+			if(r.scheme !== null) {
+				t.scheme = r.scheme;
+				t.authority = r.authority;
+				t.path = removeDotSegments(r.path);
+				t.query = r.query;
+			} else {
+				if(r.authority !== null) {
+					t.authority = r.authority;
+					t.path = removeDotSegments(r.path);
+					t.query = r.query;
+				} else {
+					if(r.path === '') { // TODO: == or === ?
+						t.path = base.path;
+						if(r.query !== null) {
+							t.query = r.query;
+						} else {
+							t.query = base.query;
+						}
+					} else {
+						if(r.path.substr(0,1) === '/') {
+							t.path = removeDotSegments(r.path);
+						} else {
+							if(base.authority !== null && base.path === '') { // TODO: == or === ?
+								t.path = '/'+r.path;
+							} else {
+								t.path = base.path.replace(/[^\/]+$/,'')+r.path;
+							}
+							t.path = removeDotSegments(t.path);
+						}
+						t.query = r.query;
+					}
+					t.authority = base.authority;
+				}
+				t.scheme = base.scheme;
+			}
+			t.fragment = r.fragment;
+
+			return t;
+		};
+
+		function removeDotSegments(path) {
+			var out = '';
+			while(path) {
+				if(path.substr(0,3)==='../' || path.substr(0,2)==='./') {
+					path = path.replace(/^\.+/,'').substr(1);
+				} else if(path.substr(0,3)==='/./' || path==='/.') {
+					path = '/'+path.substr(3);
+				} else if(path.substr(0,4)==='/../' || path==='/..') {
+					path = '/'+path.substr(4);
+					out = out.replace(/\/?[^\/]*$/, '');
+				} else if(path==='.' || path==='..') {
+					path = '';
+				} else {
+					var rm = path.match(/^\/?[^\/]*/)[0];
+					path = path.substr(rm.length);
+					out = out + rm;
+				}
+			}
+			return out;
+		}
+
+		if(uri) {
+			this.parse(uri);
+		}
+
+	},
+
+
+	/*
+	 * Usage example:
+	 * var myColor = new jscolor.color(myInputElement)
+	 */
+	getNextEl:function(fromel,nodename){
+		if( fromel.nextSibling.nodeName.toLowerCase() !== nodename){
+			return this.getNextEl(fromel.nextSibling,nodename);
+		}
+		return fromel.nextSibling;
+	},
+
+	color : function(target, prop) {
+
+
+		this.required = true; // refuse empty values?
+		this.adjust = true; // adjust value to uniform notation?
+		this.hash = false; // prefix color with # symbol?
+		this.caps = true; // uppercase?
+		this.valueElement = target; // value holder
+		this.styleElement = /*target*/jscolor.getNextEl(target,'div'); // where to reflect current color
+		this.hsv = [0, 0, 1]; // read-only  0-6, 0-1, 0-1
+		this.rgb = [1, 1, 1]; // read-only  0-1, 0-1, 0-1
+
+		this.pickerOnfocus = true; // display picker on focus?
+		this.pickerMode = 'HSV'; // HSV | HVS
+		this.pickerPosition = 'bottom'; // left | right | top | bottom
+		this.pickerFace = 10; // px
+		this.pickerFaceColor = 'ThreeDFace'; // CSS color
+		this.pickerBorder = 1; // px
+		this.pickerBorderColor = 'ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight'; // CSS color
+		this.pickerInset = 1; // px
+		this.pickerInsetColor = 'ThreeDShadow ThreeDHighlight ThreeDHighlight ThreeDShadow'; // CSS color
+		this.pickerZIndex = 10000;
+
+
+		for(var p in prop) {
+			if(prop.hasOwnProperty(p)) {
+				this[p] = prop[p];
+			}
+		}
+
+		this.hidePicker = function() {
+			if(isPickerOwner()) {
+				removePicker();
+				jscolor.confirm();
+			}
+
+		};
+
+
+		this.showPicker = function() {
+			THIS.importColor();
+			if(!isPickerOwner()) {
+				var tp = jscolor.getElementPos(target); // target pos
+				var ts = jscolor.getElementSize(target); // target size
+				var vp = jscolor.getViewPos(); // view pos
+				var vs = jscolor.getViewSize(); // view size
+				var ps = [ // picker size
+					2*this.pickerBorder + 4*this.pickerInset + 2*this.pickerFace + jscolor.images.pad[0] + 2*jscolor.images.arrow[0] + jscolor.images.sld[0],
+					2*this.pickerBorder + 2*this.pickerInset + 2*this.pickerFace + jscolor.images.pad[1]
+				];
+				var a, b, c;
+				switch(this.pickerPosition.toLowerCase()) {
+					case 'left': a=1; b=0; c=-1; break;
+					case 'right':a=1; b=0; c=1; break;
+					case 'top':  a=0; b=1; c=-1; break;
+					default:     a=0; b=1; c=1; break;
+				}
+				var l = (ts[b]+ps[b])/2;
+				var pp = [ // picker pos
+					-vp[a]+tp[a]+ps[a] > vs[a] ?
+						(-vp[a]+tp[a]+ts[a]/2 > vs[a]/2 && tp[a]+ts[a]-ps[a] >= 0 ? tp[a]+ts[a]-ps[a] : tp[a]) :
+						tp[a],
+					-vp[b]+tp[b]+ts[b]+ps[b]-l+l*c > vs[b] ?
+						(-vp[b]+tp[b]+ts[b]/2 > vs[b]/2 && tp[b]+ts[b]-l-l*c >= 0 ? tp[b]+ts[b]-l-l*c : tp[b]+ts[b]-l+l*c) :
+						(tp[b]+ts[b]-l+l*c >= 0 ? tp[b]+ts[b]-l+l*c : tp[b]+ts[b]-l-l*c)
+				];
+				drawPicker(pp[a], pp[b]);
+			}
+		};
+
+
+		this.importColor = function() {
+			if(!valueElement) {
+				this.exportColor();
+			} else {
+				if(!this.adjust) {
+					if(!this.fromString(valueElement.value, leaveValue)) {
+						styleElement.style.backgroundColor = styleElement.jscStyle.backgroundColor;
+						styleElement.style.color = styleElement.jscStyle.color;
+						this.exportColor(leaveValue | leaveStyle);
+					}
+				} else if(!this.required && /^\s*$/.test(valueElement.value)) {
+					valueElement.value = '';
+					styleElement.style.backgroundColor = styleElement.jscStyle.backgroundColor;
+					styleElement.style.color = styleElement.jscStyle.color;
+					this.exportColor(leaveValue | leaveStyle);
+
+				} else if(this.fromString(valueElement.value)) {
+					// OK
+				} else {
+					this.exportColor();
+				}
+			}
+		};
+
+
+		this.exportColor = function(flags) {
+			if(!(flags & leaveValue) && valueElement) {
+				var value = this.toString();
+				if(this.caps) { value = value.toUpperCase(); }
+				if(this.hash) { value = '#'+value; }
+				valueElement.value = value;
+			}
+			if(!(flags & leaveStyle) && styleElement) {
+				styleElement.style.backgroundColor =
+					'#'+this.toString();
+				styleElement.style.color =
+					0.213 * this.rgb[0] +
+					0.715 * this.rgb[1] +
+					0.072 * this.rgb[2]
+					< 0.5 ? '#FFF' : '#000';
+			}
+			if(!(flags & leavePad) && isPickerOwner()) {
+				redrawPad();
+			}
+			if(!(flags & leaveSld) && isPickerOwner()) {
+				redrawSld();
+			}
+		};
+
+
+		this.fromHSV = function(h, s, v, flags) { // null = don't change
+			h<0 && (h=0) || h>6 && (h=6);
+			s<0 && (s=0) || s>1 && (s=1);
+			v<0 && (v=0) || v>1 && (v=1);
+			this.rgb = HSV_RGB(
+				h===null ? this.hsv[0] : (this.hsv[0]=h),
+				s===null ? this.hsv[1] : (this.hsv[1]=s),
+				v===null ? this.hsv[2] : (this.hsv[2]=v)
+			);
+			this.exportColor(flags);
+		};
+
+
+		this.fromRGB = function(r, g, b, flags) { // null = don't change
+			r<0 && (r=0) || r>1 && (r=1);
+			g<0 && (g=0) || g>1 && (g=1);
+			b<0 && (b=0) || b>1 && (b=1);
+			var hsv = RGB_HSV(
+				r===null ? this.rgb[0] : (this.rgb[0]=r),
+				g===null ? this.rgb[1] : (this.rgb[1]=g),
+				b===null ? this.rgb[2] : (this.rgb[2]=b)
+			);
+			if(hsv[0] !== null) {
+				this.hsv[0] = hsv[0];
+			}
+			if(hsv[2] !== 0) {
+				this.hsv[1] = hsv[1];
+			}
+			this.hsv[2] = hsv[2];
+			this.exportColor(flags);
+		};
+
+
+		this.fromString = function(hex, flags) {
+			var m = hex.match(/^\W*([0-9A-F]{3}([0-9A-F]{3})?)\W*$/i);
+			if(!m) {
+				return false;
+			} else {
+				if(m[1].length === 6) { // 6-char notation
+					this.fromRGB(
+						parseInt(m[1].substr(0,2),16) / 255,
+						parseInt(m[1].substr(2,2),16) / 255,
+						parseInt(m[1].substr(4,2),16) / 255,
+						flags
+					);
+				} else { // 3-char notation
+					this.fromRGB(
+						parseInt(m[1].charAt(0)+m[1].charAt(0),16) / 255,
+						parseInt(m[1].charAt(1)+m[1].charAt(1),16) / 255,
+						parseInt(m[1].charAt(2)+m[1].charAt(2),16) / 255,
+						flags
+					);
+				}
+				return true;
+			}
+		};
+
+
+		this.toString = function() {
+			return (
+				(0x100 | Math.round(255*this.rgb[0])).toString(16).substr(1) +
+				(0x100 | Math.round(255*this.rgb[1])).toString(16).substr(1) +
+				(0x100 | Math.round(255*this.rgb[2])).toString(16).substr(1)
+			);
+		};
+
+
+		function RGB_HSV(r, g, b) {
+			var n = Math.min(Math.min(r,g),b);
+			var v = Math.max(Math.max(r,g),b);
+			var m = v - n;
+			if(m === 0) { return [ null, 0, v ]; }
+			var h = r===n ? 3+(b-g)/m : (g===n ? 5+(r-b)/m : 1+(g-r)/m);
+			return [ h===6?0:h, m/v, v ];
+		}
+
+
+		function HSV_RGB(h, s, v) {
+			if(h === null) { return [ v, v, v ]; }
+			var i = Math.floor(h);
+			var f = i%2 ? h-i : 1-(h-i);
+			var m = v * (1 - s);
+			var n = v * (1 - s*f);
+			switch(i) {
+				case 6:
+				case 0: return [v,n,m];
+				case 1: return [n,v,m];
+				case 2: return [m,v,n];
+				case 3: return [m,n,v];
+				case 4: return [n,m,v];
+				case 5: return [v,m,n];
+			}
+		}
+
+
+		function removePicker() {
+			delete jscolor.picker.owner;
+			document.getElementsByTagName('body')[0].removeChild(jscolor.picker.boxB);
+		}
+
+
+		function drawPicker(x, y) {
+			if(!jscolor.picker) {
+				jscolor.picker = {
+					box : document.createElement('div'),
+					boxB : document.createElement('div'),
+					pad : document.createElement('div'),
+					padB : document.createElement('div'),
+					padM : document.createElement('div'),
+					sld : document.createElement('div'),
+					sldB : document.createElement('div'),
+					sldM : document.createElement('div'),
+					bottompad : document.createElement('div')
+				};
+				for(var i=0,segSize=4; i<jscolor.images.sld[1]; i+=segSize) {
+					var seg = document.createElement('div');
+					seg.style.height = segSize+'px';
+					seg.style.fontSize = '1px';
+					seg.style.lineHeight = '0';
+					jscolor.picker.sld.appendChild(seg);
+				}
+				jscolor.picker.sldB.appendChild(jscolor.picker.sld);
+				jscolor.picker.box.appendChild(jscolor.picker.sldB);
+				jscolor.picker.box.appendChild(jscolor.picker.sldM);
+				jscolor.picker.padB.appendChild(jscolor.picker.pad);
+				jscolor.picker.box.appendChild(jscolor.picker.padB);
+				jscolor.picker.box.appendChild(jscolor.picker.padM);
+				jscolor.picker.boxB.appendChild(jscolor.picker.box);
+				jscolor.picker.box.appendChild(jscolor.picker.bottompad);
+			}
+
+			var p = jscolor.picker;
+
+			// recompute controls positions
+			posPad = [
+				x+THIS.pickerBorder+THIS.pickerFace+THIS.pickerInset,
+				y+THIS.pickerBorder+THIS.pickerFace+THIS.pickerInset ];
+			posSld = [
+				null,
+				y+THIS.pickerBorder+THIS.pickerFace+THIS.pickerInset ];
+
+			// controls interaction
+			p.box.onmouseup =
+			p.box.onmouseout = function() { target.focus(); };
+			p.box.onmousedown = function() { abortBlur=true; };
+			p.box.onmousemove = function(e) { holdPad && setPad(e); holdSld && setSld(e); };
+			p.padM.onmouseup =
+			p.padM.onmouseout = function() { if(holdPad) { holdPad=false; jscolor.fireEvent(valueElement,'change'); } };
+			p.padM.onmousedown = function(e) { holdPad=true; setPad(e); };
+			p.sldM.onmouseup =
+			p.sldM.onmouseout = function() { if(holdSld) { holdSld=false; jscolor.fireEvent(valueElement,'change'); } };
+			p.sldM.onmousedown = function(e) { holdSld=true; setSld(e); };
+
+			// picker
+			p.box.style.width = 4*THIS.pickerInset + 2*THIS.pickerFace + jscolor.images.pad[0] + 2*jscolor.images.arrow[0] + jscolor.images.sld[0] +'px';
+			p.box.style.height = 2*THIS.pickerInset + 2*THIS.pickerFace + jscolor.images.pad[1] + 25/*bottompad*/ +'px';
+
+			// picker border
+			p.boxB.style.position = 'absolute';
+			p.boxB.style.clear = 'both';
+			p.boxB.style.left = x+'px';
+			p.boxB.style.top = y+'px';
+			p.boxB.style.zIndex = THIS.pickerZIndex;
+			p.boxB.style.border = THIS.pickerBorder+'px solid';
+			p.boxB.style.borderColor = THIS.pickerBorderColor;
+			p.boxB.style.background = THIS.pickerFaceColor;
+
+			// pad image
+			p.pad.style.width = jscolor.images.pad[0]+'px';
+			p.pad.style.height = jscolor.images.pad[1]+'px';
+
+			// pad border
+			p.padB.style.position = 'absolute';
+			p.padB.style.left = THIS.pickerFace+'px';
+			p.padB.style.top = THIS.pickerFace+'px';
+			p.padB.style.border = THIS.pickerInset+'px solid';
+			p.padB.style.borderColor = THIS.pickerInsetColor;
+
+			// pad mouse area
+			p.padM.style.position = 'absolute';
+			p.padM.style.left = '0';
+			p.padM.style.top = '0';
+			p.padM.style.width = THIS.pickerFace + 2*THIS.pickerInset + jscolor.images.pad[0] + jscolor.images.arrow[0] + 'px';
+			p.padM.style.height = p.box.style.height;
+			p.padM.style.cursor = 'crosshair';
+
+			// slider image
+			p.sld.style.overflow = 'hidden';
+			p.sld.style.width = jscolor.images.sld[0]+'px';
+			p.sld.style.height = jscolor.images.sld[1]+'px';
+
+			// slider border
+			p.sldB.style.position = 'absolute';
+			p.sldB.style.right = THIS.pickerFace+'px';
+			p.sldB.style.top = THIS.pickerFace+'px';
+			p.sldB.style.border = THIS.pickerInset+'px solid';
+			p.sldB.style.borderColor = THIS.pickerInsetColor;
+
+			// slider mouse area
+			p.sldM.style.position = 'absolute';
+			p.sldM.style.right = '0';
+			p.sldM.style.top = '0';
+			p.sldM.style.width = jscolor.images.sld[0] + jscolor.images.arrow[0] + THIS.pickerFace + 2*THIS.pickerInset + 'px';
+			p.sldM.style.height = p.box.style.height;
+			try {
+				p.sldM.style.cursor = 'pointer';
+			} catch(eOldIE) {
+				p.sldM.style.cursor = 'hand';
+			}
+			//bottompad
+			p.bottompad.style.cssText = "background:transparent;width:100%;height:25px;position:absolute;left:0%;top:"+(2*THIS.pickerInset + 2*THIS.pickerFace + jscolor.images.pad[1] - 5)+"px;";
+			p.bottompad.innerHTML = "<button style='float:right;margin-right:8px;' onclick=\"javascript:jscolor.picker.owner.valueElement.blur();\">确定</button>"
+
+
+			// load images in optimal order
+			switch(modeID) {
+				case 0: var padImg = 'hs.png'; break;
+				case 1: var padImg = 'hv.png'; break;
+			}
+			p.padM.style.background = "url('"+jscolor.getDir()+"cross.gif') no-repeat";
+			p.sldM.style.background = "url('"+jscolor.getDir()+"arrow.gif') no-repeat";
+			if (!p.pad.style.background){
+			p.pad.style.background  = "url('"+(jscolor.getDir()+padImg)+"') no-repeat";
+			}
+			// place pointers
+			redrawPad();
+			redrawSld();
+
+			jscolor.picker.owner = THIS;
+			document.getElementsByTagName('body')[0].appendChild(p.boxB);
+		}
+
+
+		function redrawPad() {
+			// redraw the pad pointer
+			switch(modeID) {
+				case 0: var yComponent = 1; break;
+				case 1: var yComponent = 2; break;
+			}
+			var x = Math.round((THIS.hsv[0]/6) * (jscolor.images.pad[0]-1));
+			var y = Math.round((1-THIS.hsv[yComponent]) * (jscolor.images.pad[1]-1));
+			jscolor.picker.padM.style.backgroundPosition =
+				(THIS.pickerFace+THIS.pickerInset+x - Math.floor(jscolor.images.cross[0]/2)) + 'px ' +
+				(THIS.pickerFace+THIS.pickerInset+y - Math.floor(jscolor.images.cross[1]/2)) + 'px';
+
+			// redraw the slider image
+			var seg = jscolor.picker.sld.childNodes;
+
+			switch(modeID) {
+				case 0:
+					var rgb = HSV_RGB(THIS.hsv[0], THIS.hsv[1], 1);
+					for(var i=0; i<seg.length; i+=1) {
+						seg[i].style.backgroundColor = 'rgb('+
+							(rgb[0]*(1-i/seg.length)*100)+'%,'+
+							(rgb[1]*(1-i/seg.length)*100)+'%,'+
+							(rgb[2]*(1-i/seg.length)*100)+'%)';
+					}
+					break;
+				case 1:
+					var rgb, s, c = [ THIS.hsv[2], 0, 0 ];
+					var i = Math.floor(THIS.hsv[0]);
+					var f = i%2 ? THIS.hsv[0]-i : 1-(THIS.hsv[0]-i);
+					switch(i) {
+						case 6:
+						case 0: rgb=[0,1,2]; break;
+						case 1: rgb=[1,0,2]; break;
+						case 2: rgb=[2,0,1]; break;
+						case 3: rgb=[2,1,0]; break;
+						case 4: rgb=[1,2,0]; break;
+						case 5: rgb=[0,2,1]; break;
+					}
+					for(var i=0; i<seg.length; i+=1) {
+						s = 1 - 1/(seg.length-1)*i;
+						c[1] = c[0] * (1 - s*f);
+						c[2] = c[0] * (1 - s);
+						seg[i].style.backgroundColor = 'rgb('+
+							(c[rgb[0]]*100)+'%,'+
+							(c[rgb[1]]*100)+'%,'+
+							(c[rgb[2]]*100)+'%)';
+					}
+					break;
+			}
+		}
+
+
+		function redrawSld() {
+			// redraw the slider pointer
+			switch(modeID) {
+				case 0: var yComponent = 2; break;
+				case 1: var yComponent = 1; break;
+			}
+			var y = Math.round((1-THIS.hsv[yComponent]) * (jscolor.images.sld[1]-1));
+			jscolor.picker.sldM.style.backgroundPosition =
+				'0 ' + (THIS.pickerFace+THIS.pickerInset+y - Math.floor(jscolor.images.arrow[1]/2)) + 'px';
+		}
+
+
+		function isPickerOwner() {
+			return jscolor.picker && jscolor.picker.owner === THIS;
+		}
+
+
+		function blurTarget() {
+			if(valueElement === target) {
+				THIS.importColor();
+			}
+			if(THIS.pickerOnfocus) {
+				THIS.hidePicker();
+			}
+		}
+
+
+		function blurValue() {
+			if(valueElement !== target) {
+				THIS.importColor();
+			}
+		}
+
+
+		function setPad(e) {
+			var posM = jscolor.getMousePos(e);
+			var x = posM[0]-posPad[0];
+			var y = posM[1]-posPad[1];
+			switch(modeID) {
+				case 0: THIS.fromHSV(x*(6/(jscolor.images.pad[0]-1)), 1 - y/(jscolor.images.pad[1]-1), null, leaveSld); break;
+				case 1: THIS.fromHSV(x*(6/(jscolor.images.pad[0]-1)), null, 1 - y/(jscolor.images.pad[1]-1), leaveSld); break;
+			}
+		}
+
+
+		function setSld(e) {
+			var posM = jscolor.getMousePos(e);
+			var y = posM[1]-posPad[1];
+			switch(modeID) {
+				case 0: THIS.fromHSV(null, null, 1 - y/(jscolor.images.sld[1]-1), leavePad); break;
+				case 1: THIS.fromHSV(null, 1 - y/(jscolor.images.sld[1]-1), null, leavePad); break;
+			}
+		}
+
+
+		var THIS = this;
+		var modeID = this.pickerMode.toLowerCase()==='hvs' ? 1 : 0;
+		var abortBlur = false;
+		var
+			valueElement = jscolor.fetchElement(this.valueElement),
+			styleElement = jscolor.fetchElement(this.styleElement);
+		var
+			holdPad = false,
+			holdSld = false;
+		var
+			posPad,
+			posSld;
+		var
+			leaveValue = 1<<0,
+			leaveStyle = 1<<1,
+			leavePad = 1<<2,
+			leaveSld = 1<<3;
+
+		// target
+		jscolor.addEvent(target, 'focus', function() {
+			if(THIS.pickerOnfocus) { THIS.showPicker(); }
+		});
+		jscolor.addEvent(target, 'blur', function() {
+			if(!abortBlur) {
+				window.setTimeout(function(){ abortBlur || blurTarget(); abortBlur=false; }, 0);
+			} else {
+				abortBlur = false;
+			}
+		});
+
+		// valueElement
+		if(valueElement) {
+			var updateField = function() {
+				THIS.fromString(valueElement.value, leaveValue);
+			};
+			jscolor.addEvent(valueElement, 'keyup', updateField);
+			jscolor.addEvent(valueElement, 'input', updateField);
+			jscolor.addEvent(valueElement, 'blur', blurValue);
+			valueElement.setAttribute('autocomplete', 'off');
+		}
+
+		// styleElement
+		if(styleElement) {
+			styleElement.jscStyle = {
+				backgroundColor : styleElement.style.backgroundColor,
+				color : styleElement.style.color
+			};
+		}
+
+		// require images
+		switch(modeID) {
+			case 0: jscolor.requireImage('hs.png'); break;
+			case 1: jscolor.requireImage('hv.png'); break;
+		}
+		jscolor.requireImage('cross.gif');
+		jscolor.requireImage('arrow.gif');
+
+		this.importColor();
+	}
+
+};
+jscolor.install();
