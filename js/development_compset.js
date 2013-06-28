@@ -261,14 +261,14 @@ function compType8(){
 
 function compType9(){
 	<!--阅读墙-->
-	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_read_explain_include.js",function(){
+/*	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_read_explain_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.websites_read_explain_include,global_obj.data));
 		bindAllEvent();
-		//<% include file="./websites/wall/explain_include.tpl" %>
+	});
 		var comp_style = comp.comp_style?comp.comp_style:{"width":"100%","height":"100%","colorstyle":1,"module":15,"OfficialAccount":"api_weibo","position":0,"InsertFunction":7,"SourceUrl":"http://mat1.gtimg.com/app/tmp/read.html","InitialContent":"#阅读墙测试# 说点什么吧","PageStyle":0,"TwitterNum":20,"PicStyle":0,"HeadStyle":1};
 		var comp_id = comp.comp_id;
 //		eventBindFuncList.push(function(){
-			var width = comp_style.width.split(","), height = comp_style.height.split(","),colorstyle = comp_style.colorstyle.split(","),
+			var width = comp_style.width.split(","), height = comp_style.height.split(","),colorstyle = comp_style.colorstyle.split(",");*/
 //			var topicnames=comp_style.topicnames.split(","),originurl=comp_style.wburl || "",wbname=comp_style.wbname || "",customcolor=comp_style.customcolor.split("_");
 /*
 			$("input[name='originurl']").val(decodeURIComponent(originurl));
@@ -295,7 +295,7 @@ function compType9(){
 			$("#customcolor").hide();
 			}*/
 //		});
-	});
+//	});
 }
 
 if(comp.comp_type == 1){
