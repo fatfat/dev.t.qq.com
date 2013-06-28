@@ -500,6 +500,20 @@ function formSubmit() {
 	var submitTimeline = submitTimelineInfo();
 			console.log(submitTimeline)
 	var comp_style_json = {
+		"appkey":window.comp&&comp.comp_id?comp.comp_id:"801351684",
+		"theme":$("input[name='theme']:checked").val(),
+		"nobg":+$("input[name='nobg']")[0].checked,
+		"ModuleConfigure":{
+				"TitleModule":$('#TitleModule')[0].checked),
+				"PubModule":$('#PubModule')[0].checked,
+				"TabModule":$('#TabModule')[0].checked,
+				"TimelineModule":$('#TimelineModule')[0].checked
+		}，
+		"TimelineDetail":
+		"PubModuleConfigure":
+		"TitleModuleConfigure":
+		"TimelineModuleConfigure":	
+			
 		"width":$("input[name='width']").val(),
 		"height":$("input[name='height']").val(),
 		"colorstyle":$("input[name='theme']:checked").val(),
