@@ -440,7 +440,7 @@ eventBindFuncList.push(function(){
 			$(this).children('.addIcon').html('+');
 		}
 	});
-});
+});/*
 var	submitTimelineInfo = function(){
 		var t = $("#timelineList"),arr = [];
 			t.find("li").each(function(){
@@ -455,81 +455,27 @@ var	submitTimelineInfo = function(){
 				arr.push(timeline);
 			});
 			return arr;
-	}
-function formSubmit() {
-	if ($("#showcode").attr("disabled")) {
-		return;
-	}
-/*	var topicnames = [],
-	customcolor = [];
-	$("input[name='topicname']").each(function() {
-		if (/^[^#]{1,20}$/.test($.trim($(this).val()))) {
-			topicnames.push(encodeURIComponent($.trim($(this).val())));
-		}
-	});
-	$("#customcolor").find("input").each(function() {
-		customcolor.push($(this).val().replace("#", ""));
-	});
-	var tmodelp = +$("input[name='tmodel']:checked").val(),
-	wbnamep = encodeURIComponent($.trim($('#wbname').val())),
-	wburlp = encodeURIComponent($.trim($('#originurl').val())),
-	colors = $('#colorList li.s').attr('data-color');*/
-	var module = (+$('#TitleModule')[0].checked) | (+$('#PubModule')[0].checked << 1) | (+$('#TabModule')[0].checked << 2) | (+$('#TimelineModule')[0].checked << 3) | (+$("input[name='nobg']")[0].checked << 4) ;
-	var insertFunction = (+$('#InsertFunction0')[0].checked) | (+$('#InsertFunction1')[0].checked << 1) | (+$('#InsertFunction2')[0].checked << 2);
+	}*/
+function makeFilter() {
 	var filter = {"updateTime":new Date().getTime(),"userIds":[], "keyWords":[]};
 	var userIds=$("textarea[name='filter']")[1].value.split(/\n+/);
 	for(var i in userIds){
-	/*	if (/^\s*$/.test(qqs[i])){
-			continue;
-		}*/
-//		if (/^[1-9]\d{4,}$/.test(weibos[i])==false){
-			filter.userIds.push(userIds[i]);
-//		}
+		filter.userIds.push(userIds[i]);
 	}
 
 	var keyWords=$("textarea[name='filter']")[0].value.split(/\n+/);
 	for(var i in keyWords){
-	/*	if (/^\s*$/.test(qqs[i])){
-			continue;
-		}*/
-//		if (/^[1-9]\d{4,}$/.test(weibos[i])==false){
-			filter.keyWords.push(encodeURIComponent(keyWords[i]));
-//		}
-	}	
-	
-	var submitTimeline = submitTimelineInfo();
-			console.log(submitTimeline)
-	var comp_style_json = {
-		"appkey":window.comp&&comp.comp_id?comp.comp_id:"801351684",
-		"theme":$("input[name='theme']:checked").val(),
-		"nobg":+$("input[name='nobg']")[0].checked,
-		"ModuleConfigure":{
-				"TitleModule":$('#TitleModule')[0].checked),
-				"PubModule":$('#PubModule')[0].checked,
-				"TabModule":$('#TabModule')[0].checked,
-				"TimelineModule":$('#TimelineModule')[0].checked
-		}，
-		"TimelineDetail":
-		"PubModuleConfigure":
-		"TitleModuleConfigure":
-		"TimelineModuleConfigure":	
-			
-		"width":$("input[name='width']").val(),
-		"height":$("input[name='height']").val(),
-		"colorstyle":$("input[name='theme']:checked").val(),
-		"module":module,
-		"OfficialAccount":$("input[name='OfficialAccount']").val(),
-		 "position":$("input[name='position']:checked").val(),
-		"InsertFunction":insertFunction,
-		"SourceUrl":encodeURIComponent($("input[name='SourceUrl']").val()),
-		"InitialContent":encodeURIComponent($("input[name='InitialContent']").val()),
-		 "PageStyle":$("input[name='PageStyle']:checked").val(),
-		"TwitterNum":$("#configboard").find("[name='TwitterNum']").val(),
-		"PicStyle":$("input[name='PicStyle']:checked").val(),
-		 "HeadStyle":$("input[name='HeadStyle']")[0].checked,
-		 "filter":filter,
-		"submitTimeline":submitTimeline
-	};
+		filter.keyWords.push(encodeURIComponent(keyWords[i]));
+	}
+	return filter;
+}
+
+function formSubmit() {
+	if ($("#showcode").attr("disabled")) {
+		return;
+	}
+
+	var comp_style_json = makeCompStyle();
 
 	var paras = {
 		"comp_type": 9,
@@ -575,7 +521,6 @@ function formSubmit() {
 			$("#showcode").removeAttr("disabled");
 		},
 		"error": function(d) {
-			alert(2);
 			loginWin.show({
 				"title": "获取代码失败！",
 				"width": 340,
@@ -592,6 +537,73 @@ function formSubmit() {
 
 function normalValidate() {
 	$("#comp_name").trigger("blur");
+}
+
+function makeCompStyle() {
+	var form = $("#configboard");
+	var compStyle = {
+		"width":$(['input[name=width]']).value,
+		"height":$(['input[name=height]']).value,			
+		"appkey":window.comp&&comp.comp_id?comp.comp_id:"801351684",
+		"theme":$("input[name='theme']:checked").val(),
+		"nobg":+$("input[name='nobg']")[0].checked,
+		"ModuleConfigure":{
+				"TitleModule":$('#TitleModule')[0].checked,
+				"PubModule":$('#PubModule')[0].checked,
+				"TabModule":$('#TabModule')[0].checked,
+				"TimelineModule":$('#TimelineModule')[0].checked
+		},
+		"TimelineDetail":{
+			"HeadStyle":+$("#HeadStyle").is(":checked"),
+			"PageStyle":+form.find("input[name='PageStyle']:checked").val(),
+			"PicStyle":+form.find("input[name='PicStyle']:checked").val(),
+			"TwitterNum":+$('select[data-error="请选择分类"]').val()
+		},
+		"PubModuleConfigure" : {
+			"InitialContent":form.find("input[name='InitialContent']").val(),
+			"InsertFunction":(function(a){
+				var arr = [];
+				a.each(function(){
+					arr.push(+$(this).val());
+				});
+				return arr;
+			})(form.find("input[name='InsertFunction']:checked")),
+			"SourceUrl":form.find("input[name='SourceUrl']").val(),
+			"position":+form.find("input[name='position']:checked").val()
+		},
+		"PubModuleConfigure":{
+			"InitialContent":form.find("input[name='InitialContent']").val(),
+			"InsertFunction":(function(a){
+				var arr = [];
+				a.each(function(){
+					arr.push(+$(this).val());
+				});
+				return arr;
+			})(form.find("input[name='InsertFunction']:checked")),
+			"SourceUrl":form.find("input[name='SourceUrl']").val(),
+			"position":+form.find("input[name='position']:checked").val()
+		},
+		"TitleModuleConfigure":{
+			"OfficialAccount":form.find("input[name='OfficialAccount']").val()
+		},
+		"TimelineModuleConfigure":(function(lis){
+			var arr = [];
+			lis.each(function(){
+				var conf = {},li = $(this);
+					conf.Condition = li.attr("Condition").split("\t");
+					conf.ConditionType = +li.attr("ConditionType");
+					conf.ContentType = +li.attr("ContentType");
+					conf.Famous = +li.attr("Famous");
+					conf.MessageType = +li.attr("MessageType");
+					conf.Name = li.attr("Name");
+					conf.SortType = +li.attr("SortType");
+				arr.push(conf);
+			});
+			return arr;
+		})($("#timelineList").find("li")),
+		"filter":makeFilter()
+	};
+	return compStyle;
 }
 
 util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js",function(){
@@ -665,11 +677,11 @@ var getConfigInfo = function(){
 		}
 	};
 
-$(function(){
-	var dialog = $(".dialog"),
-	timelineList = $("#timelineList"),
-	showTimeLine = function(event){
-		var f = dialog.find("form").not(".none"),
+//$(function(){
+var	showTimeLine = function(event){
+		var dialog = $(".dialog"),
+			f = dialog.find("form").not(".none"),
+			timelineList = $("#timelineList"),
 			form = f[0],
 			li,
 			param = {};
@@ -706,78 +718,11 @@ $(function(){
 				val = val | value;
 			});
 			return val;
-	},
-	buildCode = function(timer){
-		var code1= $("#code1"),
-			code2= $("#code2"),
-			form = $("#configboard"),
-			id = 'txwbydq_01',
-	//		f = form.get(0),
-			colors = ['d0d0d0','ccc','333','000'],
-			config = {},
-			codeStr1 = '&lt;script type="text/javascript" src="http://mat1.gtimg.com/app/vt/js/read/import.js" charset="utf-8"&gt;&lt;/script&gt;';
-			codeStr2 = '&lt;iframe width="'+form.width()+'" height="'+form.height()+'" frameborder="0" style="border:1px solid #'+colors[+form.find("input[name='theme']:checked").val()]+';" allowtransparency="true" src="about:blank" id="'+id+'" srcolling="no"&gt;&lt;/iframe&gt;';
-	//		config.appkey = form.appkey.value; TODO
-			config.appkey = window.comp && comp.comp_id ? comp.comp_id : "801351684";
-			config.theme = +form.find("input[name='theme']:checked").val();
-			config.nobg = +form.find("[name='nobg']")[0].checked;
-			config.ModuleConfigure = {
-				"PubModule":+$("#PubModule").is(":checked"),
-				"TabModule":+$("#TabModule").is(":checked"),
-				"TimelineModule":+$("#TimelineModule").is(":checked"),
-				"TitleModule":+$("#TitleModule").is(":checked")
-			};
-			config.TimelineDetail = {
-				"HeadStyle":+$("#HeadStyle").is(":checked"),
-				"PageStyle":+form.find("input[name='PageStyle']:checked").val(),
-				"PicStyle":+form.find("input[name='PicStyle']:checked").val(),
-				"TwitterNum":+$('select[data-error="请选择分类"]').val()
-			};
-			config.PubModuleConfigure = {
-				"InitialContent":form.find("input[name='InitialContent']").val(),
-				"InsertFunction":(function(a){
-					var arr = [];
-					a.each(function(){
-						arr.push(+$(this).val());
-					});
-					return arr;
-				})(form.find("input[name='InsertFunction']:checked")),
-				"SourceUrl":form.find("input[name='SourceUrl']").val(),
-				"position":+form.find("input[name='position']:checked").val()
-			};
-			config.TitleModuleConfigure = {
-				"OfficialAccount":form.find("input[name='OfficialAccount']").val()
-			};
-			config.TimelineModuleConfigure = (function(lis){
-				var arr = [];
-				lis.each(function(){
-					var conf = {},li = $(this);
-						conf.Condition = li.attr("Condition").split("\t");
-						conf.ConditionType = +li.attr("ConditionType");
-						conf.ContentType = +li.attr("ContentType");
-						conf.Famous = +li.attr("Famous");
-						conf.MessageType = +li.attr("MessageType");
-						conf.Name = li.attr("Name");
-						conf.SortType = +li.attr("SortType");
-					arr.push(conf);
-				});
-				return arr;
-			})($("#timelineList").find("li"));
-			
-			code1.html(codeStr1);
-			code2.html([
-				codeStr2,
-				'',
-				'&lt;script type="text/javascript"&gt;window.showTxWbYDQ(document.getElementById("'+id+'"),',
-				jsonToString(config),
-				',',
-				'function(d){/*回调函数,d的值格式为：{"action":"发表","ret":0,"errcode":0,"msg":"ok","data":{"id":231174038614579,"time":1371544700}},其中action的值可能为“发表、转播、评论”*/}',
-				');&lt;/script&gt;'
-			].join("\n"));
 	}
 	;
 
 eventBindFuncList.push(function(){
+	var dialog = $(".dialog");
 	$("input[name='__ContentType']").change(function(){
 		var t = $(this),val = +t.val(),selector = t.siblings(".content-type"),target = t.siblings("input[name='ContentType']");
 		if (val === 0){
@@ -797,7 +742,7 @@ eventBindFuncList.push(function(){
 	});
 	
 	$(".createTimeline").click(function(){
-		dialog.removeClass("none")
+		$(".dialog").removeClass("none")
 	});
 	
 	dialog.find(".tab").bind("click",function(){
@@ -859,7 +804,7 @@ eventBindFuncList.push(function(){
 				localStorage.setItem("configInfo",getConfigInfo());
 			}
 			
-			buildCode(+new Date());
+	//		buildCode(+new Date());
 	})/*.last().trigger("change")*/;
 	
 	(function(storage){
@@ -949,9 +894,9 @@ eventBindFuncList.push(function(){
 			callback[target.attr("data-action")](event);
 		}
 	});
-})
+});
 	/*
 	$(".createTimeline").trigger("click");
 	dialog.find(".btn").trigger("click");
 	*/
-});
+//});

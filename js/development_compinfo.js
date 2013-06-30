@@ -459,7 +459,7 @@ function compType8() {
 	});
 }
 function compType9() {
-	var comp_style = comp.comp_style || {
+	var comp_style = window.comp && comp.comp_style || {
 		"width": "100%",
 		"height": "100%",
 		"colorstyle": 1,
@@ -474,7 +474,7 @@ function compType9() {
 		"PicStyle": 0,
 		"HeadStyle": 1
 	};
-	var buildCode = function(timer) {
+/*	var buildCode = function(timer) {
 		jsonToString = function(o) {
 			if (window.JSON) {
 				return JSON.stringify(o);
@@ -509,16 +509,72 @@ function compType9() {
 		codeStr2 = '&lt;iframe width="' + comp_style.width + '" height="' + comp_style.height + '" frameborder="0" style="border:1px solid #' + ';" allowtransparency="true" src="about:blank" id="' + id + '" srcolling="no"&gt;&lt;/iframe&gt;';
 		$("#preview").html(codeStr2);
 		return ([
-		codeStr2, '', '&lt;script type="text/javascript"&gt;window.showTxWbYDQ(document.getElementById("' + id + '"),', jsonToString(config), ',', 'function(d){/*回调函数,d的值格式为：{"action":"发表","ret":0,"errcode":0,"msg":"ok","data":{"id":231174038614579,"time":1371544700}},其中action的值可能为“发表、转播、评论”*/}', ');&lt;/script&gt;'].join("\n"));
-	}
+		codeStr2, '', '&lt;script type="text/javascript"&gt;window.showTxWbYDQ(document.getElementById("' + id + '"),', jsonToString(config), ',', 'function(d){}', ');&lt;/script&gt;'].join("\n"));
+	}*/
+	console.log(comp_style);
+	var	buildCode = function(timer){
+		var jsonToString = function(o) {
+			if (window.JSON) {
+				return JSON.stringify(o);
+			}
 
-	var code2 = buildCode();
-	var codestr = '<div class="code_tit">请将以下代码布署到网页的<span class="c_green">&lt;head&gt;&lt;/head&gt;</span>标签中</div>' + '<div contenteditAble="true" class="code">' + '&lt;script type="text/javascript" src="http://mat1.gtimg.com/app/vt/js/read/import.js" charset="utf-8"&gt;&lt;/script&gt;' + '</div>' + '<div class="code_tit">请将以下代码部署到网页的<span class="c_green">&lt;body&gt;&lt;/body&gt;</span>中需要放置阅读墙的位置</div>' + '<div contenteditAble="true" class="code">' + code2 + '</div>';
-	$("#code_area").html(codestr);
+			var arr = [],
+			format = function(s) {
+				if (typeof s === "object" && s !== null) {
+					if (s.length) {
+						var sarr = [];
+						for (var j = 0, jk = s.length; j < jk; j++) {
+							sarr.push(format(s[j]));
+						}
+						return "[" + sarr.join(",") + "]";
+					}
+					return jsonToString(s);
+				} else if (typeof s === "string") {
+					return '"' + s + '"';
+				} else if (typeof s === "number") {
+					return s;
+				} else {
+					return s;
+				}
+			};
+			for (var i in o) {
+				arr.push(['"' + i + '"', format(o[i])].join(":"));
+			}
+			return "{" + arr.join(",") + "}";
+		},
+	//		code1= $("#code1"),
+	//		code2= $("#code2"),
+			form = $("#configboard"),
+			id = 'txwbydq_01',
+	//		f = form.get(0),
+			colors = ['d0d0d0','ccc','333','000'],
+			config = window.comp&&comp.comp_style?comp.comp_style:{},
+			codeStr1 = '&lt;script type="text/javascript" src="http://mat1.gtimg.com/app/vt/js/read/import.js" charset="utf-8"&gt;&lt;/script&gt;',
+			codeStr2 = '&lt;iframe width="'+config.width+'" height="'+config.height+'" frameborder="0" style="border:1px solid #'+config.theme+';" allowtransparency="true" src="about:blank" id="'+id+'" srcolling="no"&gt;&lt;/iframe&gt;';
+			return(
+			{
+				"code1":codeStr1,
+				"code2":
+				[			
+				codeStr2,
+				'',
+				'&lt;script type="text/javascript"&gt;window.showTxWbYDQ(document.getElementById("'+id+'"),',
+				jsonToString(config),
+				',',
+				'function(d){/*回调函数,d的值格式为：{"action":"发表","ret":0,"errcode":0,"msg":"ok","data":{"id":231174038614579,"time":1371544700}},其中action的值可能为“发表、转播、评论”*/}',
+				');&lt;/script&gt;'
+			].join("\n")
+			})
+	};
 
+	var code = buildCode();
+	console.log([code.code1,code.code2])
+	var codestr = '<div class="code_tit">请将以下代码布署到网页的<span class="c_green">&lt;head&gt;&lt;/head&gt;</span>标签中</div>' + '<div contenteditAble="true" class="code">' + '&lt;script type="text/javascript" src="http://mat1.gtimg.com/app/vt/js/read/import.js" charset="utf-8"&gt;&lt;/script&gt;' + code.code1 + '</div>' + '<div class="code_tit">请将以下代码部署到网页的<span class="c_green">&lt;body&gt;&lt;/body&gt;</span>中需要放置阅读墙的位置</div>' + '<div contenteditAble="true" class="code">' + code.code2 + '</div>';
+	$("#code_area").html(codestr);	
+/*
 
 	$("#scripts").val("<iframe frameborder=\"0\" scrolling=\"no\" src=\""+_url+"\" width=\""+[comp_style.width,"100%"][0+comp_style.autowidth]+"\" height=\""+comp_style.height+"\"></iframe>");
-	$("#preview").html($("#scripts").val());
+	$("#preview").html($("#scripts").val());*/
 	$(".getcode span").css("visibility","hidden");
 }
 
