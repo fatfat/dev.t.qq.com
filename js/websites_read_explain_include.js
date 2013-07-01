@@ -542,8 +542,8 @@ function normalValidate() {
 function makeCompStyle() {
 	var form = $("#configboard");
 	var compStyle = {
-		"width":$(['input[name=width]']).value,
-		"height":$(['input[name=height]']).value,			
+		"width":$('input[name=width]').val(),
+		"height":$('input[name=height]').val(),			
 		"appkey":window.comp&&comp.comp_id?comp.comp_id:"801351684",
 		"theme":$("input[name='theme']:checked").val(),
 		"nobg":+$("input[name='nobg']")[0].checked,
