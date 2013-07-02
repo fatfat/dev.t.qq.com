@@ -1,6 +1,9 @@
 /*变量初始化*/
 global_obj.data.navPos = 7;
-var comp = global_obj.data.comp = global_obj.data;
+if(!window.comp) {
+	window.comp = global_obj.data;
+}
+
 var development_compinfoTmpl = [
 	this.tpl.header,
 	'<div id="content" class="controlCon main main_app">', 
@@ -460,58 +463,34 @@ function compType8() {
 }
 function compType9() {
 	var comp_style = window.comp && comp.comp_style || {
-		"width": "100%",
-		"height": "100%",
-		"colorstyle": 1,
-		"module": 15,
-		"OfficialAccount": "api_weibo",
-		"position": 0,
-		"InsertFunction": 7,
-		"SourceUrl": "http://mat1.gtimg.com/app/tmp/read.html",
-		"InitialContent": "#阅读墙测试# 说点什么吧",
-		"PageStyle": 0,
-		"TwitterNum": 20,
-		"PicStyle": 0,
-		"HeadStyle": 1
-	};
-/*	var buildCode = function(timer) {
-		jsonToString = function(o) {
-			if (window.JSON) {
-				return JSON.stringify(o);
-			}
+	"appkey":comp.comp_id || "801351684",
+	"theme":0,
+	"nobg":0,
+	"ModuleConfigure":{
+		"PubModule":1,
+		"TabModule":1,
+		"TimelineModule":1,
+		"TitleModule":1
+	},
+	"TimelineDetail":{
+		"HeadStyle":1,
+		"PageStyle":0,
+		"PicStyle":0,
+		"TwitterNum":20
+	},
+	"PubModuleConfigure":{
+		"InitialContent":"#阅读墙测试# 说点什么吧",
+		"InsertFunction":[0,1,2],
+		"SourceUrl":"http://mat1.gtimg.com/app/tmp/read.html",
+		"position":0
+	},
+	"TitleModuleConfigure":{
+		"OfficialAccount":"api_weibo"
+	},
+	"TimelineModuleConfigure":[{"Condition":["阅读墙测试1","API接口意见","API接口问题","NOKIA925 超乎所见 震撼上市","分享视频"],"ConditionType":1,"ContentType":0,"Famous":0,"MessageType":0,"Name":"最热话题","SortType":1},{"Condition":["阅读墙","esdfsdf"],"ConditionType":0,"ContentType":0,"Famous":0,"MessageType":0,"Name":"热门搜索","SortType":1}]
+	}
+	comp_style.appkey = window.comp && comp.comp_id || "801351684";
 
-			var arr = [],
-			format = function(s) {
-				if (typeof s === "object" && s !== null) {
-					if (s.length) {
-						var sarr = [];
-						for (var j = 0, jk = s.length; j < jk; j++) {
-							sarr.push(format(s[j]));
-						}
-						return "[" + sarr.join(",") + "]";
-					}
-					return jsonToString(s);
-				} else if (typeof s === "string") {
-					return '"' + s + '"';
-				} else if (typeof s === "number") {
-					return s;
-				} else {
-					return s;
-				}
-			};
-			for (var i in o) {
-				arr.push(['"' + i + '"', format(o[i])].join(":"));
-			}
-			return "{" + arr.join(",") + "}";
-		},
-		config = comp_style,
-		id = window.comp && 　comp.comp_id;
-		codeStr2 = '&lt;iframe width="' + comp_style.width + '" height="' + comp_style.height + '" frameborder="0" style="border:1px solid #' + ';" allowtransparency="true" src="about:blank" id="' + id + '" srcolling="no"&gt;&lt;/iframe&gt;';
-		$("#preview").html(codeStr2);
-		return ([
-		codeStr2, '', '&lt;script type="text/javascript"&gt;window.showTxWbYDQ(document.getElementById("' + id + '"),', jsonToString(config), ',', 'function(d){}', ');&lt;/script&gt;'].join("\n"));
-	}*/
-	console.log(comp_style);
 	var	buildCode = function(timer){
 		var jsonToString = function(o) {
 			if (window.JSON) {
@@ -542,19 +521,14 @@ function compType9() {
 			}
 			return "{" + arr.join(",") + "}";
 		},
-	//		code1= $("#code1"),
-	//		code2= $("#code2"),
 			form = $("#configboard"),
 			id = 'txwbydq_01',
-	//		f = form.get(0),
 			colors = ['d0d0d0','ccc','333','000'],
-			config = window.comp&&comp.comp_style?comp.comp_style:{},
-			codeStr1 = '&lt;script type="text/javascript" src="http://mat1.gtimg.com/app/vt/js/read/import.js" charset="utf-8"&gt;&lt;/script&gt;',
-			codeStr2 = '&lt;iframe width="'+config.width+'" height="'+config.height+'" frameborder="0" style="border:1px solid #'+config.theme+';" allowtransparency="true" src="about:blank" id="'+id+'" srcolling="no"&gt;&lt;/iframe&gt;';
+			config = comp_style,
+	//		codeStr1 = '&lt;script type="text/javascript" src="http://mat1.gtimg.com/app/vt/js/read/import.js" charset="utf-8"&gt;&lt;/script&gt;',
+			codeStr2 = '&lt;iframe width="'+config.width+'" height="'+config.height+'" frameborder="0" style="border:1px solid #ccc'+';" allowtransparency="true" src="about:blank" id="'+id+'" srcolling="no"&gt;&lt;/iframe&gt;';
 			return(
-			{
-				"code1":codeStr1,
-				"code2":
+		//		"code2":
 				[			
 				codeStr2,
 				'',
@@ -564,18 +538,45 @@ function compType9() {
 				'function(d){/*回调函数,d的值格式为：{"action":"发表","ret":0,"errcode":0,"msg":"ok","data":{"id":231174038614579,"time":1371544700}},其中action的值可能为“发表、转播、评论”*/}',
 				');&lt;/script&gt;'
 			].join("\n")
-			})
+			)
 	};
+	var getPreview = function(){
+		util.createScript("http://mat1.gtimg.com/app/vt/js/read/import.js",function(){
+		$("#preview").height("100%");
+		$("#preview").html("<iframe frameborder=\"0\" scrolling=\"no\" src=\"about:blank\" width=\"" + comp_style.width + "\" height=\"" + comp_style.height + "\" style=\"border:1px solid #ccc;\" allowtransparency=\"true\" id=\""+"txwbydq_01"+"\"></iframe>");
+window.showTxWbYDQ(document.getElementById("txwbydq_01"),comp_style,
+function(d){/*回调函数,d的值格式为：{"action":"发表","ret":0,"errcode":0,"msg":"ok","data":{"id":231174038614579,"time":1371544700}},其中action的值可能为“发表、转播、评论”*/}
+);});
+		};
 
 	var code = buildCode();
-	console.log([code.code1,code.code2])
-	var codestr = '<div class="code_tit">请将以下代码布署到网页的<span class="c_green">&lt;head&gt;&lt;/head&gt;</span>标签中</div>' + '<div contenteditAble="true" class="code">' + '&lt;script type="text/javascript" src="http://mat1.gtimg.com/app/vt/js/read/import.js" charset="utf-8"&gt;&lt;/script&gt;' + code.code1 + '</div>' + '<div class="code_tit">请将以下代码部署到网页的<span class="c_green">&lt;body&gt;&lt;/body&gt;</span>中需要放置阅读墙的位置</div>' + '<div contenteditAble="true" class="code">' + code.code2 + '</div>';
+	var codestr = '<div class="code_tit">请将以下代码布署到网页的<span class="c_green">&lt;head&gt;&lt;/head&gt;</span>标签中</div>' + '<div contenteditAble="true" class="code">' + '&lt;script type="text/javascript" src="http://mat1.gtimg.com/app/vt/js/read/import.js" charset="utf-8"&gt;&lt;/script&gt;' + '</div>' + '<div class="code_tit">请将以下代码部署到网页的<span class="c_green">&lt;body&gt;&lt;/body&gt;</span>中需要放置阅读墙的位置</div>' + '<div contenteditAble="true" class="code">' + code + '</div>';
 	$("#code_area").html(codestr);	
+	getPreview();
+	if($('#compress')) {
+		$('#compress')[0].checked = false;
+		var codeOrig = $('.code').last().html();
+		var codeCompressed = codeOrig.replace(/\s+/g,"");
+		$('#compress').bind("click",function(){
+			if( $('#compress')[0].checked) {
+				$('.code').last().html(codeCompressed);
+			} else {
+				$('.code').last().html(codeOrig);
+			}
+		})
+	}	
+	
+	$('#copybtn').bind("click",function(){
+		
+	})
+	
+
 /*
 
 	$("#scripts").val("<iframe frameborder=\"0\" scrolling=\"no\" src=\""+_url+"\" width=\""+[comp_style.width,"100%"][0+comp_style.autowidth]+"\" height=\""+comp_style.height+"\"></iframe>");
-	$("#preview").html($("#scripts").val());*/
-	$(".getcode span").css("visibility","hidden");
+*/
+
+//	$(".getcode span").css("visibility","hidden");
 }
 
 $(".appinfo li.alert").find(".hidebtn").click(function() {
@@ -599,6 +600,7 @@ $(".appinfo li.alert").find(".hidebtn").click(function() {
 		t.html("收起↑");
 	}
 });
+
 if (comp.comp_type == 1) { //<!--一键分享-->
 	compType1();
 } else if (comp.comp_type == 2) {

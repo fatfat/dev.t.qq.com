@@ -91,8 +91,9 @@ OPEN_VALIDATOR = {
 		}
 	},	
 	appweibo:function(name,selector){
-	//	name = name.replace(/\s/g,"");		
+		name = name.replace(/[\t ]/g,"");		
 	//	selector.val(name);
+	//	var tchar = name.match(/[^a-zA-Z0-9_\-\u4E00-\u9FA5\uf900-\ufa2d]+/g);
 		var tchar = name.match(/[^a-zA-Z0-9_\-]+/g);
 		if(name && tchar) {
 			return "##不能含有非法字符" + tchar.join("");
