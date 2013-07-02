@@ -266,50 +266,51 @@ function compType9(){
 	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_read_explain_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.websites_read_explain_include,global_obj.data));
 		bindAllEvent();
+		eventBindFuncList.push(function(){
+			var form = $('#configboard'),f=form[0];
+			var comp_style = comp.comp_style?comp.comp_style:{"appkey":"801351684","theme":1,"nobg":0,"ModuleConfigure":{"PubModule":1,"TabModule":1,"TimelineModule":1,"TitleModule":1},"TimelineDetail":{"HeadStyle":1,"PageStyle":0,"PicStyle":0,"TwitterNum":20},"PubModuleConfigure":{"InitialContent":"#阅读墙测试# 说点什么吧","InsertFunction":[0,1,2],"SourceUrl":"http://mat1.gtimg.com/app/tmp/read.html","position":0},"TitleModuleConfigure":{"OfficialAccount":"api_weibo"},"TimelineModuleConfigure":[{"Condition":["阅读墙测试1","API接口意","AP接口问题","NOKIA925 超乎所见 震撼上市","分享视频"],"ConditionType":1,"ContentType":0,"Famous":0,"MessageType":0,"Name":"最热话题","SortType":1},{"Condition":["阅读墙","esdfsdf"],"ConditionType":0,"ContentType":0,"Famous":0,"MessageType":0,"Name":"热门搜索","SortType":1}]};
+			$('#configboard input[name=width]').val(comp_style.width);
+			$('#configboard input[name=height]').val(comp_style.height);	
+			$('#configboard input[name=theme]').val(comp_style.theme);
+			$('#nobg')[0].checked = !!comp_style.nobg;
+			
+			
+			$('#configboard input[name=theme]').val(comp_style.theme);
+			$('#TitleModule')[0].checked = !!comp_style.ModuleConfigure.TitleModule;
+			$('#PubModule')[0].checked = !!comp_style.ModuleConfigure.PubModule;
+			$('#TabModule')[0].checked = !!comp_style.ModuleConfigure.TabModule;
+			$('#TimelineModule')[0].checked = !!comp_style.ModuleConfigure.TimelineModule;
+			$('#configboard input[name=OfficialAccount]').val(comp_style.OfficialAccount);
+			$('#configboard input[name=position]')[comp_style.PubModuleConfigure.position].checked=true;
+			
+			
+			for(var i=0;i<3;i++){
+				$('#configboard input[name=InsertFunction]]')[i].checked = false;
+			}
+			for(var i in comp_style.PubModuleConfigure.InsertFunction){	
+				var j = comp_style.PubModuleConfigure.InsertFunction[i];
+				$('#configboard input[name=InsertFunction]]')[j].checked = true;
+			}
+			
+			$('#configboard input[name=SourceUrl]').val(comp_style.PubModuleConfigure.SourceUrl);
+			$('#configboard input[name=InitialContent]').val(comp_style.PubModuleConfigure.InitialContent);	
+			$('#configboard input[name=PageStyle]')[comp_style.TimelineDetail.PageStyle].checked=true;
+			
+			var twitterNum = [5,10,20,50,80,100];
+			for(var i=0;i<6;i++){
+				if(comp_style.TimelineDetail.TwitterNum == twitterNum[i]){
+					$('option')[i].selected=true;
+					break;
+				}
+			}
+			$('#configboard input[name=PicStyle]')[comp_style.TimelineDetail.PicStyle].checked=true;
+			$('#configboard input[name=HeadStyle]')[0].checked = !!comp_style.TimelineDetail.HeadStyle;	
+			$('#configboard textarea[name=filter]')[0].val(comp_style.filter.keyWords.join("\n"));
+			$('#configboard textarea[name=filter]')[1].val(comp_style.filter.userIds.join("\n"));
+		});	
 	});
 	
-	eventBindFuncList.push(function(){
-		var form = $('#configboard'),f=form[0];
-		var comp_style = comp.comp_style?comp.comp_style:{"appkey":"801351684","theme":1,"nobg":0,"ModuleConfigure":{"PubModule":1,"TabModule":1,"TimelineModule":1,"TitleModule":1},"TimelineDetail":{"HeadStyle":1,"PageStyle":0,"PicStyle":0,"TwitterNum":20},"PubModuleConfigure":{"InitialContent":"#阅读墙测试# 说点什么吧","InsertFunction":[0,1,2],"SourceUrl":"http://mat1.gtimg.com/app/tmp/read.html","position":0},"TitleModuleConfigure":{"OfficialAccount":"api_weibo"},"TimelineModuleConfigure":[{"Condition":["阅读墙测试1","API接口意","AP接口问题","NOKIA925 超乎所见 震撼上市","分享视频"],"ConditionType":1,"ContentType":0,"Famous":0,"MessageType":0,"Name":"最热话题","SortType":1},{"Condition":["阅读墙","esdfsdf"],"ConditionType":0,"ContentType":0,"Famous":0,"MessageType":0,"Name":"热门搜索","SortType":1}]};
-		$('#configboard input[name=width]').val(comp_style.width);
-		$('#configboard input[name=height]').val(comp_style.height);	
-		$('#configboard input[name=theme]').val(comp_style.theme);
-		$('#nobg')[0].checked = !!comp_style.nobg;
-		
-		
-		$('#configboard input[name=theme]').val(comp_style.theme);
-		$('#TitleModule')[0].checked = !!comp_style.ModuleConfigure.TitleModule;
-		$('#PubModule')[0].checked = !!comp_style.ModuleConfigure.PubModule;
-		$('#TabModule')[0].checked = !!comp_style.ModuleConfigure.TabModule;
-		$('#TimelineModule')[0].checked = !!comp_style.ModuleConfigure.TimelineModule;
-		$('#configboard input[name=OfficialAccount]').val(comp_style.OfficialAccount);
-		$('#configboard input[name=position]')[comp_style.PubModuleConfigure.position].checked=true;
-		
-		
-		for(var i=0;i<3;i++){
-			$('#configboard input[name=InsertFunction]]')[i].checked = false;
-		}
-		for(var i in comp_style.PubModuleConfigure.InsertFunction){	
-			var j = comp_style.PubModuleConfigure.InsertFunction[i];
-			$('#configboard input[name=InsertFunction]]')[j].checked = true;
-		}
-		
-		$('#configboard input[name=SourceUrl]').val(comp_style.PubModuleConfigure.SourceUrl);
-		$('#configboard input[name=InitialContent]').val(comp_style.PubModuleConfigure.InitialContent);	
-		$('#configboard input[name=PageStyle]')[comp_style.TimelineDetail.PageStyle].checked=true;
-		
-		var twitterNum = [5,10,20,50,80,100];
-		for(var i=0;i<6;i++){
-			if(comp_style.TimelineDetail.TwitterNum == twitterNum[i]){
-				$('option')[i].selected=true;
-				break;
-			}
-		}
-		$('#configboard input[name=PicStyle]')[comp_style.TimelineDetail.PicStyle].checked=true;
-		$('#configboard input[name=HeadStyle]')[0].checked = !!comp_style.TimelineDetail.HeadStyle;	
-		$('#configboard textarea[name=filter]')[0].val(comp_style.filter.keyWords.join("\n"));
-		$('#configboard textarea[name=filter]')[1].val(comp_style.filter.userIds.join("\n"));
-	});	
+	
 }
 
 if(comp.comp_type == 1){
