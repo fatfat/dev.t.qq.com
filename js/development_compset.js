@@ -273,23 +273,21 @@ function compType9(){
 			$('#configboard input[name=height]').val(comp_style.height);	
 			$('#configboard input[name=theme]').val(comp_style.theme);
 			$('#nobg')[0].checked = !!comp_style.nobg;
-			
-			
+						
 			$('#configboard input[name=theme]').val(comp_style.theme);
 			$('#TitleModule')[0].checked = !!comp_style.ModuleConfigure.TitleModule;
 			$('#PubModule')[0].checked = !!comp_style.ModuleConfigure.PubModule;
 			$('#TabModule')[0].checked = !!comp_style.ModuleConfigure.TabModule;
 			$('#TimelineModule')[0].checked = !!comp_style.ModuleConfigure.TimelineModule;
-			$('#configboard input[name=OfficialAccount]').val(comp_style.OfficialAccount);
+			$('#configboard input[name=OfficialAccount]').val(comp_style.TitleModuleConfigure.OfficialAccount);
 			$('#configboard input[name=position]')[comp_style.PubModuleConfigure.position].checked=true;
-			
-			
+						
 			for(var i=0;i<3;i++){
-				$('#configboard input[name=InsertFunction]]')[i].checked = false;
+				$('#configboard input[name=InsertFunction]')[i].checked = false;
 			}
 			for(var i in comp_style.PubModuleConfigure.InsertFunction){	
 				var j = comp_style.PubModuleConfigure.InsertFunction[i];
-				$('#configboard input[name=InsertFunction]]')[j].checked = true;
+				$('#configboard input[name=InsertFunction]')[j].checked = true;
 			}
 			
 			$('#configboard input[name=SourceUrl]').val(comp_style.PubModuleConfigure.SourceUrl);
@@ -305,8 +303,8 @@ function compType9(){
 			}
 			$('#configboard input[name=PicStyle]')[comp_style.TimelineDetail.PicStyle].checked=true;
 			$('#configboard input[name=HeadStyle]')[0].checked = !!comp_style.TimelineDetail.HeadStyle;	
-			$('#configboard textarea[name=filter]')[0].val(comp_style.filter.keyWords.join("\n"));
-			$('#configboard textarea[name=filter]')[1].val(comp_style.filter.userIds.join("\n"));
+			$('#configboard textarea[name=filter]').first().html(comp_style.filter.keyWords.join("\n"));
+			$('#configboard textarea[name=filter]').last().html(comp_style.filter.userIds.join("\n"));
 		});	
 	});
 	
