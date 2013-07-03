@@ -272,6 +272,7 @@ function compType9(){
 	}();
 	<!--阅读墙-->
 	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_read_explain_include.js",function(){
+		util.createStyle(".toExtend{margin-left:7px;}.comp_area ul li{margin-left:23px;}.deverRight p{margin:0;font-size:12px;}.comp_area{width:340px;}#topView{top:150px;}.timelineList{width:337px;}");
 		$(".showcode_bar").before(tmpl(tpl.websites_read_explain_include,global_obj.data));
 		bindAllEvent();
 		eventBindFuncList.push(function(){

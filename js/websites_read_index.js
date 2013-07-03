@@ -4,16 +4,16 @@
 			'.appsArea2 h2{margin-top:40px;}',
 			'dl{line-height:22px;margin:4px 32px 40px 50px;}',
 			'dt{color:#666;font-size:14px;}',
-			'.icon1{margin-top:6px;float:left;width:52px;height:39px;margin-right:18px;background: white url("http://mat1.gtimg.com/app/opent/images/websites/read/preview.png") no-repeat 52px 39px;background-position:-464px 0;}',
-			'.icon2{margin-top:6px;float:left;width:52px;height:34px;margin-right:18px;background: white url("http://mat1.gtimg.com/app/opent/images/websites/read/preview.png") no-repeat 52px 34px;background-position:-464px -38px;}',
-			'.icon3{margin-top:6px;float:left;width:52px;height:39px;margin-right:18px;background: white url("http://mat1.gtimg.com/app/opent/images/websites/read/preview.png") no-repeat 52px 39px;background-position:-464px -70px;}',
+			'.icon1{margin-top:6px;float:left;width:46px;height:39px;margin-right:18px;background: white url("http://mat1.gtimg.com/app/opent/images/websites/nav.gif") no-repeat;background-position:-65px -460px;}',
+			'.icon2{margin-top:6px;float:left;width:47px;height:34px;margin-right:18px;background: white url("http://mat1.gtimg.com/app/opent/images/websites/nav.gif") no-repeat;background-position:-108px -462px;}',
+			'.icon3{margin-top:6px;float:left;width:47px;height:39px;margin-right:18px;background: white url("http://mat1.gtimg.com/app/opent/images/websites/nav.gif") no-repeat;background-position:-153px -461px;}',
 			'dd{color:#999;}',
 			'.good{margin-left:46px;margin-bottom:14px;}',
 			'.left50{margin-left:50px;line-height:26px;}',
-			'.appsArea2 p span{float:left;background:white url("http://mat1.gtimg.com/app/opent/images/websites/read/preview.png") no-repeat;background-position: 0 0;width:464px;height:474px;}',
+			'.appsArea2 p span{float:left;background:white url("http://mat1.gtimg.com/app/opent/images/websites/read/preview.png") no-repeat;background-position: 0 0;width:463px;height:525px;}',
 			'.right{}',
 			'.right i{display:inline-block;width:120px;height:2px;background:#98b8d1;line-height:18px;vertical-align:middle;}',
-			'.right span{color:gray;vertical-align:middle;margin-left:2px;line-height:18px;}',
+			'.right span{color:#999;vertical-align:middle;margin-left:2px;line-height:18px;}',
 		].join("")
 	);
 	tpl.read = [
@@ -65,7 +65,7 @@
 
 				'<p class="left50">',
 					'<span></span>',
-					'<div class="right" style="margin-top:15px;"><i clase="line"></i><span>标题栏</span></div>',
+					'<div class="right" style="margin-top:16px;"><i clase="line"></i><span>标题栏</span></div>',
 					'<div class="right" style="margin-top:25px;"><i clase="line"></i><span>发表框</span></div>',					
 					'<div class="right" style="margin-top:60px;"><i clase="line"></i><span>页卡栏</span></div>',		
 					'<div class="right" style="margin-top:137px;"><i clase="line"></i><span>时间线</span></div>',					

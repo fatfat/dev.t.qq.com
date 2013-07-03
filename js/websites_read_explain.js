@@ -1,10 +1,11 @@
 ;(function(){
+	util.createStyle(".comp_area{width:411px;}#readView{top:250px;}");
 	tpl.wrapper = [
 		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/> ',
 
-		//'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>话题墙</span></div>',
+		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>阅读墙</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
 			tpl.websites_appnav,
 			'<div class="appsArea2">',

@@ -35,11 +35,11 @@ var jsonToString = function(o) {
 	return "{" + arr.join(",") + "}";
 };
 
-var sty = ['html,body{font-size:12px;display:block;margin:0;padding:0;min-height:100%;height:100%;}', '.colorList li,.colorList1 li{float:left;height:40px;padding:4px;margin-bottom:8px;}', '.color1, .color2, .color3, .color4, .color5, .color6, .color7 {height: 36px;margin: 1px;width: 36px;}', '.colorList li, .colorList1 li{height:38px;padding:0;margin:4px 10px 0 0;border-radius:4px;}', '.colorList1 li.s{border: 4px solid #A8DE86;margin-top:0;}', '.addIcon{width:12px;line-height:12px;margin-right:20px;cursor:pointer;}', '.toExtend{cursor:pointer;font-size:14px;color:#666;font-weight:bold;display:block;margin:10px 40px 0;}', '.comp_area h4{font-size:12px;margin:10px 0;}', '.comp_area ul li{margin-left:70px;list-style:square;}',
+var sty = ['html,body{font-size:12px;display:block;margin:0;padding:0;min-height:100%;height:100%;}', '.colorList li,.colorList1 li{float:left;height:40px;padding:4px;margin-bottom:8px;}', '.color1, .color2, .color3, .color4, .color5, .color6, .color7 {height: 36px;margin: 1px;width: 36px;}', '.colorList li, .colorList1 li{height:38px;padding:0;margin:4px 10px 0 0;border-radius:4px;}', '.colorList1 li.s{border: 4px solid #A8DE86;margin-top:0;}', '.addIcon{width:12px;line-height:12px;margin-right:10px;cursor:pointer;}', '.toExtend{cursor:pointer;font-size:14px;display:block;margin-left:49px;;color:#333;line-height:28px;}', '.comp_area h4{font-size:12px;font-weight:normal;color:#666;}', '.comp_area ul li{margin-left:66px;list-style:none;}',
 //	'.comp_area a{font-size:14px;color:#666;font-weight:bold;display:block;}',
 '#addMod{padding:2px;}', 'i{color:red;}', '.c_gray{color:gray;}', '.c_green{color:#0a0;}', '.list{position:absolute;right:0;top:0;width:250px;min-height:100%;overflow:hidden;background:#fff;text-align:left;font-size:12px;}', '.list strong{height:40px;line-height:40px;text-align:left;display:block;text-indent:10px;}', '.list a{display:block;text-align:left;height:36px;line-height:36px;color:#333;text-decoration:none;background:#fefefe;border-top:1px solid #ccc;border-bottom:1px solid #fff;text-indent:10px;}', '.list a:hover{background:#eee;border-top-color:#ccc;}', '.list p{margin:8px;}', '.configboard{width:250px;padding:0;position:absolute;top:0;left:0;text-align:left;font-size:12px;background:rgba(255,255,255,.5);min-height:100%;overflow:hidden;}',
 
-'input,label{vertical-align:middle;}', 'input[type="text"]{padding:5px;}', '.panel{padding:2px 4px;line-height:150%;}', '.panel h4{margin:0;padding:0;margin:5px 0;font-size:12px;}', '.panel p{margin:3px 0;}', '.theme{display:inline-block ;width:14px;height:14px;border:1px solid #000;margin-bottom:-2px;}', '.split-line{height:0;line-height:0;font-size:0;border-bottom:1px dotted #ccc;margin:10px 40px;}', '.dialog{width:600px;height:480px;background:#fff;border:1px solid #DADADA;position:fixed;top:50%;left:50%;margin:-240px 0 0 -212px;z-index:2;_ position:absolute;}', '.dialog ul{list-style:none;}', '.dialog .closeBtn{position:absolute;top:0;right:0;display:inline-block;text-decoration:none;color:#333;font-weight:bold;height:34px;line-height:34px;width:34px;text-align:center;}', '.tabbar{height:34px;text-align:left;text-indent:10px;', 'background:#FEFEFD;', 'background: -o-linear-gradient(top,#FEFEFD,#F0F0F1);', 'background: -moz-linear-gradient(top,#FEFEFD,#F0F0F1);', 'background: -webkit-gradient(linear, left top, left bottom, from(#FEFEFD), to(#F0F0F1));', 'filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#FEFEFD", endColorstr="#F0F0F1");', 'border-bottom:1px solid #DADADA;', '}', '.tabbar .tab{height:26px;line-height:26px;padding:0 20px;display:inline-block;margin:8px 0 0;font-size:14px;color:#333;text-decoration:none;color:#666;text-indent:0;}', '.tabbar .active{background:#fff;border:1px solid #DADADA;border-bottom:none;color:#999;cursor:default;}', '.controls{text-align:right;padding:5px 35px;}', '.timeline{text-align:left;list-style:none;font:12px "宋体",Tahoma,Arial}', '.timeline dl{margin:20px 0 0 40px;}', '.timeline dt,.timeline dd{margin:0 0 5px;}', '.timeline dt{margin:10px 0 5px;color:#090;}', '.timelineList{list-style:none;margin:0;padding:0;width:372px;}', '.timelineList li{margin:10px 0;border:1px solid #DADADA;padding:5px;}', '.timelineList li .condition{font-size:12px;color:#090;word-break:break-all;}', '.btn{padding:5px 25px;}', '.none{display:none;}', '.code{margin:8px;border:1px solid #aaa;padding:5px;border-radius:3px;white-space:pre;word-break:break-all;word-wrap:break-word;}'].join("");
+'input,label{vertical-align:middle;}', '.panel{margin-bottom:10px;}', '.panel h4{margin:0;padding:0;font-size:12px;line-height:24px;}', '.panel p{color:#999;line-height:18px;}', '.theme{display:inline-block ;width:14px;height:14px;border:1px solid #000;margin-bottom:-2px;}', '.split-line{height:0;line-height:0;font-size:0;border-bottom:1px dotted #ccc;margin:10px 40px;}', '.dialog{width:600px;height:480px;background:#fff;border:1px solid #DADADA;position:fixed;top:50%;left:50%;margin:-240px 0 0 -212px;z-index:2;_ position:absolute;}', '.dialog ul{list-style:none;}', '.dialog .closeBtn{position:absolute;top:0;right:0;display:inline-block;text-decoration:none;color:#333;height:34px;line-height:34px;width:34px;text-align:center;}', '.tabbar{height:34px;text-align:left;text-indent:10px;', 'background:#FEFEFD;', 'background: -o-linear-gradient(top,#FEFEFD,#F0F0F1);', 'background: -moz-linear-gradient(top,#FEFEFD,#F0F0F1);', 'background: -webkit-gradient(linear, left top, left bottom, from(#FEFEFD), to(#F0F0F1));', 'filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#FEFEFD", endColorstr="#F0F0F1");', 'border-bottom:1px solid #DADADA;', '}', '.tabbar .tab{height:26px;line-height:26px;padding:0 20px;display:inline-block;margin:8px 0 0;font-size:14px;color:#333;text-decoration:none;color:#666;text-indent:0;}', '.tabbar .active{background:#fff;border:1px solid #DADADA;border-bottom:none;color:#999;cursor:default;}', '.controls{text-align:right;padding:5px 35px;}', '.timeline{text-align:left;list-style:none;font:12px "宋体",Tahoma,Arial}', '.timeline dl{margin:20px 0 0 40px;}', '.timeline dt,.timeline dd{margin:0 0 5px;}', '.timeline dt{margin:10px 0 5px;color:#090;}', '.timelineList{list-style:none;margin:0;padding:0;width:372px;}', '.timelineList li{margin:10px 0;border:1px solid #DADADA;padding:5px;}', '.timelineList li .condition{font-size:12px;color:#090;word-break:break-all;}', '.btn{padding:5px 25px;}', '.none{display:none;}', '.code{margin:8px;border:1px solid #aaa;padding:5px;border-radius:3px;white-space:pre;word-break:break-all;word-wrap:break-word;}'].join("");
 
 util.createStyle(sty);
 
@@ -62,16 +62,18 @@ tpl.websites_read_iframe = [
 
 tpl.websites_read_explain_include = [
 	'<div class="form1 dialog none">', 
-	tpl.websites_read_iframe, 
+		tpl.websites_read_iframe, 
 	'</div>', 
-	'<link href="http://mat1.gtimg.com/app/opent/css/websites/show/customcolor.css" type="text/css" rel="stylesheet">', 
-	'<div class="comp_area" id = "configboard" style="min-height:700px;width:411px;overflow:hidden;">', 
-	'<div id="show" class="show_wall" style="height:594px;">', 
-	'<h3>样式预览</h3>',
-//	'<div style="width:100%;height:601px;overflow:auto">',
-	'<iframe width="345px" height="594px" frameborder="0"  marginwidth=0 marginheight=0 style="border:1px solid #ccc;position:relative;" allowtransparency="true" src="about:blank" id="frame" srcolling="no"></iframe>',
-//	'</div>',
-	'</div>',
+	
+	'<div id="readView" style="border-radius:5px;border:1px solid #DEDEDE;position:absolute;right:40px;width:345px;">',
+		'<h3 style="line-height:28px;font-size:14px;text-indent:10px;text-shadow: 1px 1px 0 #fff;font-weight:normal;">样式预览</h3>',
+		'<div id="show" style="height:594px;border:none;">', 
+			'<iframe width="345px" height="594px" frameborder="0"  marginwidth=0 marginheight=0 style="position:relative;" allowtransparency="true" src="about:blank" id="frame" srcolling="no"></iframe>',
+		'</div>',
+	'</div>',	
+	
+	'<div class="comp_area" id = "configboard" style="min-height:700px;overflow:hidden;">', 
+
 
 	'<h2 class="comp_sub_tit">自定义配置</h2>',
 
@@ -97,8 +99,7 @@ tpl.websites_read_explain_include = [
 		'<input type="radio" name="theme" value="7" id="theme7" /> <label for="theme7" class="theme" style="background:#E5FFDF;border-color:#CBE7C2;"></label><br/> ', 
 		'<input type="radio" name="theme" value="8" id="theme8" /> <label for="theme8" class="theme" style="background:#F7E5F4;border-color:#EACEE5;"></label> ', 
 		'<input type="radio" name="theme" value="9" id="theme9" /> <label for="theme9" class="theme" style="background:#241F3E;border-color:#48435D;"></label> ', 
-		'<br/><br/>', 
-		'<input type="checkbox" name="nobg" id="nobg" /> <label for="nobg">背景色透明</label>', 
+		'<br /><input type="checkbox" name="nobg" id="nobg" /> <label for="nobg">背景色透明</label>', 
 		'</div>', 
 		'</li>', 
 		'<li>', 
@@ -141,7 +142,7 @@ tpl.websites_read_explain_include = [
 	'<li>', 
 	'<div class="panel">',
 	 '<h4>来源设置：</h4>', 
-	 '<input type="text" name="SourceUrl" data-rule="applink" data-error="来源URL" placeholder="指定一个发表微博后会自动带上的url地址" value="http://mat1.gtimg.com/app/tmp/read.html"/>', 
+	 '<input type="text" name="SourceUrl" data-rule="applink" data-error="来源URL" placeholder="指定一个发表微博后会自动带上的url地址" value="http://dev.t.qq.com/websites/read/"/>', 
 	 '</div>', 
 	 '</li>', 
 	 '<li>', 

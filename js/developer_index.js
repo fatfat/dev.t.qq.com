@@ -113,7 +113,8 @@ $("#newgame").click(function(){
 			location.href = "http://reg.t.qq.com/invite.php";
 			return;
 		}
-		popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
+		location.href = "/apps/add/4?cid=3";
+	//	popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 	}
 	return false;
 });
