@@ -262,13 +262,21 @@ function compType8(){
 }
 
 function compType9(){
+				var comp_style = comp.comp_style?comp.comp_style:{"appkey":"801351684","theme":1,"nobg":0,"ModuleConfigure":{"PubModule":1,"TabModule":1,"TimelineModule":1,"TitleModule":1},"TimelineDetail":{"HeadStyle":1,"PageStyle":0,"PicStyle":0,"TwitterNum":20},"PubModuleConfigure":{"InitialContent":"#阅读墙测试# 说点什么吧","InsertFunction":[0,1,2],"SourceUrl":"http://mat1.gtimg.com/app/tmp/read.html","position":0},"TitleModuleConfigure":{"OfficialAccount":"api_weibo"},"TimelineModuleConfigure":[{"Condition":["阅读墙测试1","API接口意","AP接口问题","NOKIA925 超乎所见 震撼上市","分享视频"],"ConditionType":1,"ContentType":0,"Famous":0,"MessageType":0,"Name":"最热话题","SortType":1},{"Condition":["阅读墙","esdfsdf"],"ConditionType":0,"ContentType":0,"Famous":0,"MessageType":0,"Name":"热门搜索","SortType":1}]};
+	var getPreview = function(){
+		util.createScript("http://mat1.gtimg.com/app/vt/js/read/import.js",function(){
+			$("#show").height("100%");
+			$("#show").html("<iframe frameborder=\"0\" scrolling=\"no\" src=\"about:blank\" width=\"" + comp_style.width + "\" height=\"" + comp_style.height + "\" style=\"border:1px solid #ccc;\" allowtransparency=\"true\" id=\""+"frame"+"\"></iframe>");
+			window.showTxWbYDQ(document.getElementById("frame"),comp_style,function(d){/*回调函数,d的值格式为：{"action":"发表","ret":0,"errcode":0,"msg":"ok","data":{"id":231174038614579,"time":1371544700}},其中action的值可能为“发表、转播、评论”*/}
+		);});
+	}();
 	<!--阅读墙-->
 	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_read_explain_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.websites_read_explain_include,global_obj.data));
 		bindAllEvent();
 		eventBindFuncList.push(function(){
 			var form = $('#configboard'),f=form[0];
-			var comp_style = comp.comp_style?comp.comp_style:{"appkey":"801351684","theme":1,"nobg":0,"ModuleConfigure":{"PubModule":1,"TabModule":1,"TimelineModule":1,"TitleModule":1},"TimelineDetail":{"HeadStyle":1,"PageStyle":0,"PicStyle":0,"TwitterNum":20},"PubModuleConfigure":{"InitialContent":"#阅读墙测试# 说点什么吧","InsertFunction":[0,1,2],"SourceUrl":"http://mat1.gtimg.com/app/tmp/read.html","position":0},"TitleModuleConfigure":{"OfficialAccount":"api_weibo"},"TimelineModuleConfigure":[{"Condition":["阅读墙测试1","API接口意","AP接口问题","NOKIA925 超乎所见 震撼上市","分享视频"],"ConditionType":1,"ContentType":0,"Famous":0,"MessageType":0,"Name":"最热话题","SortType":1},{"Condition":["阅读墙","esdfsdf"],"ConditionType":0,"ContentType":0,"Famous":0,"MessageType":0,"Name":"热门搜索","SortType":1}]};
+
 			$('#configboard input[name=width]').val(comp_style.width);
 			$('#configboard input[name=height]').val(comp_style.height);	
 			$('#configboard input[name=theme]').val(comp_style.theme);
@@ -305,10 +313,38 @@ function compType9(){
 			$('#configboard input[name=HeadStyle]')[0].checked = !!comp_style.TimelineDetail.HeadStyle;	
 			$('#configboard textarea[name=filter]').first().html(comp_style.filter.keyWords.join("\n"));
 			$('#configboard textarea[name=filter]').last().html(comp_style.filter.userIds.join("\n"));
-		});	
+			
+			var len = comp_style.TimelineModuleConfigure.length;
+			var timelineList = $('#timelineList');
+				
+			for(var i = 0; i < len; i++){
+				var arr = comp_style.TimelineModuleConfigure[i];
+				var param = {};
+				param["Name"] = arr["Name"];
+				param["ConditionType"] = arr["ConditionType"];
+				param["Condition"] = arr["Condition"].join("\n").replace(/^\s*|\s*$|\t*/g, "").split(/[\s\t]*\n+[\s\t]*/g).slice(0, 5).join("\t");
+				param["SortType"] = arr["SortType"];
+				param["Famous"] = arr["Famous"];
+				param["ContentType"] = arr["ContentType"];
+				param["MessageType"] = arr['MessageType'];
+
+				if (param["Name"] && param["Condition"]) {
+					li = $('<li></li>').appendTo(timelineList);
+					for (var j in param) {
+						li.attr(j, param[j]);
+					}
+					var conditionType = {
+						"0": "关键词",
+						"1": "话题",
+						"2": "多用户",
+						"3": "多URL"
+					} [param["ConditionType"]];
+					li.html(conditionType + ": " + param["Name"] + '</div></div><div><a href="javascript:void(0);" data-action="edit">修改</a> <a href="javascript:void(0);" data-action="del">删除</a></div>');
+				} 
+			}		
+			$("#configboard").find("input").first().trigger("change");
+		});
 	});
-	
-	
 }
 
 if(comp.comp_type == 1){

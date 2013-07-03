@@ -1,6 +1,5 @@
 this.tpl = this.tpl || {};
-var common = {},
-scroll = function(event, scroller) {
+var scroll = function(event, scroller) {
 	var k = event.wheelDelta ? event.wheelDelta: -event.detail * 10;
 	scroller.scrollTop = scroller.scrollTop - k;
 	return false;
