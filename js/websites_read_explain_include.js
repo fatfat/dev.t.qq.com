@@ -35,7 +35,7 @@ var jsonToString = function(o) {
 	return "{" + arr.join(",") + "}";
 };
 
-var sty = ['html,body{font-size:12px;display:block;margin:0;padding:0;min-height:100%;height:100%;}', '.colorList li,.colorList1 li{float:left;height:40px;padding:4px;margin-bottom:8px;}', '.color1, .color2, .color3, .color4, .color5, .color6, .color7 {height: 36px;margin: 1px;width: 36px;}', '.colorList li, .colorList1 li{height:38px;padding:0;margin:4px 10px 0 0;border-radius:4px;}', '.colorList1 li.s{border: 4px solid #A8DE86;margin-top:0;}', '.addIcon{width:12px;line-height:12px;margin-right:10px;cursor:pointer;}', '.toExtend{cursor:pointer;font-size:14px;display:block;margin-left:49px;;color:#333;line-height:28px;}', '.comp_area h4{font-size:12px;font-weight:normal;color:#666;}', '.comp_area ul li{margin-left:66px;list-style:none;}',
+var sty = ['html,body{font-size:12px;display:block;margin:0;padding:0;min-height:100%;height:100%;}', '.colorList li,.colorList1 li{float:left;height:40px;padding:4px;margin-bottom:8px;}', '.color1, .color2, .color3, .color4, .color5, .color6, .color7 {height: 36px;margin: 1px;width: 36px;}', '.colorList li, .colorList1 li{height:38px;padding:0;margin:4px 10px 0 0;border-radius:4px;}', '.colorList1 li.s{border: 4px solid #A8DE86;margin-top:0;}', '.addIcon{width:12px;line-height:12px;margin-right:10px;cursor:pointer;}', '.toExtend{cursor:pointer;font-size:14px;display:block;margin-left:49px;;color:#666;line-height:28px;}', '.comp_area h4{font-size:12px;font-weight:normal;color:#666;}', '.comp_area ul li{margin-left:66px;list-style:none;}',
 //	'.comp_area a{font-size:14px;color:#666;font-weight:bold;display:block;}',
 '#addMod{padding:2px;}', 'i{color:red;}', '.c_gray{color:gray;}', '.c_green{color:#0a0;}', '.list{position:absolute;right:0;top:0;width:250px;min-height:100%;overflow:hidden;background:#fff;text-align:left;font-size:12px;}', '.list strong{height:40px;line-height:40px;text-align:left;display:block;text-indent:10px;}', '.list a{display:block;text-align:left;height:36px;line-height:36px;color:#333;text-decoration:none;background:#fefefe;border-top:1px solid #ccc;border-bottom:1px solid #fff;text-indent:10px;}', '.list a:hover{background:#eee;border-top-color:#ccc;}', '.list p{margin:8px;}', '.configboard{width:250px;padding:0;position:absolute;top:0;left:0;text-align:left;font-size:12px;background:rgba(255,255,255,.5);min-height:100%;overflow:hidden;}',
 
@@ -72,10 +72,10 @@ tpl.websites_read_explain_include = [
 		'</div>',
 	'</div>',	
 	
-	'<div class="comp_area" id = "configboard" style="min-height:700px;overflow:hidden;">', 
-
-
 	'<h2 class="comp_sub_tit">自定义配置</h2>',
+	
+	
+	'<div class="comp_area" id = "configboard" style="min-height:700px;overflow:hidden;">', 
 
 	'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>整体样式与风格配置</a>', 
 	'<ul class="none">', 
@@ -83,7 +83,7 @@ tpl.websites_read_explain_include = [
 		'<div class="panel">', 
 		'<h4>阅读墙尺寸</h4>', 
 		'<p>请根据页面填写所需组件大小百分比或像素值</p>', 
-		'<i>*</i> <input type="text" name="width" data-rule="width" data-error="宽度" size="5" value="100%" /> <label>&times;</label> <input type="text" name="height" data-rule="height" data-error="高度" size="5" value="100%"/>', 
+		'<em style="color:red;">*</em> <input type="text" name="width" data-rule="width" data-error="宽度" size="5" value="100%" /> <label>&times;</label> <input type="text" name="height" data-rule="height" data-error="高度" size="5" value="100%"/>', 
 		'</div>', 
 		'</li>', 
 		'<li>', 
@@ -207,7 +207,7 @@ function makeFilter() {
 	};
 	var userIds = $("textarea[name='filter']")[1].value.split(/\n+/);
 	for (var i in userIds) {
-		filter.userIds.push(userIds[i]);
+		filter.userIds.push(encodeURIComponent(userIds[i]));
 	}
 
 	var keyWords = $("textarea[name='filter']")[0].value.split(/\n+/);
@@ -304,7 +304,7 @@ function makeCompStyle() {
 			"TwitterNum": +$('select[data-error="请选择分类"]').val()
 		},
 		"PubModuleConfigure": {
-			"InitialContent": form.find("input[name='InitialContent']").val(),
+			"InitialContent": encodeURIComponent(form.find("input[name='InitialContent']").val()),
 			"InsertFunction": (function(a) {
 				var arr = [];
 				a.each(function() {
@@ -312,7 +312,7 @@ function makeCompStyle() {
 				});
 				return arr;
 			})(form.find("input[name='InsertFunction']:checked")),
-			"SourceUrl": form.find("input[name='SourceUrl']").val(),
+			"SourceUrl": encodeURIComponent(form.find("input[name='SourceUrl']").val()),
 			"position": +form.find("input[name='position']:checked").val()
 		},
 		"TitleModuleConfigure": {
@@ -616,7 +616,9 @@ eventBindFuncList.push(function() {
 						}
 					}
 				}
-				dialog.removeClass("none").find(".tab:eq(" + o["ConditionType"] + ")").trigger("click");
+				var ConditionTypeAjast = (o["ConditionType"] + 2) % 3;//timeline菜单显示次序已经调整，由原来的 关键词 话题 多用户  调整为 话题 多用户 关键词
+					console.log(o["ConditionType"],ConditionTypeAjast)
+				dialog.removeClass("none").find(".tab:eq(" + ConditionTypeAjast + ")").trigger("click");
 				form = dialog.find(".timeline").not(".none");
 				form.parent().attr("editId", li.index());
 				for (var arr = ["ConditionType", "SortType", "Famous", "ContentType", "MessageType"], i = 0, k = arr.length; i < k; i++) {
@@ -626,6 +628,7 @@ eventBindFuncList.push(function() {
 				}
 				form[0]["Name"].value = o["Name"];
 				form[0]["Condition"].value = decodeURIComponent(o["Condition"]).split("\t").join("\n");
+				console.log(o["ContentType"])
 				if (o["ContentType"] > 0) {
 					var arr = fun(o["ContentType"]);
 					form.find("input[name='_ContentType']").removeAttr("checked");

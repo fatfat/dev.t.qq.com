@@ -299,8 +299,8 @@ function compType9(){
 				$('#configboard input[name=InsertFunction]')[j].checked = true;
 			}
 			
-			$('#configboard input[name=SourceUrl]').val(comp_style.PubModuleConfigure.SourceUrl);
-			$('#configboard input[name=InitialContent]').val(comp_style.PubModuleConfigure.InitialContent);	
+			$('#configboard input[name=SourceUrl]').val(decodeURIComponent(comp_style.PubModuleConfigure.SourceUrl));
+			$('#configboard input[name=InitialContent]').val(decodeURIComponent(comp_style.PubModuleConfigure.InitialContent));	
 			$('#configboard input[name=PageStyle]')[comp_style.TimelineDetail.PageStyle].checked=true;
 			
 			var twitterNum = [5,10,20,50,80,100];
@@ -312,8 +312,8 @@ function compType9(){
 			}
 			$('#configboard input[name=PicStyle]')[comp_style.TimelineDetail.PicStyle].checked=true;
 			$('#configboard input[name=HeadStyle]')[0].checked = !!comp_style.TimelineDetail.HeadStyle;	
-			$('#configboard textarea[name=filter]').first().html(comp_style.filter.keyWords.join("\n"));
-			$('#configboard textarea[name=filter]').last().html(comp_style.filter.userIds.join("\n"));
+			$('#configboard textarea[name=filter]').first().html(decodeURIComponent(comp_style.filter.keyWords.join("\n")));
+			$('#configboard textarea[name=filter]').last().html(decodeURIComponent(comp_style.filter.userIds.join("\n")));
 			
 			var len = comp_style.TimelineModuleConfigure.length;
 			var timelineList = $('#timelineList');

@@ -1,5 +1,5 @@
 ;(function(){
-	util.createStyle(".comp_area{width:411px;}#readView{top:250px;}");
+	util.createStyle(".comp_area{width:411px;}#readView{top:282px;}");
 	tpl.wrapper = [
 		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
@@ -16,8 +16,8 @@
 				'<%if(userInfo.hdlogin){%>',
 					tpl.websites_read_explain_include,, 
 					'<!--<div class="p1" id="getScript">', '<h3>代码获取</h3>', '<div class="fcgray">复制以下代码，粘贴到你的网页后台代码中，即可在网页<br />中看到你的话题墙</div>', '<textarea style="width:300px;height:60px;" data-rule="topic" data-error="topic" id="showscripts">请先填写需要定制的话题名和appkey</textarea>', '<div><input type="button" value="" class="button" id="copyscript" /></div>', '</div>-->', 
-					'<div class="p1" style="margin-top:40px;">',
-					'<a href="javascript:void(0);" class="devSubmit" id="showcode">获取代码</a> ', 
+					'<div class="p1" style="margin-left:49px;margin-top:24px;">',
+					'<a href="javascript:void(0);" class="btn_code" id="showcode">获取代码</a> ', 
 					'<!--', '<a href="javascript:void(0);" onclick="document.referrer&&location.replace(document.referrer);" class="devCancel">取消</a> ', '-->', 
 					'</div>', 
 				'<%}else{%>', 
