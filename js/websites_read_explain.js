@@ -1,17 +1,13 @@
 ;(function(){
-	util.createStyle(".comp_area{width:411px;}#readView{top:282px;}");
+	util.createStyle(".comp_area{width:411px;min-height:640px;}#readView{top:298px;}");
 	tpl.wrapper = [
-		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
-		'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/> ',
 
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>阅读墙</span></div>',
 		'<div id="content" class="wrapper main main_comp">',
 			tpl.websites_appnav,
 			'<div class="appsArea2">',
-				'<h2 class="apptit">',
-					'<strong>阅读墙样式配置 高度适应您的需求</strong>',
-				'</h2>',
+				'<h2 class="comp_tit">阅读墙样式配置 高度适应您的需求</h2>',
 				tpl.compform,
 				'<%if(userInfo.hdlogin){%>',
 					tpl.websites_read_explain_include,, 

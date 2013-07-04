@@ -1,0 +1,67 @@
+@charset "utf-8";
+/*-- public --*/
+html{_background-image:url(about:blank);_background-attachment:fixed;background-color:#FAFAFA;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,input,textarea,p,blockquote{margin:0;padding:0}
+body{background:url(http://mat1.gtimg.com/app/opent/images/websites/body_20130328.gif) repeat-x #fafafa;min-height:100%;_ height:100%;font:12px/1.75 "宋体",Tahoma,Arial;color:#333;}
+table{border-collapse: collapse;border-spacing: 0;}
+.wrapper{width:960px;margin:0 auto;text-align:left;}
+.none{display:none;}
+/*icon*/
+img.true,img.false,img.ok,img.email,a.newapp,img.alert,img.issue,img.arrow,img.warrant,a.sourceBtn{background:url(http://mat1.gtimg.com/app/opent/images/public/icon.png) -30px 0 no-repeat;}
+img.alert{width:38px; height:39px; background-position:-352px -59px; vertical-align:middle;border:0;}
+img.ok{background-position:-314px -59px;width:38px;height:39px;vertical-align:middle;}
+a.newapp:link,a.newapp:visited{display:inline-block;background-position:-101px -24px;width:101px; height:30px;text-align:center;color:#fff;line-height:30px;text-decoration:none;font-size:14px;padding:0;}
+/*icon*/
+ol, ul, li{list-style: none outside none;}
+h3{font-size:14px;}
+em{font-style:normal;}
+a{text-decoration:none;color:#51add1}
+a.a1{color:#085678;}
+img{border:0;vertical-align:middle;}
+input,label{vertical-align:middle;}
+.clearfix:after {clear:both;content:' ';display:block;font-size:0;height:0;visibility:hidden;}
+.clearfix{clear: both;display: block;}
+.actioninfo{width:958px;border:1px solid #ECEDE8;border-top:0;background:#fff;margin:0 auto;padding:90px 0;text-align:center;min-height:400px;_ height:400px;font-size:18px;text-shadow:1px 1px 0 #eee;}
+.actioninfo img{margin-right:10px;}
+.actioninfo .p{margin:20px 0 0 48px;}
+.gray{color:gray;}
+#header, #footer{width:960px;}
+/*-- header --*/
+.headWrap{width:100%;height:48px;color:#C9C9C9;font-size:14px;}
+.headWrap a{color:#333;outline:none;}
+.headInside{height:48px;margin: 0 auto;position:relative;z-index:1000;}
+.headInside h1 {width:186px;float:left;height:48px;margin-right:54px;}
+.headInside h1 .logo{display:block;height:48px;line-height:48px;background:url(http://mat1.gtimg.com/app/opent/images/public/logo_20130328.gif) left center  no-repeat;text-indent:-9999em;overflow:hidden;_cursor:pointer}
+.topNav{height:48px;text-align:center;}
+.topNav li{height:48px;float:left;position:relative;}
+.topNav a{font-size:14px;display:block;_ display:inline;zoom:1;height:48px;line-height:48px;overflow:hidden;padding:0 15px;cursor:pointer;}
+.topNav a:hover{color:#085678;}
+.topNav a.active{color:#085678;background:url(http://mat1.gtimg.com/app/opent/images/index/arrow.gif) center no-repeat;}
+.userNav{width:90px;height:46px;line-height:46px;padding:0 10px;position:absolute;top:0;right:0;overflow:hidden;}
+.userNav_sub{margin-left: -1px;width: 112px;}
+.childMenu{height:52px;display:none;position:absolute;left:0;top:26px;}
+.childMenu .sub_item{height:26px;line-height:26px;}
+a.sub_item_link{height:26px;line-height:26px;display:block;color: #666;font-size: 12px;text-indent:10px;}
+a.sub_item_link:hover{background:#3573B1;color:#fff;}
+li.menuCon,div.menuCon{height:26px;border:1px solid transparent;_ border-color:tomato;_ filter:chroma(color=tomato);margin-top:10px;}
+div.menuContainer{height:78px;border:1px solid #D5D2D2;border-radius:3px;background:#fff;margin-top:10px;}
+div.menuContainer .childMenu{display:block;text-align:left;}
+.login_name{max-width:76px;_   width:76px;height:26px;line-height:26px;float:left;overflow:hidden;word-break: break-all;word-wrap: break-word;/*_ display:inline;zoom:1;*/}
+.nav_arrow{width:0;height:0;border:4px solid #F1F2F2;border-top:4px solid #356798;margin:0 0 0 5px; line-height:0;* position:absolute;*display:block;top:10px;}
+div.menuContainer .nav_arrow{border-color:#fff;border-top-color:#356789;}
+.menu{position:relative;height:26px;}
+.webapp_arr{position:absolute;top:22px;right:2px;}
+
+.appSearch{height:20px;position:absolute;right:0;top:7px;border-radius:3px 0 0 3px;width:180px;}
+.appSearch form{position:relative;width:auto;height:auto;padding-left:0;background:none}
+.appSearch form:after{content:'.';clear:both;display:block;height:0;visibility:hidden;line-height:0}
+.appSearch form{zoom:1}
+.appSearch .inputTxt{padding:0 0 0 5px;border:0;border-radius:3px 0 0 3px;outline:none;width:149px;height:20px;float:left;margin:0;color:#ccc;background:#878787;}
+.appSearch .inputTxt:focus{background:#fff;color:#000;}
+.appSearch .inputBtn{width:20px;height:20px;margin:0;float:left;text-indent:-9999em;border:0;cursor:pointer;background:url(http://mat1.gtimg.com/app/opent/images/public/nav_search.png) -152px -80px no-repeat;}
+.appSearch label{cursor:text;color:#999;background:none;margin:0;position:absolute;left:3px;top:0;height:20px;line-height:20px;line-height:20px\9;_line-height:23px;width:148px;overflow:hidden}
+.appSearch label{line-height:21px\0}
+.appSearch.active .inputTxt{color:#333}
+.appSearch.active .inputBtn{background-position:-152px -100px}
+#footer{clear:both;color:#999;font-size:12px;height:49px;line-height:20px;margin:25px auto 60px;text-align:center;text-shadow:0 1px 0 #FFFFFF;zoom:1;* display:inline;width:100%;font-family:Tahoma;}
+#footer a{margin:0 5px;color:#085678;}

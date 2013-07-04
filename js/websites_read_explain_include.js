@@ -35,11 +35,11 @@ var jsonToString = function(o) {
 	return "{" + arr.join(",") + "}";
 };
 
-var sty = ['html,body{font-size:12px;display:block;margin:0;padding:0;min-height:100%;height:100%;}', '.colorList li,.colorList1 li{float:left;height:40px;padding:4px;margin-bottom:8px;}', '.color1, .color2, .color3, .color4, .color5, .color6, .color7 {height: 36px;margin: 1px;width: 36px;}', '.colorList li, .colorList1 li{height:38px;padding:0;margin:4px 10px 0 0;border-radius:4px;}', '.colorList1 li.s{border: 4px solid #A8DE86;margin-top:0;}', '.addIcon{width:12px;line-height:12px;margin-right:10px;cursor:pointer;}', '.toExtend{cursor:pointer;font-size:14px;display:block;margin-left:49px;;color:#666;line-height:28px;}', '.comp_area h4{font-size:12px;font-weight:normal;color:#666;}', '.comp_area ul li{margin-left:66px;list-style:none;}',
+var sty = ['html,body{font-size:12px;display:block;margin:0;padding:0;min-height:100%;height:100%;}', '.colorList li,.colorList1 li{float:left;height:40px;padding:4px;margin-bottom:8px;}', '.color1, .color2, .color3, .color4, .color5, .color6, .color7 {height: 36px;margin: 1px;width: 36px;}', '.colorList li, .colorList1 li{height:38px;padding:0;margin:4px 10px 0 0;border-radius:4px;}', '.colorList1 li.s{border: 4px solid #A8DE86;margin-top:0;}', '.addIcon{width:12px;line-height:12px;margin-right:10px;cursor:pointer;}', '.toExtend{cursor:pointer;font-size:14px;display:block;margin-left:49px;;color:#666;line-height:28px;}', '.comp_area h4{font-size:12px;font-weight:normal;color:#666;}', '.comp_area ul li{margin-left:66px;list-style:none;}','.btn{padding:5px 25px;}',
 //	'.comp_area a{font-size:14px;color:#666;font-weight:bold;display:block;}',
-'#addMod{padding:2px;}', 'i{color:red;}', '.c_gray{color:gray;}', '.c_green{color:#0a0;}', '.list{position:absolute;right:0;top:0;width:250px;min-height:100%;overflow:hidden;background:#fff;text-align:left;font-size:12px;}', '.list strong{height:40px;line-height:40px;text-align:left;display:block;text-indent:10px;}', '.list a{display:block;text-align:left;height:36px;line-height:36px;color:#333;text-decoration:none;background:#fefefe;border-top:1px solid #ccc;border-bottom:1px solid #fff;text-indent:10px;}', '.list a:hover{background:#eee;border-top-color:#ccc;}', '.list p{margin:8px;}', '.configboard{width:250px;padding:0;position:absolute;top:0;left:0;text-align:left;font-size:12px;background:rgba(255,255,255,.5);min-height:100%;overflow:hidden;}',
+'.addmod{padding:4px 8px;display:inline-block;color:white;background:#98c753;margin-left:49px;font-size:14px;}', '.addmod:hover{background:#a3d063;}','.addmod:active{background:#9dce59;}', '.c_gray{color:gray;}', '.c_green{color:#0a0;}', '.list{position:absolute;right:0;top:0;width:250px;min-height:100%;overflow:hidden;background:#fff;text-align:left;font-size:12px;}', '.list strong{height:40px;line-height:40px;text-align:left;display:block;text-indent:10px;}', '.list a{display:block;text-align:left;height:36px;line-height:36px;color:#333;text-decoration:none;background:#fefefe;border-top:1px solid #ccc;border-bottom:1px solid #fff;text-indent:10px;}', '.list a:hover{background:#eee;border-top-color:#ccc;}', '.list p{margin:8px;}', '.configboard{width:250px;padding:0;position:absolute;top:0;left:0;text-align:left;font-size:12px;background:rgba(255,255,255,.5);min-height:100%;overflow:hidden;}',
 
-'input,label{vertical-align:middle;}', '.panel{margin-bottom:10px;}', '.panel h4{margin:0;padding:0;font-size:12px;line-height:24px;}', '.panel p{color:#999;line-height:18px;}', '.theme{display:inline-block ;width:14px;height:14px;border:1px solid #000;margin-bottom:-2px;}', '.split-line{height:0;line-height:0;font-size:0;border-bottom:1px dotted #ccc;margin:10px 40px;}', '.dialog{width:600px;height:480px;background:#fff;border:1px solid #DADADA;position:fixed;top:50%;left:50%;margin:-240px 0 0 -212px;z-index:2;_ position:absolute;}', '.dialog ul{list-style:none;}', '.dialog .closeBtn{position:absolute;top:0;right:0;display:inline-block;text-decoration:none;color:#333;height:34px;line-height:34px;width:34px;text-align:center;}', '.tabbar{height:34px;text-align:left;text-indent:10px;', 'background:#FEFEFD;', 'background: -o-linear-gradient(top,#FEFEFD,#F0F0F1);', 'background: -moz-linear-gradient(top,#FEFEFD,#F0F0F1);', 'background: -webkit-gradient(linear, left top, left bottom, from(#FEFEFD), to(#F0F0F1));', 'filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#FEFEFD", endColorstr="#F0F0F1");', 'border-bottom:1px solid #DADADA;', '}', '.tabbar .tab{height:26px;line-height:26px;padding:0 20px;display:inline-block;margin:8px 0 0;font-size:14px;color:#333;text-decoration:none;color:#666;text-indent:0;}', '.tabbar .active{background:#fff;border:1px solid #DADADA;border-bottom:none;color:#999;cursor:default;}', '.controls{text-align:right;padding:5px 35px;}', '.timeline{text-align:left;list-style:none;font:12px "宋体",Tahoma,Arial}', '.timeline dl{margin:20px 0 0 40px;}', '.timeline dt,.timeline dd{margin:0 0 5px;}', '.timeline dt{margin:10px 0 5px;color:#090;}', '.timelineList{list-style:none;margin:0;padding:0;width:372px;}', '.timelineList li{margin:10px 0;border:1px solid #DADADA;padding:5px;}', '.timelineList li .condition{font-size:12px;color:#090;word-break:break-all;}', '.btn{padding:5px 25px;}', '.none{display:none;}', '.code{margin:8px;border:1px solid #aaa;padding:5px;border-radius:3px;white-space:pre;word-break:break-all;word-wrap:break-word;}'].join("");
+'input,label{vertical-align:middle;}', '.panel{margin-bottom:10px;}', '.panel h4{margin:0;padding:0;font-size:12px;line-height:24px;}', '.panel p{color:#999;line-height:18px;}', '.theme{display:inline-block ;width:14px;height:14px;border:1px solid #000;margin-bottom:-2px;}', '.split-line{height:0;line-height:0;font-size:0;border-bottom:1px dotted #ccc;margin:10px 40px;}', '.dialog{width:600px;height:480px;background:#fff;border:1px solid #DADADA;position:fixed;top:50%;left:50%;margin:-240px 0 0 -212px;z-index:2;_ position:absolute;}', '.dialog ul{list-style:none;}', '.dialog .closeBtn{position:absolute;top:0;right:0;display:inline-block;text-decoration:none;color:#333;height:34px;line-height:34px;width:34px;text-align:center;}', '.tabbar{height:34px;text-align:left;text-indent:10px;', 'background:#FEFEFD;', 'background: -o-linear-gradient(top,#FEFEFD,#F0F0F1);', 'background: -moz-linear-gradient(top,#FEFEFD,#F0F0F1);', 'background: -webkit-gradient(linear, left top, left bottom, from(#FEFEFD), to(#F0F0F1));', 'filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#FEFEFD", endColorstr="#F0F0F1");', 'border-bottom:1px solid #DADADA;', '}', '.tabbar .tab{height:26px;line-height:26px;padding:0 20px;display:inline-block;margin:8px 0 0;font-size:14px;color:#333;text-decoration:none;color:#666;text-indent:0;}', '.tabbar .active{background:#fff;border:1px solid #DADADA;border-bottom:none;color:#999;cursor:default;}', '.controls{text-align:right;padding:5px 35px;}', '.timeline{text-align:left;list-style:none;font:12px "宋体",Tahoma,Arial}', '.timeline dl{margin:20px 0 0 40px;}', '.timeline dt,.timeline dd{margin:0 0 5px;}', '.timeline dt{margin:10px 0 5px;color:#090;}', '.timelineList{list-style:none;margin:0;padding:0;width:372px;}', '.timelineList li{margin:10px 0;border:1px solid #DADADA;padding:5px;}', '.timelineList li .condition{font-size:12px;color:#090;word-break:break-all;}',  '.none{display:none;}', '.code{margin:8px;border:1px solid #aaa;padding:5px;border-radius:3px;white-space:pre;word-break:break-all;word-wrap:break-word;}'].join("");
 
 util.createStyle(sty);
 
@@ -75,7 +75,7 @@ tpl.websites_read_explain_include = [
 	'<h2 class="comp_sub_tit">自定义配置</h2>',
 	
 	
-	'<div class="comp_area" id = "configboard" style="min-height:700px;overflow:hidden;">', 
+	'<div class="comp_area" id = "configboard" style="overflow:hidden;">', 
 
 	'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>整体样式与风格配置</a>', 
 	'<ul class="none">', 
@@ -142,14 +142,14 @@ tpl.websites_read_explain_include = [
 	'<li>', 
 	'<div class="panel">',
 	 '<h4>来源设置：</h4>', 
-	 '<input type="text" name="SourceUrl" data-rule="applink" data-error="来源URL" placeholder="指定一个发表微博后会自动带上的url地址" value="http://dev.t.qq.com/websites/read/"/>', 
+	 '<input type="text" name="SourceUrl" size="40px" data-rule="applink" data-error="来源URL" placeholder="指定一个发表微博后会自动带上的url地址" value="http://dev.t.qq.com/websites/read/"/>', 
 	 '</div>', 
 	 '</li>', 
 	 '<li>', 
 		'<div class="panel">', 
 			'<h4>默认展示文字：</h4>', 
-			'<p>请为您的阅读墙填写默认的展示文字，最多不超过140个字</p>', 
-			'<input type="text" name="InitialContent" data-rule="wordTip" data-error="默认展示文字" placeholder="指定发表框默认显示的内容" value="#阅读墙测试# 说点什么吧"/>', 
+			'<p>可填写发表框默认显示的内容，最多140个字</p>', 
+			'<input type="text" name="InitialContent" size="40px" data-rule="wordTip" data-error="默认展示文字" placeholder="指定发表框默认显示的内容" value="#阅读墙测试# 说点什么吧"/>', 
 		'</div>', 
 	'</li>', 
 	'</ul>',
@@ -158,14 +158,17 @@ tpl.websites_read_explain_include = [
 //	'<input type="number" name="TwitterNum" placeholder="每页多少条微博(1-20)" value="20" max="20" min="1"/>',
 '<select name="TwitterNum" style="display:block" data-rule="app_class_main" data-error="请选择分类">', '<option value="5">5条</option>', '<option value="10">10条</option>', '<option value="20" selected>20条</option>', '<option value="50">50条</option>', '<option value="80">80条</option>', '<option value="100">100条</option>', '</select>', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>图片显示：</h4>', '<input type="radio" name="PicStyle" value="0" id="PicStyle0" checked/> <label for="PicStyle0">图片</label> ', '<input type="radio" name="PicStyle" value="1" id="PicStyle1"/> <label for="PicStyle1">缩略图</label>', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>头像显示：</h4>', '<input type="checkbox" name="HeadStyle" value="0" id="HeadStyle" checked/> <label for="HeadStyle">显示用户头像</label>', '</div>', '</li>', '</ul>',
 
-'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>垃圾消息过滤设置</a>', '<ul class="none">', '<li>', '<div class="panel">', '<h4>过滤关键词</h4>', '<p>填写您要过滤的关键字/词/url，最多填写20个</p>', '<textarea size="20"  name="filter" data-error="关键词" data-rule="keyWords" rows="5"></textarea>', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>过滤用户</h4>', '<p>填写您要过滤的用户微博帐号，最多填写20个</p>', '<textarea size="20" name="filter" data-error="微博账号" data-rule="appWeibos"  rows="5"></textarea>', '</div>', '</li>', '</ul>',
+'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>垃圾消息过滤设置</a>', '<ul class="none">', '<li>', '<div class="panel">', '<h4>过滤关键词</h4>', '<p>指定过滤的关键词，每行为1个，最多填写20个</p>', '<textarea size="20"  name="filter" data-error="关键词" data-rule="keyWords" rows="5"></textarea>', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>过滤用户</h4>', '<p>指定过滤的微博帐号，每行为1个，最多填写20个</p>', '<textarea size="20" name="filter" data-error="微博账号" data-rule="appWeibos"  rows="5"></textarea>', '</div>', '</li>', '</ul>',
 
 //自定义模块里的内容
 '<div class="split-line"></div>',
 
-'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>添加自定义模块</a>', '<ul class="none">', '<li style="list-style:none outside none;">', '<div class="panel">', '<input type="button" value="添加自定义模块" id="addMod" class="btn createTimeline" data-action="createTimeline">', '</div>', '</li>', '</ul>',
+'<a href="javascript:void(0);" class="btn createTimeline addmod" id="addMod">添加自定义模块</a> ', 
+/*
+'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em><span>添加自定义模块</span></a>', '<ul class="none">', '<li style="list-style:none outside none;">', '<div class="panel">', '<input type="button" value="添加" id="addMod" class="btn createTimeline" data-action="createTimeline">', '</div>', '</li>', '</ul>',*/
 
-'<ul id="timelineList" class="timelineList"></ul>'].join("");
+'<ul id="timelineList" class="timelineList"></ul>'
+].join("");
 
 var _width = 345;
 var _height = 590;

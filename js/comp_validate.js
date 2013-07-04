@@ -32,6 +32,9 @@ OPEN_VALIDATOR = {
 			return true;
 		}
 	}
+	,wordTip:function(value){
+		return true;
+	}
 	,compname:function(value,selector){
 			var k,
 			tchar,
@@ -343,7 +346,7 @@ function compValidateEvent() {
 			text.val(value);
 		}
 		if (OPEN_VALIDATOR.hasOwnProperty(rule) && rule) { //判断是否进行检测
-			if (!$.trim(value) && rule != "tname" && rule != "appdes" && rule != "topicname" && rule!="applink" && rule != "appweibo" && rule != "keyWords" && rule != "appWeibos") {
+			if (!$.trim(value) && rule != "tname" && rule != "appdes" && rule != "topicname" && rule!="applink" && rule != "appweibo" && rule != "keyWords" && rule != "appWeibos" && rule!="wordTip") {
 				errmsg += "不能为空";
 				flag = false;
 			} else {
@@ -406,7 +409,7 @@ function compValidateEvent() {
 			value = $(this).val();
 			errmsg = $(this).attr("data-error");
 			if (OPEN_VALIDATOR.hasOwnProperty(rule) && rule) {
-				if (!$.trim(value) && rule != "tname" && rule != "appdes" && rule != "topicname" && rule!= "applink" && rule != "appweibo" && rule != "keyWords" && rule != "appWeibos") {
+				if (!$.trim(value) && rule != "tname" && rule != "appdes" && rule != "topicname" && rule!= "applink" && rule != "appweibo" && rule != "keyWords" && rule != "appWeibos" && rule != "wordTip") {
 					errmsg += "不能为空";
 					flag = false;
 				} else {

@@ -526,7 +526,7 @@ function compType9() {
 			colors = ['d0d0d0','ccc','333','000'],
 			config = comp_style,
 	//		codeStr1 = '&lt;script type="text/javascript" src="http://mat1.gtimg.com/app/vt/js/read/import.js" charset="utf-8"&gt;&lt;/script&gt;',
-			codeStr2 = '&lt;iframe width="'+config.width+'" height="'+config.height+'" frameborder="0" style="border:1px solid #ccc'+';" allowtransparency="true" src="about:blank" id="'+id+'" srcolling="no"&gt;&lt;/iframe&gt;';
+			codeStr2 = '&lt;iframe width="'+config.width+'" height="'+config.height+' frameborder="0" '+';" allowtransparency="true" src="about:blank" id="'+id+'" srcolling="no"&gt;&lt;/iframe&gt;';
 			return(
 		//		"code2":
 				[			
@@ -543,7 +543,7 @@ function compType9() {
 	var getPreview = function(){
 		util.createScript("http://mat1.gtimg.com/app/vt/js/read/import.js",function(){
 		$("#preview").height("100%");
-		$("#preview").html("<iframe frameborder=\"0\" scrolling=\"no\" src=\"about:blank\" width=\"" + comp_style.width + "\" height=\"" + comp_style.height + "\" style=\"border:1px solid #ccc;\" allowtransparency=\"true\" id=\""+"frame"+"\"></iframe>");
+		$("#preview").html("<iframe frameborder=\"0\" scrolling=\"no\" src=\"about:blank\" width=\"" + comp_style.width + "\" height=\"" + comp_style.height + "\" allowtransparency=\"true\" id=\""+"frame"+"\"></iframe>");
 window.showTxWbYDQ(document.getElementById("frame"),comp_style,
 function(d){/*回调函数,d的值格式为：{"action":"发表","ret":0,"errcode":0,"msg":"ok","data":{"id":231174038614579,"time":1371544700}},其中action的值可能为“发表、转播、评论”*/}
 );});

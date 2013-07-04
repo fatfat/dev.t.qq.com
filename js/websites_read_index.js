@@ -1,25 +1,9 @@
 ;(function(){
-	util.createStyle(
-		[
-			'.appsArea2 h2{margin-top:40px;}',
-			'dl{line-height:22px;margin:4px 32px 40px 50px;}',
-			'dt{color:#666;font-size:14px;}',
-			'.icon1{margin-top:6px;float:left;width:46px;height:39px;margin-right:18px;background: white url("http://mat1.gtimg.com/app/opent/images/websites/nav.gif") no-repeat;background-position:-88px -271px;}',
-			'.icon2{margin-top:6px;float:left;width:47px;height:34px;margin-right:18px;background: white url("http://mat1.gtimg.com/app/opent/images/websites/nav.gif") no-repeat;background-position:-139px -273px;}',
-			'.icon3{margin-top:6px;float:left;width:47px;height:39px;margin-right:18px;background: white url("http://mat1.gtimg.com/app/opent/images/websites/nav.gif") no-repeat;background-position:-137px -314px;}',
-			'dd{color:#999;}',
-			'.good{margin-left:46px;margin-bottom:14px;}',
-			'.left50{margin-left:50px;line-height:22px;}',
-			'.appsArea2 p span{float:left;background:white url("http://mat1.gtimg.com/app/opent/images/websites/read/preview.png") no-repeat;background-position: 0 0;width:463px;height:525px;}',
-			'.right{}',
-			'.right i{display:inline-block;width:120px;height:2px;background:#98b8d1;line-height:18px;vertical-align:middle;}',
-			'.right span{color:#999;vertical-align:middle;margin-left:2px;line-height:18px;}',
-		].join("")
-	);
 	tpl.read = [
 		'<!--{ include file="header.tpl" }-->',
 		tpl.header,
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/> ',
+		'<link href="http://mat1.gtimg.com/app/opent/css/websites/read/read_index.css" rel="stylesheet" type="text/css"/> ',
 		'<div class="wrapper breadcast">',
 			'<a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>阅读墙</span>',
 		'</div>',
@@ -29,13 +13,13 @@
 			tpl.websites_appnav,
 			'<div class="appsArea2">',
 				'<h1 class="comp_tit">微博阅读墙 高聚合消息获得更多用户与流量</h1>',
-				'<h2 class="comp_sub_tit" style="margin-top:0;">组件介绍</h2>',
+				'<h2 class="comp_sub_tit">组件介绍</h2>',
 				'<dl>',
-					'<dd>使用阅读墙，将生成的代码放置到你的博客、网站或是其它支html代码的位置，可以向用户同时展示您指定的多话题、多用户与关键词广播。</dd>',
-					'<dd style="height:34px;margin-top:10px;"><a href="?explain=1" class="btn_newcomp" title="立即使用">立即使用</a></dd>',
+					'<dd class="color666">使用阅读墙，将生成的代码放置到你的博客、网站或是其它支html代码的位置，可以向用户同时展示您指定的多话题、多用户与关键词广播。</dd>',
+					'<dd class="link"><a href="?explain=1" class="btn_newcomp" title="立即使用">立即使用</a></dd>',
 				'</dl>',
 				
-				'<h2 class="comp_sub_tit">使用阅读墙有什么好处</h2>',
+				'<h2 class="comp_sub_tit margin-top40">使用阅读墙有什么好处</h2>',
 
 				'<div class="good">',
 				'<span class="icon1"></span>',
@@ -53,22 +37,22 @@
 				'<dd>增加关键词搜索功能，您网站的用户可以随时展开微博全站搜索，相关广播一览无余，增加内容丰富度。</dd>',
 				'</div>',					
 	
-				'<h2 class="comp_sub_tit">如何使用阅读墙</h2>',	
+				'<h2 class="comp_sub_tit margin-top40">如何使用阅读墙</h2>',	
 
-				'<dt class="left50" style="margin-bottom:6px;">按照以下步骤操作，就能在你的博客或网页中使用阅读墙:</dt>',
-				'<dd class="left50"><strong>第一步: </strong> 访问阅读墙样式配置页  <a href="/websites/read?explain=1">立即访问</a></dd>',
-				'<dd class="left50"><strong>第二步: </strong> 在配置页中，填写自定义定制化样式与内容</dd>',					
+				'<dt class="left50 margin-bottom8">按照以下步骤操作，就能在你的博客或网页中使用阅读墙:</dt>',
+				'<dd class="left50"><strong>第一步: </strong> 访问阅读墙样式配置页。  <a href="/websites/read?explain=1">立即访问</a></dd>',
+				'<dd class="left50"><strong>第二步: </strong> 在配置页中，填写自定义定制化样式与内容。</dd>',					
 				'<dd class="left50"><strong>第三步: </strong> 复制阅读墙代码，粘贴到需要添加阅读墙的位置，就能在网页中显示你的阅读墙了。</dd>',	
 							
-				'<h2 class="comp_sub_tit">阅读墙的显示内容</h2>',
-				'<dt class="left50" style="margin-bottom:10px;">阅读墙显示内容如下图所示:</dt>',
+				'<h2 class="comp_sub_tit margin-top40">阅读墙的显示内容</h2>',
+				'<dt class="left50 margin-bottom8">阅读墙显示内容如下图所示:</dt>',
 
 				'<p class="left50">',
-					'<span></span>',
-					'<div class="right" style="margin-top:16px;"><i clase="line"></i><span>标题栏</span></div>',
-					'<div class="right" style="margin-top:25px;"><i clase="line"></i><span>发表框</span></div>',					
-					'<div class="right" style="margin-top:60px;"><i clase="line"></i><span>页卡栏</span></div>',		
-					'<div class="right" style="margin-top:137px;"><i clase="line"></i><span>时间线</span></div>',					
+					'<a href="/websites/read?explain=1"></a>',
+					'<div class="right margin-top16"><i clase="line"></i><span>标题栏</span></div>',
+					'<div class="right margin-top25"><i clase="line"></i><span>发表框</span></div>',					
+					'<div class="right margin-top60"><i clase="line"></i><span>页卡栏</span></div>',		
+					'<div class="right margin-top137"><i clase="line"></i><span>时间线</span></div>',					
 				'</p>',
 			'</div>',
 		'</div>',
