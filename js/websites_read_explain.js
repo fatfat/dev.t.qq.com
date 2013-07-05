@@ -30,7 +30,7 @@
 	].join("");
 
 	$('#main').html(tmpl(tpl.wall_explain, global_obj.data));	
-	util.createScripts(["http://mat1.gtimg.com/app/opent/rebuild/js/jscolor.js","http://mat1.gtimg.com/app/opent/rebuild/js/customcolor.js","http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js"],function(){bindAllEvent()}); 
+	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js",function(){bindAllEvent()}); 
 
 
 /*	if (!developerinfo){
@@ -45,7 +45,7 @@
 		$('#copyscript').click(function(){
 			if (window.clipboardData) { 
 				window.clipboardData.setData('text',$('#showscripts').val());  
-				alert('复制成功！\t\r请将已复制的代码粘贴到要加入话题墙功能的页面。');
+				alert('复制成功！\t\r请将已复制的代码粘贴到要加入阅读墙功能的页面。');
 			}else{
 				alert('你的浏览器不支持脚本复制或你拒绝了浏览器安全确认。\t\r请尝试[Ctrl+C]复制代码并粘贴到要加入功能的页面。');
 			} 

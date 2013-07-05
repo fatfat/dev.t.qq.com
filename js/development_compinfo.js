@@ -462,33 +462,59 @@ function compType8() {
 	});
 }
 function compType9() {
-	var comp_style = window.comp && comp.comp_style || {
-	"appkey":comp.comp_id || "801351684",
-	"theme":0,
-	"nobg":0,
-	"ModuleConfigure":{
-		"PubModule":1,
-		"TabModule":1,
-		"TimelineModule":1,
-		"TitleModule":1
-	},
-	"TimelineDetail":{
-		"HeadStyle":1,
-		"PageStyle":0,
-		"PicStyle":0,
-		"TwitterNum":20
-	},
-	"PubModuleConfigure":{
-		"InitialContent":"#阅读墙测试# 说点什么吧",
-		"InsertFunction":[0,1,2],
-		"SourceUrl":"http://mat1.gtimg.com/app/tmp/read.html",
-		"position":0
-	},
-	"TitleModuleConfigure":{
-		"OfficialAccount":"api_weibo"
-	},
-	"TimelineModuleConfigure":[{"Condition":["阅读墙测试1","API接口意见","API接口问题","NOKIA925 超乎所见 震撼上市","分享视频"],"ConditionType":1,"ContentType":0,"Famous":0,"MessageType":0,"Name":"最热话题","SortType":1},{"Condition":["阅读墙","esdfsdf"],"ConditionType":0,"ContentType":0,"Famous":0,"MessageType":0,"Name":"热门搜索","SortType":1}]
+	var comp_style = {};
+
+	if(window.comp && comp.comp_style) {
+		comp_style = comp.comp_style;
+	/*	comp_style.PubModuleConfigure.InitialContent = decodeURIComponent(comp_style.PubModuleConfigure.InitialContent);
+		comp_style.PubModuleConfigure.SourceUrl = decodeURIComponent(comp_style.PubModuleConfigure.SourceUrl);
+			
+		var arr = comp_style.TimelineModuleConfigure;
+		for(var j in arr) {
+			for(var i in arr[j].Condition) {
+				console.log(i,j)
+				arr[j].Condition[i] = decodeURIComponent(arr[j].Condition[i]);
+			}
+		}
+		
+		comp_style.PubModuleConfigure.Name = decodeURIComponent(comp_style.PubModuleConfigure.Name);
+		for (var i in comp_style.filter.userIds) {
+			comp_style.filter.userIds[i] = decodeURIComponent(comp_style.filter.userIds[i]);
+		}
+
+		for (var i in comp_style.filter.keyWords) {
+			comp_style.filter.keyWords[i] = decodeURIComponent(comp_style.filter.keyWords[i]);
+		}*/
+	} else {
+		comp_style =  {
+		"appkey":comp.comp_id || "801351684",
+		"theme":0,
+		"nobg":0,
+		"ModuleConfigure":{
+			"PubModule":1,
+			"TabModule":1,
+			"TimelineModule":1,
+			"TitleModule":1
+		},
+		"TimelineDetail":{
+			"HeadStyle":1,
+			"PageStyle":0,
+			"PicStyle":0,
+			"TwitterNum":20
+		},
+		"PubModuleConfigure":{
+			"InitialContent":"#阅读墙测试# 说点什么吧",
+			"InsertFunction":[0,1,2],
+			"SourceUrl":"http://mat1.gtimg.com/app/tmp/read.html",
+			"position":0
+		},
+		"TitleModuleConfigure":{
+			"OfficialAccount":"api_weibo"
+		},
+		"TimelineModuleConfigure":[{"Condition":["阅读墙测试1","API接口意见","API接口问题","NOKIA925 超乎所见 震撼上市","分享视频"],"ConditionType":1,"ContentType":0,"Famous":0,"MessageType":0,"Name":"最热话题","SortType":1},{"Condition":["阅读墙","esdfsdf"],"ConditionType":0,"ContentType":0,"Famous":0,"MessageType":0,"Name":"热门搜索","SortType":1}]
+		}
 	}
+
 	comp_style.appkey = window.comp && comp.comp_id || "801351684";
 
 	var	buildCode = function(timer){
@@ -622,6 +648,27 @@ if (comp.comp_type == 1) { //<!--一键分享-->
 }
 
 $("#main").append(this.tpl.footer);
+
+if (userInfo.hdlogin){
+	var _name = userInfo.name; 
+	$('#copybtn').click(function(){
+		if (window.clipboardData) { 
+			window.clipboardData.setData('head',$('.code')[0].val());  
+			window.clipboardData.setData('body',$('.code')[1].val());  		
+			alert('复制成功！\t\r请将已复制的代码粘贴到要加入阅读墙功能的页面。');
+		}else{
+			alert('你的浏览器不支持脚本复制或你拒绝了浏览器安全确认。\t\r请尝试[Ctrl+C]复制代码并粘贴到要加入功能的页面。');
+		} 
+	});
+}
+else{
+	window.setTimeout(function(){
+		$('#loginBtn').click();
+	},100);
+	function login(){
+		$('#loginBtn').click();
+	}
+}
 
 $(".code").click(function() {
 	var elm = $(this)[0],

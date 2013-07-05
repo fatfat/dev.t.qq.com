@@ -272,18 +272,72 @@ function compType9(){
 	}();
 	<!--阅读墙-->
 	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_read_explain_include.js",function(){
-		util.createStyle("#readView{top: 197px;}.toExtend{margin-left:7px;}.comp_area ul li{margin-left:23px;}.deverRight{min-height:750px;}.deverRight p{margin:0;font-size:12px;}.comp_area{width:340px;}#topView{top:150px;}.timelineList{width:337px;}.addmod{margin-left:7px;}.comp_area ul li{margin-left:6px;}");
+		util.createStyle("#readView{top: 197px;}.toExtend{margin-left:7px;}.comp_area ul li{margin-left:24px;}.deverRight{min-height:750px;}.deverRight p{margin:0;font-size:12px;}.comp_area{width:340px;}#topView{top:150px;}.timelineList{width:337px;}.addmod{margin-left:7px;}.split-line{margin-right:18px;}");
 		$(".showcode_bar").before(tmpl(tpl.websites_read_explain_include,global_obj.data));
 		bindAllEvent();
 		eventBindFuncList.push(function(){
+	var comp_style = {};
+
+	if(window.comp && comp.comp_style) {
+		comp_style = comp.comp_style;
+	/*	comp_style.PubModuleConfigure.InitialContent = decodeURIComponent(comp_style.PubModuleConfigure.InitialContent);
+		comp_style.PubModuleConfigure.SourceUrl = decodeURIComponent(comp_style.PubModuleConfigure.SourceUrl);
+			
+		var arr = comp_style.TimelineModuleConfigure;
+		for(var j in arr) {
+			for(var i in arr[j].Condition) {
+				console.log(i,j)
+				arr[j].Condition[i] = decodeURIComponent(arr[j].Condition[i]);
+			}
+		}
+		
+		comp_style.PubModuleConfigure.Name = decodeURIComponent(comp_style.PubModuleConfigure.Name);
+		for (var i in comp_style.filter.userIds) {
+			comp_style.filter.userIds[i] = decodeURIComponent(comp_style.filter.userIds[i]);
+		}
+
+		for (var i in comp_style.filter.keyWords) {
+			comp_style.filter.keyWords[i] = decodeURIComponent(comp_style.filter.keyWords[i]);
+		}*/
+	} else {
+		comp_style =  {
+		"appkey":comp.comp_id || "801351684",
+		"theme":0,
+		"nobg":0,
+		"ModuleConfigure":{
+			"PubModule":1,
+			"TabModule":1,
+			"TimelineModule":1,
+			"TitleModule":1
+		},
+		"TimelineDetail":{
+			"HeadStyle":1,
+			"PageStyle":0,
+			"PicStyle":0,
+			"TwitterNum":20
+		},
+		"PubModuleConfigure":{
+			"InitialContent":"#阅读墙测试# 说点什么吧",
+			"InsertFunction":[0,1,2],
+			"SourceUrl":"http://mat1.gtimg.com/app/tmp/read.html",
+			"position":0
+		},
+		"TitleModuleConfigure":{
+			"OfficialAccount":"api_weibo"
+		},
+		"TimelineModuleConfigure":[{"Condition":["阅读墙测试1","API接口意见","API接口问题","NOKIA925 超乎所见 震撼上市","分享视频"],"ConditionType":1,"ContentType":0,"Famous":0,"MessageType":0,"Name":"最热话题","SortType":1},{"Condition":["阅读墙","esdfsdf"],"ConditionType":0,"ContentType":0,"Famous":0,"MessageType":0,"Name":"热门搜索","SortType":1}]
+		}
+	}
+
+	comp_style.appkey = window.comp && comp.comp_id || "801351684";
+			
 			var form = $('#configboard'),f=form[0];
 
 			$('#configboard input[name=width]').val(comp_style.width);
 			$('#configboard input[name=height]').val(comp_style.height);	
-			$('#configboard input[name=theme]').val(comp_style.theme);
 			$('#nobg')[0].checked = !!comp_style.nobg;
 						
-			$('#configboard input[name=theme]').val(comp_style.theme);
+			$('#configboard input[name=theme]')[(comp_style.theme)].checked = true;;
 			$('#TitleModule')[0].checked = !!comp_style.ModuleConfigure.TitleModule;
 			$('#PubModule')[0].checked = !!comp_style.ModuleConfigure.PubModule;
 			$('#TabModule')[0].checked = !!comp_style.ModuleConfigure.TabModule;
@@ -299,8 +353,8 @@ function compType9(){
 				$('#configboard input[name=InsertFunction]')[j].checked = true;
 			}
 			
-			$('#configboard input[name=SourceUrl]').val(decodeURIComponent(comp_style.PubModuleConfigure.SourceUrl));
-			$('#configboard input[name=InitialContent]').val(decodeURIComponent(comp_style.PubModuleConfigure.InitialContent));	
+			$('#configboard input[name=SourceUrl]').val(comp_style.PubModuleConfigure.SourceUrl);
+			$('#configboard input[name=InitialContent]').val(comp_style.PubModuleConfigure.InitialContent);	
 			$('#configboard input[name=PageStyle]')[comp_style.TimelineDetail.PageStyle].checked=true;
 			
 			var twitterNum = [5,10,20,50,80,100];
@@ -312,8 +366,8 @@ function compType9(){
 			}
 			$('#configboard input[name=PicStyle]')[comp_style.TimelineDetail.PicStyle].checked=true;
 			$('#configboard input[name=HeadStyle]')[0].checked = !!comp_style.TimelineDetail.HeadStyle;	
-			$('#configboard textarea[name=filter]').first().html(decodeURIComponent(comp_style.filter.keyWords.join("\n")));
-			$('#configboard textarea[name=filter]').last().html(decodeURIComponent(comp_style.filter.userIds.join("\n")));
+			$('#configboard textarea[name=filter]').first().html(comp_style.filter.keyWords.join("\n"));
+			$('#configboard textarea[name=filter]').last().html(comp_style.filter.userIds.join("\n"));
 			
 			var len = comp_style.TimelineModuleConfigure.length;
 			var timelineList = $('#timelineList');
