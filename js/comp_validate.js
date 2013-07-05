@@ -36,46 +36,46 @@ OPEN_VALIDATOR = {
 		return true;
 	}
 	,compname:function(value,selector){
-			var k,
-			tchar,
-			msg = selector && selector.attr("data-error") || "网站名称",
-			form = selector && selector[0].form;
-			value = value.replace(/^\s+|\s$/g,"");
-			selector.val(value);
-			tchar = value.match(/[^A-Za-z0-9（）()\u4e00-\u9fa5]+/g);
-			k = value.replace(/[^\x00-\xff]/g,"tx").length;
-			$("#comp_name").val(value);
+		var k,
+		tchar,
+		msg = selector && selector.attr("data-error") || "网站名称",
+		form = selector && selector[0].form;
+		value = value.replace(/^\s+|\s$/g,"");
+		selector.val(value);
+		tchar = value.match(/[^A-Za-z0-9（）()\u4e00-\u9fa5]+/g);
+		k = value.replace(/[^\x00-\xff]/g,"tx").length;
+		$("#comp_name").val(value);
 
 		if (value && tchar){
 			return '##不能含有非法字符'+tchar.join("");
 		}
-			if(k>0&&k<=14){
-				var dataonly = selector.attr("data-only");
-				if (dataonly){
-					if (dataonly === "true"){
+		if(k>0&&k<=14){
+			var dataonly = selector.attr("data-only");
+			if (dataonly){
+				if (dataonly === "true"){
+					return true;
+				}else{
+					return "此##已被注册";
+				}
+			}else{
+				var dvalue = selector.attr("data-default"); //默认值
+				if(dvalue){
+					if(value==dvalue){
 						return true;
 					}else{
-						return "此##已被注册";
+						return 1;
 					}
 				}else{
-					var dvalue = selector.attr("data-default"); //默认值
-					if(dvalue){
-						if(value==dvalue){
-							return true;
-						}else{
-							return 1;
-						}
-					}else{
-						return 1;	
-					}
-					//return 1;
+					return 1;	
 				}
+				//return 1;
 			}
-			else if(k==0){
-				return "##不能为空";
-			}else{
-				return "##不能超过7个汉字";
-			}
+		}
+		else if(k==0){
+			return "##不能为空";
+		}else{
+			return "##不能超过7个汉字";
+		}
 	},
 	width:function(value) {
 		var re = new RegExp(/^\d{1,4}%?$/);
@@ -135,11 +135,10 @@ OPEN_VALIDATOR = {
 		},
 		para   = {
 				"appname"  : {"action":"common_query","business_type":"ajax_checkname","appname":encodeURIComponent(value)}
-				,"compname" : {"action":"common_query","business_type":"ajax_checkcompname","comp_name":encodeURIComponent(value),"comp_type":window.comp_type}
+				,"compname" : {"action":"common_query","business_type":"ajax_checkcompname","comp_name":encodeURIComponent(value.replace(/\s/g,"")),"comp_type":window.comp_type}
 			};
 
 		para[rule]["random"] = +new Date();
-
 		if (dvalue != value) {
 			showmsg(1, selector, "正在验证" + label + "是否重复...");
 			$.ajax({
