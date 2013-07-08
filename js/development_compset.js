@@ -265,8 +265,7 @@ function compType9(){
 		var comp_style = comp.comp_style?comp.comp_style:{"appkey":"801351684","theme":1,"nobg":0,"ModuleConfigure":{"PubModule":1,"TabModule":1,"TimelineModule":1,"TitleModule":1},"TimelineDetail":{"HeadStyle":1,"PageStyle":0,"PicStyle":0,"TwitterNum":20},"PubModuleConfigure":{"InitialContent":"#阅读墙测试# 说点什么吧","InsertFunction":[0,1,2],"SourceUrl":"http://mat1.gtimg.com/app/tmp/read.html","position":0},"TitleModuleConfigure":{"OfficialAccount":"api_weibo"},"TimelineModuleConfigure":[{"Condition":["阅读墙测试1","API接口意","AP接口问题","NOKIA925 超乎所见 震撼上市","分享视频"],"ConditionType":1,"ContentType":0,"Famous":0,"MessageType":0,"Name":"最热话题","SortType":1},{"Condition":["阅读墙","esdfsdf"],"ConditionType":0,"ContentType":0,"Famous":0,"MessageType":0,"Name":"热门搜索","SortType":1}]};
 	var getPreview = function(){
 		util.createScript("http://mat1.gtimg.com/app/vt/js/read/import.js",function(){
-			$("#show").height("100%");
-			$("#show").html("<iframe frameborder=\"0\" scrolling=\"no\" src=\"about:blank\" width=\"" + comp_style.width + "\" height=\"" + comp_style.height + "\" allowtransparency=\"true\" id=\""+"frame"+"\"></iframe>");
+			$("#readShow").html("<iframe frameborder=\"0\" scrolling=\"no\" src=\"about:blank\" width=\"" + comp_style.width + "\" height=\"" + comp_style.height + "\" allowtransparency=\"true\" id=\""+"frame"+"\"></iframe>");
 			window.showTxWbYDQ(document.getElementById("frame"),comp_style,function(d){/*回调函数,d的值格式为：{"action":"发表","ret":0,"errcode":0,"msg":"ok","data":{"id":231174038614579,"time":1371544700}},其中action的值可能为“发表、转播、评论”*/}
 		);});
 	}();

@@ -39,7 +39,7 @@
 	
 				'<h2 class="comp_sub_tit margin-top40">如何使用阅读墙</h2>',	
 
-				'<dt class="left50 margin-bottom8">按照以下步骤操作，就能在你的博客或网页中使用阅读墙:</dt>',
+				'<dt class="margin-bottom8">按照以下步骤操作，就能在你的博客或网页中使用阅读墙:</dt>',
 				'<dd class="left50"><strong>第一步: </strong> 访问阅读墙样式配置页。  <a href="/websites/read?explain=1">立即访问</a></dd>',
 				'<dd class="left50"><strong>第二步: </strong> 在配置页中，填写自定义定制化样式与内容。</dd>',					
 				'<dd class="left50"><strong>第三步: </strong> 复制阅读墙代码，粘贴到需要添加阅读墙的位置，就能在网页中显示你的阅读墙了。</dd>',	
