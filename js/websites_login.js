@@ -1,6 +1,6 @@
 var websites_login = [
 this.tpl.header,
-'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20130308" rel="stylesheet" type="text/css" />',
+'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css" />',
 '<div class="wrapper breadcast">',
 	'<a href="/">腾讯微博开放平台</a> &gt; <a href="/websites">网站接入</a> &gt; <span>登录按钮</span>',
 '</div>',

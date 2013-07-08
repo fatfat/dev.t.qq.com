@@ -6,7 +6,7 @@ this.tpl.index = [
 	'</script>',
 	'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
 	'<link rel="shortcut icon" href="http://mat1.gtimg.com/www/mb/favicon.ico"/>',
-	'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css?20120110" rel="stylesheet" type="text/css"/>',
+	'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/>',
 	'<script type="text/javascript">',
 	'QosSS.t[3]= (new Date()).getTime();',
 	'</script>',

@@ -365,8 +365,8 @@ function compType9(){
 			}
 			$('#configboard input[name=PicStyle]')[comp_style.TimelineDetail.PicStyle].checked=true;
 			$('#configboard input[name=HeadStyle]')[0].checked = !!comp_style.TimelineDetail.HeadStyle;	
-			$('#configboard textarea[name=filter]').first().html(comp_style.filter.keyWords.join("\n"));
-			$('#configboard textarea[name=filter]').last().html(comp_style.filter.userIds.join("\n"));
+			comp_style.filter && $('#configboard textarea[name=filter]').first().html(comp_style.filter.keyWords.join("\n"));
+			comp_style.filter && $('#configboard textarea[name=filter]').last().html(comp_style.filter.userIds.join("\n"));
 			
 			var len = comp_style.TimelineModuleConfigure.length;
 			var timelineList = $('#timelineList');

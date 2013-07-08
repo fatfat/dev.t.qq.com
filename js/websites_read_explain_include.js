@@ -160,7 +160,7 @@ tpl.websites_read_explain_include = [
 '<%if(navPos == 7){%>',
 '<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>垃圾消息过滤设置</a>', '<ul class="none">', '<li>', '<div class="panel">', '<h4>过滤关键词</h4>', '<p>指定过滤的关键词，每行为1个，最多填写20个</p>', '<textarea size="20"  name="filter" data-error="关键词" data-rule="keyWords" rows="5"></textarea>', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>过滤用户</h4>', '<p>指定过滤的微博帐号，每行为1个，最多填写20个</p>', '<textarea size="20" name="filter" data-error="微博账号" data-rule="appWeibos"  rows="5"></textarea>', '</div>', '</li>', '</ul>',
 '<%}else{%>',
-	'<p>垃圾消息过滤，请于本次组件生成后，在“组件设置”中进行配置（配置5分钟后生效）</p>',
+	'<p style="width:323px;margin-left:49px;color:#999;">垃圾消息过滤，请于本次组件生成后，在“组件设置”中进行配置（配置5分钟后生效）</p>',
 	'<%}%>',
 //自定义模块里的内容
 '<div class="split-line"></div>',
@@ -336,7 +336,7 @@ function makeCompStyle() {
 			});
 			return arr;
 		})($("#timelineList").find("li")),
-		"filter": makeFilter()
+		"filter": global_obj.data.navPos == 7 ? makeFilter() : null
 	};
 	return compConfig;
 }
