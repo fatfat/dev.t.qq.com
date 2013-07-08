@@ -142,14 +142,14 @@ tpl.websites_read_explain_include = [
 	'<li>', 
 	'<div class="panel">',
 	 '<h4>来源设置：</h4>', 
-	 '<input type="text" name="SourceUrl" size="40px" data-rule="applink" data-error="来源URL" placeholder="指定一个发表微博后会自动带上的url地址" value="http://dev.t.qq.com/websites/read/"/>', 
+	 '<input type="text" name="SourceUrl" size="36px" data-rule="applink" data-error="来源URL" placeholder="指定一个发表微博后会自动带上的url地址" value="http://dev.t.qq.com/websites/read/"/>', 
 	 '</div>', 
 	 '</li>', 
 	 '<li>', 
 		'<div class="panel">', 
 			'<h4>默认展示文字：</h4>', 
 			'<p>可填写发表框默认显示的内容，最多140个字</p>', 
-			'<input type="text" name="InitialContent" size="40px" data-rule="wordTip" data-error="默认展示文字" placeholder="指定发表框默认显示的内容" value="#阅读墙测试# 说点什么吧"/>', 
+			'<input type="text" name="InitialContent" size="36px" data-rule="wordTip" data-error="默认展示文字" placeholder="指定发表框默认显示的内容" value="#阅读墙测试# 说点什么吧"/>', 
 		'</div>', 
 	'</li>', 
 	'</ul>',
@@ -157,9 +157,11 @@ tpl.websites_read_explain_include = [
 '<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>时间线样式与内容</a>', '<ul class="none">', '<li>', '<div class="panel">', '<h4>时间线样式</h4>', '<input type="radio" name="PageStyle" value="0" id="PageStyle0" checked/> <label for="PageStyle0">固定高度</label><br/> ', '<input type="radio" name="PageStyle" value="1" id="PageStyle1"/> <label for="PageStyle1">上墙模式</label><br/> ', '<input type="radio" name="PageStyle" value="2" id="PageStyle2"/> <label for="PageStyle2">自定义高度</label> ', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>时间线每次拉取微博数量</h4>',
 //	'<input type="number" name="TwitterNum" placeholder="每页多少条微博(1-20)" value="20" max="20" min="1"/>',
 '<select name="TwitterNum" style="display:block" data-rule="app_class_main" data-error="请选择分类">', '<option value="5">5条</option>', '<option value="10">10条</option>', '<option value="20" selected>20条</option>', '<option value="50">50条</option>', '<option value="80">80条</option>', '<option value="100">100条</option>', '</select>', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>图片显示：</h4>', '<input type="radio" name="PicStyle" value="0" id="PicStyle0" checked/> <label for="PicStyle0">图片</label> ', '<input type="radio" name="PicStyle" value="1" id="PicStyle1"/> <label for="PicStyle1">缩略图</label>', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>头像显示：</h4>', '<input type="checkbox" name="HeadStyle" value="0" id="HeadStyle" checked/> <label for="HeadStyle">显示用户头像</label>', '</div>', '</li>', '</ul>',
-
+'<%if(navPos == 7){%>',
 '<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>垃圾消息过滤设置</a>', '<ul class="none">', '<li>', '<div class="panel">', '<h4>过滤关键词</h4>', '<p>指定过滤的关键词，每行为1个，最多填写20个</p>', '<textarea size="20"  name="filter" data-error="关键词" data-rule="keyWords" rows="5"></textarea>', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>过滤用户</h4>', '<p>指定过滤的微博帐号，每行为1个，最多填写20个</p>', '<textarea size="20" name="filter" data-error="微博账号" data-rule="appWeibos"  rows="5"></textarea>', '</div>', '</li>', '</ul>',
-
+'<%}else{%>',
+	'<p>垃圾消息过滤，请于本次组件生成后，在“组件设置”中进行配置（配置5分钟后生效）</p>',
+	'<%}%>',
 //自定义模块里的内容
 '<div class="split-line"></div>',
 
@@ -427,7 +429,9 @@ var showTimeLine = function(event) {
 	param = {};
 	param["Name"] = form["Name"].value;
 	param["ConditionType"] = form["ConditionType"].value;
-	param["Condition"] = form["Condition"].value.replace(/^\s*|\s*$|\t*/g, "").split(/[\s\t]*\n+[\s\t]*/g).slice(0, 5).join("\t");
+	var sliceNum = form["ConditionType"].value != 2 ? 5 : 10;
+	param["Condition"] = form["Condition"].value.replace(/^\s*|\s*$|\t*/g, "").split(/[\s\t]*\n+[\s\t]*/g).slice(0, sliceNum).join("\t");
+
 	param["SortType"] = f.find("input[name='SortType']:checked").val();
 	param["Famous"] = f.find("input[name='Famous']:checked").val();
 	param["ContentType"] = f.find("input[name='ContentType']").val();
