@@ -568,7 +568,7 @@ function compType9() {
 	};
 	var getPreview = function(){
 		util.createScript("http://mat1.gtimg.com/app/vt/js/read/import.js",function(){
-		$("#preview").height("100%");
+		$("#preview").height("600px");
 		$("#preview").html("<iframe frameborder=\"0\" scrolling=\"no\" src=\"about:blank\" width=\"" + comp_style.width + "\" height=\"" + comp_style.height + "\" allowtransparency=\"true\" id=\""+"frame"+"\"></iframe>");
 window.showTxWbYDQ(document.getElementById("frame"),comp_style,
 function(d){/*回调函数,d的值格式为：{"action":"发表","ret":0,"errcode":0,"msg":"ok","data":{"id":231174038614579,"time":1371544700}},其中action的值可能为“发表、转播、评论”*/}
