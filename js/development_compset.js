@@ -266,7 +266,8 @@ function compType9(){
 	var getPreview = function(){
 		util.createScript("http://mat1.gtimg.com/app/vt/js/read/import.js",function(){
 			$("#readShow").html("<iframe frameborder=\"0\" scrolling=\"no\" src=\"about:blank\" width=\"" + comp_style.width + "\" height=\"" + comp_style.height + "\" allowtransparency=\"true\" id=\""+"frame"+"\"></iframe>");
-			window.showTxWbYDQ(document.getElementById("frame"),comp_style,function(d){/*回调函数,d的值格式为：{"action":"发表","ret":0,"errcode":0,"msg":"ok","data":{"id":231174038614579,"time":1371544700}},其中action的值可能为“发表、转播、评论”*/}
+			var frame = document.getElementById("frame");
+			frame && window.showTxWbYDQ(frame,comp_style,function(d){/*回调函数,d的值格式为：{"action":"发表","ret":0,"errcode":0,"msg":"ok","data":{"id":231174038614579,"time":1371544700}},其中action的值可能为“发表、转播、评论”*/}
 		);});
 	}();
 	<!--阅读墙-->
@@ -279,25 +280,6 @@ function compType9(){
 
 	if(window.comp && comp.comp_style) {
 		comp_style = comp.comp_style;
-	/*	comp_style.PubModuleConfigure.InitialContent = decodeURIComponent(comp_style.PubModuleConfigure.InitialContent);
-		comp_style.PubModuleConfigure.SourceUrl = decodeURIComponent(comp_style.PubModuleConfigure.SourceUrl);
-			
-		var arr = comp_style.TimelineModuleConfigure;
-		for(var j in arr) {
-			for(var i in arr[j].Condition) {
-				console.log(i,j)
-				arr[j].Condition[i] = decodeURIComponent(arr[j].Condition[i]);
-			}
-		}
-		
-		comp_style.PubModuleConfigure.Name = decodeURIComponent(comp_style.PubModuleConfigure.Name);
-		for (var i in comp_style.filter.userIds) {
-			comp_style.filter.userIds[i] = decodeURIComponent(comp_style.filter.userIds[i]);
-		}
-
-		for (var i in comp_style.filter.keyWords) {
-			comp_style.filter.keyWords[i] = decodeURIComponent(comp_style.filter.keyWords[i]);
-		}*/
 	} else {
 		comp_style =  {
 		"appkey":comp.comp_id || "801351684",

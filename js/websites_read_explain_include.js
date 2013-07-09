@@ -204,14 +204,14 @@ tpl.websites_read_explain_include = [
 	'<li>', 
 	'<div class="panel">',
 	 '<h4>来源设置：</h4>', 
-	 '<input type="text" name="SourceUrl" size="36px" data-rule="applink" data-error="来源URL" placeholder="指定一个发表微博后会自动带上的url地址" value="http://dev.t.qq.com/websites/read/"/>', 
+	 '<input type="text" name="SourceUrl" size="36px" style="width:240px;" data-rule="applink" data-error="来源URL" placeholder="指定一个发表微博后会自动带上的url地址" value="http://dev.t.qq.com/websites/read/"/>', 
 	 '</div>', 
 	 '</li>', 
 	 '<li>', 
 		'<div class="panel">', 
 			'<h4>默认展示文字：</h4>', 
 			'<p>可填写发表框默认显示的内容，最多140个字</p>', 
-			'<input type="text" name="InitialContent" size="36px" data-rule="wordTip" data-error="默认展示文字" placeholder="指定发表框默认显示的内容" value="#阅读墙测试# 说点什么吧"/>', 
+			'<input type="text" name="InitialContent" size="36px"  style="width:240px;" data-rule="wordTip" data-error="默认展示文字" placeholder="指定发表框默认显示的内容" value="#阅读墙测试# 说点什么吧"/>', 
 		'</div>', 
 	'</li>', 
 	'</ul>',
@@ -694,9 +694,8 @@ eventBindFuncList.push(function() {
 						}
 					}
 				}
-				var ConditionTypeAjast = (o["ConditionType"] + 2) % 3;//timeline菜单显示次序已经调整，由原来的 关键词 话题 多用户  调整为 话题 多用户 关键词
-					console.log(o["ConditionType"],ConditionTypeAjast)
-				dialog.removeClass("none").find(".tab:eq(" + ConditionTypeAjast + ")").trigger("click");
+			var ConditionTypeAjast = (o["ConditionType"] + 2) % 3;//timeline菜单显示次序已经调整，由原来的 关键词 话题 多用户  调整为 话题 多用户 关键词
+					dialog.removeClass("none").find(".tab:eq(" + ConditionTypeAjast + ")").trigger("click");
 				form = dialog.find(".timeline").not(".none");
 				form.parent().attr("editId", li.index());
 				for (var arr = ["ConditionType", "SortType", "Famous", "ContentType", "MessageType"], i = 0, k = arr.length; i < k; i++) {
@@ -706,7 +705,7 @@ eventBindFuncList.push(function() {
 				}
 				form[0]["Name"].value = o["Name"];
 				form[0]["Condition"].value = decodeURIComponent(o["Condition"]).split("\t").join("\n");
-
+/*
 				if (o["ContentType"] > 0) {
 					var arr = fun(o["ContentType"]);
 					form.find("input[name='_ContentType']").removeAttr("checked");
@@ -716,7 +715,7 @@ eventBindFuncList.push(function() {
 						}
 					}
 					form.find("input[name='__ContentType'][value='1']").attr("checked", "checked").trigger("change");
-				}
+				}*/
 			},
 			"del": function() {
 				target.parent().parent().remove();
