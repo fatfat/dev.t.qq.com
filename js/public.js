@@ -203,6 +203,7 @@
 				
 				}
 			});
+			$('.icon_read').parent().css("position","relative");
 			$('.icon_read').parent().append('<em class="icon_new"></em>');
 		}
 		if (global_obj.data.app&&global_obj.data.app.app_type == 4) {

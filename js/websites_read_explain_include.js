@@ -39,7 +39,7 @@ var sty = ['html,body{font-size:12px;display:block;margin:0;padding:0;min-height
 //	'.comp_area a{font-size:14px;color:#666;font-weight:bold;display:block;}',
 '.addmod{padding:4px 8px;display:inline-block;color:white;background:#98c753;margin-left:49px;font-size:14px;}', '.addmod:hover{background:#a3d063;}','.addmod:active{background:#9dce59;}', '.c_gray{color:gray;}', '.c_green{color:#0a0;}', '.list{position:absolute;right:0;top:0;width:250px;min-height:100%;overflow:hidden;background:#fff;text-align:left;font-size:12px;}', '.list strong{height:40px;line-height:40px;text-align:left;display:block;text-indent:10px;}', '.list a{display:block;text-align:left;height:36px;line-height:36px;color:#333;text-decoration:none;background:#fefefe;border-top:1px solid #ccc;border-bottom:1px solid #fff;text-indent:10px;}', '.list a:hover{background:#eee;border-top-color:#ccc;}', '.list p{margin:8px;}','.readshow{height:594px;border:none;} ','.configboard{width:250px;padding:0;position:absolute;top:0;left:0;text-align:left;font-size:12px;background:rgba(255,255,255,.5);min-height:100%;overflow:hidden;}',
 
-'input,label{vertical-align:middle;}', '.panel{margin-bottom:10px;}', '.panel h4{margin:0;padding:0;font-size:12px;line-height:24px;}', '.panel p{color:#999;line-height:18px;}', '.theme{display:inline-block ;width:14px;height:14px;border:1px solid #000;margin-bottom:-2px;}', '.split-line{height:0;line-height:0;font-size:0;border-bottom:1px dotted #ccc;margin:10px 49px;}', '.dialog{width:600px;height:480px;background:#fff;border:1px solid #DADADA;position:fixed;top:50%;left:50%;margin:-240px 0 0 -212px;z-index:2;_ position:absolute;}', '.dialog ul{list-style:none;}', '.dialog .closeBtn{position:absolute;top:0;right:0;display:inline-block;text-decoration:none;color:#333;height:34px;line-height:34px;width:34px;text-align:center;}', '.tabbar{height:34px;text-align:left;text-indent:10px;', 'background:#FEFEFD;', 'background: -o-linear-gradient(top,#FEFEFD,#F0F0F1);', 'background: -moz-linear-gradient(top,#FEFEFD,#F0F0F1);', 'background: -webkit-gradient(linear, left top, left bottom, from(#FEFEFD), to(#F0F0F1));', 'filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#FEFEFD", endColorstr="#F0F0F1");', 'border-bottom:1px solid #DADADA;', '}', '.tabbar .tab{height:26px;line-height:26px;padding:0 20px;display:inline-block;margin:8px 0 0;font-size:14px;color:#333;text-decoration:none;color:#666;text-indent:0;}', '.tabbar .active{background:#fff;border:1px solid #DADADA;border-bottom:none;color:#999;cursor:default;}', '.controls{text-align:right;padding:5px 35px;}', '.timeline{text-align:left;list-style:none;font:12px "宋体",Tahoma,Arial}', '.timeline dl{margin:20px 0 0 40px;}', '.timeline dt,.timeline dd{margin:0 0 5px;}', '.timeline dt{margin:10px 0 5px;color:#090;}', '.timelineList{list-style:none;margin:0;padding:0;width:372px;}', '.timelineList li{margin:10px 0;border:1px solid #DADADA;padding:5px;}', '.timelineList li .condition{font-size:12px;color:#090;word-break:break-all;}',  '.none{display:none;}', '.code{margin:8px;border:1px solid #aaa;padding:5px;border-radius:3px;white-space:pre;word-break:break-all;word-wrap:break-word;}'].join("");
+'input,label{vertical-align:middle;}', '.panel{margin-bottom:10px;}', '.panel h4{margin:0;padding:0;font-size:12px;line-height:24px;}', '.panel p{color:#999;line-height:18px;}', '.theme{display:inline-block ;width:14px;height:14px;border:1px solid #000;margin-bottom:-2px;}', '.split-line{height:0;line-height:0;font-size:0;border-bottom:1px dotted #ccc;margin:16px 49px;}', '.dialog{width:600px;height:480px;background:#fff;border:1px solid #DADADA;position:fixed;top:50%;left:50%;margin:-240px 0 0 -212px;z-index:2;_ position:absolute;}', '.dialog ul{list-style:none;}', '.dialog .closeBtn{position:absolute;top:0;right:0;display:inline-block;text-decoration:none;color:#333;height:34px;line-height:34px;width:34px;text-align:center;}', '.tabbar{height:34px;text-align:left;text-indent:10px;', 'background:#FEFEFD;', 'background: -o-linear-gradient(top,#FEFEFD,#F0F0F1);', 'background: -moz-linear-gradient(top,#FEFEFD,#F0F0F1);', 'background: -webkit-gradient(linear, left top, left bottom, from(#FEFEFD), to(#F0F0F1));', 'filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#FEFEFD", endColorstr="#F0F0F1");', 'border-bottom:1px solid #DADADA;', '}', '.tabbar .tab{height:26px;line-height:26px;padding:0 20px;display:inline-block;margin:8px 0 0;font-size:14px;color:#333;text-decoration:none;color:#666;text-indent:0;}', '.tabbar .active{background:#fff;border:1px solid #DADADA;border-bottom:none;color:#999;cursor:default;}', '.controls{text-align:right;padding:5px 35px;}', '.timeline{text-align:left;list-style:none;font:12px "宋体",Tahoma,Arial}', '.timeline dl{margin:20px 0 0 40px;}', '.timeline dt,.timeline dd{margin:0 0 5px;}', '.timeline dt{margin:10px 0 5px;color:#090;}', '.timelineList{list-style:none;margin:0;padding:0;width:372px;}', '.timelineList li{margin:10px 0;border:1px solid #DADADA;padding:5px;}', '.timelineList li .condition{font-size:12px;color:#090;word-break:break-all;}',  '.none{display:none;}', '.code{margin:8px;border:1px solid #aaa;padding:5px;border-radius:3px;white-space:pre;word-break:break-all;word-wrap:break-word;}'].join("");
 
 util.createStyle(sty);
 
@@ -58,17 +58,79 @@ tpl.websites_read_iframe = [
 	'<dd><input type="text" size="20" maxlength="8" data-rule="word" data-error="word" style="width:500px;" name="Name" value=""/><input type="hidden" name="ConditionType" value="1"/></dd>', 
 	'<dt>指定话题，每行为一个话题，最多支持5个话题</dt>', 
 	'<dd><textarea size="20" style="width:500px;" data-rule="word" data-error="word" name="Condition" rows="5"></textarea></dd>', 
-	'<dt>排序方式</dt>', '<dd>', '<input type="radio" name="SortType" value="1" id="SortType4" checked/> <label for="SortType4">时间排序</label>', '<input type="radio" name="SortType" value="2" id="SortType5"/> <label for="SortType5">热度排序</label>', '<input type="radio" name="SortType" value="4" id="SortType6" disabled/> <label for="SortType6" class="c_gray">相关性排序(暂不支持)</label>', '</dd>', '<dt>名人筛选</dt>', '<dd>', '<input type="radio" name="Famous" value="0" id="Famous3" checked/> <label for="Famous3">不使用名人筛选</label>', '<input type="radio" name="Famous" value="1" id="Famous4"/> <label for="Famous4">使用名人筛选</label>', '</dd>', '<dt>正文类型</dt>', '<dd>', '<input type="hidden" name="ContentType" value="0"/>', '<input type="radio" name="__ContentType" value="0" id="ContentType3" checked/> <label for="ContentType3">所有</label>', '<input type="radio" name="__ContentType" value="1" id="ContentType4"/> <label for="ContentType4">自定义</label>', '<div class="content-type none">', '<input type="checkbox" name="_ContentType" value="2" id="_ContentType_5" checked/> <label for="_ContentType_5">包含url</label>', '<input type="checkbox" name="_ContentType" value="4" id="_ContentType_6" checked/> <label for="_ContentType_6">有图片</label>', '<input type="checkbox" name="_ContentType" value="8" id="_ContentType_7" checked/> <label for="_ContentType_7">有视频</label>', '<input type="checkbox" name="_ContentType" value="16" id="_ContentType_8" checked/> <label for="_ContentType_8">有音频</label>', '</div>', '</dd>', '<dt>消息类型</dt>', '<dd>', '<input type="radio" name="MessageType" value="0" id="MsgType4" checked/> <label for="MsgType4">所有</label>', '<input type="radio" name="MessageType" value="1" id="MsgType5"/> <label for="MsgType5">原创</label>', '<input type="radio" name="MessageType" value="2" id="MsgType6"/> <label for="MsgType6">转播</label>', '</dd>', '</dl>', '</form>', '<form class="timeline none">', '<dl>', '<dt>时间线名称</dt>', '<dd><input type="text" size="20" maxlength="8" style="width:500px;" data-rule="word" data-error="word" name="Name" value=""/><input type="hidden" name="ConditionType" value="2"/></dd>', '<dt>指定微博帐号，每行为一个微博帐号，最多支持10个</dt>', '<dd><textarea size="20" style="width:500px;" data-error="weibos" data-rule="weibos" name="Condition" rows="5"></textarea></dd>', '<dt>排序方式</dt>', '<dd>', '<input type="radio" name="SortType" value="1" id="SortType7" checked/> <label for="SortType7">时间排序</label>', '<input type="radio" name="SortType" value="2" id="SortType8" disabled/> <label for="SortType8" class="c_gray">热度排序(暂不支持)</label>', '<input type="radio" name="SortType" value="4" id="SortType9" disabled/> <label for="SortType9" class="c_gray">相关性排序(暂不支持)</label>', '</dd>', '<dt>名人筛选</dt>', '<dd>', '<input type="radio" name="Famous" value="0" id="Famous5" checked/> <label for="Famous5">不使用名人筛选</label>', '<input type="radio" name="Famous" value="1" id="Famous6"/> <label for="Famous6">使用名人筛选</label>', '</dd>', '<dt>正文类型</dt>', '<dd>', '<input type="hidden" name="ContentType" value="0"/>', '<input type="radio" name="__ContentType" value="0" id="ContentType5" checked/> <label for="ContentType5">所有</label>', '<input type="radio" name="__ContentType" value="1" id="ContentType6"/> <label for="ContentType6">自定义</label>', '<div class="content-type none">', '<input type="checkbox" name="_ContentType" value="2" id="_ContentType_9" checked/> <label for="_ContentType_9">包含url</label>', '<input type="checkbox" name="_ContentType" value="4" id="_ContentType_10" checked/> <label for="_ContentType_10">有图片</label>', '<input type="checkbox" name="_ContentType" value="8" id="_ContentType_11" checked/> <label for="_ContentType_11">有视频</label>', '<input type="checkbox" name="_ContentType" value="16" id="_ContentType_12" checked/> <label for="_ContentType_12">有音频</label>', '</div>', '</dd>', '<dt>消息类型</dt>', '<dd>', '<input type="radio" name="MessageType" value="0" id="MsgType7" checked/> <label for="MsgType7">所有</label>', '<input type="radio" name="MessageType" value="1" id="MsgType8"/> <label for="MsgType8">原创</label>', '<input type="radio" name="MessageType" value="2" id="MsgType9"/> <label for="MsgType9">转播</label>', '</dd>', '</dl>', '</form>', '<form class="timeline none">', '<dl>', '<dt>时间线名称</dt>', '<dd><input type="text" size="20" maxlength="8" data-rule="word" data-error="word" style="width:500px;" name="Name" value=""/><input type="hidden" name="ConditionType" value="0"/></dd>', '<dt>指定关键词，每行为一个关键词，最多添加5个</dt>', '<dd><textarea size="20" style="width:500px;" data-error="keyWords" data-rule="keyWords" name="Condition" rows="5"></textarea></dd>', '<dt>排序方式</dt>', '<dd>', '<input type="radio" name="SortType" value="1" id="SortType1" checked/> <label for="SortType1">时间排序</label>', '<input type="radio" name="SortType" value="2" id="SortType2"/> <label for="SortType2">热度排序</label>', '<input type="radio" name="SortType" value="4" id="SortType3"/> <label for="SortType3">相关性排序</label>', '</dd>', '<dt>名人筛选</dt>', '<dd>', '<input type="radio" name="Famous" value="0" id="Famous1" checked/> <label for="Famous1">不使用名人筛选</label>', '<input type="radio" name="Famous" value="1" id="Famous2"/> <label for="Famous2">使用名人筛选</label>', '</dd>', '<dt>正文类型</dt>', '<dd>', '<input type="hidden" name="ContentType" value="0"/>', '<input type="radio" name="__ContentType" value="0" id="ContentType1" checked/> <label for="ContentType1">所有</label>', '<input type="radio" name="__ContentType" value="1" id="ContentType2"/> <label for="ContentType2">自定义</label>', '<div class="content-type none">', '<input type="checkbox" name="_ContentType" value="2" id="_ContentType_1" checked/> <label for="_ContentType_1">包含url</label>', '<input type="checkbox" name="_ContentType" value="4" id="_ContentType_2" checked/> <label for="_ContentType_2">有图片</label>', '<input type="checkbox" name="_ContentType" value="8" id="_ContentType_3" checked/> <label for="_ContentType_3">有视频</label>', '<input type="checkbox" name="_ContentType" value="16" id="_ContentType_4" checked/> <label for="_ContentType_4">有音频</label>', '</div>', '</dd>', '<dt>消息类型</dt>', '<dd>', '<input type="radio" name="MessageType" value="0" id="MsgType1" checked/> <label for="MsgType1">所有</label>', '<input type="radio" name="MessageType" value="1" id="MsgType2"/> <label for="MsgType2">原创</label>', '<input type="radio" name="MessageType" value="2" id="MsgType3"/> <label for="MsgType3">转播</label>', '</dd>', '</dl>', '</form>', '</div>', '<div class="controls">', '<input type="button" class="btn" value="确定"/>', '</div>', ].join(" ");
+	'<dt>排序方式</dt>', 
+	'<dd>', 
+	'<input type="radio" name="SortType" value="1" id="SortType4" checked/> <label for="SortType4">时间排序</label>', 
+	'<input type="radio" name="SortType" value="2" id="SortType5"/> <label for="SortType5">热度排序</label>', 
+	'<input type="radio" name="SortType" value="4" id="SortType6" disabled/> <label for="SortType6" class="c_gray">相关性排序(暂不支持)</label>', 
+	'</dd>', 
+	'<dt>名人筛选</dt>', 
+	'<dd>', 
+	'<input type="radio" name="Famous" value="0" id="Famous3" checked/> <label for="Famous3">不使用名人筛选</label>', 
+	'<input type="radio" name="Famous" value="1" id="Famous4"/> <label for="Famous4">使用名人筛选</label>', 
+	'</dd>', 
+	'<dt>正文类型</dt>', 
+	'<dd>', 
+	'<input type="hidden" name="ContentType" value="0"/>', 
+	'<input type="radio" name="__ContentType" value="0" id="ContentType3" checked/> <label for="ContentType3">所有</label>', 
+	'<input type="radio" name="__ContentType" value="1" id="ContentType4"/> <label for="ContentType4">自定义</label>', 
+	'<div class="content-type none">', '<input type="checkbox" name="_ContentType" value="2" id="_ContentType_5" checked/> <label for="_ContentType_5">包含url</label>', 		
+	'<input type="checkbox" name="_ContentType" value="4" id="_ContentType_6" checked/> <label for="_ContentType_6">有图片</label>', 
+	'<input type="checkbox" name="_ContentType" value="8" id="_ContentType_7" checked/> <label for="_ContentType_7">有视频</label>', 
+	'<input type="checkbox" name="_ContentType" value="16" id="_ContentType_8" checked/> <label for="_ContentType_8">有音频</label>', 
+	'</div>', 
+	'</dd>', 
+	'<dt>消息类型</dt>', 
+	'<dd>', 
+	'<input type="radio" name="MessageType" value="0" id="MsgType4" checked/> <label for="MsgType4">所有</label>', 
+	'<input type="radio" name="MessageType" value="1" id="MsgType5"/> <label for="MsgType5">原创</label>', 
+	'<input type="radio" name="MessageType" value="2" id="MsgType6"/> <label for="MsgType6">转播</label>', 
+	'</dd>', 
+	'</dl>', 
+	'</form>', 
+	'<form class="timeline none">', 
+	'<dl>', 
+	'<dt>时间线名称</dt>',
+	'<dd><input type="text" size="20" maxlength="8" style="width:500px;" data-rule="word" data-error="word" name="Name" value=""/><input type="hidden" name="ConditionType" value="2"/></dd>', 
+	'<dt>指定微博帐号，每行为一个微博帐号，最多支持10个</dt>', 
+	'<dd><textarea size="20" style="width:500px;" data-error="weibos" data-rule="weibos" name="Condition" rows="5"></textarea></dd>', 
+	'<dt>排序方式</dt>', 
+	'<dd>', 
+	'<input type="radio" name="SortType" value="1" id="SortType7" checked/> <label for="SortType7">时间排序</label>', 
+	'<input type="radio" name="SortType" value="2" id="SortType8" disabled/> <label for="SortType8" class="c_gray">热度排序(暂不支持)</label>', 
+	'<input type="radio" name="SortType" value="4" id="SortType9" disabled/> <label for="SortType9" class="c_gray">相关性排序(暂不支持)</label>', 
+	'</dd>', 
+	'<dt>名人筛选</dt>', 
+	'<dd>', 
+	'<input type="radio" name="Famous" value="0" id="Famous5" checked/> <label for="Famous5">不使用名人筛选</label>', 
+	'<input type="radio" name="Famous" value="1" id="Famous6"/> <label for="Famous6">使用名人筛选</label>', 
+	'</dd>', 
+	'<dt>正文类型</dt>', 
+	'<dd>', 
+	'<input type="hidden" name="ContentType" value="0"/>', 
+	'<input type="radio" name="__ContentType" value="0" id="ContentType5" checked/> <label for="ContentType5">所有</label>', 
+	'<input type="radio" name="__ContentType" value="1" id="ContentType6"/> <label for="ContentType6">自定义</label>', 
+	'<div class="content-type none">', 
+	'<input type="checkbox" name="_ContentType" value="2" id="_ContentType_9" checked/> <label for="_ContentType_9">包含url</label>', 
+	'<input type="checkbox" name="_ContentType" value="4" id="_ContentType_10" checked/> <label for="_ContentType_10">有图片</label>', 
+	'<input type="checkbox" name="_ContentType" value="8" id="_ContentType_11" checked/> <label for="_ContentType_11">有视频</label>', 
+	'<input type="checkbox" name="_ContentType" value="16" id="_ContentType_12" checked/> <label for="_ContentType_12">有音频</label>', 
+	'</div>', 
+	'</dd>', 
+	'<dt>消息类型</dt>', 
+	'<dd>', 
+	'<input type="radio" name="MessageType" value="0" id="MsgType7" checked/> <label for="MsgType7">所有</label>', 
+	'<input type="radio" name="MessageType" value="1" id="MsgType8"/> <label for="MsgType8">原创</label>', '<input type="radio" name="MessageType" value="2" id="MsgType9"/> <label for="MsgType9">转播</label>', '</dd>', '</dl>', '</form>', '<form class="timeline none">', '<dl>', '<dt>时间线名称</dt>', '<dd><input type="text" size="20" maxlength="8" data-rule="word" data-error="word" style="width:500px;" name="Name" value=""/><input type="hidden" name="ConditionType" value="0"/></dd>', '<dt>指定关键词，每行为一个关键词，最多添加5个</dt>', '<dd><textarea size="20" style="width:500px;" data-error="keyWords" data-rule="keyWords" name="Condition" rows="5"></textarea></dd>', '<dt>排序方式</dt>', '<dd>', '<input type="radio" name="SortType" value="1" id="SortType1" checked/> <label for="SortType1">时间排序</label>', '<input type="radio" name="SortType" value="2" id="SortType2"/> <label for="SortType2">热度排序</label>', '<input type="radio" name="SortType" value="4" id="SortType3"/> <label for="SortType3">相关性排序</label>', '</dd>', '<dt>名人筛选</dt>', '<dd>', '<input type="radio" name="Famous" value="0" id="Famous1" checked/> <label for="Famous1">不使用名人筛选</label>', '<input type="radio" name="Famous" value="1" id="Famous2"/> <label for="Famous2">使用名人筛选</label>', '</dd>', '<dt>正文类型</dt>', '<dd>', '<input type="hidden" name="ContentType" value="0"/>', '<input type="radio" name="__ContentType" value="0" id="ContentType1" checked/> <label for="ContentType1">所有</label>', '<input type="radio" name="__ContentType" value="1" id="ContentType2"/> <label for="ContentType2">自定义</label>', '<div class="content-type none">', '<input type="checkbox" name="_ContentType" value="2" id="_ContentType_1" checked/> <label for="_ContentType_1">包含url</label>', '<input type="checkbox" name="_ContentType" value="4" id="_ContentType_2" checked/> <label for="_ContentType_2">有图片</label>', '<input type="checkbox" name="_ContentType" value="8" id="_ContentType_3" checked/> <label for="_ContentType_3">有视频</label>', '<input type="checkbox" name="_ContentType" value="16" id="_ContentType_4" checked/> <label for="_ContentType_4">有音频</label>', '</div>', '</dd>', '<dt>消息类型</dt>', '<dd>', '<input type="radio" name="MessageType" value="0" id="MsgType1" checked/> <label for="MsgType1">所有</label>', '<input type="radio" name="MessageType" value="1" id="MsgType2"/> <label for="MsgType2">原创</label>', '<input type="radio" name="MessageType" value="2" id="MsgType3"/> <label for="MsgType3">转播</label>', '</dd>', '</dl>', '</form>', '</div>', '<div class="controls">', '<input type="button" class="btn" value="确定"/>', '</div>', ].join(" ");
 
 tpl.websites_read_explain_include = [
 	'<div class="form1 dialog none">', 
 		tpl.websites_read_iframe, 
 	'</div>', 
 	
-	'<div id="readView" style="border-radius:5px;border:1px solid #DEDEDE;position:absolute;right:40px;width:345px;">',
+	'<div id="readView" class="readview" style="border-radius:5px;border:1px solid #DEDEDE;position:absolute;right:40px;width:345px;height:594px;">',
 		'<h3 style="line-height:28px;font-size:14px;text-indent:10px;text-shadow: 1px 1px 0 #fff;font-weight:normal;">样式预览</h3>',
 		'<div id="readshow" class="readshow">', 
-			'<iframe width="100%" height="100%" frameborder="0"  marginwidth=0 marginheight=0 style="position:relative;" allowtransparency="true" src="about:blank" id="frame" srcolling="no"></iframe>',
+			'<iframe width="100%" height="100%" frameborder="0"  marginwidth=0 marginheight=0 style="position:absolute;" allowtransparency="true" src="about:blank" id="frame" srcolling="no"></iframe>',
 		'</div>',
 	'</div>',	
 	
@@ -154,13 +216,12 @@ tpl.websites_read_explain_include = [
 	'</li>', 
 	'</ul>',
 
-'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>时间线样式与内容</a>', '<ul class="none">', '<li>', '<div class="panel">', '<h4>时间线样式</h4>', '<input type="radio" name="PageStyle" value="0" id="PageStyle0" checked/> <label for="PageStyle0">固定高度</label><br/> ', '<input type="radio" name="PageStyle" value="1" id="PageStyle1"/> <label for="PageStyle1">上墙模式</label><br/> ', '<input type="radio" name="PageStyle" value="2" id="PageStyle2"/> <label for="PageStyle2">自定义高度</label> ', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>时间线每次拉取微博数量</h4>',
-//	'<input type="number" name="TwitterNum" placeholder="每页多少条微博(1-20)" value="20" max="20" min="1"/>',
-'<select name="TwitterNum" style="display:block" data-rule="app_class_main" data-error="请选择分类">', '<option value="5">5条</option>', '<option value="10">10条</option>', '<option value="20" selected>20条</option>', '<option value="50">50条</option>', '<option value="80">80条</option>', '<option value="100">100条</option>', '</select>', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>图片显示：</h4>', '<input type="radio" name="PicStyle" value="0" id="PicStyle0" checked/> <label for="PicStyle0">图片</label> ', '<input type="radio" name="PicStyle" value="1" id="PicStyle1"/> <label for="PicStyle1">缩略图</label>', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>头像显示：</h4>', '<input type="checkbox" name="HeadStyle" value="0" id="HeadStyle" checked/> <label for="HeadStyle">显示用户头像</label>', '</div>', '</li>', '</ul>',
+'<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>时间线展示模式</a>', '<ul class="none">', '<li>', '<div class="panel">', '<h4>展示模式</h4>', '<input type="radio" name="PageStyle" value="0" id="PageStyle0" checked/> <label for="PageStyle0">固定高度</label><br/> ', '<input type="radio" name="PageStyle" value="1" id="PageStyle1"/> <label for="PageStyle1">上墙模式</label><br/> ', '<input type="radio" name="PageStyle" value="2" id="PageStyle2"/> <label for="PageStyle2">自定义高度</label> ', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>时间线每次拉取微博数量</h4>',
+'<select name="TwitterNum" style="display:block" data-rule="app_class_main" data-error="请选择分类">', '<option value="5">5条</option>', '<option value="10">10条</option>', '<option value="20" selected>20条</option>',  '</select>', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>图片显示：</h4>', '<input type="radio" name="PicStyle" value="0" id="PicStyle0" checked/> <label for="PicStyle0">图片</label> ', '<input type="radio" name="PicStyle" value="1" id="PicStyle1"/> <label for="PicStyle1">缩略图</label>', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>头像显示：</h4>', '<input type="checkbox" name="HeadStyle" value="0" id="HeadStyle" checked/> <label for="HeadStyle">显示用户头像</label>', '</div>', '</li>', '</ul>',
 '<%if(navPos == 7){%>',
 '<a href="javascript:void(0);" class="toExtend"><em class="addIcon">+</em>垃圾消息过滤设置</a>', '<ul class="none">', '<li>', '<div class="panel">', '<h4>过滤关键词</h4>', '<p>指定过滤的关键词，每行为1个，最多填写20个</p>', '<textarea size="20"  name="filter" data-error="关键词" data-rule="keyWords" rows="5"></textarea>', '</div>', '</li>', '<li>', '<div class="panel">', '<h4>过滤用户</h4>', '<p>指定过滤的微博帐号，每行为1个，最多填写20个</p>', '<textarea size="20" name="filter" data-error="微博账号" data-rule="appWeibos"  rows="5"></textarea>', '</div>', '</li>', '</ul>',
 '<%}else{%>',
-	'<p style="width:323px;margin-left:49px;color:#999;">垃圾消息过滤，请于本次组件生成后，在“组件设置”中进行配置（配置5分钟后生效）</p>',
+	'<p style="width:323px;margin-left:49px;margin-top:20px;color:#999;">垃圾消息过滤，请于本次组件生成后，在“组件设置”中进行配置（配置5分钟后生效）</p>',
 	'<%}%>',
 //自定义模块里的内容
 '<div class="split-line"></div>',
@@ -470,6 +531,16 @@ getContentType = function(selector) {
 };
 
 eventBindFuncList.push(function() {
+	if( !(window.comp && comp.comp_style.TimelineModuleConfigure) || comp.comp_style.TimelineModuleConfigure.length == 0) {
+		var li = $('<li></li>').appendTo('#timelineList');
+		li.attr("Name","腾讯微博开放平台");
+		li.attr("Condition","腾讯\t微博\t开放平台");
+		li.attr("ConditionType",1);
+		li.attr("SortType","0").attr("Famous","0").attr("ContentType","0").attr("MessageType","1");
+		li.html("话题:" + "腾讯微博开放平台" + '</div></div><div><a href="javascript:void(0);" data-action="edit">修改</a> <a href="javascript:void(0);" data-action="del">删除</a></div>');
+		$("#configboard").find("input").first().trigger("change");
+	}
+	
 	var dialog = $(".dialog");
 	$("input[name='__ContentType']").change(function() {
 		var t = $(this),
