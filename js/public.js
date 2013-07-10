@@ -2,7 +2,7 @@
 	//未注册微博用户跳转到微博注册页
 	var webtype = location.pathname.split('/');	
 	if(userInfo && userInfo.hdlogin != false && userInfo.hdlogin != "false" && userInfo.reg_wb == 0){
-		if( !(/developer/.test(webtype[1])) && (webtype[2] == undefined || webtype[2] == "") ){//developer页不跳转，创建应用时再跳转
+		if( !((/developer/.test(webtype[1])) && (webtype[2] == undefined || webtype[2] == "")) ){//developer页不跳转，创建应用时再跳转
 			location.href = "http://reg.t.qq.com/invite.php";
 		}
 	}

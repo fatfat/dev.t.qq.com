@@ -3,6 +3,8 @@ QosSS.t[3]= (new Date()).getTime();
 QosSS.t[4]= (new Date()).getTime();
 
 	this.tpl = this.tpl || {};
+	util.createStyle(['.download{position:relative;text-align:center;border:1px solid #84BC34;height:30px;line-height:30px;width:100px;border-radius:3px;background:#BADE87;display:inline-block;background:-o-linear-gradient(top,#BADE87,#90C04B);background:-moz-linear-gradient(top,#BADE87,#F0F0F1);background:-webkit-gradient(linear, left top, left bottom, from(#BADE87), to(#90C04B));filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#BADE87", endColorstr="#90C04B");overflow:hidden;text-decoration:none;color:#fff;box-shadow:inset 0 1px 0 #ccffcc;font-size:14px;text-shadow:0 0 1px #84BC34;}',
+	'.download object,.download embed{position:absolute;top:0;left:0;}'].join(""));
 	tpl.sign_explain = [
 		tpl.header,
 		'<link rel="apple-touch-icon-precomposed" href="http://mat1.gtimg.com/www/mb/images/microblog_72_72.png" />',
@@ -22,7 +24,7 @@ QosSS.t[4]= (new Date()).getTime();
 				'<h3>效果预览</h3>',
 					'<div style="margin:10px;">',
 						'<a href="http://t.qq.com/<%=userInfo.name%>" target="_blank">',
-							'<img id="reshow1"   src="http://v.t.qq.com/cgi-bin/signature?name=<%=userInfo.name%>&sign=<%=userInfo.sign%>&type=1" border="0" style="height:100px;line-height:56px;text-align:center;"/>',
+							'<img id="reshow"   src="http://v.t.qq.com/cgi-bin/signature?name=<%=userInfo.name%>&sign=<%=userInfo.sign%>&type=1" border="0" style="height:100px;line-height:56px;text-align:center;"/>',
 						'</a>',
 					'</div>',
 			'</div>',
@@ -63,13 +65,26 @@ QosSS.t[4]= (new Date()).getTime();
 									//	tpl.outlook,
 									'</textarea>',
 									'<textarea id="outlookscript" class="showscripts"></textarea><br/>',
-							'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="90" height="24" id="saveaction" align="middle">',
+						/*	'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="90" height="24" id="saveaction" align="middle">',
 								'<param name="allowScriptAccess" value="always" />',
 								'<param name="movie" value="http://mat1.gtimg.com/app/opent/images/websites/saveaction.swf" />',
 								'<param name="quality" value="high" />',
 								'<param name="wmode" value="transparent" />',
 								'<embed src="http://mat1.gtimg.com/app/opent/images/websites/saveaction.swf" quality="high" width="90" height="24" name="saveaction" align="middle" swLiveConnect="true" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer_cn"  wmode="transparent"/>',
-							'</object>',
+							'</object>',*/
+							'<div class="code_download">',
+								'<a href="javascript:;" class="download">',
+								'下载代码',
+								'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="100" height="30" align="middle">',
+									'<param name="allowScriptAccess" value="always" />',
+									'<param name="movie" value="http://mat1.gtimg.com/app/opent/images/websites/code2file.swf" />',
+									'<param name="quality" value="high" />',
+									'<param name="flashVars" value="callback=downloadCode&a=0" />',
+									'<param name="wmode" value="transparent" />',
+									'<embed src="http://mat1.gtimg.com/app/opent/images/websites/code2file.swf" quality="high" width="100" height="30" flashVars="callback=downloadCode&a=0" wmode="transparent" align="middle" swLiveConnect="false" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer_cn" />',
+								'</object>',
+							'</a>',
+						'</div>',
 				'</div>',
 				'<div class="p1" id="getCode3" style="position:absolute;left:-9999px;">',
 					'<h3>保存代码</h3>',
@@ -78,13 +93,28 @@ QosSS.t[4]= (new Date()).getTime();
 									//	tpl.foxmail,
 									'</textarea>',
 									'<textarea id="foxmailscript" class="showscripts"></textarea><br/>',
-									'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="90" height="24" id="saveaction2" align="middle">',
+								/*	'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="90" height="24" id="saveaction2" align="middle">',
 										'<param name="allowScriptAccess" value="always" />',
 										'<param name="movie" value="http://mat1.gtimg.com/app/opent/images/websites/saveaction.swf" />',
 										'<param name="quality" value="high" />',
 										'<param name="wmode" value="transparent" />',
 										'<embed src="http://mat1.gtimg.com/app/opent/images/websites/saveaction.swf" quality="high" width="90" height="24" name="saveaction2" align="middle" swLiveConnect="true" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer_cn"  wmode="transparent"/>',
-									'</object>',
+									'</object>',*/
+									'<div class="code_download">',
+									'<a href="javascript:;" class="download">',
+										'下载代码',
+										'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="100" height="30" align="middle">',
+											'<param name="allowScriptAccess" value="always" />',
+											'<param name="movie" value="http://mat1.gtimg.com/app/opent/images/websites/code2file.swf" />',
+											'<param name="quality" value="high" />',
+											'<param name="flashVars" value="callback=downloadCode&a=1" />',
+											'<param name="wmode" value="transparent" />',
+											'<embed src="http://mat1.gtimg.com/app/opent/images/websites/code2file.swf" quality="high" width="100" height="30" flashVars="callback=downloadCode&a=1" wmode="transparent" align="middle" swLiveConnect="false" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer_cn" />',
+										'</object>',
+										'</a>',
+									'</div>',
+
+
 									'<div>运行以上代码之后，请<a href="http://open.t.qq.com/bbs/forum.php?mod=viewthread&tid=14" target="_blank">手动设置默认签名档</a>。</div>',
 				'</div>',
 				'</div>',
@@ -108,7 +138,7 @@ QosSS.t[4]= (new Date()).getTime();
 	$('#main').html(tmpl(tpl.sign_explain, global_obj.data));
 	tpl.outlook = tpl.outlook.replace(/<!--{\$userInfo.name}-->/g,userInfo.name).replace(/<!--{\$userInfo.sign}-->/,userInfo.sign);
 	tpl.foxmail = tpl.foxmail.replace(/<!--{\$userInfo.name}-->/g,userInfo.name).replace(/<!--{\$userInfo.sign}-->/,userInfo.sign);
-	$('#outlooksourcescript').html(tpl.outlook);
+	$('#outlooksourcescript').text(tpl.outlook);
 	$('#foxmailsourcescript').text(tpl.foxmail);	
    bindAllEvent();
    $(function(){
@@ -189,7 +219,6 @@ QosSS.t[4]= (new Date()).getTime();
 					$("#foxmailscript").val($("#foxmailsourcescript").val().replace("_colorIndex_",_c));
 					break;
 			}
-			sendCodeForSave(_type);
 		}
 		$('#copyscript').click(function(){
 			if (window.clipboardData) { 
@@ -213,7 +242,7 @@ QosSS.t[4]= (new Date()).getTime();
 	}
 		
 	function copyToClpBrd(){
-		var div = document.getElementById('reshow1');
+		var div = document.getElementById('reshow');
 		var controlRange;
 		if (document.body.createControlRange) {
 			controlRange = document.body.createControlRange();
@@ -221,19 +250,15 @@ QosSS.t[4]= (new Date()).getTime();
 			controlRange.execCommand('Copy');
 		}
 	}
-	function sendCodeForSave(k){
-		var e,v;
-		if(k==3){
-			e=$("#saveaction");
-			v=$("#outlookscript").val();
-		}else if(k==4){
-			e=$("#saveaction2");
-			v=$("#foxmailscript").val();
+
+	window.downloadCode = function(o){
+		var a = +o.a;
+		if(a === 0) {
+			var text = $('#outlooksourcescript').text();
+		} else if(a === 1){
+			var text = $('#foxmailsourcescript').text();
 		}
-		if(k ==3 || k == 4){
-			e=(!-[1,]?e:e.find("embed:eq(0)"))[0];
-			e.savecode({"t":v,"f":"腾讯微博签名档.vbs"});	
-		}	
+		return({"t":text,"f":"腾讯微博签名档.vbs"});	
 	}
  });
 	QosSS.c = new Image();
