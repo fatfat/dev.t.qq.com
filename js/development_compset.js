@@ -4,6 +4,7 @@ if(!window.comp){
 	var comp = global_obj.data; 
 }
 var str = [
+	'.deverRight{_height:750px;}',
 	'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
 	'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
 	'div a#yunJPGClick{display:none}'
@@ -347,8 +348,11 @@ function compType9(){
 			}
 			$('#configboard input[name=PicStyle]')[comp_style.TimelineDetail.PicStyle].checked=true;
 			$('#configboard input[name=HeadStyle]')[0].checked = !!comp_style.TimelineDetail.HeadStyle;	
-			comp_style.filter && $('#configboard textarea[name=filter]').first().html(comp_style.filter.keyWords.join("\n"));
-			comp_style.filter && $('#configboard textarea[name=filter]').last().html(comp_style.filter.userIds.join("\n"));
+			
+			if(comp_style.filter && comp_style.filter!="null") {
+				comp_style.filter.keyWords && $('#configboard textarea[name=filter]').first().html(comp_style.filter.keyWords.join("\n"));
+				comp_style.filter.userIds && $('#configboard textarea[name=filter]').last().html(comp_style.filter.userIds.join("\n"));
+			}
 			
 			var len = comp_style.TimelineModuleConfigure.length;
 			var timelineList = $('#timelineList');

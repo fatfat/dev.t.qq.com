@@ -1,5 +1,5 @@
 ;(function(){
-	util.createStyle(".comp_area{width:411px;min-height:640px;}.readview{top:298px;}");
+	util.createStyle(".comp_area{width:411px;min-height:640px;}.appsArea2{_height:974px;overflow:display;}.readview{top:298px;}");
 	tpl.wrapper = [
 		'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/> ',
 

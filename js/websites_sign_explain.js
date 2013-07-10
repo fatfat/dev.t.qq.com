@@ -1,6 +1,16 @@
 QosSS.t[2]= (new Date()).getTime();
 QosSS.t[3]= (new Date()).getTime();
 QosSS.t[4]= (new Date()).getTime();
+	window.downloadCode = function(o){
+		var a = +o.a;
+		if(a === 0) {
+			var text = $('#outlookscript').val();
+		} else if(a === 1){
+			var text = $('#foxmailscript').val();
+		}
+		console.log(text)
+		return({"t":text,"f":"腾讯微博签名档.vbs"});	
+	}
 
 	this.tpl = this.tpl || {};
 	util.createStyle(['.download{position:relative;text-align:center;border:1px solid #84BC34;height:30px;line-height:30px;width:100px;border-radius:3px;background:#BADE87;display:inline-block;background:-o-linear-gradient(top,#BADE87,#90C04B);background:-moz-linear-gradient(top,#BADE87,#F0F0F1);background:-webkit-gradient(linear, left top, left bottom, from(#BADE87), to(#90C04B));filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#BADE87", endColorstr="#90C04B");overflow:hidden;text-decoration:none;color:#fff;box-shadow:inset 0 1px 0 #ccffcc;font-size:14px;text-shadow:0 0 1px #84BC34;}',
@@ -249,16 +259,6 @@ QosSS.t[4]= (new Date()).getTime();
 			controlRange.addElement(div);
 			controlRange.execCommand('Copy');
 		}
-	}
-
-	window.downloadCode = function(o){
-		var a = +o.a;
-		if(a === 0) {
-			var text = $('#outlooksourcescript').text();
-		} else if(a === 1){
-			var text = $('#foxmailsourcescript').text();
-		}
-		return({"t":text,"f":"腾讯微博签名档.vbs"});	
 	}
  });
 	QosSS.c = new Image();
