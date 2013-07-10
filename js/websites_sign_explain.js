@@ -109,7 +109,7 @@ QosSS.t[4]= (new Date()).getTime();
 	tpl.outlook = tpl.outlook.replace(/<!--{\$userInfo.name}-->/g,userInfo.name).replace(/<!--{\$userInfo.sign}-->/,userInfo.sign);
 	tpl.foxmail = tpl.foxmail.replace(/<!--{\$userInfo.name}-->/g,userInfo.name).replace(/<!--{\$userInfo.sign}-->/,userInfo.sign);
 	$('#outlooksourcescript').html(tpl.outlook);
-	$('#foxmailsourcescript').html(tpl.foxmail);	
+	$('#foxmailsourcescript').text(tpl.foxmail);	
    bindAllEvent();
    $(function(){
 		var UI = {};
