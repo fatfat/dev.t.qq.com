@@ -411,7 +411,6 @@ var showLoginWin = common.showLoginWin,
 		return ( !! checkuserLogin(o.attr("href")));
 	},
 	ptlogin2_onResize = function(w,h){
-		console.log([w,h].join(","));
 		$(".modulebox_content").removeAttr("style")
 			.parent().width(w).css("margin-left",-Math.ceil(w/2)).end()
 			.height(h+40).parent().height(h+75);

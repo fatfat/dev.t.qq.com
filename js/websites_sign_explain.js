@@ -8,7 +8,6 @@ QosSS.t[4]= (new Date()).getTime();
 		} else if(a === 1){
 			var text = $('#foxmailscript').val();
 		}
-		console.log(text)
 		return({"t":text,"f":"腾讯微博签名档.vbs"});	
 	}
 

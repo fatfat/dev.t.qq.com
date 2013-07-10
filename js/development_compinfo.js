@@ -472,7 +472,6 @@ function compType9() {
 		var arr = comp_style.TimelineModuleConfigure;
 		for(var j in arr) {
 			for(var i in arr[j].Condition) {
-				console.log(i,j)
 				arr[j].Condition[i] = decodeURIComponent(arr[j].Condition[i]);
 			}
 		}

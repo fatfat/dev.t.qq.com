@@ -472,7 +472,7 @@ var getConfigInfo = function() {
 		return arr.join("-");
 	})([]);
 	param["account"] = form.find("[name='OfficialAccount']").val();
-	param["sendbox"] = [form.find("[name='SourceUrl']").val(), form.find("[name='InitialContent']").val()].join("|");
+	param["sendbox"] = [encodeURIComponent(form.find("[name='SourceUrl']").val()), encodeURIComponent(form.find("[name='InitialContent']").val())].join("|");
 	return param;
 },
 getTimelineInfo = function() {
@@ -667,7 +667,7 @@ eventBindFuncList.push(function() {
 			$('#readshow').width($(this).val());
 		} 
 		iframe.attr("src", "http://read.v.t.qq.com?" + $.param(getConfigInfo())).attr("width", form.find("[name='width']").val()).attr("height", form.find("[name='height']").val());
-		
+
 		if (window.localStorage) {
 			localStorage.setItem("configInfo", getConfigInfo());
 		}
