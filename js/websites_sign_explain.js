@@ -59,7 +59,9 @@ QosSS.t[4]= (new Date()).getTime();
 				'<div class="p1" id="getCode2" style="position:absolute;left:-9999px;">',
 					'<h3>保存代码</h3>',
 					'<div class="fcgray">请将以下代码另存为“腾讯微博签名档.vbs”到您的电脑，双击运行</div>',
-									'<textarea style="display:none;" id="outlooksourcescript"><!--{include file="websites/sign/outlook.txt"}--></textarea>',
+									'<textarea style="display:none;" id="outlooksourcescript">',
+									//	tpl.outlook,
+									'</textarea>',
 									'<textarea id="outlookscript" class="showscripts"></textarea><br/>',
 							'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="90" height="24" id="saveaction" align="middle">',
 								'<param name="allowScriptAccess" value="always" />',
@@ -72,7 +74,9 @@ QosSS.t[4]= (new Date()).getTime();
 				'<div class="p1" id="getCode3" style="position:absolute;left:-9999px;">',
 					'<h3>保存代码</h3>',
 					'<div class="fcgray">请将以下代码另存为“腾讯微博签名档.vbs”到您的电脑，双击运行</div>',
-									'<textarea style="display:none;" id="foxmailsourcescript"><!--{include file="websites/sign/foxmail.txt"}--></textarea>',
+									'<textarea style="display:none;" id="foxmailsourcescript">',
+									//	tpl.foxmail,
+									'</textarea>',
 									'<textarea id="foxmailscript" class="showscripts"></textarea><br/>',
 									'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="90" height="24" id="saveaction2" align="middle">',
 										'<param name="allowScriptAccess" value="always" />',
@@ -99,7 +103,13 @@ QosSS.t[4]= (new Date()).getTime();
 		'<![endif]-->',
 	  tpl.footer,
    ].join("");
-   $('#main').html(tmpl(tpl.sign_explain, global_obj.data));
+ util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/outlook.js",
+   function(){
+	$('#main').html(tmpl(tpl.sign_explain, global_obj.data));
+	tpl.outlook = tpl.outlook.replace(/<!--{\$userInfo.name}-->/g,userInfo.name).replace(/<!--{\$userInfo.sign}-->/,userInfo.sign);
+	tpl.foxmail = tpl.foxmail.replace(/<!--{\$userInfo.name}-->/g,userInfo.name).replace(/<!--{\$userInfo.sign}-->/,userInfo.sign);
+	$('#outlooksourcescript').html(tpl.outlook);
+	$('#foxmailsourcescript').html(tpl.foxmail);	
    bindAllEvent();
    $(function(){
 		var UI = {};
@@ -147,7 +157,7 @@ QosSS.t[4]= (new Date()).getTime();
 			var _c = _colorStyle + 1;
 			//var _url = 'http://v.t.qq.com/cgi-bin/signature?name='+_name+'&sign='+_sign+'&type='+_c;
 			var _url = 'http://v.t.qq.com/sign/'+_name+'/'+_sign+'/'+_c+'.jpg';
-			$('#reshow1').attr('src',_url);
+			$('#reshow').attr('src',_url);
 			$('#getCode1').show();
 			//$("#getCode2").css("position","absolute");
 			switch(_type){
@@ -225,7 +235,7 @@ QosSS.t[4]= (new Date()).getTime();
 			e.savecode({"t":v,"f":"腾讯微博签名档.vbs"});	
 		}	
 	}
-
+ });
 	QosSS.c = new Image();
 	QosSS.c.onload = (QosSS.c.onerror = function() {delete QosSS.c;});
 	QosSS.t[5]= (new Date()).getTime();
