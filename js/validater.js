@@ -28,18 +28,25 @@ OPEN_VALIDATOR = {
 	mobilenum: function(value, selector) { //与开平同步，校验/^1(?:3|5|8)\d{9}$/
 		value = value.replace(/\s/g, "");
 		selector.val(value);
+		
 		if (new RegExp(/[^\d]/g).test(value)) {
 			return "你填写的##含有非法字符";
 		}
-
+		
 		if (value.length == 11) {
 			if (new RegExp(/^1(?:3|5|8)\d{9}$/).test(value)) {
 				return true;
 			} else {
 				return "仅限中国境内##";
 			}
+		} else if(value.length == 14){
+			if (new RegExp(/^008869\d{8}$/).test(value)) {
+				return true;
+			} else {
+				return "错误的台湾##";
+			}
 		} else {
-			return "请填写11位##";
+			return "请填写11位或14位##";
 		}
 	},
 	tname: function(name) {
@@ -51,6 +58,16 @@ OPEN_VALIDATOR = {
 	telnum: function(value, selector) {
 		value = value.replace(/\s/g, "");
 		selector.val(value);
+		
+		//支持台湾客户
+		if(/^\+?(00)?886/.test(value)) {
+			if(new RegExp(/^\+?(00)?886-\d{1,2}-\d{3,4}-\d{3,4}([*-]?\d{1,4})?/).test(value)) {
+				return true;
+			} else {
+			 	return "不规范的台湾号码格式##";
+			}
+		}
+
 		if (new RegExp(/^([0-9]|[-])+$/g).test(value)) {
 			return true;
 		} else {
@@ -743,6 +760,9 @@ $("form input[type='submit']").click(function() { //表单提交验证
 
 					var ret = OPEN_VALIDATOR[rule](value, $(this));
 					if (ret === true) {
+						if(rule == "telnum" && /\+/.test($(this).val())) {
+							$(this).val(encodeURIComponent($(this).val()));
+						}
 						flag = true;
 					} else if (ret === 1) {
 						return;
