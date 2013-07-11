@@ -128,7 +128,7 @@ img.true,img.false,img.ok,img.email,a.newapp,img.alert,img.issue,img.arrow,img.w
 .p30{padding-left:30px;}
 #Copyright{margin:0 auto;width:800px;padding:10px 0;text-align:center;}
 #reShow{margin:30px 0 0;height:60px;line-height:56px;text-align:center;}
-.icon_new{width:15px;height:15px;margin-left:3px;vertical-align:text-bottom;display:inline-block;background:url("http://mat1.gtimg.com/app/opent/images/wiki/resource/new.gif") no-repeat;}
+.icon_new{width:15px;height:15px;margin-left:3px;display:inline-block;background:url("http://mat1.gtimg.com/app/opent/images/wiki/resource/new.gif") no-repeat;position:absolute;left:106px;top:16px;}
 .breadcast{height:45px;line-height:45px;margin:0 auto;font-size:16px;color:#366799;visibility:hidden;}
 .breadcast a{color:#366799;}
 .breadcast span{color:#333;}

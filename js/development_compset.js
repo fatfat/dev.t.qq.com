@@ -248,7 +248,7 @@ function compType6(){
 	});
 }
 function compType8(){
-	<!--微评论-->
+	<!--微博登录-->
 	var comp_style = comp.comp_style?comp.comp_style:{"b_type":"0", "b_size":"0", "a_type":"0"};
 	var comp_id = comp.comp_id;
 	var getpreview = function(){
@@ -256,9 +256,10 @@ function compType8(){
 		return '<img src="' + imgurl +'"/>';
 	};
 	//<% include file="./websites/login/loginuse_include.tpl" %>
-	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_login_loginuse_include.js",function(){
-		$(".showcode_bar").before(tmpl(tpl.loginuse_include,global_obj.data));
-		bindAllEvent();	
+	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_loginuse_include.js",function(){
+		$(".showcode_bar").before(tmpl(tpl.websites_loginuse_include,global_obj.data));
+		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/login_vt.js");
+		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js",function(){	bindAllEvent();});
 	});
 }
 
