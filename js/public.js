@@ -203,6 +203,9 @@
 				
 				}
 			});
+			
+			$('.icon_login').parent().css("position","relative");
+			$('.icon_login').parent().append('<em class="icon_new" style="margin-left:18px;"></em>');			
 			$('.icon_read').parent().css("position","relative");
 			$('.icon_read').parent().append('<em class="icon_new"></em>');
 		}

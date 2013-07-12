@@ -1,14 +1,13 @@
 ﻿if(!window.comp) {
 	var comp = global_obj.data;
-} else {
-	var comp = {};
-}
+} 
+
 tpl.websites_loginuse_include = [
 '<link href="http://mat1.gtimg.com/app/opent/css/websites/login/use.css" rel="stylesheet" type="text/css"/>',
 '<h2 class="comp_sub_tit">配置微博登录按钮样式</h2>',
 '<div class="style_set">',
 	'<div class="titles">',
-		'<p class="f14">1&nbsp;选择登录前样式</p>',
+		'<p class="f14">1&nbsp;选择登录前样式</p>',     
 		'<p class="f14 offset_right">登录前效果预览:</p>',
 	'</div>',
 	'<div class="load_before">',
