@@ -8,8 +8,11 @@ var indexTmpl = [
 	'<link href="http://mat1.gtimg.com/app/opent/css/index/index_01.css" rel="stylesheet" type="text/css"/>',
 	'<div class="banner_area">',
 		'<ul class="banner_lists">',
-			'<li class="banner_li banner_bg_1" style="z-index:999;">',
+		/*	'<li class="banner_li banner_bg_1" style="z-index:999;">',
 				'<img class="banner" src="http://mat1.gtimg.com/app/opent/images/index/banner_1.jpg" width="1088px" height="365px" alt=""/>',
+			'</li>',*/
+			'<li class="banner_li banner_bg_1">',
+				'共享海量用户与资源 5亿多的微博用户 40多万的开发者 30多万的应用',
 			'</li>',
 		'</ul>',
 	'</div>',

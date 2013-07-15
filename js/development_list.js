@@ -540,6 +540,35 @@ else
 	    var data = {"action":"common_query","business_type":"ajax_kapplist","page1":page};
 		AjaxPageList(ajaxpageListUrl, data);
 	} 
+	
+	function pageList0() {
+		global_obj.data.kpage_no = 0;
+		$.ajax({
+		  url: "/pipes/interfaceserver",
+		  dataType: "json",
+		  data: {"action":"common_query","business_type":"ajax_kapplist","page1":1},
+		  cache: false,
+		  success: function(ResponseData){ 
+					if (parseInt(ResponseData.data.uin,10) == parseInt(userInfo.hdlogin,10) ){
+					global_obj.data.kapp_count = ResponseData.data.kapp_count;
+					global_obj.data.kpage_count = Math.ceil(global_obj.data.kapp_count / global_obj.data.kpage_size);  //页数
+					ResponseData.data.kpage_count = global_obj.data.kpage_count;
+					global_obj.data.page_count = ResponseData.data.page_count = 0;
+					$('#otherapplist').html(tmpl(tpl.applistul1, ResponseData.data));
+					$('#pagebar1').html(tmpl(tpl.pageBar1, ResponseData.data));
+					bindAllPageEvent();
+			  }else{
+				location.href="/development/";
+			  }
+		  },
+  		  error:function(){
+  		  }
+		})
+	}
+	$('#otherapplist').html("正在拉取开平应用...");
+	pageList0();
+
+	
 		
 	function AjaxPageList(ajaxpageListUrl,dota){ 
 		ajaxUrl = ajaxpageListUrl;

@@ -1,6 +1,6 @@
 ;(function(){
 	global_obj.data.navPos = 2;
-	util.createStyle(".comp_area{width:411px;min-height:640px;}.appsArea2{_height:1274px;overflow:display;}.readview{top:298px;}img.alert{background: url(http://mat1.gtimg.com/app/opent/images/public/icon.png) -352px -59px no-repeat;}");
+	util.createStyle(".comp_area{width:411px;min-height:640px;}.appsArea2{_height:974px;overflow:auto;zoom:1;}.readview{top:298px;}img.alert{background: url(http://mat1.gtimg.com/app/opent/images/public/icon.png) -352px -59px no-repeat;}");
 	tpl.wrapper = [
 	//	'<link href="http://mat1.gtimg.com/app/opent/css/websites/app.css" rel="stylesheet" type="text/css"/> ',
 		'<div class="wrapper breadcast"><a href="/">腾讯微博开放平台</a> > <a href="/websites">网站接入</a> > <span>阅读墙</span></div>',

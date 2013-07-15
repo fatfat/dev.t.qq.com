@@ -4,7 +4,7 @@ if(!window.comp){
 	var comp = global_obj.data; 
 }
 var str = [
-	'.deverRight{_height:1050px;}',
+	'.deverRight{_height:750px;overflow:auto;zoom:1;}',
 	'.hostingclick {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;font-weight:bold;}',
 	'.hosting {cursor:pointer;line-height:25px;padding-left:0.8em;padding-right:0.8em;border-bottom:1px solid #d9d9d9;}',
 	'div a#yunJPGClick{display:none}'
