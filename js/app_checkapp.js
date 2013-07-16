@@ -563,8 +563,8 @@ $("input[data-rule='link']").keydown(function(event){
 
 $("form").keydown(function(event){//阻止回车提交
 	if(event.keyCode == 13){
-		$(this).find("input[type='submit']").trigger("click");
-		return false;
+//		$(this).find("input[type='submit']").trigger("click");
+		return true;
 	}
 });
 
