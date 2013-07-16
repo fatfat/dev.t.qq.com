@@ -5,7 +5,6 @@
 
 var indexTmpl = [
 	tpl.header,
-	'<link href="http://mat1.gtimg.com/app/opent/css/index/index_01.css" rel="stylesheet" type="text/css"/>',
 	'<div class="banner_area">',
 		'<ul class="banner_lists">',
 		/*	'<li class="banner_li banner_bg_1" style="z-index:999;">',
@@ -16,6 +15,7 @@ var indexTmpl = [
 			'</li>',
 		'</ul>',
 	'</div>',
+	'<link href="http://mat1.gtimg.com/app/opent/css/index/index_02.css" rel="stylesheet" type="text/css"/>',
 	'<div class="wrapper main">',
 		'<a class="connect" href="/websites/">',
 			'<div class="con_img websites_img" width="117px" height="116px"></div>',

@@ -14,7 +14,7 @@ function setPreview(){
 	$("."+cna).attr("class",[cna,cna].join(" ")+at);
 }
 
-$(function(){
+eventBindFuncList.push(function(){
 	$("input[name='a_type'],input[name='b_type'],input[name='size']").bind("click",setPreview);
 	if (window.comp_style){
 		$("input[name='size'][value='"+comp_style.b_size+"']").trigger("click");
