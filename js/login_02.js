@@ -387,12 +387,16 @@ var common = {
 				].join("");
 
 				$('#login_status').html(tmpl(loginInfo,d.data));
-				userInfo.hdlogin = hdlogin = d.data.hdlogin;				
+				
+				userInfo.hdlogin = hdlogin = !(d.data.hdlogin === "false");
+				
 				if (d.data.hdlogin && d.data.hdlogin != false && d.data.hdlogin != "false"){
-					d.data.hdlogin = true;
+					userInfo.hdlogin = hdlogin = true;
+					userInfo.user_app_limit = d.data.user_app_limit;
+					userInfo.user_app_numbers = d.data.user_app_numbers;
 					$('#logoutBtn').bind("click",common.loginOut);
 				} else {
-					d.data.hdlogin = false;
+					userInfo.hdlogin = hdlogin = false;
 					$('#loginBtn').click(function() {
 						common.showLoginWin();
 						return false;

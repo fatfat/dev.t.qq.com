@@ -108,17 +108,21 @@ tpl.websites_web = [
 '<!--{ include file="footer.tpl" }-->',
 		tpl.footer
 	].join("");
+
 	$('#main').html(tmpl(tpl.websites_web,global_obj.data));
+	window.init();
 	util.setLoginInfo();
 	
 	$(".developer_newapp").click(function(){
 		if( hdlogin==undefined || hdlogin == false || hdlogin == 'false' ){
-				return checkuserLogin(encodeURIComponent(location.href.replace(location.search,"").replace(location.hash,"")+"?t="+(~new Date())+"#newapp"));
+				return checkuserLogin(encodeURIComponent(location.href.replace(new RegExp(location.pathname+".*"),"/apps/add/1")));
 		}else{
 			if( userInfo.reg_wb == 0 ){
 				location.href = "http://reg.t.qq.com/invite.php";
 				return;
 			}
-			popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
+			if (userInfo.user_app_numbers < userInfo.user_app_limit) {
+				location.href = "/apps/add/1";
+			}
 		}
 	});

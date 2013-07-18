@@ -69,9 +69,11 @@ var common = {
 						'<li><a href="http://bbs.open.t.qq.com/" target="_blank" hidefocus="">论坛</a></li>',
 						'<li><a href="/development" class="active" id="developmentbtn" hidefocus="">管理中心</a></li>',
 					'</ul>',
-					'<div class="menuCon userNav" id="login_status">',
+			
+				/*	'<div class="menuCon userNav" id="login_status">',
 						'<a title="点击此处登录" class="login_name" href="javascript:void(0);" id="loginBtn" hidefocus="">登录</a>',
-					'</div>',
+					'</div>',*/
+					'<a title="点击此处登录" class="login_btn" href="javascript:void(0);" id="loginBtn" hidefocus>登录</a>',
 				'</div>',
 			'</div>',
 			'<div class="actioninfo">',
