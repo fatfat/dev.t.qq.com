@@ -39,11 +39,11 @@ OPEN_VALIDATOR = {
 			} else {
 				return "仅限中国境内##";
 			}
-		} else if(value.length == 14){
-			if (new RegExp(/^008869\d{8}$/).test(value)) {
+		} else if(value.length >= 14){
+			if (new RegExp(/^008860?9\d{8}$/).test(value)) {
 				return true;
 			} else {
-				return "错误的台湾##";
+				return "台湾##请以008869开头";
 			}
 		} else {
 			return "请填写11位或14位##";
@@ -61,7 +61,7 @@ OPEN_VALIDATOR = {
 		
 		//支持台湾客户
 		if(/^\+?(00)?886/.test(value)) {
-			if(new RegExp(/^\+?(00)?886-\d{1,2}-\d{3,4}-\d{3,4}([*-]?\d{1,4})?/).test(value)) {
+			if(new RegExp(/^\+?(00)?886-\d{1,3}-\d{3,4}-?\d{3,4}([*-]?\d{1,4})?/).test(value)) {
 				return true;
 			} else {
 			 	return "不规范的台湾号码格式##";
@@ -720,7 +720,7 @@ $("form input[type='submit']").click(function() { //表单提交验证
 		if (onlyworker.size() && onlyworker.attr("data-only") === "false") {
 			flag = false;
 			errmsg = $(f).find(".tip_err:eq(0)").text();
-			if (errmsg != "") {
+			if (errmsg != "") {			
 				loginWin.alert("<center>" + errmsg + "</center>");
 			}
 			return false;
@@ -779,7 +779,9 @@ $("form input[type='submit']").click(function() { //表单提交验证
 				}
 
 				if (!flag) {
-					loginWin.alert("<center>" + errmsg + "</center>");
+					if( !loginWin.win.parent().is(":visible") ){
+						loginWin.alert("<center>" + errmsg + "</center>");
+					}
 					return false;
 				}
 			}
@@ -841,7 +843,7 @@ $("form input[type='reset']").click(function() { //清除提示
 $("form input[data-rule='appname'],form input[data-rule='compname']").change(function() {
 	var selector = $(this),
 	rule = selector.attr("data-rule"),
-	value = selector.val().replace(/\s/g, "");
+	value = selector.val();//.replace(/\s/g, "");
 	if (/^[A-Za-z0-9（）()\u4e00-\u9fa5]{1,14}$/.test(value) && value.replace(/^\s+|\s+$/g, "").replace(/[^\x00-\xff]/g, 'TX').length <= 14) {
 		selector.removeAttr("data-only");
 		selector.attr("data-working", 1);

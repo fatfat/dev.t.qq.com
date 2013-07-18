@@ -375,7 +375,8 @@ function compValidateEvent() {
 	$("form input[data-rule='appname'],form input[data-rule='compname'],input[data-rule='assname']").change(function() {
 		var selector = $(this),
 		rule = selector.attr("data-rule"),
-		value = selector.val().replace(/\s/g, "");
+		value = selector.val();
+	//	value = selector.val().replace(/\s/g, "");
 		if (rule === "assname") {
 			if (/^[a-zA-Z][a-zA-Z0-9_\-]{0,19}$/g.test(value)) {
 				selector.removeAttr("data-only");
@@ -433,7 +434,9 @@ function compValidateEvent() {
 				submitflag = submitflag && flag;
 				showmsg(flag, $(this), errmsg);
 				if (flag === false) {
-					loginWin.alert("<center>" + errmsg + '</center>');
+					if( !loginWin.win.parent().is(":visible")) {
+						loginWin.alert("<center>" + errmsg + '</center>');
+					}
 					//return false;
 				}
 			}
@@ -454,7 +457,11 @@ function compValidateEvent() {
 
 	$("form").keydown(function(event) { //阻止回车提交
 		if (event.keyCode == 13) {
-			//$(this).find("input[type='submit']").trigger("click");
+			if( $(this).find("input[type='submit']").length > 0 ) {
+				$(this).find("input[type='submit']").trigger("click");
+			} else {
+				$('#showcode').trigger("click");
+			}
 		}
 	});
 

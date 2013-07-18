@@ -1014,7 +1014,8 @@ $(function() {
 	$("form input[data-rule='appname']").change(function() {
 		var selector = $(this),
 		rule = selector.attr("data-rule"),
-		value = selector.val().replace(/\s/g, "");
+		value = selector.val();
+	//	value = selector.val().replace(/\s/g, "");
 		if (/^[A-Za-z0-9（）()\u4e00-\u9fa5]{1,14}$/.test(value) && value.replace(/^\s+|\s+$/g, "").replace(/[^\x00-\xff]/g, 'TX').length <= 14) {
 			selector.removeAttr("data-only");
 			selector.attr("data-working", 1);

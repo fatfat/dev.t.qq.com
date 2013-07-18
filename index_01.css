@@ -1,0 +1,36 @@
+@charset "utf-8";
+h2{font-size:16px;text-shadow:0 0 1px #999;text-align:left;position:relative;font-weight:normal;background:url(http://mat1.gtimg.com/app/opent/images/public/bg_title.gif) 0 -46px no-repeat;height:45px;line-height:45px;text-indent:15px;}
+h2 span{display:block;position:absolute;top:0;right:15px;font-size:12px;text-shadow:none;line-height:45px;}
+.wrapper{width:960px;margin:0 auto;}
+.banner_area{width:100%;height:365px;position:relative;}
+.banner_lists{width: 100%;height: 365px;position:relative;overflow:hidden;}
+.banner_li{width: 100%;height: 365px;position:absolute;left:0;top:0;}
+.banner{margin:0 auto;display:block;height:365px;}
+.banner_bg_1{background:#4D8ED0;}
+.opacityminus{opacity:0.8;}
+.opacityadd{opacity:1;}
+.opacityzero{opacity:0;}
+.main{width:990px;;overflow:hidden;border-bottom:1px solid #DBE1E3;}
+.main a{color:#333;}
+.connect{display:block;float:left;width:330px;height:297px;cursor:pointer;text-align:center;position:relative;}
+.con_img{width: 117px;height:117px;margin:45px auto 0;display: block;background: url(http://mat1.gtimg.com/app/opent/images/index/index.png) no-repeat;_ background: url(http://mat1.gtimg.com/app/opent/images/index/index_ie6.png) no-repeat;
+-moz-transition:opacity 0.25s ease-in-out;-webkit-transition:opacity 0.25s ease-in-out;msTransition:opacity 0.25s ease-in-out;transition:opacity 0.25s ease-in-out;}
+.websites_img{background-position:0 -59px;}
+.wireless_img{width:124px;background-position:-125px -59px;}
+.webpage_img{width:128px;background-position:-262px -59px;}
+.con_title{height:50px;line-height:50px;color:#356798;font-family:"Microsoft Yahei","微软雅黑";font-size:22px;text-align:center;background:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-shadow:0 0 1px #A4C1DA;font-weight:normal;}
+.con_intro{color: #999;font-size: 14px;height: 40px;line-height: 20px;overflow: hidden;text-overflow:ellipsis;white-space:nowrap;}
+.split{position:absolute;right:0;top:93px;width: 2px;height:204px;background: url(http://mat1.gtimg.com/app/opent/images/index/index.png) -405px 0 no-repeat;_ background: url(http://mat1.gtimg.com/app/opent/images/index/index_ie6.png) -405px 0 no-repeat;}
+.con_hover{background-image: -moz-linear-gradient(top, #fbfbfb, #f2f1f1);
+		   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fbfbfb), color-stop(1, #f2f1f1)); /* Saf4+, Chrome */
+		   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbfbfb', endColorstr='#f2f1f1', GradientType='0'); /* IE*/
+		   * background-image:url(http://mat1.gtimg.com/app/opent/images/index/hover.gif);
+}
+
+#link {position:relative;margin:0 auto;} 
+#link a {position:absolute;display:block;text-indent:-9999px;text-decoration:none;border-radius:47px;-webkit-transition-property:box-shadow,letter-spacing;-webkit-transition-duration:500ms,900ms;width:99px;height:98px;* background:url(about:blank);}
+#link a.on1 {left: 62px; top: 14px;width:94px;height:94px;}  
+#link a.on2 {left: 100px;top: 22px;}  
+#link a.on3 {left: 52px; top: 13px;}  
+#link a.on4 {left: 202px;top: 15px;width:94px;height:94px;} 
+#link a:hover {background-color:transparent;filter:alpha(opacity=100);-moz-opacity:1;opacity:1;box-shadow:0 0 10px #999;background:rgba(100,100,100,.1);} 

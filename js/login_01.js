@@ -335,7 +335,7 @@ var showLoginWin = common.showLoginWin,
 	}
 	;
 	
-$(function(){
+$(function(){/*
 	$("body").mouseover(function(event){
 		var t = $("#login_status"),target = event.target;
 		if (window.hdlogin){
@@ -344,6 +344,23 @@ $(function(){
 			}else{
 				t.removeClass("menuContainer");
 			}
+		}
+	});*/
+	$("body").mouseover(function(event){
+		var target = event.target,
+			subnavlist = $(".subnav"),
+			currentSubNav = (function(){
+				for(var i=0,k=subnavlist.length;i<k;i++){
+					if ($.contains(subnavlist[i],target) || target === subnavlist[i]){
+						return subnavlist[i];
+					}
+				}
+				return false;
+			})();
+		if (currentSubNav){
+			$(currentSubNav).addClass("subnav_hover");
+		}else{
+			subnavlist.removeClass("subnav_hover");
 		}
 	});
 });

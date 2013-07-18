@@ -374,21 +374,20 @@ var common = {
 					return;
 				}
 				var loginInfo = [
-					'<%if (hdlogin != "false" ) {%>',
-					'<div class="menu">',
-						'<a class="login_name" href="javascript:;" title="<%=nick?nick:uin%>"><%=nick?nick:uin%><em></em></a>',
-						'<i class="nav_arrow"></i>',
+					'<%if (hdlogin != "false") {%>',			
+					'<div class="subnav subnav_login" id = "login_status">',
+							'<span title="<%=nick?nick:uin%>" class="login_name"><%=nick?nick:uin%></span>',
+							'<span class="nav_arrow"></span>',
+							'<a href="/development/developer/" class="f12">编辑开发者信息</a>',
+							'<a href="javascript:;" id="logoutBtn" class="f12">退出</a>',	
 					'</div>',
-					'<ul class="childMenu userNav_sub">',
-						'<li class="sub_item"><a class="sub_item_link sub_active" href="/development/developer/">编辑开发者信息</a></li>',
-						'<li class="sub_item"><a class="sub_item_link" href="javascript:;" id="logoutBtn">退出</a></li>',
-					'</ul>',
 					'<%} else {%>',
-					'<a title="点击此处登录" class="login_name" href="javascript:void(0);" id="loginBtn" hidefocus>登录</a>',
+						'<a title="点击此处登录" class="login_btn" href="javascript:void(0);" id="loginBtn" hidefocus>登录</a>',
 					'<%}%>',
 				].join("");
 
 				$('#login_status').html(tmpl(loginInfo,d.data));
+				userInfo.hdlogin = hdlogin = d.data.hdlogin;				
 				if (d.data.hdlogin && d.data.hdlogin != false && d.data.hdlogin != "false"){
 					d.data.hdlogin = true;
 					$('#logoutBtn').bind("click",common.loginOut);
@@ -399,7 +398,6 @@ var common = {
 						return false;
 					});
 				}
-				global_obj.data.userInfo.hdlogin = userInfo.hdlogin = hdlogin = d.data.hdlogin;
 			}
 		});
 	};
@@ -413,19 +411,27 @@ var showLoginWin = common.showLoginWin,
 	ptlogin2_onResize = function(w,h){
 		$(".modulebox_content").removeAttr("style")
 			.parent().width(w).css("margin-left",-Math.ceil(w/2)).end()
-			.height(h+40).parent().height(h+75);
+			.height(h+40).parent().height(h+75).css("margin-top",-Math.ceil((h+75)/2));
 		$("#login_div").height(h);
 	}
 	;
+	
 $(function(){
 	$("body").mouseover(function(event){
-		var t = $("#login_status"),target = event.target;
-		if (window.hdlogin && window.hdlogin != "false" && window.hdlogin != false){
-			if ($.contains(t[0],target) || t[0] === target){
-				t.addClass("menuContainer");
-			}else{
-				t.removeClass("menuContainer");
-			}
+		var target = event.target,
+			subnavlist = $(".subnav"),
+			currentSubNav = (function(){
+				for(var i=0,k=subnavlist.length;i<k;i++){
+					if ($.contains(subnavlist[i],target) || target === subnavlist[i]){
+						return subnavlist[i];
+					}
+				}
+				return false;
+			})();
+		if (currentSubNav){
+			$(currentSubNav).addClass("subnav_hover");
+		}else{
+			subnavlist.removeClass("subnav_hover");
 		}
 	});
-});/*  |xGv00|d4abd36cf406167e3575aacc77fb832a */
+});

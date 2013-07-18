@@ -25,11 +25,11 @@ OPEN_VALIDATOR = {
 			}else{
 				return "仅限中国境内##";	
 			}
-		}else if(value.length == 14){
-			if (new RegExp(/^008869\d{8}$/).test(value)) {
+		}else if(value.length >= 14){
+			if (new RegExp(/^008860?9\d{8}$/).test(value)) {
 				return true;
 			} else {
-				return "错误的台湾##";
+				return "台湾##请以008869开头";
 			}
 		}else{
 			return "请填写11位##";		
@@ -47,7 +47,7 @@ OPEN_VALIDATOR = {
 		
 		//支持台湾客户
 		if(/^\+?(00)?886/.test(value)) {
-			if(new RegExp(/^\+?(00)?886-\d{1,2}-\d{3,4}-\d{3,4}([*-]?\d{1,4})?/).test(value)) {
+			if(new RegExp(/^\+?(00)?886-\d{1,3}-\d{3,4}-?\d{3,4}([*-]?\d{1,4})?/).test(value)) {
 				return true;
 			} else {
 			 	return "不规范的台湾号码格式##";

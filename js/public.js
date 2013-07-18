@@ -1,6 +1,6 @@
 ;(function() {
 	//未注册微博用户跳转到微博注册页
-	var webtype = location.pathname.split('/');	
+	var webtype = location.pathname.split('/');
 	if(userInfo && userInfo.hdlogin != false && userInfo.hdlogin != "false" && userInfo.reg_wb == 0){
 		if( !((/developer/.test(webtype[1])) && (webtype[2] == undefined || webtype[2] == "")) ){//developer页不跳转，创建应用时再跳转
 			location.href = "http://reg.t.qq.com/invite.php";
@@ -9,11 +9,11 @@
 	
 	//页面参数控制跳转，add by fat
 	if (userInfo.developer_status == 0){
-		if( !( /developer/.test(webtype[1]) && (webtype[2] == undefined || webtype[2] == "" || /(bedever|add|addone|activate)/.test(webtype[2])) ) ){
+		if( !( /developer/.test(webtype[1]) && (webtype[2] == undefined || webtype[2] == "" || /(bedever|add|addone|activate)/.test(webtype[2])) || /sign/.test(webtype[2])) ){
 			location.href = "/developer/bedever";
 		}
 	}else if (userInfo.user_status == 0){
-		if( !( /developer/.test(webtype[1]) && (webtype[2] == undefined || webtype[2] == "" || /(edit|checkemail|activate)/.test(webtype[2])) )){
+		if( !( /developer/.test(webtype[1]) && (webtype[2] == undefined || webtype[2] == "" || /(edit|checkemail|activate)/.test(webtype[2])) || /sign/.test(webtype[2]) )){
 			location.href = "/developer/checkemail";
 		}
 	}else if(global_obj.code){
@@ -77,40 +77,41 @@
 			'<div id="header" class="headInside">',
 				'<h1><a class="logo" title="腾讯微博开放平台" href="/">腾讯微博开放平台</a></h1>',
 				'<ul class="topNav">',
-					'<li><a <%if (navPos == "1" ) {%> class="active" <%}%> href="/" hidefocus>首页</a></li>',
-					'<li><a <%if (navPos == "2" ) {%> class="active" <%}%> href="/websites/" hidefocus>网站接入</a></li>',
-					'<li><a <%if (navPos == "8" ) {%> class="active" <%}%> href="/wireless/" hidefocus>无线接入</a></li>',
-					'<li><a <%if (navPos == "3" ) {%> class="active" <%}%> href="/developer/" hidefocus>应用开发</a></li>',
-					'<!--<li>',
-						'<div class="menuCon webApp">',
-						'<div class="menu">',
-							'<a class="txt" href="javascript:;" title="web应用">web应用</a>',
-							'<i class="nav_arrow webapp_arr"></i>',
+					'<li <%if (navPos == "1" ) {%> class="active" <%}%>><a href="/" hidefocus>首页</a></li>',
+					'<li <%if (navPos == "2" ) {%> class="active" <%}%>><a href="/websites/" hidefocus>网站接入</a></li>',
+					'<li <%if (navPos == "8" ) {%> class="active" <%}%>><a href="/wireless/" hidefocus>无线接入</a></li>',
+				//	'<li><a <%if (navPos == "3" ) {%> class="active" <%}%> href="/developer/" hidefocus>应用开发</a></li>',
+						
+					'<li class="subnav_web<%if (navPos == "3" ) {%> active<%}%>">',
+						'<div class="subnav" curnav="">',
+							'<%if(location.href.split("/")[4] == "web"){%>',
+								'<a href="/developer/web/" hidefocus>网页应用</a>',
+								'<a href="/developer/insite/" hidefocus>站内应用</a>',
+							 '<%} else {%>',
+							 	'<a href="/developer/insite/" hidefocus>站内应用</a>',	
+								'<a href="/developer/web/" hidefocus>网页应用</a>',
+							 '<%}%>',
 						'</div>',
-						'<ul class="childMenu web_sub">',
-							'<li class="sub_item"><a class="sub_item_link sub_active" href="javascript:;" title="网页应用">网页应用</a></li>',
-							'<li class="sub_item"><a class="sub_item_link" href="javascript:;" title="站内应用">站内应用</a></li>',
-						'</ul>',
-						'</div>',
-					'</li>-->',
-					'<li><a <%if (navPos == "4" ) {%> class="active" <%}%> href="http://wiki.open.t.qq.com/" hidefocus>文档</a></li>',
+					'</li>',
+
+					'<li <%if (navPos == "4" ) {%> class="active" <%}%>><a href="http://wiki.open.t.qq.com/" hidefocus>文档</a></li>',
 					'<li><a href="http://bbs.open.t.qq.com/" target="_blank" hidefocus>论坛</a></li>',
-					'<li><a href="/development" <%if (navPos == "7" ) {%> class="active" <%}%> id="developmentbtn" hidefocus>管理中心</a></li>',
+					'<li <%if (navPos == "7" ) {%> class="active" <%}%>><a href="/development" id="developmentbtn" hidefocus>管理中心</a></li>',
 				'</ul>',
-				'<div class="menuCon userNav" id = "login_status">',
-					'<%if (userInfo.hdlogin ) {%>',
-					'<div class="menu">',
-						'<a class="login_name" href="javascript:;" title="<%=userInfo.nick?userInfo.nick:userInfo.hdlogin%>"><%=userInfo.nick?userInfo.nick:userInfo.hdlogin%><em></em></a>',
-						'<i class="nav_arrow"></i>',
+					
+				'<div id="login_status">',
+				'<%if (userInfo.hdlogin ) {%>',			
+					'<div class="subnav subnav_login" id = "login_status">',
+							'<span title="<%=userInfo.nick?userInfo.nick:userInfo.hdlogin%>" class="login_name"><%=userInfo.nick?userInfo.nick:userInfo.hdlogin%></span>',
+							'<span class="nav_arrow"></span>',
+							'<a href="/development/developer/" class="f12">编辑开发者信息</a>',
+							'<a href="javascript:;" id="logoutBtn" class="f12">退出</a>',	
 					'</div>',
-					'<ul class="childMenu userNav_sub">',
-						'<li class="sub_item"><a class="sub_item_link sub_active" href="/development/developer/">编辑开发者信息</a></li>',
-						'<li class="sub_item"><a class="sub_item_link" href="javascript:;" id="logoutBtn">退出</a></li>',
-					'</ul>',
-					'<%} else {%>',
-					'<a title="点击此处登录" class="login_name" href="javascript:void(0);" id="loginBtn" hidefocus>登录</a>',
-					'<%}%>',
+				'<%} else {%>',
+					'<a title="点击此处登录" class="login_btn" href="javascript:void(0);" id="loginBtn" hidefocus>登录</a>',
+				'<%}%>',
 				'</div>',
+					
 				'<!--',
 				'<div class="appSearch">',
 					'<form class="searchForm" action="http://wiki.open.t.qq.com/index.php" method="get">',
@@ -199,8 +200,6 @@
 				if ($(this).attr("href").indexOf(pathname)>-1){
 					$(this).parent().addClass("active");
 					return;
-				}else if(1){
-				
 				}
 			});
 			

@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 h2.title{height:45px;line-height:45px;background:url(http://mat1.gtimg.com/app/opent/images/public/bg_title.gif) no-repeat;font-size:16px;font-weight:normal;text-indent:15px;text-shadow:0 0 0 #ccc;color:#333;}
 .main{overflow:hidden;border-bottom:1px solid #F0F1ED;}
 .main_left{width:625px;overflow:hidden;float:left;}
@@ -8,7 +8,7 @@ h2.title{height:45px;line-height:45px;background:url(http://mat1.gtimg.com/app/o
 .appsnav{width:176px;font-size:14px;margin:15px 0 0;border-top:1px solid #DEE3E7;_ overflow:hidden;}
 .appsnav li{height:44px;border-top:1px solid #fff;border-bottom:1px solid #DEE3E7;line-height:44px;vertical-align:bottom;clear:both;zoom:1;}
 .appsnav li a{color:#333;padding-left:64px;display:block;font-family:Tahoma;vertical-align:bottom;zoom:1;}
-.appsnav .active a{background:url(../../images/websites/nav.gif) -88px -360px no-repeat;position:relative;top:-3px;left:-1px;padding:2px 7px 3px 64px;width:112px;height:44px;line-height:44px;color:#085678;* width:116px;_ top:auto;_ margin-top:-2px;_ margin-bottom:-1px;}
+.appsnav .active a{background:url(../../images/websites/nav.gif) 0 -355px no-repeat;position:relative;top:-3px;left:-1px;padding:2px 7px 3px 64px;width:112px;height:44px;line-height:44px;color:#085678;* width:116px;_ top:auto;_ margin-top:-2px;_ margin-bottom:-1px;}
 .main_app .appsnav .active a{width:112px;}
 .deverLeft .appsnav{margin-bottom:25px;}
 .deverCon,.main_more_news{overflow:hidden;background:#fff;border:1px solid #D8DDE1;}

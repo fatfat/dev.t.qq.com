@@ -59,7 +59,7 @@ var websites_index = [
 	'</div>',
 	this.tpl.footer
 ].join("");
-
+global_obj.data.navPos = "2";
 $("#main").append(tmpl(websites_index,global_obj.data));
 
 $(document).ready(function(){
