@@ -375,7 +375,7 @@ function compValidateEvent() {
 	$("form input[data-rule='appname'],form input[data-rule='compname'],input[data-rule='assname']").change(function() {
 		var selector = $(this),
 		rule = selector.attr("data-rule"),
-		value = selector.val();
+		value = selector.val().replace(/^\s+|\s+$/g,"");
 	//	value = selector.val().replace(/\s/g, "");
 		if (rule === "assname") {
 			if (/^[a-zA-Z][a-zA-Z0-9_\-]{0,19}$/g.test(value)) {
@@ -384,7 +384,7 @@ function compValidateEvent() {
 				OPEN_VALIDATOR["assnameCheck"](value, selector);
 			}
 		} else {
-			if (/^[A-Za-z0-9（）()\u4e00-\u9fa5]{1,14}$/.test(value) && value.replace(/^\s+|\s+$/g,"").replace(/[^\x00-\xff]/g, 'TX').length<=14){
+			if (/^[A-Za-z0-9（）()\u4e00-\u9fa5]{1,14}$/.test(value) && value.replace(/[^\x00-\xff]/g, 'TX').length<=14){
 			//if (/^[\w\-\u4e00-\u9fa5]{1,16}$/.test(value)) {
 				selector.removeAttr("data-only");
 				selector.attr("data-working", 1);

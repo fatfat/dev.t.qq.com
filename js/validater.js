@@ -843,8 +843,8 @@ $("form input[type='reset']").click(function() { //清除提示
 $("form input[data-rule='appname'],form input[data-rule='compname']").change(function() {
 	var selector = $(this),
 	rule = selector.attr("data-rule"),
-	value = selector.val();//.replace(/\s/g, "");
-	if (/^[A-Za-z0-9（）()\u4e00-\u9fa5]{1,14}$/.test(value) && value.replace(/^\s+|\s+$/g, "").replace(/[^\x00-\xff]/g, 'TX').length <= 14) {
+	value = selector.val().replace(/^\s+|\s+$/g, "");//.replace(/\s/g, "");
+	if (/^[A-Za-z0-9（）()\u4e00-\u9fa5]{1,14}$/.test(value) && value.replace(/[^\x00-\xff]/g, 'TX').length <= 14) {
 		selector.removeAttr("data-only");
 		selector.attr("data-working", 1);
 		OPEN_VALIDATOR["appnameCheck"](value, selector);
