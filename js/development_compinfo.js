@@ -67,11 +67,13 @@ var development_compinfoTmpl = [
 	'<li><strong>组件代码：</strong><em class="alert">复制以下代码，粘贴到你的网页后台代码中，即可在网页中显示组件 <a href="http://mat1.gtimg.com/app/opent/demo/index1.html" class="comp_demo none" target="_blank"><span class="icon_demo"></span> 互动演示</a></em></li>', 
 	'<% if(comp.comp_type==7){ %>', '<li id="wapTypeList"><strong>&nbsp;</strong>', '<em><input type="radio" name="wapTypes" value="1" checked="checked" id="wapTypeList1"/> <label for="wapTypeList1">wap 1.0</label> &nbsp;', '<input type="radio" name="wapTypes" value="2" id="wapTypeList2"/> <label for="wapTypeList2">wap 2.0</label>  &nbsp;', 
 	'<input type="radio" name="wapTypes" value="3" id="wapTypeList3"/> <label for="wapTypeList3">触屏版</label></em>', '</li>', '<% } %>', '<li><strong>&nbsp;</strong><em id="code_area"><textarea style="width:100%;height:220px;" id="scripts"></textarea></em></li>', 
+	'<%if(comp_type != 8){%>',
 	'<li class="getcode">', '<span>', 
 	'<input type="checkbox" id="compress" checked/> <label for="compress">压缩代码</label>', 
 	'</span>', '<span title="有些网站的模板引擎会过滤反斜杠，使程序发生各种各样的问题，推荐使用此方法" style="margin-left:10px;display:none;" id="outlinkCode">', 
 	'<input type="checkbox" id="outlink" checked/> <label for="outlink">外部调用<font style="font-size:12px;color:red;">(推荐)</font></label>', 
 	'</span>', '<a href="javascript:;" id="copybtn" class="btn_code">复制代码</a>', '</li>', 
+	'<%}%>',
 	'<% if(comp.comp_type==7){ %>', 
 	'<li><strong>使用简介：</strong><em><a href="http://wiki.open.t.qq.com/index.php/%E4%B8%80%E9%94%AE%E8%BD%AC%E6%92%AD%E7%A7%BB%E5%8A%A8%E7%89%88" target="_blank">详细说明</a></em></li>', 
 	'<% } %>', '</ul>', '</div>', '</div>'
@@ -465,29 +467,25 @@ function compType8() {
 		'<div class="code_download">',
 			'<a href="javascript:;" class="download">',
 				'下载代码',
-				'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="100" height="100" align="middle">',
+				'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="100" height="100" align="middle" id="code1">',
 					'<param name="allowScriptAccess" value="always" />',
 					'<param name="movie" value="http://mat1.gtimg.com/app/opent/images/websites/code1.swf" />',
 					'<param name="quality" value="high" />',
 					'<param name="flashVars" value="action=save&callback=downCodeFile" />',
 					'<param name="wmode" value="transparent" />',
-					'<embed src="http://mat1.gtimg.com/app/opent/images/websites/code1.swf" quality="high" width="100" height="100" flashVars="action=save&callback=downCodeFile" wmode="transparent" align="middle" swLiveConnect="false" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer_cn" />',
+					'<embed src="http://mat1.gtimg.com/app/opent/images/websites/code1.swf" quality="high" width="100" height="100" flashVars="action=save&callback=downCodeFile" name="code1" wmode="transparent" align="middle" swLiveConnect="false" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer_cn" />',
 				'</object>',
 			'</a>',
 		'</div>'
 		].join("");
-	
 	window.downCodeFile = function(o){
-		alert(3);
 		var val = $("#scripts").val();
 		return {"t":val,"f":"腾讯微博登录使用网页.html"};
-	}
+	}	
+	$("#preview").html(getpreview());
+	showCodestr();
+	$('.deverRight').append(tmpl(downCode,{}));
 
-	$(function() {
-		$("#preview").html(getpreview());
-		showCodestr();
-		$('.deverRight').append(tmpl(downCode,{}));
-	});
 }
 function compType9() {
 	var comp_style = {};
