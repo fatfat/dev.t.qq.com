@@ -125,7 +125,6 @@ tpl.websites_web = [
 				location.href = "/apps/add/1";
 			} else {
 				loginWin.alert("<center>您创建的应用数已达到上限</center>");
-				alert(1)
 			}
 		}
 	});
