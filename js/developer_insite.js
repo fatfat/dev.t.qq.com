@@ -122,6 +122,8 @@ tpl.developer_insite = [
 //			popAppWin(global_obj.data.developer.user_app_numbers,global_obj.data.developer.user_app_limit); 
 			if (userInfo.user_app_numbers < userInfo.user_app_limit) {
 				location.href = "/apps/add/4";
+			} else {
+				loginWin.alert("<center>您创建的应用数已达到上限</center>");
 			}
 		}
 	});

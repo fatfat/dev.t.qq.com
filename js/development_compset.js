@@ -255,16 +255,17 @@ function compType8(){
 		var imgurl = "http://mat1.gtimg.com/app/opent/images/websites/login/login_icon_"+[[1,2,3,4][+comp_style.b_size],5,6][+comp_style.b_type]+".png";
 		return '<img src="' + imgurl +'"/>';
 	};
-	eventBindFuncList.push(function(){
-		$('input[name=b_type]')[comp_style.b_type].checked = true;
-		if(comp_style.b_size != 0) {
-			$('input[name=size]')[comp_style.b_size].checked = true;
-		}
-		$('input[name=a_type]')[comp_style.a_type].checked = true;
-	});
+
 	//<% include file="./websites/login/loginuse_include.tpl" %>
 	util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/websites_loginuse_include.js",function(){
 		$(".showcode_bar").before(tmpl(tpl.websites_loginuse_include,global_obj.data));
+		eventBindFuncList.push(function(){
+			$('input[name=b_type]')[comp_style.b_type].checked = true;
+			if(comp_style.b_size != 0) {
+				$('input[name=size]')[comp_style.b_size].checked = true;
+			}
+			$('input[name=a_type]')[comp_style.a_type].checked = true;
+		});
 		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/login_vt.js");
 		util.createScript("http://mat1.gtimg.com/app/opent/rebuild/js/comp_validate.js",function(){	bindAllEvent();});
 	});

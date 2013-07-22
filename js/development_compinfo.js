@@ -453,12 +453,40 @@ function compType8() {
 		},
 		0);
 	}
+	
+	util.createStyle(
+			[
+				'.code_download{text-align:center;margin-bottom:15px;margin-left:602px;}',
+				'.download{position:relative;border:1px solid #84BC34;height:30px;line-height:30px;width:100px;border-radius:3px;background:#BADE87;display:inline-block;background:-o-linear-gradient(top,#BADE87,#90C04B);background:-moz-linear-gradient(top,#BADE87,#F0F0F1);background:-webkit-gradient(linear, left top, left bottom, from(#BADE87), to(#90C04B));filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=\'#BADE87\', endColorstr=\'#90C04B\');overflow:hidden;text-decoration:none;color:#fff;box-shadow:inset 0 1px 0 #ccffcc;font-size:14px;text-shadow:0 0 1px #84BC34;}',
+				'.download object,.download embed{position:absolute;top:0;left:0;}'
+			].join("")
+		);
+	var downCode = [
+		'<div class="code_download">',
+			'<a href="javascript:;" class="download">',
+				'下载代码',
+				'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" width="100" height="100" align="middle">',
+					'<param name="allowScriptAccess" value="always" />',
+					'<param name="movie" value="http://mat1.gtimg.com/app/opent/images/websites/code1.swf" />',
+					'<param name="quality" value="high" />',
+					'<param name="flashVars" value="action=save&callback=downCodeFile" />',
+					'<param name="wmode" value="transparent" />',
+					'<embed src="http://mat1.gtimg.com/app/opent/images/websites/code1.swf" quality="high" width="100" height="100" flashVars="action=save&callback=downCodeFile" wmode="transparent" align="middle" swLiveConnect="false" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer_cn" />',
+				'</object>',
+			'</a>',
+		'</div>'
+		].join("");
+	
+	window.downCodeFile = function(o){
+		alert(3);
+		var val = $("#scripts").val();
+		return {"t":val,"f":"腾讯微博登录使用网页.html"};
+	}
 
 	$(function() {
 		$("#preview").html(getpreview());
-		$("#compress").attr("disabled", true);
-		$(".getcode").hide();
 		showCodestr();
+		$('.deverRight').append(tmpl(downCode,{}));
 	});
 }
 function compType9() {
